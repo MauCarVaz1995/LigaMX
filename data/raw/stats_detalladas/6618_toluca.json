@@ -1,0 +1,6224 @@
+{
+  "equipo": "Toluca",
+  "equipo_id": 6618,
+  "fuente": "FotMob firstSeasonStats",
+  "jugadores": [
+    {
+      "id": 188123,
+      "nombre": "Hugo González",
+      "posicion": "GK",
+      "torneo_ref": {
+        "season": "2026",
+        "tournament": "CONCACAF Champions Cup",
+        "entry_id": "0-0"
+      },
+      "top_stats": {
+        "goals_conceded": {
+          "value": 3,
+          "per90": 3,
+          "percentile": 33.33333333333333
+        },
+        "clean_sheet_title": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "rating": {
+          "value": 4.6,
+          "per90": 4.6,
+          "percentile": 2.7777777777777777
+        },
+        "matches_uppercase": {
+          "value": 1,
+          "per90": 1,
+          "percentile": 0
+        },
+        "player_started_matches": {
+          "value": 1,
+          "per90": 1,
+          "percentile": 0
+        },
+        "saved_penalties": {
+          "value": "0/0",
+          "per90": 0,
+          "percentile": null
+        }
+      },
+      "grupos": {
+        "goalkeeping": {
+          "title": "Goalkeeping",
+          "stats": {
+            "saves": {
+              "title": "Saves",
+              "value": 1,
+              "per90": 1,
+              "percentile": 5.555555555555555,
+              "format": "number"
+            },
+            "save_percentage": {
+              "title": "Save percentage",
+              "value": 25,
+              "per90": 25,
+              "percentile": 5.555555555555555,
+              "format": "percent"
+            },
+            "goals_conceded": {
+              "title": "Goals conceded",
+              "value": 3,
+              "per90": 3,
+              "percentile": 33.33333333333333,
+              "format": "number"
+            },
+            "goals_prevented": {
+              "title": "Goals prevented",
+              "value": -1.73,
+              "per90": -1.725200057029724,
+              "percentile": 8.333333333333332,
+              "format": "fraction"
+            },
+            "clean_sheet_team_title": {
+              "title": "Clean sheets",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            },
+            "error_led_to_goal": {
+              "title": "Error led to goal",
+              "value": 0,
+              "per90": 0,
+              "percentile": 100,
+              "format": "number"
+            }
+          }
+        },
+        "distribution": {
+          "title": "Distribution",
+          "stats": {
+            "successful_passes": {
+              "title": "Accurate passes",
+              "value": 14,
+              "per90": 14,
+              "percentile": 5.555555555555555,
+              "format": "number"
+            },
+            "successful_passes_accuracy": {
+              "title": "Pass accuracy",
+              "value": 77.8,
+              "per90": 77.77777777777777,
+              "percentile": 52.77777777777778,
+              "format": "percent"
+            },
+            "long_balls_accurate": {
+              "title": "Accurate long balls",
+              "value": 3,
+              "per90": 3,
+              "percentile": 8.333333333333332,
+              "format": "number"
+            },
+            "long_ball_succeeeded_accuracy": {
+              "title": "Long ball accuracy",
+              "value": 42.9,
+              "per90": 42.857142857142854,
+              "percentile": 63.888888888888886,
+              "format": "percent"
+            },
+            "expected_assists": {
+              "title": "xA",
+              "value": 0,
+              "per90": 0.00011541000276338309,
+              "percentile": 2.7777777777777777,
+              "format": "fraction"
+            }
+          }
+        },
+        "discipline": {
+          "title": "Discipline",
+          "stats": {
+            "yellow_cards": {
+              "title": "Yellow cards",
+              "value": 0,
+              "per90": 0,
+              "percentile": 100,
+              "format": "number"
+            },
+            "red_cards": {
+              "title": "Red cards",
+              "value": 0,
+              "per90": 0,
+              "percentile": 100,
+              "format": "number"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 417520,
+      "nombre": "Luis García",
+      "posicion": "GK",
+      "torneo_ref": {
+        "season": "2026",
+        "tournament": "CONCACAF Champions Cup",
+        "entry_id": "0-0"
+      },
+      "top_stats": {
+        "goals_conceded": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 100
+        },
+        "clean_sheet_title": {
+          "value": 1,
+          "per90": 1,
+          "percentile": 47.22222222222222
+        },
+        "rating": {
+          "value": 7.16,
+          "per90": 7.16,
+          "percentile": 72.22222222222221
+        },
+        "matches_uppercase": {
+          "value": 1,
+          "per90": 1,
+          "percentile": 0
+        },
+        "player_started_matches": {
+          "value": 1,
+          "per90": 1,
+          "percentile": 0
+        },
+        "saved_penalties": {
+          "value": "0/0",
+          "per90": 0,
+          "percentile": null
+        }
+      },
+      "grupos": {
+        "goalkeeping": {
+          "title": "Goalkeeping",
+          "stats": {
+            "saves": {
+              "title": "Saves",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            },
+            "goals_conceded": {
+              "title": "Goals conceded",
+              "value": 0,
+              "per90": 0,
+              "percentile": 100,
+              "format": "number"
+            },
+            "clean_sheet_team_title": {
+              "title": "Clean sheets",
+              "value": 1,
+              "per90": 1,
+              "percentile": 47.22222222222222,
+              "format": "number"
+            },
+            "error_led_to_goal": {
+              "title": "Error led to goal",
+              "value": 0,
+              "per90": 0,
+              "percentile": 100,
+              "format": "number"
+            }
+          }
+        },
+        "distribution": {
+          "title": "Distribution",
+          "stats": {
+            "successful_passes": {
+              "title": "Accurate passes",
+              "value": 28,
+              "per90": 28,
+              "percentile": 22.22222222222222,
+              "format": "number"
+            },
+            "successful_passes_accuracy": {
+              "title": "Pass accuracy",
+              "value": 84.8,
+              "per90": 84.84848484848484,
+              "percentile": 86.11111111111111,
+              "format": "percent"
+            },
+            "long_balls_accurate": {
+              "title": "Accurate long balls",
+              "value": 10,
+              "per90": 10,
+              "percentile": 63.888888888888886,
+              "format": "number"
+            },
+            "long_ball_succeeeded_accuracy": {
+              "title": "Long ball accuracy",
+              "value": 66.7,
+              "per90": 66.66666666666667,
+              "percentile": 94.44444444444444,
+              "format": "percent"
+            },
+            "chances_created": {
+              "title": "Chances created",
+              "value": 1,
+              "per90": 1,
+              "percentile": 100,
+              "format": "number"
+            },
+            "expected_assists": {
+              "title": "xA",
+              "value": 0,
+              "per90": 0.0041083600372076035,
+              "percentile": 77.77777777777779,
+              "format": "fraction"
+            }
+          }
+        },
+        "discipline": {
+          "title": "Discipline",
+          "stats": {
+            "yellow_cards": {
+              "title": "Yellow cards",
+              "value": 0,
+              "per90": 0,
+              "percentile": 100,
+              "format": "number"
+            },
+            "red_cards": {
+              "title": "Red cards",
+              "value": 0,
+              "per90": 0,
+              "percentile": 100,
+              "format": "number"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 766850,
+      "nombre": "Diego Barbosa",
+      "posicion": "RB,RWB,RM",
+      "torneo_ref": {
+        "season": "2026",
+        "tournament": "CONCACAF Champions Cup",
+        "entry_id": "0-0"
+      },
+      "top_stats": {
+        "goals": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "assists": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "rating": {
+          "value": 6.58,
+          "per90": 6.585,
+          "percentile": 36.11111111111111
+        },
+        "matches_uppercase": {
+          "value": 2,
+          "per90": 2,
+          "percentile": 11.11111111111111
+        },
+        "player_started_matches": {
+          "value": 1,
+          "per90": 1,
+          "percentile": 0
+        },
+        "minutes_played": {
+          "value": 110,
+          "per90": 90,
+          "percentile": 25
+        }
+      },
+      "grupos": {
+        "shooting": {
+          "title": "Shooting",
+          "stats": {
+            "goals": {
+              "title": "Goals",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            },
+            "expected_goals": {
+              "title": "xG",
+              "value": 0.06,
+              "per90": 0.046472727575085374,
+              "percentile": 61.111111111111114,
+              "format": "fraction"
+            },
+            "non_penalty_xg": {
+              "title": "xG excl. penalty",
+              "value": 0.06,
+              "per90": 0.046472727575085374,
+              "percentile": 61.111111111111114,
+              "format": "fraction"
+            },
+            "shots": {
+              "title": "Shots",
+              "value": 2,
+              "per90": 1.6363636363636362,
+              "percentile": 75,
+              "format": "number"
+            }
+          }
+        },
+        "passing": {
+          "title": "Passing",
+          "stats": {
+            "assists": {
+              "title": "Assists",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            },
+            "expected_assists": {
+              "title": "xA",
+              "value": 0.02,
+              "per90": 0.015418725765564224,
+              "percentile": 25,
+              "format": "fraction"
+            },
+            "successful_passes": {
+              "title": "Accurate passes",
+              "value": 48,
+              "per90": 39.27272727272727,
+              "percentile": 52.77777777777778,
+              "format": "number"
+            },
+            "successful_passes_accuracy": {
+              "title": "Pass accuracy",
+              "value": 78.7,
+              "per90": 78.68852459016394,
+              "percentile": 31.944444444444443,
+              "format": "percent"
+            },
+            "long_balls_accurate": {
+              "title": "Accurate long balls",
+              "value": 1,
+              "per90": 0.8181818181818181,
+              "percentile": 16.666666666666664,
+              "format": "number"
+            },
+            "long_ball_succeeeded_accuracy": {
+              "title": "Long ball accuracy",
+              "value": 20,
+              "per90": 20,
+              "percentile": 20.833333333333336,
+              "format": "percent"
+            },
+            "chances_created": {
+              "title": "Chances created",
+              "value": 3,
+              "per90": 2.4545454545454546,
+              "percentile": 77.77777777777779,
+              "format": "number"
+            },
+            "big_chance_created_team_title": {
+              "title": "Big chances created",
+              "value": 1,
+              "per90": 0.8181818181818181,
+              "percentile": 75,
+              "format": "number"
+            }
+          }
+        },
+        "possession": {
+          "title": "Possession",
+          "stats": {
+            "dribbles_succeeded": {
+              "title": "Dribbles",
+              "value": 1,
+              "per90": 0.8181818181818181,
+              "percentile": 47.22222222222222,
+              "format": "number"
+            },
+            "won_contest_subtitle": {
+              "title": "Dribbles success rate",
+              "value": 50,
+              "per90": 50,
+              "percentile": 56.94444444444444,
+              "format": "percent"
+            },
+            "duel_won": {
+              "title": "Duels won",
+              "value": 6,
+              "per90": 4.909090909090909,
+              "percentile": 38.88888888888889,
+              "format": "number"
+            },
+            "duel_won_percent": {
+              "title": "Duels won %",
+              "value": 50,
+              "per90": 50,
+              "percentile": 37.5,
+              "format": "percent"
+            },
+            "touches": {
+              "title": "Touches",
+              "value": 94,
+              "per90": 76.9090909090909,
+              "percentile": 44.44444444444444,
+              "format": "number"
+            },
+            "touches_opp_box": {
+              "title": "Touches in opposition box",
+              "value": 2,
+              "per90": 1.6363636363636362,
+              "percentile": 56.94444444444444,
+              "format": "number"
+            },
+            "dispossessed": {
+              "title": "Dispossessed",
+              "value": 3,
+              "per90": 2.4545454545454546,
+              "percentile": 2.7777777777777777,
+              "format": "number"
+            },
+            "fouls_won": {
+              "title": "Fouls won",
+              "value": 3,
+              "per90": 2.4545454545454546,
+              "percentile": 72.22222222222221,
+              "format": "number"
+            }
+          }
+        },
+        "defending": {
+          "title": "Defending",
+          "stats": {
+            "matchstats.headers.tackles": {
+              "title": "Tackles",
+              "value": 2,
+              "per90": 1.6363636363636362,
+              "percentile": 30.555555555555557,
+              "format": "number"
+            },
+            "interceptions": {
+              "title": "Interceptions",
+              "value": 1,
+              "per90": 0.8181818181818181,
+              "percentile": 22.22222222222222,
+              "format": "number"
+            },
+            "blocked_shots": {
+              "title": "Blocked scoring attempt",
+              "value": 1,
+              "per90": 0.8181818181818181,
+              "percentile": 66.66666666666666,
+              "format": "number"
+            },
+            "recoveries": {
+              "title": "Recoveries",
+              "value": 8,
+              "per90": 6.545454545454545,
+              "percentile": 65.27777777777779,
+              "format": "number"
+            },
+            "dribbled_past": {
+              "title": "Dribbled past",
+              "value": 2,
+              "per90": 1.6363636363636362,
+              "percentile": 18.055555555555554,
+              "format": "number"
+            },
+            "clearances": {
+              "title": "Clearances",
+              "value": 2,
+              "per90": 1.6363636363636362,
+              "percentile": 16.666666666666664,
+              "format": "number"
+            },
+            "clean_sheet_team_title": {
+              "title": "Clean sheets",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            },
+            "goals_conceded_while_on_pitch": {
+              "title": "Goals conceded while on pitch",
+              "value": 3,
+              "per90": 2.4545454545454546,
+              "percentile": 33.33333333333333,
+              "format": "number"
+            },
+            "expected_goals_against_while_on_pitch": {
+              "title": "xG against while on pitch",
+              "value": 1.27,
+              "per90": 1.0368818261406638,
+              "percentile": 68.05555555555556,
+              "format": "fraction"
+            }
+          }
+        },
+        "discipline": {
+          "title": "Discipline",
+          "stats": {
+            "yellow_cards": {
+              "title": "Yellow cards",
+              "value": 0,
+              "per90": 0,
+              "percentile": 100,
+              "format": "number"
+            },
+            "red_cards": {
+              "title": "Red cards",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 291556,
+      "nombre": "Antonio Briseño",
+      "posicion": "CB",
+      "torneo_ref": {
+        "season": "2025/2026",
+        "tournament": "Liga MX Apertura",
+        "entry_id": "0-0"
+      },
+      "top_stats": {
+        "goals": {
+          "value": 1,
+          "per90": 0.13533834586466167,
+          "percentile": 64.28571428571429
+        },
+        "assists": {
+          "value": 1,
+          "per90": 0.13533834586466167,
+          "percentile": 79.76190476190477
+        },
+        "rating": {
+          "value": 6.95,
+          "per90": 6.953333333333333,
+          "percentile": 76.19047619047619
+        },
+        "matches_uppercase": {
+          "value": 12,
+          "per90": 12,
+          "percentile": 44.047619047619044
+        },
+        "player_started_matches": {
+          "value": 7,
+          "per90": 7,
+          "percentile": 32.142857142857146
+        },
+        "minutes_played": {
+          "value": 665,
+          "per90": 90,
+          "percentile": 35.714285714285715
+        }
+      },
+      "grupos": {
+        "shooting": {
+          "title": "Shooting",
+          "stats": {
+            "goals": {
+              "title": "Goals",
+              "value": 1,
+              "per90": 0.13533834586466167,
+              "percentile": 64.28571428571429,
+              "format": "number"
+            },
+            "expected_goals": {
+              "title": "xG",
+              "value": 0.97,
+              "per90": 0.1310887244859136,
+              "percentile": 79.76190476190477,
+              "format": "fraction"
+            },
+            "expected_goals_on_target": {
+              "title": "xGOT",
+              "value": 0.99,
+              "per90": 0.13463458261991804,
+              "percentile": 80.95238095238095,
+              "format": "fraction"
+            },
+            "non_penalty_xg": {
+              "title": "xG excl. penalty",
+              "value": 0.97,
+              "per90": 0.1310887244859136,
+              "percentile": 83.33333333333334,
+              "format": "fraction"
+            },
+            "shots": {
+              "title": "Shots",
+              "value": 5,
+              "per90": 0.6766917293233082,
+              "percentile": 50,
+              "format": "number"
+            },
+            "ShotsOnTarget": {
+              "title": "Shots on target",
+              "value": 1,
+              "per90": 0.13533834586466167,
+              "percentile": 34.523809523809526,
+              "format": "number"
+            },
+            "headed_shots": {
+              "title": "Headed shots",
+              "value": 4,
+              "per90": 0.5413533834586467,
+              "percentile": 66.66666666666666,
+              "format": "number"
+            }
+          }
+        },
+        "passing": {
+          "title": "Passing",
+          "stats": {
+            "assists": {
+              "title": "Assists",
+              "value": 1,
+              "per90": 0.13533834586466167,
+              "percentile": 79.76190476190477,
+              "format": "number"
+            },
+            "expected_assists": {
+              "title": "xA",
+              "value": 0.2,
+              "per90": 0.02711801544616097,
+              "percentile": 54.761904761904766,
+              "format": "fraction"
+            },
+            "successful_passes": {
+              "title": "Accurate passes",
+              "value": 248,
+              "per90": 33.56390977443609,
+              "percentile": 33.33333333333333,
+              "format": "number"
+            },
+            "successful_passes_accuracy": {
+              "title": "Pass accuracy",
+              "value": 88.9,
+              "per90": 88.88888888888889,
+              "percentile": 59.523809523809526,
+              "format": "percent"
+            },
+            "long_balls_accurate": {
+              "title": "Accurate long balls",
+              "value": 17,
+              "per90": 2.300751879699248,
+              "percentile": 40.476190476190474,
+              "format": "number"
+            },
+            "long_ball_succeeeded_accuracy": {
+              "title": "Long ball accuracy",
+              "value": 47.2,
+              "per90": 47.22222222222222,
+              "percentile": 52.38095238095239,
+              "format": "percent"
+            },
+            "chances_created": {
+              "title": "Chances created",
+              "value": 3,
+              "per90": 0.406015037593985,
+              "percentile": 60.71428571428571,
+              "format": "number"
+            },
+            "big_chance_created_team_title": {
+              "title": "Big chances created",
+              "value": 1,
+              "per90": 0.13533834586466167,
+              "percentile": 66.66666666666666,
+              "format": "number"
+            }
+          }
+        },
+        "possession": {
+          "title": "Possession",
+          "stats": {
+            "duel_won": {
+              "title": "Duels won",
+              "value": 31,
+              "per90": 4.195488721804511,
+              "percentile": 41.66666666666667,
+              "format": "number"
+            },
+            "duel_won_percent": {
+              "title": "Duels won %",
+              "value": 72.1,
+              "per90": 72.09302325581395,
+              "percentile": 96.42857142857143,
+              "format": "percent"
+            },
+            "aerials_won": {
+              "title": "Aerials won",
+              "value": 19,
+              "per90": 2.571428571428571,
+              "percentile": 55.952380952380956,
+              "format": "number"
+            },
+            "aerials_won_percent": {
+              "title": "Aerials won %",
+              "value": 86.4,
+              "per90": 86.36363636363636,
+              "percentile": 94.04761904761905,
+              "format": "percent"
+            },
+            "touches": {
+              "title": "Touches",
+              "value": 361,
+              "per90": 48.857142857142854,
+              "percentile": 32.142857142857146,
+              "format": "number"
+            },
+            "touches_opp_box": {
+              "title": "Touches in opposition box",
+              "value": 7,
+              "per90": 0.9473684210526315,
+              "percentile": 46.42857142857143,
+              "format": "number"
+            },
+            "dispossessed": {
+              "title": "Dispossessed",
+              "value": 1,
+              "per90": 0.13533834586466167,
+              "percentile": 40.476190476190474,
+              "format": "number"
+            },
+            "fouls_won": {
+              "title": "Fouls won",
+              "value": 6,
+              "per90": 0.81203007518797,
+              "percentile": 57.14285714285714,
+              "format": "number"
+            }
+          }
+        },
+        "defending": {
+          "title": "Defending",
+          "stats": {
+            "matchstats.headers.tackles": {
+              "title": "Tackles",
+              "value": 7,
+              "per90": 0.9473684210526315,
+              "percentile": 22.61904761904762,
+              "format": "number"
+            },
+            "interceptions": {
+              "title": "Interceptions",
+              "value": 5,
+              "per90": 0.6766917293233082,
+              "percentile": 23.809523809523807,
+              "format": "number"
+            },
+            "blocked_shots": {
+              "title": "Blocked scoring attempt",
+              "value": 4,
+              "per90": 0.5413533834586467,
+              "percentile": 33.33333333333333,
+              "format": "number"
+            },
+            "fouls": {
+              "title": "Fouls committed",
+              "value": 6,
+              "per90": 0.81203007518797,
+              "percentile": 27.380952380952383,
+              "format": "number"
+            },
+            "recoveries": {
+              "title": "Recoveries",
+              "value": 13,
+              "per90": 1.7593984962406015,
+              "percentile": 22.61904761904762,
+              "format": "number"
+            },
+            "dribbled_past": {
+              "title": "Dribbled past",
+              "value": 1,
+              "per90": 0.13533834586466167,
+              "percentile": 72.61904761904762,
+              "format": "number"
+            },
+            "clearances": {
+              "title": "Clearances",
+              "value": 34,
+              "per90": 4.601503759398496,
+              "percentile": 42.857142857142854,
+              "format": "number"
+            },
+            "clean_sheet_team_title": {
+              "title": "Clean sheets",
+              "value": 2,
+              "per90": 0.27067669172932335,
+              "percentile": 45.23809523809524,
+              "format": "number"
+            },
+            "goals_conceded_while_on_pitch": {
+              "title": "Goals conceded while on pitch",
+              "value": 7,
+              "per90": 0.9473684210526315,
+              "percentile": 77.38095238095238,
+              "format": "number"
+            },
+            "expected_goals_against_while_on_pitch": {
+              "title": "xG against while on pitch",
+              "value": 7.66,
+              "per90": 1.0370977910837733,
+              "percentile": 71.42857142857143,
+              "format": "fraction"
+            }
+          }
+        },
+        "discipline": {
+          "title": "Discipline",
+          "stats": {
+            "yellow_cards": {
+              "title": "Yellow cards",
+              "value": 0,
+              "per90": 0,
+              "percentile": 100,
+              "format": "number"
+            },
+            "red_cards": {
+              "title": "Red cards",
+              "value": 0,
+              "per90": 0,
+              "percentile": 100,
+              "format": "number"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 933574,
+      "nombre": "Bruno Méndez",
+      "posicion": "CB,RB",
+      "torneo_ref": {
+        "season": "2026",
+        "tournament": "CONCACAF Champions Cup",
+        "entry_id": "0-0"
+      },
+      "top_stats": {
+        "goals": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "assists": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "rating": {
+          "value": 6.78,
+          "per90": 6.78,
+          "percentile": 49.382716049382715
+        },
+        "matches_uppercase": {
+          "value": 2,
+          "per90": 2,
+          "percentile": 12.345679012345679
+        },
+        "player_started_matches": {
+          "value": 2,
+          "per90": 2,
+          "percentile": 19.753086419753085
+        },
+        "minutes_played": {
+          "value": 180,
+          "per90": 90,
+          "percentile": 32.098765432098766
+        }
+      },
+      "grupos": {
+        "shooting": {
+          "title": "Shooting",
+          "stats": {
+            "goals": {
+              "title": "Goals",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            },
+            "expected_goals": {
+              "title": "xG",
+              "value": 0.05,
+              "per90": 0.02329999953508377,
+              "percentile": 53.086419753086425,
+              "format": "fraction"
+            },
+            "non_penalty_xg": {
+              "title": "xG excl. penalty",
+              "value": 0.05,
+              "per90": 0.02329999953508377,
+              "percentile": 53.086419753086425,
+              "format": "fraction"
+            },
+            "shots": {
+              "title": "Shots",
+              "value": 1,
+              "per90": 0.5,
+              "percentile": 44.44444444444444,
+              "format": "number"
+            },
+            "headed_shots": {
+              "title": "Headed shots",
+              "value": 1,
+              "per90": 0.5,
+              "percentile": 66.66666666666666,
+              "format": "number"
+            }
+          }
+        },
+        "passing": {
+          "title": "Passing",
+          "stats": {
+            "assists": {
+              "title": "Assists",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            },
+            "expected_assists": {
+              "title": "xA",
+              "value": 0.02,
+              "per90": 0.00798354484140873,
+              "percentile": 45.67901234567901,
+              "format": "fraction"
+            },
+            "successful_passes": {
+              "title": "Accurate passes",
+              "value": 107,
+              "per90": 53.5,
+              "percentile": 55.55555555555556,
+              "format": "number"
+            },
+            "successful_passes_accuracy": {
+              "title": "Pass accuracy",
+              "value": 87.7,
+              "per90": 87.70491803278688,
+              "percentile": 49.382716049382715,
+              "format": "percent"
+            },
+            "long_balls_accurate": {
+              "title": "Accurate long balls",
+              "value": 7,
+              "per90": 3.5,
+              "percentile": 64.19753086419753,
+              "format": "number"
+            },
+            "long_ball_succeeeded_accuracy": {
+              "title": "Long ball accuracy",
+              "value": 46.7,
+              "per90": 46.666666666666664,
+              "percentile": 59.25925925925925,
+              "format": "percent"
+            }
+          }
+        },
+        "possession": {
+          "title": "Possession",
+          "stats": {
+            "duel_won": {
+              "title": "Duels won",
+              "value": 6,
+              "per90": 3,
+              "percentile": 34.5679012345679,
+              "format": "number"
+            },
+            "duel_won_percent": {
+              "title": "Duels won %",
+              "value": 75,
+              "per90": 75,
+              "percentile": 87.65432098765432,
+              "format": "percent"
+            },
+            "aerials_won": {
+              "title": "Aerials won",
+              "value": 4,
+              "per90": 2,
+              "percentile": 66.66666666666666,
+              "format": "number"
+            },
+            "aerials_won_percent": {
+              "title": "Aerials won %",
+              "value": 80,
+              "per90": 80,
+              "percentile": 79.01234567901234,
+              "format": "percent"
+            },
+            "touches": {
+              "title": "Touches",
+              "value": 143,
+              "per90": 71.5,
+              "percentile": 54.32098765432099,
+              "format": "number"
+            },
+            "touches_opp_box": {
+              "title": "Touches in opposition box",
+              "value": 1,
+              "per90": 0.5,
+              "percentile": 37.03703703703704,
+              "format": "number"
+            },
+            "dispossessed": {
+              "title": "Dispossessed",
+              "value": 0,
+              "per90": 0,
+              "percentile": 100,
+              "format": "number"
+            }
+          }
+        },
+        "defending": {
+          "title": "Defending",
+          "stats": {
+            "matchstats.headers.tackles": {
+              "title": "Tackles",
+              "value": 2,
+              "per90": 1,
+              "percentile": 32.098765432098766,
+              "format": "number"
+            },
+            "interceptions": {
+              "title": "Interceptions",
+              "value": 2,
+              "per90": 1,
+              "percentile": 38.2716049382716,
+              "format": "number"
+            },
+            "fouls": {
+              "title": "Fouls committed",
+              "value": 2,
+              "per90": 1,
+              "percentile": 45.67901234567901,
+              "format": "number"
+            },
+            "recoveries": {
+              "title": "Recoveries",
+              "value": 9,
+              "per90": 4.5,
+              "percentile": 69.1358024691358,
+              "format": "number"
+            },
+            "clearances": {
+              "title": "Clearances",
+              "value": 9,
+              "per90": 4.5,
+              "percentile": 53.086419753086425,
+              "format": "number"
+            },
+            "clean_sheet_team_title": {
+              "title": "Clean sheets",
+              "value": 1,
+              "per90": 0.5,
+              "percentile": 50.617283950617285,
+              "format": "number"
+            },
+            "goals_conceded_while_on_pitch": {
+              "title": "Goals conceded while on pitch",
+              "value": 3,
+              "per90": 1.5,
+              "percentile": 34.5679012345679,
+              "format": "number"
+            },
+            "expected_goals_against_while_on_pitch": {
+              "title": "xG against while on pitch",
+              "value": 1.64,
+              "per90": 0.8194000124931335,
+              "percentile": 75.30864197530865,
+              "format": "fraction"
+            }
+          }
+        },
+        "discipline": {
+          "title": "Discipline",
+          "stats": {
+            "yellow_cards": {
+              "title": "Yellow cards",
+              "value": 0,
+              "per90": 0,
+              "percentile": 100,
+              "format": "number"
+            },
+            "red_cards": {
+              "title": "Red cards",
+              "value": 0,
+              "per90": 0,
+              "percentile": 100,
+              "format": "number"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 1053836,
+      "nombre": "Federico Pereira",
+      "posicion": "CB",
+      "torneo_ref": {
+        "season": "2026",
+        "tournament": "CONCACAF Champions Cup",
+        "entry_id": "0-0"
+      },
+      "top_stats": {
+        "goals": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "assists": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "rating": {
+          "value": 7.42,
+          "per90": 7.42,
+          "percentile": 88.88888888888889
+        },
+        "matches_uppercase": {
+          "value": 2,
+          "per90": 2,
+          "percentile": 12.345679012345679
+        },
+        "player_started_matches": {
+          "value": 2,
+          "per90": 2,
+          "percentile": 19.753086419753085
+        },
+        "minutes_played": {
+          "value": 179,
+          "per90": 90,
+          "percentile": 29.629629629629626
+        }
+      },
+      "grupos": {
+        "shooting": {
+          "title": "Shooting",
+          "stats": {
+            "goals": {
+              "title": "Goals",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            },
+            "expected_goals": {
+              "title": "xG",
+              "value": 0.28,
+              "per90": 0.1424916196801809,
+              "percentile": 87.65432098765432,
+              "format": "fraction"
+            },
+            "expected_goals_on_target": {
+              "title": "xGOT",
+              "value": 0.26,
+              "per90": 0.13213408226407442,
+              "percentile": 80.24691358024691,
+              "format": "fraction"
+            },
+            "non_penalty_xg": {
+              "title": "xG excl. penalty",
+              "value": 0.28,
+              "per90": 0.1424916196801809,
+              "percentile": 88.88888888888889,
+              "format": "fraction"
+            },
+            "shots": {
+              "title": "Shots",
+              "value": 2,
+              "per90": 1.005586592178771,
+              "percentile": 67.90123456790124,
+              "format": "number"
+            },
+            "ShotsOnTarget": {
+              "title": "Shots on target",
+              "value": 2,
+              "per90": 1.005586592178771,
+              "percentile": 100,
+              "format": "number"
+            },
+            "headed_shots": {
+              "title": "Headed shots",
+              "value": 1,
+              "per90": 0.5027932960893855,
+              "percentile": 66.66666666666666,
+              "format": "number"
+            }
+          }
+        },
+        "passing": {
+          "title": "Passing",
+          "stats": {
+            "assists": {
+              "title": "Assists",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            },
+            "expected_assists": {
+              "title": "xA",
+              "value": 0.31,
+              "per90": 0.15728209937750962,
+              "percentile": 96.29629629629629,
+              "format": "fraction"
+            },
+            "successful_passes": {
+              "title": "Accurate passes",
+              "value": 137,
+              "per90": 68.88268156424581,
+              "percentile": 71.60493827160494,
+              "format": "number"
+            },
+            "successful_passes_accuracy": {
+              "title": "Pass accuracy",
+              "value": 90.7,
+              "per90": 90.72847682119205,
+              "percentile": 69.1358024691358,
+              "format": "percent"
+            },
+            "long_balls_accurate": {
+              "title": "Accurate long balls",
+              "value": 10,
+              "per90": 5.027932960893854,
+              "percentile": 80.24691358024691,
+              "format": "number"
+            },
+            "long_ball_succeeeded_accuracy": {
+              "title": "Long ball accuracy",
+              "value": 55.6,
+              "per90": 55.55555555555556,
+              "percentile": 75.30864197530865,
+              "format": "percent"
+            },
+            "chances_created": {
+              "title": "Chances created",
+              "value": 2,
+              "per90": 1.005586592178771,
+              "percentile": 88.88888888888889,
+              "format": "number"
+            },
+            "big_chance_created_team_title": {
+              "title": "Big chances created",
+              "value": 1,
+              "per90": 0.5027932960893855,
+              "percentile": 93.82716049382715,
+              "format": "number"
+            }
+          }
+        },
+        "possession": {
+          "title": "Possession",
+          "stats": {
+            "dribbles_succeeded": {
+              "title": "Dribbles",
+              "value": 1,
+              "per90": 0.5027932960893855,
+              "percentile": 65.4320987654321,
+              "format": "number"
+            },
+            "won_contest_subtitle": {
+              "title": "Dribbles success rate",
+              "value": 100,
+              "per90": 100,
+              "percentile": 100,
+              "format": "percent"
+            },
+            "duel_won": {
+              "title": "Duels won",
+              "value": 11,
+              "per90": 5.53072625698324,
+              "percentile": 75.30864197530865,
+              "format": "number"
+            },
+            "duel_won_percent": {
+              "title": "Duels won %",
+              "value": 73.3,
+              "per90": 73.33333333333333,
+              "percentile": 85.18518518518519,
+              "format": "percent"
+            },
+            "aerials_won": {
+              "title": "Aerials won",
+              "value": 4,
+              "per90": 2.011173184357542,
+              "percentile": 66.66666666666666,
+              "format": "number"
+            },
+            "aerials_won_percent": {
+              "title": "Aerials won %",
+              "value": 66.7,
+              "per90": 66.66666666666667,
+              "percentile": 62.96296296296296,
+              "format": "percent"
+            },
+            "touches": {
+              "title": "Touches",
+              "value": 179,
+              "per90": 90,
+              "percentile": 70.37037037037037,
+              "format": "number"
+            },
+            "touches_opp_box": {
+              "title": "Touches in opposition box",
+              "value": 1,
+              "per90": 0.5027932960893855,
+              "percentile": 37.03703703703704,
+              "format": "number"
+            },
+            "dispossessed": {
+              "title": "Dispossessed",
+              "value": 0,
+              "per90": 0,
+              "percentile": 100,
+              "format": "number"
+            },
+            "fouls_won": {
+              "title": "Fouls won",
+              "value": 2,
+              "per90": 1.005586592178771,
+              "percentile": 70.37037037037037,
+              "format": "number"
+            }
+          }
+        },
+        "defending": {
+          "title": "Defending",
+          "stats": {
+            "matchstats.headers.tackles": {
+              "title": "Tackles",
+              "value": 4,
+              "per90": 2.011173184357542,
+              "percentile": 58.0246913580247,
+              "format": "number"
+            },
+            "interceptions": {
+              "title": "Interceptions",
+              "value": 3,
+              "per90": 1.5083798882681565,
+              "percentile": 62.96296296296296,
+              "format": "number"
+            },
+            "blocked_shots": {
+              "title": "Blocked scoring attempt",
+              "value": 3,
+              "per90": 1.5083798882681565,
+              "percentile": 75.30864197530865,
+              "format": "number"
+            },
+            "fouls": {
+              "title": "Fouls committed",
+              "value": 1,
+              "per90": 0.5027932960893855,
+              "percentile": 18.51851851851852,
+              "format": "number"
+            },
+            "recoveries": {
+              "title": "Recoveries",
+              "value": 17,
+              "per90": 8.547486033519553,
+              "percentile": 92.5925925925926,
+              "format": "number"
+            },
+            "poss_won_att_3rd_team_title": {
+              "title": "Possession won final 3rd",
+              "value": 1,
+              "per90": 0.5027932960893855,
+              "percentile": 91.35802469135803,
+              "format": "number"
+            },
+            "dribbled_past": {
+              "title": "Dribbled past",
+              "value": 1,
+              "per90": 0.5027932960893855,
+              "percentile": 27.160493827160494,
+              "format": "number"
+            },
+            "clearances": {
+              "title": "Clearances",
+              "value": 10,
+              "per90": 5.027932960893854,
+              "percentile": 62.96296296296296,
+              "format": "number"
+            },
+            "clean_sheet_team_title": {
+              "title": "Clean sheets",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            },
+            "goals_conceded_while_on_pitch": {
+              "title": "Goals conceded while on pitch",
+              "value": 3,
+              "per90": 1.5083798882681565,
+              "percentile": 34.5679012345679,
+              "format": "number"
+            },
+            "expected_goals_against_while_on_pitch": {
+              "title": "xG against while on pitch",
+              "value": 1.64,
+              "per90": 0.8239776661942124,
+              "percentile": 75.30864197530865,
+              "format": "fraction"
+            }
+          }
+        },
+        "discipline": {
+          "title": "Discipline",
+          "stats": {
+            "yellow_cards": {
+              "title": "Yellow cards",
+              "value": 1,
+              "per90": 0.5027932960893855,
+              "percentile": 2.4691358024691357,
+              "format": "number"
+            },
+            "red_cards": {
+              "title": "Red cards",
+              "value": 0,
+              "per90": 0,
+              "percentile": 100,
+              "format": "number"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 1128764,
+      "nombre": "Mauricio Isaís",
+      "posicion": "LB",
+      "torneo_ref": {
+        "season": "2025/2026",
+        "tournament": "Liga MX Apertura",
+        "entry_id": "0-0"
+      },
+      "top_stats": {
+        "goals": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "assists": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "rating": {
+          "value": 6.66,
+          "per90": 6.663333333333333,
+          "percentile": 53.62318840579711
+        },
+        "matches_uppercase": {
+          "value": 4,
+          "per90": 4,
+          "percentile": 5.797101449275362
+        },
+        "player_started_matches": {
+          "value": 3,
+          "per90": 3,
+          "percentile": 15.942028985507244
+        },
+        "minutes_played": {
+          "value": 226,
+          "per90": 90,
+          "percentile": 13.043478260869565
+        }
+      },
+      "grupos": {
+        "shooting": {
+          "title": "Shooting",
+          "stats": {
+            "goals": {
+              "title": "Goals",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            },
+            "expected_goals": {
+              "title": "xG",
+              "value": 0.05,
+              "per90": 0.019075220730979885,
+              "percentile": 30.434782608695656,
+              "format": "fraction"
+            },
+            "non_penalty_xg": {
+              "title": "xG excl. penalty",
+              "value": 0.05,
+              "per90": 0.019075220730979885,
+              "percentile": 30.434782608695656,
+              "format": "fraction"
+            },
+            "shots": {
+              "title": "Shots",
+              "value": 1,
+              "per90": 0.39823008849557523,
+              "percentile": 14.492753623188406,
+              "format": "number"
+            }
+          }
+        },
+        "passing": {
+          "title": "Passing",
+          "stats": {
+            "assists": {
+              "title": "Assists",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            },
+            "expected_assists": {
+              "title": "xA",
+              "value": 0.24,
+              "per90": 0.09405129712767306,
+              "percentile": 27.536231884057973,
+              "format": "fraction"
+            },
+            "successful_passes": {
+              "title": "Accurate passes",
+              "value": 55,
+              "per90": 21.902654867256636,
+              "percentile": 10.144927536231885,
+              "format": "number"
+            },
+            "successful_passes_accuracy": {
+              "title": "Pass accuracy",
+              "value": 66.3,
+              "per90": 66.26506024096386,
+              "percentile": 1.4492753623188406,
+              "format": "percent"
+            },
+            "long_balls_accurate": {
+              "title": "Accurate long balls",
+              "value": 7,
+              "per90": 2.7876106194690267,
+              "percentile": 30.434782608695656,
+              "format": "number"
+            },
+            "long_ball_succeeeded_accuracy": {
+              "title": "Long ball accuracy",
+              "value": 50,
+              "per90": 50,
+              "percentile": 75.36231884057972,
+              "format": "percent"
+            },
+            "chances_created": {
+              "title": "Chances created",
+              "value": 1,
+              "per90": 0.39823008849557523,
+              "percentile": 15.942028985507244,
+              "format": "number"
+            },
+            "crosses_succeeeded": {
+              "title": "Successful crosses",
+              "value": 1,
+              "per90": 0.39823008849557523,
+              "percentile": 17.391304347826086,
+              "format": "number"
+            },
+            "crosses_succeeeded_accuracy": {
+              "title": "Cross accuracy",
+              "value": 14.3,
+              "per90": 14.285714285714286,
+              "percentile": 31.88405797101449,
+              "format": "percent"
+            }
+          }
+        },
+        "possession": {
+          "title": "Possession",
+          "stats": {
+            "dribbles_succeeded": {
+              "title": "Dribbles",
+              "value": 1,
+              "per90": 0.39823008849557523,
+              "percentile": 17.391304347826086,
+              "format": "number"
+            },
+            "won_contest_subtitle": {
+              "title": "Dribbles success rate",
+              "value": 20,
+              "per90": 20,
+              "percentile": 21.73913043478261,
+              "format": "percent"
+            },
+            "duel_won": {
+              "title": "Duels won",
+              "value": 15,
+              "per90": 5.9734513274336285,
+              "percentile": 21.73913043478261,
+              "format": "number"
+            },
+            "duel_won_percent": {
+              "title": "Duels won %",
+              "value": 48.4,
+              "per90": 48.38709677419355,
+              "percentile": 39.130434782608695,
+              "format": "percent"
+            },
+            "aerials_won": {
+              "title": "Aerials won",
+              "value": 5,
+              "per90": 1.991150442477876,
+              "percentile": 37.68115942028986,
+              "format": "number"
+            },
+            "aerials_won_percent": {
+              "title": "Aerials won %",
+              "value": 83.3,
+              "per90": 83.33333333333333,
+              "percentile": 92.7536231884058,
+              "format": "percent"
+            },
+            "touches": {
+              "title": "Touches",
+              "value": 149,
+              "per90": 59.33628318584071,
+              "percentile": 17.391304347826086,
+              "format": "number"
+            },
+            "touches_opp_box": {
+              "title": "Touches in opposition box",
+              "value": 3,
+              "per90": 1.1946902654867257,
+              "percentile": 24.637681159420293,
+              "format": "number"
+            },
+            "dispossessed": {
+              "title": "Dispossessed",
+              "value": 3,
+              "per90": 1.1946902654867257,
+              "percentile": 63.76811594202898,
+              "format": "number"
+            },
+            "fouls_won": {
+              "title": "Fouls won",
+              "value": 1,
+              "per90": 0.39823008849557523,
+              "percentile": 10.144927536231885,
+              "format": "number"
+            }
+          }
+        },
+        "defending": {
+          "title": "Defending",
+          "stats": {
+            "matchstats.headers.tackles": {
+              "title": "Tackles",
+              "value": 8,
+              "per90": 3.185840707964602,
+              "percentile": 27.536231884057973,
+              "format": "number"
+            },
+            "interceptions": {
+              "title": "Interceptions",
+              "value": 4,
+              "per90": 1.592920353982301,
+              "percentile": 30.434782608695656,
+              "format": "number"
+            },
+            "fouls": {
+              "title": "Fouls committed",
+              "value": 4,
+              "per90": 1.592920353982301,
+              "percentile": 14.492753623188406,
+              "format": "number"
+            },
+            "recoveries": {
+              "title": "Recoveries",
+              "value": 13,
+              "per90": 5.176991150442478,
+              "percentile": 26.08695652173913,
+              "format": "number"
+            },
+            "poss_won_att_3rd_team_title": {
+              "title": "Possession won final 3rd",
+              "value": 1,
+              "per90": 0.39823008849557523,
+              "percentile": 39.130434782608695,
+              "format": "number"
+            },
+            "dribbled_past": {
+              "title": "Dribbled past",
+              "value": 4,
+              "per90": 1.592920353982301,
+              "percentile": 63.76811594202898,
+              "format": "number"
+            },
+            "clearances": {
+              "title": "Clearances",
+              "value": 2,
+              "per90": 0.7964601769911505,
+              "percentile": 1.4492753623188406,
+              "format": "number"
+            },
+            "clean_sheet_team_title": {
+              "title": "Clean sheets",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            },
+            "goals_conceded_while_on_pitch": {
+              "title": "Goals conceded while on pitch",
+              "value": 6,
+              "per90": 2.3893805309734515,
+              "percentile": 79.71014492753623,
+              "format": "number"
+            },
+            "expected_goals_against_while_on_pitch": {
+              "title": "xG against while on pitch",
+              "value": 2.66,
+              "per90": 1.0605663324879333,
+              "percentile": 92.7536231884058,
+              "format": "fraction"
+            }
+          }
+        },
+        "discipline": {
+          "title": "Discipline",
+          "stats": {
+            "yellow_cards": {
+              "title": "Yellow cards",
+              "value": 1,
+              "per90": 0.39823008849557523,
+              "percentile": 55.072463768115945,
+              "format": "number"
+            },
+            "red_cards": {
+              "title": "Red cards",
+              "value": 0,
+              "per90": 0,
+              "percentile": 100,
+              "format": "number"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 387490,
+      "nombre": "Luan",
+      "posicion": "CB",
+      "torneo_ref": {
+        "season": "2026",
+        "tournament": "CONCACAF Champions Cup",
+        "entry_id": "0-0"
+      },
+      "top_stats": {
+        "goals": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "assists": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "matches_uppercase": {
+          "value": 1,
+          "per90": 1,
+          "percentile": 0
+        },
+        "player_started_matches": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "minutes_played": {
+          "value": 1,
+          "per90": 90,
+          "percentile": 0
+        }
+      },
+      "grupos": {}
+    },
+    {
+      "id": 1208803,
+      "nombre": "Santiago Simón",
+      "posicion": "RB,RWB,RW,CM",
+      "torneo_ref": {
+        "season": "2026",
+        "tournament": "CONCACAF Champions Cup",
+        "entry_id": "0-0"
+      },
+      "top_stats": {
+        "goals": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "assists": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "rating": {
+          "value": 7.14,
+          "per90": 7.14,
+          "percentile": 65.27777777777779
+        },
+        "matches_uppercase": {
+          "value": 1,
+          "per90": 1,
+          "percentile": 0
+        },
+        "player_started_matches": {
+          "value": 1,
+          "per90": 1,
+          "percentile": 0
+        },
+        "minutes_played": {
+          "value": 90,
+          "per90": 90,
+          "percentile": 8.333333333333332
+        }
+      },
+      "grupos": {
+        "shooting": {
+          "title": "Shooting",
+          "stats": {
+            "goals": {
+              "title": "Goals",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            },
+            "shots": {
+              "title": "Shots",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            }
+          }
+        },
+        "passing": {
+          "title": "Passing",
+          "stats": {
+            "assists": {
+              "title": "Assists",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            },
+            "expected_assists": {
+              "title": "xA",
+              "value": 0.02,
+              "per90": 0.022491199895739555,
+              "percentile": 31.944444444444443,
+              "format": "fraction"
+            },
+            "successful_passes": {
+              "title": "Accurate passes",
+              "value": 32,
+              "per90": 32,
+              "percentile": 22.22222222222222,
+              "format": "number"
+            },
+            "successful_passes_accuracy": {
+              "title": "Pass accuracy",
+              "value": 94.1,
+              "per90": 94.11764705882354,
+              "percentile": 94.44444444444444,
+              "format": "percent"
+            },
+            "chances_created": {
+              "title": "Chances created",
+              "value": 1,
+              "per90": 1,
+              "percentile": 41.66666666666667,
+              "format": "number"
+            }
+          }
+        },
+        "possession": {
+          "title": "Possession",
+          "stats": {
+            "touches": {
+              "title": "Touches",
+              "value": 51,
+              "per90": 51,
+              "percentile": 13.88888888888889,
+              "format": "number"
+            },
+            "touches_opp_box": {
+              "title": "Touches in opposition box",
+              "value": 1,
+              "per90": 1,
+              "percentile": 31.944444444444443,
+              "format": "number"
+            },
+            "dispossessed": {
+              "title": "Dispossessed",
+              "value": 0,
+              "per90": 0,
+              "percentile": 100,
+              "format": "number"
+            }
+          }
+        },
+        "defending": {
+          "title": "Defending",
+          "stats": {
+            "recoveries": {
+              "title": "Recoveries",
+              "value": 3,
+              "per90": 3,
+              "percentile": 18.055555555555554,
+              "format": "number"
+            },
+            "clearances": {
+              "title": "Clearances",
+              "value": 1,
+              "per90": 1,
+              "percentile": 6.944444444444445,
+              "format": "number"
+            },
+            "clean_sheet_team_title": {
+              "title": "Clean sheets",
+              "value": 1,
+              "per90": 1,
+              "percentile": 61.111111111111114,
+              "format": "number"
+            },
+            "goals_conceded_while_on_pitch": {
+              "title": "Goals conceded while on pitch",
+              "value": 0,
+              "per90": 0,
+              "percentile": 100,
+              "format": "number"
+            },
+            "expected_goals_against_while_on_pitch": {
+              "title": "xG against while on pitch",
+              "value": 0.46,
+              "per90": 0.46270000934600836,
+              "percentile": 87.5,
+              "format": "fraction"
+            }
+          }
+        },
+        "discipline": {
+          "title": "Discipline",
+          "stats": {
+            "yellow_cards": {
+              "title": "Yellow cards",
+              "value": 0,
+              "per90": 0,
+              "percentile": 100,
+              "format": "number"
+            },
+            "red_cards": {
+              "title": "Red cards",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 597976,
+      "nombre": "Jesús Gallardo",
+      "posicion": "LB,LWB,LM",
+      "torneo_ref": {
+        "season": "2026",
+        "tournament": "CONCACAF Champions Cup",
+        "entry_id": "0-0"
+      },
+      "top_stats": {
+        "goals": {
+          "value": 2,
+          "per90": 1,
+          "percentile": 94.4954128440367
+        },
+        "assists": {
+          "value": 1,
+          "per90": 0.5,
+          "percentile": 81.65137614678899
+        },
+        "rating": {
+          "value": 8.64,
+          "per90": 8.635,
+          "percentile": 98.1651376146789
+        },
+        "matches_uppercase": {
+          "value": 2,
+          "per90": 2,
+          "percentile": 8.256880733944955
+        },
+        "player_started_matches": {
+          "value": 2,
+          "per90": 2,
+          "percentile": 30.275229357798167
+        },
+        "minutes_played": {
+          "value": 180,
+          "per90": 90,
+          "percentile": 61.46788990825688
+        }
+      },
+      "grupos": {
+        "shooting": {
+          "title": "Shooting",
+          "stats": {
+            "goals": {
+              "title": "Goals",
+              "value": 2,
+              "per90": 1,
+              "percentile": 94.4954128440367,
+              "format": "number"
+            },
+            "expected_goals": {
+              "title": "xG",
+              "value": 0.88,
+              "per90": 0.4417999982833862,
+              "percentile": 94.4954128440367,
+              "format": "fraction"
+            },
+            "expected_goals_on_target": {
+              "title": "xGOT",
+              "value": 1.58,
+              "per90": 0.7891499996185303,
+              "percentile": 97.24770642201835,
+              "format": "fraction"
+            },
+            "goals_subtitle": {
+              "title": "Penalty goals",
+              "value": 1,
+              "per90": 0.5,
+              "percentile": 100,
+              "format": "number"
+            },
+            "non_penalty_xg": {
+              "title": "xG excl. penalty",
+              "value": 0.1,
+              "per90": 0.047600001096725464,
+              "percentile": 66.05504587155964,
+              "format": "fraction"
+            },
+            "shots": {
+              "title": "Shots",
+              "value": 3,
+              "per90": 1.5,
+              "percentile": 71.55963302752293,
+              "format": "number"
+            },
+            "ShotsOnTarget": {
+              "title": "Shots on target",
+              "value": 2,
+              "per90": 1,
+              "percentile": 84.40366972477065,
+              "format": "number"
+            }
+          }
+        },
+        "passing": {
+          "title": "Passing",
+          "stats": {
+            "assists": {
+              "title": "Assists",
+              "value": 1,
+              "per90": 0.5,
+              "percentile": 81.65137614678899,
+              "format": "number"
+            },
+            "expected_assists": {
+              "title": "xA",
+              "value": 0.96,
+              "per90": 0.48069697618484497,
+              "percentile": 95.41284403669725,
+              "format": "fraction"
+            },
+            "successful_passes": {
+              "title": "Accurate passes",
+              "value": 79,
+              "per90": 39.5,
+              "percentile": 69.72477064220183,
+              "format": "number"
+            },
+            "successful_passes_accuracy": {
+              "title": "Pass accuracy",
+              "value": 79.8,
+              "per90": 79.79797979797979,
+              "percentile": 38.53211009174312,
+              "format": "percent"
+            },
+            "long_balls_accurate": {
+              "title": "Accurate long balls",
+              "value": 1,
+              "per90": 0.5,
+              "percentile": 22.018348623853214,
+              "format": "number"
+            },
+            "long_ball_succeeeded_accuracy": {
+              "title": "Long ball accuracy",
+              "value": 11.1,
+              "per90": 11.11111111111111,
+              "percentile": 22.018348623853214,
+              "format": "percent"
+            },
+            "chances_created": {
+              "title": "Chances created",
+              "value": 3,
+              "per90": 1.5,
+              "percentile": 66.05504587155964,
+              "format": "number"
+            },
+            "big_chance_created_team_title": {
+              "title": "Big chances created",
+              "value": 2,
+              "per90": 1,
+              "percentile": 93.57798165137615,
+              "format": "number"
+            }
+          }
+        },
+        "possession": {
+          "title": "Possession",
+          "stats": {
+            "dribbles_succeeded": {
+              "title": "Dribbles",
+              "value": 5,
+              "per90": 2.5,
+              "percentile": 95.41284403669725,
+              "format": "number"
+            },
+            "won_contest_subtitle": {
+              "title": "Dribbles success rate",
+              "value": 83.3,
+              "per90": 83.33333333333333,
+              "percentile": 74.31192660550458,
+              "format": "percent"
+            },
+            "duel_won": {
+              "title": "Duels won",
+              "value": 19,
+              "per90": 9.5,
+              "percentile": 95.41284403669725,
+              "format": "number"
+            },
+            "duel_won_percent": {
+              "title": "Duels won %",
+              "value": 73.1,
+              "per90": 73.07692307692308,
+              "percentile": 94.4954128440367,
+              "format": "percent"
+            },
+            "aerials_won": {
+              "title": "Aerials won",
+              "value": 6,
+              "per90": 3,
+              "percentile": 95.41284403669725,
+              "format": "number"
+            },
+            "aerials_won_percent": {
+              "title": "Aerials won %",
+              "value": 85.7,
+              "per90": 85.71428571428571,
+              "percentile": 81.65137614678899,
+              "format": "percent"
+            },
+            "touches": {
+              "title": "Touches",
+              "value": 152,
+              "per90": 76,
+              "percentile": 81.65137614678899,
+              "format": "number"
+            },
+            "touches_opp_box": {
+              "title": "Touches in opposition box",
+              "value": 13,
+              "per90": 6.499999999999999,
+              "percentile": 98.1651376146789,
+              "format": "number"
+            },
+            "dispossessed": {
+              "title": "Dispossessed",
+              "value": 1,
+              "per90": 0.5,
+              "percentile": 36.69724770642202,
+              "format": "number"
+            },
+            "fouls_won": {
+              "title": "Fouls won",
+              "value": 3,
+              "per90": 1.5,
+              "percentile": 66.97247706422019,
+              "format": "number"
+            }
+          }
+        },
+        "defending": {
+          "title": "Defending",
+          "stats": {
+            "matchstats.headers.tackles": {
+              "title": "Tackles",
+              "value": 5,
+              "per90": 2.5,
+              "percentile": 75.22935779816514,
+              "format": "number"
+            },
+            "interceptions": {
+              "title": "Interceptions",
+              "value": 3,
+              "per90": 1.5,
+              "percentile": 69.72477064220183,
+              "format": "number"
+            },
+            "blocked_shots": {
+              "title": "Blocked scoring attempt",
+              "value": 1,
+              "per90": 0.5,
+              "percentile": 70.64220183486239,
+              "format": "number"
+            },
+            "fouls": {
+              "title": "Fouls committed",
+              "value": 3,
+              "per90": 1.5,
+              "percentile": 62.38532110091744,
+              "format": "number"
+            },
+            "recoveries": {
+              "title": "Recoveries",
+              "value": 5,
+              "per90": 2.5,
+              "percentile": 23.853211009174313,
+              "format": "number"
+            },
+            "poss_won_att_3rd_team_title": {
+              "title": "Possession won final 3rd",
+              "value": 1,
+              "per90": 0.5,
+              "percentile": 47.706422018348626,
+              "format": "number"
+            },
+            "dribbled_past": {
+              "title": "Dribbled past",
+              "value": 1,
+              "per90": 0.5,
+              "percentile": 41.284403669724774,
+              "format": "number"
+            },
+            "clearances": {
+              "title": "Clearances",
+              "value": 5,
+              "per90": 2.5,
+              "percentile": 79.81651376146789,
+              "format": "number"
+            },
+            "clean_sheet_team_title": {
+              "title": "Clean sheets",
+              "value": 1,
+              "per90": 0.5,
+              "percentile": 67.88990825688074,
+              "format": "number"
+            },
+            "goals_conceded_while_on_pitch": {
+              "title": "Goals conceded while on pitch",
+              "value": 3,
+              "per90": 1.5,
+              "percentile": 28.440366972477065,
+              "format": "number"
+            },
+            "expected_goals_against_while_on_pitch": {
+              "title": "xG against while on pitch",
+              "value": 1.64,
+              "per90": 0.8194000124931335,
+              "percentile": 67.88990825688074,
+              "format": "fraction"
+            }
+          }
+        },
+        "discipline": {
+          "title": "Discipline",
+          "stats": {
+            "yellow_cards": {
+              "title": "Yellow cards",
+              "value": 0,
+              "per90": 0,
+              "percentile": 100,
+              "format": "number"
+            },
+            "red_cards": {
+              "title": "Red cards",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 1353113,
+      "nombre": "Everardo López",
+      "posicion": "CB,LB",
+      "torneo_ref": {
+        "season": "2026",
+        "tournament": "CONCACAF Champions Cup",
+        "entry_id": "0-0"
+      },
+      "top_stats": {
+        "goals": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "assists": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "rating": {
+          "value": 6.48,
+          "per90": 6.48,
+          "percentile": 29.166666666666668
+        },
+        "matches_uppercase": {
+          "value": 1,
+          "per90": 1,
+          "percentile": 0
+        },
+        "player_started_matches": {
+          "value": 1,
+          "per90": 1,
+          "percentile": 0
+        },
+        "minutes_played": {
+          "value": 45,
+          "per90": 90,
+          "percentile": 1.3888888888888888
+        }
+      },
+      "grupos": {
+        "shooting": {
+          "title": "Shooting",
+          "stats": {
+            "goals": {
+              "title": "Goals",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            },
+            "shots": {
+              "title": "Shots",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            }
+          }
+        },
+        "passing": {
+          "title": "Passing",
+          "stats": {
+            "assists": {
+              "title": "Assists",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            },
+            "expected_assists": {
+              "title": "xA",
+              "value": 0,
+              "per90": 0.007229819893836975,
+              "percentile": 6.944444444444445,
+              "format": "fraction"
+            },
+            "successful_passes": {
+              "title": "Accurate passes",
+              "value": 31,
+              "per90": 62,
+              "percentile": 20.833333333333336,
+              "format": "number"
+            },
+            "successful_passes_accuracy": {
+              "title": "Pass accuracy",
+              "value": 91.2,
+              "per90": 91.17647058823529,
+              "percentile": 86.11111111111111,
+              "format": "percent"
+            }
+          }
+        },
+        "possession": {
+          "title": "Possession",
+          "stats": {
+            "touches": {
+              "title": "Touches",
+              "value": 42,
+              "per90": 84,
+              "percentile": 9.722222222222223,
+              "format": "number"
+            },
+            "dispossessed": {
+              "title": "Dispossessed",
+              "value": 0,
+              "per90": 0,
+              "percentile": 100,
+              "format": "number"
+            }
+          }
+        },
+        "defending": {
+          "title": "Defending",
+          "stats": {
+            "interceptions": {
+              "title": "Interceptions",
+              "value": 3,
+              "per90": 6,
+              "percentile": 63.888888888888886,
+              "format": "number"
+            },
+            "fouls": {
+              "title": "Fouls committed",
+              "value": 1,
+              "per90": 2,
+              "percentile": 27.77777777777778,
+              "format": "number"
+            },
+            "recoveries": {
+              "title": "Recoveries",
+              "value": 3,
+              "per90": 6,
+              "percentile": 18.055555555555554,
+              "format": "number"
+            },
+            "clearances": {
+              "title": "Clearances",
+              "value": 3,
+              "per90": 6,
+              "percentile": 27.77777777777778,
+              "format": "number"
+            },
+            "clean_sheet_team_title": {
+              "title": "Clean sheets",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            },
+            "goals_conceded_while_on_pitch": {
+              "title": "Goals conceded while on pitch",
+              "value": 1,
+              "per90": 2,
+              "percentile": 55.55555555555556,
+              "format": "number"
+            },
+            "expected_goals_against_while_on_pitch": {
+              "title": "xG against while on pitch",
+              "value": 0.15,
+              "per90": 0.29179999232292175,
+              "percentile": 93.05555555555556,
+              "format": "fraction"
+            }
+          }
+        },
+        "discipline": {
+          "title": "Discipline",
+          "stats": {
+            "yellow_cards": {
+              "title": "Yellow cards",
+              "value": 1,
+              "per90": 2,
+              "percentile": 0,
+              "format": "number"
+            },
+            "red_cards": {
+              "title": "Red cards",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 1178451,
+      "nombre": "Alek Álvarez",
+      "posicion": "LW",
+      "torneo_ref": {
+        "season": "2025/2026",
+        "tournament": "Liga MX Apertura",
+        "entry_id": "0-0"
+      },
+      "top_stats": {
+        "goals": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "assists": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "rating": {
+          "value": 6.68,
+          "per90": 6.68,
+          "percentile": 57.17344753747323
+        },
+        "matches_uppercase": {
+          "value": 2,
+          "per90": 2,
+          "percentile": 8.565310492505352
+        },
+        "player_started_matches": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "minutes_played": {
+          "value": 64,
+          "per90": 90,
+          "percentile": 11.777301927194861
+        }
+      },
+      "grupos": {}
+    },
+    {
+      "id": 1783531,
+      "nombre": "Sebastián Aceves",
+      "posicion": "RB",
+      "torneo_ref": {
+        "season": "2025/2026",
+        "tournament": "Liga MX Apertura",
+        "entry_id": "0-0"
+      },
+      "top_stats": {
+        "goals": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "assists": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "rating": {
+          "value": 6.1,
+          "per90": 6.105,
+          "percentile": 5.797101449275362
+        },
+        "matches_uppercase": {
+          "value": 2,
+          "per90": 2,
+          "percentile": 1.4492753623188406
+        },
+        "player_started_matches": {
+          "value": 2,
+          "per90": 2,
+          "percentile": 7.246376811594203
+        },
+        "minutes_played": {
+          "value": 135,
+          "per90": 90,
+          "percentile": 4.3478260869565215
+        }
+      },
+      "grupos": {
+        "shooting": {
+          "title": "Shooting",
+          "stats": {
+            "goals": {
+              "title": "Goals",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            },
+            "shots": {
+              "title": "Shots",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            }
+          }
+        },
+        "passing": {
+          "title": "Passing",
+          "stats": {
+            "assists": {
+              "title": "Assists",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            },
+            "expected_assists": {
+              "title": "xA",
+              "value": 0.06,
+              "per90": 0.03996305912733078,
+              "percentile": 14.492753623188406,
+              "format": "fraction"
+            },
+            "successful_passes": {
+              "title": "Accurate passes",
+              "value": 48,
+              "per90": 32,
+              "percentile": 8.695652173913043,
+              "format": "number"
+            },
+            "successful_passes_accuracy": {
+              "title": "Pass accuracy",
+              "value": 88.9,
+              "per90": 88.88888888888889,
+              "percentile": 91.30434782608695,
+              "format": "percent"
+            },
+            "long_balls_accurate": {
+              "title": "Accurate long balls",
+              "value": 2,
+              "per90": 1.3333333333333335,
+              "percentile": 7.246376811594203,
+              "format": "number"
+            },
+            "long_ball_succeeeded_accuracy": {
+              "title": "Long ball accuracy",
+              "value": 33.3,
+              "per90": 33.333333333333336,
+              "percentile": 30.434782608695656,
+              "format": "percent"
+            },
+            "crosses_succeeeded": {
+              "title": "Successful crosses",
+              "value": 1,
+              "per90": 0.6666666666666667,
+              "percentile": 17.391304347826086,
+              "format": "number"
+            },
+            "crosses_succeeeded_accuracy": {
+              "title": "Cross accuracy",
+              "value": 33.3,
+              "per90": 33.333333333333336,
+              "percentile": 82.6086956521739,
+              "format": "percent"
+            }
+          }
+        },
+        "possession": {
+          "title": "Possession",
+          "stats": {
+            "dribbles_succeeded": {
+              "title": "Dribbles",
+              "value": 2,
+              "per90": 1.3333333333333335,
+              "percentile": 27.536231884057973,
+              "format": "number"
+            },
+            "won_contest_subtitle": {
+              "title": "Dribbles success rate",
+              "value": 100,
+              "per90": 100,
+              "percentile": 100,
+              "format": "percent"
+            },
+            "duel_won": {
+              "title": "Duels won",
+              "value": 11,
+              "per90": 7.333333333333334,
+              "percentile": 14.492753623188406,
+              "format": "number"
+            },
+            "duel_won_percent": {
+              "title": "Duels won %",
+              "value": 73.3,
+              "per90": 73.33333333333333,
+              "percentile": 97.10144927536231,
+              "format": "percent"
+            },
+            "aerials_won": {
+              "title": "Aerials won",
+              "value": 1,
+              "per90": 0.6666666666666667,
+              "percentile": 5.797101449275362,
+              "format": "number"
+            },
+            "aerials_won_percent": {
+              "title": "Aerials won %",
+              "value": 33.3,
+              "per90": 33.333333333333336,
+              "percentile": 14.492753623188406,
+              "format": "percent"
+            },
+            "touches": {
+              "title": "Touches",
+              "value": 93,
+              "per90": 62,
+              "percentile": 4.3478260869565215,
+              "format": "number"
+            },
+            "touches_opp_box": {
+              "title": "Touches in opposition box",
+              "value": 2,
+              "per90": 1.3333333333333335,
+              "percentile": 15.942028985507244,
+              "format": "number"
+            },
+            "dispossessed": {
+              "title": "Dispossessed",
+              "value": 1,
+              "per90": 0.6666666666666667,
+              "percentile": 81.15942028985508,
+              "format": "number"
+            },
+            "fouls_won": {
+              "title": "Fouls won",
+              "value": 2,
+              "per90": 1.3333333333333335,
+              "percentile": 15.942028985507244,
+              "format": "number"
+            }
+          }
+        },
+        "defending": {
+          "title": "Defending",
+          "stats": {
+            "matchstats.headers.tackles": {
+              "title": "Tackles",
+              "value": 6,
+              "per90": 4,
+              "percentile": 17.391304347826086,
+              "format": "number"
+            },
+            "interceptions": {
+              "title": "Interceptions",
+              "value": 1,
+              "per90": 0.6666666666666667,
+              "percentile": 5.797101449275362,
+              "format": "number"
+            },
+            "fouls": {
+              "title": "Fouls committed",
+              "value": 2,
+              "per90": 1.3333333333333335,
+              "percentile": 7.246376811594203,
+              "format": "number"
+            },
+            "recoveries": {
+              "title": "Recoveries",
+              "value": 3,
+              "per90": 2,
+              "percentile": 5.797101449275362,
+              "format": "number"
+            },
+            "clearances": {
+              "title": "Clearances",
+              "value": 4,
+              "per90": 2.666666666666667,
+              "percentile": 7.246376811594203,
+              "format": "number"
+            },
+            "clean_sheet_team_title": {
+              "title": "Clean sheets",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            },
+            "goals_conceded_while_on_pitch": {
+              "title": "Goals conceded while on pitch",
+              "value": 6,
+              "per90": 4,
+              "percentile": 79.71014492753623,
+              "format": "number"
+            },
+            "expected_goals_against_while_on_pitch": {
+              "title": "xG against while on pitch",
+              "value": 2.23,
+              "per90": 1.4877999623616538,
+              "percentile": 94.20289855072464,
+              "format": "fraction"
+            }
+          }
+        },
+        "discipline": {
+          "title": "Discipline",
+          "stats": {
+            "yellow_cards": {
+              "title": "Yellow cards",
+              "value": 1,
+              "per90": 0.6666666666666667,
+              "percentile": 55.072463768115945,
+              "format": "number"
+            },
+            "red_cards": {
+              "title": "Red cards",
+              "value": 0,
+              "per90": 0,
+              "percentile": 100,
+              "format": "number"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 833581,
+      "nombre": "Franco Romero",
+      "posicion": "CDM,CM",
+      "torneo_ref": {
+        "season": "2024/2025",
+        "tournament": "Campeón de Campeones",
+        "entry_id": "0-0"
+      },
+      "top_stats": {
+        "goals": {
+          "value": 1,
+          "per90": 1,
+          "percentile": 100
+        },
+        "assists": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "rating": {
+          "value": 7.85,
+          "per90": 7.85,
+          "percentile": 66.66666666666666
+        },
+        "matches_uppercase": {
+          "value": 1,
+          "per90": 1,
+          "percentile": 100
+        },
+        "player_started_matches": {
+          "value": 1,
+          "per90": 1,
+          "percentile": 100
+        },
+        "minutes_played": {
+          "value": 90,
+          "per90": 90,
+          "percentile": 100
+        }
+      },
+      "grupos": {
+        "shooting": {
+          "title": "Shooting",
+          "stats": {
+            "goals": {
+              "title": "Goals",
+              "value": 1,
+              "per90": 1,
+              "percentile": 100,
+              "format": "number"
+            },
+            "expected_goals": {
+              "title": "xG",
+              "value": 0.02,
+              "per90": 0.0218,
+              "percentile": 50,
+              "format": "fraction"
+            },
+            "expected_goals_on_target": {
+              "title": "xGOT",
+              "value": 0.09,
+              "per90": 0.09360000000000002,
+              "percentile": 100,
+              "format": "fraction"
+            },
+            "non_penalty_xg": {
+              "title": "xG excl. penalty",
+              "value": 0.02,
+              "per90": 0.0218,
+              "percentile": 50,
+              "format": "fraction"
+            },
+            "shots": {
+              "title": "Shots",
+              "value": 1,
+              "per90": 1,
+              "percentile": 50,
+              "format": "number"
+            },
+            "ShotsOnTarget": {
+              "title": "Shots on target",
+              "value": 1,
+              "per90": 1,
+              "percentile": 100,
+              "format": "number"
+            }
+          }
+        },
+        "passing": {
+          "title": "Passing",
+          "stats": {
+            "assists": {
+              "title": "Assists",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            },
+            "expected_assists": {
+              "title": "xA",
+              "value": 0.03,
+              "per90": 0.0295358,
+              "percentile": 33.33333333333333,
+              "format": "fraction"
+            },
+            "successful_passes": {
+              "title": "Accurate passes",
+              "value": 37,
+              "per90": 37,
+              "percentile": 50,
+              "format": "number"
+            },
+            "successful_passes_accuracy": {
+              "title": "Pass accuracy",
+              "value": 90.2,
+              "per90": 90.2439024390244,
+              "percentile": 66.66666666666666,
+              "format": "percent"
+            },
+            "long_balls_accurate": {
+              "title": "Accurate long balls",
+              "value": 1,
+              "per90": 1,
+              "percentile": 16.666666666666664,
+              "format": "number"
+            },
+            "long_ball_succeeeded_accuracy": {
+              "title": "Long ball accuracy",
+              "value": 33.3,
+              "per90": 33.333333333333336,
+              "percentile": 33.33333333333333,
+              "format": "percent"
+            },
+            "chances_created": {
+              "title": "Chances created",
+              "value": 1,
+              "per90": 1,
+              "percentile": 33.33333333333333,
+              "format": "number"
+            }
+          }
+        },
+        "possession": {
+          "title": "Possession",
+          "stats": {
+            "dribbles_succeeded": {
+              "title": "Dribbles",
+              "value": 1,
+              "per90": 1,
+              "percentile": 33.33333333333333,
+              "format": "number"
+            },
+            "won_contest_subtitle": {
+              "title": "Dribbles success rate",
+              "value": 100,
+              "per90": 100,
+              "percentile": 100,
+              "format": "percent"
+            },
+            "duel_won": {
+              "title": "Duels won",
+              "value": 4,
+              "per90": 4,
+              "percentile": 50,
+              "format": "number"
+            },
+            "duel_won_percent": {
+              "title": "Duels won %",
+              "value": 33.3,
+              "per90": 33.333333333333336,
+              "percentile": 33.33333333333333,
+              "format": "percent"
+            },
+            "aerials_won": {
+              "title": "Aerials won",
+              "value": 1,
+              "per90": 1,
+              "percentile": 66.66666666666666,
+              "format": "number"
+            },
+            "aerials_won_percent": {
+              "title": "Aerials won %",
+              "value": 100,
+              "per90": 100,
+              "percentile": 100,
+              "format": "percent"
+            },
+            "touches": {
+              "title": "Touches",
+              "value": 53,
+              "per90": 53,
+              "percentile": 33.33333333333333,
+              "format": "number"
+            },
+            "dispossessed": {
+              "title": "Dispossessed",
+              "value": 2,
+              "per90": 2,
+              "percentile": 16.666666666666664,
+              "format": "number"
+            },
+            "fouls_won": {
+              "title": "Fouls won",
+              "value": 1,
+              "per90": 1,
+              "percentile": 33.33333333333333,
+              "format": "number"
+            }
+          }
+        },
+        "defending": {
+          "title": "Defending",
+          "stats": {
+            "matchstats.headers.tackles": {
+              "title": "Tackles",
+              "value": 1,
+              "per90": 1,
+              "percentile": 0,
+              "format": "number"
+            },
+            "interceptions": {
+              "title": "Interceptions",
+              "value": 1,
+              "per90": 1,
+              "percentile": 100,
+              "format": "number"
+            },
+            "fouls": {
+              "title": "Fouls committed",
+              "value": 3,
+              "per90": 3,
+              "percentile": 100,
+              "format": "number"
+            },
+            "recoveries": {
+              "title": "Recoveries",
+              "value": 2,
+              "per90": 2,
+              "percentile": 0,
+              "format": "number"
+            },
+            "dribbled_past": {
+              "title": "Dribbled past",
+              "value": 3,
+              "per90": 3,
+              "percentile": 0,
+              "format": "number"
+            },
+            "clean_sheet_team_title": {
+              "title": "Clean sheets",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            },
+            "goals_conceded_while_on_pitch": {
+              "title": "Goals conceded while on pitch",
+              "value": 1,
+              "per90": 1,
+              "percentile": 33.33333333333333,
+              "format": "number"
+            },
+            "expected_goals_against_while_on_pitch": {
+              "title": "xG against while on pitch",
+              "value": 0.72,
+              "per90": 0.7178,
+              "percentile": 16.666666666666664,
+              "format": "fraction"
+            }
+          }
+        },
+        "discipline": {
+          "title": "Discipline",
+          "stats": {
+            "yellow_cards": {
+              "title": "Yellow cards",
+              "value": 1,
+              "per90": 1,
+              "percentile": 0,
+              "format": "number"
+            },
+            "red_cards": {
+              "title": "Red cards",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 1099712,
+      "nombre": "Nicolás Castro",
+      "posicion": "CM,CAM,LW,LM,CDM,RW",
+      "torneo_ref": {
+        "season": "2026",
+        "tournament": "CONCACAF Champions Cup",
+        "entry_id": "0-0"
+      },
+      "top_stats": {
+        "goals": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "assists": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "rating": {
+          "value": 6.89,
+          "per90": 6.89,
+          "percentile": 53.21100917431193
+        },
+        "matches_uppercase": {
+          "value": 2,
+          "per90": 2,
+          "percentile": 8.256880733944955
+        },
+        "player_started_matches": {
+          "value": 1,
+          "per90": 1,
+          "percentile": 0
+        },
+        "minutes_played": {
+          "value": 94,
+          "per90": 90,
+          "percentile": 13.761467889908257
+        }
+      },
+      "grupos": {
+        "shooting": {
+          "title": "Shooting",
+          "stats": {
+            "goals": {
+              "title": "Goals",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            },
+            "expected_goals": {
+              "title": "xG",
+              "value": 0.34,
+              "per90": 0.32850001086579994,
+              "percentile": 79.81651376146789,
+              "format": "fraction"
+            },
+            "non_penalty_xg": {
+              "title": "xG excl. penalty",
+              "value": 0.34,
+              "per90": 0.32850001086579994,
+              "percentile": 83.4862385321101,
+              "format": "fraction"
+            },
+            "shots": {
+              "title": "Shots",
+              "value": 5,
+              "per90": 4.787234042553192,
+              "percentile": 89.90825688073394,
+              "format": "number"
+            }
+          }
+        },
+        "passing": {
+          "title": "Passing",
+          "stats": {
+            "assists": {
+              "title": "Assists",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            },
+            "expected_assists": {
+              "title": "xA",
+              "value": 0.41,
+              "per90": 0.3931623063188918,
+              "percentile": 79.81651376146789,
+              "format": "fraction"
+            },
+            "successful_passes": {
+              "title": "Accurate passes",
+              "value": 65,
+              "per90": 62.23404255319149,
+              "percentile": 60.550458715596335,
+              "format": "number"
+            },
+            "successful_passes_accuracy": {
+              "title": "Pass accuracy",
+              "value": 89,
+              "per90": 89.04109589041096,
+              "percentile": 74.31192660550458,
+              "format": "percent"
+            },
+            "long_balls_accurate": {
+              "title": "Accurate long balls",
+              "value": 2,
+              "per90": 1.9148936170212765,
+              "percentile": 44.95412844036697,
+              "format": "number"
+            },
+            "long_ball_succeeeded_accuracy": {
+              "title": "Long ball accuracy",
+              "value": 50,
+              "per90": 50,
+              "percentile": 47.706422018348626,
+              "format": "percent"
+            },
+            "chances_created": {
+              "title": "Chances created",
+              "value": 3,
+              "per90": 2.8723404255319145,
+              "percentile": 66.05504587155964,
+              "format": "number"
+            }
+          }
+        },
+        "possession": {
+          "title": "Possession",
+          "stats": {
+            "dribbles_succeeded": {
+              "title": "Dribbles",
+              "value": 2,
+              "per90": 1.9148936170212765,
+              "percentile": 65.13761467889908,
+              "format": "number"
+            },
+            "won_contest_subtitle": {
+              "title": "Dribbles success rate",
+              "value": 50,
+              "per90": 50,
+              "percentile": 48.62385321100918,
+              "format": "percent"
+            },
+            "duel_won": {
+              "title": "Duels won",
+              "value": 4,
+              "per90": 3.829787234042553,
+              "percentile": 15.59633027522936,
+              "format": "number"
+            },
+            "duel_won_percent": {
+              "title": "Duels won %",
+              "value": 44.4,
+              "per90": 44.44444444444444,
+              "percentile": 29.357798165137616,
+              "format": "percent"
+            },
+            "touches": {
+              "title": "Touches",
+              "value": 99,
+              "per90": 94.78723404255318,
+              "percentile": 50.45871559633027,
+              "format": "number"
+            },
+            "touches_opp_box": {
+              "title": "Touches in opposition box",
+              "value": 6,
+              "per90": 5.744680851063829,
+              "percentile": 81.65137614678899,
+              "format": "number"
+            },
+            "dispossessed": {
+              "title": "Dispossessed",
+              "value": 2,
+              "per90": 1.9148936170212765,
+              "percentile": 21.100917431192663,
+              "format": "number"
+            },
+            "fouls_won": {
+              "title": "Fouls won",
+              "value": 2,
+              "per90": 1.9148936170212765,
+              "percentile": 46.788990825688074,
+              "format": "number"
+            }
+          }
+        },
+        "defending": {
+          "title": "Defending",
+          "stats": {
+            "interceptions": {
+              "title": "Interceptions",
+              "value": 2,
+              "per90": 1.9148936170212765,
+              "percentile": 47.706422018348626,
+              "format": "number"
+            },
+            "fouls": {
+              "title": "Fouls committed",
+              "value": 1,
+              "per90": 0.9574468085106382,
+              "percentile": 14.678899082568808,
+              "format": "number"
+            },
+            "recoveries": {
+              "title": "Recoveries",
+              "value": 3,
+              "per90": 2.8723404255319145,
+              "percentile": 6.422018348623854,
+              "format": "number"
+            },
+            "poss_won_att_3rd_team_title": {
+              "title": "Possession won final 3rd",
+              "value": 2,
+              "per90": 1.9148936170212765,
+              "percentile": 79.81651376146789,
+              "format": "number"
+            },
+            "clearances": {
+              "title": "Clearances",
+              "value": 1,
+              "per90": 0.9574468085106382,
+              "percentile": 28.440366972477065,
+              "format": "number"
+            },
+            "clean_sheet_team_title": {
+              "title": "Clean sheets",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            },
+            "goals_conceded_while_on_pitch": {
+              "title": "Goals conceded while on pitch",
+              "value": 2,
+              "per90": 1.9148936170212765,
+              "percentile": 43.11926605504588,
+              "format": "number"
+            },
+            "expected_goals_against_while_on_pitch": {
+              "title": "xG against while on pitch",
+              "value": 1.22,
+              "per90": 1.16339366486732,
+              "percentile": 80.73394495412845,
+              "format": "fraction"
+            }
+          }
+        },
+        "discipline": {
+          "title": "Discipline",
+          "stats": {
+            "yellow_cards": {
+              "title": "Yellow cards",
+              "value": 0,
+              "per90": 0,
+              "percentile": 100,
+              "format": "number"
+            },
+            "red_cards": {
+              "title": "Red cards",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 730888,
+      "nombre": "Jesús Angulo",
+      "posicion": "CAM,RW,RM,CM,LM,ST",
+      "torneo_ref": {
+        "season": "2026",
+        "tournament": "CONCACAF Champions Cup",
+        "entry_id": "0-0"
+      },
+      "top_stats": {
+        "goals": {
+          "value": 2,
+          "per90": 1.1111111111111112,
+          "percentile": 94.4954128440367
+        },
+        "assists": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "rating": {
+          "value": 7.82,
+          "per90": 7.815,
+          "percentile": 89.90825688073394
+        },
+        "matches_uppercase": {
+          "value": 2,
+          "per90": 2,
+          "percentile": 8.256880733944955
+        },
+        "player_started_matches": {
+          "value": 2,
+          "per90": 2,
+          "percentile": 30.275229357798167
+        },
+        "minutes_played": {
+          "value": 162,
+          "per90": 90,
+          "percentile": 49.54128440366973
+        }
+      },
+      "grupos": {
+        "shooting": {
+          "title": "Shooting",
+          "stats": {
+            "goals": {
+              "title": "Goals",
+              "value": 2,
+              "per90": 1.1111111111111112,
+              "percentile": 94.4954128440367,
+              "format": "number"
+            },
+            "expected_goals": {
+              "title": "xG",
+              "value": 0.81,
+              "per90": 0.44938888814714223,
+              "percentile": 93.57798165137615,
+              "format": "fraction"
+            },
+            "expected_goals_on_target": {
+              "title": "xGOT",
+              "value": 1.42,
+              "per90": 0.7861666546927558,
+              "percentile": 95.41284403669725,
+              "format": "fraction"
+            },
+            "non_penalty_xg": {
+              "title": "xG excl. penalty",
+              "value": 0.81,
+              "per90": 0.44938888814714223,
+              "percentile": 96.3302752293578,
+              "format": "fraction"
+            },
+            "shots": {
+              "title": "Shots",
+              "value": 5,
+              "per90": 2.7777777777777777,
+              "percentile": 89.90825688073394,
+              "format": "number"
+            },
+            "ShotsOnTarget": {
+              "title": "Shots on target",
+              "value": 3,
+              "per90": 1.6666666666666665,
+              "percentile": 90.82568807339449,
+              "format": "number"
+            }
+          }
+        },
+        "passing": {
+          "title": "Passing",
+          "stats": {
+            "assists": {
+              "title": "Assists",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            },
+            "expected_assists": {
+              "title": "xA",
+              "value": 0.41,
+              "per90": 0.22608498732248944,
+              "percentile": 78.89908256880734,
+              "format": "fraction"
+            },
+            "successful_passes": {
+              "title": "Accurate passes",
+              "value": 54,
+              "per90": 30,
+              "percentile": 51.37614678899083,
+              "format": "number"
+            },
+            "successful_passes_accuracy": {
+              "title": "Pass accuracy",
+              "value": 84.4,
+              "per90": 84.375,
+              "percentile": 47.706422018348626,
+              "format": "percent"
+            },
+            "chances_created": {
+              "title": "Chances created",
+              "value": 6,
+              "per90": 3.333333333333333,
+              "percentile": 89.90825688073394,
+              "format": "number"
+            },
+            "big_chance_created_team_title": {
+              "title": "Big chances created",
+              "value": 1,
+              "per90": 0.5555555555555556,
+              "percentile": 76.14678899082568,
+              "format": "number"
+            },
+            "crosses_succeeeded": {
+              "title": "Successful crosses",
+              "value": 2,
+              "per90": 1.1111111111111112,
+              "percentile": 84.40366972477065,
+              "format": "number"
+            },
+            "crosses_succeeeded_accuracy": {
+              "title": "Cross accuracy",
+              "value": 100,
+              "per90": 100,
+              "percentile": 100,
+              "format": "percent"
+            }
+          }
+        },
+        "possession": {
+          "title": "Possession",
+          "stats": {
+            "dribbles_succeeded": {
+              "title": "Dribbles",
+              "value": 2,
+              "per90": 1.1111111111111112,
+              "percentile": 65.13761467889908,
+              "format": "number"
+            },
+            "won_contest_subtitle": {
+              "title": "Dribbles success rate",
+              "value": 66.7,
+              "per90": 66.66666666666667,
+              "percentile": 66.97247706422019,
+              "format": "percent"
+            },
+            "duel_won": {
+              "title": "Duels won",
+              "value": 4,
+              "per90": 2.2222222222222223,
+              "percentile": 15.59633027522936,
+              "format": "number"
+            },
+            "duel_won_percent": {
+              "title": "Duels won %",
+              "value": 33.3,
+              "per90": 33.333333333333336,
+              "percentile": 10.091743119266056,
+              "format": "percent"
+            },
+            "touches": {
+              "title": "Touches",
+              "value": 86,
+              "per90": 47.77777777777778,
+              "percentile": 44.95412844036697,
+              "format": "number"
+            },
+            "touches_opp_box": {
+              "title": "Touches in opposition box",
+              "value": 10,
+              "per90": 5.555555555555555,
+              "percentile": 95.41284403669725,
+              "format": "number"
+            },
+            "dispossessed": {
+              "title": "Dispossessed",
+              "value": 3,
+              "per90": 1.6666666666666665,
+              "percentile": 11.926605504587156,
+              "format": "number"
+            },
+            "fouls_won": {
+              "title": "Fouls won",
+              "value": 1,
+              "per90": 0.5555555555555556,
+              "percentile": 20.18348623853211,
+              "format": "number"
+            }
+          }
+        },
+        "defending": {
+          "title": "Defending",
+          "stats": {
+            "matchstats.headers.tackles": {
+              "title": "Tackles",
+              "value": 1,
+              "per90": 0.5555555555555556,
+              "percentile": 11.926605504587156,
+              "format": "number"
+            },
+            "interceptions": {
+              "title": "Interceptions",
+              "value": 1,
+              "per90": 0.5555555555555556,
+              "percentile": 22.018348623853214,
+              "format": "number"
+            },
+            "fouls": {
+              "title": "Fouls committed",
+              "value": 1,
+              "per90": 0.5555555555555556,
+              "percentile": 14.678899082568808,
+              "format": "number"
+            },
+            "recoveries": {
+              "title": "Recoveries",
+              "value": 3,
+              "per90": 1.6666666666666665,
+              "percentile": 6.422018348623854,
+              "format": "number"
+            },
+            "dribbled_past": {
+              "title": "Dribbled past",
+              "value": 1,
+              "per90": 0.5555555555555556,
+              "percentile": 41.284403669724774,
+              "format": "number"
+            },
+            "clean_sheet_team_title": {
+              "title": "Clean sheets",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            },
+            "goals_conceded_while_on_pitch": {
+              "title": "Goals conceded while on pitch",
+              "value": 3,
+              "per90": 1.6666666666666665,
+              "percentile": 28.440366972477065,
+              "format": "number"
+            },
+            "expected_goals_against_while_on_pitch": {
+              "title": "xG against while on pitch",
+              "value": 1.64,
+              "per90": 0.910444458325704,
+              "percentile": 67.88990825688074,
+              "format": "fraction"
+            }
+          }
+        },
+        "discipline": {
+          "title": "Discipline",
+          "stats": {
+            "yellow_cards": {
+              "title": "Yellow cards",
+              "value": 1,
+              "per90": 0.5555555555555556,
+              "percentile": 8.256880733944955,
+              "format": "number"
+            },
+            "red_cards": {
+              "title": "Red cards",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 950681,
+      "nombre": "Marcel Ruíz",
+      "posicion": "CDM,CM,CAM",
+      "torneo_ref": {
+        "season": "2026",
+        "tournament": "CONCACAF Champions Cup",
+        "entry_id": "0-0"
+      },
+      "top_stats": {
+        "goals": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "assists": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "rating": {
+          "value": 6.98,
+          "per90": 6.98,
+          "percentile": 60.550458715596335
+        },
+        "matches_uppercase": {
+          "value": 1,
+          "per90": 1,
+          "percentile": 0
+        },
+        "player_started_matches": {
+          "value": 1,
+          "per90": 1,
+          "percentile": 0
+        },
+        "minutes_played": {
+          "value": 41,
+          "per90": 90,
+          "percentile": 0
+        }
+      },
+      "grupos": {
+        "shooting": {
+          "title": "Shooting",
+          "stats": {
+            "goals": {
+              "title": "Goals",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            },
+            "expected_goals": {
+              "title": "xG",
+              "value": 0.57,
+              "per90": 1.2485853055628335,
+              "percentile": 83.4862385321101,
+              "format": "fraction"
+            },
+            "expected_goals_on_target": {
+              "title": "xGOT",
+              "value": 0.37,
+              "per90": 0.8170244170398248,
+              "percentile": 81.65137614678899,
+              "format": "fraction"
+            },
+            "non_penalty_xg": {
+              "title": "xG excl. penalty",
+              "value": 0.57,
+              "per90": 1.2485853055628335,
+              "percentile": 87.1559633027523,
+              "format": "fraction"
+            },
+            "shots": {
+              "title": "Shots",
+              "value": 2,
+              "per90": 4.390243902439025,
+              "percentile": 55.96330275229357,
+              "format": "number"
+            },
+            "ShotsOnTarget": {
+              "title": "Shots on target",
+              "value": 1,
+              "per90": 2.1951219512195124,
+              "percentile": 66.97247706422019,
+              "format": "number"
+            },
+            "headed_shots": {
+              "title": "Headed shots",
+              "value": 1,
+              "per90": 2.1951219512195124,
+              "percentile": 81.65137614678899,
+              "format": "number"
+            }
+          }
+        },
+        "passing": {
+          "title": "Passing",
+          "stats": {
+            "assists": {
+              "title": "Assists",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            },
+            "expected_assists": {
+              "title": "xA",
+              "value": 0.01,
+              "per90": 0.029080755463460596,
+              "percentile": 14.678899082568808,
+              "format": "fraction"
+            },
+            "successful_passes": {
+              "title": "Accurate passes",
+              "value": 23,
+              "per90": 50.487804878048784,
+              "percentile": 13.761467889908257,
+              "format": "number"
+            },
+            "successful_passes_accuracy": {
+              "title": "Pass accuracy",
+              "value": 95.8,
+              "per90": 95.83333333333333,
+              "percentile": 97.24770642201835,
+              "format": "percent"
+            }
+          }
+        },
+        "possession": {
+          "title": "Possession",
+          "stats": {
+            "duel_won": {
+              "title": "Duels won",
+              "value": 3,
+              "per90": 6.585365853658536,
+              "percentile": 8.256880733944955,
+              "format": "number"
+            },
+            "duel_won_percent": {
+              "title": "Duels won %",
+              "value": 50,
+              "per90": 50,
+              "percentile": 49.54128440366973,
+              "format": "percent"
+            },
+            "aerials_won": {
+              "title": "Aerials won",
+              "value": 1,
+              "per90": 2.1951219512195124,
+              "percentile": 41.284403669724774,
+              "format": "number"
+            },
+            "aerials_won_percent": {
+              "title": "Aerials won %",
+              "value": 100,
+              "per90": 100,
+              "percentile": 100,
+              "format": "percent"
+            },
+            "touches": {
+              "title": "Touches",
+              "value": 35,
+              "per90": 76.82926829268293,
+              "percentile": 7.339449541284404,
+              "format": "number"
+            },
+            "touches_opp_box": {
+              "title": "Touches in opposition box",
+              "value": 4,
+              "per90": 8.78048780487805,
+              "percentile": 70.64220183486239,
+              "format": "number"
+            },
+            "dispossessed": {
+              "title": "Dispossessed",
+              "value": 1,
+              "per90": 2.1951219512195124,
+              "percentile": 36.69724770642202,
+              "format": "number"
+            },
+            "fouls_won": {
+              "title": "Fouls won",
+              "value": 2,
+              "per90": 4.390243902439025,
+              "percentile": 46.788990825688074,
+              "format": "number"
+            },
+            "penalty_won_title": {
+              "title": "Penalties awarded",
+              "value": 1,
+              "per90": 2.1951219512195124,
+              "percentile": 100,
+              "format": "number"
+            }
+          }
+        },
+        "defending": {
+          "title": "Defending",
+          "stats": {
+            "interceptions": {
+              "title": "Interceptions",
+              "value": 2,
+              "per90": 4.390243902439025,
+              "percentile": 47.706422018348626,
+              "format": "number"
+            },
+            "fouls": {
+              "title": "Fouls committed",
+              "value": 2,
+              "per90": 4.390243902439025,
+              "percentile": 41.284403669724774,
+              "format": "number"
+            },
+            "recoveries": {
+              "title": "Recoveries",
+              "value": 3,
+              "per90": 6.585365853658536,
+              "percentile": 6.422018348623854,
+              "format": "number"
+            },
+            "clearances": {
+              "title": "Clearances",
+              "value": 1,
+              "per90": 2.1951219512195124,
+              "percentile": 28.440366972477065,
+              "format": "number"
+            },
+            "clean_sheet_team_title": {
+              "title": "Clean sheets",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            },
+            "goals_conceded_while_on_pitch": {
+              "title": "Goals conceded while on pitch",
+              "value": 1,
+              "per90": 2.1951219512195124,
+              "percentile": 60.550458715596335,
+              "format": "number"
+            },
+            "expected_goals_against_while_on_pitch": {
+              "title": "xG against while on pitch",
+              "value": 0.15,
+              "per90": 0.3202682842568653,
+              "percentile": 97.24770642201835,
+              "format": "fraction"
+            }
+          }
+        },
+        "discipline": {
+          "title": "Discipline",
+          "stats": {
+            "yellow_cards": {
+              "title": "Yellow cards",
+              "value": 1,
+              "per90": 2.1951219512195124,
+              "percentile": 8.256880733944955,
+              "format": "number"
+            },
+            "red_cards": {
+              "title": "Red cards",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 659034,
+      "nombre": "Fernando Arce",
+      "posicion": "CDM",
+      "torneo_ref": {
+        "season": "2026",
+        "tournament": "CONCACAF Champions Cup",
+        "entry_id": "0-0"
+      },
+      "top_stats": {
+        "goals": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "assists": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "rating": {
+          "value": 6.7,
+          "per90": 6.7,
+          "percentile": 53.83177570093458
+        },
+        "matches_uppercase": {
+          "value": 1,
+          "per90": 1,
+          "percentile": 0
+        },
+        "player_started_matches": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "minutes_played": {
+          "value": 45,
+          "per90": 90,
+          "percentile": 16.448598130841123
+        }
+      },
+      "grupos": {}
+    },
+    {
+      "id": 1025983,
+      "nombre": "Frankie Amaya",
+      "posicion": "CM",
+      "torneo_ref": {
+        "season": "2025",
+        "tournament": "Major League Soccer",
+        "entry_id": "0-0"
+      },
+      "top_stats": {
+        "goals": {
+          "value": 1,
+          "per90": 0.19823788546255508,
+          "percentile": 47.39583333333333
+        },
+        "assists": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "rating": {
+          "value": 6.51,
+          "per90": 6.514,
+          "percentile": 21.354166666666664
+        },
+        "matches_uppercase": {
+          "value": 20,
+          "per90": 20,
+          "percentile": 36.45833333333333
+        },
+        "player_started_matches": {
+          "value": 3,
+          "per90": 3,
+          "percentile": 11.979166666666668
+        },
+        "minutes_played": {
+          "value": 454,
+          "per90": 90,
+          "percentile": 19.270833333333336
+        }
+      },
+      "grupos": {
+        "shooting": {
+          "title": "Shooting",
+          "stats": {
+            "goals": {
+              "title": "Goals",
+              "value": 1,
+              "per90": 0.19823788546255508,
+              "percentile": 47.39583333333333,
+              "format": "number"
+            },
+            "expected_goals": {
+              "title": "xG",
+              "value": 0.6,
+              "per90": 0.11797136629189033,
+              "percentile": 38.54166666666667,
+              "format": "fraction"
+            },
+            "expected_goals_on_target": {
+              "title": "xGOT",
+              "value": 0.93,
+              "per90": 0.18515417623099775,
+              "percentile": 52.604166666666664,
+              "format": "fraction"
+            },
+            "non_penalty_xg": {
+              "title": "xG excl. penalty",
+              "value": 0.6,
+              "per90": 0.11797136629189033,
+              "percentile": 38.54166666666667,
+              "format": "fraction"
+            },
+            "shots": {
+              "title": "Shots",
+              "value": 7,
+              "per90": 1.3876651982378854,
+              "percentile": 31.770833333333332,
+              "format": "number"
+            },
+            "ShotsOnTarget": {
+              "title": "Shots on target",
+              "value": 3,
+              "per90": 0.5947136563876653,
+              "percentile": 42.70833333333333,
+              "format": "number"
+            }
+          }
+        },
+        "passing": {
+          "title": "Passing",
+          "stats": {
+            "assists": {
+              "title": "Assists",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            },
+            "expected_assists": {
+              "title": "xA",
+              "value": 0.57,
+              "per90": 0.11285432093337769,
+              "percentile": 29.166666666666668,
+              "format": "fraction"
+            },
+            "successful_passes": {
+              "title": "Accurate passes",
+              "value": 276,
+              "per90": 54.713656387665196,
+              "percentile": 28.645833333333332,
+              "format": "number"
+            },
+            "successful_passes_accuracy": {
+              "title": "Pass accuracy",
+              "value": 92.3,
+              "per90": 92.3076923076923,
+              "percentile": 96.35416666666666,
+              "format": "percent"
+            },
+            "long_balls_accurate": {
+              "title": "Accurate long balls",
+              "value": 6,
+              "per90": 1.1894273127753305,
+              "percentile": 19.270833333333336,
+              "format": "number"
+            },
+            "long_ball_succeeeded_accuracy": {
+              "title": "Long ball accuracy",
+              "value": 60,
+              "per90": 60,
+              "percentile": 61.979166666666664,
+              "format": "percent"
+            },
+            "chances_created": {
+              "title": "Chances created",
+              "value": 11,
+              "per90": 2.180616740088106,
+              "percentile": 46.875,
+              "format": "number"
+            }
+          }
+        },
+        "possession": {
+          "title": "Possession",
+          "stats": {
+            "dribbles_succeeded": {
+              "title": "Dribbles",
+              "value": 2,
+              "per90": 0.39647577092511016,
+              "percentile": 12.5,
+              "format": "number"
+            },
+            "won_contest_subtitle": {
+              "title": "Dribbles success rate",
+              "value": 25,
+              "per90": 25,
+              "percentile": 6.25,
+              "format": "percent"
+            },
+            "duel_won": {
+              "title": "Duels won",
+              "value": 24,
+              "per90": 4.757709251101322,
+              "percentile": 19.791666666666664,
+              "format": "number"
+            },
+            "duel_won_percent": {
+              "title": "Duels won %",
+              "value": 51.1,
+              "per90": 51.06382978723404,
+              "percentile": 57.8125,
+              "format": "percent"
+            },
+            "aerials_won": {
+              "title": "Aerials won",
+              "value": 3,
+              "per90": 0.5947136563876653,
+              "percentile": 18.229166666666664,
+              "format": "number"
+            },
+            "aerials_won_percent": {
+              "title": "Aerials won %",
+              "value": 42.9,
+              "per90": 42.857142857142854,
+              "percentile": 41.66666666666667,
+              "format": "percent"
+            },
+            "touches": {
+              "title": "Touches",
+              "value": 368,
+              "per90": 72.95154185022027,
+              "percentile": 20.833333333333336,
+              "format": "number"
+            },
+            "touches_opp_box": {
+              "title": "Touches in opposition box",
+              "value": 11,
+              "per90": 2.180616740088106,
+              "percentile": 38.54166666666667,
+              "format": "number"
+            },
+            "dispossessed": {
+              "title": "Dispossessed",
+              "value": 2,
+              "per90": 0.39647577092511016,
+              "percentile": 88.54166666666666,
+              "format": "number"
+            },
+            "fouls_won": {
+              "title": "Fouls won",
+              "value": 2,
+              "per90": 0.39647577092511016,
+              "percentile": 4.6875,
+              "format": "number"
+            }
+          }
+        },
+        "defending": {
+          "title": "Defending",
+          "stats": {
+            "matchstats.headers.tackles": {
+              "title": "Tackles",
+              "value": 17,
+              "per90": 3.370044052863436,
+              "percentile": 33.33333333333333,
+              "format": "number"
+            },
+            "interceptions": {
+              "title": "Interceptions",
+              "value": 5,
+              "per90": 0.9911894273127754,
+              "percentile": 20.3125,
+              "format": "number"
+            },
+            "fouls": {
+              "title": "Fouls committed",
+              "value": 5,
+              "per90": 0.9911894273127754,
+              "percentile": 11.979166666666668,
+              "format": "number"
+            },
+            "recoveries": {
+              "title": "Recoveries",
+              "value": 16,
+              "per90": 3.1718061674008813,
+              "percentile": 12.5,
+              "format": "number"
+            },
+            "poss_won_att_3rd_team_title": {
+              "title": "Possession won final 3rd",
+              "value": 1,
+              "per90": 0.19823788546255508,
+              "percentile": 8.854166666666668,
+              "format": "number"
+            },
+            "dribbled_past": {
+              "title": "Dribbled past",
+              "value": 7,
+              "per90": 1.3876651982378854,
+              "percentile": 67.1875,
+              "format": "number"
+            },
+            "clean_sheet_team_title": {
+              "title": "Clean sheets",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            },
+            "goals_conceded_while_on_pitch": {
+              "title": "Goals conceded while on pitch",
+              "value": 9,
+              "per90": 1.7841409691629957,
+              "percentile": 77.60416666666666,
+              "format": "number"
+            },
+            "expected_goals_against_while_on_pitch": {
+              "title": "xG against while on pitch",
+              "value": 6.43,
+              "per90": 1.274451495267221,
+              "percentile": 82.8125,
+              "format": "fraction"
+            }
+          }
+        },
+        "discipline": {
+          "title": "Discipline",
+          "stats": {
+            "yellow_cards": {
+              "title": "Yellow cards",
+              "value": 2,
+              "per90": 0.39647577092511016,
+              "percentile": 59.895833333333336,
+              "format": "number"
+            },
+            "red_cards": {
+              "title": "Red cards",
+              "value": 0,
+              "per90": 0,
+              "percentile": 100,
+              "format": "number"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 1448133,
+      "nombre": "Víctor Arteaga",
+      "posicion": "CDM",
+      "torneo_ref": {
+        "season": "2025/2026",
+        "tournament": "Liga MX Apertura",
+        "entry_id": "0-0"
+      },
+      "top_stats": {
+        "goals": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "assists": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "rating": {
+          "value": 5.94,
+          "per90": 5.94,
+          "percentile": 5.88235294117647
+        },
+        "matches_uppercase": {
+          "value": 1,
+          "per90": 1,
+          "percentile": 0
+        },
+        "player_started_matches": {
+          "value": 1,
+          "per90": 1,
+          "percentile": 0
+        },
+        "minutes_played": {
+          "value": 45,
+          "per90": 90,
+          "percentile": 0
+        }
+      },
+      "grupos": {
+        "shooting": {
+          "title": "Shooting",
+          "stats": {
+            "goals": {
+              "title": "Goals",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            },
+            "shots": {
+              "title": "Shots",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            }
+          }
+        },
+        "passing": {
+          "title": "Passing",
+          "stats": {
+            "assists": {
+              "title": "Assists",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            },
+            "expected_assists": {
+              "title": "xA",
+              "value": 0.01,
+              "per90": 0.011144380085170269,
+              "percentile": 0,
+              "format": "fraction"
+            },
+            "successful_passes": {
+              "title": "Accurate passes",
+              "value": 29,
+              "per90": 58.00000000000001,
+              "percentile": 11.76470588235294,
+              "format": "number"
+            },
+            "successful_passes_accuracy": {
+              "title": "Pass accuracy",
+              "value": 96.7,
+              "per90": 96.66666666666667,
+              "percentile": 100,
+              "format": "percent"
+            },
+            "chances_created": {
+              "title": "Chances created",
+              "value": 1,
+              "per90": 2,
+              "percentile": 5.88235294117647,
+              "format": "number"
+            }
+          }
+        },
+        "possession": {
+          "title": "Possession",
+          "stats": {
+            "touches": {
+              "title": "Touches",
+              "value": 34,
+              "per90": 68,
+              "percentile": 1.9607843137254901,
+              "format": "number"
+            },
+            "dispossessed": {
+              "title": "Dispossessed",
+              "value": 0,
+              "per90": 0,
+              "percentile": 100,
+              "format": "number"
+            }
+          }
+        },
+        "defending": {
+          "title": "Defending",
+          "stats": {
+            "fouls": {
+              "title": "Fouls committed",
+              "value": 2,
+              "per90": 4,
+              "percentile": 3.9215686274509802,
+              "format": "number"
+            },
+            "recoveries": {
+              "title": "Recoveries",
+              "value": 3,
+              "per90": 6,
+              "percentile": 1.9607843137254901,
+              "format": "number"
+            },
+            "clearances": {
+              "title": "Clearances",
+              "value": 1,
+              "per90": 2,
+              "percentile": 5.88235294117647,
+              "format": "number"
+            },
+            "clean_sheet_team_title": {
+              "title": "Clean sheets",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            },
+            "goals_conceded_while_on_pitch": {
+              "title": "Goals conceded while on pitch",
+              "value": 2,
+              "per90": 4,
+              "percentile": 92.15686274509804,
+              "format": "number"
+            },
+            "expected_goals_against_while_on_pitch": {
+              "title": "xG against while on pitch",
+              "value": 0.52,
+              "per90": 1.044600009918213,
+              "percentile": 98.0392156862745,
+              "format": "fraction"
+            }
+          }
+        },
+        "discipline": {
+          "title": "Discipline",
+          "stats": {
+            "yellow_cards": {
+              "title": "Yellow cards",
+              "value": 1,
+              "per90": 2,
+              "percentile": 35.294117647058826,
+              "format": "number"
+            },
+            "red_cards": {
+              "title": "Red cards",
+              "value": 0,
+              "per90": 0,
+              "percentile": 100,
+              "format": "number"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 1644439,
+      "nombre": "Francisco Pumpido",
+      "posicion": "RB",
+      "torneo_ref": {
+        "season": "2025/2026",
+        "tournament": "Liga MX Clausura",
+        "entry_id": "0-0"
+      },
+      "top_stats": {
+        "goals": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "assists": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "rating": {
+          "value": 6.68,
+          "per90": 6.68,
+          "percentile": 32.857142857142854
+        },
+        "matches_uppercase": {
+          "value": 1,
+          "per90": 1,
+          "percentile": 0
+        },
+        "player_started_matches": {
+          "value": 1,
+          "per90": 1,
+          "percentile": 0
+        },
+        "minutes_played": {
+          "value": 45,
+          "per90": 90,
+          "percentile": 0
+        }
+      },
+      "grupos": {
+        "shooting": {
+          "title": "Shooting",
+          "stats": {
+            "goals": {
+              "title": "Goals",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            },
+            "expected_goals": {
+              "title": "xG",
+              "value": 0.02,
+              "per90": 0.041999999433755875,
+              "percentile": 24.285714285714285,
+              "format": "fraction"
+            },
+            "expected_goals_on_target": {
+              "title": "xGOT",
+              "value": 0.33,
+              "per90": 0.6525999903678894,
+              "percentile": 72.85714285714285,
+              "format": "fraction"
+            },
+            "non_penalty_xg": {
+              "title": "xG excl. penalty",
+              "value": 0.02,
+              "per90": 0.041999999433755875,
+              "percentile": 24.285714285714285,
+              "format": "fraction"
+            },
+            "shots": {
+              "title": "Shots",
+              "value": 1,
+              "per90": 2,
+              "percentile": 20,
+              "format": "number"
+            },
+            "ShotsOnTarget": {
+              "title": "Shots on target",
+              "value": 1,
+              "per90": 2,
+              "percentile": 47.14285714285714,
+              "format": "number"
+            },
+            "headed_shots": {
+              "title": "Headed shots",
+              "value": 1,
+              "per90": 2,
+              "percentile": 68.57142857142857,
+              "format": "number"
+            }
+          }
+        },
+        "passing": {
+          "title": "Passing",
+          "stats": {
+            "assists": {
+              "title": "Assists",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            },
+            "expected_assists": {
+              "title": "xA",
+              "value": 0,
+              "per90": 0.00927152018994093,
+              "percentile": 1.4285714285714286,
+              "format": "fraction"
+            },
+            "successful_passes": {
+              "title": "Accurate passes",
+              "value": 18,
+              "per90": 36,
+              "percentile": 0,
+              "format": "number"
+            },
+            "successful_passes_accuracy": {
+              "title": "Pass accuracy",
+              "value": 90,
+              "per90": 90,
+              "percentile": 87.14285714285714,
+              "format": "percent"
+            },
+            "long_balls_accurate": {
+              "title": "Accurate long balls",
+              "value": 1,
+              "per90": 2,
+              "percentile": 5.714285714285714,
+              "format": "number"
+            },
+            "long_ball_succeeeded_accuracy": {
+              "title": "Long ball accuracy",
+              "value": 100,
+              "per90": 100,
+              "percentile": 100,
+              "format": "percent"
+            }
+          }
+        },
+        "possession": {
+          "title": "Possession",
+          "stats": {
+            "dribbles_succeeded": {
+              "title": "Dribbles",
+              "value": 1,
+              "per90": 2,
+              "percentile": 25.71428571428571,
+              "format": "number"
+            },
+            "won_contest_subtitle": {
+              "title": "Dribbles success rate",
+              "value": 100,
+              "per90": 100,
+              "percentile": 100,
+              "format": "percent"
+            },
+            "duel_won": {
+              "title": "Duels won",
+              "value": 2,
+              "per90": 4,
+              "percentile": 2.857142857142857,
+              "format": "number"
+            },
+            "duel_won_percent": {
+              "title": "Duels won %",
+              "value": 50,
+              "per90": 50,
+              "percentile": 34.285714285714285,
+              "format": "percent"
+            },
+            "touches": {
+              "title": "Touches",
+              "value": 29,
+              "per90": 58.00000000000001,
+              "percentile": 0,
+              "format": "number"
+            },
+            "touches_opp_box": {
+              "title": "Touches in opposition box",
+              "value": 2,
+              "per90": 4,
+              "percentile": 27.142857142857142,
+              "format": "number"
+            },
+            "dispossessed": {
+              "title": "Dispossessed",
+              "value": 0,
+              "per90": 0,
+              "percentile": 100,
+              "format": "number"
+            },
+            "fouls_won": {
+              "title": "Fouls won",
+              "value": 1,
+              "per90": 2,
+              "percentile": 8.571428571428571,
+              "format": "number"
+            }
+          }
+        },
+        "defending": {
+          "title": "Defending",
+          "stats": {
+            "fouls": {
+              "title": "Fouls committed",
+              "value": 2,
+              "per90": 4,
+              "percentile": 21.428571428571427,
+              "format": "number"
+            },
+            "recoveries": {
+              "title": "Recoveries",
+              "value": 2,
+              "per90": 4,
+              "percentile": 5.714285714285714,
+              "format": "number"
+            },
+            "clearances": {
+              "title": "Clearances",
+              "value": 1,
+              "per90": 2,
+              "percentile": 4.285714285714286,
+              "format": "number"
+            },
+            "clean_sheet_team_title": {
+              "title": "Clean sheets",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            },
+            "goals_conceded_while_on_pitch": {
+              "title": "Goals conceded while on pitch",
+              "value": 1,
+              "per90": 2,
+              "percentile": 88.57142857142857,
+              "format": "number"
+            },
+            "expected_goals_against_while_on_pitch": {
+              "title": "xG against while on pitch",
+              "value": 0.2,
+              "per90": 0.3934000134468079,
+              "percentile": 98.57142857142858,
+              "format": "fraction"
+            }
+          }
+        },
+        "discipline": {
+          "title": "Discipline",
+          "stats": {
+            "yellow_cards": {
+              "title": "Yellow cards",
+              "value": 0,
+              "per90": 0,
+              "percentile": 100,
+              "format": "number"
+            },
+            "red_cards": {
+              "title": "Red cards",
+              "value": 0,
+              "per90": 0,
+              "percentile": 100,
+              "format": "number"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 1789757,
+      "nombre": "José Arroyo",
+      "posicion": null,
+      "torneo_ref": {
+        "season": "2025/2026",
+        "tournament": "Liga MX Apertura",
+        "entry_id": "0-0"
+      },
+      "top_stats": {
+        "goals": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "assists": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "matches_uppercase": {
+          "value": 1,
+          "per90": 1,
+          "percentile": 0.21413276231263384
+        },
+        "player_started_matches": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "minutes_played": {
+          "value": 1,
+          "per90": 90,
+          "percentile": 0.21413276231263384
+        }
+      },
+      "grupos": {}
+    },
+    {
+      "id": 1798272,
+      "nombre": "Jose Estrada",
+      "posicion": null,
+      "torneo_ref": {
+        "season": "2025/2026",
+        "tournament": "Liga MX Apertura",
+        "entry_id": "0-0"
+      },
+      "top_stats": {
+        "goals": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "assists": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "matches_uppercase": {
+          "value": 1,
+          "per90": 1,
+          "percentile": 0.21413276231263384
+        },
+        "player_started_matches": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "minutes_played": {
+          "value": 1,
+          "per90": 90,
+          "percentile": 0.21413276231263384
+        }
+      },
+      "grupos": {}
+    },
+    {
+      "id": 915602,
+      "nombre": "Sebastián Córdova",
+      "posicion": "ST,RW",
+      "torneo_ref": {
+        "season": "2026",
+        "tournament": "CONCACAF Champions Cup",
+        "entry_id": "0-0"
+      },
+      "top_stats": {
+        "goals": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "assists": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "matches_uppercase": {
+          "value": 2,
+          "per90": 2,
+          "percentile": 21.49532710280374
+        },
+        "player_started_matches": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "minutes_played": {
+          "value": 2,
+          "per90": 90,
+          "percentile": 1.3084112149532712
+        }
+      },
+      "grupos": {}
+    },
+    {
+      "id": 728365,
+      "nombre": "Alexis Vega",
+      "posicion": "LW,ST,CAM,RW,LM",
+      "torneo_ref": {
+        "season": "2026",
+        "tournament": "CONCACAF Champions Cup",
+        "entry_id": "0-0"
+      },
+      "top_stats": {
+        "goals": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "assists": {
+          "value": 1,
+          "per90": 2.142857142857143,
+          "percentile": 88.59813084112149
+        },
+        "rating": {
+          "value": 6.94,
+          "per90": 6.935,
+          "percentile": 65.04672897196262
+        },
+        "matches_uppercase": {
+          "value": 2,
+          "per90": 2,
+          "percentile": 21.49532710280374
+        },
+        "player_started_matches": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "minutes_played": {
+          "value": 42,
+          "per90": 90,
+          "percentile": 14.953271028037381
+        }
+      },
+      "grupos": {}
+    },
+    {
+      "id": 935183,
+      "nombre": "Helinho",
+      "posicion": "RW,RM,ST",
+      "torneo_ref": {
+        "season": "2026",
+        "tournament": "CONCACAF Champions Cup",
+        "entry_id": "0-0"
+      },
+      "top_stats": {
+        "goals": {
+          "value": 1,
+          "per90": 0.7894736842105263,
+          "percentile": 79.81651376146789
+        },
+        "assists": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "rating": {
+          "value": 7.82,
+          "per90": 7.82,
+          "percentile": 90.82568807339449
+        },
+        "matches_uppercase": {
+          "value": 2,
+          "per90": 2,
+          "percentile": 8.256880733944955
+        },
+        "player_started_matches": {
+          "value": 1,
+          "per90": 1,
+          "percentile": 0
+        },
+        "minutes_played": {
+          "value": 114,
+          "per90": 90,
+          "percentile": 21.100917431192663
+        }
+      },
+      "grupos": {
+        "shooting": {
+          "title": "Shooting",
+          "stats": {
+            "goals": {
+              "title": "Goals",
+              "value": 1,
+              "per90": 0.7894736842105263,
+              "percentile": 79.81651376146789,
+              "format": "number"
+            },
+            "expected_goals": {
+              "title": "xG",
+              "value": 1.7,
+              "per90": 1.339736863186485,
+              "percentile": 100,
+              "format": "fraction"
+            },
+            "expected_goals_on_target": {
+              "title": "xGOT",
+              "value": 1.45,
+              "per90": 1.1486052839379561,
+              "percentile": 96.3302752293578,
+              "format": "fraction"
+            },
+            "goals_subtitle": {
+              "title": "Penalty goals",
+              "value": 1,
+              "per90": 0.7894736842105263,
+              "percentile": 100,
+              "format": "number"
+            },
+            "non_penalty_xg": {
+              "title": "xG excl. penalty",
+              "value": 0.91,
+              "per90": 0.7173157679407219,
+              "percentile": 97.24770642201835,
+              "format": "fraction"
+            },
+            "shots": {
+              "title": "Shots",
+              "value": 13,
+              "per90": 10.26315789473684,
+              "percentile": 97.24770642201835,
+              "format": "number"
+            },
+            "ShotsOnTarget": {
+              "title": "Shots on target",
+              "value": 6,
+              "per90": 4.7368421052631575,
+              "percentile": 100,
+              "format": "number"
+            }
+          }
+        },
+        "passing": {
+          "title": "Passing",
+          "stats": {
+            "assists": {
+              "title": "Assists",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            },
+            "expected_assists": {
+              "title": "xA",
+              "value": 0.11,
+              "per90": 0.09054710598368393,
+              "percentile": 55.04587155963303,
+              "format": "fraction"
+            },
+            "successful_passes": {
+              "title": "Accurate passes",
+              "value": 56,
+              "per90": 44.21052631578947,
+              "percentile": 53.21100917431193,
+              "format": "number"
+            },
+            "successful_passes_accuracy": {
+              "title": "Pass accuracy",
+              "value": 83.6,
+              "per90": 83.58208955223881,
+              "percentile": 44.03669724770643,
+              "format": "percent"
+            },
+            "long_balls_accurate": {
+              "title": "Accurate long balls",
+              "value": 1,
+              "per90": 0.7894736842105263,
+              "percentile": 22.018348623853214,
+              "format": "number"
+            },
+            "long_ball_succeeeded_accuracy": {
+              "title": "Long ball accuracy",
+              "value": 33.3,
+              "per90": 33.333333333333336,
+              "percentile": 35.77981651376147,
+              "format": "percent"
+            },
+            "chances_created": {
+              "title": "Chances created",
+              "value": 3,
+              "per90": 2.3684210526315788,
+              "percentile": 66.05504587155964,
+              "format": "number"
+            },
+            "crosses_succeeeded": {
+              "title": "Successful crosses",
+              "value": 2,
+              "per90": 1.5789473684210527,
+              "percentile": 84.40366972477065,
+              "format": "number"
+            },
+            "crosses_succeeeded_accuracy": {
+              "title": "Cross accuracy",
+              "value": 18.2,
+              "per90": 18.181818181818183,
+              "percentile": 66.97247706422019,
+              "format": "percent"
+            }
+          }
+        },
+        "possession": {
+          "title": "Possession",
+          "stats": {
+            "dribbles_succeeded": {
+              "title": "Dribbles",
+              "value": 2,
+              "per90": 1.5789473684210527,
+              "percentile": 65.13761467889908,
+              "format": "number"
+            },
+            "won_contest_subtitle": {
+              "title": "Dribbles success rate",
+              "value": 40,
+              "per90": 40,
+              "percentile": 44.95412844036697,
+              "format": "percent"
+            },
+            "duel_won": {
+              "title": "Duels won",
+              "value": 4,
+              "per90": 3.1578947368421053,
+              "percentile": 15.59633027522936,
+              "format": "number"
+            },
+            "duel_won_percent": {
+              "title": "Duels won %",
+              "value": 36.4,
+              "per90": 36.36363636363637,
+              "percentile": 17.431192660550458,
+              "format": "percent"
+            },
+            "touches": {
+              "title": "Touches",
+              "value": 108,
+              "per90": 85.26315789473684,
+              "percentile": 55.96330275229357,
+              "format": "number"
+            },
+            "touches_opp_box": {
+              "title": "Touches in opposition box",
+              "value": 6,
+              "per90": 4.7368421052631575,
+              "percentile": 81.65137614678899,
+              "format": "number"
+            },
+            "dispossessed": {
+              "title": "Dispossessed",
+              "value": 1,
+              "per90": 0.7894736842105263,
+              "percentile": 36.69724770642202,
+              "format": "number"
+            }
+          }
+        },
+        "defending": {
+          "title": "Defending",
+          "stats": {
+            "matchstats.headers.tackles": {
+              "title": "Tackles",
+              "value": 2,
+              "per90": 1.5789473684210527,
+              "percentile": 22.93577981651376,
+              "format": "number"
+            },
+            "interceptions": {
+              "title": "Interceptions",
+              "value": 1,
+              "per90": 0.7894736842105263,
+              "percentile": 22.018348623853214,
+              "format": "number"
+            },
+            "fouls": {
+              "title": "Fouls committed",
+              "value": 2,
+              "per90": 1.5789473684210527,
+              "percentile": 41.284403669724774,
+              "format": "number"
+            },
+            "recoveries": {
+              "title": "Recoveries",
+              "value": 10,
+              "per90": 7.894736842105263,
+              "percentile": 67.88990825688074,
+              "format": "number"
+            },
+            "poss_won_att_3rd_team_title": {
+              "title": "Possession won final 3rd",
+              "value": 2,
+              "per90": 1.5789473684210527,
+              "percentile": 79.81651376146789,
+              "format": "number"
+            },
+            "dribbled_past": {
+              "title": "Dribbled past",
+              "value": 1,
+              "per90": 0.7894736842105263,
+              "percentile": 41.284403669724774,
+              "format": "number"
+            },
+            "clearances": {
+              "title": "Clearances",
+              "value": 1,
+              "per90": 0.7894736842105263,
+              "percentile": 28.440366972477065,
+              "format": "number"
+            },
+            "clean_sheet_team_title": {
+              "title": "Clean sheets",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            },
+            "goals_conceded_while_on_pitch": {
+              "title": "Goals conceded while on pitch",
+              "value": 2,
+              "per90": 1.5789473684210527,
+              "percentile": 43.11926605504588,
+              "format": "number"
+            },
+            "expected_goals_against_while_on_pitch": {
+              "title": "xG against while on pitch",
+              "value": 1.4,
+              "per90": 1.1066842392871254,
+              "percentile": 77.98165137614679,
+              "format": "fraction"
+            }
+          }
+        },
+        "discipline": {
+          "title": "Discipline",
+          "stats": {
+            "yellow_cards": {
+              "title": "Yellow cards",
+              "value": 0,
+              "per90": 0,
+              "percentile": 100,
+              "format": "number"
+            },
+            "red_cards": {
+              "title": "Red cards",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 1179357,
+      "nombre": "Pável Pérez",
+      "posicion": "LW,CAM,CM",
+      "torneo_ref": {
+        "season": "2026",
+        "tournament": "CONCACAF Champions Cup",
+        "entry_id": "0-0"
+      },
+      "top_stats": {
+        "goals": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "assists": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "rating": {
+          "value": 6.59,
+          "per90": 6.59,
+          "percentile": 47.28971962616823
+        },
+        "matches_uppercase": {
+          "value": 1,
+          "per90": 1,
+          "percentile": 0
+        },
+        "player_started_matches": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "minutes_played": {
+          "value": 45,
+          "per90": 90,
+          "percentile": 16.448598130841123
+        }
+      },
+      "grupos": {}
+    },
+    {
+      "id": 1367053,
+      "nombre": "Oswaldo Virgen",
+      "posicion": "ST",
+      "torneo_ref": {
+        "season": "2025/2026",
+        "tournament": "Liga MX Apertura",
+        "entry_id": "0-0"
+      },
+      "top_stats": {
+        "goals": {
+          "value": 1,
+          "per90": 0.5487804878048781,
+          "percentile": 58.2441113490364
+        },
+        "assists": {
+          "value": 1,
+          "per90": 0.5487804878048781,
+          "percentile": 65.0963597430407
+        },
+        "rating": {
+          "value": 6.4,
+          "per90": 6.398,
+          "percentile": 28.26552462526767
+        },
+        "matches_uppercase": {
+          "value": 9,
+          "per90": 9,
+          "percentile": 34.68950749464668
+        },
+        "player_started_matches": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "minutes_played": {
+          "value": 164,
+          "per90": 90,
+          "percentile": 21.627408993576015
+        }
+      },
+      "grupos": {}
+    },
+    {
+      "id": 361377,
+      "nombre": "Paulinho",
+      "posicion": "ST",
+      "torneo_ref": {
+        "season": "2026",
+        "tournament": "CONCACAF Champions Cup",
+        "entry_id": "0-0"
+      },
+      "top_stats": {
+        "goals": {
+          "value": 1,
+          "per90": 0.5,
+          "percentile": 70.37037037037037
+        },
+        "assists": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "rating": {
+          "value": 7.02,
+          "per90": 7.02,
+          "percentile": 68.51851851851852
+        },
+        "matches_uppercase": {
+          "value": 2,
+          "per90": 2,
+          "percentile": 14.814814814814813
+        },
+        "player_started_matches": {
+          "value": 2,
+          "per90": 2,
+          "percentile": 40.74074074074074
+        },
+        "minutes_played": {
+          "value": 180,
+          "per90": 90,
+          "percentile": 74.07407407407408
+        }
+      },
+      "grupos": {
+        "shooting": {
+          "title": "Shooting",
+          "stats": {
+            "goals": {
+              "title": "Goals",
+              "value": 1,
+              "per90": 0.5,
+              "percentile": 70.37037037037037,
+              "format": "number"
+            },
+            "expected_goals": {
+              "title": "xG",
+              "value": 2.76,
+              "per90": 1.3800499439239502,
+              "percentile": 100,
+              "format": "fraction"
+            },
+            "expected_goals_on_target": {
+              "title": "xGOT",
+              "value": 1.09,
+              "per90": 0.5434499979019165,
+              "percentile": 75.92592592592592,
+              "format": "fraction"
+            },
+            "non_penalty_xg": {
+              "title": "xG excl. penalty",
+              "value": 2.76,
+              "per90": 1.3800499439239502,
+              "percentile": 100,
+              "format": "fraction"
+            },
+            "shots": {
+              "title": "Shots",
+              "value": 10,
+              "per90": 5,
+              "percentile": 90.74074074074075,
+              "format": "number"
+            },
+            "ShotsOnTarget": {
+              "title": "Shots on target",
+              "value": 2,
+              "per90": 1,
+              "percentile": 59.25925925925925,
+              "format": "number"
+            },
+            "headed_shots": {
+              "title": "Headed shots",
+              "value": 1,
+              "per90": 0.5,
+              "percentile": 59.25925925925925,
+              "format": "number"
+            }
+          }
+        },
+        "passing": {
+          "title": "Passing",
+          "stats": {
+            "assists": {
+              "title": "Assists",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            },
+            "expected_assists": {
+              "title": "xA",
+              "value": 0.09,
+              "per90": 0.047035101801157005,
+              "percentile": 64.81481481481481,
+              "format": "fraction"
+            },
+            "successful_passes": {
+              "title": "Accurate passes",
+              "value": 24,
+              "per90": 12,
+              "percentile": 66.66666666666666,
+              "format": "number"
+            },
+            "successful_passes_accuracy": {
+              "title": "Pass accuracy",
+              "value": 75,
+              "per90": 75,
+              "percentile": 48.148148148148145,
+              "format": "percent"
+            },
+            "long_balls_accurate": {
+              "title": "Accurate long balls",
+              "value": 2,
+              "per90": 1,
+              "percentile": 87.03703703703704,
+              "format": "number"
+            },
+            "long_ball_succeeeded_accuracy": {
+              "title": "Long ball accuracy",
+              "value": 100,
+              "per90": 100,
+              "percentile": 100,
+              "format": "percent"
+            },
+            "chances_created": {
+              "title": "Chances created",
+              "value": 1,
+              "per90": 0.5,
+              "percentile": 33.33333333333333,
+              "format": "number"
+            }
+          }
+        },
+        "possession": {
+          "title": "Possession",
+          "stats": {
+            "dribbles_succeeded": {
+              "title": "Dribbles",
+              "value": 1,
+              "per90": 0.5,
+              "percentile": 40.74074074074074,
+              "format": "number"
+            },
+            "won_contest_subtitle": {
+              "title": "Dribbles success rate",
+              "value": 33.3,
+              "per90": 33.333333333333336,
+              "percentile": 50,
+              "format": "percent"
+            },
+            "duel_won": {
+              "title": "Duels won",
+              "value": 7,
+              "per90": 3.5,
+              "percentile": 53.70370370370371,
+              "format": "number"
+            },
+            "duel_won_percent": {
+              "title": "Duels won %",
+              "value": 36.8,
+              "per90": 36.8421052631579,
+              "percentile": 31.48148148148148,
+              "format": "percent"
+            },
+            "aerials_won": {
+              "title": "Aerials won",
+              "value": 2,
+              "per90": 1,
+              "percentile": 44.44444444444444,
+              "format": "number"
+            },
+            "aerials_won_percent": {
+              "title": "Aerials won %",
+              "value": 50,
+              "per90": 50,
+              "percentile": 68.51851851851852,
+              "format": "percent"
+            },
+            "touches": {
+              "title": "Touches",
+              "value": 75,
+              "per90": 37.5,
+              "percentile": 81.48148148148148,
+              "format": "number"
+            },
+            "touches_opp_box": {
+              "title": "Touches in opposition box",
+              "value": 19,
+              "per90": 9.5,
+              "percentile": 90.74074074074075,
+              "format": "number"
+            },
+            "dispossessed": {
+              "title": "Dispossessed",
+              "value": 4,
+              "per90": 2,
+              "percentile": 12.962962962962962,
+              "format": "number"
+            },
+            "fouls_won": {
+              "title": "Fouls won",
+              "value": 3,
+              "per90": 1.5,
+              "percentile": 66.66666666666666,
+              "format": "number"
+            }
+          }
+        },
+        "defending": {
+          "title": "Defending",
+          "stats": {
+            "matchstats.headers.tackles": {
+              "title": "Tackles",
+              "value": 1,
+              "per90": 0.5,
+              "percentile": 38.88888888888889,
+              "format": "number"
+            },
+            "interceptions": {
+              "title": "Interceptions",
+              "value": 1,
+              "per90": 0.5,
+              "percentile": 72.22222222222221,
+              "format": "number"
+            },
+            "fouls": {
+              "title": "Fouls committed",
+              "value": 5,
+              "per90": 2.5,
+              "percentile": 87.03703703703704,
+              "format": "number"
+            },
+            "recoveries": {
+              "title": "Recoveries",
+              "value": 6,
+              "per90": 3,
+              "percentile": 72.22222222222221,
+              "format": "number"
+            },
+            "poss_won_att_3rd_team_title": {
+              "title": "Possession won final 3rd",
+              "value": 2,
+              "per90": 1,
+              "percentile": 72.22222222222221,
+              "format": "number"
+            },
+            "clearances": {
+              "title": "Clearances",
+              "value": 1,
+              "per90": 0.5,
+              "percentile": 50,
+              "format": "number"
+            },
+            "clean_sheet_team_title": {
+              "title": "Clean sheets",
+              "value": 1,
+              "per90": 0.5,
+              "percentile": 79.62962962962963,
+              "format": "number"
+            },
+            "goals_conceded_while_on_pitch": {
+              "title": "Goals conceded while on pitch",
+              "value": 3,
+              "per90": 1.5,
+              "percentile": 20.37037037037037,
+              "format": "number"
+            },
+            "expected_goals_against_while_on_pitch": {
+              "title": "xG against while on pitch",
+              "value": 1.64,
+              "per90": 0.8194000124931335,
+              "percentile": 57.407407407407405,
+              "format": "fraction"
+            }
+          }
+        },
+        "discipline": {
+          "title": "Discipline",
+          "stats": {
+            "yellow_cards": {
+              "title": "Yellow cards",
+              "value": 1,
+              "per90": 0.5,
+              "percentile": 1.8518518518518516,
+              "format": "number"
+            },
+            "red_cards": {
+              "title": "Red cards",
+              "value": 0,
+              "per90": 0,
+              "percentile": 100,
+              "format": "number"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 1456400,
+      "nombre": "Franco Rossi",
+      "posicion": "ST",
+      "torneo_ref": {
+        "season": "2025/2026",
+        "tournament": "Liga MX Clausura",
+        "entry_id": "0-0"
+      },
+      "top_stats": {
+        "goals": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "assists": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "rating": {
+          "value": 6.33,
+          "per90": 6.333333333333333,
+          "percentile": 23.91304347826087
+        },
+        "matches_uppercase": {
+          "value": 5,
+          "per90": 5,
+          "percentile": 13.043478260869565
+        },
+        "player_started_matches": {
+          "value": 2,
+          "per90": 2,
+          "percentile": 13.043478260869565
+        },
+        "minutes_played": {
+          "value": 171,
+          "per90": 90,
+          "percentile": 15.217391304347828
+        }
+      },
+      "grupos": {
+        "shooting": {
+          "title": "Shooting",
+          "stats": {
+            "goals": {
+              "title": "Goals",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            },
+            "expected_goals": {
+              "title": "xG",
+              "value": 0.26,
+              "per90": 0.13615790166352926,
+              "percentile": 10.869565217391305,
+              "format": "fraction"
+            },
+            "non_penalty_xg": {
+              "title": "xG excl. penalty",
+              "value": 0.26,
+              "per90": 0.13615790166352926,
+              "percentile": 10.869565217391305,
+              "format": "fraction"
+            },
+            "shots": {
+              "title": "Shots",
+              "value": 6,
+              "per90": 3.1578947368421053,
+              "percentile": 21.73913043478261,
+              "format": "number"
+            },
+            "headed_shots": {
+              "title": "Headed shots",
+              "value": 1,
+              "per90": 0.5263157894736842,
+              "percentile": 19.565217391304348,
+              "format": "number"
+            }
+          }
+        },
+        "passing": {
+          "title": "Passing",
+          "stats": {
+            "assists": {
+              "title": "Assists",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            },
+            "expected_assists": {
+              "title": "xA",
+              "value": 0.02,
+              "per90": 0.011675531338704258,
+              "percentile": 2.1739130434782608,
+              "format": "fraction"
+            },
+            "successful_passes": {
+              "title": "Accurate passes",
+              "value": 11,
+              "per90": 5.789473684210526,
+              "percentile": 2.1739130434782608,
+              "format": "number"
+            },
+            "successful_passes_accuracy": {
+              "title": "Pass accuracy",
+              "value": 78.6,
+              "per90": 78.57142857142857,
+              "percentile": 76.08695652173914,
+              "format": "percent"
+            },
+            "long_balls_accurate": {
+              "title": "Accurate long balls",
+              "value": 1,
+              "per90": 0.5263157894736842,
+              "percentile": 30.434782608695656,
+              "format": "number"
+            },
+            "long_ball_succeeeded_accuracy": {
+              "title": "Long ball accuracy",
+              "value": 50,
+              "per90": 50,
+              "percentile": 50,
+              "format": "percent"
+            }
+          }
+        },
+        "possession": {
+          "title": "Possession",
+          "stats": {
+            "duel_won": {
+              "title": "Duels won",
+              "value": 9,
+              "per90": 4.7368421052631575,
+              "percentile": 17.391304347826086,
+              "format": "number"
+            },
+            "duel_won_percent": {
+              "title": "Duels won %",
+              "value": 36,
+              "per90": 36,
+              "percentile": 17.391304347826086,
+              "format": "percent"
+            },
+            "aerials_won": {
+              "title": "Aerials won",
+              "value": 1,
+              "per90": 0.5263157894736842,
+              "percentile": 6.521739130434782,
+              "format": "number"
+            },
+            "aerials_won_percent": {
+              "title": "Aerials won %",
+              "value": 25,
+              "per90": 25,
+              "percentile": 15.217391304347828,
+              "format": "percent"
+            },
+            "touches": {
+              "title": "Touches",
+              "value": 51,
+              "per90": 26.842105263157894,
+              "percentile": 6.521739130434782,
+              "format": "number"
+            },
+            "touches_opp_box": {
+              "title": "Touches in opposition box",
+              "value": 7,
+              "per90": 3.6842105263157894,
+              "percentile": 19.565217391304348,
+              "format": "number"
+            },
+            "dispossessed": {
+              "title": "Dispossessed",
+              "value": 1,
+              "per90": 0.5263157894736842,
+              "percentile": 78.26086956521739,
+              "format": "number"
+            },
+            "fouls_won": {
+              "title": "Fouls won",
+              "value": 8,
+              "per90": 4.2105263157894735,
+              "percentile": 50,
+              "format": "number"
+            }
+          }
+        },
+        "defending": {
+          "title": "Defending",
+          "stats": {
+            "matchstats.headers.tackles": {
+              "title": "Tackles",
+              "value": 1,
+              "per90": 0.5263157894736842,
+              "percentile": 10.869565217391305,
+              "format": "number"
+            },
+            "interceptions": {
+              "title": "Interceptions",
+              "value": 1,
+              "per90": 0.5263157894736842,
+              "percentile": 52.17391304347826,
+              "format": "number"
+            },
+            "fouls": {
+              "title": "Fouls committed",
+              "value": 8,
+              "per90": 4.2105263157894735,
+              "percentile": 54.347826086956516,
+              "format": "number"
+            },
+            "recoveries": {
+              "title": "Recoveries",
+              "value": 2,
+              "per90": 1.0526315789473684,
+              "percentile": 0,
+              "format": "number"
+            },
+            "dribbled_past": {
+              "title": "Dribbled past",
+              "value": 2,
+              "per90": 1.0526315789473684,
+              "percentile": 21.73913043478261,
+              "format": "number"
+            },
+            "clean_sheet_team_title": {
+              "title": "Clean sheets",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            },
+            "goals_conceded_while_on_pitch": {
+              "title": "Goals conceded while on pitch",
+              "value": 1,
+              "per90": 0.5263157894736842,
+              "percentile": 86.95652173913044,
+              "format": "number"
+            },
+            "expected_goals_against_while_on_pitch": {
+              "title": "xG against while on pitch",
+              "value": 0.9,
+              "per90": 0.47499998619681905,
+              "percentile": 93.47826086956522,
+              "format": "fraction"
+            }
+          }
+        },
+        "discipline": {
+          "title": "Discipline",
+          "stats": {
+            "yellow_cards": {
+              "title": "Yellow cards",
+              "value": 0,
+              "per90": 0,
+              "percentile": 100,
+              "format": "number"
+            },
+            "red_cards": {
+              "title": "Red cards",
+              "value": 0,
+              "per90": 0,
+              "percentile": 100,
+              "format": "number"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 914079,
+      "nombre": "Jorge Díaz",
+      "posicion": "ST",
+      "torneo_ref": {
+        "season": "2026",
+        "tournament": "CONCACAF Champions Cup",
+        "entry_id": "0-0"
+      },
+      "top_stats": {
+        "goals": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "assists": {
+          "value": 0,
+          "per90": 0,
+          "percentile": 0
+        },
+        "rating": {
+          "value": 6.78,
+          "per90": 6.78,
+          "percentile": 61.111111111111114
+        },
+        "matches_uppercase": {
+          "value": 2,
+          "per90": 2,
+          "percentile": 14.814814814814813
+        },
+        "player_started_matches": {
+          "value": 2,
+          "per90": 2,
+          "percentile": 40.74074074074074
+        },
+        "minutes_played": {
+          "value": 110,
+          "per90": 90,
+          "percentile": 31.48148148148148
+        }
+      },
+      "grupos": {
+        "shooting": {
+          "title": "Shooting",
+          "stats": {
+            "goals": {
+              "title": "Goals",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            },
+            "expected_goals": {
+              "title": "xG",
+              "value": 0.03,
+              "per90": 0.027981819415634327,
+              "percentile": 18.51851851851852,
+              "format": "fraction"
+            },
+            "non_penalty_xg": {
+              "title": "xG excl. penalty",
+              "value": 0.03,
+              "per90": 0.027981819415634327,
+              "percentile": 18.51851851851852,
+              "format": "fraction"
+            },
+            "shots": {
+              "title": "Shots",
+              "value": 1,
+              "per90": 0.8181818181818181,
+              "percentile": 14.814814814814813,
+              "format": "number"
+            }
+          }
+        },
+        "passing": {
+          "title": "Passing",
+          "stats": {
+            "assists": {
+              "title": "Assists",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            },
+            "expected_assists": {
+              "title": "xA",
+              "value": 0.6,
+              "per90": 0.4888472719625993,
+              "percentile": 92.5925925925926,
+              "format": "fraction"
+            },
+            "successful_passes": {
+              "title": "Accurate passes",
+              "value": 21,
+              "per90": 17.181818181818183,
+              "percentile": 51.85185185185185,
+              "format": "number"
+            },
+            "successful_passes_accuracy": {
+              "title": "Pass accuracy",
+              "value": 84,
+              "per90": 84,
+              "percentile": 81.48148148148148,
+              "format": "percent"
+            },
+            "chances_created": {
+              "title": "Chances created",
+              "value": 4,
+              "per90": 3.2727272727272725,
+              "percentile": 87.03703703703704,
+              "format": "number"
+            },
+            "big_chance_created_team_title": {
+              "title": "Big chances created",
+              "value": 2,
+              "per90": 1.6363636363636362,
+              "percentile": 90.74074074074075,
+              "format": "number"
+            }
+          }
+        },
+        "possession": {
+          "title": "Possession",
+          "stats": {
+            "duel_won": {
+              "title": "Duels won",
+              "value": 4,
+              "per90": 3.2727272727272725,
+              "percentile": 22.22222222222222,
+              "format": "number"
+            },
+            "duel_won_percent": {
+              "title": "Duels won %",
+              "value": 50,
+              "per90": 50,
+              "percentile": 75.92592592592592,
+              "format": "percent"
+            },
+            "touches": {
+              "title": "Touches",
+              "value": 44,
+              "per90": 36,
+              "percentile": 38.88888888888889,
+              "format": "number"
+            },
+            "touches_opp_box": {
+              "title": "Touches in opposition box",
+              "value": 3,
+              "per90": 2.4545454545454546,
+              "percentile": 38.88888888888889,
+              "format": "number"
+            },
+            "dispossessed": {
+              "title": "Dispossessed",
+              "value": 1,
+              "per90": 0.8181818181818181,
+              "percentile": 50,
+              "format": "number"
+            },
+            "fouls_won": {
+              "title": "Fouls won",
+              "value": 4,
+              "per90": 3.2727272727272725,
+              "percentile": 79.62962962962963,
+              "format": "number"
+            }
+          }
+        },
+        "defending": {
+          "title": "Defending",
+          "stats": {
+            "recoveries": {
+              "title": "Recoveries",
+              "value": 7,
+              "per90": 5.727272727272727,
+              "percentile": 83.33333333333334,
+              "format": "number"
+            },
+            "poss_won_att_3rd_team_title": {
+              "title": "Possession won final 3rd",
+              "value": 2,
+              "per90": 1.6363636363636362,
+              "percentile": 72.22222222222221,
+              "format": "number"
+            },
+            "dribbled_past": {
+              "title": "Dribbled past",
+              "value": 2,
+              "per90": 1.6363636363636362,
+              "percentile": 3.7037037037037033,
+              "format": "number"
+            },
+            "clearances": {
+              "title": "Clearances",
+              "value": 1,
+              "per90": 0.8181818181818181,
+              "percentile": 50,
+              "format": "number"
+            },
+            "clean_sheet_team_title": {
+              "title": "Clean sheets",
+              "value": 0,
+              "per90": 0,
+              "percentile": 0,
+              "format": "number"
+            },
+            "goals_conceded_while_on_pitch": {
+              "title": "Goals conceded while on pitch",
+              "value": 1,
+              "per90": 0.8181818181818181,
+              "percentile": 53.70370370370371,
+              "format": "number"
+            },
+            "expected_goals_against_while_on_pitch": {
+              "title": "xG against while on pitch",
+              "value": 0.52,
+              "per90": 0.42332724549553613,
+              "percentile": 83.33333333333334,
+              "format": "fraction"
+            }
+          }
+        },
+        "discipline": {
+          "title": "Discipline",
+          "stats": {
+            "yellow_cards": {
+              "title": "Yellow cards",
+              "value": 2,
+              "per90": 1.6363636363636362,
+              "percentile": 0,
+              "format": "number"
+            },
+            "red_cards": {
+              "title": "Red cards",
+              "value": 0,
+              "per90": 0,
+              "percentile": 100,
+              "format": "number"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "errores": [
+    {
+      "id": 1699722,
+      "nombre": "David Shrem",
+      "error": "'NoneType' object has no attribute 'get'"
+    },
+    {
+      "id": 1888866,
+      "nombre": "Giovani Bravo",
+      "error": "'NoneType' object has no attribute 'get'"
+    }
+  ]
+}
