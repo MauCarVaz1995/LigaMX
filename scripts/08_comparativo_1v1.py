@@ -52,9 +52,9 @@ def bebas(size):
 DARK_BG   = '#0d1117'
 WHITE     = '#e6edf3'
 GRAY      = '#8b949e'
-GRAY_DIM  = '#4a4a4a'   # barra perdedora — gris neutro
+GRAY_DIM  = '#6b7280'   # barra perdedora — slate gris medio, contraste sobre fondo oscuro
 RED_BRAND = '#D5001C'
-BAR_TRACK = '#1e1e1e'   # fondo de pista de la barra
+BAR_TRACK = '#1a1f28'   # fondo de pista de la barra
 
 TEAM_COLORS = {
     6618:    '#D5001C',   # Toluca
