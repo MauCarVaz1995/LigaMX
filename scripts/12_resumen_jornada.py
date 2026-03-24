@@ -297,8 +297,8 @@ def get_shield_framed(canonical_name, size=88, border=5):
     bg.putalpha(mask_o)
     result.paste(bg, (0, 0), bg)
 
-    # Fondo interior oscuro (rounded)
-    inner_bg = Image.new('RGBA', (inner, inner), (13, 17, 23, 245))
+    # Fondo interior blanco (los escudos de FotMob están diseñados para fondo claro)
+    inner_bg = Image.new('RGBA', (inner, inner), (248, 248, 252, 255))
     mask_i = Image.new('L', (inner, inner), 0)
     draw_i = ImageDraw.Draw(mask_i)
     rad_i = inner // 5
@@ -406,9 +406,9 @@ def render_jornada(jornada_num, partidos, model, out_path):
             (0.77, 0), 0.23, 1, transform=row_ax.transAxes,
             facecolor=vc, alpha=0.07, linewidth=0, zorder=0))
 
-        # Bordes laterales de color del equipo
-        row_ax.axvline(0.002, color=lc, linewidth=5, zorder=5)
-        row_ax.axvline(0.998, color=vc, linewidth=5, zorder=5)
+        # Bordes laterales — 2px, color equipo local (izq) y visitante (der)
+        row_ax.axvline(0.002, color=lc, linewidth=2, zorder=5)
+        row_ax.axvline(0.998, color=vc, linewidth=2, zorder=5)
 
         # ── Escudo local ──────────────────────────────────────────────────────
         SH_W = 0.105; SH_H_FC = 0.82

@@ -447,14 +447,8 @@ def render_prediction(local: str, visitante: str,
                   color=WHITE, va='center', ha='left',
                   transform=title_ax.transAxes, **bebas_fp(18))
     title_ax.text(0.016, 0.22,
-                  f'{norm(local)} vs {norm(visitante)}  ·  Clausura 2026  ·  '
-                  f'Modelo Poisson (últimos 4 torneos)',
+                  f'{norm(local)} vs {norm(visitante)}  ·  Clausura 2026',
                   color=GRAY, fontsize=8, va='center', ha='left',
-                  transform=title_ax.transAxes)
-    # Lambdas a la derecha
-    title_ax.text(0.985, 0.70,
-                  f'λ local={lambda_l:.2f}  |  λ visit={lambda_v:.2f}',
-                  color=GRAY, fontsize=7.5, va='center', ha='right',
                   transform=title_ax.transAxes)
 
     # ── CÍRCULOS WIN/DRAW/LOSS ─────────────────────────────────────────────
