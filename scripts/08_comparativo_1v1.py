@@ -52,9 +52,9 @@ def bebas(size):
 DARK_BG   = '#0d1117'
 WHITE     = '#e6edf3'
 GRAY      = '#8b949e'
-GRAY_DIM  = '#2a3040'   # barra perdedora (gris oscuro visible)
+GRAY_DIM  = '#4a4a4a'   # barra perdedora — gris neutro
 RED_BRAND = '#D5001C'
-BAR_TRACK = '#1c2535'   # fondo de pista de la barra
+BAR_TRACK = '#1e1e1e'   # fondo de pista de la barra
 
 TEAM_COLORS = {
     6618:    '#D5001C',   # Toluca
@@ -103,9 +103,9 @@ AR           = FIG_H / FIG_W   # 1.5 — para cuadrar elementos circulares
 
 FOOTER_H  = 0.065
 WINCTR_H  = 0.055
-ROW_H     = 0.058
-METRICS_H = ROW_H * N_METRICS        # 0.58
-RATING_H  = 0.085
+ROW_H     = 0.056
+METRICS_H = ROW_H * N_METRICS        # 0.56
+RATING_H  = 0.108
 HEADER_H  = 0.215
 
 FOOTER_Y  = 0.000
@@ -398,13 +398,13 @@ def render_1v1(pid1: int, pid2: int):
     # ════════════════════════════════════════════════════════════════════════
     rat1 = r1.get('rating')
     rat2 = r2.get('rating')
-    rc_h = 0.072; rc_w = rc_h * AR
+    rc_h = 0.100; rc_w = rc_h * AR
     rc_y  = RATING_Y + (RATING_H - rc_h) / 2
 
-    rc1_arr = make_rating_circle(rat1 if pd.notna(rat1) else None, 120)
-    rc2_arr = make_rating_circle(rat2 if pd.notna(rat2) else None, 120)
-    _add_img_axis(fig, rc1_arr, CENTER_X - rc_w - 0.038, rc_y, rc_w, rc_h)
-    _add_img_axis(fig, rc2_arr, CENTER_X + 0.038, rc_y, rc_w, rc_h)
+    rc1_arr = make_rating_circle(rat1 if pd.notna(rat1) else None, 160)
+    rc2_arr = make_rating_circle(rat2 if pd.notna(rat2) else None, 160)
+    _add_img_axis(fig, rc1_arr, CENTER_X - rc_w - 0.042, rc_y, rc_w, rc_h)
+    _add_img_axis(fig, rc2_arr, CENTER_X + 0.042, rc_y, rc_w, rc_h)
 
     # ════════════════════════════════════════════════════════════════════════
     # BARRAS DE MÉTRICAS  — UN SOLO EJE con Rectangle patches
