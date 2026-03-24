@@ -1,15 +1,11 @@
 #!/usr/bin/env python3
 """
-08_comparativo_1v1.py
-Infografía comparativa 1v1 – Liga MX Clausura 2026
-Uso: python 08_comparativo_1v1.py <id_jugador1> <id_jugador2>
-Ejemplo: python 08_comparativo_1v1.py 361377 215428
+08_comparativo_1v1.py  –  Comparativo 1v1 jugadores Liga MX
+Uso: python 08_comparativo_1v1.py [id_jugador1] [id_jugador2]
+     python 08_comparativo_1v1.py 361377 215428   # Paulinho vs Ángel Sepúlveda
 """
 
-import sys
-import json
-import glob
-import warnings
+import sys, json, glob, warnings, unicodedata
 from pathlib import Path
 
 import numpy as np
@@ -18,6 +14,7 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
+from matplotlib.patches import FancyBboxPatch, Rectangle
 import matplotlib.colors as mc
 from matplotlib.font_manager import FontProperties
 import matplotlib.font_manager as fm
@@ -31,7 +28,6 @@ warnings.filterwarnings('ignore')
 # ─────────────────────────────────────────────────────────────────────────────
 BASE      = Path(__file__).resolve().parent.parent
 CSV_PATH  = BASE / 'data/processed/jugadores_clausura2026.csv'
-STATS_DIR = BASE / 'data/raw/stats_detalladas'
 IMG_PLAY  = BASE / 'data/raw/images/players'
 IMG_TEAMS = BASE / 'data/raw/images/teams'
 OUT_DIR   = BASE / 'output/charts'
@@ -40,16 +36,13 @@ BEBAS_TTF = Path.home() / '.fonts/BebasNeue.ttf'
 for d in (IMG_PLAY, IMG_TEAMS, OUT_DIR):
     d.mkdir(parents=True, exist_ok=True)
 
-# ── Bebas Neue ───────────────────────────────────────────────────────────────
-_bebas = None
+# ── Bebas Neue ────────────────────────────────────────────────────────────────
 if BEBAS_TTF.exists():
     fm.fontManager.addfont(str(BEBAS_TTF))
-    _bebas = FontProperties(fname=str(BEBAS_TTF))
 
 def bebas(size):
-    if _bebas:
-        p = FontProperties(fname=str(BEBAS_TTF))
-        p.set_size(size)
+    if BEBAS_TTF.exists():
+        p = FontProperties(fname=str(BEBAS_TTF), size=size)
         return {'fontproperties': p}
     return {'fontsize': size, 'fontweight': 'bold'}
 
@@ -59,153 +52,130 @@ def bebas(size):
 DARK_BG   = '#0d1117'
 WHITE     = '#e6edf3'
 GRAY      = '#8b949e'
+GRAY_DIM  = '#2a3040'   # barra perdedora (gris oscuro visible)
 RED_BRAND = '#D5001C'
-GOLD      = '#FFD700'
+BAR_TRACK = '#1c2535'   # fondo de pista de la barra
 
-# Colores por equipo_id (tono principal)
 TEAM_COLORS = {
-    6618:    '#D5001C',  # Toluca
-    7807:    '#CE1141',  # Chivas
-    8561:    '#FF7900',  # Tigres
-    6576:    '#FFD700',  # América
-    6578:    '#0038A8',  # Cruz Azul
-    7849:    '#003F8A',  # Monterrey
-    1946:    '#002B5B',  # Pumas
-    7857:    '#006341',  # Santos Laguna
-    7848:    '#004D8E',  # Pachuca
-    7847:    '#00479D',  # Puebla
-    1841:    '#006633',  # León
-    1842:    '#CC0000',  # Necaxa
-    162418:  '#1A1A1A',  # Tijuana
-    6577:    '#CC2200',  # Atlas
-    1943:    '#0033A0',  # Querétaro
-    649424:  '#C8102E',  # FC Juárez
-    1170234: '#D47900',  # Mazatlán
-    6358:    '#006633',  # San Luis
+    6618:    '#D5001C',   # Toluca
+    7807:    '#CD1F2D',   # Chivas
+    8561:    '#F5A623',   # Tigres
+    6576:    '#FFD700',   # América
+    6578:    '#0047AB',   # Cruz Azul
+    7849:    '#003DA5',   # Monterrey
+    1946:    '#1C2C5B',   # Pumas
+    7857:    '#2E8B57',   # Santos Laguna
+    7848:    '#1E3A5F',   # Pachuca
+    7847:    '#2563EB',   # Puebla
+    1841:    '#2D8C3C',   # León
+    1842:    '#D62828',   # Necaxa
+    162418:  '#C62828',   # Tijuana
+    6577:    '#B22222',   # Atlas
+    1943:    '#1565C0',   # Querétaro
+    649424:  '#4CAF50',   # FC Juárez
+    1170234: '#5B2C8F',   # Mazatlán
+    6358:    '#D52B1E',   # San Luis
 }
 
 # ─────────────────────────────────────────────────────────────────────────────
-# MÉTRICAS POR POSICIÓN
+# MÉTRICAS FIJAS (10)
 # ─────────────────────────────────────────────────────────────────────────────
-_POS_CAT = {
-    'GK':  'Portero',
-    'CB':  'Defensa',  'LB': 'Defensa',  'RB': 'Defensa',
-    'LWB': 'Defensa',  'RWB': 'Defensa',
-    'CDM': 'Mediocampista', 'CM':  'Mediocampista',
-    'CAM': 'Mediocampista', 'LM':  'Mediocampista', 'RM': 'Mediocampista',
-    'LW':  'Delantero', 'RW': 'Delantero', 'ST': 'Delantero',
-}
+METRICS = [
+    ('goles_p90',                 'GOLES P90'),
+    ('xG_p90',                    'xG P90'),
+    ('tiros_p90',                 'TIROS P90'),
+    ('tiros_a_puerta_p90',        'TIROS A PUERTA P90'),
+    ('asistencias_p90',           'ASISTENCIAS P90'),
+    ('xA_p90',                    'xA P90'),
+    ('chances_creadas_p90',       'CHANCES CREADAS P90'),
+    ('pases_precisos_p90',        'PASES PRECISOS P90'),
+    ('duelos_tierra_ganados_p90', 'DUELOS GANADOS P90'),
+    ('regates_exitosos_p90',      'REGATES EXITOSOS P90'),
+]
+N_METRICS = len(METRICS)
 
-METRICS_BY_POS = {
-    'Delantero': [
-        ('goles_p90',                    'Goles P90'),
-        ('xG_p90',                       'xG P90'),
-        ('tiros_p90',                    'Tiros P90'),
-        ('tiros_a_puerta_p90',           'Tiros a Puerta P90'),
-        ('asistencias_p90',              'Asistencias P90'),
-        ('xA_p90',                       'xA P90'),
-        ('chances_creadas_p90',          'Chances Creadas P90'),
-        ('pases_precisos_p90',           'Pases Precisos P90'),
-        ('duelos_tierra_ganados_p90',    'Duelos Ganados P90'),
-    ],
-    'Mediocampista': [
-        ('pases_precisos_p90',           'Pases Precisos P90'),
-        ('pases_largos_p90',             'Pases Progresivos P90'),
-        ('asistencias_p90',              'Asistencias P90'),
-        ('xA_p90',                       'xA P90'),
-        ('chances_creadas_p90',          'Chances Creadas P90'),
-        ('recuperaciones_campo_rival_p90','Recuperaciones P90'),
-        ('duelos_tierra_ganados_p90',    'Duelos Ganados P90'),
-        ('entradas_p90',                 'Entradas P90'),
-        ('intercepciones_p90',           'Intercepciones P90'),
-    ],
-    'Defensa': [
-        ('intercepciones_p90',           'Intercepciones P90'),
-        ('duelos_tierra_ganados_p90',    'Duelos Ganados P90'),
-        ('recuperaciones_campo_rival_p90','Recuperaciones P90'),
-        ('pases_precisos_p90',           'Pases Precisos P90'),
-        ('pases_largos_p90',             'Pases Largos P90'),
-        ('despejes_p90',                 'Despejes P90'),
-        ('entradas_p90',                 'Entradas P90'),
-        ('faltas_cometidas_p90',         'Faltas P90'),
-        ('tiros_bloqueados_p90',         'Tiros Bloqueados P90'),
-    ],
-    'Portero': [
-        ('paradas_p90',                  'Paradas P90'),
-        ('porcentaje_paradas_p90',       '% Paradas P90'),
-        ('porterias_cero_p90',           'Porterías Cero P90'),
-        ('goles_recibidos_p90',          'Goles Concedidos P90'),
-        ('goles_evitados_p90',           'Goles Evitados P90'),
-        ('pases_precisos_p90',           'Pases Precisos P90'),
-    ],
-}
+# ─────────────────────────────────────────────────────────────────────────────
+# LAYOUT  (todo en fracciones de figura, y=0 abajo)
+# ─────────────────────────────────────────────────────────────────────────────
+FIG_W, FIG_H = 8.0, 12.0
+DPI          = 150
+AR           = FIG_H / FIG_W   # 1.5 — para cuadrar elementos circulares
 
-def classify(pos_str):
-    if pd.isna(pos_str):
-        return 'Delantero'
-    primary = str(pos_str).split(',')[0].strip()
-    return _POS_CAT.get(primary, 'Mediocampista')
+FOOTER_H  = 0.065
+WINCTR_H  = 0.055
+ROW_H     = 0.058
+METRICS_H = ROW_H * N_METRICS        # 0.58
+RATING_H  = 0.085
+HEADER_H  = 0.215
+
+FOOTER_Y  = 0.000
+WINCTR_Y  = FOOTER_Y + FOOTER_H      # 0.065
+METRICS_Y = WINCTR_Y + WINCTR_H      # 0.120
+RATING_Y  = METRICS_Y + METRICS_H    # 0.700
+HEADER_Y  = RATING_Y + RATING_H      # 0.785
+# HEADER_Y + HEADER_H ≈ 1.0 ✓
+
+# ── Geometría de barras (en coords de figura [0,1]) ─────────────────────────
+CENTER_X   = 0.500
+LABEL_W    = 0.170
+LABEL_X    = CENTER_X - LABEL_W / 2   # 0.415
+VAL_W      = 0.085                     # zona del valor numérico a cada lado
+BAR_MAX_W  = LABEL_X - VAL_W          # 0.415 - 0.085 = 0.330
+
+# x del borde izquierdo del track izquierdo
+BAR_L_X    = VAL_W                     # 0.085
+# x del borde derecho del track derecho
+BAR_R_X    = 1.0 - VAL_W              # 0.915
+# x inicio track derecho
+BAR2_X     = LABEL_X + LABEL_W        # 0.585
+
+BAR_INSET_Y = 0.22   # fracción de ROW_H de margen arriba/abajo de la barra
+BAR_ROUND   = 0.004  # radio de redondeo en coords figura
+
+# ── Foto jugador header ──────────────────────────────────────────────────────
+PHOTO_H_FIG = 0.110
+PHOTO_W_FIG = PHOTO_H_FIG * AR
 
 # ─────────────────────────────────────────────────────────────────────────────
 # CARGA DE DATOS
 # ─────────────────────────────────────────────────────────────────────────────
-def load_csv() -> pd.DataFrame:
+def _classify(pos_str):
+    POS = {'GK':'Portero','CB':'Defensa','LB':'Defensa','RB':'Defensa',
+           'LWB':'Defensa','RWB':'Defensa','CDM':'Mediocampista',
+           'CM':'Mediocampista','CAM':'Mediocampista','LM':'Mediocampista',
+           'RM':'Mediocampista','LW':'Delantero','RW':'Delantero','ST':'Delantero'}
+    if pd.isna(pos_str):
+        return 'Delantero'
+    return POS.get(str(pos_str).split(',')[0].strip(), 'Mediocampista')
+
+def load_csv():
     df = pd.read_csv(CSV_PATH)
-    df['categoria'] = df['posicion'].apply(classify)
+    df['categoria'] = df['posicion'].apply(_classify)
     return df
 
-def load_stats_detalladas(player_id: int, equipo_id: int) -> dict:
-    """Busca el jugador en los JSON de stats_detalladas de su equipo."""
-    pattern = STATS_DIR / f'{equipo_id}_*.json'
-    files = glob.glob(str(pattern))
-    for fpath in files:
-        with open(fpath, encoding='utf-8') as f:
-            data = json.load(f)
-        for j in data.get('jugadores', []):
-            if j.get('id') == player_id:
-                return j
-    return {}
-
-def get_player_data(player_id: int, df: pd.DataFrame):
-    row = df[df['id'] == player_id]
+def get_player_row(pid, df):
+    row = df[df['id'] == pid]
     if row.empty:
-        raise ValueError(f'Jugador ID {player_id} no encontrado en el CSV.')
-    row = row.iloc[0]
-    stats = load_stats_detalladas(int(player_id), int(row['equipo_id']))
-    # Extraer tarjetas de stats detalladas
-    disc = stats.get('grupos', {}).get('discipline', {}).get('stats', {})
-    yellow = int(disc.get('yellow_cards', {}).get('value', 0) or 0)
-    red    = int(disc.get('red_cards',   {}).get('value', 0) or 0)
-    return row, yellow, red
+        raise ValueError(f'Jugador {pid} no encontrado.')
+    return row.iloc[0]
 
-# ─────────────────────────────────────────────────────────────────────────────
-# PERCENTILES (dentro de toda la liga, misma categoría)
-# ─────────────────────────────────────────────────────────────────────────────
-def compute_percentiles(df: pd.DataFrame, cat: str, cols: list) -> pd.DataFrame:
-    """Devuelve percentiles 0-100 por columna para la categoría dada."""
-    sub = df[(df['categoria'] == cat) & (df['minutos_stats'] >= 200)].copy()
-    pct = pd.DataFrame(index=sub.index)
-    for c in cols:
-        if c in sub.columns:
-            pct[c] = sub[c].fillna(0).rank(pct=True) * 100
-        else:
-            pct[c] = 0.0
-    pct['id'] = sub['id'].values
-    return pct
+def get_metric_value(row, col):
+    v = row.get(col, 0)
+    if v is None or (isinstance(v, float) and np.isnan(v)):
+        return 0.0
+    return float(v)
 
 # ─────────────────────────────────────────────────────────────────────────────
 # IMÁGENES
 # ─────────────────────────────────────────────────────────────────────────────
-FOTMOB_PLAYER = 'https://images.fotmob.com/image_resources/playerimages/{}.png'
-FOTMOB_TEAM   = 'https://images.fotmob.com/image_resources/logo/teamlogo/{}.png'
-_HEADERS = {'User-Agent': 'Mozilla/5.0'}
+_HDRS = {'User-Agent': 'Mozilla/5.0'}
 
 def _fetch(url, dest):
-    if dest.exists() and dest.stat().st_size > 0:
+    if dest.exists() and dest.stat().st_size > 500:
         return True
     try:
-        req = urllib.request.Request(url, headers=_HEADERS)
-        with urllib.request.urlopen(req, timeout=6) as r:
+        with urllib.request.urlopen(
+                urllib.request.Request(url, headers=_HDRS), timeout=8) as r:
             dest.write_bytes(r.read())
         return True
     except Exception:
@@ -213,7 +183,8 @@ def _fetch(url, dest):
 
 def get_player_img(pid):
     dest = IMG_PLAY / f'{pid}.png'
-    if not _fetch(FOTMOB_PLAYER.format(pid), dest):
+    url  = f'https://images.fotmob.com/image_resources/playerimages/{pid}.png'
+    if not _fetch(url, dest):
         return None
     try:
         return Image.open(dest).convert('RGBA')
@@ -222,371 +193,351 @@ def get_player_img(pid):
 
 def get_team_img(tid):
     dest = IMG_TEAMS / f'{tid}.png'
-    if not _fetch(FOTMOB_TEAM.format(tid), dest):
+    url  = f'https://images.fotmob.com/image_resources/logo/teamlogo/{tid}.png'
+    if not _fetch(url, dest):
         return None
     try:
         return Image.open(dest).convert('RGBA')
     except Exception:
         return None
 
-def circular_crop(img: Image.Image, size=100) -> np.ndarray:
-    img = img.convert('RGBA').resize((size, size), Image.LANCZOS)
-    mask = Image.new('L', (size, size), 0)
-    ImageDraw.Draw(mask).ellipse((0, 0, size-1, size-1), fill=255)
-    out = Image.new('RGBA', (size, size), (0,0,0,0))
+def circular_crop(img: Image.Image, px=120) -> np.ndarray:
+    img = img.convert('RGBA').resize((px, px), Image.LANCZOS)
+    ring = Image.new('RGBA', (px, px), (0,0,0,0))
+    ImageDraw.Draw(ring).ellipse((0,0,px-1,px-1), fill=(255,255,255,180))
+    mask = Image.new('L', (px, px), 0)
+    ImageDraw.Draw(mask).ellipse((3, 3, px-4, px-4), fill=255)
+    out = ring.copy()
     out.paste(img, mask=mask)
     return np.array(out)
 
-def placeholder_player(size=100, color=(55,62,75)) -> np.ndarray:
-    img = Image.new('RGBA', (size, size), (0,0,0,0))
+def placeholder_circle(px=120, color=(60,60,80)) -> np.ndarray:
+    img  = Image.new('RGBA', (px, px), (0,0,0,0))
     draw = ImageDraw.Draw(img)
-    draw.ellipse((0,0,size-1,size-1), fill=(*color,255))
-    draw.ellipse((size//4, size//8, size*3//4, size//2), fill=(95,102,115,200))
-    draw.ellipse((size//8, size*9//16, size*7//8, size-1), fill=(95,102,115,200))
+    draw.ellipse((0,0,px-1,px-1), fill=(*color, 255))
     return np.array(img)
 
-def hex_to_rgba_dark(hex_color: str, alpha=0.18) -> tuple:
-    r, g, b = tuple(int(hex_color.lstrip('#')[i:i+2], 16)/255 for i in (0,2,4))
-    return (r, g, b, alpha)
-
-# ─────────────────────────────────────────────────────────────────────────────
-# RENDER
-# ─────────────────────────────────────────────────────────────────────────────
-FIG_W  = 14
-FIG_H  = 11
-DPI    = 150
-
-# Zonas (coordenadas figura)
-HEADER_H  = 0.24   # encabezado con fotos y datos generales
-FOOTER_H  = 0.065
-STATS_Y0  = FOOTER_H
-STATS_H   = 1.0 - HEADER_H - FOOTER_H  # zona de barras
-
-# Columnas
-LEFT_PHOTO_X   = 0.03
-CENTER_X_L     = 0.38   # borde izquierdo de la columna central (etiquetas)
-CENTER_X_R     = 0.62   # borde derecho de la columna central
-BAR_MAX_W      = 0.34   # max ancho de barra en coordenadas figura
-RIGHT_PHOTO_X  = 0.93
-
-
-def draw_card_icons(ax, yellow, red, x_start, y, direction='left'):
-    """Dibuja íconos de tarjetas como rectángulos pequeños."""
-    card_w, card_h = 0.022, 0.038
-    gap = 0.007
-    items = []
-    if yellow > 0:
-        items.append(('#F5C518', str(yellow)))
-    if red > 0:
-        items.append(('#D5001C', str(red)))
-
-    for color, count in items:
-        if direction == 'left':
-            rect = mpatches.FancyBboxPatch(
-                (x_start, y - card_h/2), card_w, card_h,
-                boxstyle='round,pad=0.002', color=color,
-                transform=ax.transAxes, zorder=5
-            )
-            ax.add_patch(rect)
-            ax.text(x_start + card_w/2, y, count,
-                    color='white', fontsize=7, fontweight='bold',
-                    ha='center', va='center', transform=ax.transAxes, zorder=6)
-            x_start += card_w + gap
+def make_rating_circle(rating_val, px=110) -> np.ndarray:
+    if rating_val is None or (isinstance(rating_val, float) and np.isnan(rating_val)):
+        color = (100, 100, 110)
+        text  = 'N/A'
+    else:
+        rv = float(rating_val)
+        text = f'{rv:.2f}'
+        if rv >= 7.5:
+            color = (0, 160, 100)
+        elif rv >= 7.0:
+            color = (210, 140, 20)
         else:
-            x_start -= card_w
-            rect = mpatches.FancyBboxPatch(
-                (x_start, y - card_h/2), card_w, card_h,
-                boxstyle='round,pad=0.002', color=color,
-                transform=ax.transAxes, zorder=5
-            )
-            ax.add_patch(rect)
-            ax.text(x_start + card_w/2, y, count,
-                    color='white', fontsize=7, fontweight='bold',
-                    ha='center', va='center', transform=ax.transAxes, zorder=6)
-            x_start -= gap
+            color = (185, 30, 30)
 
+    img  = Image.new('RGBA', (px, px), (0,0,0,0))
+    draw = ImageDraw.Draw(img)
+    draw.ellipse((3,3,px-1,px-1), fill=(0,0,0,120))       # sombra
+    draw.ellipse((0,0,px-4,px-4), fill=(*color, 255))      # círculo
 
-def rating_color(r):
-    if r is None or pd.isna(r):
-        return GRAY
-    if r >= 7.5:
-        return '#00C87A'
-    if r >= 7.0:
-        return '#F5A623'
-    return '#D5001C'
+    try:
+        from PIL import ImageFont
+        fnt_big   = ImageFont.truetype(str(BEBAS_TTF), px // 3)
+        fnt_small = ImageFont.truetype(str(BEBAS_TTF), px // 7)
+    except Exception:
+        fnt_big = fnt_small = None
 
+    cx, cy = (px-4)//2, (px-4)//2
+    if fnt_big:
+        bb = draw.textbbox((0,0), text, font=fnt_big)
+        tw, th = bb[2]-bb[0], bb[3]-bb[1]
+        draw.text((cx - tw//2, cy - th//2 - 4), text,
+                  fill=(255,255,255,255), font=fnt_big)
+        lbl = 'RATING FBM'
+        bb2 = draw.textbbox((0,0), lbl, font=fnt_small)
+        tw2 = bb2[2]-bb2[0]
+        draw.text((cx - tw2//2, cy + th//2 + 2), lbl,
+                  fill=(220,220,220,200), font=fnt_small)
+    else:
+        draw.text((cx-10, cy-8), text, fill=(255,255,255,255))
+    return np.array(img)
 
-def render_1v1(p1_id: int, p2_id: int):
-    df   = load_csv()
-    r1, y1, rc1 = get_player_data(p1_id, df)
-    r2, y2, rc2 = get_player_data(p2_id, df)
+def _slugify(s: str) -> str:
+    s = unicodedata.normalize('NFD', s)
+    s = ''.join(c for c in s if unicodedata.category(c) != 'Mn')
+    return s.lower().replace(' ', '_')
 
-    cat1 = r1['categoria']
-    cat2 = r2['categoria']
-    # Usar la categoría del primero como base; si difieren, mostrar métricas comunes
-    cat  = cat1 if cat1 == cat2 else 'Mediocampista'
-    metrics = METRICS_BY_POS.get(cat, METRICS_BY_POS['Delantero'])
-    cols = [m[0] for m in metrics]
+def _hex_rgba(hex_color, alpha=1.0):
+    r,g,b = tuple(int(hex_color.lstrip('#')[i:i+2],16)/255 for i in (0,2,4))
+    return (r,g,b,alpha)
 
-    # Percentiles
-    pct_df = compute_percentiles(df, cat, cols)
-    def get_pct(pid, col):
-        row = pct_df[pct_df['id'] == pid]
-        if row.empty or col not in pct_df.columns:
-            return 0.0
-        return float(row.iloc[0][col])
+def _hex_rgb_tuple(hex_color):
+    return tuple(int(hex_color.lstrip('#')[i:i+2],16) for i in (0,2,4))
 
-    c1 = TEAM_COLORS.get(int(r1['equipo_id']), '#444444')
-    c2 = TEAM_COLORS.get(int(r2['equipo_id']), '#444444')
+def _add_img_axis(fig, arr, x, y, w, h):
+    """Agrega un eje con imagen PNG (RGBA) en coordenadas de figura."""
+    ax = fig.add_axes([x, y, w, h])
+    ax.imshow(arr, aspect='equal')
+    ax.axis('off')
+    return ax
 
-    # ── FIGURA ──────────────────────────────────────────────────────────────
+# ─────────────────────────────────────────────────────────────────────────────
+# RENDER PRINCIPAL
+# ─────────────────────────────────────────────────────────────────────────────
+def render_1v1(pid1: int, pid2: int):
+    df = load_csv()
+    r1 = get_player_row(pid1, df)
+    r2 = get_player_row(pid2, df)
+
+    c1 = TEAM_COLORS.get(int(r1['equipo_id']), '#4a5568')
+    c2 = TEAM_COLORS.get(int(r2['equipo_id']), '#4a5568')
+
+    # ════════════════════════════════════════════════════════════════════════
+    # FIGURA  +  FONDO GRADIENTE
+    # ════════════════════════════════════════════════════════════════════════
     fig = plt.figure(figsize=(FIG_W, FIG_H), facecolor=DARK_BG)
 
-    # ── FONDO CON TONO DE EQUIPO ─────────────────────────────────────────
-    bg_ax = fig.add_axes([0, 0, 1, 1])
-    bg_ax.set_xlim(0, 1); bg_ax.set_ylim(0, 1); bg_ax.axis('off')
-    bg_ax.add_patch(mpatches.Rectangle((0, 0), 0.5, 1,
-                    color=hex_to_rgba_dark(c1, 0.22), transform=bg_ax.transAxes))
-    bg_ax.add_patch(mpatches.Rectangle((0.5, 0), 0.5, 1,
-                    color=hex_to_rgba_dark(c2, 0.22), transform=bg_ax.transAxes))
-    # Línea central
-    bg_ax.plot([0.5, 0.5], [FOOTER_H, 1.0], color='#2d333b', lw=1.5,
-               transform=bg_ax.transAxes)
+    # Gradiente de fondo (oscuro → ligeramente más claro arriba)
+    grad = np.zeros((200, 2, 3))
+    bot = np.array([0x0a,0x0e,0x12])/255
+    top = np.array([0x13,0x1a,0x24])/255
+    for i in range(200):
+        t = i/199
+        grad[i] = bot*(1-t) + top*t
+    bg = fig.add_axes([0,0,1,1])
+    bg.imshow(grad, aspect='auto', extent=[0,1,0,1], origin='lower')
+    bg.set_xlim(0,1); bg.set_ylim(0,1); bg.axis('off')
 
-    # ── HEADER ───────────────────────────────────────────────────────────
-    hax = fig.add_axes([0, 1 - HEADER_H, 1, HEADER_H])
-    hax.set_xlim(0, 1); hax.set_ylim(0, 1); hax.axis('off')
-    hax.set_facecolor('#0d1117')
+    # Wash de color por mitad
+    bg.add_patch(mpatches.Rectangle((0,0),0.5,1,
+        facecolor=_hex_rgba(c1,0.10), linewidth=0))
+    bg.add_patch(mpatches.Rectangle((0.5,0),0.5,1,
+        facecolor=_hex_rgba(c2,0.10), linewidth=0))
+    bg.plot([0.5,0.5],[FOOTER_Y+FOOTER_H, 1.0], color='#2d333b', lw=1.0)
 
-    # Fondo header tono de equipo
-    hax.add_patch(mpatches.Rectangle((0, 0), 0.5, 1,
-                  color=hex_to_rgba_dark(c1, 0.30), transform=hax.transAxes))
-    hax.add_patch(mpatches.Rectangle((0.5, 0), 0.5, 1,
-                  color=hex_to_rgba_dark(c2, 0.30), transform=hax.transAxes))
+    # ════════════════════════════════════════════════════════════════════════
+    # HEADER
+    # ════════════════════════════════════════════════════════════════════════
+    hax = fig.add_axes([0, HEADER_Y, 1, HEADER_H])
+    hax.set_facecolor('#0d1117'); hax.axis('off')
+    hax.set_xlim(0,1); hax.set_ylim(0,1)
 
-    # Línea superior de color de equipo
-    hax.add_patch(mpatches.Rectangle((0, 0.96), 0.5, 0.04,
-                  color=c1, transform=hax.transAxes))
-    hax.add_patch(mpatches.Rectangle((0.5, 0.96), 0.5, 0.04,
-                  color=c2, transform=hax.transAxes))
+    hax.add_patch(mpatches.Rectangle((0,0),0.5,1,
+        facecolor=_hex_rgba(c1,0.22), linewidth=0))
+    hax.add_patch(mpatches.Rectangle((0.5,0),0.5,1,
+        facecolor=_hex_rgba(c2,0.22), linewidth=0))
+    hax.add_patch(mpatches.Rectangle((0,0.94),0.5,0.06, facecolor=c1, linewidth=0))
+    hax.add_patch(mpatches.Rectangle((0.5,0.94),0.5,0.06, facecolor=c2, linewidth=0))
 
-    # Título central
-    hax.text(0.5, 0.90, 'VS',
-             color=WHITE, **bebas(28),
-             va='center', ha='center', transform=hax.transAxes, zorder=5)
-    hax.text(0.5, 0.75, f'Liga MX · Clausura 2026',
-             color=GRAY, fontsize=8,
-             va='center', ha='center', transform=hax.transAxes)
+    hax.text(0.500, 0.63, 'VS', color=WHITE, ha='center', va='center',
+             transform=hax.transAxes, **bebas(36))
+    hax.text(0.500, 0.31, 'LIGA MX · CLAUSURA 2026',
+             color=GRAY, ha='center', va='center', fontsize=8.5,
+             transform=hax.transAxes)
 
-    # ── FOTO JUGADOR 1 (izquierda) ───────────────────────────────────────
-    pimg1 = get_player_img(p1_id)
-    arr1  = circular_crop(pimg1, 90) if pimg1 else placeholder_player(90, color=(60,20,20))
-    photo_ax1 = fig.add_axes([0.04, 1 - HEADER_H + 0.01, 0.09, HEADER_H * 0.80])
-    photo_ax1.imshow(arr1); photo_ax1.axis('off')
+    # ── Fotos circulares ──────────────────────────────────────────────────────
+    pimg1 = get_player_img(pid1)
+    pimg2 = get_player_img(pid2)
+    arr1 = circular_crop(pimg1, 130) if pimg1 else placeholder_circle(130, (60,20,20))
+    arr2 = circular_crop(pimg2, 130) if pimg2 else placeholder_circle(130, (20,20,60))
 
-    # ── FOTO JUGADOR 2 (derecha) ──────────────────────────────────────────
-    pimg2 = get_player_img(p2_id)
-    arr2  = circular_crop(pimg2, 90) if pimg2 else placeholder_player(90, color=(20,20,60))
-    photo_ax2 = fig.add_axes([0.87, 1 - HEADER_H + 0.01, 0.09, HEADER_H * 0.80])
-    photo_ax2.imshow(arr2); photo_ax2.axis('off')
+    ph_y = HEADER_Y + HEADER_H * 0.13
+    _add_img_axis(fig, arr1, 0.025, ph_y, PHOTO_W_FIG, PHOTO_H_FIG)
+    _add_img_axis(fig, arr2, 1.0 - 0.025 - PHOTO_W_FIG, ph_y, PHOTO_W_FIG, PHOTO_H_FIG)
 
-    # ── ESCUDO EQUIPO 1 ──────────────────────────────────────────────────
-    timg1 = get_team_img(int(r1['equipo_id']))
+    # ── Escudos de equipo ─────────────────────────────────────────────────────
+    tid1 = int(r1['equipo_id']); tid2 = int(r2['equipo_id'])
+    timg1 = get_team_img(tid1);  timg2 = get_team_img(tid2)
+
+    sh_h = 0.052; sh_w = sh_h * AR
+    shield_y = HEADER_Y + HEADER_H * 0.44
+    text_x1  = 0.025 + PHOTO_W_FIG + 0.015
+
     if timg1:
-        t1arr = np.array(timg1.convert('RGBA').resize((45,45), Image.LANCZOS))
-        tax1 = fig.add_axes([0.145, 1 - HEADER_H + HEADER_H*0.52, 0.04, HEADER_H*0.38])
-        tax1.imshow(t1arr); tax1.axis('off')
+        sh1_ax = fig.add_axes([text_x1, shield_y, sh_w, sh_h])
+        sh1_ax.set_facecolor('#f8f8fc')
+        sh1_ax.imshow(np.array(timg1.resize((80,80), Image.LANCZOS)), aspect='equal')
+        sh1_ax.axis('off')
 
-    # ── ESCUDO EQUIPO 2 ──────────────────────────────────────────────────
-    timg2 = get_team_img(int(r2['equipo_id']))
+    text_x2 = 1.0 - 0.025 - PHOTO_W_FIG - 0.015 - sh_w
     if timg2:
-        t2arr = np.array(timg2.convert('RGBA').resize((45,45), Image.LANCZOS))
-        tax2 = fig.add_axes([0.815, 1 - HEADER_H + HEADER_H*0.52, 0.04, HEADER_H*0.38])
-        tax2.imshow(t2arr); tax2.axis('off')
+        sh2_ax = fig.add_axes([text_x2, shield_y, sh_w, sh_h])
+        sh2_ax.set_facecolor('#f8f8fc')
+        sh2_ax.imshow(np.array(timg2.resize((80,80), Image.LANCZOS)), aspect='equal')
+        sh2_ax.axis('off')
 
-    # ── TEXTOS JUGADOR 1 ─────────────────────────────────────────────────
-    hax.text(0.15, 0.65, r1['nombre'].upper(),
-             color=WHITE, **bebas(20),
-             va='center', ha='left', transform=hax.transAxes)
-    hax.text(0.15, 0.48, f"{r1['equipo']}  ·  {r1['posicion']}  ·  {int(r1['edad'])} años",
-             color=GRAY, fontsize=8.5,
-             va='center', ha='left', transform=hax.transAxes)
-    hax.text(0.15, 0.35,
-             f"{int(r1.get('minutos_stats',0) or 0)} min  ·  {int(r1.get('partidos_stats',0) or 0)} partidos",
-             color=GRAY, fontsize=8,
-             va='center', ha='left', transform=hax.transAxes)
+    # ── Textos del header ─────────────────────────────────────────────────────
+    name1_x = text_x1
+    name2_x = 1.0 - 0.025 - PHOTO_W_FIG - 0.015
 
-    # Rating jugador 1
+    hax.text(name1_x, 0.82, r1['nombre'].upper(),
+             color=WHITE, ha='left', va='center',
+             transform=hax.transAxes, **bebas(21))
+    hax.text(name2_x, 0.82, r2['nombre'].upper(),
+             color=WHITE, ha='right', va='center',
+             transform=hax.transAxes, **bebas(21))
+
+    eq1_x = name1_x + sh_w + 0.008
+    eq2_x = name2_x - sh_w - 0.008
+    hax.text(eq1_x, 0.47, r1['equipo'].upper(),
+             color=c1, ha='left', va='center',
+             transform=hax.transAxes, **bebas(13))
+    hax.text(eq2_x, 0.47, r2['equipo'].upper(),
+             color=c2, ha='right', va='center',
+             transform=hax.transAxes, **bebas(13))
+
+    pos1 = r1.get('posicion','—')
+    pos2 = r2.get('posicion','—')
+    min1 = int(r1.get('minutos_stats',0) or 0)
+    min2 = int(r2.get('minutos_stats',0) or 0)
+    hax.text(name1_x, 0.24, f'{pos1}  ·  {min1} MIN',
+             color=GRAY, ha='left', va='center', fontsize=8.5,
+             transform=hax.transAxes)
+    hax.text(name2_x, 0.24, f'{pos2}  ·  {min2} MIN',
+             color=GRAY, ha='right', va='center', fontsize=8.5,
+             transform=hax.transAxes)
+
+    # ════════════════════════════════════════════════════════════════════════
+    # RATING CIRCLES
+    # ════════════════════════════════════════════════════════════════════════
     rat1 = r1.get('rating')
-    rat1_str = f'{float(rat1):.2f}' if pd.notna(rat1) else 'N/A'
-    hax.add_patch(mpatches.FancyBboxPatch(
-        (0.15, 0.10), 0.075, 0.16,
-        boxstyle='round,pad=0.01', color=rating_color(rat1 if pd.notna(rat1) else None),
-        transform=hax.transAxes, zorder=4))
-    hax.text(0.1875, 0.18, rat1_str,
-             color='#0d1117', **bebas(15),
-             va='center', ha='center', transform=hax.transAxes, zorder=5)
-    hax.text(0.1875, 0.10, 'Rating',
-             color='#0d1117', fontsize=6, fontweight='bold',
-             va='bottom', ha='center', transform=hax.transAxes, zorder=5)
-
-    # Tarjetas jugador 1
-    draw_card_icons(hax, y1, rc1, x_start=0.24, y=0.18, direction='left')
-
-    # ── TEXTOS JUGADOR 2 ─────────────────────────────────────────────────
-    hax.text(0.85, 0.65, r2['nombre'].upper(),
-             color=WHITE, **bebas(20),
-             va='center', ha='right', transform=hax.transAxes)
-    hax.text(0.85, 0.48, f"{r2['equipo']}  ·  {r2['posicion']}  ·  {int(r2['edad'])} años",
-             color=GRAY, fontsize=8.5,
-             va='center', ha='right', transform=hax.transAxes)
-    hax.text(0.85, 0.35,
-             f"{int(r2.get('minutos_stats',0) or 0)} min  ·  {int(r2.get('partidos_stats',0) or 0)} partidos",
-             color=GRAY, fontsize=8,
-             va='center', ha='right', transform=hax.transAxes)
-
-    # Rating jugador 2
     rat2 = r2.get('rating')
-    rat2_str = f'{float(rat2):.2f}' if pd.notna(rat2) else 'N/A'
-    hax.add_patch(mpatches.FancyBboxPatch(
-        (0.775, 0.10), 0.075, 0.16,
-        boxstyle='round,pad=0.01', color=rating_color(rat2 if pd.notna(rat2) else None),
-        transform=hax.transAxes, zorder=4))
-    hax.text(0.8125, 0.18, rat2_str,
-             color='#0d1117', **bebas(15),
-             va='center', ha='center', transform=hax.transAxes, zorder=5)
-    hax.text(0.8125, 0.10, 'Rating',
-             color='#0d1117', fontsize=6, fontweight='bold',
-             va='bottom', ha='center', transform=hax.transAxes, zorder=5)
+    rc_h = 0.072; rc_w = rc_h * AR
+    rc_y  = RATING_Y + (RATING_H - rc_h) / 2
 
-    # Tarjetas jugador 2 (de derecha a izquierda)
-    draw_card_icons(hax, y2, rc2, x_start=0.76, y=0.18, direction='right')
+    rc1_arr = make_rating_circle(rat1 if pd.notna(rat1) else None, 120)
+    rc2_arr = make_rating_circle(rat2 if pd.notna(rat2) else None, 120)
+    _add_img_axis(fig, rc1_arr, CENTER_X - rc_w - 0.038, rc_y, rc_w, rc_h)
+    _add_img_axis(fig, rc2_arr, CENTER_X + 0.038, rc_y, rc_w, rc_h)
 
-    # ── ZONA DE BARRAS ───────────────────────────────────────────────────
-    n = len(metrics)
-    row_h = STATS_H / n
-    stats_top = 1.0 - HEADER_H
+    # ════════════════════════════════════════════════════════════════════════
+    # BARRAS DE MÉTRICAS  — UN SOLO EJE con Rectangle patches
+    # ════════════════════════════════════════════════════════════════════════
+    # Eje cubre toda el área de métricas en coordenadas de figura
+    # ylim = [0, N_METRICS], xlim = [0, 1]
+    mx = fig.add_axes([0, METRICS_Y, 1, METRICS_H])
+    mx.set_xlim(0, 1)
+    mx.set_ylim(0, N_METRICS)
+    mx.set_facecolor(DARK_BG)
+    mx.axis('off')
 
-    for i, (col, label) in enumerate(metrics):
-        row_y  = stats_top - (i + 1) * row_h
-        row_bg = '#161b22' if i % 2 == 0 else DARK_BG
+    wins1 = wins2 = 0
+    BAR_H_ROW = 0.54   # fracción de 1 row que ocupa la barra (en unidades row)
+    BAR_PADY  = (1 - BAR_H_ROW) / 2
 
-        # Fondo de fila
-        rb = fig.add_axes([0, row_y, 1, row_h])
-        rb.set_facecolor(row_bg); rb.axis('off')
-        rb.axhline(0, color='#21262d', lw=0.6)
+    for i, (col, label) in enumerate(METRICS):
+        # fila i: y va de i (abajo) a i+1 (arriba) en coords del eje
+        # primer métrica arriba → índice 0 está arriba → row_y_bottom = N-1-i
+        row_bot = N_METRICS - 1 - i
+        row_top = row_bot + 1
 
-        # Etiqueta central
-        lax = fig.add_axes([CENTER_X_L, row_y, CENTER_X_R - CENTER_X_L, row_h])
-        lax.set_facecolor(row_bg); lax.axis('off')
-        lax.text(0.5, 0.5, label.upper(),
-                 color=GRAY, fontsize=7.5, fontweight='bold',
-                 va='center', ha='center', transform=lax.transAxes)
+        # Fondo alterno de fila
+        bg_row = '#0f151e' if i % 2 == 0 else DARK_BG
+        mx.add_patch(Rectangle((0, row_bot), 1, 1, facecolor=bg_row, zorder=1))
 
-        # Valores raw y percentiles
-        v1  = float(r1.get(col, 0) or 0)
-        v2  = float(r2.get(col, 0) or 0)
-        p1_ = get_pct(p1_id, col)
-        p2_ = get_pct(p2_id, col)
+        # Línea separadora sutil
+        mx.axhline(row_top, color='#1e2530', lw=0.6, zorder=2)
 
-        wins1 = p1_ >= p2_
-        wins2 = not wins1
+        v1 = get_metric_value(r1, col)
+        v2 = get_metric_value(r2, col)
+        max_v = max(v1, v2, 1e-9)
+        w1 = v1 / max_v
+        w2 = v2 / max_v
 
-        # Colores de barra: ganador = color equipo saturado, perdedor = más apagado
-        def bar_color(team_color, wins):
-            r_, g_, b_ = tuple(int(team_color.lstrip('#')[k:k+2], 16)/255 for k in (0,2,4))
-            if wins:
-                return team_color
-            # Apagar el color
-            return mc.to_hex((r_*0.45, g_*0.45, b_*0.45))
+        if v1 > v2:
+            wins1 += 1
+        elif v2 > v1:
+            wins2 += 1
+        else:
+            wins1 += 1; wins2 += 1
 
-        bc1 = bar_color(c1, wins1)
-        bc2 = bar_color(c2, wins2)
+        bar_color1 = c1 if v1 >= v2 else GRAY_DIM
+        bar_color2 = c2 if v2 >= v1 else GRAY_DIM
 
-        # ── BARRA JUGADOR 1 (va hacia la izquierda desde CENTER_X_L) ────
-        bar_len1 = p1_ / 100 * BAR_MAX_W
-        bax1 = fig.add_axes([CENTER_X_L - bar_len1, row_y + row_h * 0.20,
-                             bar_len1 + 0.001, row_h * 0.60])
-        bax1.set_facecolor(row_bg); bax1.axis('off')
-        # Fondo gris completo
-        bg1 = fig.add_axes([CENTER_X_L - BAR_MAX_W, row_y + row_h * 0.20,
-                            BAR_MAX_W, row_h * 0.60])
-        bg1.set_facecolor('#21262d'); bg1.axis('off')
-        # Barra real
-        bax1_real = fig.add_axes([CENTER_X_L - bar_len1, row_y + row_h * 0.20,
-                                  bar_len1, row_h * 0.60])
-        bax1_real.set_facecolor(bc1); bax1_real.axis('off')
-        # Ganador: añadir marcador ★
-        if wins1:
-            fig.text(CENTER_X_L - bar_len1 - 0.015, row_y + row_h * 0.50,
-                     '◀', color=c1, fontsize=8, va='center', ha='center')
+        # Coordenadas Y de la barra dentro de la fila
+        bar_b = row_bot + BAR_PADY
+        bar_t = row_bot + BAR_PADY + BAR_H_ROW
 
-        # Valor jugador 1 (al borde izquierdo de la barra)
-        val_str1 = f'{v1:.2f}' if v1 != int(v1) else f'{int(v1)}'
-        fig.text(CENTER_X_L - BAR_MAX_W - 0.005, row_y + row_h * 0.50,
-                 val_str1,
-                 color=WHITE if wins1 else GRAY,
-                 fontsize=8.5, fontweight='bold' if wins1 else 'normal',
-                 va='center', ha='right')
+        # ── Track izquierdo (gris) ─────────────────────────────────────────
+        mx.add_patch(Rectangle(
+            (BAR_L_X, bar_b), BAR_MAX_W, BAR_H_ROW,
+            facecolor=BAR_TRACK, zorder=3))
 
-        # ── BARRA JUGADOR 2 (va hacia la derecha desde CENTER_X_R) ────
-        bar_len2 = p2_ / 100 * BAR_MAX_W
-        # Fondo gris completo
-        bg2 = fig.add_axes([CENTER_X_R, row_y + row_h * 0.20,
-                            BAR_MAX_W, row_h * 0.60])
-        bg2.set_facecolor('#21262d'); bg2.axis('off')
-        # Barra real
-        bax2_real = fig.add_axes([CENTER_X_R, row_y + row_h * 0.20,
-                                  bar_len2, row_h * 0.60])
-        bax2_real.set_facecolor(bc2); bax2_real.axis('off')
-        # Ganador marcador
-        if wins2:
-            fig.text(CENTER_X_R + bar_len2 + 0.015, row_y + row_h * 0.50,
-                     '▶', color=c2, fontsize=8, va='center', ha='center')
+        # ── Barra izquierda coloreada (crece de derecha a izquierda) ───────
+        if w1 > 0.001:
+            bar1_x = LABEL_X - BAR_MAX_W * w1
+            mx.add_patch(Rectangle(
+                (bar1_x, bar_b), BAR_MAX_W * w1, BAR_H_ROW,
+                facecolor=bar_color1, zorder=4))
 
-        # Valor jugador 2
-        val_str2 = f'{v2:.2f}' if v2 != int(v2) else f'{int(v2)}'
-        fig.text(CENTER_X_R + BAR_MAX_W + 0.005, row_y + row_h * 0.50,
-                 val_str2,
-                 color=WHITE if wins2 else GRAY,
-                 fontsize=8.5, fontweight='bold' if wins2 else 'normal',
-                 va='center', ha='left')
+        # ── Track derecho (gris) ──────────────────────────────────────────
+        mx.add_patch(Rectangle(
+            (BAR2_X, bar_b), BAR_MAX_W, BAR_H_ROW,
+            facecolor=BAR_TRACK, zorder=3))
 
-    # ── CONTEO DE VICTORIAS ──────────────────────────────────────────────
-    wins_p1 = sum(1 for col, _ in metrics
-                  if get_pct(p1_id, col) >= get_pct(p2_id, col))
-    wins_p2 = n - wins_p1
+        # ── Barra derecha coloreada (crece de izquierda a derecha) ────────
+        if w2 > 0.001:
+            mx.add_patch(Rectangle(
+                (BAR2_X, bar_b), BAR_MAX_W * w2, BAR_H_ROW,
+                facecolor=bar_color2, zorder=4))
 
-    w_ax = fig.add_axes([0, stats_top - n * row_h - 0.001, 1, 0.001])
-    w_ax.axis('off')
+        # ── Etiqueta de métrica (centro) ──────────────────────────────────
+        mx.text(CENTER_X, row_bot + 0.50, label,
+                color=GRAY, fontsize=6.5, fontweight='bold',
+                ha='center', va='center', zorder=5)
 
-    # Mostrar conteo en la zona baja del header (sobre las barras)
-    hax.text(0.32, 0.22, f'{wins_p1} victorias',
-             color=c1, **bebas(13),
-             va='center', ha='right', transform=hax.transAxes)
-    hax.text(0.68, 0.22, f'{wins_p2} victorias',
-             color=c2, **bebas(13),
-             va='center', ha='left', transform=hax.transAxes)
+        # ── Valores numéricos ─────────────────────────────────────────────
+        val1 = f'{v1:.2f}' if v1 != int(v1) else str(int(v1))
+        val2 = f'{v2:.2f}' if v2 != int(v2) else str(int(v2))
 
-    # ── FOOTER ───────────────────────────────────────────────────────────
-    fax = fig.add_axes([0, 0, 1, FOOTER_H])
+        won1_flag = v1 >= v2
+        mx.text(BAR_L_X - 0.008, row_bot + 0.50, val1,
+                color=WHITE if won1_flag else GRAY,
+                fontsize=8, fontweight='bold' if won1_flag else 'normal',
+                ha='right', va='center', zorder=5)
+        mx.text(1.0 - VAL_W + 0.008, row_bot + 0.50, val2,
+                color=WHITE if not won1_flag else GRAY,
+                fontsize=8, fontweight='bold' if not won1_flag else 'normal',
+                ha='left', va='center', zorder=5)
+
+    # ════════════════════════════════════════════════════════════════════════
+    # BANNER VICTORIAS POR MÉTRICA
+    # ════════════════════════════════════════════════════════════════════════
+    wax = fig.add_axes([0, WINCTR_Y, 1, WINCTR_H])
+    wax.set_facecolor('#080c14'); wax.axis('off')
+    wax.set_xlim(0,1); wax.set_ylim(0,1)
+    wax.axhline(1.0, color='#21262d', lw=0.8)
+    wax.axhline(0.0, color='#21262d', lw=0.8)
+
+    ap1 = r1['nombre'].split()[-1].upper()
+    ap2 = r2['nombre'].split()[-1].upper()
+
+    wax.text(0.035, 0.50, f'{ap1} GANA {wins1} MÉTRICAS',
+             color=c1, ha='left', va='center',
+             transform=wax.transAxes, **bebas(15))
+    wax.text(0.500, 0.50, '|',
+             color=GRAY, ha='center', va='center',
+             transform=wax.transAxes, **bebas(15))
+    wax.text(0.965, 0.50, f'{ap2} GANA {wins2} MÉTRICAS',
+             color=c2, ha='right', va='center',
+             transform=wax.transAxes, **bebas(15))
+
+    # ════════════════════════════════════════════════════════════════════════
+    # FOOTER
+    # ════════════════════════════════════════════════════════════════════════
+    fax = fig.add_axes([0, FOOTER_Y, 1, FOOTER_H])
     fax.set_facecolor('#080c10'); fax.axis('off')
-    fax.axhline(1, color=RED_BRAND, lw=2.0)
+    fax.set_xlim(0,1); fax.set_ylim(0,1)
+    fax.axhline(1.0, color=RED_BRAND, lw=2.0)
 
-    fax.text(0.012, 0.44, 'Fuente: FotMob',
-             color=GRAY, fontsize=9, va='center', ha='left',
+    fax.text(0.014, 0.46, 'Fuente: FotMob',
+             color=GRAY, fontsize=9, ha='left', va='center',
              transform=fax.transAxes)
+    # Sombra + texto principal MAU-STATISTICS
+    kw = dict(ha='right', va='center', transform=fax.transAxes, **bebas(22))
+    fax.text(0.991, 0.38, 'MAU-STATISTICS', color='#000000', alpha=0.55, **kw)
+    fax.text(0.989, 0.50, 'MAU-STATISTICS', color=RED_BRAND, **kw)
 
-    # MAU-STATISTICS con sombra
-    mau_kw = dict(va='center', ha='right', transform=fax.transAxes, **bebas(20))
-    fax.text(0.989, 0.36, 'MAU-STATISTICS', color='#000000', alpha=0.65, **mau_kw)
-    fax.text(0.987, 0.44, 'MAU-STATISTICS', color=RED_BRAND, **mau_kw)
-
-    # ── GUARDAR ──────────────────────────────────────────────────────────
-    nombre1 = str(r1['nombre']).lower().replace(' ', '_').replace('á','a').replace('é','e').replace('í','i').replace('ó','o').replace('ú','u').replace('ñ','n').replace('ü','u')
-    nombre2 = str(r2['nombre']).lower().replace(' ', '_').replace('á','a').replace('é','e').replace('í','i').replace('ó','o').replace('ú','u').replace('ñ','n').replace('ü','u')
-    out = OUT_DIR / f'comparativo_{nombre1}_vs_{nombre2}.png'
-
+    # ── GUARDAR ───────────────────────────────────────────────────────────────
+    s1 = _slugify(str(r1['nombre']))
+    s2 = _slugify(str(r2['nombre']))
+    out = OUT_DIR / f'comparativo_{s1}_vs_{s2}.png'
     plt.savefig(out, dpi=DPI, bbox_inches='tight',
                 facecolor=DARK_BG, edgecolor='none')
     plt.close(fig)
@@ -598,9 +549,6 @@ def render_1v1(p1_id: int, p2_id: int):
 # MAIN
 # ─────────────────────────────────────────────────────────────────────────────
 if __name__ == '__main__':
-    if len(sys.argv) == 3:
-        id1, id2 = int(sys.argv[1]), int(sys.argv[2])
-    else:
-        # Ejemplo por defecto: Paulinho vs Ángel Sepúlveda
-        id1, id2 = 361377, 215428
-    render_1v1(id1, id2)
+    pid1 = int(sys.argv[1]) if len(sys.argv) > 1 else 361377   # Paulinho
+    pid2 = int(sys.argv[2]) if len(sys.argv) > 2 else 215428   # Ángel Sepúlveda
+    render_1v1(pid1, pid2)
