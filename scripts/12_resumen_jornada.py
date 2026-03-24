@@ -20,6 +20,7 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
+import matplotlib.colors as mcolors
 from matplotlib.font_manager import FontProperties
 import matplotlib.font_manager as fm
 from PIL import Image, ImageDraw, ImageFilter
@@ -217,6 +218,10 @@ def predict(model, local, visitante, max_goals=5):
     for i in range(n):
         for j in range(n):
             matriz[i][j] = poisson.pmf(i, lam_l) * poisson.pmf(j, lam_v)
+    # Normalizar: el truncamiento en max_goals hace que la suma < 1
+    total = float(matriz.sum())
+    if total > 0:
+        matriz /= total
     p_local  = float(np.sum(np.tril(matriz, -1)))
     p_empate = float(np.trace(matriz))
     p_visit  = float(np.sum(np.triu(matriz, 1)))
@@ -257,27 +262,81 @@ def _blank_shield(size):
 # HELPERS
 # ─────────────────────────────────────────────────────────────────────────────
 def _text_color(hex_bg):
-    """Blanco para fondos oscuros, negro para fondos muy claros (ej. amarillo)."""
+    """Negro para fondos claros (amarillo/verde), blanco para oscuros."""
     r = int(hex_bg[1:3], 16)
     g = int(hex_bg[3:5], 16)
     b = int(hex_bg[5:7], 16)
     lum = 0.299 * r + 0.587 * g + 0.114 * b
-    return '#111111' if lum > 170 else '#ffffff'
+    return '#111111' if lum > 160 else '#ffffff'
+
+def _hex_to_rgba(hex_color, alpha=1.0):
+    r = int(hex_color[1:3], 16) / 255
+    g = int(hex_color[3:5], 16) / 255
+    b = int(hex_color[5:7], 16) / 255
+    return np.array([r, g, b, alpha])
+
+def get_shield_framed(canonical_name, size=88, border=5):
+    """Escudo con borde redondeado del color del equipo, fondo oscuro interior."""
+    inner = size - border * 2
+    shield = get_shield(canonical_name, size=inner)
+    team_hex = TEAM_COLORS.get(canonical_name, '#444444')
+    r, g, b = int(team_hex[1:3],16), int(team_hex[3:5],16), int(team_hex[5:7],16)
+
+    # Canvas transparente
+    result = Image.new('RGBA', (size, size), (0, 0, 0, 0))
+
+    # Fondo exterior de color equipo (rounded)
+    bg = Image.new('RGBA', (size, size), (r, g, b, 210))
+    mask_o = Image.new('L', (size, size), 0)
+    draw_o = ImageDraw.Draw(mask_o)
+    rad = size // 5
+    try:
+        draw_o.rounded_rectangle([0, 0, size-1, size-1], radius=rad, fill=255)
+    except AttributeError:
+        draw_o.rectangle([0, 0, size-1, size-1], fill=255)
+    bg.putalpha(mask_o)
+    result.paste(bg, (0, 0), bg)
+
+    # Fondo interior oscuro (rounded)
+    inner_bg = Image.new('RGBA', (inner, inner), (13, 17, 23, 245))
+    mask_i = Image.new('L', (inner, inner), 0)
+    draw_i = ImageDraw.Draw(mask_i)
+    rad_i = inner // 5
+    try:
+        draw_i.rounded_rectangle([0, 0, inner-1, inner-1], radius=rad_i, fill=255)
+    except AttributeError:
+        draw_i.rectangle([0, 0, inner-1, inner-1], fill=255)
+    inner_bg.putalpha(mask_i)
+    result.paste(inner_bg, (border, border), inner_bg)
+
+    # Pegar escudo encima
+    shield_img = Image.fromarray(shield).convert('RGBA').resize((inner, inner), Image.LANCZOS)
+    result.paste(shield_img, (border, border), shield_img)
+    return np.array(result)
+
+def _draw_gradient_separator(fig, x, y, w, h, color_l, color_r, alpha=0.85):
+    """Dibuja una tira horizontal con gradiente de color_l → color_r."""
+    grad = np.zeros((1, 200, 4))
+    rgba_l = _hex_to_rgba(color_l, alpha)
+    rgba_r = _hex_to_rgba(color_r, alpha)
+    for k in range(200):
+        t = k / 199
+        grad[0, k] = (1 - t) * rgba_l + t * rgba_r
+    ax = fig.add_axes([x, y, w, h])
+    ax.imshow(grad, aspect='auto', extent=[0, 1, 0, 1])
+    ax.axis('off')
 
 # ─────────────────────────────────────────────────────────────────────────────
 # RENDER RESUMEN
 # ─────────────────────────────────────────────────────────────────────────────
 def render_jornada(jornada_num, partidos, model, out_path):
-    """
-    partidos: lista de dicts con 'local' y 'visitante' (nombres canónicos)
-    """
     n = len(partidos)
 
-    FIG_W   = 10.0
-    ROW_H   = 1.45
-    HEAD_H  = 1.10
-    FOOT_H  = 0.55
-    FIG_H   = HEAD_H + n * ROW_H + FOOT_H
+    FIG_W  = 10.0
+    ROW_H  = 1.50
+    HEAD_H = 1.10
+    FOOT_H = 0.55
+    FIG_H  = HEAD_H + n * ROW_H + FOOT_H
 
     fig = plt.figure(figsize=(FIG_W, FIG_H), facecolor=DARK_BG)
 
@@ -287,22 +346,24 @@ def render_jornada(jornada_num, partidos, model, out_path):
     head_ax.set_facecolor(DARK_BG)
     head_ax.axis('off')
 
-    bp = bebas(36)
-    kw = {'fontproperties': bp} if bp else {'fontsize': 36, 'fontweight': 'bold'}
-    head_ax.text(0.5, 0.78, f'JORNADA {jornada_num}',
-                 ha='center', va='top', color=WHITE, transform=head_ax.transAxes, **kw)
-    bp2 = bebas(18)
-    kw2 = {'fontproperties': bp2} if bp2 else {'fontsize': 18, 'fontweight': 'bold'}
+    bp_t = bebas(38)
+    kw_t = {'fontproperties': bp_t} if bp_t else {'fontsize': 38, 'fontweight': 'bold'}
+    head_ax.text(0.5, 0.80, f'JORNADA {jornada_num}',
+                 ha='center', va='top', color=WHITE,
+                 transform=head_ax.transAxes, **kw_t)
+    bp_s = bebas(17)
+    kw_s = {'fontproperties': bp_s} if bp_s else {'fontsize': 17, 'fontweight': 'bold'}
     head_ax.text(0.5, 0.44, 'PROBABILIDADES DE MARCADOR · LIGA MX · CLAUSURA 2026',
-                 ha='center', va='top', color=GRAY, transform=head_ax.transAxes, **kw2)
-    head_ax.axhline(0.0, color=RED_BRAND, linewidth=2, xmin=0.04, xmax=0.96)
+                 ha='center', va='top', color=GRAY,
+                 transform=head_ax.transAxes, **kw_s)
+    head_ax.axhline(0.0, color=RED_BRAND, linewidth=2.5, xmin=0.03, xmax=0.97)
 
     # Precalcular predicciones
     resultados = []
     for p in partidos:
         local_c = norm(p['local'])
         visit_c = norm(p['visitante'])
-        lam_l, lam_v, _, p_l, p_e, p_v, best_gl, best_gv, best_prob = predict(model, local_c, visit_c)
+        _, _, _, p_l, p_e, p_v, best_gl, best_gv, best_prob = predict(model, local_c, visit_c)
         resultados.append({
             'local':     local_c,
             'visitante': visit_c,
@@ -314,11 +375,11 @@ def render_jornada(jornada_num, partidos, model, out_path):
             'best_prob': best_prob,
         })
 
-    # Precargar escudos
+    # Precargar escudos con borde
     shields = {}
     all_teams = set(t for r in resultados for t in (r['local'], r['visitante']))
     for t in all_teams:
-        shields[t] = get_shield(t, size=80)
+        shields[t] = get_shield_framed(t, size=88, border=5)
 
     # ── FILAS ────────────────────────────────────────────────────────────────
     for i, r in enumerate(resultados):
@@ -326,99 +387,131 @@ def render_jornada(jornada_num, partidos, model, out_path):
         row_h_fc = ROW_H / FIG_H
         row_y    = row_top - row_h_fc
 
-        bg_color = '#111920' if i % 2 == 0 else '#0d1117'
-        row_ax = fig.add_axes([0.02, row_y + 0.004, 0.96, row_h_fc - 0.007])
-        row_ax.set_facecolor(bg_color)
+        lc = TEAM_COLORS.get(r['local'], '#888888')
+        vc = TEAM_COLORS.get(r['visitante'], '#888888')
+
+        # Fondo de fila alternado
+        bg = '#111920' if i % 2 == 0 else '#0d1117'
+        row_ax = fig.add_axes([0.02, row_y + 0.004, 0.96, row_h_fc - 0.010])
+        row_ax.set_facecolor(bg)
         row_ax.set_xlim(0, 1)
         row_ax.set_ylim(0, 1)
         row_ax.axis('off')
 
-        local_color = TEAM_COLORS.get(r['local'], '#888888')
-        visit_color = TEAM_COLORS.get(r['visitante'], '#888888')
+        # Wash sutil de color del equipo en los extremos de la fila
+        row_ax.add_patch(mpatches.Rectangle(
+            (0, 0), 0.23, 1, transform=row_ax.transAxes,
+            facecolor=lc, alpha=0.07, linewidth=0, zorder=0))
+        row_ax.add_patch(mpatches.Rectangle(
+            (0.77, 0), 0.23, 1, transform=row_ax.transAxes,
+            facecolor=vc, alpha=0.07, linewidth=0, zorder=0))
 
-        # Bordes laterales de color
-        row_ax.axvline(0.0, color=local_color, linewidth=5)
-        row_ax.axvline(1.0, color=visit_color, linewidth=5)
+        # Bordes laterales de color del equipo
+        row_ax.axvline(0.002, color=lc, linewidth=5, zorder=5)
+        row_ax.axvline(0.998, color=vc, linewidth=5, zorder=5)
 
         # ── Escudo local ──────────────────────────────────────────────────────
-        sh_ax_l = fig.add_axes([0.035, row_y + row_h_fc * 0.10, 0.105, row_h_fc * 0.80])
+        SH_W = 0.105; SH_H_FC = 0.82
+        sh_x_l = 0.035
+        sh_y_l = row_y + row_h_fc * ((1 - SH_H_FC) / 2)
+        sh_h_l = row_h_fc * SH_H_FC
+        sh_ax_l = fig.add_axes([sh_x_l, sh_y_l, SH_W, sh_h_l])
         sh_ax_l.imshow(shields[r['local']], aspect='equal')
         sh_ax_l.axis('off')
 
         # Nombre local
-        bp3 = bebas(12)
-        kw3 = {'fontproperties': bp3} if bp3 else {'fontsize': 12, 'fontweight': 'bold'}
-        row_ax.text(0.185, 0.75, r['local'].upper(),
+        bp_nm = bebas(11)
+        kw_nm = {'fontproperties': bp_nm} if bp_nm else {'fontsize': 11, 'fontweight': 'bold'}
+        row_ax.text(0.185, 0.18, r['local'].upper(),
                     ha='center', va='center', color=WHITE,
-                    transform=row_ax.transAxes, **kw3)
+                    transform=row_ax.transAxes, **kw_nm)
 
-        # ── Barras ───────────────────────────────────────────────────────────
-        BAR_LEFT  = 0.265
-        BAR_RIGHT = 0.735
-        BAR_W     = BAR_RIGHT - BAR_LEFT
-        BAR_Y_CTR = 0.56    # centro vertical de la barra
-        BAR_H     = 0.30
+        # ── Barras redondeadas ────────────────────────────────────────────────
+        BAR_L = 0.265; BAR_R = 0.735
+        BAR_W = BAR_R - BAR_L
+        BAR_CY = 0.60
+        BAR_H  = 0.32
 
-        # Fondo
+        # Determinar favorito (max prob entre las tres)
+        probs  = [r['p_local'], r['p_empate'], r['p_visit']]
+        fav_idx = int(np.argmax(probs))
+
+        # Clip path redondeado para toda la barra
+        clip = mpatches.FancyBboxPatch(
+            (BAR_L, BAR_CY - BAR_H / 2), BAR_W, BAR_H,
+            boxstyle='round,pad=0.003',
+            transform=row_ax.transAxes,
+            linewidth=0, facecolor='none', zorder=3
+        )
+        row_ax.add_patch(clip)
+
+        segs = [
+            (r['p_local'],  lc),
+            (r['p_empate'], '#666666'),
+            (r['p_visit'],  vc),
+        ]
+        x_cur = BAR_L
+        seg_info = []
+        for idx_s, (pct, color) in enumerate(segs):
+            seg_w = BAR_W * pct
+            rect = mpatches.Rectangle(
+                (x_cur, BAR_CY - BAR_H / 2), seg_w, BAR_H,
+                transform=row_ax.transAxes,
+                linewidth=0, facecolor=color, alpha=0.95, zorder=3
+            )
+            rect.set_clip_path(clip)
+            row_ax.add_patch(rect)
+            seg_info.append((x_cur + seg_w / 2, pct, color, seg_w, idx_s))
+            x_cur += seg_w
+
+        # Borde fino sobre la barra (da profundidad)
         row_ax.add_patch(mpatches.FancyBboxPatch(
-            (BAR_LEFT, BAR_Y_CTR - BAR_H / 2), BAR_W, BAR_H,
-            boxstyle='round,pad=0.004', linewidth=0,
-            facecolor='#1c2128', transform=row_ax.transAxes, zorder=2
+            (BAR_L, BAR_CY - BAR_H / 2), BAR_W, BAR_H,
+            boxstyle='round,pad=0.003',
+            transform=row_ax.transAxes,
+            linewidth=0.8, edgecolor='#ffffff22', facecolor='none', zorder=5
         ))
 
-        # Segmentos: local | empate | visitante
-        segs = [
-            (r['p_local'],  local_color),
-            (r['p_empate'], '#666666'),
-            (r['p_visit'],  visit_color),
-        ]
-        x_cursor = BAR_LEFT
-        seg_centers = []
-        for pct, color in segs:
-            w = BAR_W * pct
-            row_ax.add_patch(mpatches.FancyBboxPatch(
-                (x_cursor, BAR_Y_CTR - BAR_H / 2), w, BAR_H,
-                boxstyle='square,pad=0', linewidth=0,
-                facecolor=color, alpha=0.95,
-                transform=row_ax.transAxes, zorder=3
-            ))
-            seg_centers.append((x_cursor + w / 2, pct, color, w))
-            x_cursor += w
-
         # Porcentajes DENTRO de las barras
-        bp_pct = bebas(13)
-        kw_pct = {'fontproperties': bp_pct} if bp_pct else {'fontsize': 13, 'fontweight': 'bold'}
-        for cx, pct, bg_color_seg, seg_w in seg_centers:
-            txt_color = _text_color(bg_color_seg)
-            # Solo mostrar si el segmento es suficientemente ancho
-            if seg_w > 0.045:
-                row_ax.text(cx, BAR_Y_CTR, f'{pct*100:.1f}%',
-                            ha='center', va='center', color=txt_color,
-                            transform=row_ax.transAxes, zorder=4,
-                            **kw_pct)
+        for cx, pct, color_seg, seg_w, idx_s in seg_info:
+            if seg_w < 0.042:
+                continue
+            txt_col = _text_color(color_seg)
+            is_fav  = (idx_s == fav_idx)
+            # Favorito: fuente mayor y sin transparencia
+            size_pct = 16 if is_fav else 12
+            bp_p = bebas(size_pct)
+            kw_p = {'fontproperties': bp_p} if bp_p else {'fontsize': size_pct, 'fontweight': 'bold'}
+            row_ax.text(cx, BAR_CY, f'{pct*100:.1f}%',
+                        ha='center', va='center', color=txt_col,
+                        transform=row_ax.transAxes, zorder=6, **kw_p)
 
-        # Marcador más probable (debajo de la barra)
+        # Marcador más probable
         bp_ms = bebas(10)
         kw_ms = {'fontproperties': bp_ms} if bp_ms else {'fontsize': 10}
         row_ax.text(
-            (BAR_LEFT + BAR_RIGHT) / 2, BAR_Y_CTR - BAR_H / 2 - 0.10,
+            (BAR_L + BAR_R) / 2, BAR_CY - BAR_H / 2 - 0.09,
             f'Marcador más probable:  {r["best_gl"]}-{r["best_gv"]}  ({r["best_prob"]*100:.1f}%)',
-            ha='center', va='top', color=GRAY,
+            ha='center', va='top', color='#6e7681',
             transform=row_ax.transAxes, **kw_ms
         )
 
         # ── Escudo visitante ──────────────────────────────────────────────────
-        sh_ax_v = fig.add_axes([0.860, row_y + row_h_fc * 0.10, 0.105, row_h_fc * 0.80])
+        sh_x_v = 0.860
+        sh_ax_v = fig.add_axes([sh_x_v, sh_y_l, SH_W, sh_h_l])
         sh_ax_v.imshow(shields[r['visitante']], aspect='equal')
         sh_ax_v.axis('off')
 
         # Nombre visitante
-        row_ax.text(0.815, 0.75, r['visitante'].upper(),
+        row_ax.text(0.815, 0.18, r['visitante'].upper(),
                     ha='center', va='center', color=WHITE,
-                    transform=row_ax.transAxes, **kw3)
+                    transform=row_ax.transAxes, **kw_nm)
 
-        # Línea separadora
-        row_ax.axhline(0.0, color='#21262d', linewidth=1)
+        # ── Separador con gradiente ───────────────────────────────────────────
+        sep_h = 0.0025
+        _draw_gradient_separator(
+            fig, 0.02, row_y + 0.002, 0.96, sep_h, lc, vc, alpha=0.65
+        )
 
     # ── FOOTER ───────────────────────────────────────────────────────────────
     foot_ax = fig.add_axes([0, 0, 1, FOOT_H / FIG_H])
@@ -439,7 +532,6 @@ def render_jornada(jornada_num, partidos, model, out_path):
     foot_ax.text(0.015, 0.55, 'Fuente: FotMob  ·  Modelo Poisson ponderado (últimos 4 torneos)',
                  ha='left', va='center', color=GRAY,
                  transform=foot_ax.transAxes, **kw_src)
-
     foot_ax.axhline(1.0, color=RED_BRAND, linewidth=1.5, xmin=0.02, xmax=0.98)
 
     plt.savefig(str(out_path), dpi=150, bbox_inches='tight',
