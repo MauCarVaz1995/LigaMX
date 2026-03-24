@@ -58,24 +58,24 @@ GREEN_WIN = '#00C87A'
 YELLOW_DW = '#F5A623'
 
 TEAM_COLORS = {
-    'América':       '#FFCC00',
-    'Atlas':         '#7A1C2E',
-    'Chivas':        '#CC2229',
-    'Cruz Azul':     '#3065AC',
-    'FC Juárez':     '#C8102E',
-    'León':          '#006B3F',
-    'Mazatlán':      '#5B2D8E',
-    'Monterrey':     '#003399',
-    'Necaxa':        '#CC0000',
-    'Pachuca':       '#2D6CC0',
-    'Puebla':        '#4B2C8C',
-    'Pumas':         '#C9A227',
-    'Querétaro':     '#003087',
-    'San Luis':      '#D4002B',
-    'Santos Laguna': '#B0C03C',
-    'Tigres':        '#FFD700',
-    'Tijuana':       '#CC0000',
-    'Toluca':        '#BB1E21',
+    'América':       '#FFD700',
+    'Atlas':         '#B22222',
+    'Chivas':        '#CD1F2D',
+    'Cruz Azul':     '#0047AB',
+    'FC Juárez':     '#4CAF50',
+    'León':          '#2D8C3C',
+    'Mazatlán':      '#5B2C8F',
+    'Monterrey':     '#003DA5',
+    'Necaxa':        '#D62828',
+    'Pachuca':       '#1E3A5F',
+    'Puebla':        '#2563EB',
+    'Pumas':         '#1C2C5B',
+    'Querétaro':     '#1565C0',
+    'San Luis':      '#D52B1E',
+    'Santos Laguna': '#2E8B57',
+    'Tigres':        '#F5A623',
+    'Tijuana':       '#C62828',
+    'Toluca':        '#D5001C',
 }
 
 TEAM_IDS = {
@@ -220,7 +220,11 @@ def predict(model, local, visitante, max_goals=5):
     p_local  = float(np.sum(np.tril(matriz, -1)))
     p_empate = float(np.trace(matriz))
     p_visit  = float(np.sum(np.triu(matriz, 1)))
-    return lam_l, lam_v, matriz, p_local, p_empate, p_visit
+    # Marcador más probable
+    idx = np.unravel_index(np.argmax(matriz), matriz.shape)
+    best_gl, best_gv = int(idx[0]), int(idx[1])
+    best_prob = float(matriz[idx])
+    return lam_l, lam_v, matriz, p_local, p_empate, p_visit, best_gl, best_gv, best_prob
 
 # ─────────────────────────────────────────────────────────────────────────────
 # ESCUDOS
@@ -250,6 +254,17 @@ def _blank_shield(size):
     return np.array(img)
 
 # ─────────────────────────────────────────────────────────────────────────────
+# HELPERS
+# ─────────────────────────────────────────────────────────────────────────────
+def _text_color(hex_bg):
+    """Blanco para fondos oscuros, negro para fondos muy claros (ej. amarillo)."""
+    r = int(hex_bg[1:3], 16)
+    g = int(hex_bg[3:5], 16)
+    b = int(hex_bg[5:7], 16)
+    lum = 0.299 * r + 0.587 * g + 0.114 * b
+    return '#111111' if lum > 170 else '#ffffff'
+
+# ─────────────────────────────────────────────────────────────────────────────
 # RENDER RESUMEN
 # ─────────────────────────────────────────────────────────────────────────────
 def render_jornada(jornada_num, partidos, model, out_path):
@@ -258,9 +273,8 @@ def render_jornada(jornada_num, partidos, model, out_path):
     """
     n = len(partidos)
 
-    # Dimensiones: 10 wide, 1.4 por partido + cabecera + footer
     FIG_W   = 10.0
-    ROW_H   = 1.55
+    ROW_H   = 1.45
     HEAD_H  = 1.10
     FOOT_H  = 0.55
     FIG_H   = HEAD_H + n * ROW_H + FOOT_H
@@ -273,167 +287,146 @@ def render_jornada(jornada_num, partidos, model, out_path):
     head_ax.set_facecolor(DARK_BG)
     head_ax.axis('off')
 
-    # Título principal
     bp = bebas(36)
     kw = {'fontproperties': bp} if bp else {'fontsize': 36, 'fontweight': 'bold'}
     head_ax.text(0.5, 0.78, f'JORNADA {jornada_num}',
-                 ha='center', va='top', color=WHITE, transform=head_ax.transAxes,
-                 **kw)
+                 ha='center', va='top', color=WHITE, transform=head_ax.transAxes, **kw)
     bp2 = bebas(18)
     kw2 = {'fontproperties': bp2} if bp2 else {'fontsize': 18, 'fontweight': 'bold'}
     head_ax.text(0.5, 0.44, 'PROBABILIDADES DE MARCADOR · LIGA MX · CLAUSURA 2026',
-                 ha='center', va='top', color=GRAY, transform=head_ax.transAxes,
-                 **kw2)
-    # Línea divisoria
+                 ha='center', va='top', color=GRAY, transform=head_ax.transAxes, **kw2)
     head_ax.axhline(0.0, color=RED_BRAND, linewidth=2, xmin=0.04, xmax=0.96)
 
     # Precalcular predicciones
     resultados = []
     for p in partidos:
-        local_c  = norm(p['local'])
-        visit_c  = norm(p['visitante'])
-        lam_l, lam_v, _, p_l, p_e, p_v = predict(model, local_c, visit_c)
+        local_c = norm(p['local'])
+        visit_c = norm(p['visitante'])
+        lam_l, lam_v, _, p_l, p_e, p_v, best_gl, best_gv, best_prob = predict(model, local_c, visit_c)
         resultados.append({
-            'local':    local_c,
+            'local':     local_c,
             'visitante': visit_c,
-            'p_local':  p_l,
-            'p_empate': p_e,
-            'p_visit':  p_v,
-            'lam_l':    lam_l,
-            'lam_v':    lam_v,
+            'p_local':   p_l,
+            'p_empate':  p_e,
+            'p_visit':   p_v,
+            'best_gl':   best_gl,
+            'best_gv':   best_gv,
+            'best_prob': best_prob,
         })
 
     # Precargar escudos
     shields = {}
-    all_teams = set()
-    for r in resultados:
-        all_teams.add(r['local'])
-        all_teams.add(r['visitante'])
+    all_teams = set(t for r in resultados for t in (r['local'], r['visitante']))
     for t in all_teams:
-        shields[t] = get_shield(t, size=72)
+        shields[t] = get_shield(t, size=80)
 
-    # ── FILAS DE PARTIDOS ─────────────────────────────────────────────────────
+    # ── FILAS ────────────────────────────────────────────────────────────────
     for i, r in enumerate(resultados):
-        # y en figura coords (de arriba a abajo)
         row_top  = (FIG_H - HEAD_H - i * ROW_H) / FIG_H
         row_h_fc = ROW_H / FIG_H
-        row_y    = row_top - row_h_fc   # esquina inferior del axes
+        row_y    = row_top - row_h_fc
 
-        # Fondo alternado sutil
         bg_color = '#111920' if i % 2 == 0 else '#0d1117'
-        row_ax = fig.add_axes([0.02, row_y + 0.005, 0.96, row_h_fc - 0.008])
+        row_ax = fig.add_axes([0.02, row_y + 0.004, 0.96, row_h_fc - 0.007])
         row_ax.set_facecolor(bg_color)
         row_ax.set_xlim(0, 1)
         row_ax.set_ylim(0, 1)
         row_ax.axis('off')
 
-        # Borde izquierdo de color del equipo local
         local_color = TEAM_COLORS.get(r['local'], '#888888')
         visit_color = TEAM_COLORS.get(r['visitante'], '#888888')
-        row_ax.axvline(0.0, color=local_color, linewidth=4)
 
-        # ── Escudo local (izquierda) ──────────────────────────────────────────
-        sh_l = shields[r['local']]
-        sh_ax_l = fig.add_axes([0.04, row_y + row_h_fc * 0.12, 0.10, row_h_fc * 0.76])
-        sh_ax_l.imshow(sh_l, aspect='equal')
+        # Bordes laterales de color
+        row_ax.axvline(0.0, color=local_color, linewidth=5)
+        row_ax.axvline(1.0, color=visit_color, linewidth=5)
+
+        # ── Escudo local ──────────────────────────────────────────────────────
+        sh_ax_l = fig.add_axes([0.035, row_y + row_h_fc * 0.10, 0.105, row_h_fc * 0.80])
+        sh_ax_l.imshow(shields[r['local']], aspect='equal')
         sh_ax_l.axis('off')
 
-        # ── Nombre equipo local ───────────────────────────────────────────────
-        bp3 = bebas(13)
-        kw3 = {'fontproperties': bp3} if bp3 else {'fontsize': 13, 'fontweight': 'bold'}
-        row_ax.text(0.185, 0.72, r['local'].upper(),
+        # Nombre local
+        bp3 = bebas(12)
+        kw3 = {'fontproperties': bp3} if bp3 else {'fontsize': 12, 'fontweight': 'bold'}
+        row_ax.text(0.185, 0.75, r['local'].upper(),
                     ha='center', va='center', color=WHITE,
                     transform=row_ax.transAxes, **kw3)
 
-        # ── Barras de probabilidades (centro) ────────────────────────────────
-        BAR_LEFT  = 0.26
-        BAR_RIGHT = 0.74
+        # ── Barras ───────────────────────────────────────────────────────────
+        BAR_LEFT  = 0.265
+        BAR_RIGHT = 0.735
         BAR_W     = BAR_RIGHT - BAR_LEFT
-        BAR_Y     = 0.50
-        BAR_H     = 0.22
+        BAR_Y_CTR = 0.56    # centro vertical de la barra
+        BAR_H     = 0.30
 
-        # Fondo gris
-        bar_bg = mpatches.FancyBboxPatch(
-            (BAR_LEFT, BAR_Y - BAR_H / 2), BAR_W, BAR_H,
-            boxstyle='round,pad=0.005', linewidth=0,
+        # Fondo
+        row_ax.add_patch(mpatches.FancyBboxPatch(
+            (BAR_LEFT, BAR_Y_CTR - BAR_H / 2), BAR_W, BAR_H,
+            boxstyle='round,pad=0.004', linewidth=0,
             facecolor='#1c2128', transform=row_ax.transAxes, zorder=2
-        )
-        row_ax.add_patch(bar_bg)
+        ))
 
         # Segmentos: local | empate | visitante
         segs = [
-            (r['p_local'],  local_color,  'LOCAL'),
-            (r['p_empate'], '#555e6a',     'EMPATE'),
-            (r['p_visit'],  visit_color,   'VISIT'),
+            (r['p_local'],  local_color),
+            (r['p_empate'], '#666666'),
+            (r['p_visit'],  visit_color),
         ]
         x_cursor = BAR_LEFT
-        seg_bounds = []
-        for pct, color, _ in segs:
+        seg_centers = []
+        for pct, color in segs:
             w = BAR_W * pct
-            rect = mpatches.FancyBboxPatch(
-                (x_cursor, BAR_Y - BAR_H / 2), w, BAR_H,
+            row_ax.add_patch(mpatches.FancyBboxPatch(
+                (x_cursor, BAR_Y_CTR - BAR_H / 2), w, BAR_H,
                 boxstyle='square,pad=0', linewidth=0,
-                facecolor=color, alpha=0.9,
+                facecolor=color, alpha=0.95,
                 transform=row_ax.transAxes, zorder=3
-            )
-            row_ax.add_patch(rect)
-            seg_bounds.append((x_cursor, x_cursor + w, pct))
+            ))
+            seg_centers.append((x_cursor + w / 2, pct, color, w))
             x_cursor += w
 
-        # Porcentajes sobre las barras
-        labels_data = [
-            (seg_bounds[0], r['p_local'],  local_color,  r['local']),
-            (seg_bounds[1], r['p_empate'], '#aaaaaa',    'Empate'),
-            (seg_bounds[2], r['p_visit'],  visit_color,  r['visitante']),
-        ]
-        for (x0, x1, _), pct, color, label in labels_data:
-            cx = (x0 + x1) / 2
-            bp_sm = bebas(14)
-            kw_sm = {'fontproperties': bp_sm} if bp_sm else {'fontsize': 14, 'fontweight': 'bold'}
-            row_ax.text(cx, BAR_Y + BAR_H / 2 + 0.15, f'{pct*100:.1f}%',
-                        ha='center', va='bottom', color=WHITE,
-                        transform=row_ax.transAxes, **kw_sm)
-            # Etiqueta pequeña debajo
-            bp_xs = bebas(8)
-            kw_xs = {'fontproperties': bp_xs} if bp_xs else {'fontsize': 8}
-            row_ax.text(cx, BAR_Y - BAR_H / 2 - 0.12, label.upper(),
-                        ha='center', va='top', color=GRAY,
-                        transform=row_ax.transAxes, **kw_xs)
+        # Porcentajes DENTRO de las barras
+        bp_pct = bebas(13)
+        kw_pct = {'fontproperties': bp_pct} if bp_pct else {'fontsize': 13, 'fontweight': 'bold'}
+        for cx, pct, bg_color_seg, seg_w in seg_centers:
+            txt_color = _text_color(bg_color_seg)
+            # Solo mostrar si el segmento es suficientemente ancho
+            if seg_w > 0.045:
+                row_ax.text(cx, BAR_Y_CTR, f'{pct*100:.1f}%',
+                            ha='center', va='center', color=txt_color,
+                            transform=row_ax.transAxes, zorder=4,
+                            **kw_pct)
 
-        # λ valores debajo de todo
-        bp_lam = bebas(9)
-        kw_lam = {'fontproperties': bp_lam} if bp_lam else {'fontsize': 9}
-        row_ax.text(0.50, 0.04,
-                    f'λ local={r["lam_l"]:.2f}   λ visit={r["lam_v"]:.2f}   · Modelo Poisson 4 torneos',
-                    ha='center', va='bottom', color='#4a5568',
-                    transform=row_ax.transAxes, **kw_lam)
+        # Marcador más probable (debajo de la barra)
+        bp_ms = bebas(10)
+        kw_ms = {'fontproperties': bp_ms} if bp_ms else {'fontsize': 10}
+        row_ax.text(
+            (BAR_LEFT + BAR_RIGHT) / 2, BAR_Y_CTR - BAR_H / 2 - 0.10,
+            f'Marcador más probable:  {r["best_gl"]}-{r["best_gv"]}  ({r["best_prob"]*100:.1f}%)',
+            ha='center', va='top', color=GRAY,
+            transform=row_ax.transAxes, **kw_ms
+        )
 
-        # ── Escudo visitante (derecha) ────────────────────────────────────────
-        sh_v = shields[r['visitante']]
-        sh_ax_v = fig.add_axes([0.86, row_y + row_h_fc * 0.12, 0.10, row_h_fc * 0.76])
-        sh_ax_v.imshow(sh_v, aspect='equal')
+        # ── Escudo visitante ──────────────────────────────────────────────────
+        sh_ax_v = fig.add_axes([0.860, row_y + row_h_fc * 0.10, 0.105, row_h_fc * 0.80])
+        sh_ax_v.imshow(shields[r['visitante']], aspect='equal')
         sh_ax_v.axis('off')
 
-        # ── Nombre equipo visitante ───────────────────────────────────────────
-        row_ax.text(0.815, 0.72, r['visitante'].upper(),
+        # Nombre visitante
+        row_ax.text(0.815, 0.75, r['visitante'].upper(),
                     ha='center', va='center', color=WHITE,
                     transform=row_ax.transAxes, **kw3)
 
-        # Borde derecho visitante
-        row_ax.axvline(1.0, color=visit_color, linewidth=4)
-
-        # Línea separadora inferior
+        # Línea separadora
         row_ax.axhline(0.0, color='#21262d', linewidth=1)
 
-    # ── FOOTER ────────────────────────────────────────────────────────────────
+    # ── FOOTER ───────────────────────────────────────────────────────────────
     foot_ax = fig.add_axes([0, 0, 1, FOOT_H / FIG_H])
     foot_ax.set_facecolor(DARK_BG)
     foot_ax.axis('off')
 
-    # MAU-STATISTICS
     bp_mau = bebas(24)
     kw_mau = {'fontproperties': bp_mau} if bp_mau else {'fontsize': 24, 'fontweight': 'bold'}
-    # Sombra
     foot_ax.text(0.985 + 0.002, 0.55 - 0.002, 'MAU-STATISTICS',
                  ha='right', va='center', color='#000000', alpha=0.6,
                  transform=foot_ax.transAxes, **kw_mau)
@@ -443,7 +436,7 @@ def render_jornada(jornada_num, partidos, model, out_path):
 
     bp_src = bebas(11)
     kw_src = {'fontproperties': bp_src} if bp_src else {'fontsize': 11}
-    foot_ax.text(0.015, 0.55, 'Fuente: FotMob  ·  Modelo Poisson ponderado',
+    foot_ax.text(0.015, 0.55, 'Fuente: FotMob  ·  Modelo Poisson ponderado (últimos 4 torneos)',
                  ha='left', va='center', color=GRAY,
                  transform=foot_ax.transAxes, **kw_src)
 
