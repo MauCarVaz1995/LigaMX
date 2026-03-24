@@ -79,24 +79,24 @@ TEAM_COLORS = {
 }
 
 TEAM_IDS = {
-    'América':       159063,
-    'Atlas':         8733,
-    'Chivas':        8721,
-    'Cruz Azul':     8725,
+    'América':       6576,
+    'Atlas':         6577,
+    'Chivas':        7807,
+    'Cruz Azul':     6578,
     'FC Juárez':     649424,
-    'León':          9989,
+    'León':          1841,
     'Mazatlán':      1170234,
-    'Monterrey':     8730,
-    'Necaxa':        8728,
-    'Pachuca':       8726,
-    'Puebla':        9991,
-    'Pumas':         8731,
-    'Querétaro':     8735,
-    'San Luis':      159061,
-    'Santos Laguna': 8734,
-    'Tigres':        8729,
-    'Tijuana':       8736,
-    'Toluca':        8727,
+    'Monterrey':     7849,
+    'Necaxa':        1842,
+    'Pachuca':       7848,
+    'Puebla':        7847,
+    'Pumas':         1946,
+    'Querétaro':     1943,
+    'San Luis':      6358,
+    'Santos Laguna': 7857,
+    'Tigres':        8561,
+    'Tijuana':       162418,
+    'Toluca':        6618,
 }
 
 _ALIAS = {
@@ -229,7 +229,7 @@ def get_shield(canonical_name, size=72):
     tid = TEAM_IDS.get(canonical_name)
     if tid is None:
         return _blank_shield(size)
-    cache = IMG_DIR / f'shield_{tid}.png'
+    cache = IMG_DIR / f'{tid}.png'
     if not cache.exists():
         url = f'https://images.fotmob.com/image_resources/logo/teamlogo/{tid}.png'
         try:
