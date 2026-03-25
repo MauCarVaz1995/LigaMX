@@ -238,76 +238,78 @@ def plot_evolucion(snapshots: list[dict], final_elo: dict[str, float]):
     # Resample semanal para suavizar la curva
     df = df.set_index('fecha')
     team_cols = list(CURRENT_TEAMS.keys())
-    df_weekly = df[team_cols].resample('W').last().ffill()
-    df_weekly = df_weekly.reset_index()
+    df_weekly = df[team_cols].resample('W').last().ffill().reset_index()
 
-    # Top 5 por ELO final — resaltados
+    # Top 5 por ELO final
     ranking = sorted(final_elo.items(), key=lambda x: -x[1])
-    top5    = [t for t, _ in ranking if t in CURRENT_TEAMS][:5]
+    top5 = [t for t, _ in ranking if t in CURRENT_TEAMS][:5]
 
     fig = plt.figure(figsize=(14, 8), facecolor=DARK_BG)
-    ax  = fig.add_axes([0.06, 0.10, 0.88, 0.78])
-    ax.set_facecolor(DARK_BG)
 
-    # Fondo con bandas sutiles por era (cada 4 torneos ≈ 2 años)
+    # Gradiente de fondo
+    grad = np.zeros((200, 2, 3))
+    for i in range(200):
+        t = i/199
+        grad[i] = np.array([0x0a,0x0e,0x12])/255*(1-t) + np.array([0x13,0x1a,0x24])/255*t
+    bg = fig.add_axes([0,0,1,1])
+    bg.imshow(grad, aspect='auto', extent=[0,1,0,1], origin='lower')
+    bg.axis('off')
+
+    ax = fig.add_axes([0.06, 0.11, 0.84, 0.75])
+    ax.set_facecolor('none')
+
+    # Bandas por año (muy sutiles)
     for yr in range(2011, 2027, 2):
         ax.axvspan(pd.Timestamp(f'{yr}-01-01'), pd.Timestamp(f'{yr}-12-31'),
-                   alpha=0.04, color='white', linewidth=0)
+                   alpha=0.03, color='white', linewidth=0)
 
-    # Línea base ELO
-    ax.axhline(ELO_BASE, color='#2d333b', lw=1.0, ls='--', zorder=1)
+    # Línea de referencia 1500
+    ax.axhline(ELO_BASE, color='#3d4451', lw=1.2, ls='--', zorder=2,
+               label='Referencia 1500')
+    ax.text(df_weekly['fecha'].min(), ELO_BASE + 6, '1500',
+            color='#3d4451', fontsize=8, va='bottom', ha='left')
 
-    # Dibujar todas las líneas
-    for team in team_cols:
-        color  = CURRENT_TEAMS[team]['color']
-        is_top = team in top5
-        lw     = 2.4 if is_top else 0.9
-        alpha  = 1.0 if is_top else 0.35
-        zorder = 4  if is_top else 2
-
+    # Solo top 5 — líneas gruesas
+    fecha_fin = df_weekly['fecha'].iloc[-1]
+    for rank, team in enumerate(top5):
+        color = CURRENT_TEAMS[team]['color']
         ax.plot(df_weekly['fecha'], df_weekly[team],
-                color=color, lw=lw, alpha=alpha, zorder=zorder)
+                color=color, lw=3.0, alpha=0.95, zorder=5, solid_capstyle='round')
 
-        # Etiqueta al final de la línea (solo top5)
-        if is_top:
-            last_val = df_weekly[team].dropna().iloc[-1]
-            ax.text(df_weekly['fecha'].iloc[-1] + pd.Timedelta(days=18),
-                    last_val, team,
-                    color=color, fontsize=9, fontweight='bold',
-                    va='center', ha='left')
+        # Etiqueta con caja semitransparente
+        last_val = df_weekly[team].dropna().iloc[-1]
+        ax.annotate(
+            f'#{rank+1} {team}  {last_val:.0f}',
+            xy=(fecha_fin, last_val),
+            xytext=(fecha_fin + pd.Timedelta(days=14), last_val),
+            color=color, fontsize=9, fontweight='bold', va='center', ha='left',
+            bbox=dict(boxstyle='round,pad=0.25', facecolor='#0d1117',
+                      edgecolor=color, alpha=0.80, linewidth=0.8))
 
-    # Formato de ejes
-    ax.set_xlim(df_weekly['fecha'].min(), df_weekly['fecha'].max() + pd.Timedelta(days=100))
-    ax.set_ylim(1300, 1750)
+    # Formato ejes
+    xlim_end = fecha_fin + pd.Timedelta(days=180)
+    ax.set_xlim(df_weekly['fecha'].min(), xlim_end)
+    ax.set_ylim(1250, 1800)
     ax.tick_params(colors=GRAY, labelsize=9)
-    ax.spines[:].set_color('#2d333b')
-    ax.yaxis.set_tick_params(colors=GRAY)
-    ax.xaxis.set_tick_params(colors=GRAY)
     for spine in ax.spines.values():
         spine.set_edgecolor('#2d333b')
+    ax.yaxis.set_major_locator(plt.MultipleLocator(100))
+    ax.yaxis.set_minor_locator(plt.MultipleLocator(50))
+    ax.grid(axis='y', color='#1e2530', lw=0.5, zorder=1)
+    ax.tick_params(which='minor', left=False)
 
-    # Título
-    fig.text(0.06, 0.935, 'EVOLUCIÓN ELO — LIGA MX',
-             color=WHITE, ha='left', va='bottom', **bebas(26))
-    fig.text(0.06, 0.908, '32 torneos · 2010/11 – 2025/26 · Top 5 resaltados',
-             color=GRAY, ha='left', va='bottom', fontsize=10)
-
-    # Leyenda top 5 (esquina superior derecha)
-    legend_x = 0.947
-    for i, team in enumerate(top5):
-        color = CURRENT_TEAMS[team]['color']
-        elo_v = final_elo.get(team, ELO_BASE)
-        fig.text(legend_x, 0.88 - i*0.046,
-                 f'#{i+1}  {team}',
-                 color=color, ha='right', va='center',
-                 fontsize=9, fontweight='bold')
+    # Títulos
+    fig.text(0.06, 0.940, 'EVOLUCIÓN ELO — LIGA MX',
+             color=WHITE, ha='left', va='bottom', **bebas(32))
+    fig.text(0.06, 0.912, 'Top 5 equipos · 32 torneos · 2010/11 – 2025/26',
+             color=GRAY, ha='left', va='bottom', fontsize=10.5)
 
     # Footer
-    fig.text(0.06, 0.020, 'Fuente: FotMob · Histórico 2010-2026',
+    fig.text(0.06, 0.022, 'Fuente: FotMob · Histórico 2010-2026',
              color=GRAY, fontsize=8.5, ha='left', va='bottom')
     kw = dict(ha='right', va='bottom', **bebas(18))
-    fig.text(0.953, 0.013, 'MAU-STATISTICS', color='#000000', alpha=0.5,  **kw)
-    fig.text(0.951, 0.022, 'MAU-STATISTICS', color=RED_BRAND, **kw)
+    fig.text(0.954, 0.014, 'MAU-STATISTICS', color='#000000', alpha=0.5, **kw)
+    fig.text(0.952, 0.023, 'MAU-STATISTICS', color=RED_BRAND, **kw)
 
     out = OUT_DIR / 'elo_evolucion.png'
     plt.savefig(out, dpi=150, bbox_inches='tight', facecolor=DARK_BG)
@@ -318,128 +320,124 @@ def plot_evolucion(snapshots: list[dict], final_elo: dict[str, float]):
 # PASO 4: VISUALIZACIÓN 2 — Ranking ELO actual (tabla)
 # ─────────────────────────────────────────────────────────────────────────────
 def plot_ranking(final_elo: dict[str, float]):
-    # Solo los 18 equipos actuales, ordenados
-    ranking = [(t, final_elo.get(t, ELO_BASE))
-               for t in CURRENT_TEAMS]
+    ranking = [(t, final_elo.get(t, ELO_BASE)) for t in CURRENT_TEAMS]
     ranking.sort(key=lambda x: -x[1])
-
     n = len(ranking)
-    FIG_W, FIG_H = 7, 10
-    ROW_H = 1 / (n + 3)   # +3 para header + footer
+
+    FIG_W, FIG_H = 7.5, 11
+    CONTENT_Y = 0.045   # y inferior del área de contenido
+    CONTENT_H = 0.875   # altura del área de contenido
+    ROW_H_N   = CONTENT_H / n   # altura de cada fila en fracción de figura
 
     fig = plt.figure(figsize=(FIG_W, FIG_H), facecolor=DARK_BG)
 
-    # Fondo gradiente
+    # Gradiente fondo
     grad = np.zeros((200, 2, 3))
-    bot = np.array([0x0a,0x0e,0x12])/255
-    top = np.array([0x13,0x1a,0x24])/255
     for i in range(200):
         t = i/199
-        grad[i] = bot*(1-t) + top*t
+        grad[i] = np.array([0x0a,0x0e,0x12])/255*(1-t) + np.array([0x13,0x1a,0x24])/255*t
     bg = fig.add_axes([0,0,1,1])
     bg.imshow(grad, aspect='auto', extent=[0,1,0,1], origin='lower')
     bg.axis('off')
 
-    # Título
-    fig.text(0.50, 0.965, 'RANKING ELO — LIGA MX',
-             color=WHITE, ha='center', va='top', **bebas(28))
-    fig.text(0.50, 0.940, 'Clausura 2026 · Rating al día de hoy',
+    # Títulos
+    fig.text(0.50, 0.967, 'RANKING ELO — LIGA MX',
+             color=WHITE, ha='center', va='top', **bebas(30))
+    fig.text(0.50, 0.942, 'Clausura 2026  ·  Rating acumulado histórico',
              color=GRAY, ha='center', va='top', fontsize=9.5)
 
-    # Eje principal para la tabla
-    ax = fig.add_axes([0.03, 0.04, 0.94, 0.88])
+    # Eje principal
+    ax = fig.add_axes([0.02, CONTENT_Y, 0.96, CONTENT_H])
     ax.set_facecolor('none')
     ax.set_xlim(0, 1)
     ax.set_ylim(0, n)
     ax.axis('off')
 
-    # ELO máximo y mínimo para normalizar las barras
-    elos = [e for _, e in ranking]
-    elo_max = max(elos)
-    elo_min = min(elos)
-    elo_range = elo_max - elo_min if elo_max != elo_min else 1
+    # Barras parten desde ELO_BAR_MIN para que las diferencias sean visibles
+    ELO_BAR_MIN = 1300
+    elos      = [e for _, e in ranking]
+    elo_max   = max(elos)
+    elo_range = max(elo_max - ELO_BAR_MIN, 1)
 
-    BAR_MAX_W  = 0.46
-    BAR_X      = 0.40
-    BAR_H_FRAC = 0.60
-    BADGE_W    = 0.055
-    BADGE_X    = 0.025
+    # Layout columnas (en xlim [0,1])
+    X_POS     = 0.020   # posición #
+    X_BADGE   = 0.065   # escudo
+    X_NAME    = 0.175   # nombre
+    BAR_X     = 0.420   # inicio track barra
+    BAR_MAX_W = 0.380   # ancho máximo barra
+    X_ELO     = BAR_X + BAR_MAX_W + 0.018   # valor ELO
+    X_DELTA   = 0.975   # delta (Δ1500)
+
+    BADGE_SIZE = 50   # píxeles del escudo
+    AR_FIG     = FIG_H / FIG_W
 
     for i, (team, elo_v) in enumerate(ranking):
-        row_y = n - 1 - i   # fila 0 = rank 1 (arriba)
-        color = CURRENT_TEAMS[team]['color']
+        row_bot = n - 1 - i
+        color   = CURRENT_TEAMS[team]['color']
 
         # Fondo alterno
-        bg_row = '#0f151e' if i % 2 == 0 else DARK_BG
         ax.add_patch(mpatches.Rectangle(
-            (0, row_y), 1, 1,
-            facecolor=bg_row, linewidth=0, zorder=1))
+            (0, row_bot), 1, 1,
+            facecolor='#0f151e' if i % 2 == 0 else DARK_BG,
+            linewidth=0, zorder=1))
+        ax.axhline(row_bot + 1, color='#1e2530', lw=0.5, zorder=2)
 
-        # Separador top
-        ax.axhline(row_y + 1, color='#1e2530', lw=0.5, zorder=2)
-
-        # Posición
+        # ── Posición ─────────────────────────────────────────────────────────
         pos_color = RED_BRAND if i < 3 else (WHITE if i < 8 else GRAY)
-        ax.text(0.018, row_y + 0.50, f'#{i+1}',
-                color=pos_color, fontsize=9,
+        ax.text(X_POS, row_bot + 0.50, f'#{i+1}',
+                color=pos_color, fontsize=8.5,
                 fontweight='bold' if i < 3 else 'normal',
                 ha='left', va='center', zorder=3)
 
-        # Escudo
+        # ── Escudo 50×50 ─────────────────────────────────────────────────────
         tid  = CURRENT_TEAMS[team]['id']
-        sarr = get_shield(tid, 36)
+        sarr = get_shield(tid, BADGE_SIZE)
         if sarr is not None:
-            sh_ax = fig.add_axes([
-                BADGE_X,
-                0.04 + (n - 1 - i) * (0.88/n) + (0.88/n)*0.15,
-                BADGE_W * (FIG_H/FIG_W),
-                (0.88/n) * 0.70
-            ])
+            badge_h_fig = ROW_H_N * 0.72
+            badge_w_fig = badge_h_fig * AR_FIG
+            badge_y_fig = CONTENT_Y + (n - 1 - i) * ROW_H_N + ROW_H_N * 0.14
+            sh_ax = fig.add_axes([X_BADGE, badge_y_fig, badge_w_fig, badge_h_fig])
             sh_ax.set_facecolor('#f8f8fc')
             sh_ax.imshow(sarr, aspect='equal')
             sh_ax.axis('off')
 
-        # Nombre del equipo
-        ax.text(0.135, row_y + 0.52, team.upper(),
-                color=WHITE, fontsize=9, fontweight='bold',
-                ha='left', va='center', zorder=3, **bebas(11))
+        # ── Nombre del equipo ────────────────────────────────────────────────
+        ax.text(X_NAME, row_bot + 0.52, team.upper(),
+                color=WHITE, ha='left', va='center', zorder=3, **bebas(11))
 
-        # Barra proporcional
-        bar_w = BAR_MAX_W * (elo_v - elo_min) / elo_range
-        bar_h = BAR_H_FRAC
-        bar_y = row_y + (1 - bar_h) / 2
-        # Track
+        # ── Track + Barra (parte desde ELO_BAR_MIN) ──────────────────────────
+        bar_h   = 0.52
+        bar_y   = row_bot + (1 - bar_h) / 2
+        bar_w   = BAR_MAX_W * max(elo_v - ELO_BAR_MIN, 0) / elo_range
+
         ax.add_patch(mpatches.Rectangle(
             (BAR_X, bar_y), BAR_MAX_W, bar_h,
-            facecolor='#1a1f28', linewidth=0, zorder=3))
-        # Barra coloreada
-        if bar_w > 0.002:
+            facecolor='#141920', linewidth=0, zorder=3))
+        if bar_w > 0.003:
             ax.add_patch(mpatches.Rectangle(
                 (BAR_X, bar_y), bar_w, bar_h,
-                facecolor=color, linewidth=0, zorder=4, alpha=0.90))
+                facecolor=color, linewidth=0, zorder=4, alpha=0.92))
 
-        # Valor ELO
-        ax.text(BAR_X + BAR_MAX_W + 0.016, row_y + 0.50,
+        # ── ELO y delta — separados con espacio ──────────────────────────────
+        ax.text(X_ELO, row_bot + 0.54,
                 f'{elo_v:.0f}',
                 color=color if i < 5 else WHITE,
-                fontsize=9.5,
-                fontweight='bold' if i < 5 else 'normal',
+                fontsize=10, fontweight='bold' if i < 5 else 'normal',
                 ha='left', va='center', zorder=3)
 
-        # Delta desde 1500
         delta = elo_v - ELO_BASE
         sign  = '+' if delta >= 0 else ''
-        ax.text(0.97, row_y + 0.50,
+        ax.text(X_DELTA, row_bot + 0.54,
                 f'{sign}{delta:.0f}',
                 color='#2ea043' if delta >= 0 else '#f85149',
-                fontsize=8, ha='right', va='center', zorder=3)
+                fontsize=8.5, ha='right', va='center', zorder=3)
 
     # Footer
-    fig.text(0.04, 0.010, 'Fuente: FotMob · Histórico 2010-2026',
+    fig.text(0.04, 0.012, 'Fuente: FotMob · Histórico 2010-2026',
              color=GRAY, fontsize=8, ha='left', va='bottom')
     kw = dict(ha='right', va='bottom', **bebas(18))
-    fig.text(0.969, 0.004, 'MAU-STATISTICS', color='#000000', alpha=0.5, **kw)
-    fig.text(0.967, 0.012, 'MAU-STATISTICS', color=RED_BRAND, **kw)
+    fig.text(0.969, 0.005, 'MAU-STATISTICS', color='#000000', alpha=0.5, **kw)
+    fig.text(0.967, 0.014, 'MAU-STATISTICS', color=RED_BRAND, **kw)
 
     out = OUT_DIR / 'elo_ranking.png'
     plt.savefig(out, dpi=150, bbox_inches='tight', facecolor=DARK_BG)
