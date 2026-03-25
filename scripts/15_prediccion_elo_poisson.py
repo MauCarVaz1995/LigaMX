@@ -246,12 +246,11 @@ def predict_elo_poisson(mu_home, mu_away, elo_local, elo_visit,
 # ─────────────────────────────────────────────────────────────────────────────
 FOTMOB_TEAM = 'https://images.fotmob.com/image_resources/logo/teamlogo/{}.png'
 
-def get_shield(team_name: str, size: int = 52) -> np.ndarray | None:
+def get_shield(team_name: str, size: int = 64) -> np.ndarray | None:
     name_key = {
-        'FC Juárez': 'FC Juarez',
-        'Mazatlán': 'Mazatlan FC',
-        'San Luis': 'Atletico de San Luis',
-        'Querétaro': 'Queretaro FC',
+        'FC Juárez': 'FC Juarez', 'Mazatlán': 'Mazatlan FC',
+        'San Luis': 'Atletico de San Luis', 'Querétaro': 'Queretaro FC',
+        'América': 'CF America',
     }.get(team_name, team_name)
     tid = TEAM_IDS.get(name_key) or TEAM_IDS.get(team_name)
     if tid is None:
@@ -263,7 +262,11 @@ def get_shield(team_name: str, size: int = 52) -> np.ndarray | None:
         except Exception:
             return None
     try:
-        img = Image.open(cache).convert('RGBA').resize((size, size), Image.LANCZOS)
+        img = Image.open(cache).convert('RGBA')
+        orig_w, orig_h = img.size
+        target = min(size, orig_w, orig_h)   # never upscale beyond original
+        if target != orig_w or target != orig_h:
+            img = img.resize((target, target), Image.LANCZOS)
         return np.array(img)
     except Exception:
         return None
@@ -273,8 +276,8 @@ def get_shield(team_name: str, size: int = 52) -> np.ndarray | None:
 # ─────────────────────────────────────────────────────────────────────────────
 def render(partidos_data, output_path):
     N = len(partidos_data)
-    FIG_W = 11.0
-    FIG_H  = 1.90 + N * 0.82 + 0.90
+    FIG_W = 10.0
+    FIG_H = 12.0   # fixed height
 
     fig = plt.figure(figsize=(FIG_W, FIG_H), facecolor=BG)
 
@@ -288,7 +291,7 @@ def render(partidos_data, output_path):
     bgax.axis('off')
 
     HEADER_H = 1.90 / FIG_H
-    FOOTER_H = 0.88 / FIG_H
+    FOOTER_H = 0.90 / FIG_H
     ROW_H    = (1.0 - HEADER_H - FOOTER_H) / N
     AR       = FIG_H / FIG_W
 
@@ -298,7 +301,7 @@ def render(partidos_data, output_path):
     hax.axis('off')
     hax.axhline(0, color=RED, lw=2.5)
     hax.text(0.50, 0.90, 'JORNADA 13 · ELO+POISSON VS POISSON PURO',
-             color=WHITE, ha='center', va='top', transform=hax.transAxes, **bebas(20))
+             color=WHITE, ha='center', va='top', transform=hax.transAxes, **bebas(22))
     hax.text(0.50, 0.58, '¿A quién beneficia más el historial de 15 años?  ·  Clausura 2026',
              color=GRAY, ha='center', va='top', transform=hax.transAxes, fontsize=9.5)
     hax.text(0.50, 0.34,
@@ -308,18 +311,16 @@ def render(partidos_data, output_path):
              transform=hax.transAxes, fontsize=7.5)
 
     # ── COLUMN HEADERS ───────────────────────────────────────────────────────
-    # Column x positions (normalized)
-    # [0.000 - 0.260]: Partido (crest + names + ELO)
-    # [0.265 - 0.505]: ELO+Poisson (L%, E%, V%)
-    # [0.510 - 0.735]: Poisson puro (L%, E%, V%)
-    # [0.740 - 0.820]: Δ
-    # [0.825 - 1.000]: chart area (arrow indicator)
+    # Match area: 0.000 – 0.278  (local badge | vs | visit badge | ELO info)
+    # ELO+Poisson: 0.278 – 0.528
+    # Poisson puro: 0.528 – 0.762
+    # Δ: 0.762 – 0.840
     MATCH_X   = 0.000
-    EP_X      = 0.265
-    PP_X      = 0.512
-    DELTA_X   = 0.748
-    DELTA_W   = 0.072
-    COL_W3    = (PP_X - EP_X) / 3  # width of each sub-column within group
+    EP_X      = 0.278
+    PP_X      = 0.528
+    DELTA_X   = 0.762
+    DELTA_W   = 0.078
+    COL_W3    = (PP_X - EP_X) / 3
 
     col_hdr_y = 1.0 - HEADER_H - ROW_H * 0.22
     chax = fig.add_axes([0, col_hdr_y, 1, ROW_H * 0.22])
@@ -327,27 +328,27 @@ def render(partidos_data, output_path):
 
     # Group labels
     chax.text(EP_X + (PP_X - EP_X)/2, 0.72, 'ELO + POISSON',
-              color='#A8B8C8', ha='center', va='center', fontsize=7.5,
+              color='#A8B8C8', ha='center', va='center', fontsize=8.0,
               fontweight='bold', transform=chax.transAxes)
     chax.text(PP_X + (DELTA_X - PP_X)/2, 0.72, 'POISSON PURO',
-              color=GRAY, ha='center', va='center', fontsize=7.5,
+              color=GRAY, ha='center', va='center', fontsize=8.0,
               fontweight='bold', transform=chax.transAxes)
 
     # Sub-column labels
-    EP_COLS = [(EP_X + i*COL_W3 + COL_W3/2, lbl) for i, lbl in
-               enumerate(['LOC %', 'EMP %', 'VIS %'])]
-    PP_COLS = [(PP_X + i*COL_W3 + COL_W3/2, lbl) for i, lbl in
-               enumerate(['LOC %', 'EMP %', 'VIS %'])]
+    EP_COLS = [(EP_X + i*COL_W3 + COL_W3/2, lbl)
+               for i, lbl in enumerate(['LOC %', 'EMP %', 'VIS %'])]
+    PP_COLS = [(PP_X + i*COL_W3 + COL_W3/2, lbl)
+               for i, lbl in enumerate(['LOC %', 'EMP %', 'VIS %'])]
 
     for x, lbl in EP_COLS + PP_COLS:
         chax.text(x, 0.22, lbl, color=PALETTE['text_secondary'],
-                  ha='center', va='center', fontsize=6.2, transform=chax.transAxes)
+                  ha='center', va='center', fontsize=6.5, transform=chax.transAxes)
     chax.text(DELTA_X + DELTA_W/2, 0.45, 'Δ LOC',
               color=PALETTE['text_secondary'], ha='center', va='center',
               fontsize=6.5, transform=chax.transAxes)
 
     # ── MATCH ROWS ───────────────────────────────────────────────────────────
-    SHIELD_S = 44
+    SHIELD_S = 64
 
     for i, pd_data in enumerate(partidos_data):
         row_y = FOOTER_H + (N - 1 - i) * ROW_H
@@ -365,73 +366,84 @@ def render(partidos_data, output_path):
         rax.axis('off')
         rax.axhline(1, color=PALETTE['divider'], lw=0.6)
 
-        # Crests
-        bh = ROW_H * 0.72
-        bw = bh * AR
+        # Badge layout in match column:
+        # local area: 0.006 – 0.133  |  "vs" at 0.139  |  visit area: 0.148 – 0.278
+        bh     = ROW_H * 0.50          # badge height (normalized fig)
+        bw     = bh * AR               # square in output
         badge_y_abs = row_y + (ROW_H - bh) / 2
+
+        LO_AREA_MID = 0.069            # center of local area
+        VI_AREA_MID = 0.210            # center of visit area
+        bx_lo = LO_AREA_MID - bw / 2
+        bx_vi = VI_AREA_MID - bw / 2
 
         sh_l = get_shield(lo, SHIELD_S)
         if sh_l is not None:
-            sax = fig.add_axes([0.010, badge_y_abs, bw, bh])
+            sax = fig.add_axes([bx_lo, badge_y_abs, bw, bh])
             sax.set_facecolor('#f8f8fc'); sax.imshow(sh_l); sax.axis('off')
 
         sh_v = get_shield(vi, SHIELD_S)
         if sh_v is not None:
-            sax = fig.add_axes([0.010 + bw + 0.028, badge_y_abs, bw, bh])
+            sax = fig.add_axes([bx_vi, badge_y_abs, bw, bh])
             sax.set_facecolor('#f8f8fc'); sax.imshow(sh_v); sax.axis('off')
 
-        # Team names and ELO (in match column)
-        name_x = 0.010 + 2*bw + 0.038
-        rax.text(name_x, 0.66, lo.upper(), color=WHITE, ha='left', va='center', **bebas(8))
-        rax.text(name_x + 0.010, 0.40,
-                 f'ELO {elo_l:.0f}', color=c_lo, ha='left', va='center', fontsize=6.5)
-        rax.text(name_x + 0.010, 0.22,
-                 f'ELO {elo_v:.0f}', color=c_vi, ha='left', va='center', fontsize=6.5)
+        # "vs" between the two badges
+        rax.text(0.139, 0.52, 'vs',
+                 color=GRAY, ha='center', va='center', fontsize=6.5)
 
-        # VS separator
-        rax.text(MATCH_X + (EP_X - MATCH_X)/2 + 0.002, 0.54, f'vs {vi[:8].upper()}',
-                 color=GRAY, ha='center', va='center', fontsize=6.0)
+        # Team names below each badge
+        rax.text(LO_AREA_MID, 0.16, lo.upper(),
+                 color=WHITE, ha='center', va='center', fontsize=6.5, fontweight='bold')
+        rax.text(VI_AREA_MID, 0.16, vi.upper(),
+                 color=WHITE, ha='center', va='center', fontsize=6.5, fontweight='bold')
 
-        # ELO+Poisson values
-        for col_i, (val, vals_group) in enumerate(
-                [(ep_l, (ep_l,ep_e,ep_v)), (ep_e, (ep_l,ep_e,ep_v)), (ep_v, (ep_l,ep_e,ep_v))]):
+        # ELO values below names
+        rax.text(LO_AREA_MID, 0.06, f'ELO {elo_l:.0f}',
+                 color=c_lo, ha='center', va='center', fontsize=5.5)
+        rax.text(VI_AREA_MID, 0.06, f'ELO {elo_v:.0f}',
+                 color=c_vi, ha='center', va='center', fontsize=5.5)
+
+        # ── ELO+Poisson values ─────────────────────────────────────────────
+        ep_max = max(ep_l, ep_e, ep_v)
+        for col_i, val in enumerate([ep_l, ep_e, ep_v]):
             x = EP_X + col_i * COL_W3 + COL_W3/2
-            is_max = val == max(ep_l, ep_e, ep_v)
-            col_for_val = [c_lo, '#888888', c_vi][col_i]
-            rax.text(x, 0.50, f'{val*100:.1f}',
-                     color=col_for_val if is_max else WHITE,
-                     ha='center', va='center', fontsize=9.5,
-                     fontweight='bold' if is_max else 'normal')
-
-        # Poisson pure values
-        for col_i, val in enumerate([pp_l, pp_e, pp_v]):
-            x = PP_X + col_i * COL_W3 + COL_W3/2
-            is_max = val == max(pp_l, pp_e, pp_v)
-            col_for_val = [c_lo, '#888888', c_vi][col_i]
+            is_max = (val == ep_max)
+            col_for_val = [c_lo, GRAY, c_vi][col_i]
             rax.text(x, 0.50, f'{val*100:.1f}',
                      color=col_for_val if is_max else GRAY,
-                     ha='center', va='center', fontsize=9.5,
+                     ha='center', va='center', fontsize=10.0,
                      fontweight='bold' if is_max else 'normal')
 
-        # Delta
+        # ── Poisson pure values ────────────────────────────────────────────
+        pp_max = max(pp_l, pp_e, pp_v)
+        for col_i, val in enumerate([pp_l, pp_e, pp_v]):
+            x = PP_X + col_i * COL_W3 + COL_W3/2
+            is_max = (val == pp_max)
+            col_for_val = [c_lo, GRAY, c_vi][col_i]
+            rax.text(x, 0.50, f'{val*100:.1f}',
+                     color=col_for_val if is_max else GRAY,
+                     ha='center', va='center', fontsize=10.0,
+                     fontweight='bold' if is_max else 'normal')
+
+        # ── Delta ─────────────────────────────────────────────────────────
         delta = (ep_l - pp_l) * 100
         sign  = '+' if delta >= 0 else ''
         d_col = GREEN if delta > 1.5 else (PALETTE['negative'] if delta < -1.5 else GRAY)
         rax.text(DELTA_X + DELTA_W/2, 0.50, f'{sign}{delta:.1f}',
-                 color=d_col, ha='center', va='center', fontsize=9, fontweight='bold')
+                 color=d_col, ha='center', va='center', fontsize=9.5, fontweight='bold')
 
     # ── LEGEND ────────────────────────────────────────────────────────────────
-    lax = fig.add_axes([0.01, FOOTER_H * 0.60, 0.98, FOOTER_H * 0.32])
+    lax = fig.add_axes([0.01, FOOTER_H * 0.62, 0.98, FOOTER_H * 0.30])
     lax.axis('off')
     lax.text(0.0, 0.5,
-             'LOC=victoria local · EMP=empate · VIS=victoria visitante · '
-             'Δ LOC = diferencia en P(local) entre modelos '
-             '(+verde: ELO eleva al local, −rojo: ELO lo penaliza)',
+             'LOC = victoria local · EMP = empate · VIS = victoria visitante · '
+             'Δ LOC = diferencia en P(local) entre modelos  '
+             '(+verde: ELO beneficia al local · −rojo: ELO lo penaliza)',
              color=PALETTE['text_secondary'], fontsize=7.0, ha='left', va='center',
              transform=lax.transAxes)
 
     # ── FOOTER ────────────────────────────────────────────────────────────────
-    fax = fig.add_axes([0, 0, 1, FOOTER_H * 0.54])
+    fax = fig.add_axes([0, 0, 1, FOOTER_H * 0.52])
     fax.set_facecolor(PALETTE['bg_secondary']); fax.axis('off')
     fax.axhline(1, color=RED, lw=2.0)
     fax.text(0.015, 0.45, 'Fuente: FotMob · Histórico 2010–2026',

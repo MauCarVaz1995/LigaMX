@@ -223,7 +223,7 @@ def simulate_one(model, tabla_base, pendientes, rng):
 # ─────────────────────────────────────────────────────────────────────────────
 FOTMOB_TEAM = 'https://images.fotmob.com/image_resources/logo/teamlogo/{}.png'
 
-def get_shield(team_name: str, size: int = 48) -> np.ndarray | None:
+def get_shield(team_name: str, size: int = 64) -> np.ndarray | None:
     name_key = {
         'América': 'CF America', 'FC Juárez': 'FC Juarez',
         'Mazatlán': 'Mazatlan FC', 'San Luis': 'Atletico de San Luis',
@@ -239,7 +239,11 @@ def get_shield(team_name: str, size: int = 48) -> np.ndarray | None:
         except Exception:
             return None
     try:
-        img = Image.open(cache).convert('RGBA').resize((size, size), Image.LANCZOS)
+        img = Image.open(cache).convert('RGBA')
+        orig_w, orig_h = img.size
+        target = min(size, orig_w, orig_h)   # never upscale beyond original
+        if target != orig_w or target != orig_h:
+            img = img.resize((target, target), Image.LANCZOS)
         return np.array(img)
     except Exception:
         return None
@@ -251,8 +255,17 @@ def render(teams_sorted, prob_matrix, tabla_base, output_path):
     N_TEAMS = len(teams_sorted)
     N_POS   = N_TEAMS   # 18
 
-    FIG_W, FIG_H = 12.0, 14.0
+    FIG_W, FIG_H = 11.0, 16.0
     AR = FIG_H / FIG_W
+
+    TEAM_ABBR = {
+        'América': 'AMÉ', 'Chivas': 'CHI', 'Cruz Azul': 'CAZ',
+        'Tigres': 'TIG', 'Monterrey': 'MTY', 'Pumas': 'PUM',
+        'Toluca': 'TOL', 'Santos Laguna': 'SAN', 'Pachuca': 'PAC',
+        'Atlas': 'ATL', 'León': 'LEO', 'Necaxa': 'NEC',
+        'Tijuana': 'TIJ', 'Querétaro': 'QRO', 'FC Juárez': 'FCJ',
+        'Mazatlán': 'MAZ', 'San Luis': 'SLP', 'Puebla': 'PUE',
+    }
 
     # Current standings (for diagonal highlighting)
     teams_by_rank = sorted(
@@ -266,16 +279,12 @@ def render(teams_sorted, prob_matrix, tabla_base, output_path):
     # Layout in inches
     HEADER_IN  = 1.55
     FOOTER_IN  = 0.55
-    COLHDR_IN  = 0.38
-    LEFT_IN    = 1.42
-    MARGIN_IN  = 0.12
-    # cell width: fit 18 pos cols + 2 summary cols (each 1.4× cell)
-    # LEFT + 18*CW + 2*1.4*CW + MARGIN = FIG_W
-    # LEFT + 21.8*CW + MARGIN = FIG_W
+    COLHDR_IN  = 0.42
+    LEFT_IN    = 1.38
+    MARGIN_IN  = 0.10
     CW_IN      = (FIG_W - LEFT_IN - MARGIN_IN) / (N_POS + 2 * 1.4)
     SUM_IN     = CW_IN * 1.4
 
-    # Normalized
     def n(val_in, total): return val_in / total
 
     HEADER_H = n(HEADER_IN, FIG_H)
@@ -313,7 +322,7 @@ def render(teams_sorted, prob_matrix, tabla_base, output_path):
     hax.text(0.50, 0.88, '¿CÓMO TERMINA EL CLAUSURA 2026?',
              color=WHITE, ha='center', va='top', transform=hax.transAxes, **bebas(24))
     hax.text(0.50, 0.56,
-             f'10,000 simulaciones Monte Carlo · 45 partidos restantes · Jornadas 13–17',
+             '10,000 simulaciones Monte Carlo · 45 partidos restantes · Jornadas 13–17',
              color=GRAY, ha='center', va='top', transform=hax.transAxes, fontsize=9.5)
     hax.text(0.50, 0.30,
              'Cada celda = % de simulaciones en que el equipo terminó en esa posición · '
@@ -322,18 +331,18 @@ def render(teams_sorted, prob_matrix, tabla_base, output_path):
              transform=hax.transAxes, fontsize=7.5)
 
     # ── COLUMN HEADERS ───────────────────────────────────────────────────────
-    col_hdr_y = CONTENT_Y + CONTENT_H   # top of content area = bottom of col headers
+    col_hdr_y = CONTENT_Y + CONTENT_H
 
     # Zone labels (spanning group of columns)
     zone_defs = [
-        (0,  3,  '#2ea043', '#0a1a0a', 'LIGUILLA DIRECTA'),
-        (4,  7,  '#d4a72c', '#1a1200', 'REPECHAJE'),
+        (0,  3,  '#2ea043', '#0d2a18', 'LIGUILLA DIRECTA'),
+        (4,  7,  '#d4a72c', '#2a2200', 'REPECHAJE'),
         (8,  17, '#f85149', '#1a0505', ''),
     ]
     for (c0, c1, fg, bg_z, zlbl) in zone_defs:
         zx0 = pos_col_x[c0]
         zx1 = pos_col_x[c1] + POS_W
-        zax = fig.add_axes([zx0, col_hdr_y + COLHDR_H * 0.52, zx1 - zx0, COLHDR_H * 0.48])
+        zax = fig.add_axes([zx0, col_hdr_y + COLHDR_H * 0.50, zx1 - zx0, COLHDR_H * 0.50])
         zax.set_facecolor(bg_z); zax.axis('off')
         if zlbl:
             zax.text(0.5, 0.5, zlbl, color=fg, ha='center', va='center',
@@ -342,9 +351,13 @@ def render(teams_sorted, prob_matrix, tabla_base, output_path):
     # Individual position number cells
     for j in range(N_POS):
         pos = j + 1
-        hdr_bg = '#0a1a0a' if pos <= 4 else ('#1a1200' if pos <= 8 else '#1a0505')
-        hdr_fg = '#2ea043' if pos <= 4 else ('#d4a72c' if pos <= 8 else '#f85149')
-        cax = fig.add_axes([pos_col_x[j], col_hdr_y, POS_W, COLHDR_H * 0.52])
+        if pos <= 4:
+            hdr_bg, hdr_fg = '#1a3a2a', '#2ea043'
+        elif pos <= 8:
+            hdr_bg, hdr_fg = '#3a3a1a', '#d4a72c'
+        else:
+            hdr_bg, hdr_fg = PALETTE['bg_card'], GRAY
+        cax = fig.add_axes([pos_col_x[j], col_hdr_y, POS_W, COLHDR_H * 0.50])
         cax.set_facecolor(hdr_bg); cax.axis('off')
         for sp in cax.spines.values():
             sp.set_edgecolor(PALETTE['divider']); sp.set_linewidth(0.4)
@@ -362,27 +375,28 @@ def render(teams_sorted, prob_matrix, tabla_base, output_path):
 
     # ── TEAM ROWS ────────────────────────────────────────────────────────────
     def cell_style(prob):
-        if prob > 0.15:    return '#D5001C', '#ffffff', True
-        elif prob > 0.05:  return '#8b1a2b', '#ffffff', False
-        elif prob > 0.01:  return '#1e2a3a', '#8b949e', False
-        else:              return '#161b22', '#30363d', False
+        """Returns (face_color, text_color, bold, font_size)"""
+        if prob > 0.15:   return '#D5001C', '#ffffff', True,  11
+        elif prob > 0.05: return '#8b1a2b', '#ffffff', False,  9
+        elif prob > 0.01: return '#1e2a3a', '#c9d1d9', False,  8
+        else:             return '#161b22', '#30363d', False,  8
 
-    BADGE_S = 40
+    BADGE_S = 64
 
     for i, team in enumerate(teams_sorted):
         prob_row = prob_matrix[team]
         row_y    = CONTENT_Y + (N_TEAMS - 1 - i) * ROW_H
         row_bg   = PALETTE['bg_secondary'] if i % 2 == 0 else PALETTE['bg_card']
-        diag_col = current_pos.get(team, 99) - 1   # 0-indexed column for diagonal
+        diag_col = current_pos.get(team, 99) - 1
 
-        # Left column: crest + name
+        # Left column: crest + abbreviation
         lcol = fig.add_axes([0, row_y, LEFT_X, ROW_H])
         lcol.set_facecolor(row_bg); lcol.axis('off')
         lcol.axhline(1, color=PALETTE['divider'], lw=0.5)
 
         shield = get_shield(team, BADGE_S)
         if shield is not None:
-            bh = ROW_H * 0.80
+            bh = ROW_H * 0.78
             bw = bh * AR
             sax = fig.add_axes([0.004, row_y + (ROW_H - bh) / 2, bw, bh])
             sax.set_facecolor('#f8f8fc')
@@ -390,17 +404,16 @@ def render(teams_sorted, prob_matrix, tabla_base, output_path):
         else:
             bw = 0.0
 
-        # Name (short, up to 8 chars)
-        name_x_in_ax = (0.004 + bw + 0.006) / LEFT_X
-        short = team[:8].upper() if len(team) > 8 else team.upper()
-        lcol.text(name_x_in_ax, 0.50, short,
-                  color=WHITE, ha='left', va='center', fontsize=7.0, fontweight='bold')
+        abbr = TEAM_ABBR.get(team, team[:5].upper())
+        name_x_in_ax = (0.004 + bw + 0.008) / LEFT_X
+        lcol.text(name_x_in_ax, 0.50, abbr,
+                  color=WHITE, ha='left', va='center', fontsize=8.5, fontweight='bold')
 
         # Position cells
         for j in range(N_POS):
             pos  = j + 1
             prob = prob_row.get(pos, 0.0)
-            fc, tc, bold = cell_style(prob)
+            fc, tc, bold, fs = cell_style(prob)
             is_diag = (j == diag_col)
 
             cax = fig.add_axes([pos_col_x[j], row_y, POS_W, ROW_H])
@@ -413,10 +426,13 @@ def render(teams_sorted, prob_matrix, tabla_base, output_path):
                 else:
                     sp.set_edgecolor(PALETTE['divider']); sp.set_linewidth(0.3)
 
-            if prob > 0.0005:
+            if prob >= 0.001:
+                # >20%: 11pt bold  |  5-20%: 9pt  |  <5%: 8pt  |  0%: no text
+                display_fs = 11 if prob > 0.20 else fs
                 cax.text(0.5, 0.5, f'{prob*100:.0f}',
-                         color=tc, ha='center', va='center', fontsize=9,
-                         fontweight='bold' if bold else 'normal',
+                         color=tc, ha='center', va='center',
+                         fontsize=display_fs,
+                         fontweight='bold' if (bold or prob > 0.20) else 'normal',
                          transform=cax.transAxes)
 
         # Summary: P(Top4) and P(Top8)
@@ -439,20 +455,20 @@ def render(teams_sorted, prob_matrix, tabla_base, output_path):
     # ── LEGEND ───────────────────────────────────────────────────────────────
     leg_y = FOOTER_H * 0.58
     leg_h = FOOTER_H * 0.34
-    lax = fig.add_axes([0.01, leg_y, 0.70, leg_h])
+    lax = fig.add_axes([0.01, leg_y, 0.72, leg_h])
     lax.set_xlim(0, 1); lax.set_ylim(0, 1); lax.axis('off')
     items = [('>15%', '#D5001C', '#fff'), ('5–15%', '#8b1a2b', '#fff'),
-             ('1–5%',  '#1e2a3a', '#8b949e'), ('<1%', '#161b22', '#30363d')]
+             ('1–5%',  '#1e2a3a', '#c9d1d9'), ('<1%', '#161b22', '#30363d')]
     for k, (lbl, fc, tc) in enumerate(items):
         bx = k * 0.25
         lax.add_patch(mpatches.Rectangle((bx, 0.1), 0.055, 0.80,
                       facecolor=fc, edgecolor=PALETTE['divider'], lw=0.5))
         lax.text(bx + 0.07, 0.50, lbl, color=GRAY, va='center', fontsize=7.0)
-    lax.text(0.84, 0.50, '□ posición actual (borde blanco)',
+    lax.text(0.86, 0.50, '□ posición actual  (borde blanco)',
              color=PALETTE['text_secondary'], va='center', fontsize=6.5)
 
     # ── FOOTER ───────────────────────────────────────────────────────────────
-    fax = fig.add_axes([0, 0, 1, FOOTER_H * 0.52])
+    fax = fig.add_axes([0, 0, 1, FOOTER_H * 0.50])
     fax.set_facecolor(PALETTE['bg_secondary']); fax.axis('off')
     fax.axhline(1, color=RED, lw=2.0)
     fax.text(0.015, 0.45, 'Fuente: FotMob · Clausura 2026',

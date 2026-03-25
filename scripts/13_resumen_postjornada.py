@@ -212,8 +212,11 @@ def predict(model, local, visitante, max_goals=5):
 # ─────────────────────────────────────────────────────────────────────────────
 FOTMOB_TEAM = 'https://images.fotmob.com/image_resources/logo/teamlogo/{}.png'
 
-def get_shield(team_name: str, size: int = 60) -> np.ndarray | None:
-    tid = TEAM_IDS.get(team_name)
+def get_shield(team_name: str, size: int = 128) -> np.ndarray | None:
+    name_key = {
+        'FC Juarez': 'FC Juárez', 'FC Juárez': 'FC Juárez',
+    }.get(team_name, team_name)
+    tid = TEAM_IDS.get(name_key) or TEAM_IDS.get(team_name)
     if tid is None:
         return None
     cache = IMG_TEAMS / f'{tid}.png'
@@ -223,7 +226,11 @@ def get_shield(team_name: str, size: int = 60) -> np.ndarray | None:
         except Exception:
             return None
     try:
-        img = Image.open(cache).convert('RGBA').resize((size, size), Image.LANCZOS)
+        img = Image.open(cache).convert('RGBA')
+        orig_w, orig_h = img.size
+        target = min(size, orig_w, orig_h)   # never upscale beyond original
+        if target != orig_w or target != orig_h:
+            img = img.resize((target, target), Image.LANCZOS)
         return np.array(img)
     except Exception:
         return None
@@ -249,7 +256,7 @@ def render(partidos_info, output_path):
     N = len(partidos_info)
     aciertos = sum(1 for p in partidos_info if p['res_real'] == p['res_pred'])
 
-    FIG_W, FIG_H = 9.5, 5.8
+    FIG_W, FIG_H = 10.0, 8.0
 
     fig = plt.figure(figsize=(FIG_W, FIG_H), facecolor=BG)
 
@@ -263,7 +270,7 @@ def render(partidos_info, output_path):
     bg.axis('off')
 
     HEADER_H = 1.20 / FIG_H
-    FOOTER_H = 0.80 / FIG_H
+    FOOTER_H = 0.90 / FIG_H
     ROW_H    = (1.0 - HEADER_H - FOOTER_H) / N
 
     # HEADER
@@ -273,15 +280,17 @@ def render(partidos_info, output_path):
     hax.axhline(0, color=RED, lw=2.5)
 
     n_fails = N - aciertos
-    hook = 'JORNADA 12 · ¿QUÉ TAN BIEN PREDIJIMOS?' if aciertos <= n_fails else f'¡{aciertos}/{N} ACIERTOS EN JORNADA 12!'
+    hook = ('JORNADA 12 · ¿QUÉ TAN BIEN PREDIJIMOS?'
+            if aciertos <= n_fails else f'¡{aciertos}/{N} ACIERTOS EN JORNADA 12!')
     hax.text(0.50, 0.84, hook, color=WHITE, ha='center', va='top',
-             transform=hax.transAxes, **bebas(20))
-    hax.text(0.50, 0.42, 'Modelo Poisson · Predicción (probabilidad más alta) vs Resultado Real · Clausura 2026',
-             color=GRAY, ha='center', va='top', transform=hax.transAxes, fontsize=8.5)
+             transform=hax.transAxes, **bebas(22))
+    hax.text(0.50, 0.42,
+             'Modelo Poisson · Predicción (probabilidad más alta) vs Resultado Real · Clausura 2026',
+             color=GRAY, ha='center', va='top', transform=hax.transAxes, fontsize=9.0)
 
     # AR for square badges
     AR = FIG_H / FIG_W
-    SHIELD_S = 48
+    SHIELD_S = 128
 
     for idx, info in enumerate(partidos_info):
         row_y = FOOTER_H + (N - 1 - idx) * ROW_H
@@ -304,81 +313,90 @@ def render(partidos_info, output_path):
         rax.set_facecolor(PALETTE['bg_card'] if idx % 2 == 0 else PALETTE['bg_secondary'])
         rax.set_xlim(0, 1); rax.set_ylim(0, 1)
         rax.axis('off')
-        rax.axhline(1, color=PALETTE['divider'], lw=0.8)
+        # Visible separator between rows
+        rax.axhline(1.0, color='#2d333b', lw=1.5, zorder=10)
 
         # ── Local crest (left side)
-        badge_h  = ROW_H * 0.72
-        badge_w  = badge_h * AR
-        badge_y  = row_y + (ROW_H - badge_h) / 2
+        badge_h = ROW_H * 0.52
+        badge_w = badge_h * AR
+        badge_y = row_y + (ROW_H - badge_h) / 2
         sh_l = get_shield(lo, SHIELD_S)
         if sh_l is not None:
-            sax = fig.add_axes([0.010, badge_y, badge_w, badge_h])
+            sax = fig.add_axes([0.012, badge_y, badge_w, badge_h])
             sax.set_facecolor('#f8f8fc')
             sax.imshow(np.array(sh_l)); sax.axis('off')
 
         # Local name
-        name_end_x = 0.010 + badge_w
-        rax.text(name_end_x + 0.008, 0.55, lo.upper(),
-                 color=WHITE, ha='left', va='center', **bebas(8.5))
+        name_end_x = 0.012 + badge_w
+        rax.text(name_end_x + 0.010, 0.56, lo.upper(),
+                 color=WHITE, ha='left', va='center', **bebas(10))
 
         # ── Mini bars L / E / V  (center-left)
-        BAR_X0  = 0.220
-        BAR_LEN = 0.195
-        BAR_H   = 0.120
+        BAR_X0  = 0.230
+        BAR_LEN = 0.185
+        BAR_H   = 0.110
         BAR_YS  = [0.76, 0.50, 0.24]
-        bar_items = [('L', p_l, c_lo), ('E', p_e, '#888888'), ('V', p_v, c_vi)]
+        max_p   = max(p_l, p_e, p_v)
+        bar_colors = [
+            c_lo if p_l == max_p else PALETTE['bar_loser'],
+            (GRAY  if p_e == max_p else PALETTE['bar_loser']),
+            c_vi if p_v == max_p else PALETTE['bar_loser'],
+        ]
+        bar_items = [('L', p_l, bar_colors[0]),
+                     ('E', p_e, bar_colors[1]),
+                     ('V', p_v, bar_colors[2])]
 
         for (lbl, val, col), by in zip(bar_items, BAR_YS):
-            is_max = val == max(p_l, p_e, p_v)
-            # track
+            is_max = val == max_p
             rax.add_patch(Rectangle((BAR_X0, by - BAR_H/2), BAR_LEN, BAR_H,
                                     facecolor=PALETTE['bar_track'], lw=0, zorder=2))
-            # fill
             rax.add_patch(Rectangle((BAR_X0, by - BAR_H/2), BAR_LEN * val, BAR_H,
-                                    facecolor=col, lw=0, zorder=3, alpha=0.88))
-            rax.text(BAR_X0 - 0.005, by, lbl, color=GRAY,
-                     ha='right', va='center', fontsize=6.0, fontweight='bold')
+                                    facecolor=col, lw=0, zorder=3,
+                                    alpha=0.92 if is_max else 0.55))
+            rax.text(BAR_X0 - 0.006, by, lbl, color=GRAY,
+                     ha='right', va='center', fontsize=6.5, fontweight='bold')
             txt_color = WHITE if is_max else GRAY
-            rax.text(BAR_X0 + BAR_LEN + 0.007, by, f'{val*100:.0f}%',
-                     color=txt_color, ha='left', va='center', fontsize=7.5,
+            rax.text(BAR_X0 + BAR_LEN + 0.008, by, f'{val*100:.0f}%',
+                     color=txt_color, ha='left', va='center', fontsize=8.0,
                      fontweight='bold' if is_max else 'normal')
 
         # ── Result (center)
-        cx = 0.540
-        rax.text(cx, 0.72, 'RESULTADO REAL', color=GRAY,
-                 ha='center', va='center', fontsize=6.0)
-        rax.text(cx, 0.48, f'{gl_real}  –  {gv_real}',
-                 color=WHITE, ha='center', va='center', **bebas(26))
-        res_labels = {'local': f'VIC. {lo[:6].upper()}', 'empate': 'EMPATE',
-                      'visitante': f'VIC. {vi[:6].upper()}'}
-        res_col = c_lo if res_real == 'local' else (c_vi if res_real == 'visitante' else '#aaaaaa')
-        rax.text(cx, 0.20, res_labels[res_real],
+        cx = 0.545
+        rax.text(cx, 0.78, 'RESULTADO REAL', color=GRAY,
+                 ha='center', va='center', fontsize=6.5)
+        rax.text(cx, 0.50, f'{gl_real}  –  {gv_real}',
+                 color=WHITE, ha='center', va='center', **bebas(36))
+        res_labels = {'local': f'VIC. {lo.upper()}', 'empate': 'EMPATE',
+                      'visitante': f'VIC. {vi.upper()}'}
+        res_col = (c_lo if res_real == 'local'
+                   else (c_vi if res_real == 'visitante' else '#aaaaaa'))
+        rax.text(cx, 0.16, res_labels[res_real],
                  color=res_col, ha='center', va='center', fontsize=6.5, fontweight='bold')
 
-        # ── Check / X
+        # ── Check / X  (with space around it)
         mark_color = PALETTE['positive'] if acierto else PALETTE['negative']
-        rax.text(0.650, 0.52, '✓' if acierto else '✗',
-                 color=mark_color, ha='center', va='center', fontsize=28, fontweight='bold')
+        rax.text(0.660, 0.52, '✓' if acierto else '✗',
+                 color=mark_color, ha='center', va='center', fontsize=24, fontweight='bold')
 
-        # Note: 2nd most probable if fallo
+        # Note: prediction and 2nd most probable if fallo
         if not acierto:
             sorted_probs = sorted(
                 [('local', p_l), ('empate', p_e), ('visitante', p_v)],
                 key=lambda x: -x[1])
-            # Show predicted result
-            pred_lbl = {'local': f'Pred: Vic {lo[:5]}',
-                        'empate': 'Pred: Empate',
-                        'visitante': f'Pred: Vic {vi[:5]}'}
-            rax.text(0.650, 0.25, pred_lbl[res_pred],
-                     color=GRAY, ha='center', va='center', fontsize=5.5)
-            # If second most probable was correct
+            pred_full = {
+                'local':     f'Predicción: Victoria {lo}',
+                'empate':    'Predicción: Empate',
+                'visitante': f'Predicción: Victoria {vi}',
+            }
+            rax.text(0.660, 0.26, pred_full[res_pred],
+                     color=GRAY, ha='center', va='center', fontsize=6.0)
             if sorted_probs[1][0] == res_real:
-                rax.text(0.650, 0.12,
-                         f'2° más prob: {res_real} ({sorted_probs[1][1]*100:.0f}%)',
-                         color='#6e8aaa', ha='center', va='center', fontsize=5.2)
+                rax.text(0.660, 0.10,
+                         f'2° más probable: {res_real} ({sorted_probs[1][1]*100:.0f}%)',
+                         color='#6e8aaa', ha='center', va='center', fontsize=5.5)
 
         # ── Visit crest (right side)
-        visit_badge_x = 0.725
+        visit_badge_x = 0.745
         sh_v = get_shield(vi, SHIELD_S)
         if sh_v is not None:
             sax = fig.add_axes([visit_badge_x, badge_y, badge_w, badge_h])
@@ -386,9 +404,9 @@ def render(partidos_info, output_path):
             sax.imshow(np.array(sh_v)); sax.axis('off')
 
         # Visit name
-        vname_x = visit_badge_x + badge_w + 0.008
-        rax.text(vname_x, 0.55, vi.upper(),
-                 color=WHITE, ha='left', va='center', **bebas(8.5))
+        vname_x = visit_badge_x + badge_w + 0.010
+        rax.text(vname_x, 0.56, vi.upper(),
+                 color=WHITE, ha='left', va='center', **bebas(10))
 
     # FOOTER
     fax = fig.add_axes([0, 0, 1, FOOTER_H])
@@ -397,15 +415,15 @@ def render(partidos_info, output_path):
     fax.axhline(1, color=RED, lw=2.0)
 
     pct = aciertos / N * 100
-    pct_color = PALETTE['positive'] if pct >= 67 else (WHITE if pct >= 34 else PALETTE['negative'])
+    pct_color = (PALETTE['positive'] if pct >= 67
+                 else (WHITE if pct >= 34 else PALETTE['negative']))
     fax.text(0.50, 0.68,
              f'{aciertos}/{N} PREDICCIONES CORRECTAS  ·  {pct:.0f}% DE ACIERTO',
              color=pct_color, ha='center', va='center',
              transform=fax.transAxes, **bebas(18))
-
-    fax.text(0.015, 0.22, 'Fuente: FotMob · Clausura 2026',
+    fax.text(0.015, 0.24, 'Fuente: FotMob · Clausura 2026',
              color=GRAY, fontsize=9, ha='left', va='center', transform=fax.transAxes)
-    fax.text(0.985, 0.22, 'MAU-STATISTICS',
+    fax.text(0.985, 0.24, 'MAU-STATISTICS',
              color=RED, ha='right', va='center', transform=fax.transAxes, **bebas(20))
 
     plt.savefig(output_path, dpi=150, bbox_inches='tight', facecolor=BG)
