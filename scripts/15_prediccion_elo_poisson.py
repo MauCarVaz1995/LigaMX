@@ -273,77 +273,88 @@ def get_shield(team_name: str, size: int = 52) -> np.ndarray | None:
 # ─────────────────────────────────────────────────────────────────────────────
 def render(partidos_data, output_path):
     N = len(partidos_data)
-    FIG_W, FIG_H = 12.0, 2.0 + N * 1.10 + 1.40
+    FIG_W = 11.0
+    FIG_H  = 1.90 + N * 0.82 + 0.90
 
     fig = plt.figure(figsize=(FIG_W, FIG_H), facecolor=BG)
 
-    # Fondo gradiente
+    # Background gradient
     grad = np.zeros((200, 2, 3))
-    for i in range(200):
-        t = i / 199
-        grad[i] = np.array([0x0a, 0x0e, 0x12]) / 255 * (1-t) + np.array([0x13, 0x1a, 0x24]) / 255 * t
-    bg = fig.add_axes([0, 0, 1, 1])
-    bg.imshow(grad, aspect='auto', extent=[0, 1, 0, 1], origin='lower')
-    bg.axis('off')
+    for ii in range(200):
+        t = ii / 199
+        grad[ii] = np.array([0x0a,0x0e,0x12])/255*(1-t) + np.array([0x13,0x1a,0x24])/255*t
+    bgax = fig.add_axes([0, 0, 1, 1])
+    bgax.imshow(grad, aspect='auto', extent=[0,1,0,1], origin='lower')
+    bgax.axis('off')
 
-    HEADER_H  = 1.50 / FIG_H
-    FOOTER_H  = 0.50 / FIG_H
-    CONTENT_H = 1.0 - HEADER_H - FOOTER_H
-    ROW_H     = CONTENT_H / N
+    HEADER_H = 1.90 / FIG_H
+    FOOTER_H = 0.88 / FIG_H
+    ROW_H    = (1.0 - HEADER_H - FOOTER_H) / N
+    AR       = FIG_H / FIG_W
 
     # ── HEADER ────────────────────────────────────────────────────────────────
     hax = fig.add_axes([0, 1 - HEADER_H, 1, HEADER_H])
     hax.set_facecolor(PALETTE['bg_secondary'])
     hax.axis('off')
     hax.axhline(0, color=RED, lw=2.5)
-    hax.text(0.50, 0.88, 'PREDICCIONES JORNADA 13 · ELO + POISSON vs POISSON PURO',
-             color=WHITE, ha='center', va='top', transform=hax.transAxes, **bebas(18))
-    hax.text(0.50, 0.52, 'Comparación de modelos · Clausura 2026',
-             color=GRAY, ha='center', va='top', transform=hax.transAxes, fontsize=9)
-    hax.text(0.50, 0.28,
-             'λ(ELO+P) = μ_liga × (ELO_equipo / 1500) × factor_defensa_rival · '
-             'λ(Poisson) = ataque_equipo × defensa_rival × μ_liga',
+    hax.text(0.50, 0.90, 'JORNADA 13 · ELO+POISSON VS POISSON PURO',
+             color=WHITE, ha='center', va='top', transform=hax.transAxes, **bebas(20))
+    hax.text(0.50, 0.58, '¿A quién beneficia más el historial de 15 años?  ·  Clausura 2026',
+             color=GRAY, ha='center', va='top', transform=hax.transAxes, fontsize=9.5)
+    hax.text(0.50, 0.34,
+             'ELO+Poisson: pondera fuerza histórica (15 años, ~5,250 partidos) · '
+             'Poisson puro: forma reciente (4 últimos torneos)',
              color=PALETTE['text_secondary'], ha='center', va='top',
-             transform=hax.transAxes, fontsize=7)
+             transform=hax.transAxes, fontsize=7.5)
 
-    # ── CABECERA DE COLUMNAS ────────────────────────────────────────────────
-    cols_y = 1 - HEADER_H - ROW_H * 0.25
-    cols_h = ROW_H * 0.25
-    col_labels = [
-        (0.28, 'ELO LOCAL'),
-        (0.38, 'ELO VISITA'),
-        (0.50, '——— ELO+POISSON ———'),
-        (0.735, '—— POISSON PURO ——'),
-    ]
-    cax = fig.add_axes([0, cols_y, 1, cols_h])
-    cax.set_facecolor(PALETTE['bg_card'])
-    cax.axis('off')
-    for x, lbl in col_labels:
-        cax.text(x, 0.45, lbl, color=GRAY, ha='center', va='center',
-                 fontsize=6.5, fontweight='bold', transform=cax.transAxes)
-    # sub-encabezados ELO+P
-    for x, lbl in [(0.460, 'LOC%'), (0.510, 'EMP%'), (0.560, 'VIS%'), (0.618, 'PRED')]:
-        cax.text(x, 0.45, lbl, color=PALETTE['text_secondary'],
-                 ha='center', va='center', fontsize=6.0, transform=cax.transAxes)
-    # sub-encabezados Poisson puro
-    for x, lbl in [(0.690, 'LOC%'), (0.740, 'EMP%'), (0.790, 'VIS%'), (0.848, 'PRED')]:
-        cax.text(x, 0.45, lbl, color=PALETTE['text_secondary'],
-                 ha='center', va='center', fontsize=6.0, transform=cax.transAxes)
-    cax.text(0.940, 0.45, 'ΔLOC%', color=PALETTE['text_secondary'],
-             ha='center', va='center', fontsize=6.0, transform=cax.transAxes)
+    # ── COLUMN HEADERS ───────────────────────────────────────────────────────
+    # Column x positions (normalized)
+    # [0.000 - 0.260]: Partido (crest + names + ELO)
+    # [0.265 - 0.505]: ELO+Poisson (L%, E%, V%)
+    # [0.510 - 0.735]: Poisson puro (L%, E%, V%)
+    # [0.740 - 0.820]: Δ
+    # [0.825 - 1.000]: chart area (arrow indicator)
+    MATCH_X   = 0.000
+    EP_X      = 0.265
+    PP_X      = 0.512
+    DELTA_X   = 0.748
+    DELTA_W   = 0.072
+    COL_W3    = (PP_X - EP_X) / 3  # width of each sub-column within group
 
-    # ── FILAS ────────────────────────────────────────────────────────────────
-    SHIELD_S = 46
-    AR = FIG_H / FIG_W
+    col_hdr_y = 1.0 - HEADER_H - ROW_H * 0.22
+    chax = fig.add_axes([0, col_hdr_y, 1, ROW_H * 0.22])
+    chax.set_facecolor(PALETTE['bg_card']); chax.axis('off')
+
+    # Group labels
+    chax.text(EP_X + (PP_X - EP_X)/2, 0.72, 'ELO + POISSON',
+              color='#A8B8C8', ha='center', va='center', fontsize=7.5,
+              fontweight='bold', transform=chax.transAxes)
+    chax.text(PP_X + (DELTA_X - PP_X)/2, 0.72, 'POISSON PURO',
+              color=GRAY, ha='center', va='center', fontsize=7.5,
+              fontweight='bold', transform=chax.transAxes)
+
+    # Sub-column labels
+    EP_COLS = [(EP_X + i*COL_W3 + COL_W3/2, lbl) for i, lbl in
+               enumerate(['LOC %', 'EMP %', 'VIS %'])]
+    PP_COLS = [(PP_X + i*COL_W3 + COL_W3/2, lbl) for i, lbl in
+               enumerate(['LOC %', 'EMP %', 'VIS %'])]
+
+    for x, lbl in EP_COLS + PP_COLS:
+        chax.text(x, 0.22, lbl, color=PALETTE['text_secondary'],
+                  ha='center', va='center', fontsize=6.2, transform=chax.transAxes)
+    chax.text(DELTA_X + DELTA_W/2, 0.45, 'Δ LOC',
+              color=PALETTE['text_secondary'], ha='center', va='center',
+              fontsize=6.5, transform=chax.transAxes)
+
+    # ── MATCH ROWS ───────────────────────────────────────────────────────────
+    SHIELD_S = 44
 
     for i, pd_data in enumerate(partidos_data):
         row_y = FOOTER_H + (N - 1 - i) * ROW_H
-        lo    = pd_data['local']
-        vi    = pd_data['visitante']
-        ep_l, ep_e, ep_v = pd_data['ep_local'], pd_data['ep_empate'], pd_data['ep_visit']
-        pp_l, pp_e, pp_v = pd_data['pp_local'], pd_data['pp_empate'], pd_data['pp_visit']
-        elo_l = pd_data['elo_local']
-        elo_v = pd_data['elo_visit']
+        lo = pd_data['local']; vi = pd_data['visitante']
+        ep_l = pd_data['ep_local']; ep_e = pd_data['ep_empate']; ep_v = pd_data['ep_visit']
+        pp_l = pd_data['pp_local']; pp_e = pd_data['pp_empate']; pp_v = pd_data['pp_visit']
+        elo_l = pd_data['elo_local']; elo_v = pd_data['elo_visit']
 
         c_lo = TEAM_COLORS.get(lo, '#888888')
         c_vi = TEAM_COLORS.get(vi, '#888888')
@@ -354,72 +365,74 @@ def render(partidos_data, output_path):
         rax.axis('off')
         rax.axhline(1, color=PALETTE['divider'], lw=0.6)
 
-        # Escudos
-        sh_l = get_shield(lo, SHIELD_S)
-        sh_v = get_shield(vi, SHIELD_S)
-        badge_h = ROW_H * 0.68
-        badge_w = badge_h * AR
-        badge_y = row_y + ROW_H * 0.16
+        # Crests
+        bh = ROW_H * 0.72
+        bw = bh * AR
+        badge_y_abs = row_y + (ROW_H - bh) / 2
 
+        sh_l = get_shield(lo, SHIELD_S)
         if sh_l is not None:
-            sax = fig.add_axes([0.012, badge_y, badge_w, badge_h])
+            sax = fig.add_axes([0.010, badge_y_abs, bw, bh])
             sax.set_facecolor('#f8f8fc'); sax.imshow(sh_l); sax.axis('off')
+
+        sh_v = get_shield(vi, SHIELD_S)
         if sh_v is not None:
-            sax = fig.add_axes([0.075, badge_y, badge_w, badge_h])
+            sax = fig.add_axes([0.010 + bw + 0.028, badge_y_abs, bw, bh])
             sax.set_facecolor('#f8f8fc'); sax.imshow(sh_v); sax.axis('off')
 
-        # Nombres
-        rax.text(0.135, 0.62, lo.upper(), color=WHITE,
-                 ha='left', va='center', **bebas(8))
-        rax.text(0.135, 0.32, 'vs ' + vi.upper(), color=GRAY,
-                 ha='left', va='center', fontsize=6.5)
+        # Team names and ELO (in match column)
+        name_x = 0.010 + 2*bw + 0.038
+        rax.text(name_x, 0.66, lo.upper(), color=WHITE, ha='left', va='center', **bebas(8))
+        rax.text(name_x + 0.010, 0.40,
+                 f'ELO {elo_l:.0f}', color=c_lo, ha='left', va='center', fontsize=6.5)
+        rax.text(name_x + 0.010, 0.22,
+                 f'ELO {elo_v:.0f}', color=c_vi, ha='left', va='center', fontsize=6.5)
 
-        # ELO local / visitante
-        for x, elo_val, col in [(0.280, elo_l, c_lo), (0.380, elo_v, c_vi)]:
-            rax.text(x, 0.60, f'{elo_val:.0f}', color=col,
-                     ha='center', va='center', fontsize=9, fontweight='bold')
-            rax.text(x, 0.28, 'ELO', color=GRAY, ha='center', va='center', fontsize=6)
+        # VS separator
+        rax.text(MATCH_X + (EP_X - MATCH_X)/2 + 0.002, 0.54, f'vs {vi[:8].upper()}',
+                 color=GRAY, ha='center', va='center', fontsize=6.0)
 
-        # ELO+Poisson probs
-        pred_ep = 'L' if ep_l >= ep_e and ep_l >= ep_v else ('E' if ep_e >= ep_v else 'V')
-        pred_pp = 'L' if pp_l >= pp_e and pp_l >= pp_v else ('E' if pp_e >= pp_v else 'V')
-        for x, val, col in [(0.460, ep_l, c_lo), (0.510, ep_e, '#888888'), (0.560, ep_v, c_vi)]:
-            rax.text(x, 0.50, f'{val*100:.1f}', color=col if val == max(ep_l, ep_e, ep_v) else WHITE,
-                     ha='center', va='center', fontsize=8.5,
-                     fontweight='bold' if val == max(ep_l, ep_e, ep_v) else 'normal')
-        pred_colors_ep = {'L': c_lo, 'E': '#bbbbbb', 'V': c_vi}
-        rax.text(0.618, 0.50, pred_ep, color=pred_colors_ep[pred_ep],
-                 ha='center', va='center', fontsize=11, fontweight='bold')
+        # ELO+Poisson values
+        for col_i, (val, vals_group) in enumerate(
+                [(ep_l, (ep_l,ep_e,ep_v)), (ep_e, (ep_l,ep_e,ep_v)), (ep_v, (ep_l,ep_e,ep_v))]):
+            x = EP_X + col_i * COL_W3 + COL_W3/2
+            is_max = val == max(ep_l, ep_e, ep_v)
+            col_for_val = [c_lo, '#888888', c_vi][col_i]
+            rax.text(x, 0.50, f'{val*100:.1f}',
+                     color=col_for_val if is_max else WHITE,
+                     ha='center', va='center', fontsize=9.5,
+                     fontweight='bold' if is_max else 'normal')
 
-        # Poisson puro probs
-        for x, val, col in [(0.690, pp_l, c_lo), (0.740, pp_e, '#888888'), (0.790, pp_v, c_vi)]:
-            rax.text(x, 0.50, f'{val*100:.1f}', color=col if val == max(pp_l, pp_e, pp_v) else WHITE,
-                     ha='center', va='center', fontsize=8.5,
-                     fontweight='bold' if val == max(pp_l, pp_e, pp_v) else 'normal')
-        pred_colors_pp = {'L': c_lo, 'E': '#bbbbbb', 'V': c_vi}
-        rax.text(0.848, 0.50, pred_pp, color=pred_colors_pp[pred_pp],
-                 ha='center', va='center', fontsize=11, fontweight='bold')
+        # Poisson pure values
+        for col_i, val in enumerate([pp_l, pp_e, pp_v]):
+            x = PP_X + col_i * COL_W3 + COL_W3/2
+            is_max = val == max(pp_l, pp_e, pp_v)
+            col_for_val = [c_lo, '#888888', c_vi][col_i]
+            rax.text(x, 0.50, f'{val*100:.1f}',
+                     color=col_for_val if is_max else GRAY,
+                     ha='center', va='center', fontsize=9.5,
+                     fontweight='bold' if is_max else 'normal')
 
-        # Δ%  (diferencia en predicción local entre modelos)
-        delta_l = (ep_l - pp_l) * 100
-        sign    = '+' if delta_l >= 0 else ''
-        d_color = GREEN if delta_l > 1 else (PALETTE['negative'] if delta_l < -1 else GRAY)
-        rax.text(0.940, 0.50, f'{sign}{delta_l:.1f}',
-                 color=d_color, ha='center', va='center', fontsize=8, fontweight='bold')
+        # Delta
+        delta = (ep_l - pp_l) * 100
+        sign  = '+' if delta >= 0 else ''
+        d_col = GREEN if delta > 1.5 else (PALETTE['negative'] if delta < -1.5 else GRAY)
+        rax.text(DELTA_X + DELTA_W/2, 0.50, f'{sign}{delta:.1f}',
+                 color=d_col, ha='center', va='center', fontsize=9, fontweight='bold')
 
-    # ── LEYENDA INFERIOR ─────────────────────────────────────────────────────
-    lax = fig.add_axes([0.01, FOOTER_H * 0.55, 0.98, FOOTER_H * 0.35])
+    # ── LEGEND ────────────────────────────────────────────────────────────────
+    lax = fig.add_axes([0.01, FOOTER_H * 0.60, 0.98, FOOTER_H * 0.32])
     lax.axis('off')
     lax.text(0.0, 0.5,
-             'L = Predicción: Victoria Local  ·  E = Empate  ·  V = Victoria Visitante  '
-             '·  Δ% = diferencia en P(Local) entre ELO+Poisson y Poisson puro',
-             color=PALETTE['text_secondary'], fontsize=6.8, ha='left', va='center',
+             'LOC=victoria local · EMP=empate · VIS=victoria visitante · '
+             'Δ LOC = diferencia en P(local) entre modelos '
+             '(+verde: ELO eleva al local, −rojo: ELO lo penaliza)',
+             color=PALETTE['text_secondary'], fontsize=7.0, ha='left', va='center',
              transform=lax.transAxes)
 
-    # ── FOOTER ───────────────────────────────────────────────────────────────
-    fax = fig.add_axes([0, 0, 1, FOOTER_H * 0.50])
-    fax.set_facecolor(PALETTE['bg_secondary'])
-    fax.axis('off')
+    # ── FOOTER ────────────────────────────────────────────────────────────────
+    fax = fig.add_axes([0, 0, 1, FOOTER_H * 0.54])
+    fax.set_facecolor(PALETTE['bg_secondary']); fax.axis('off')
     fax.axhline(1, color=RED, lw=2.0)
     fax.text(0.015, 0.45, 'Fuente: FotMob · Histórico 2010–2026',
              color=GRAY, fontsize=9, ha='left', va='center', transform=fax.transAxes)
