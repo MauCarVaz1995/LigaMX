@@ -22,6 +22,9 @@ import urllib.request
 
 warnings.filterwarnings('ignore')
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from config_visual import PALETTE, bebas as _bebas_cv, hex_rgba, hex_rgb as _hex_rgb_cv
+
 # ─────────────────────────────────────────────────────────────────────────────
 # PATHS
 # ─────────────────────────────────────────────────────────────────────────────
@@ -39,19 +42,18 @@ if BEBAS_TTF.exists():
     fm.fontManager.addfont(str(BEBAS_TTF))
 
 def bebas(size):
-    if BEBAS_TTF.exists():
-        return {'fontproperties': FontProperties(fname=str(BEBAS_TTF), size=size)}
-    return {'fontsize': size, 'fontweight': 'bold'}
+    return _bebas_cv(size)
 
 # ─────────────────────────────────────────────────────────────────────────────
 # PALETA
 # ─────────────────────────────────────────────────────────────────────────────
-DARK_BG   = '#0d1117'
-WHITE     = '#e6edf3'
-GRAY      = '#8b949e'
-GRAY_DIM  = '#2a2a2a'   # barra perdedora
-RED_BRAND = '#D5001C'
-BAR_TRACK = '#181c24'
+DARK_BG   = PALETTE['bg_main']
+WHITE     = PALETTE['text_primary']
+GRAY      = PALETTE['text_secondary']
+GRAY_DIM  = PALETTE['bar_loser']
+GRAY_BORDER = PALETTE['bar_loser_border']
+RED_BRAND = PALETTE['accent']
+BAR_TRACK = PALETTE['bar_track']
 
 TEAM_COLORS = {
     6618:    '#D5001C',
@@ -95,12 +97,12 @@ FIG_W, FIG_H = 8.0, 12.0
 DPI          = 150
 AR           = FIG_H / FIG_W   # 1.5
 
-FOOTER_H  = 0.065
-WINCTR_H  = 0.075   # más alto para barras de victorias
-ROW_H     = 0.056
+FOOTER_H  = 0.063
+WINCTR_H  = 0.072
+ROW_H     = 0.050   # más compacto
 METRICS_H = ROW_H * N_METRICS
-RATING_H  = 0.108
-HEADER_H  = 0.215
+RATING_H  = 0.105
+HEADER_H  = 0.210
 
 FOOTER_Y  = 0.000
 WINCTR_Y  = FOOTER_Y + FOOTER_H
@@ -115,7 +117,7 @@ VAL_W     = 0.085
 BAR_MAX_W = LABEL_X - VAL_W
 BAR_L_X   = VAL_W
 BAR2_X    = LABEL_X + LABEL_W
-BAR_H_ROW = 0.54
+BAR_H_ROW = 0.58   # barras más altas dentro de la fila más compacta
 BAR_PADY  = (1 - BAR_H_ROW) / 2
 
 PHOTO_H_FIG = 0.110
@@ -177,8 +179,7 @@ def get_team_img(tid):
     except Exception: return None
 
 def _hex_rgb_tuple(hex_color):
-    h = hex_color.lstrip('#')
-    return tuple(int(h[i:i+2], 16) for i in (0, 2, 4))
+    return _hex_rgb_cv(hex_color)
 
 def circular_crop(img: Image.Image, px: int, border_color: tuple) -> np.ndarray:
     """Recorta en círculo con borde de 3px en color del equipo."""
@@ -386,8 +387,8 @@ def render_1v1(pid1: int, pid2: int):
             mx.add_patch(Rectangle(
                 (LABEL_X - BAR_MAX_W * w1, bar_b), BAR_MAX_W * w1, BAR_H_ROW,
                 facecolor=c1 if won1 else GRAY_DIM,
-                edgecolor=(c1 if won1 else '#555555'),
-                linewidth=(0 if won1 else 0.5),
+                edgecolor=(c1 if won1 else GRAY_BORDER),
+                linewidth=(0 if won1 else 1.0),
                 zorder=4))
 
         # Track derecho
@@ -398,8 +399,8 @@ def render_1v1(pid1: int, pid2: int):
             mx.add_patch(Rectangle(
                 (BAR2_X, bar_b), BAR_MAX_W * w2, BAR_H_ROW,
                 facecolor=c2 if not won1 else GRAY_DIM,
-                edgecolor=(c2 if not won1 else '#555555'),
-                linewidth=(0 if not won1 else 0.5),
+                edgecolor=(c2 if not won1 else GRAY_BORDER),
+                linewidth=(0 if not won1 else 1.0),
                 zorder=4))
 
         # Etiqueta
