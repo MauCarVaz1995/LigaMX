@@ -7,6 +7,7 @@ Genera: output/charts/ranking_{posicion}.png  (150 DPI)
 
 import os
 import io
+import sys
 import urllib.request
 import urllib.error
 import warnings
@@ -25,6 +26,9 @@ import matplotlib.font_manager as fm
 from PIL import Image, ImageDraw, ImageFilter
 
 warnings.filterwarnings('ignore')
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from config_visual import PALETTE, bebas as _bebas_cv, hex_rgba
 
 # ─────────────────────────────────────────────────────────────────────────────
 # PATHS
@@ -48,14 +52,22 @@ if BEBAS_TTF.exists():
 # ─────────────────────────────────────────────────────────────────────────────
 # PALETA
 # ─────────────────────────────────────────────────────────────────────────────
-DARK_BG  = '#0d1117'
-BG_ROW_A = '#161b22'
-BG_ROW_B = '#0d1117'
-RED_BRAND   = '#D5001C'
+DARK_BG     = PALETTE['bg_main']
+BG_ROW_A    = PALETTE['bg_secondary']
+BG_ROW_B    = PALETTE['bg_main']
+RED_BRAND   = PALETTE['accent']
 GREEN_BRAND = '#00D4AA'
-WHITE = '#e6edf3'
-GRAY  = '#8b949e'
-GOLD  = '#FFD700'
+WHITE       = PALETTE['text_primary']
+GRAY        = PALETTE['text_secondary']
+GOLD        = '#FFD700'
+
+# Títulos declarativos por posición
+_TITLES = {
+    'Delantero':     ('¿QUIÉN DOMINA EL ATAQUE?',       'Top 10 Delanteros · Clausura 2026 · Índice por percentiles'),
+    'Mediocampista': ('LOS DUEÑOS DEL MEDIOCAMPO',       'Top 10 Mediocampistas · Clausura 2026 · Índice por percentiles'),
+    'Defensa':       ('EL MEJOR MURO DEFENSIVO',          'Top 10 Defensas · Clausura 2026 · Índice por percentiles'),
+    'Portero':       ('LA ÚLTIMA LÍNEA DE DEFENSA',       'Top 10 Porteros · Clausura 2026 · Índice por percentiles'),
+}
 
 # Colores del círculo de score por ranking
 def score_circle_color(rank_i: int) -> str:
@@ -236,21 +248,40 @@ def render_ranking(df_top: pd.DataFrame, categoria: str, output_path: Path):
 
     fig = plt.figure(figsize=(FIG_W, FIG_H), facecolor=DARK_BG)
 
-    # ── HEADER ──────────────────────────────────────────────────────────────
+    # ── GRADIENTE DE FONDO ───────────────────────────────────────────────────
+    grad = np.zeros((200, 2, 3))
+    for ii in range(200):
+        t = ii / 199
+        grad[ii] = np.array([0x0a,0x0e,0x12])/255*(1-t) + np.array([0x13,0x1a,0x24])/255*t
+    bg_ax = fig.add_axes([0, 0, 1, 1])
+    bg_ax.imshow(grad, aspect='auto', extent=[0,1,0,1], origin='lower')
+    bg_ax.axis('off')
+
+    # ── HEADER ───────────────────────────────────────────────────────────────
+    title_main, title_sub = _TITLES.get(categoria, (f'TOP 10 {categoria.upper()}S', ''))
     hax = fig.add_axes([0, 1 - HEADER_H, 1, HEADER_H])
-    hax.set_facecolor('#161b22')
+    hax.set_facecolor(PALETTE['bg_secondary'])
     hax.set_xlim(0, 1); hax.set_ylim(0, 1); hax.axis('off')
-    hax.add_patch(mpatches.Rectangle((0, 0), 0.005, 1,
+    # Acento rojo izquierdo
+    hax.add_patch(mpatches.Rectangle((0, 0), 0.004, 1,
                   color=RED_BRAND, transform=hax.transAxes))
-    hax.text(0.016, 0.64, f'TOP 10  ·  {categoria.upper()}S',
-             color=WHITE, fontsize=22, fontweight='bold',
-             va='center', ha='left', transform=hax.transAxes)
-    hax.text(0.016, 0.24,
-             f'Liga MX  ·  Clausura 2026  ·  Jornadas {JORNADAS}  ·  Mínimo {MIN_MINUTOS} min',
-             color=GRAY, fontsize=9.5, va='center', ha='left',
+    # Título declarativo
+    if _bebas_prop:
+        hax.text(0.016, 0.68, title_main,
+                 color=WHITE, fontsize=24, va='center', ha='left',
+                 transform=hax.transAxes,
+                 fontproperties=FontProperties(fname=str(BEBAS_TTF), size=24))
+    else:
+        hax.text(0.016, 0.68, title_main,
+                 color=WHITE, fontsize=22, fontweight='bold',
+                 va='center', ha='left', transform=hax.transAxes)
+    # Subtítulo claro y separado
+    hax.text(0.016, 0.22, title_sub,
+             color=GRAY, fontsize=9, va='center', ha='left',
              transform=hax.transAxes)
-    hax.text(0.982, 0.5, 'Clausura\n2026',
-             color=RED_BRAND, fontsize=11, fontweight='bold',
+    # Clausura 2026 — esquina derecha
+    hax.text(0.982, 0.5, 'CLAUSURA\n2026',
+             color=RED_BRAND, fontsize=10, fontweight='bold',
              va='center', ha='right', transform=hax.transAxes)
 
     # ── ETIQUETAS MÉTRICAS ───────────────────────────────────────────────
@@ -376,20 +407,12 @@ def render_ranking(df_top: pd.DataFrame, categoria: str, output_path: Path):
     fax.axhline(1, color=RED_BRAND, lw=2.0)
 
     fax.text(0.012, 0.44, 'Fuente: FotMob',
-             color=GRAY, fontsize=9, va='center', ha='left',
+             color=PALETTE['text_secondary'], fontsize=10, va='center', ha='left',
              transform=fax.transAxes)
 
-    # MAU-STATISTICS — sombra negra + texto rojo en Bebas Neue
-    mau_x, mau_y = 0.987, 0.44
-    shadow_kwargs = dict(fontsize=20, fontweight='bold',
-                         va='center', ha='right', transform=fax.transAxes)
-    if _bebas_prop:
-        shadow_kwargs['fontproperties'] = _bebas_prop
-    # Sombra (texto desplazado en negro semitransparente)
-    fax.text(mau_x + 0.002, mau_y - 0.06, 'MAU-STATISTICS',
-             color='#000000', alpha=0.7, **shadow_kwargs)
-    fax.text(mau_x, mau_y, 'MAU-STATISTICS',
-             color=RED_BRAND, **shadow_kwargs)
+    # MAU-STATISTICS — Bebas Neue 20pt rojo
+    mau_kw = dict(va='center', ha='right', transform=fax.transAxes, **_bebas_cv(20))
+    fax.text(0.987, 0.44, 'MAU-STATISTICS', color=RED_BRAND, **mau_kw)
 
     plt.savefig(output_path, dpi=DPI, bbox_inches='tight',
                 facecolor=DARK_BG, edgecolor='none')

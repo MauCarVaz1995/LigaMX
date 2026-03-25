@@ -99,16 +99,16 @@ AR           = FIG_H / FIG_W   # 1.5
 
 FOOTER_H  = 0.063
 WINCTR_H  = 0.072
-ROW_H     = 0.050   # más compacto
+ROW_H     = 0.050
 METRICS_H = ROW_H * N_METRICS
 RATING_H  = 0.105
-HEADER_H  = 0.210
 
 FOOTER_Y  = 0.000
 WINCTR_Y  = FOOTER_Y + FOOTER_H
 METRICS_Y = WINCTR_Y + WINCTR_H
 RATING_Y  = METRICS_Y + METRICS_H
 HEADER_Y  = RATING_Y + RATING_H
+HEADER_H  = 1.0 - HEADER_Y   # ocupa hasta el tope — sin espacio vacío arriba
 
 CENTER_X  = 0.500
 LABEL_W   = 0.170
@@ -201,44 +201,42 @@ def placeholder_circle(px=120, color=(60,60,80)) -> np.ndarray:
     return np.array(img)
 
 def make_rating_circle(rating_val, team_color_hex: str, px=160) -> np.ndarray:
-    """Círculo con rating en el color del equipo."""
-    rgb = _hex_rgb_tuple(team_color_hex)
-    # Oscurecer ligeramente para fondo del círculo
-    dark_rgb = tuple(max(0, c - 30) for c in rgb)
+    """Círculo con rating en el color del equipo. Texto perfectamente centrado."""
+    rgb      = _hex_rgb_tuple(team_color_hex)
+    dark_rgb = tuple(max(0, c - 35) for c in rgb)
 
-    if rating_val is None or (isinstance(rating_val, float) and np.isnan(rating_val)):
-        text = 'N/A'
-    else:
-        text = f'{float(rating_val):.2f}'
+    text = 'N/A' if (rating_val is None or
+                     (isinstance(rating_val, float) and np.isnan(rating_val))) \
+           else f'{float(rating_val):.2f}'
 
     img  = Image.new('RGBA', (px, px), (0, 0, 0, 0))
     draw = ImageDraw.Draw(img)
-    # Sombra
-    draw.ellipse((4, 4, px-1, px-1), fill=(0, 0, 0, 130))
-    # Anillo exterior del color del equipo
-    draw.ellipse((0, 0, px-5, px-5), fill=(*rgb, 255))
-    # Interior más oscuro
+    draw.ellipse((4, 4, px-1, px-1), fill=(0, 0, 0, 140))       # sombra
+    draw.ellipse((0, 0, px-5, px-5), fill=(*rgb, 255))            # anillo color equipo
     inner = 8
-    draw.ellipse((inner, inner, px-5-inner, px-5-inner), fill=(*dark_rgb, 255))
+    draw.ellipse((inner, inner, px-5-inner, px-5-inner),
+                 fill=(*dark_rgb, 255))                            # interior oscuro
 
     try:
         from PIL import ImageFont
-        fnt_big   = ImageFont.truetype(str(BEBAS_TTF), px // 3)
-        fnt_small = ImageFont.truetype(str(BEBAS_TTF), px // 8)
+        fnt_num = ImageFont.truetype(str(BEBAS_TTF), px // 3)
+        fnt_lbl = ImageFont.truetype(str(BEBAS_TTF), px // 8)
     except Exception:
-        fnt_big = fnt_small = None
+        fnt_num = fnt_lbl = None
 
-    cx = cy = (px - 5) // 2
-    if fnt_big:
-        bb = draw.textbbox((0,0), text, font=fnt_big)
-        tw, th = bb[2]-bb[0], bb[3]-bb[1]
-        draw.text((cx - tw//2, cy - th//2 - 3), text, fill=(255,255,255,255), font=fnt_big)
-        lbl = 'RATING FBM'
-        bb2 = draw.textbbox((0,0), lbl, font=fnt_small)
-        draw.text((cx - (bb2[2]-bb2[0])//2, cy + th//2 + 3), lbl,
-                  fill=(220,220,220,200), font=fnt_small)
+    # Centro del interior del círculo
+    cx = inner + (px - 5 - 2 * inner) // 2
+    cy = inner + (px - 5 - 2 * inner) // 2
+    gap = px // 13   # separación entre número y etiqueta
+
+    if fnt_num:
+        # Usamos anchor='mm' para centrado perfecto (Pillow ≥ 8.0)
+        draw.text((cx, cy - gap), text,
+                  fill=(255, 255, 255, 255), font=fnt_num, anchor='mm')
+        draw.text((cx, cy + gap + px // 10), 'RATING FBM',
+                  fill=(220, 220, 220, 210), font=fnt_lbl, anchor='mm')
     else:
-        draw.text((cx-12, cy-10), text, fill=(255,255,255,255))
+        draw.text((cx - 12, cy - 10), text, fill=(255, 255, 255, 255))
     return np.array(img)
 
 def _hex_rgba(hex_color, alpha=1.0):

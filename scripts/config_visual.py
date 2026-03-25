@@ -33,7 +33,7 @@ PALETTE = {
 
     # Barras / tracks
     'bar_track':  '#181c24',
-    'bar_loser':  '#1a1a1a',
+    'bar_loser':  '#252525',
     'bar_loser_border': '#444444',
 }
 
