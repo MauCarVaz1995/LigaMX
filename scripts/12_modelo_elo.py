@@ -396,7 +396,7 @@ def plot_ranking(final_elo: dict[str, float]):
 
     FIG_W, FIG_H = 7.5, 11.5
     CONTENT_Y = 0.042
-    CONTENT_H = 0.882
+    CONTENT_H = 0.864
     ROW_H_N   = CONTENT_H / n
     AR_FIG    = FIG_H / FIG_W
 
@@ -411,11 +411,18 @@ def plot_ranking(final_elo: dict[str, float]):
     bg.imshow(grad, aspect='auto', extent=[0,1,0,1], origin='lower')
     bg.axis('off')
 
-    # Título con gancho + subtítulo bien separado
-    fig.text(0.50, 0.972, '¿QUIÉN DOMINA LA LIGA MX?',
+    # Título + subtítulo + línea explicativa (bien separados)
+    fig.text(0.50, 0.990, '¿QUIÉN DOMINA LA LIGA MX?',
              color=WHITE, ha='center', va='top', **bebas(30))
-    fig.text(0.50, 0.945, 'Rating ELO acumulado · 15 años · 5,250 partidos · Base 1300',
+    fig.text(0.50, 0.954, 'Rating ELO acumulado · 15 años · 5,250 partidos · Base 1500',
              color=GRAY, ha='center', va='top', fontsize=9)
+    fig.text(0.50, 0.934,
+             'El rating ELO mide la fuerza histórica de cada equipo. '
+             'Se actualiza partido a partido considerando rival, localía y margen de goles.',
+             color=PALETTE['text_secondary'], ha='center', va='top', fontsize=7.2)
+    fig.text(0.50, 0.920,
+             'Base: 1500 = promedio de la liga.',
+             color=PALETTE['text_secondary'], ha='center', va='top', fontsize=7.2)
 
     # Eje principal
     ax = fig.add_axes([0.02, CONTENT_Y, 0.96, CONTENT_H])
