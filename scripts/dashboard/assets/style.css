@@ -1,0 +1,377 @@
+/* ============================================================
+   MAU STATS MX — Professional Dashboard CSS
+   ============================================================ */
+
+/* ── ROOT VARS ──────────────────────────────────────────────── */
+:root {
+  --bg-main:    #0d1117;
+  --bg-sec:     #161b22;
+  --bg-card:    #0f151e;
+  --border:     #30363d;
+  --divider:    #21262d;
+  --text:       #ffffff;
+  --text-muted: #8b949e;
+  --red:        #D5001C;
+  --green:      #2ea043;
+  --gold:       #FFD700;
+  --radius:     10px;
+  --shadow:     0 4px 24px rgba(0,0,0,0.55);
+}
+
+/* ── BODY & BACKGROUND ─────────────────────────────────────── */
+body {
+  background: linear-gradient(160deg, #0d1117 0%, #161b22 55%, #0d1117 100%) !important;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Arial, sans-serif !important;
+  color: var(--text) !important;
+  margin: 0;
+}
+
+/* ── SCROLLBAR ─────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-sec); }
+::-webkit-scrollbar-thumb { background: #30363d; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--red); }
+
+/* ── HEADER ────────────────────────────────────────────────── */
+.mau-header {
+  background: linear-gradient(90deg, #0a0e14 0%, #161b22 40%, #0d1117 100%);
+  border-bottom: 2px solid var(--red);
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 16px rgba(213,0,28,0.25);
+}
+
+.mau-logo-text {
+  font-family: 'Arial Black', 'Impact', sans-serif;
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: 4px;
+  line-height: 1;
+}
+
+.mau-logo-red  { color: var(--red); }
+.mau-logo-white { color: var(--text); }
+.mau-logo-gray  { color: var(--text-muted); font-size: 20px; }
+
+.mau-header-sub {
+  color: var(--text-muted);
+  font-size: 12px;
+  letter-spacing: 1px;
+  margin-left: 8px;
+  border-left: 1px solid var(--border);
+  padding-left: 12px;
+}
+
+.mau-header-badge {
+  margin-left: auto;
+  background: rgba(213,0,28,0.15);
+  border: 1px solid var(--red);
+  color: var(--red);
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+/* ── CARDS ─────────────────────────────────────────────────── */
+.card {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: var(--shadow) !important;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.card:hover {
+  border-color: #444c56 !important;
+  box-shadow: 0 6px 32px rgba(0,0,0,0.7) !important;
+}
+.card-body { padding: 16px !important; }
+
+/* ── TABS ──────────────────────────────────────────────────── */
+.nav-tabs {
+  background: #0a0e14 !important;
+  border-bottom: 1px solid var(--border) !important;
+  padding: 0 16px;
+}
+
+.nav-tabs .nav-link {
+  color: var(--text-muted) !important;
+  border: none !important;
+  border-bottom: 2px solid transparent !important;
+  padding: 10px 20px !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  letter-spacing: 1.5px !important;
+  text-transform: uppercase !important;
+  border-radius: 0 !important;
+  transition: color 0.2s, border-color 0.2s !important;
+  background: transparent !important;
+}
+
+.nav-tabs .nav-link:hover {
+  color: var(--text) !important;
+  border-bottom-color: #444c56 !important;
+}
+
+.nav-tabs .nav-link.active {
+  color: var(--text) !important;
+  border-bottom: 2px solid var(--red) !important;
+  background: transparent !important;
+}
+
+/* ── DROPDOWN ──────────────────────────────────────────────── */
+.Select-control {
+  background-color: var(--bg-sec) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 6px !important;
+  color: var(--text) !important;
+}
+.Select-menu-outer {
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 6px !important;
+  box-shadow: var(--shadow) !important;
+  z-index: 9999 !important;
+}
+.Select-option {
+  background-color: var(--bg-card) !important;
+  color: var(--text) !important;
+  padding: 8px 12px !important;
+}
+.Select-option:hover, .Select-option.is-focused {
+  background-color: var(--bg-sec) !important;
+  color: var(--text) !important;
+}
+.Select-value-label { color: var(--text) !important; }
+.Select-placeholder { color: var(--text-muted) !important; }
+.VirtualizedSelectFocusedOption {
+  background-color: rgba(213,0,28,0.15) !important;
+}
+
+/* ── PROBABILITY CIRCLES ───────────────────────────────────── */
+.prob-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.team-shield-top {
+  height: 56px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.6));
+  transition: transform 0.2s;
+}
+.team-shield-top:hover { transform: scale(1.08); }
+
+.prob-circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 4px solid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: radial-gradient(circle at 50% 40%, rgba(255,255,255,0.04) 0%, transparent 65%);
+  transition: transform 0.25s, box-shadow 0.25s;
+  cursor: default;
+}
+.prob-circle:hover {
+  transform: scale(1.06) translateY(-3px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+}
+
+.prob-value {
+  font-size: 36px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+.prob-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+.prob-team-name {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-align: center;
+  max-width: 140px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── STAT CARDS ─────────────────────────────────────────────── */
+.stat-card {
+  background: var(--bg-sec);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: border-color 0.2s, transform 0.15s;
+}
+.stat-card:hover {
+  border-color: #444c56;
+  transform: translateY(-2px);
+}
+.stat-icon {
+  font-size: 22px;
+  width: 36px;
+  text-align: center;
+  flex-shrink: 0;
+}
+.stat-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+.stat-value {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-top: 2px;
+}
+
+/* ── PLAYER PHOTO ───────────────────────────────────────────── */
+.player-photo-wrap {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+}
+.player-photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--border);
+  background: var(--bg-sec);
+  transition: border-color 0.2s;
+}
+.player-photo-fallback {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: var(--bg-sec);
+  border: 3px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  color: var(--text-muted);
+}
+.player-name-header {
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 0.5px;
+  margin-top: 8px;
+}
+.player-team-header {
+  font-size: 12px;
+  text-align: center;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* ── SECTION LABELS ─────────────────────────────────────────── */
+.section-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--divider);
+}
+
+/* ── MATCH ROW ──────────────────────────────────────────────── */
+.match-header {
+  background: linear-gradient(90deg, rgba(213,0,28,0.08) 0%, transparent 100%);
+  border-left: 3px solid var(--red);
+  padding: 8px 14px;
+  border-radius: 0 6px 6px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.match-header-team {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.match-header-vs {
+  color: var(--text-muted);
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+.match-shield {
+  height: 32px;
+  object-fit: contain;
+  filter: drop-shadow(0 1px 4px rgba(0,0,0,0.5));
+}
+
+/* ── COMPARISON TAB ─────────────────────────────────────────── */
+.vs-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
+}
+.vs-badge {
+  background: rgba(213,0,28,0.2);
+  border: 1px solid var(--red);
+  color: var(--red);
+  font-weight: 900;
+  font-size: 14px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  letter-spacing: 3px;
+}
+
+/* ── PLOTLY OVERRIDE ────────────────────────────────────────── */
+.js-plotly-plot .plotly .main-svg {
+  background: transparent !important;
+}
+.modebar {
+  background: transparent !important;
+}
+.modebar-btn path { fill: var(--text-muted) !important; }
+.modebar-btn:hover path { fill: var(--text) !important; }
+
+/* ── UTILITIES ──────────────────────────────────────────────── */
+.text-muted { color: var(--text-muted) !important; }
+.text-red   { color: var(--red) !important; }
+.text-gold  { color: var(--gold) !important; }
+.badge-jornada {
+  background: rgba(213,0,28,0.15);
+  border: 1px solid rgba(213,0,28,0.4);
+  color: var(--red);
+  font-size: 10px;
+  letter-spacing: 2px;
+  padding: 2px 8px;
+  border-radius: 12px;
+  text-transform: uppercase;
+}
