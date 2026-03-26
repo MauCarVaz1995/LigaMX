@@ -282,7 +282,7 @@ def render(teams_sorted, prob_matrix, tabla_base, output_path):
 
     # ── LAYOUT (inches) ───────────────────────────────────────────────────────
     HEADER_IN = 2.20
-    FOOTER_IN = 0.90
+    FOOTER_IN = 1.20      # más alto para MAU-STATISTICS 28pt + leyenda 2 filas
     COLHDR_IN = 0.72
     LEFT_IN   = 1.92
     MARGIN_IN = 0.10
@@ -336,10 +336,19 @@ def render(teams_sorted, prob_matrix, tabla_base, output_path):
              color=PALETTE['text_secondary'], ha='center', va='top',
              transform=hax.transAxes, fontsize=10)
 
+    # ── HELPERS ───────────────────────────────────────────────────────────────
+    def paint_cell(ax, fc):
+        """Fondo sólido mediante Rectangle — evita el bug de axis('off') que oculta el patch."""
+        ax.set_xlim(0, 1); ax.set_ylim(0, 1)
+        ax.add_patch(mpatches.Rectangle(
+            (0, 0), 1, 1, facecolor=fc, edgecolor='none',
+            zorder=0, transform=ax.transAxes, clip_on=False))
+        ax.axis('off')
+
     # ── COLUMN HEADERS ───────────────────────────────────────────────────────
     col_hdr_y = CONTENT_Y + CONTENT_H
 
-    # Zone banners (top half of colhdr)
+    # Zone banners (top half of colhdr) — paint_cell para fondo sólido
     zone_defs = [
         (0,  3,  '#2ea043', '#0a2210', 'LIGUILLA DIRECTA'),
         (4,  7,  '#d4a72c', '#261e00', 'REPECHAJE'),
@@ -349,32 +358,32 @@ def render(teams_sorted, prob_matrix, tabla_base, output_path):
         zx0 = pos_col_x[c0]
         zx1 = pos_col_x[c1] + POS_W
         zax = fig.add_axes([zx0, col_hdr_y + COLHDR_H*0.52, zx1-zx0, COLHDR_H*0.48])
-        zax.set_facecolor(bg_z); zax.axis('off')
+        paint_cell(zax, bg_z)
         if zlbl:
             zax.text(0.5, 0.5, zlbl, color=fg, ha='center', va='center',
                      fontsize=8.5, fontweight='bold', transform=zax.transAxes)
 
-    # Position number cells (bottom half of colhdr)
+    # Position number cells (bottom half of colhdr) — paint_cell
     for j in range(N_POS):
         pos = j + 1
         if pos <= 4:   hdr_bg, hdr_fg = '#1a4028', '#2ea043'
         elif pos <= 8: hdr_bg, hdr_fg = '#3a3200', '#d4a72c'
         else:          hdr_bg, hdr_fg = '#181e26', GRAY
         cax = fig.add_axes([pos_col_x[j], col_hdr_y, POS_W, COLHDR_H*0.52])
-        cax.set_facecolor(hdr_bg); cax.axis('off')
+        paint_cell(cax, hdr_bg)
         for sp in cax.spines.values():
             sp.set_edgecolor(PALETTE['divider']); sp.set_linewidth(0.5)
         cax.text(0.5, 0.5, str(pos), color=hdr_fg, ha='center', va='center',
                  fontsize=10, fontweight='bold', transform=cax.transAxes)
 
-    # Summary column headers
+    # Summary column headers — paint_cell + mismo nivel que pos cells
     for sx, lbl, fg_c, bg_c in [
-            (sum4_x, 'TOP\n4', '#2ea043', '#0d2818'),
-            (sum8_x, 'TOP\n8', '#d4a72c', '#221c00')]:
+            (sum4_x, 'TOP\n4', '#00C853', '#0a2010'),
+            (sum8_x, 'TOP\n8', '#2E7D32', '#071508')]:
         shax = fig.add_axes([sx, col_hdr_y, SUM_W, COLHDR_H])
-        shax.set_facecolor(bg_c); shax.axis('off')
+        paint_cell(shax, bg_c)
         for sp in shax.spines.values():
-            sp.set_visible(True); sp.set_edgecolor(fg_c); sp.set_linewidth(1.5)
+            sp.set_visible(True); sp.set_edgecolor(fg_c); sp.set_linewidth(1.8)
         shax.text(0.5, 0.5, lbl, color=fg_c, ha='center', va='center',
                   fontsize=11, fontweight='bold', transform=shax.transAxes)
 
@@ -386,14 +395,6 @@ def render(teams_sorted, prob_matrix, tabla_base, output_path):
         elif prob > 0.05: return '#2E7D32', '#ffffff', True,  11   # verde medio
         elif prob > 0.01: return '#1B5E20', '#aaaaaa', False, 10   # verde oscuro
         else:             return '#0d1117', '#1e2631', False,  8   # casi negro — sin texto
-
-    def paint_cell(ax, fc, alpha=1.0):
-        """Pinta el fondo de un axes con un rectángulo sólido (evita el bug de axis('off'))."""
-        ax.set_xlim(0, 1); ax.set_ylim(0, 1)
-        ax.add_patch(mpatches.Rectangle(
-            (0, 0), 1, 1, facecolor=fc, edgecolor='none',
-            zorder=0, transform=ax.transAxes, clip_on=False, alpha=alpha))
-        ax.axis('off')
 
     BADGE_S = 96
 
@@ -471,7 +472,7 @@ def render(teams_sorted, prob_matrix, tabla_base, output_path):
             for sp in sumax.spines.values():
                 sp.set_visible(True); sp.set_edgecolor(border_c); sp.set_linewidth(1.2)
 
-            if pval >= 0.999:
+            if pval >= 0.995:          # muestra "100%" redondeado → dorado
                 tc_s, fs_s = '#FFD700', 16
             elif pval >= hi_thresh:
                 tc_s, fs_s = '#00FF88', 16
@@ -485,37 +486,40 @@ def render(teams_sorted, prob_matrix, tabla_base, output_path):
                        fontsize=fs_s, fontweight='bold',
                        transform=sumax.transAxes, zorder=5)
 
-    # ── LEGEND ───────────────────────────────────────────────────────────────
-    leg_y = FOOTER_H * 0.54
-    leg_h = FOOTER_H * 0.38
-    lax = fig.add_axes([0.01, leg_y, 0.85, leg_h])
+    # ── LEGEND (2 filas) ──────────────────────────────────────────────────────
+    # Fila superior: cuadros de color
+    row1_y = FOOTER_H * 0.72
+    row1_h = FOOTER_H * 0.20
+    lax = fig.add_axes([0.01, row1_y, 0.98, row1_h])
     lax.set_xlim(0, 1); lax.set_ylim(0, 1); lax.axis('off')
     legend_items = [
-        ('>20%',  '#00FF88', '#000'),
-        ('10–20%','#00C853', '#fff'),
-        ('5–10%', '#2E7D32', '#fff'),
-        ('1–5%',  '#1B5E20', '#aaa'),
-        ('<1%',   '#0d1117', '#444'),
+        ('>20%',  '#00FF88'),
+        ('10–20%','#00C853'),
+        ('5–10%', '#2E7D32'),
+        ('1–5%',  '#1B5E20'),
+        ('<1%',   '#0d1117'),
     ]
-    step = 1.0 / len(legend_items)
-    for k, (lbl, fc, tc) in enumerate(legend_items):
+    step = 0.18          # cada item ocupa 18% del ancho
+    for k, (lbl, fc) in enumerate(legend_items):
         bx = k * step
-        lax.add_patch(mpatches.Rectangle((bx + 0.005, 0.06), step*0.28, 0.88,
-                      facecolor=fc, edgecolor='#444', lw=1.0))
-        lax.text(bx + step*0.30 + 0.010, 0.50, lbl,
+        lax.add_patch(mpatches.Rectangle(
+            (bx, 0.05), step * 0.22, 0.90,
+            facecolor=fc, edgecolor='#555', lw=1.0))
+        lax.text(bx + step * 0.25, 0.50, lbl,
                  color=WHITE, va='center', fontsize=11)
-    lax.text(0.98, 0.50, '□  posición actual (borde blanco)',
-             color=PALETTE['text_secondary'], va='center', ha='right', fontsize=10)
+    # nota al final
+    lax.text(0.92, 0.50, '□ posición actual',
+             color=PALETTE['text_secondary'], va='center', ha='left', fontsize=10)
 
     # ── FOOTER ───────────────────────────────────────────────────────────────
-    fax = fig.add_axes([0, 0, 1, FOOTER_H * 0.48])
-    fax.set_facecolor(PALETTE['bg_secondary']); fax.axis('off')
-    fax.axhline(1, color='#FF0000', lw=3.0)
-    fax.text(0.015, 0.45, 'Fuente: FotMob · Clausura 2026',
+    fax = fig.add_axes([0, 0, 1, FOOTER_H * 0.52])
+    paint_cell(fax, PALETTE['bg_secondary'])
+    fax.axhline(1, color='#D5001C', lw=3.0)
+    fax.text(0.015, 0.50, 'Fuente: FotMob · Clausura 2026',
              color=GRAY, fontsize=11, ha='left', va='center', transform=fax.transAxes)
 
     shadow = [mpe.withStroke(linewidth=4, foreground='#000000')]
-    fax.text(0.985, 0.45, 'MAU-STATISTICS',
+    fax.text(0.985, 0.50, 'MAU-STATISTICS',
              color='#D5001C', ha='right', va='center',
              transform=fax.transAxes,
              path_effects=shadow,
