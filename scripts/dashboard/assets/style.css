@@ -19,12 +19,16 @@
 }
 
 /* ── BODY & BACKGROUND ─────────────────────────────────────── */
-body {
-  background: linear-gradient(160deg, #0d1117 0%, #161b22 55%, #0d1117 100%) !important;
+html, body {
+  background: linear-gradient(160deg, #0d1117 0%, #161b22 55%, #0d1117 100%) fixed !important;
   min-height: 100vh;
   font-family: 'Segoe UI', Arial, sans-serif !important;
   color: var(--text) !important;
   margin: 0;
+  padding: 0;
+}
+#_dash-app-content {
+  background: transparent !important;
 }
 
 /* ── SCROLLBAR ─────────────────────────────────────────────── */
@@ -33,49 +37,75 @@ body {
 ::-webkit-scrollbar-thumb { background: #30363d; border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--red); }
 
-/* ── HEADER ────────────────────────────────────────────────── */
-.mau-header {
-  background: linear-gradient(90deg, #0a0e14 0%, #161b22 40%, #0d1117 100%);
-  border-bottom: 2px solid var(--red);
-  padding: 12px 24px;
+/* ── NAVBAR ────────────────────────────────────────────────── */
+.mau-navbar {
+  background: linear-gradient(90deg, #060a0f 0%, #0d1117 60%, #0f1520 100%) !important;
+  border-bottom: 2px solid var(--red) !important;
+  padding: 0 28px !important;
+  height: 60px;
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: space-between;
   position: sticky;
   top: 0;
-  z-index: 100;
-  box-shadow: 0 2px 16px rgba(213,0,28,0.25);
+  z-index: 1000;
+  box-shadow: 0 2px 20px rgba(213,0,28,0.2), 0 1px 0 rgba(255,255,255,0.04);
 }
-
-.mau-logo-text {
+.mau-logo {
+  display: flex;
+  align-items: baseline;
+  gap: 1px;
+  text-decoration: none !important;
+}
+.mau-logo-part {
   font-family: 'Arial Black', 'Impact', sans-serif;
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 900;
   letter-spacing: 4px;
   line-height: 1;
 }
+.logo-mau   { color: var(--red); }
+.logo-stats { color: var(--text); }
+.logo-mx    { color: var(--text-muted); font-size: 18px; letter-spacing: 3px; }
 
-.mau-logo-red  { color: var(--red); }
-.mau-logo-white { color: var(--text); }
-.mau-logo-gray  { color: var(--text-muted); font-size: 20px; }
-
-.mau-header-sub {
+.mau-nav-center {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
   color: var(--text-muted);
-  font-size: 12px;
-  letter-spacing: 1px;
-  margin-left: 8px;
-  border-left: 1px solid var(--border);
-  padding-left: 12px;
 }
-
-.mau-header-badge {
-  margin-left: auto;
-  background: rgba(213,0,28,0.15);
-  border: 1px solid var(--red);
+.mau-nav-dot {
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--red);
+  display: inline-block;
+}
+.mau-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.mau-badge {
+  background: rgba(213,0,28,0.12);
+  border: 1px solid rgba(213,0,28,0.4);
   color: var(--red);
   padding: 3px 10px;
   border-radius: 20px;
-  font-size: 11px;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.mau-jornada-badge {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 10px;
   letter-spacing: 1px;
 }
 
@@ -85,11 +115,11 @@ body {
   border: 1px solid var(--border) !important;
   border-radius: var(--radius) !important;
   box-shadow: var(--shadow) !important;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 .card:hover {
   border-color: #444c56 !important;
-  box-shadow: 0 6px 32px rgba(0,0,0,0.7) !important;
+  box-shadow: 0 6px 36px rgba(0,0,0,0.7) !important;
 }
 .card-body { padding: 16px !important; }
 
@@ -97,28 +127,28 @@ body {
 .nav-tabs {
   background: #0a0e14 !important;
   border-bottom: 1px solid var(--border) !important;
-  padding: 0 16px;
+  padding: 0 20px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
 }
-
 .nav-tabs .nav-link {
   color: var(--text-muted) !important;
   border: none !important;
   border-bottom: 2px solid transparent !important;
-  padding: 10px 20px !important;
-  font-size: 12px !important;
-  font-weight: 600 !important;
-  letter-spacing: 1.5px !important;
+  padding: 12px 18px !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 2px !important;
   text-transform: uppercase !important;
   border-radius: 0 !important;
   transition: color 0.2s, border-color 0.2s !important;
   background: transparent !important;
+  white-space: nowrap;
 }
-
 .nav-tabs .nav-link:hover {
   color: var(--text) !important;
-  border-bottom-color: #444c56 !important;
+  border-bottom-color: rgba(213,0,28,0.4) !important;
 }
-
 .nav-tabs .nav-link.active {
   color: var(--text) !important;
   border-bottom: 2px solid var(--red) !important;
@@ -129,30 +159,51 @@ body {
 .Select-control {
   background-color: var(--bg-sec) !important;
   border: 1px solid var(--border) !important;
-  border-radius: 6px !important;
+  border-radius: 8px !important;
   color: var(--text) !important;
+  transition: border-color 0.2s;
 }
+.Select-control:hover { border-color: #555 !important; }
 .Select-menu-outer {
   background-color: var(--bg-card) !important;
   border: 1px solid var(--border) !important;
-  border-radius: 6px !important;
-  box-shadow: var(--shadow) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.6) !important;
   z-index: 9999 !important;
 }
 .Select-option {
   background-color: var(--bg-card) !important;
   color: var(--text) !important;
   padding: 8px 12px !important;
+  transition: background 0.15s;
 }
 .Select-option:hover, .Select-option.is-focused {
-  background-color: var(--bg-sec) !important;
-  color: var(--text) !important;
+  background-color: rgba(213,0,28,0.1) !important;
+}
+.Select-option.is-selected {
+  background-color: rgba(213,0,28,0.2) !important;
 }
 .Select-value-label { color: var(--text) !important; }
 .Select-placeholder { color: var(--text-muted) !important; }
-.VirtualizedSelectFocusedOption {
-  background-color: rgba(213,0,28,0.15) !important;
+.Select-arrow { border-top-color: var(--text-muted) !important; }
+.Select.is-open .Select-arrow { border-bottom-color: var(--text-muted) !important; }
+
+/* ── PLOTLY POLAR / RADAR FIX ──────────────────────────────── */
+/* Force polar chart background to be dark */
+.polar-bg, g.polar .bg {
+  fill: #161b22 !important;
 }
+/* Ensure the chart SVG paper is transparent (our body bg shows through) */
+.js-plotly-plot .plotly .main-svg {
+  background: transparent !important;
+}
+.js-plotly-plot .plotly .main-svg > .cartesianlayer,
+.js-plotly-plot .plotly .main-svg > .polarlayer {
+  background: transparent;
+}
+.modebar-group { background: transparent !important; }
+.modebar-btn path { fill: var(--text-muted) !important; }
+.modebar-btn:hover path { fill: var(--text) !important; }
 
 /* ── PROBABILITY CIRCLES ───────────────────────────────────── */
 .prob-wrapper {
@@ -161,18 +212,16 @@ body {
   align-items: center;
   gap: 10px;
 }
-
 .team-shield-top {
   height: 56px;
   object-fit: contain;
-  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.6));
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.7));
   transition: transform 0.2s;
 }
-.team-shield-top:hover { transform: scale(1.08); }
-
+.team-shield-top:hover { transform: scale(1.1); }
 .prob-circle {
-  width: 150px;
-  height: 150px;
+  width: 145px;
+  height: 145px;
   border-radius: 50%;
   border: 4px solid;
   display: flex;
@@ -180,37 +229,36 @@ body {
   align-items: center;
   justify-content: center;
   position: relative;
-  background: radial-gradient(circle at 50% 40%, rgba(255,255,255,0.04) 0%, transparent 65%);
-  transition: transform 0.25s, box-shadow 0.25s;
+  background: radial-gradient(circle at 50% 38%, rgba(255,255,255,0.04) 0%, transparent 70%);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
   cursor: default;
 }
 .prob-circle:hover {
-  transform: scale(1.06) translateY(-3px);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+  transform: scale(1.07) translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.6);
 }
-
 .prob-value {
-  font-size: 36px;
+  font-size: 38px;
   font-weight: 900;
   line-height: 1;
   letter-spacing: -1px;
 }
 .prob-label {
   font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 2px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
   text-transform: uppercase;
   color: var(--text-muted);
-  margin-top: 2px;
+  margin-top: 3px;
 }
 .prob-team-name {
   font-size: 11px;
   font-weight: 600;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   text-transform: uppercase;
   color: var(--text-muted);
   text-align: center;
-  max-width: 140px;
+  max-width: 145px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -221,31 +269,26 @@ body {
   background: var(--bg-sec);
   border: 1px solid var(--border);
   border-radius: 8px;
-  padding: 12px 16px;
+  padding: 10px 14px;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   transition: border-color 0.2s, transform 0.15s;
 }
 .stat-card:hover {
   border-color: #444c56;
   transform: translateY(-2px);
 }
-.stat-icon {
-  font-size: 22px;
-  width: 36px;
-  text-align: center;
-  flex-shrink: 0;
-}
+.stat-icon { font-size: 20px; width: 32px; text-align: center; flex-shrink: 0; }
 .stat-label {
-  font-size: 11px;
+  font-size: 10px;
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 1px;
   line-height: 1;
 }
 .stat-value {
-  font-size: 20px;
+  font-size: 19px;
   font-weight: 700;
   line-height: 1.1;
   margin-top: 2px;
@@ -254,124 +297,180 @@ body {
 /* ── PLAYER PHOTO ───────────────────────────────────────────── */
 .player-photo-wrap {
   position: relative;
-  width: 100px;
-  height: 100px;
+  width: 96px;
+  height: 96px;
   margin: 0 auto;
 }
 .player-photo {
-  width: 100px;
-  height: 100px;
+  width: 96px; height: 96px;
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid var(--border);
   background: var(--bg-sec);
-  transition: border-color 0.2s;
 }
 .player-photo-fallback {
-  width: 100px;
-  height: 100px;
+  width: 96px; height: 96px;
   border-radius: 50%;
   background: var(--bg-sec);
   border: 3px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 36px;
-  color: var(--text-muted);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 34px; color: var(--text-muted);
 }
 .player-name-header {
-  font-size: 18px;
-  font-weight: 700;
-  text-align: center;
-  letter-spacing: 0.5px;
-  margin-top: 8px;
+  font-size: 17px; font-weight: 700;
+  text-align: center; letter-spacing: 0.3px;
+  margin-top: 8px; line-height: 1.2;
 }
 .player-team-header {
-  font-size: 12px;
-  text-align: center;
-  color: var(--text-muted);
-  letter-spacing: 1px;
-  text-transform: uppercase;
+  font-size: 11px; text-align: center;
+  color: var(--text-muted); letter-spacing: 1.5px;
+  text-transform: uppercase; margin-top: 2px;
 }
 
-/* ── SECTION LABELS ─────────────────────────────────────────── */
-.section-label {
+/* ── HOME TAB — STANDINGS ──────────────────────────────────── */
+.standings-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+.standings-table thead th {
+  color: var(--text-muted);
   font-size: 10px;
   font-weight: 700;
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: var(--text-muted);
-  margin-bottom: 8px;
-  padding-bottom: 4px;
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--border);
+  text-align: center;
+}
+.standings-table thead th:nth-child(2) { text-align: left; }
+.standings-table tbody tr {
   border-bottom: 1px solid var(--divider);
+  transition: background 0.15s;
+}
+.standings-table tbody tr:hover { background: rgba(255,255,255,0.03) !important; }
+.standings-table td {
+  padding: 7px 8px;
+  text-align: center;
+  vertical-align: middle;
+}
+.standings-table td:nth-child(2) { text-align: left; }
+.zone-top4 { border-left: 3px solid var(--gold) !important; }
+.zone-top8 { border-left: 3px solid var(--green) !important; }
+.zone-danger { border-left: 3px solid #f85149 !important; }
+.zone-none { border-left: 3px solid transparent !important; }
+
+/* ── HOME TAB — RESULT CARDS ───────────────────────────────── */
+.result-card {
+  background: var(--bg-sec);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  transition: border-color 0.2s;
+  font-size: 12px;
+}
+.result-card:hover { border-color: #444c56; }
+.result-team {
+  display: flex; align-items: center; gap: 6px;
+  font-weight: 600; font-size: 12px;
+}
+.result-score {
+  font-size: 16px; font-weight: 900;
+  color: var(--text); letter-spacing: 2px;
+  min-width: 48px; text-align: center;
+}
+.result-shield { height: 22px; object-fit: contain; }
+
+/* ── HOME TAB — MATCH PREVIEW CARDS ────────────────────────── */
+.match-preview {
+  background: var(--bg-sec);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  font-size: 12px;
+  transition: border-color 0.2s;
+}
+.match-preview:hover { border-color: rgba(213,0,28,0.4); }
+.match-vs-badge {
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 2px; color: var(--text-muted);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 2px 7px; border-radius: 10px;
 }
 
-/* ── MATCH ROW ──────────────────────────────────────────────── */
-.match-header {
-  background: linear-gradient(90deg, rgba(213,0,28,0.08) 0%, transparent 100%);
-  border-left: 3px solid var(--red);
-  padding: 8px 14px;
-  border-radius: 0 6px 6px 0;
+/* ── ELO TOP 5 MINI CARDS ──────────────────────────────────── */
+.elo-mini-card {
+  background: var(--bg-sec);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 16px;
+  flex: 1;
+  min-width: 150px;
+  transition: transform 0.15s, border-color 0.2s;
 }
-.match-header-team {
-  font-size: 16px;
-  font-weight: 700;
-  letter-spacing: 1px;
+.elo-mini-card:hover { transform: translateY(-3px); border-color: #555; }
+.elo-rank {
+  font-size: 22px; font-weight: 900;
+  color: var(--text-muted); width: 28px;
+  flex-shrink: 0; text-align: center;
 }
-.match-header-vs {
+.elo-rank-1 { color: var(--gold) !important; }
+.elo-rank-2 { color: #C0C0C0 !important; }
+.elo-rank-3 { color: #CD7F32 !important; }
+.elo-value { font-size: 20px; font-weight: 800; }
+.elo-team-name { font-size: 10px; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; }
+
+/* ── SECTION LABELS ─────────────────────────────────────────── */
+.section-label {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
   color: var(--text-muted);
-  font-size: 12px;
-  letter-spacing: 2px;
+  margin-bottom: 10px; padding-bottom: 6px;
+  border-bottom: 1px solid var(--divider);
 }
-.match-shield {
-  height: 32px;
-  object-fit: contain;
-  filter: drop-shadow(0 1px 4px rgba(0,0,0,0.5));
-}
+.section-label-red { border-bottom-color: rgba(213,0,28,0.4) !important; }
 
-/* ── COMPARISON TAB ─────────────────────────────────────────── */
-.vs-divider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 0;
-}
+/* ── COMPARISON VS BADGE ─────────────────────────────────────── */
+.vs-divider { display:flex; align-items:center; justify-content:center; padding:10px 0; }
 .vs-badge {
-  background: rgba(213,0,28,0.2);
-  border: 1px solid var(--red);
+  background: rgba(213,0,28,0.15);
+  border: 1px solid rgba(213,0,28,0.5);
   color: var(--red);
-  font-weight: 900;
-  font-size: 14px;
-  padding: 6px 14px;
-  border-radius: 20px;
-  letter-spacing: 3px;
+  font-weight: 900; font-size: 14px;
+  padding: 8px 16px; border-radius: 20px;
+  letter-spacing: 4px;
 }
 
-/* ── PLOTLY OVERRIDE ────────────────────────────────────────── */
-.js-plotly-plot .plotly .main-svg {
-  background: transparent !important;
+/* ── BADGE ──────────────────────────────────────────────────── */
+.badge-pos {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 24px; height: 24px; border-radius: 50%;
+  font-size: 11px; font-weight: 700;
 }
-.modebar {
-  background: transparent !important;
+.badge-jornada {
+  background: rgba(213,0,28,0.12);
+  border: 1px solid rgba(213,0,28,0.35);
+  color: var(--red);
+  font-size: 10px; letter-spacing: 2px;
+  padding: 2px 8px; border-radius: 12px;
+  text-transform: uppercase; display: inline-block;
 }
-.modebar-btn path { fill: var(--text-muted) !important; }
-.modebar-btn:hover path { fill: var(--text) !important; }
 
 /* ── UTILITIES ──────────────────────────────────────────────── */
-.text-muted { color: var(--text-muted) !important; }
-.text-red   { color: var(--red) !important; }
-.text-gold  { color: var(--gold) !important; }
-.badge-jornada {
-  background: rgba(213,0,28,0.15);
-  border: 1px solid rgba(213,0,28,0.4);
-  color: var(--red);
-  font-size: 10px;
-  letter-spacing: 2px;
-  padding: 2px 8px;
-  border-radius: 12px;
-  text-transform: uppercase;
-}
+.text-muted-sm { color: var(--text-muted); font-size: 11px; }
+.text-red      { color: var(--red) !important; }
+.text-gold     { color: var(--gold) !important; }
+.text-green    { color: var(--green) !important; }
+.divider-h     { border: none; border-top: 1px solid var(--divider); margin: 12px 0; }
