@@ -309,13 +309,14 @@ def render(teams_sorted, prob_matrix, tabla_base, output_path):
 
     fig = plt.figure(figsize=(FIG_W, FIG_H), facecolor=BG)
 
-    # ── BACKGROUND GRADIENT ───────────────────────────────────────────────────
+    # ── BACKGROUND (fondo sólido — bgax en zorder mínimo para no tapar celdas)
     grad = np.zeros((200, 2, 3))
     for ii in range(200):
         t = ii / 199
         grad[ii] = (np.array([0x08,0x0b,0x10])/255*(1-t)
                    + np.array([0x12,0x18,0x22])/255*t)
     bgax = fig.add_axes([0, 0, 1, 1])
+    bgax.set_zorder(-100)          # SIEMPRE detrás de todas las celdas
     bgax.imshow(grad, aspect='auto', extent=[0,1,0,1], origin='lower')
     bgax.axis('off')
 
@@ -377,17 +378,33 @@ def render(teams_sorted, prob_matrix, tabla_base, output_path):
         shax.text(0.5, 0.5, lbl, color=fg_c, ha='center', va='center',
                   fontsize=11, fontweight='bold', transform=shax.transAxes)
 
-    # ── CELL COLOR SCHEME ─────────────────────────────────────────────────────
+    # ── CELL COLOR SCHEME — VERDE QUETZAL ────────────────────────────────────
     def cell_style(prob):
         """(face_color, text_color, bold, font_size)"""
-        if prob > 0.30:   return '#FF0000', '#ffffff', True,  15
-        elif prob > 0.20: return '#D5001C', '#ffffff', True,  14
-        elif prob > 0.10: return '#B71C1C', '#ffffff', True,  13
-        elif prob > 0.05: return '#FF6600', '#ffffff', True,  11
-        elif prob > 0.01: return '#1E88E5', '#ffffff', False, 10
-        else:             return '#0d1117', '#222831', False,  8
+        if prob > 0.20:   return '#00FF88', '#000000', True,  15   # verde neón — texto negro
+        elif prob > 0.10: return '#00C853', '#ffffff', True,  13   # esmeralda
+        elif prob > 0.05: return '#2E7D32', '#ffffff', True,  11   # verde medio
+        elif prob > 0.01: return '#1B5E20', '#aaaaaa', False, 10   # verde oscuro
+        else:             return '#0d1117', '#1e2631', False,  8   # casi negro — sin texto
+
+    def paint_cell(ax, fc, alpha=1.0):
+        """Pinta el fondo de un axes con un rectángulo sólido (evita el bug de axis('off'))."""
+        ax.set_xlim(0, 1); ax.set_ylim(0, 1)
+        ax.add_patch(mpatches.Rectangle(
+            (0, 0), 1, 1, facecolor=fc, edgecolor='none',
+            zorder=0, transform=ax.transAxes, clip_on=False, alpha=alpha))
+        ax.axis('off')
 
     BADGE_S = 96
+
+    # ── DEBUG: primera fila (equipo con mayor P(top4)) ───────────────────────
+    debug_team = teams_sorted[0]
+    debug_row  = prob_matrix[debug_team]
+    print(f'\n[DEBUG] Colores asignados — fila: {debug_team}')
+    for j in range(min(6, N_POS)):
+        p = debug_row.get(j + 1, 0.0)
+        fc, tc, bold, fs = cell_style(p)
+        print(f'  pos {j+1:2d}: prob={p*100:5.1f}%  fc={fc}  tc={tc}  fs={fs}')
 
     # ── TEAM ROWS ─────────────────────────────────────────────────────────────
     for i, team in enumerate(teams_sorted):
@@ -398,7 +415,7 @@ def render(teams_sorted, prob_matrix, tabla_base, output_path):
 
         # ── Left column: crest + full name ───────────────────────────────────
         lcol = fig.add_axes([0, row_y, LEFT_X, ROW_H])
-        lcol.set_facecolor(row_bg); lcol.axis('off')
+        paint_cell(lcol, row_bg)
         lcol.axhline(1, color='#1e2631', lw=0.8)
 
         shield = get_shield(team, BADGE_S)
@@ -407,6 +424,8 @@ def render(teams_sorted, prob_matrix, tabla_base, output_path):
             bw = bh * AR
             sax = fig.add_axes([0.004, row_y + (ROW_H - bh) / 2, bw, bh])
             sax.set_facecolor('#f8f8fc')
+            sax.patch.set_facecolor('#f8f8fc')
+            sax.patch.set_visible(True)
             sax.imshow(shield); sax.axis('off')
         else:
             bw = 0.0
@@ -423,69 +442,69 @@ def render(teams_sorted, prob_matrix, tabla_base, output_path):
             is_diag = (j == diag_col)
 
             cax = fig.add_axes([pos_col_x[j], row_y, POS_W, ROW_H])
-            cax.set_facecolor(fc); cax.axis('off')
+            paint_cell(cax, fc)   # Rectangle sólido, nunca transparente
+
+            # Bordes
             for sp in cax.spines.values():
                 sp.set_visible(True)
                 if is_diag:
-                    sp.set_edgecolor('#ffffff'); sp.set_linewidth(1.8)
+                    sp.set_edgecolor('#ffffff'); sp.set_linewidth(2.0)
                 else:
                     sp.set_edgecolor('#1e2631'); sp.set_linewidth(0.4)
 
-            if prob >= 0.005:     # show text for ≥0.5%
+            if prob >= 0.005:
                 cax.text(0.5, 0.5, f'{prob*100:.0f}',
                          color=tc, ha='center', va='center',
                          fontsize=fs, fontweight='bold' if bold else 'normal',
-                         transform=cax.transAxes)
+                         transform=cax.transAxes, zorder=5)
 
-        # ── Summary columns: P(Top4) and P(Top8) ─────────────────────────────
+        # ── Summary columns: P(Top4) y P(Top8) ───────────────────────────────
         p4 = sum(prob_row.get(p, 0) for p in range(1, 5))
         p8 = sum(prob_row.get(p, 0) for p in range(1, 9))
 
         for sx, pval, bg_s, border_c, hi_thresh, mid_thresh in [
-                (sum4_x, p4, '#0d2818', '#2ea043', 0.50, 0.20),
-                (sum8_x, p8, '#221c00', '#d4a72c', 0.70, 0.35)]:
+                (sum4_x, p4, '#0a2010', '#00C853', 0.50, 0.20),
+                (sum8_x, p8, '#0a2010', '#2E7D32', 0.70, 0.35)]:
             sumax = fig.add_axes([sx, row_y, SUM_W, ROW_H])
-            sumax.set_facecolor(bg_s); sumax.axis('off')
+            paint_cell(sumax, bg_s)
             sumax.axhline(1, color='#1e2631', lw=0.5)
             for sp in sumax.spines.values():
-                sp.set_visible(True); sp.set_edgecolor(border_c); sp.set_linewidth(0.8)
+                sp.set_visible(True); sp.set_edgecolor(border_c); sp.set_linewidth(1.2)
 
-            # 100% = gold, high = green/yellow, low = gray
             if pval >= 0.999:
                 tc_s, fs_s = '#FFD700', 16
             elif pval >= hi_thresh:
-                tc_s, fs_s = border_c, 16
+                tc_s, fs_s = '#00FF88', 16
             elif pval >= mid_thresh:
-                tc_s, fs_s = border_c, 14
+                tc_s, fs_s = '#00C853', 14
             else:
                 tc_s, fs_s = GRAY, 12
 
             sumax.text(0.5, 0.5, f'{pval*100:.0f}%',
                        color=tc_s, ha='center', va='center',
                        fontsize=fs_s, fontweight='bold',
-                       transform=sumax.transAxes)
+                       transform=sumax.transAxes, zorder=5)
 
     # ── LEGEND ───────────────────────────────────────────────────────────────
     leg_y = FOOTER_H * 0.54
     leg_h = FOOTER_H * 0.38
-    lax = fig.add_axes([0.01, leg_y, 0.82, leg_h])
+    lax = fig.add_axes([0.01, leg_y, 0.85, leg_h])
     lax.set_xlim(0, 1); lax.set_ylim(0, 1); lax.axis('off')
     legend_items = [
-        ('>30%', '#FF0000', '#fff'),
-        ('20–30%', '#D5001C', '#fff'),
-        ('10–20%', '#B71C1C', '#fff'),
-        ('5–10%', '#FF6600', '#fff'),
-        ('1–5%', '#1E88E5', '#fff'),
-        ('<1%', '#0d1117', '#444'),
+        ('>20%',  '#00FF88', '#000'),
+        ('10–20%','#00C853', '#fff'),
+        ('5–10%', '#2E7D32', '#fff'),
+        ('1–5%',  '#1B5E20', '#aaa'),
+        ('<1%',   '#0d1117', '#444'),
     ]
     step = 1.0 / len(legend_items)
-    for k, (lbl, fc, _) in enumerate(legend_items):
+    for k, (lbl, fc, tc) in enumerate(legend_items):
         bx = k * step
-        lax.add_patch(mpatches.Rectangle((bx + 0.005, 0.08), step*0.30, 0.84,
-                      facecolor=fc, edgecolor='#333', lw=0.8))
-        lax.text(bx + step*0.32 + 0.008, 0.50, lbl,
+        lax.add_patch(mpatches.Rectangle((bx + 0.005, 0.06), step*0.28, 0.88,
+                      facecolor=fc, edgecolor='#444', lw=1.0))
+        lax.text(bx + step*0.30 + 0.010, 0.50, lbl,
                  color=WHITE, va='center', fontsize=11)
-    lax.text(0.97, 0.50, '□ posición actual',
+    lax.text(0.98, 0.50, '□  posición actual (borde blanco)',
              color=PALETTE['text_secondary'], va='center', ha='right', fontsize=10)
 
     # ── FOOTER ───────────────────────────────────────────────────────────────
