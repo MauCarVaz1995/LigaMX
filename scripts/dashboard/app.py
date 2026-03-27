@@ -3,7 +3,7 @@
 MauStats MX — Dark Pro Dashboard v2
 Sidebar layout · Poisson + Monte Carlo · ELO · Player analysis
 """
-import json, glob, warnings, hashlib
+import json, glob, warnings, hashlib, sys
 from pathlib import Path
 from collections import defaultdict
 
@@ -18,6 +18,9 @@ import dash_bootstrap_components as dbc
 import plotly.graph_objects as go
 
 warnings.filterwarnings('ignore')
+
+# Make pages/ importable
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 # ─────────────────────────────────────────────────────────────────────────────
 # PATHS
@@ -836,19 +839,14 @@ def page_header(title, subtitle='', badge=''):
 # PAGE LAYOUTS
 # ─────────────────────────────────────────────────────────────────────────────
 def page_home():
-    return html.Div([
-        page_header('Dashboard','Liga MX · Clausura 2026','J13 Próxima'),
-        html.Div([
-            build_kpis(),
-            dbc.Row([
-                dbc.Col(html.Div(build_standings(),className='g-card',style={'padding':'16px'}),md=5),
-                dbc.Col([
-                    html.Div(build_results(),  className='g-card gap-col',style={'padding':'16px'}),
-                    html.Div(build_upcoming(), className='g-card',         style={'padding':'16px'}),
-                ],md=7),
-            ],className='g-3'),
-        ],className='page-content'),
-    ])
+    from pages.home import layout as home_layout
+    return home_layout(
+        hist        = HIST,
+        jug         = JUG,
+        elo         = ELO,
+        team_ids    = TEAM_IDS,
+        team_colors = TEAM_COLORS,
+    )
 
 def page_jornada():
     opts = []
