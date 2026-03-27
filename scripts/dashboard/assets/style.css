@@ -1,7 +1,9 @@
 /* ================================================================
-   MAU STATS MX — Dark Pro Dashboard
-   Inspired by bball-shot-explorer sidebar + dark theme aesthetic
+   MAU STATS MX — Dark Pro Dashboard v2
+   Google Fonts · Bootstrap Icons · Roboto + Bebas Neue
    ================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Bebas+Neue&display=swap');
 
 /* ── RESET & BODY ────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -9,7 +11,7 @@
 html, body, #react-entry-point, #_dash-app-content {
   height: 100%;
   background: #0b0f14 !important;
-  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif !important;
+  font-family: 'Roboto', 'Inter', 'Segoe UI', system-ui, sans-serif !important;
   color: #e6edf3 !important;
   font-size: 13px;
 }
@@ -47,9 +49,9 @@ html, body, #react-entry-point, #_dash-app-content {
   text-decoration: none;
   line-height: 1;
 }
-.logo-mau   { font-size: 22px; font-weight: 900; color: #D5001C; letter-spacing: 3px; font-family: 'Arial Black', sans-serif; }
-.logo-stats { font-size: 22px; font-weight: 900; color: #e6edf3; letter-spacing: 3px; font-family: 'Arial Black', sans-serif; }
-.logo-mx    { font-size: 14px; font-weight: 600; color: #4a5568; letter-spacing: 2px; font-family: 'Arial Black', sans-serif; }
+.logo-mau   { font-size: 24px; font-weight: 400; color: #D5001C; letter-spacing: 4px; font-family: 'Bebas Neue', 'Arial Black', sans-serif; }
+.logo-stats { font-size: 24px; font-weight: 400; color: #e6edf3; letter-spacing: 4px; font-family: 'Bebas Neue', 'Arial Black', sans-serif; }
+.logo-mx    { font-size: 15px; font-weight: 400; color: #4a5568; letter-spacing: 3px; font-family: 'Bebas Neue', 'Arial Black', sans-serif; }
 .logo-sub {
   margin-top: 5px;
   font-size: 9px;
@@ -79,9 +81,9 @@ html, body, #react-entry-point, #_dash-app-content {
   color: #6e7681;
   text-decoration: none !important;
   font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 1px;
+  font-family: 'Roboto', sans-serif;
   border-left: 3px solid transparent;
   transition: color 0.15s, background 0.15s, border-color 0.15s;
   cursor: pointer;
@@ -99,7 +101,14 @@ html, body, #react-entry-point, #_dash-app-content {
   border-left-color: #D5001C !important;
   text-decoration: none !important;
 }
-.nav-icon { font-size: 14px; width: 18px; text-align: center; flex-shrink: 0; }
+/* Bootstrap Icons in nav */
+.nav-icon {
+  font-size: 15px;
+  width: 18px;
+  text-align: center;
+  flex-shrink: 0;
+  line-height: 1;
+}
 
 /* ── SIDEBAR FOOTER ─────────────────────────────────────────── */
 .sidebar-footer {
@@ -143,11 +152,12 @@ html, body, #react-entry-point, #_dash-app-content {
   justify-content: space-between;
 }
 .page-title {
-  font-size: 20px;
-  font-weight: 800;
-  letter-spacing: 1px;
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: 3px;
   color: #e6edf3;
   text-transform: uppercase;
+  font-family: 'Bebas Neue', 'Arial Black', sans-serif;
 }
 .page-subtitle { font-size: 11px; color: #6e7681; letter-spacing: 1px; margin-top: 2px; }
 .page-badge {
@@ -201,7 +211,7 @@ html, body, #react-entry-point, #_dash-app-content {
 .kpi-card:hover { transform: translateY(-2px); border-color: #2d3a4a; }
 .kpi-icon { font-size: 26px; flex-shrink: 0; }
 .kpi-body {}
-.kpi-value { font-size: 22px; font-weight: 800; line-height: 1; }
+.kpi-value { font-size: 22px; font-weight: 700; line-height: 1; font-family: 'Roboto', sans-serif; }
 .kpi-label { font-size: 10px; color: #6e7681; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 2px; }
 .kpi-sub   { font-size: 11px; color: #8b949e; margin-top: 2px; }
 
@@ -364,3 +374,35 @@ html, body, #react-entry-point, #_dash-app-content {
 /* ── UTILITIES ───────────────────────────────────────────────── */
 .mb-0 { margin-bottom: 0 !important; }
 .gap-col { margin-bottom: 16px; }
+
+/* ── DARKLY THEME OVERRIDES ──────────────────────────────────── */
+/* Force dark backgrounds — DARKLY uses #222 by default */
+.navbar, nav.navbar { background: transparent !important; }
+.container-fluid, .container { background: transparent !important; }
+
+/* Dropdown dark styling (Dash 2.x uses Select-*) */
+.VirtualizedSelectFocusedOption { background: rgba(213,0,28,0.1) !important; }
+.VirtualizedSelectOption         { background: #0f151e !important; color: #e6edf3 !important; }
+.VirtualizedSelectSelectedOption { background: rgba(213,0,28,0.15) !important; color: #D5001C !important; }
+
+/* Plotly graph containers inside cards */
+.js-plotly-plot, .plot-container { background: transparent !important; }
+.svg-container { background: transparent !important; }
+
+/* Dash Loading spinner dark */
+._dash-loading-callback { background: rgba(11,15,20,0.85) !important; }
+
+/* Prob circle font */
+.prob-pct { font-family: 'Roboto', sans-serif; font-weight: 900; }
+
+/* Section title with Roboto */
+.section-ttl { font-family: 'Roboto', sans-serif; }
+
+/* Stat pill values bigger/bolder */
+.stat-v { font-family: 'Roboto', sans-serif; font-weight: 700; }
+
+/* Score font */
+.r-score { font-family: 'Roboto', sans-serif; font-weight: 900; }
+
+/* Player name */
+.player-name-lrg { font-family: 'Roboto', sans-serif; font-weight: 700; }
