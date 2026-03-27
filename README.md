@@ -1,7 +1,97 @@
 # ⚽ LigaMX Stats
 
 > Motor de análisis estadístico de la **Liga MX** construido íntegramente sobre datos de [FotMob](https://www.fotmob.com).
-> Scraping, limpieza, métricas per-90, visualizaciones de élite, modelo de Poisson para predicción de marcadores y sistema de rating ELO histórico — todo en Python puro.
+> Scraping, limpieza, métricas per-90, visualizaciones de élite, modelo de Poisson para predicción de marcadores, simulación Monte Carlo, sistema de rating ELO histórico y **dashboard interactivo** con Plotly Dash — todo en Python puro.
+
+---
+
+## 🖥️ Dashboard Interactivo — MauStats MX
+
+Dashboard oscuro profesional con sidebar fijo, tipografía Google Fonts (Bebas Neue + Roboto), Bootstrap Icons y tema DARKLY.
+
+```bash
+source .venv/bin/activate
+python scripts/dashboard/app.py
+# → http://localhost:8050
+```
+
+### Páginas del dashboard
+
+| Página | Ruta | Contenido |
+|---|---|---|
+| **Home** | `/` | KPIs (líder, ELO #1, goleador, jornada) · tabla de posiciones · resultados J12 · próximos J13 |
+| **Jornada 13** | `/jornada` | Dropdown de partidos · círculos de probabilidad (local/empate/visita) · heatmap Poisson 7×7 |
+| **Ranking ELO** | `/elo` | Barras horizontales ranking actual · selector multi-equipo · línea temporal histórica |
+| **Simulación** | `/sim` | Heatmap Monte Carlo 5 000 iteraciones · zonas liguilla / repechaje coloreadas |
+| **Jugadores** | `/jugadores` | Pitch view con scatter de jugadores · radar de percentiles por posición · perfil + stats pills |
+| **Comparativo** | `/comp` | Barras espejo 1v1 por percentil · selector equipo + jugador por lado |
+
+### Stack del dashboard
+
+| Librería | Versión | Uso |
+|---|---|---|
+| `dash` | ≥ 4.1.0 | Framework reactivo |
+| `dash-bootstrap-components` | ≥ 2.0.4 | Tema DARKLY + Bootstrap Icons |
+| `plotly` | ≥ 6.6.0 | Heatmaps, barras, scatter, radar polar |
+| `pandas` | ≥ 2.3.0 | Datos en memoria |
+| `scipy` | ≥ 1.15.0 | `poisson.pmf()` para el modelo |
+| `numpy` | ≥ 2.2.0 | Matrices de probabilidad |
+
+### Arquitectura del dashboard
+
+```
+scripts/dashboard/
+├── app.py                  # App principal — datos, modelos, callbacks
+├── pages/
+│   ├── __init__.py
+│   └── home.py             # Página HOME (layout independiente)
+└── assets/
+    ├── style.css           # Google Fonts @import · sidebar · cards · componentes
+    └── teams/              # 18 escudos PNG servidos estáticamente por Dash
+```
+
+---
+
+## 🎲 Simulación Monte Carlo — Clausura 2026
+
+Corre **5 000 simulaciones** de los partidos restantes del torneo, usando las lambdas del modelo Poisson para cada duelo.
+
+### Cómo funciona
+
+Para cada simulación:
+1. Se parte de la tabla real actual (puntos, GF, GC)
+2. Para cada partido pendiente se sortean goles: `gl ~ Poisson(λ_local)`, `gv ~ Poisson(λ_visit)`
+3. Se actualizan puntos y diferencia de goles
+4. Se rankea la tabla final al ordenar por `(pts, DIF, GF)` desc
+5. Se acumula la frecuencia de cada equipo en cada posición
+
+El resultado es una **matriz 18×18** donde `P[equipo][posición]` = probabilidad de terminar en esa posición.
+
+```python
+# Llamada interna (app.py)
+MC_T, MC_P = montecarlo(ATT, DEFE, MU, HA, n=5000)
+```
+
+### Visualización
+
+- Heatmap verde-quetzal: oscuro (0%) → vibrante (70%+)
+- Textos en blanco bold para celdas ≥ 20%
+- Línea punteada dorada en posición 4 (Liguilla directa)
+- Línea punteada verde en posición 8 (Repechaje)
+- Equipos ordenados por posición esperada (menor `Σ pos × prob`)
+
+### Bug histórico corregido ✅
+
+El modelo de Poisson y el Monte Carlo estaban rotos porque los archivos históricos usan guión en el año (`historico_2025-2026_-_clausura.json`) pero el diccionario de pesos usaba slash (`'2025/2026 - Clausura'`). El `replace('_','/')` no convertía guiones → `mu = 0` → `λ = 0` → 100% empate y diagonal MC.
+
+**Fix aplicado en `load_model()`:**
+```python
+# ANTES (roto)
+tkey = f"{parts[0].replace('_','/')} - ..."
+# DESPUÉS (correcto)
+tkey = f"{parts[0].replace('-','/').replace('_','/')} - ..."
+```
+Con el fix: **608 partidos cargados**, `mu = 1.421` goles/partido promedio.
 
 ---
 
@@ -76,7 +166,10 @@ LigaMX_Stats/
 ├── data/
 │   ├── raw/
 │   │   ├── equipos_clausura2026.json      # IDs y nombres de los 18 equipos
-│   │   ├── historico/                     # 32 JSONs — torneos 2010/11 → 2025/26
+│   │   ├── historico/                     # 38 JSONs — torneos 2010/11 → 2025/26
+│   │   │   ├── historico_YYYY-YYYY_-_apertura.json
+│   │   │   ├── historico_YYYY-YYYY_-_clausura.json
+│   │   │   └── historico_clausura_2026.json  # Torneo activo (tabla + partidos)
 │   │   ├── jugadores/                     # Stats básicas por equipo (JSON x equipo)
 │   │   ├── stats_detalladas/              # Stats granulares por jugador (JSON x jugador)
 │   │   └── images/
@@ -98,20 +191,27 @@ LigaMX_Stats/
 │   ├── 05_radar_p90.py                    # Pizza chart P90 estilo Statiskicks
 │   ├── 07_ranking_posicion.py             # Top 10 por posición con foto y escudo
 │   ├── 08_comparativo_1v1.py              # Infografía comparativa cara a cara
-│   ├── 10_descargar_historico.py          # Histórico completo (32 torneos)
+│   ├── 10_descargar_historico.py          # Histórico completo (38 torneos)
 │   ├── 11_modelo_prediccion.py            # Modelo Poisson + heatmap de probabilidades
 │   ├── 12_resumen_jornada.py              # Resumen visual de todos los partidos de jornada
-│   └── 12_modelo_elo.py                   # Sistema ELO histórico + evolución + ranking
+│   ├── 12_modelo_elo.py                   # Sistema ELO histórico + evolución + ranking
+│   └── dashboard/
+│       ├── app.py                         # Dashboard Dash — servidor principal
+│       ├── pages/
+│       │   └── home.py                    # Página HOME (layout modular)
+│       └── assets/
+│           ├── style.css                  # Google Fonts + tema dark + componentes
+│           └── teams/                     # Escudos servidos estáticamente
 │
 ├── output/
 │   └── charts/                            # PNGs generados (150 DPI)
-│       ├── ranking_*.png                  # Rankings por posición
-│       ├── pizza_*.png                    # Pizza charts individuales
-│       ├── comparativo_*_vs_*.png         # Comparativos 1v1
-│       ├── prediccion_*_vs_*.png          # Heatmaps de predicción
-│       ├── elo_evolucion.png              # Evolución ELO histórica
-│       ├── elo_ranking.png                # Ranking ELO actual
-│       └── jornada13/                     # Predicciones individuales + resumen
+│       ├── ranking_*.png
+│       ├── pizza_*.png
+│       ├── comparativo_*_vs_*.png
+│       ├── prediccion_*_vs_*.png
+│       ├── elo_evolucion.png
+│       ├── elo_ranking.png
+│       └── jornada13/
 │
 └── notebooks/                             # Exploración interactiva (Jupyter)
 ```
@@ -138,6 +238,26 @@ LigaMX_Stats/
 # 4. Consolidar todo en un DataFrame maestro
 .venv/bin/python scripts/04_consolidar_dataframe.py
 # → data/processed/jugadores_clausura2026.csv
+```
+
+---
+
+### `scripts/dashboard/app.py` — Dashboard interactivo
+
+Arranca el servidor Dash con el dashboard completo. Al iniciar carga:
+- Modelo Poisson (608 partidos, 4 torneos ponderados)
+- Simulación Monte Carlo (5 000 iteraciones)
+- Serie histórica ELO
+- DataFrame de jugadores (≥ 200 min)
+
+```bash
+source .venv/bin/activate
+python scripts/dashboard/app.py
+# Cargando modelo Poisson…  → 608 partidos, mu=1.421
+# Monte Carlo (5 000 sim)…  → ~3s
+# ELO + jugadores…
+# Listo.
+# → http://0.0.0.0:8050
 ```
 
 ---
@@ -170,94 +290,38 @@ Genera el perfil visual de un jugador con métricas per-90 normalizadas contra s
 > `*` Métrica invertida: menor valor → mejor percentil.
 
 **Metodología de normalización:**
-Cada valor se transforma a percentil comparado únicamente contra jugadores de la misma posición con ≥ 300 minutos jugados en el torneo. El percentil 100 es el mejor de su grupo posicional.
+Cada valor se transforma a percentil comparado únicamente contra jugadores de la misma posición con ≥ 300 minutos jugados. El percentil 100 es el mejor de su grupo posicional.
 
 ---
 
 ### `07_ranking_posicion.py` — Top 10 por posición
 
-Ranking visual de los mejores jugadores por posición, con Índice Compuesto calculado sobre percentiles.
-
 ```bash
-# Todas las posiciones (genera 4 imágenes)
 .venv/bin/python scripts/07_ranking_posicion.py
-
-# Una posición específica
 .venv/bin/python scripts/07_ranking_posicion.py --posicion Delantero
 # Opciones: Delantero | Mediocampista | Defensa | Portero
-# → output/charts/ranking_delantero.png
 ```
-
-**Diseño:**
-- Requisito mínimo: **≥ 300 minutos jugados**
-- Barras de cada métrica con gradiente de color rojo→verde según percentil
-- Círculo de Score Total: verde (top 3) / naranja-amarillo (top 4-7) / naranja (resto)
-- Foto circular del jugador + escudo del equipo por fila
-- Fondo con gradiente oscuro y separador rojo MAU-STATISTICS
-
-**Métricas del Índice Compuesto por posición:**
-
-| Posición | Métricas (5 barras) |
-|---|---|
-| **Delantero** | Goles P90, xG P90, Tiros P90, Asistencias P90, xA P90 |
-| **Mediocampista** | Pases Precisos P90, Pases Largos P90, Asistencias P90, Recuperaciones Campo Rival P90, Duelos Ganados P90 |
-| **Defensa** | Intercepciones P90, Duelos Ganados P90, Recuperaciones Campo Rival P90, Pases Precisos P90, Despejes P90 |
-| **Portero** | Paradas P90, Porterías en Cero P90, Goles Concedidos P90 (invertido) |
-
-El **Score Total** es el promedio simple de los percentiles de cada métrica, escalado a 0-100.
 
 ---
 
 ### `08_comparativo_1v1.py` — Comparativo cara a cara
 
-Infografía de dos jugadores con barras espejo coloreadas por equipo, rating FotMob y contador de victorias por métrica.
-
 ```bash
-# Por defecto: Paulinho vs Ángel Sepúlveda
 .venv/bin/python scripts/08_comparativo_1v1.py
-
-# Con IDs de FotMob específicos
 .venv/bin/python scripts/08_comparativo_1v1.py 361377 215428
 # → output/charts/comparativo_paulinho_vs_angel_sepulveda.png
 ```
-
-> Los IDs de jugador se obtienen de la URL de FotMob: `fotmob.com/players/361377/paulinho`
-
-**Diseño:**
-- Header bicolor: fondo del color del equipo con gradiente diagonal, foto circular del jugador y escudo inline
-- Círculo de rating FotMob coloreado por equipo (valor numérico centrado con `anchor='mm'`)
-- 10 métricas P90 enfrentadas en barras espejo desde el centro
-- Ganador de cada barra en el color del equipo; perdedor en `#252525` con borde `#444444`
-- Banner inferior con conteo de victorias por métrica y barra proporcional
-
-**Métricas comparadas (10):**
-
-| # | Métrica | Descripción |
-|---|---|---|
-| 1 | Goles P90 | Goles marcados por 90 minutos |
-| 2 | xG P90 | Expected Goals por 90 minutos |
-| 3 | Tiros P90 | Total de tiros por 90 minutos |
-| 4 | Tiros a Puerta P90 | Tiros entre los tres palos por 90 minutos |
-| 5 | Asistencias P90 | Asistencias de gol por 90 minutos |
-| 6 | xA P90 | Expected Assists por 90 minutos |
-| 7 | Chances Creadas P90 | Pases que generan oportunidad de gol por 90 min |
-| 8 | Pases Precisos P90 | Pases completados por 90 minutos |
-| 9 | Duelos Ganados P90 | Duelos en tierra ganados por 90 minutos |
-| 10 | Regates Exitosos P90 | Regates completados por 90 minutos |
 
 ---
 
 ### `10_descargar_historico.py` — Histórico completo Liga MX
 
-Descarga **32 torneos** (Apertura/Clausura 2010/11 → 2025/26) con resultados partido a partido y tabla de posiciones.
+Descarga **38 torneos** (Apertura/Clausura 2010/11 → 2025/26) con resultados partido a partido y tabla de posiciones.
 
 ```bash
-# Descarga todos los torneos (salta los ya existentes)
 .venv/bin/python scripts/10_descargar_historico.py
-
-# Forzar re-descarga del torneo actual
 .venv/bin/python scripts/10_descargar_historico.py --force
-# → data/raw/historico/historico_{año}_-_{torneo}.json  (32 archivos)
+# → data/raw/historico/historico_{año}_-_{torneo}.json
 ```
 
 Estructura de cada JSON:
@@ -270,7 +334,7 @@ Estructura de cada JSON:
     {
       "id": 4712345,
       "fecha": "2026-01-18",
-      "jornada": 1,
+      "jornada": "1",
       "local": "Pachuca",
       "visitante": "Toluca",
       "goles_local": 2,
@@ -293,7 +357,7 @@ Predice la distribución de probabilidad de marcadores para cualquier partido de
 # → output/charts/prediccion_pachuca_vs_toluca.png
 ```
 
-**Salida de ejemplo (Clausura 2026, Jornada 12):**
+**Salida de ejemplo:**
 ```
 P(Victoria Pachuca) = 23.7%
 P(Empate)           = 29.9%
@@ -303,11 +367,9 @@ Score más probable:  0-1  (16.5%)
 
 **Metodología — cómo funciona:**
 
-El modelo usa la distribución de **Poisson** para estimar los goles esperados λ de cada equipo:
-
 ```
-λ_local     = ataque_local(A)_casa    × defensa_visitante(B)_fuera × μ_home
-λ_visitante = ataque_visitante(B)_fuera × defensa_local(A)_casa    × μ_away
+λ_local     = att[local]  × defe[visita] × μ × home_advantage(1.15)
+λ_visitante = att[visita] × defe[local]  × μ
 ```
 
 Los factores se calculan con los **últimos 4 torneos ponderados**:
@@ -319,45 +381,27 @@ Los factores se calculan con los **últimos 4 torneos ponderados**:
 | Clausura 2025 | **2** |
 | Apertura 2024 | **1** |
 
-**Parámetros del modelo:**
+`μ` = promedio ponderado de goles por partido en la liga (actualmente **1.421**).
 
-- `μ_home` / `μ_away`: promedio ponderado de goles como local y visitante en la liga
-- `ataque[equipo].home`: ratio goles marcados como local ÷ `μ_home` (normalizado por partidos jugados)
-- `ataque[equipo].away`: ratio goles marcados como visitante ÷ `μ_away`
-- `defensa[equipo].home`: ratio goles concedidos como local ÷ `μ_away`
-- `defensa[equipo].away`: ratio goles concedidos como visitante ÷ `μ_home`
-
-Si un equipo no tiene historial en algún rol, se usa factor 1.0 (media de la liga).
-
-La **matriz de probabilidades 6×6** (marcadores 0-0 a 5-5) se calcula como:
+La **matriz de probabilidades 7×7** (marcadores 0-0 a 6-6) se calcula como:
 ```
-P(local=i, visitante=j) = Poisson(i; λ_local) × Poisson(j; λ_visitante)
+P(local=i, visita=j) = Poisson(i; λ_local) × Poisson(j; λ_visita)
 ```
-y se normaliza al 100% dividiendo entre la suma total de la matriz truncada.
 
 ---
 
 ### `12_resumen_jornada.py` — Resumen visual de jornada
 
-Genera una infografía vertical con todos los partidos de una jornada: barras de probabilidad coloreadas por equipo, marcador más probable y escudos.
-
 ```bash
-# Editar la lista PARTIDOS dentro del script con los duelos de la jornada
 .venv/bin/python scripts/12_resumen_jornada.py
 # → output/charts/jornada13/resumen_jornada13.png
 ```
-
-Cada partido muestra:
-- Escudos de ambos equipos
-- Tres barras de probabilidad coloreadas: victoria local, empate, victoria visitante
-- Porcentaje numérico de cada resultado
-- Marcador más probable con su probabilidad
 
 ---
 
 ### `12_modelo_elo.py` — Sistema de rating ELO histórico
 
-Procesa los **32 torneos históricos** (~5,250 partidos, 2010/11 → 2025/26) y genera dos visualizaciones: evolución temporal y ranking actual.
+Procesa los **38 torneos históricos** y genera la evolución temporal y el ranking actual.
 
 ```bash
 .venv/bin/python scripts/12_modelo_elo.py
@@ -368,122 +412,69 @@ Procesa los **32 torneos históricos** (~5,250 partidos, 2010/11 → 2025/26) y 
 
 **Metodología ELO:**
 
-El sistema ELO asigna a cada equipo un rating numérico que sube al ganar y baja al perder. Los parámetros usados:
-
 | Parámetro | Valor | Descripción |
 |---|---|---|
 | `ELO_BASE` | 1500 | Rating inicial de todo equipo |
 | `K` | 32 | Factor de actualización máximo por partido |
 | `HOME_ADV` | 100 | Puntos extra para el local al calcular probabilidad esperada |
-| `SCALE` | 400 | Escala logística (equivalente Elo estándar) |
-| `REGRESSION` | 30% | Regresión a la media al inicio de cada torneo nuevo |
+| `SCALE` | 400 | Escala logística estándar |
+| `REGRESSION` | 30% | Regresión a la media al inicio de cada torneo |
 
-**Fórmula de probabilidad esperada:**
+**Fórmula:**
 ```
-E_local = 1 / (1 + 10^((ELO_visitante - ELO_local - HOME_ADV) / 400))
-E_visitante = 1 - E_local
-```
+E_local = 1 / (1 + 10^((ELO_visita - ELO_local - HOME_ADV) / 400))
+ΔElo    = K × GoalMarginMultiplier × (resultado_real - E_local)
 
-**Actualización por partido:**
+GoalMarginMultiplier = 1.0 + ln(|GL - GV| + 1) × 0.5
 ```
-ΔElo = K × GoalMarginMultiplier × (resultado_real - resultado_esperado)
-```
-
-Donde `resultado_real` es 1 (victoria), 0.5 (empate) o 0 (derrota).
-
-**Multiplicador por margen de goles** (basado en metodología 538/Club Elo):
-```
-GoalMarginMultiplier = 1.0 + ln(|goles_local - goles_visitante| + 1) × 0.5
-```
-Esto penaliza las goleadas pero con rendimientos decrecientes para evitar que un 5-0 domine el cálculo.
 
 **Regresión entre torneos:**
-Al inicio de cada torneo, todo equipo regresa un 30% hacia la media de 1500:
 ```
 ELO_nuevo = ELO_actual + 0.30 × (1500 - ELO_actual)
 ```
-Esto evita que un equipo acumule ventaja indefinida y refleja la naturaleza de cada torneo como competencia semi-independiente.
-
-**Visualización de evolución:**
-- Datos resampleados semanalmente (`.resample('W').last().ffill()`)
-- Suavizado con rolling window de 8 semanas centrado (`center=True`)
-- Solo se grafican los 18 equipos del Clausura 2026
-- Línea de referencia blanca punteada en ELO=1500 (media)
-- Anotación de pausa COVID-19 (marzo 2020)
-- Etiquetas al final de cada línea con separación mínima de 22 puntos ELO
-
-**Visualización de ranking:**
-- Barras con gradiente horizontal color de equipo → oscuro
-- Delta respecto a base 1500: verde si positivo, rojo si negativo
-- Fondo especial `#1a1f2e` para los tres primeros lugares
-- Escudo de equipo al inicio de cada fila
 
 ---
 
 ## 📐 `config_visual.py` — Paleta de identidad MAU-STATISTICS
 
-Módulo centralizado importado por todos los scripts de visualización. Define la paleta de colores, tipografía y utilidades de color.
-
 ```python
 from config_visual import PALETTE, bebas, hex_rgba, hex_rgb
 ```
-
-**Paleta base:**
 
 | Token | Hex | Uso |
 |---|---|---|
 | `bg_main` | `#0d1117` | Fondo principal |
 | `bg_secondary` | `#161b22` | Filas alternas / header |
-| `bg_card` | `#0f151e` | Tarjetas / paneles |
-| `text_primary` | `#ffffff` | Texto principal |
-| `text_secondary` | `#8b949e` | Texto secundario / "Fuente: FotMob" |
-| `accent` | `#D5001C` | Rojo MAU-STATISTICS — líneas, títulos |
-| `positive` | `#2ea043` | Delta positivo / verde |
-| `negative` | `#f85149` | Delta negativo / rojo claro |
+| `accent` | `#D5001C` | Rojo MAU-STATISTICS |
+| `positive` | `#2ea043` | Delta positivo |
+| `negative` | `#f85149` | Delta negativo |
 | `border` | `#30363d` | Bordes |
-| `divider` | `#21262d` | Divisores internos |
-| `grid` | `#1e2530` | Líneas de cuadrícula |
-| `bar_track` | `#181c24` | Track (fondo de barra vacía) |
-| `bar_loser` | `#252525` | Barra del jugador perdedor en 1v1 |
-| `bar_loser_border` | `#444444` | Borde de barra perdedora |
-
-**Funciones de utilidad:**
 
 ```python
-bebas(size: float) -> dict       # kwargs de Bebas Neue para matplotlib
-hex_rgb(hex: str) -> tuple       # '#RRGGBB' → (R, G, B) int 0-255
-hex_rgba(hex: str, a=1.0)        # '#RRGGBB' → (r, g, b, a) float 0-1
-darken(hex: str, factor=0.55)    # Oscurece un color RGB
-make_h_gradient(hex, w=256)      # Array RGBA (1, w, 4) con gradiente horizontal
+bebas(size)              # kwargs Bebas Neue para matplotlib
+hex_rgb(hex)             # '#RRGGBB' → (R, G, B)
+hex_rgba(hex, a=1.0)     # '#RRGGBB' → (r, g, b, a)
+darken(hex, factor=0.55) # Oscurece un color
+make_h_gradient(hex)     # Array RGBA (1, w, 4) gradiente horizontal
 ```
-
-**Convención de footer en todos los gráficos:**
-- Esquina inferior derecha: `MAU-STATISTICS` en Bebas Neue 20pt, rojo `#D5001C`
-- Esquina inferior izquierda: `Fuente: FotMob` en 10pt, gris `#8b949e`
 
 ---
 
-## 📊 Métricas P90 disponibles en el DataFrame
+## 📊 Métricas P90 disponibles
 
-El archivo `data/processed/jugadores_clausura2026.csv` contiene las siguientes columnas per-90 (por 90 minutos jugados):
+El archivo `data/processed/jugadores_clausura2026.csv` contiene **41 columnas** incluyendo:
 
-**Tiro / Gol:**
-`goles_p90`, `xG_p90`, `xG_np_p90`, `xGOT_p90`, `tiros_p90`, `tiros_a_puerta_p90`, `cabezazos_p90`
+**Tiro / Gol:** `goles_p90`, `xG_p90`, `tiros_p90`, `tiros_a_puerta_p90`, `grandes_chances_p90`
 
-**Pase / Creación:**
-`asistencias_p90`, `xA_p90`, `chances_creadas_p90`, `grandes_chances_p90`, `pases_precisos_p90`, `precision_pases_p90`, `pases_largos_p90`, `precision_pases_largos_p90`, `centros_precisos_p90`, `precision_centros_p90`
+**Pase / Creación:** `asistencias_p90`, `xA_p90`, `chances_creadas_p90`, `pases_precisos_p90`, `pases_largos_p90`
 
-**Posesión / Duelos:**
-`duelos_ganados_p90`, `duelos_ganados_pct_p90`, `regates_p90`, `duelos_tierra_ganados_p90`, `duelos_aereos_ganados_p90`, `duelos_aereos_ganados_pct_p90`, `toques_p90`, `toques_area_rival_p90`, `faltas_recibidas_p90`, `perdidas_balon_p90`
+**Posesión / Duelos:** `duelos_tierra_ganados_p90`, `recuperaciones_campo_rival_p90`
 
-**Defensa:**
-`intercepciones_p90`, `despejes_p90`, `tiros_bloqueados_p90`, `recuperaciones_p90`, `faltas_cometidas_p90`, `regateado_p90`, `entradas_p90`, `recuperaciones_campo_rival_p90`
+**Defensa:** `intercepciones_p90`, `entradas_p90`, `despejes_p90`, `tiros_bloqueados_p90`, `faltas_cometidas_p90`
 
-**Disciplina:**
-`tarjetas_amarillas_p90`, `tarjetas_rojas_p90`
+**Portería:** `paradas_p90`, `porcentaje_paradas_p90`, `goles_recibidos_p90`, `goles_evitados_p90`, `porterias_cero_p90`
 
-**Portería:**
-`paradas_p90`, `porcentaje_paradas_p90`, `goles_recibidos_p90`, `goles_evitados_p90`, `salidas_p90`, `balones_al_aire_p90`, `porterias_cero_p90`, `penales_atajados_p90`, `pct_penales_atajados_p90`, `dist_pases_precisos_p90`
+**Disciplina:** `tarjetas_amarillas_p90`, `tarjetas_rojas_p90`, `penales_ganados_p90`
 
 ---
 
@@ -497,20 +488,36 @@ cd LigaMX
 # 2. Crear entorno virtual e instalar dependencias
 python3 -m venv .venv
 source .venv/bin/activate
-pip install pandas matplotlib Pillow requests scipy numpy mplsoccer
+pip install -r requirements.txt
 
-# 3. (Recomendado) Instalar fuente Bebas Neue
+# 3. (Recomendado) Instalar fuente Bebas Neue localmente
 mkdir -p ~/.fonts
 curl -sL "https://github.com/dharmatype/Bebas-Neue/raw/master/fonts/ttf/BebasNeue-Regular.ttf" \
      -o ~/.fonts/BebasNeue.ttf
 fc-cache -fv
+
+# 4. Arrancar el dashboard
+python scripts/dashboard/app.py
+# → http://localhost:8050
+```
+
+**`requirements.txt`:**
+```
+dash>=4.1.0
+dash-bootstrap-components>=2.0.4
+plotly>=6.6.0
+pandas>=2.3.0
+numpy>=2.2.0
+scipy>=1.15.0
+matplotlib>=3.10.0
+Pillow>=12.1.0
 ```
 
 ---
 
 ## 📡 Fuentes de datos
 
-Todos los datos provienen de **FotMob** mediante scraping del JSON embebido `__NEXT_DATA__` o de la API no oficial `data.fotmob.com`. No se usa ninguna API oficial ni de terceros pagos.
+Todos los datos provienen de **FotMob** mediante scraping del JSON embebido `__NEXT_DATA__` o de la API no oficial `data.fotmob.com`.
 
 | Endpoint | Contenido |
 |---|---|
@@ -525,16 +532,19 @@ Todos los datos provienen de **FotMob** mediante scraping del JSON embebido `__N
 
 ---
 
-## 🧱 Stack
+## 🧱 Stack completo
 
 | Librería | Uso |
 |---|---|
 | `pandas` | Manipulación, limpieza y feature engineering |
-| `matplotlib` | Todas las visualizaciones estáticas |
-| `Pillow` (PIL) | Imágenes circulares, escudos, composición RGBA, gradientes |
-| `requests` / `urllib` | Scraping HTTP |
-| `scipy` | Distribución de Poisson para el modelo de predicción |
-| `numpy` | Álgebra lineal, matrices de probabilidad, gradientes |
+| `matplotlib` | Visualizaciones estáticas (pizza, ranking, comparativo, ELO) |
+| `Pillow` (PIL) | Imágenes circulares, escudos, composición RGBA |
+| `requests` | Scraping HTTP |
+| `scipy` | `poisson.pmf()` para modelo de predicción |
+| `numpy` | Matrices de probabilidad, Monte Carlo, gradientes |
+| `dash` | Dashboard interactivo reactivo |
+| `dash-bootstrap-components` | Tema DARKLY, Bootstrap Icons, layout grid |
+| `plotly` | Heatmaps, barras, scatter, radar polar (dashboard) |
 | `mplsoccer` | Radar chart base (script 03) |
 
 ---
@@ -542,20 +552,25 @@ Todos los datos provienen de **FotMob** mediante scraping del JSON embebido `__N
 ## 🗺️ Roadmap
 
 - [x] Scraping de equipos y jugadores (Clausura 2026)
-- [x] DataFrame maestro con stats P90 por posición
+- [x] DataFrame maestro con stats P90 por posición (41 columnas)
 - [x] Pizza chart P90 individual (Statiskicks style)
 - [x] Ranking visual Top 10 por posición
 - [x] Comparativo 1v1 con barras espejo
-- [x] Histórico completo 15 años (32 torneos, ~5,250 partidos)
-- [x] Modelo de Poisson para predicción de marcadores
+- [x] Histórico completo 15 años (38 torneos, ~5 800 partidos)
+- [x] Modelo de Poisson ponderado por torneo (mu=1.421, 608 partidos)
 - [x] Resumen visual de jornada completa
 - [x] Sistema de rating ELO histórico (evolución + ranking)
 - [x] Paleta centralizada MAU-STATISTICS (`config_visual.py`)
-- [ ] Dashboard interactivo (Streamlit / Dash)
-- [ ] Predicciones automáticas para la jornada vigente
-- [ ] Análisis de rachas y forma reciente por equipo
-- [ ] Comparativo de temporadas (rendimiento histórico por equipo)
+- [x] **Dashboard interactivo Dash** — 6 páginas, sidebar, dark theme
+- [x] **Simulación Monte Carlo** — 5 000 iteraciones, heatmap de posiciones finales
+- [x] **Pitch view** — scatter de jugadores sobre cancha real con colores por rating
+- [x] **Radar de percentiles** — por posición, coloreado por equipo
+- [x] **Comparativo 1v1 interactivo** — barras espejo en el dashboard
+- [ ] Predicciones automáticas actualizadas en cada jornada
+- [ ] Análisis de rachas y forma reciente (últimos 5 partidos)
+- [ ] Comparativo de temporadas por equipo
 - [ ] Integración ELO como feature en el modelo de Poisson
+- [ ] Exportar PDF de resumen de jornada desde el dashboard
 
 ---
 
