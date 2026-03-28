@@ -28,6 +28,9 @@ from scipy.stats import poisson
 
 warnings.filterwarnings('ignore')
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from config_visual import PALETAS, PALETA_ACTIVA, get_paleta
+
 # ─────────────────────────────────────────────────────────────────────────────
 # PATHS
 # ─────────────────────────────────────────────────────────────────────────────
@@ -54,11 +57,12 @@ def bebas_fp(size):
 # ─────────────────────────────────────────────────────────────────────────────
 # PALETA
 # ─────────────────────────────────────────────────────────────────────────────
-DARK_BG   = '#0d1117'
-WHITE     = '#e6edf3'
-GRAY      = '#8b949e'
-RED_BRAND = '#D5001C'
-GOLD      = '#FFD700'
+_pal      = get_paleta()
+DARK_BG   = _pal['bg_primary']
+WHITE     = _pal['text_primary']
+GRAY      = _pal['text_secondary']
+RED_BRAND = _pal['accent']
+GOLD      = _pal['accent2']
 
 TEAM_COLORS = {
     'América': '#FFD700',      'CF America': '#FFD700',
@@ -646,4 +650,16 @@ def main():
 
 
 if __name__ == '__main__':
+    import argparse as _ap
+    _parser = _ap.ArgumentParser()
+    _parser.add_argument('--paleta', default=None, choices=list(PALETAS.keys()))
+    _args, _rest = _parser.parse_known_args()
+    if _args.paleta:
+        _p = get_paleta(_args.paleta)
+        DARK_BG   = _p['bg_primary']
+        WHITE     = _p['text_primary']
+        GRAY      = _p['text_secondary']
+        RED_BRAND = _p['accent']
+        GOLD      = _p['accent2']
+        _pal      = _p
     main()

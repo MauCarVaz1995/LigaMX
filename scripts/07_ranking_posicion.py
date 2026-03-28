@@ -28,7 +28,7 @@ from PIL import Image, ImageDraw, ImageFilter
 warnings.filterwarnings('ignore')
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from config_visual import PALETTE, bebas as _bebas_cv, hex_rgba
+from config_visual import PALETTE, PALETAS, PALETA_ACTIVA, get_paleta, bebas as _bebas_cv, hex_rgba
 
 # ─────────────────────────────────────────────────────────────────────────────
 # PATHS
@@ -52,14 +52,15 @@ if BEBAS_TTF.exists():
 # ─────────────────────────────────────────────────────────────────────────────
 # PALETA
 # ─────────────────────────────────────────────────────────────────────────────
-DARK_BG     = PALETTE['bg_main']
-BG_ROW_A    = PALETTE['bg_secondary']
-BG_ROW_B    = PALETTE['bg_main']
-RED_BRAND   = PALETTE['accent']
-GREEN_BRAND = '#00D4AA'
-WHITE       = PALETTE['text_primary']
-GRAY        = PALETTE['text_secondary']
-GOLD        = '#FFD700'
+_pal        = get_paleta()
+DARK_BG     = _pal['bg_primary']
+BG_ROW_A    = _pal['bg_secondary']
+BG_ROW_B    = _pal['bg_primary']
+RED_BRAND   = _pal['accent']
+GREEN_BRAND = _pal['brand_color']
+WHITE       = _pal['text_primary']
+GRAY        = _pal['text_secondary']
+GOLD        = _pal['accent2']
 
 # Títulos declarativos por posición
 _TITLES = {
@@ -439,6 +440,19 @@ def main(posiciones=None):
 
 
 if __name__ == '__main__':
-    import sys
-    cats = sys.argv[1:] if len(sys.argv) > 1 else None
-    main(posiciones=cats)
+    import sys, argparse as _ap
+    _parser = _ap.ArgumentParser()
+    _parser.add_argument('--paleta', default=None, choices=list(PALETAS.keys()))
+    _parser.add_argument('posiciones', nargs='*', default=None)
+    _args = _parser.parse_args()
+    if _args.paleta:
+        _p = get_paleta(_args.paleta)
+        DARK_BG   = _p['bg_primary']
+        BG_ROW_A  = _p['bg_secondary']
+        BG_ROW_B  = _p['bg_primary']
+        RED_BRAND = _p['accent']
+        GREEN_BRAND = _p['brand_color']
+        WHITE     = _p['text_primary']
+        GRAY      = _p['text_secondary']
+        GOLD      = _p['accent2']
+    main(posiciones=_args.posiciones or None)

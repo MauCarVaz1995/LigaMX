@@ -20,6 +20,9 @@ import io
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from config_visual import PALETAS, PALETA_ACTIVA, get_paleta
+
 import matplotlib.colors as mcolors
 import matplotlib.font_manager as fm
 import matplotlib.pyplot as plt
@@ -37,8 +40,9 @@ OUTPUT_DIR = Path("output/charts")
 CACHE_DIR  = Path(".cache")
 
 MIN_MINUTOS = 300
-BG_COLOR    = "#0d1117"
-GRAY_C      = "#8899aa"
+_pal        = get_paleta()
+BG_COLOR    = _pal['bg_primary']
+GRAY_C      = _pal['text_secondary']
 
 FOTMOB_PLAYER  = "https://images.fotmob.com/image_resources/playerimages/{pid}.png"
 FOTMOB_TEAM    = "https://images.fotmob.com/image_resources/logo/teamlogo/{tid}.png"
@@ -640,7 +644,14 @@ def main():
     parser.add_argument("--dpi",    type=int,  default=220)
     parser.add_argument("--todos",  action="store_true",
                         help="Genera 3 ejemplos: Paulinho, Marcel Ruiz, delantero Cruz Azul")
+    parser.add_argument("--paleta", type=str, default=None, choices=list(PALETAS.keys()),
+                        help="Nombre de la paleta de colores")
     args = parser.parse_args()
+    if args.paleta:
+        global BG_COLOR, GRAY_C, _pal
+        _pal     = get_paleta(args.paleta)
+        BG_COLOR = _pal['bg_primary']
+        GRAY_C   = _pal['text_secondary']
     if args.nombre is None and args.grupo is None and not args.todos:
         args.nombre = "Paulinho"   # default
 

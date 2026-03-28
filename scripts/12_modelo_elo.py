@@ -27,7 +27,7 @@ import urllib.request
 warnings.filterwarnings('ignore')
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from config_visual import PALETTE, bebas, hex_rgba, hex_rgb, darken, make_h_gradient
+from config_visual import PALETTE, PALETAS, PALETA_ACTIVA, get_paleta, bebas, hex_rgba, hex_rgb, darken, make_h_gradient
 
 # ─────────────────────────────────────────────────────────────────────────────
 # PATHS
@@ -231,10 +231,11 @@ def get_shield(tid: int, size: int = 32) -> np.ndarray | None:
 # ─────────────────────────────────────────────────────────────────────────────
 # PASO 3: VISUALIZACIÓN 1 — Evolución del ELO
 # ─────────────────────────────────────────────────────────────────────────────
-DARK_BG   = PALETTE['bg_main']
-WHITE     = PALETTE['text_primary']
-GRAY      = PALETTE['text_secondary']
-RED_BRAND = PALETTE['accent']
+_pal      = get_paleta()
+DARK_BG   = _pal['bg_primary']
+WHITE     = _pal['text_primary']
+GRAY      = _pal['text_secondary']
+RED_BRAND = _pal['accent']
 
 def plot_evolucion(snapshots: list[dict], final_elo: dict[str, float]):
     df = pd.DataFrame(snapshots)
@@ -263,7 +264,7 @@ def plot_evolucion(snapshots: list[dict], final_elo: dict[str, float]):
 
     ax = fig.add_axes([0.055, 0.11, 0.80, 0.75])
     ax.set_facecolor('none')
-    ax.yaxis.grid(True, color=PALETTE['grid'], lw=0.6, zorder=0, alpha=0.7)
+    ax.yaxis.grid(True, color=DARK_BG, lw=0.6, zorder=0, alpha=0.7)
     ax.set_axisbelow(True); ax.xaxis.grid(False)
 
     # Línea 1500 — blanca punteada alpha=0.3
@@ -366,7 +367,7 @@ def plot_evolucion(snapshots: list[dict], final_elo: dict[str, float]):
     ax.tick_params(axis='y', colors=GRAY, labelsize=9, length=0, pad=4)
     ax.yaxis.set_major_locator(plt.MultipleLocator(100))
     for spine in ax.spines.values():
-        spine.set_edgecolor(PALETTE['border']); spine.set_linewidth(0.6)
+        spine.set_edgecolor(GRAY); spine.set_linewidth(0.6)
 
     # Títulos con gancho
     fig.text(0.055, 0.940, '15 AÑOS DE PODER EN LIGA MX',
@@ -419,10 +420,10 @@ def plot_ranking(final_elo: dict[str, float]):
     fig.text(0.50, 0.934,
              'El rating ELO mide la fuerza histórica de cada equipo. '
              'Se actualiza partido a partido considerando rival, localía y margen de goles.',
-             color=PALETTE['text_secondary'], ha='center', va='top', fontsize=7.2)
+             color=GRAY, ha='center', va='top', fontsize=7.2)
     fig.text(0.50, 0.920,
              'Base: 1500 = promedio de la liga.',
-             color=PALETTE['text_secondary'], ha='center', va='top', fontsize=7.2)
+             color=GRAY, ha='center', va='top', fontsize=7.2)
 
     # Eje principal
     ax = fig.add_axes([0.02, CONTENT_Y, 0.96, CONTENT_H])
@@ -456,7 +457,7 @@ def plot_ranking(final_elo: dict[str, float]):
         if is_top3:
             row_bg = '#1a1f2e'
         elif i % 2 == 0:
-            row_bg = PALETTE['bg_card']
+            row_bg = _pal['bg_secondary']
         else:
             row_bg = DARK_BG
 
@@ -464,7 +465,7 @@ def plot_ranking(final_elo: dict[str, float]):
             (0, row_bot), 1, 1, facecolor=row_bg, linewidth=0, zorder=1))
 
         # Separador sutil
-        ax.axhline(row_bot + 1, color=PALETTE['divider'], lw=0.6, zorder=2)
+        ax.axhline(row_bot + 1, color=DARK_BG, lw=0.6, zorder=2)
 
         # Acento lateral Top 3
         if is_top3:
@@ -530,7 +531,7 @@ def plot_ranking(final_elo: dict[str, float]):
         sign  = '+' if delta >= 0 else ''
         ax.text(X_DELTA, row_bot + 0.55,
                 f'{sign}{delta:.0f}',
-                color=PALETTE['positive'] if delta >= 0 else PALETTE['negative'],
+                color=_pal['cell_high'] if delta >= 0 else _pal['accent'],
                 fontsize=8.5, ha='right', va='center', zorder=4)
 
     # Footer
@@ -549,6 +550,18 @@ def plot_ranking(final_elo: dict[str, float]):
 # MAIN
 # ─────────────────────────────────────────────────────────────────────────────
 if __name__ == '__main__':
+    import argparse as _ap
+    _parser = _ap.ArgumentParser()
+    _parser.add_argument('--paleta', default=None, choices=list(PALETAS.keys()))
+    _args = _parser.parse_args()
+    if _args.paleta:
+        _p = get_paleta(_args.paleta)
+        DARK_BG   = _p['bg_primary']
+        WHITE     = _p['text_primary']
+        GRAY      = _p['text_secondary']
+        RED_BRAND = _p['accent']
+        _pal      = _p
+
     # 1. Cargar partidos
     matches = load_all_matches()
 

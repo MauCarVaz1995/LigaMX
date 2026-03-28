@@ -23,7 +23,7 @@ import urllib.request
 warnings.filterwarnings('ignore')
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from config_visual import PALETTE, bebas as _bebas_cv, hex_rgba, hex_rgb as _hex_rgb_cv
+from config_visual import PALETTE, PALETAS, PALETA_ACTIVA, get_paleta, bebas as _bebas_cv, hex_rgba, hex_rgb as _hex_rgb_cv
 
 # ─────────────────────────────────────────────────────────────────────────────
 # PATHS
@@ -47,13 +47,14 @@ def bebas(size):
 # ─────────────────────────────────────────────────────────────────────────────
 # PALETA
 # ─────────────────────────────────────────────────────────────────────────────
-DARK_BG   = PALETTE['bg_main']
-WHITE     = PALETTE['text_primary']
-GRAY      = PALETTE['text_secondary']
-GRAY_DIM  = PALETTE['bar_loser']
-GRAY_BORDER = PALETTE['bar_loser_border']
-RED_BRAND = PALETTE['accent']
-BAR_TRACK = PALETTE['bar_track']
+_pal      = get_paleta()
+DARK_BG   = _pal['bg_primary']
+WHITE     = _pal['text_primary']
+GRAY      = _pal['text_secondary']
+GRAY_DIM  = _pal['bg_secondary']
+GRAY_BORDER = '#444444'
+RED_BRAND = _pal['accent']
+BAR_TRACK = _pal['bg_secondary']
 
 TEAM_COLORS = {
     6618:    '#D5001C',
@@ -480,6 +481,18 @@ def render_1v1(pid1: int, pid2: int):
     return out
 
 if __name__ == '__main__':
-    pid1 = int(sys.argv[1]) if len(sys.argv) > 1 else 361377
-    pid2 = int(sys.argv[2]) if len(sys.argv) > 2 else 215428
-    render_1v1(pid1, pid2)
+    import argparse as _ap
+    _parser = _ap.ArgumentParser()
+    _parser.add_argument('pid1', nargs='?', type=int, default=361377)
+    _parser.add_argument('pid2', nargs='?', type=int, default=215428)
+    _parser.add_argument('--paleta', default=None, choices=list(PALETAS.keys()))
+    _args = _parser.parse_args()
+    if _args.paleta:
+        _p = get_paleta(_args.paleta)
+        DARK_BG   = _p['bg_primary']
+        WHITE     = _p['text_primary']
+        GRAY      = _p['text_secondary']
+        GRAY_DIM  = _p['bg_secondary']
+        RED_BRAND = _p['accent']
+        BAR_TRACK = _p['bg_secondary']
+    render_1v1(_args.pid1, _args.pid2)

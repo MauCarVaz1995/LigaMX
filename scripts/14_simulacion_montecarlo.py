@@ -7,7 +7,7 @@ Genera heatmap de probabilidades de posición final por equipo.
 Salida: output/charts/montecarlo_clausura2026.png  (150 DPI)
 """
 
-import json, glob, sys, warnings
+import argparse, json, glob, sys, warnings
 from pathlib import Path
 from collections import defaultdict
 
@@ -26,7 +26,7 @@ import urllib.request
 warnings.filterwarnings('ignore')
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from config_visual import PALETTE, bebas, hex_rgba, hex_rgb
+from config_visual import PALETTE, PALETAS, PALETA_ACTIVA, get_paleta, bebas, hex_rgba, hex_rgb
 
 # ─────────────────────────────────────────────────────────────────────────────
 # PATHS
@@ -46,12 +46,13 @@ if BEBAS_TTF.exists():
 N_SIM = 10_000
 
 # ─────────────────────────────────────────────────────────────────────────────
-# PALETA
+# PALETA  (se sobreescribe en main() según --paleta)
 # ─────────────────────────────────────────────────────────────────────────────
-BG    = PALETTE['bg_main']
-WHITE = PALETTE['text_primary']
-GRAY  = PALETTE['text_secondary']
-RED   = PALETTE['accent']
+_PAL  = get_paleta()          # paleta activa por defecto
+BG    = _PAL['bg_primary']
+WHITE = _PAL['text_primary']
+GRAY  = _PAL['text_secondary']
+RED   = _PAL['accent']
 
 TEAM_IDS = {
     'Chivas': 7807, 'Cruz Azul': 6578, 'Toluca': 6618,
@@ -252,7 +253,22 @@ def get_shield(team_name: str, size: int = 64) -> np.ndarray | None:
 # ─────────────────────────────────────────────────────────────────────────────
 # VISUALIZACIÓN
 # ─────────────────────────────────────────────────────────────────────────────
-def render(teams_sorted, prob_matrix, tabla_base, output_path):
+def render(teams_sorted, prob_matrix, tabla_base, output_path, pal=None):
+    if pal is None:
+        pal = get_paleta()
+    _BG    = pal['bg_primary']
+    _BG2   = pal['bg_secondary']
+    _WHITE = pal['text_primary']
+    _GRAY  = pal['text_secondary']
+    _RED   = pal['accent']
+    _ACC2  = pal['accent2']
+    _BRAND = pal['brand_color']
+    _CHIGH = pal['cell_high']
+    _CMID  = pal['cell_mid']
+    _CLOW  = pal['cell_low']
+    _bg_rgb  = hex_rgb(_BG)
+    _bg2_rgb = hex_rgb(_BG2)
+
     N_TEAMS = len(teams_sorted)
     N_POS   = N_TEAMS   # 18
 
@@ -307,14 +323,14 @@ def render(teams_sorted, prob_matrix, tabla_base, output_path):
     sum4_x    = LEFT_X + N_POS * POS_W
     sum8_x    = sum4_x + SUM_W
 
-    fig = plt.figure(figsize=(FIG_W, FIG_H), facecolor=BG)
+    fig = plt.figure(figsize=(FIG_W, FIG_H), facecolor=_BG)
 
     # ── BACKGROUND (fondo sólido — bgax en zorder mínimo para no tapar celdas)
     grad = np.zeros((200, 2, 3))
     for ii in range(200):
         t = ii / 199
-        grad[ii] = (np.array([0x08,0x0b,0x10])/255*(1-t)
-                   + np.array([0x12,0x18,0x22])/255*t)
+        grad[ii] = (np.array(_bg_rgb)/255*(1-t)
+                   + np.array(_bg2_rgb)/255*t)
     bgax = fig.add_axes([0, 0, 1, 1])
     bgax.set_zorder(-100)          # SIEMPRE detrás de todas las celdas
     bgax.imshow(grad, aspect='auto', extent=[0,1,0,1], origin='lower')
@@ -322,18 +338,18 @@ def render(teams_sorted, prob_matrix, tabla_base, output_path):
 
     # ── HEADER ───────────────────────────────────────────────────────────────
     hax = fig.add_axes([0, 1 - HEADER_H, 1, HEADER_H])
-    hax.set_facecolor(PALETTE['bg_secondary'])
+    hax.set_facecolor(_BG2)
     hax.axis('off')
-    hax.axhline(0, color='#FF0000', lw=4.0)
+    hax.axhline(0, color=_RED, lw=4.0)
     hax.text(0.50, 0.90, '¿CÓMO TERMINA EL CLAUSURA 2026?',
-             color=WHITE, ha='center', va='top', transform=hax.transAxes, **bebas(36))
+             color=_WHITE, ha='center', va='top', transform=hax.transAxes, **bebas(36))
     hax.text(0.50, 0.54,
              '10,000 simulaciones Monte Carlo · 45 partidos restantes · Jornadas 13–17',
-             color=GRAY, ha='center', va='top', transform=hax.transAxes, fontsize=16)
+             color=_GRAY, ha='center', va='top', transform=hax.transAxes, fontsize=16)
     hax.text(0.50, 0.24,
              'Cada celda = % de simulaciones en que el equipo terminó en esa posición · '
              'Orden: P(Top 4) decreciente',
-             color=PALETTE['text_secondary'], ha='center', va='top',
+             color=_GRAY, ha='center', va='top',
              transform=hax.transAxes, fontsize=10)
 
     # ── HELPERS ───────────────────────────────────────────────────────────────
@@ -368,18 +384,18 @@ def render(teams_sorted, prob_matrix, tabla_base, output_path):
         pos = j + 1
         if pos <= 4:   hdr_bg, hdr_fg = '#1a4028', '#2ea043'
         elif pos <= 8: hdr_bg, hdr_fg = '#3a3200', '#d4a72c'
-        else:          hdr_bg, hdr_fg = '#181e26', GRAY
+        else:          hdr_bg, hdr_fg = '#181e26', _GRAY
         cax = fig.add_axes([pos_col_x[j], col_hdr_y, POS_W, COLHDR_H*0.52])
         paint_cell(cax, hdr_bg)
         for sp in cax.spines.values():
-            sp.set_edgecolor(PALETTE['divider']); sp.set_linewidth(0.5)
+            sp.set_edgecolor(_BG2); sp.set_linewidth(0.5)
         cax.text(0.5, 0.5, str(pos), color=hdr_fg, ha='center', va='center',
                  fontsize=10, fontweight='bold', transform=cax.transAxes)
 
     # Summary column headers — paint_cell + mismo nivel que pos cells
     for sx, lbl, fg_c, bg_c in [
-            (sum4_x, 'TOP\n4', '#00C853', '#0a2010'),
-            (sum8_x, 'TOP\n8', '#2E7D32', '#071508')]:
+            (sum4_x, 'TOP\n4', _CHIGH, _BG2),
+            (sum8_x, 'TOP\n8', _CMID,  _BG)]:
         shax = fig.add_axes([sx, col_hdr_y, SUM_W, COLHDR_H])
         paint_cell(shax, bg_c)
         for sp in shax.spines.values():
@@ -387,14 +403,14 @@ def render(teams_sorted, prob_matrix, tabla_base, output_path):
         shax.text(0.5, 0.5, lbl, color=fg_c, ha='center', va='center',
                   fontsize=11, fontweight='bold', transform=shax.transAxes)
 
-    # ── CELL COLOR SCHEME — VERDE QUETZAL ────────────────────────────────────
+    # ── CELL COLOR SCHEME — usa colores de la paleta activa ──────────────────
     def cell_style(prob):
         """(face_color, text_color, bold, font_size)"""
-        if prob > 0.20:   return '#00FF88', '#000000', True,  15   # verde neón — texto negro
-        elif prob > 0.10: return '#00C853', '#ffffff', True,  13   # esmeralda
-        elif prob > 0.05: return '#2E7D32', '#ffffff', True,  11   # verde medio
-        elif prob > 0.01: return '#1B5E20', '#aaaaaa', False, 10   # verde oscuro
-        else:             return '#0d1117', '#1e2631', False,  8   # casi negro — sin texto
+        if prob > 0.20:   return _CHIGH, '#000000', True,  15
+        elif prob > 0.10: return _CMID,  _WHITE,    True,  13
+        elif prob > 0.05: return _CLOW,  _CHIGH,    True,  11
+        elif prob > 0.01: return _BG2,   _GRAY,     False, 10
+        else:             return _BG,    _BG2,      False,  8
 
     BADGE_S = 96
 
@@ -411,7 +427,7 @@ def render(teams_sorted, prob_matrix, tabla_base, output_path):
     for i, team in enumerate(teams_sorted):
         prob_row = prob_matrix[team]
         row_y    = CONTENT_Y + (N_TEAMS - 1 - i) * ROW_H
-        row_bg   = '#101620' if i % 2 == 0 else '#0d1117'
+        row_bg   = _BG2 if i % 2 == 0 else _BG
         diag_col = current_pos.get(team, 99) - 1
 
         # ── Left column: crest + full name ───────────────────────────────────
@@ -434,7 +450,7 @@ def render(teams_sorted, prob_matrix, tabla_base, output_path):
         full_name   = TEAM_NAMES.get(team, team.upper())
         name_x_frac = (0.004 + bw + 0.010) / LEFT_X
         lcol.text(name_x_frac, 0.50, full_name,
-                  color=WHITE, ha='left', va='center', fontsize=11.5, fontweight='bold')
+                  color=_WHITE, ha='left', va='center', fontsize=11.5, fontweight='bold')
 
         # ── Position cells ────────────────────────────────────────────────────
         for j in range(N_POS):
@@ -464,22 +480,22 @@ def render(teams_sorted, prob_matrix, tabla_base, output_path):
         p8 = sum(prob_row.get(p, 0) for p in range(1, 9))
 
         for sx, pval, bg_s, border_c, hi_thresh, mid_thresh in [
-                (sum4_x, p4, '#0a2010', '#00C853', 0.50, 0.20),
-                (sum8_x, p8, '#0a2010', '#2E7D32', 0.70, 0.35)]:
+                (sum4_x, p4, _BG2, _CHIGH, 0.50, 0.20),
+                (sum8_x, p8, _BG,  _CMID,  0.70, 0.35)]:
             sumax = fig.add_axes([sx, row_y, SUM_W, ROW_H])
             paint_cell(sumax, bg_s)
             sumax.axhline(1, color='#1e2631', lw=0.5)
             for sp in sumax.spines.values():
                 sp.set_visible(True); sp.set_edgecolor(border_c); sp.set_linewidth(1.2)
 
-            if pval >= 0.995:          # muestra "100%" redondeado → dorado
-                tc_s, fs_s = '#FFD700', 16
+            if pval >= 0.995:          # muestra "100%" redondeado → accent2
+                tc_s, fs_s = _ACC2,  16
             elif pval >= hi_thresh:
-                tc_s, fs_s = '#00FF88', 16
+                tc_s, fs_s = _CHIGH, 16
             elif pval >= mid_thresh:
-                tc_s, fs_s = '#00C853', 14
+                tc_s, fs_s = _CMID,  14
             else:
-                tc_s, fs_s = GRAY, 12
+                tc_s, fs_s = _GRAY,  12
 
             sumax.text(0.5, 0.5, f'{pval*100:.0f}%',
                        color=tc_s, ha='center', va='center',
@@ -493,11 +509,11 @@ def render(teams_sorted, prob_matrix, tabla_base, output_path):
     lax = fig.add_axes([0.01, row1_y, 0.98, row1_h])
     lax.set_xlim(0, 1); lax.set_ylim(0, 1); lax.axis('off')
     legend_items = [
-        ('>20%',  '#00FF88'),
-        ('10–20%','#00C853'),
-        ('5–10%', '#2E7D32'),
-        ('1–5%',  '#1B5E20'),
-        ('<1%',   '#0d1117'),
+        ('>20%',  _CHIGH),
+        ('10–20%', _CMID),
+        ('5–10%',  _CLOW),
+        ('1–5%',   _BG2),
+        ('<1%',    _BG),
     ]
     step = 0.18          # cada item ocupa 18% del ancho
     for k, (lbl, fc) in enumerate(legend_items):
@@ -506,31 +522,38 @@ def render(teams_sorted, prob_matrix, tabla_base, output_path):
             (bx, 0.05), step * 0.22, 0.90,
             facecolor=fc, edgecolor='#555', lw=1.0))
         lax.text(bx + step * 0.25, 0.50, lbl,
-                 color=WHITE, va='center', fontsize=11)
+                 color=_WHITE, va='center', fontsize=11)
     # nota al final
     lax.text(0.92, 0.50, '□ posición actual',
-             color=PALETTE['text_secondary'], va='center', ha='left', fontsize=10)
+             color=_GRAY, va='center', ha='left', fontsize=10)
 
     # ── FOOTER ───────────────────────────────────────────────────────────────
     fax = fig.add_axes([0, 0, 1, FOOTER_H * 0.52])
-    paint_cell(fax, PALETTE['bg_secondary'])
-    fax.axhline(1, color='#D5001C', lw=3.0)
+    paint_cell(fax, _BG2)
+    fax.axhline(1, color=_RED, lw=3.0)
     fax.text(0.015, 0.50, 'Fuente: FotMob · Clausura 2026',
-             color=GRAY, fontsize=11, ha='left', va='center', transform=fax.transAxes)
+             color=_GRAY, fontsize=11, ha='left', va='center', transform=fax.transAxes)
 
     shadow = [mpe.withStroke(linewidth=4, foreground='#000000')]
     fax.text(0.985, 0.50, 'MAU-STATISTICS',
-             color='#D5001C', ha='right', va='center',
+             color=_BRAND, ha='right', va='center',
              transform=fax.transAxes,
              path_effects=shadow,
              **bebas(28))
 
-    plt.savefig(output_path, dpi=150, bbox_inches='tight', facecolor=BG)
+    plt.savefig(output_path, dpi=150, bbox_inches='tight', facecolor=_BG)
     plt.close(fig)
     print(f'✓ Guardado: {output_path}')
 
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--paleta', default=None,
+                        choices=list(PALETAS.keys()),
+                        help='Nombre de la paleta (default: PALETA_ACTIVA)')
+    args = parser.parse_args()
+    pal = get_paleta(args.paleta)
+
     print('Cargando datos del Clausura 2026...')
     tabla_base, pendientes = load_current_data()
     print(f'  {len(tabla_base)} equipos en tabla, {len(pendientes)} partidos pendientes')
@@ -565,8 +588,9 @@ def main():
     for t in teams_sorted[:5]:
         print(f'  {t:20s}: {p_top4(t)*100:.1f}%')
 
-    out = OUT_DIR / 'montecarlo_clausura2026.png'
-    render(teams_sorted, prob_matrix, tabla_base, out)
+    suffix = f'_{args.paleta}' if args.paleta else ''
+    out = OUT_DIR / f'montecarlo_clausura2026{suffix}.png'
+    render(teams_sorted, prob_matrix, tabla_base, out, pal=pal)
 
 
 if __name__ == '__main__':

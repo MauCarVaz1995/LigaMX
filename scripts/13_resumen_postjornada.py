@@ -25,7 +25,7 @@ import urllib.request
 warnings.filterwarnings('ignore')
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from config_visual import PALETTE, bebas, hex_rgba, hex_rgb, make_h_gradient
+from config_visual import PALETTE, PALETAS, PALETA_ACTIVA, get_paleta, bebas, hex_rgba, hex_rgb, make_h_gradient
 
 # ─────────────────────────────────────────────────────────────────────────────
 # PATHS
@@ -45,12 +45,13 @@ if BEBAS_TTF.exists():
 # ─────────────────────────────────────────────────────────────────────────────
 # PALETA
 # ─────────────────────────────────────────────────────────────────────────────
-BG      = PALETTE['bg_main']
-WHITE   = PALETTE['text_primary']
-GRAY    = PALETTE['text_secondary']
-RED     = PALETTE['accent']
-GREEN   = PALETTE['positive']
-NEG     = PALETTE['negative']
+_pal    = get_paleta()
+BG      = _pal['bg_primary']
+WHITE   = _pal['text_primary']
+GRAY    = _pal['text_secondary']
+RED     = _pal['accent']
+GREEN   = _pal['cell_high']
+NEG     = _pal['accent2']
 
 TEAM_COLORS = {
     'Chivas':        '#CD1F2D', 'Guadalajara': '#CD1F2D',
@@ -275,7 +276,7 @@ def render(partidos_info, output_path):
 
     # HEADER
     hax = fig.add_axes([0, 1 - HEADER_H, 1, HEADER_H])
-    hax.set_facecolor(PALETTE['bg_secondary'])
+    hax.set_facecolor(_pal['bg_secondary'])
     hax.axis('off')
     hax.axhline(0, color=RED, lw=2.5)
 
@@ -310,7 +311,7 @@ def render(partidos_info, output_path):
 
         # Row background
         rax = fig.add_axes([0, row_y, 1, ROW_H])
-        rax.set_facecolor(PALETTE['bg_card'] if idx % 2 == 0 else PALETTE['bg_secondary'])
+        rax.set_facecolor(_pal['bg_secondary'] if idx % 2 == 0 else _pal['bg_primary'])
         rax.set_xlim(0, 1); rax.set_ylim(0, 1)
         rax.axis('off')
         # Visible separator between rows
@@ -338,9 +339,9 @@ def render(partidos_info, output_path):
         BAR_YS  = [0.76, 0.50, 0.24]
         max_p   = max(p_l, p_e, p_v)
         bar_colors = [
-            c_lo if p_l == max_p else PALETTE['bar_loser'],
-            (GRAY  if p_e == max_p else PALETTE['bar_loser']),
-            c_vi if p_v == max_p else PALETTE['bar_loser'],
+            c_lo if p_l == max_p else _pal['bg_secondary'],
+            (GRAY  if p_e == max_p else _pal['bg_secondary']),
+            c_vi if p_v == max_p else _pal['bg_secondary'],
         ]
         bar_items = [('L', p_l, bar_colors[0]),
                      ('E', p_e, bar_colors[1]),
@@ -349,7 +350,7 @@ def render(partidos_info, output_path):
         for (lbl, val, col), by in zip(bar_items, BAR_YS):
             is_max = val == max_p
             rax.add_patch(Rectangle((BAR_X0, by - BAR_H/2), BAR_LEN, BAR_H,
-                                    facecolor=PALETTE['bar_track'], lw=0, zorder=2))
+                                    facecolor=_pal['bg_secondary'], lw=0, zorder=2))
             rax.add_patch(Rectangle((BAR_X0, by - BAR_H/2), BAR_LEN * val, BAR_H,
                                     facecolor=col, lw=0, zorder=3,
                                     alpha=0.92 if is_max else 0.55))
@@ -374,7 +375,7 @@ def render(partidos_info, output_path):
                  color=res_col, ha='center', va='center', fontsize=6.5, fontweight='bold')
 
         # ── Check / X  (with space around it)
-        mark_color = PALETTE['positive'] if acierto else PALETTE['negative']
+        mark_color = _pal['cell_high'] if acierto else _pal['accent']
         rax.text(0.660, 0.52, '✓' if acierto else '✗',
                  color=mark_color, ha='center', va='center', fontsize=24, fontweight='bold')
 
@@ -410,13 +411,13 @@ def render(partidos_info, output_path):
 
     # FOOTER
     fax = fig.add_axes([0, 0, 1, FOOTER_H])
-    fax.set_facecolor(PALETTE['bg_secondary'])
+    fax.set_facecolor(_pal['bg_secondary'])
     fax.axis('off')
     fax.axhline(1, color=RED, lw=2.0)
 
     pct = aciertos / N * 100
-    pct_color = (PALETTE['positive'] if pct >= 67
-                 else (WHITE if pct >= 34 else PALETTE['negative']))
+    pct_color = (_pal['cell_high'] if pct >= 67
+                 else (WHITE if pct >= 34 else _pal['accent']))
     fax.text(0.50, 0.68,
              f'{aciertos}/{N} PREDICCIONES CORRECTAS  ·  {pct:.0f}% DE ACIERTO',
              color=pct_color, ha='center', va='center',
@@ -457,4 +458,17 @@ def main():
 
 
 if __name__ == '__main__':
+    import argparse as _ap
+    _parser = _ap.ArgumentParser()
+    _parser.add_argument('--paleta', default=None, choices=list(PALETAS.keys()))
+    _args = _parser.parse_args()
+    if _args.paleta:
+        _p = get_paleta(_args.paleta)
+        BG    = _p['bg_primary']
+        WHITE = _p['text_primary']
+        GRAY  = _p['text_secondary']
+        RED   = _p['accent']
+        GREEN = _p['cell_high']
+        NEG   = _p['accent2']
+        _pal  = _p
     main()

@@ -1,7 +1,7 @@
 """
 config_visual.py  –  Paleta de identidad MAU-STATISTICS
 Importar en todos los scripts de visualización:
-    from config_visual import PALETTE, bebas, hex_rgba, hex_rgb
+    from config_visual import PALETTE, PALETAS, PALETA_ACTIVA, get_paleta, bebas, hex_rgba, hex_rgb
 """
 
 from pathlib import Path
@@ -84,3 +84,107 @@ def make_h_gradient(color_hex: str, width: int = 256,
             230,
         ]
     return arr
+
+# ─────────────────────────────────────────────────────────────────────────────
+# SISTEMA DE PALETAS INTERCAMBIABLES
+# ─────────────────────────────────────────────────────────────────────────────
+# Cada paleta tiene exactamente estas 10 claves:
+#   bg_primary, bg_secondary, cell_high, cell_mid, cell_low,
+#   accent, accent2, text_primary, text_secondary, brand_color
+
+PALETAS = {
+    'cyberpunk_quetzal': dict(
+        bg_primary   = '#000000',
+        bg_secondary = '#0a0a15',
+        cell_high    = '#00FF88',
+        cell_mid     = '#00C853',
+        cell_low     = '#050510',
+        accent       = '#D5001C',
+        accent2      = '#e040fb',
+        text_primary = '#ffffff',
+        text_secondary = '#9090c0',
+        brand_color  = '#00FF88',
+    ),
+    'matrix_neon': dict(
+        bg_primary   = '#050510',
+        bg_secondary = '#0d0d20',
+        cell_high    = '#76ff03',
+        cell_mid     = '#4caf50',
+        cell_low     = '#080808',
+        accent       = '#D5001C',
+        accent2      = '#00e5ff',
+        text_primary = '#ffffff',
+        text_secondary = '#80a080',
+        brand_color  = '#76ff03',
+    ),
+    'negro_selva': dict(
+        bg_primary   = '#000000',
+        bg_secondary = '#071a10',
+        cell_high    = '#00FF88',
+        cell_mid     = '#00C853',
+        cell_low     = '#040f09',
+        accent       = '#D5001C',
+        accent2      = '#b2dfdb',
+        text_primary = '#b2dfdb',
+        text_secondary = '#669977',
+        brand_color  = '#00FF88',
+    ),
+    'medianoche_neon': dict(
+        bg_primary   = '#08080f',
+        bg_secondary = '#12121f',
+        cell_high    = '#00ffaa',
+        cell_mid     = '#00aa77',
+        cell_low     = '#080810',
+        accent       = '#ff2d7b',
+        accent2      = '#ff2d7b',
+        text_primary = '#ffffff',
+        text_secondary = '#8888bb',
+        brand_color  = '#00ffaa',
+    ),
+    'radioactivo': dict(
+        bg_primary   = '#000000',
+        bg_secondary = '#0f0f0f',
+        cell_high    = '#39ff14',
+        cell_mid     = '#2abf10',
+        cell_low     = '#080808',
+        accent       = '#D5001C',
+        accent2      = '#b6ff00',
+        text_primary = '#ffffff',
+        text_secondary = '#708060',
+        brand_color  = '#39ff14',
+    ),
+    'oceano_esmeralda': dict(
+        bg_primary   = '#040812',
+        bg_secondary = '#0c1420',
+        cell_high    = '#00e676',
+        cell_mid     = '#009955',
+        cell_low     = '#060e18',
+        accent       = '#D5001C',
+        accent2      = '#69f0ae',
+        text_primary = '#e0f2f1',
+        text_secondary = '#669977',
+        brand_color  = '#00e676',
+    ),
+    'rojo_fuego': dict(
+        bg_primary   = '#0a0000',
+        bg_secondary = '#1a0505',
+        cell_high    = '#FF0000',
+        cell_mid     = '#D5001C',
+        cell_low     = '#2a0a0a',
+        accent       = '#FF0000',
+        accent2      = '#FFD700',
+        text_primary = '#ffffff',
+        text_secondary = '#cc8888',
+        brand_color  = '#FF0000',
+    ),
+}
+
+PALETA_ACTIVA = 'cyberpunk_quetzal'
+
+
+def get_paleta(name: str = None) -> dict:
+    """Devuelve el dict de paleta por nombre o la paleta activa si name es None."""
+    key = name or PALETA_ACTIVA
+    if key not in PALETAS:
+        raise ValueError(f"Paleta '{key}' no existe. Disponibles: {list(PALETAS)}")
+    return PALETAS[key]

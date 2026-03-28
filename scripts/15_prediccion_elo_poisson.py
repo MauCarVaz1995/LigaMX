@@ -25,7 +25,7 @@ import urllib.request
 warnings.filterwarnings('ignore')
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from config_visual import PALETTE, bebas, hex_rgba, hex_rgb, make_h_gradient
+from config_visual import PALETTE, PALETAS, PALETA_ACTIVA, get_paleta, bebas, hex_rgba, hex_rgb, make_h_gradient
 
 # ─────────────────────────────────────────────────────────────────────────────
 # PATHS
@@ -46,11 +46,12 @@ if BEBAS_TTF.exists():
 # ─────────────────────────────────────────────────────────────────────────────
 # PALETA
 # ─────────────────────────────────────────────────────────────────────────────
-BG    = PALETTE['bg_main']
-WHITE = PALETTE['text_primary']
-GRAY  = PALETTE['text_secondary']
-RED   = PALETTE['accent']
-GREEN = PALETTE['positive']
+_pal  = get_paleta()
+BG    = _pal['bg_primary']
+WHITE = _pal['text_primary']
+GRAY  = _pal['text_secondary']
+RED   = _pal['accent']
+GREEN = _pal['cell_high']
 
 TEAM_COLORS = {
     'Chivas':        '#CD1F2D',
@@ -297,7 +298,7 @@ def render(partidos_data, output_path):
 
     # ── HEADER ────────────────────────────────────────────────────────────────
     hax = fig.add_axes([0, 1 - HEADER_H, 1, HEADER_H])
-    hax.set_facecolor(PALETTE['bg_secondary'])
+    hax.set_facecolor(_pal['bg_secondary'])
     hax.axis('off')
     hax.axhline(0, color=RED, lw=2.5)
     hax.text(0.50, 0.90, 'JORNADA 13 · ELO+POISSON VS POISSON PURO',
@@ -307,7 +308,7 @@ def render(partidos_data, output_path):
     hax.text(0.50, 0.34,
              'ELO+Poisson: pondera fuerza histórica (15 años, ~5,250 partidos) · '
              'Poisson puro: forma reciente (4 últimos torneos)',
-             color=PALETTE['text_secondary'], ha='center', va='top',
+             color=GRAY, ha='center', va='top',
              transform=hax.transAxes, fontsize=7.5)
 
     # ── COLUMN HEADERS ───────────────────────────────────────────────────────
@@ -324,7 +325,7 @@ def render(partidos_data, output_path):
 
     col_hdr_y = 1.0 - HEADER_H - ROW_H * 0.22
     chax = fig.add_axes([0, col_hdr_y, 1, ROW_H * 0.22])
-    chax.set_facecolor(PALETTE['bg_card']); chax.axis('off')
+    chax.set_facecolor(_pal['bg_primary']); chax.axis('off')
 
     # Group labels
     chax.text(EP_X + (PP_X - EP_X)/2, 0.72, 'ELO + POISSON',
@@ -341,10 +342,10 @@ def render(partidos_data, output_path):
                for i, lbl in enumerate(['LOC %', 'EMP %', 'VIS %'])]
 
     for x, lbl in EP_COLS + PP_COLS:
-        chax.text(x, 0.22, lbl, color=PALETTE['text_secondary'],
+        chax.text(x, 0.22, lbl, color=GRAY,
                   ha='center', va='center', fontsize=6.5, transform=chax.transAxes)
     chax.text(DELTA_X + DELTA_W/2, 0.45, 'Δ LOC',
-              color=PALETTE['text_secondary'], ha='center', va='center',
+              color=GRAY, ha='center', va='center',
               fontsize=6.5, transform=chax.transAxes)
 
     # ── MATCH ROWS ───────────────────────────────────────────────────────────
@@ -361,10 +362,10 @@ def render(partidos_data, output_path):
         c_vi = TEAM_COLORS.get(vi, '#888888')
 
         rax = fig.add_axes([0, row_y, 1, ROW_H])
-        rax.set_facecolor(PALETTE['bg_secondary'] if i % 2 == 0 else PALETTE['bg_card'])
+        rax.set_facecolor(_pal['bg_secondary'] if i % 2 == 0 else _pal['bg_primary'])
         rax.set_xlim(0, 1); rax.set_ylim(0, 1)
         rax.axis('off')
-        rax.axhline(1, color=PALETTE['divider'], lw=0.6)
+        rax.axhline(1, color=BG, lw=0.6)
 
         # Badge layout in match column:
         # local area: 0.006 – 0.133  |  "vs" at 0.139  |  visit area: 0.148 – 0.278
@@ -428,7 +429,7 @@ def render(partidos_data, output_path):
         # ── Delta ─────────────────────────────────────────────────────────
         delta = (ep_l - pp_l) * 100
         sign  = '+' if delta >= 0 else ''
-        d_col = GREEN if delta > 1.5 else (PALETTE['negative'] if delta < -1.5 else GRAY)
+        d_col = GREEN if delta > 1.5 else (_pal['accent'] if delta < -1.5 else GRAY)
         rax.text(DELTA_X + DELTA_W/2, 0.50, f'{sign}{delta:.1f}',
                  color=d_col, ha='center', va='center', fontsize=9.5, fontweight='bold')
 
@@ -439,12 +440,12 @@ def render(partidos_data, output_path):
              'LOC = victoria local · EMP = empate · VIS = victoria visitante · '
              'Δ LOC = diferencia en P(local) entre modelos  '
              '(+verde: ELO beneficia al local · −rojo: ELO lo penaliza)',
-             color=PALETTE['text_secondary'], fontsize=7.0, ha='left', va='center',
+             color=GRAY, fontsize=7.0, ha='left', va='center',
              transform=lax.transAxes)
 
     # ── FOOTER ────────────────────────────────────────────────────────────────
     fax = fig.add_axes([0, 0, 1, FOOTER_H * 0.52])
-    fax.set_facecolor(PALETTE['bg_secondary']); fax.axis('off')
+    fax.set_facecolor(_pal['bg_secondary']); fax.axis('off')
     fax.axhline(1, color=RED, lw=2.0)
     fax.text(0.015, 0.45, 'Fuente: FotMob · Histórico 2010–2026',
              color=GRAY, fontsize=9, ha='left', va='center', transform=fax.transAxes)
@@ -515,4 +516,16 @@ def main():
 
 
 if __name__ == '__main__':
+    import argparse as _ap
+    _parser = _ap.ArgumentParser()
+    _parser.add_argument('--paleta', default=None, choices=list(PALETAS.keys()))
+    _args = _parser.parse_args()
+    if _args.paleta:
+        _p = get_paleta(_args.paleta)
+        BG    = _p['bg_primary']
+        WHITE = _p['text_primary']
+        GRAY  = _p['text_secondary']
+        RED   = _p['accent']
+        GREEN = _p['cell_high']
+        _pal  = _p
     main()
