@@ -1,7 +1,7 @@
 # ⚽ LigaMX Stats
 
-> Motor de análisis estadístico de la **Liga MX** construido íntegramente sobre datos de [FotMob](https://www.fotmob.com).
-> Scraping, limpieza, métricas per-90, visualizaciones de élite, modelo de Poisson para predicción de marcadores, simulación Monte Carlo, sistema de rating ELO histórico y **dashboard interactivo** con Plotly Dash — todo en Python puro.
+> Motor de análisis estadístico de la **Liga MX** y **Selecciones Nacionales** construido sobre datos de [FotMob](https://www.fotmob.com).
+> Scraping, limpieza, métricas per-90, visualizaciones de élite, modelo de Poisson + ELO para predicciones de partidos, sistema de seguimiento de predicciones, infografías de rendimiento post-partido, simulación Monte Carlo y **dashboard interactivo** Plotly Dash — todo en Python puro.
 
 ---
 
@@ -97,6 +97,38 @@ Con el fix: **608 partidos cargados**, `mu = 1.421` goles/partido promedio.
 
 ## 🖼️ Galería
 
+### Infografías de rendimiento de partido — México vs Portugal
+
+Fichas técnicas generadas desde el JSON de FotMob con barras de rating degradadas, foto del jugador destacado, stats por posición y comparativa de equipos.
+
+| Ficha México | Ficha Portugal |
+|:---:|:---:|
+| ![Ratings México](output/charts/partidos/MEX_POR_ratings_mexico.png) | ![Ratings Portugal](output/charts/partidos/MEX_POR_ratings_portugal.png) |
+
+![Team Stats MEX vs POR](output/charts/partidos/MEX_POR_team_stats.png)
+
+---
+
+### Predicciones de partidos internacionales
+
+Infografías 1080×1080 con modelo ELO+Poisson, probabilidades y marcador más probable. Paleta aleatoria por partido.
+
+| Colombia vs Francia | Cabo Verde vs Finlandia |
+|:---:|:---:|
+| ![COL vs FRA](output/charts/predicciones_hoy/prediccion_COL_FRA.png) | ![CPV vs FIN](output/charts/predicciones_hoy/prediccion_CPV_FIN.png) |
+
+---
+
+### Selecciones Nacionales — Ranking ELO y predicción
+
+Sistema ELO independiente para selecciones CONCACAF/mundiales, calculado sobre resultados históricos. Rating dinámico con multiplicador de margen de goles.
+
+| Ranking ELO | Prediccion | Ultimos 5 |
+|:---:|:---:|:---:|
+| ![Ranking ELO Selecciones](output/charts/selecciones_ranking_elo.png) | ![Prediccion](output/charts/selecciones_prediccion.png) | ![Ultimos 5](output/charts/selecciones_ultimos5.png) |
+
+---
+
 ### Rankings Top 10 por posición — Clausura 2026
 
 | Delanteros | Mediocampistas |
@@ -165,60 +197,163 @@ LigaMX_Stats/
 │
 ├── data/
 │   ├── raw/
-│   │   ├── equipos_clausura2026.json      # IDs y nombres de los 18 equipos
-│   │   ├── historico/                     # 38 JSONs — torneos 2010/11 → 2025/26
-│   │   │   ├── historico_YYYY-YYYY_-_apertura.json
-│   │   │   ├── historico_YYYY-YYYY_-_clausura.json
-│   │   │   └── historico_clausura_2026.json  # Torneo activo (tabla + partidos)
-│   │   ├── jugadores/                     # Stats básicas por equipo (JSON x equipo)
-│   │   ├── stats_detalladas/              # Stats granulares por jugador (JSON x jugador)
+│   │   ├── equipos_clausura2026.json          # IDs y nombres de los 18 equipos
+│   │   ├── historico/                         # 38 JSONs — torneos 2010/11 → 2025/26
+│   │   ├── jugadores/                         # Stats básicas por equipo
+│   │   ├── stats_detalladas/                  # Stats granulares por jugador
+│   │   ├── fotmob/                            # JSONs de partidos scrapeados
+│   │   │   ├── Mexico_Portugal_2026-03-29.json
+│   │   │   └── playerimages/                  # Fotos de jugadores (caché)
+│   │   ├── flags/                             # Banderas nacionales (flagcdn.com)
 │   │   └── images/
-│   │       ├── players/                   # Fotos de jugadores (caché local)
-│   │       └── teams/                     # Escudos de equipos (caché local)
+│   │       ├── players/                       # Fotos jugadores Liga MX
+│   │       └── teams/                         # Escudos de equipos
 │   └── processed/
-│       ├── jugadores_clausura2026.csv     # DataFrame maestro — stats limpias + P90
-│       ├── jugadores_clausura2026.pkl     # Misma data en formato pickle
-│       └── elo_historico.csv             # Historial completo de ratings ELO
+│       ├── jugadores_clausura2026.csv         # DataFrame maestro — stats + P90
+│       ├── jugadores_clausura2026.pkl
+│       ├── elo_historico.csv                  # ELO histórico Liga MX
+│       └── predicciones_log.csv               # Seguimiento de predicciones
 │
 ├── scripts/
-│   ├── config_visual.py                   # Paleta y utilidades visuales centralizadas
-│   ├── 01_get_equipos.py                  # Paso 1 — Equipos del torneo activo
-│   ├── 02_get_jugadores.py                # Paso 2 — Stats básicas de jugadores
-│   ├── 02b_get_stats_jugadores.py         # Paso 2b — Stats detalladas por jugador
-│   ├── 02c_get_stats_liga.py              # Paso 2c — Stats vía data.fotmob.com
-│   ├── 03_radar_jugador.py                # Radar clásico con mplsoccer
-│   ├── 04_consolidar_dataframe.py         # Consolida todos los JSONs en CSV/PKL
-│   ├── 05_radar_p90.py                    # Pizza chart P90 estilo Statiskicks
-│   ├── 07_ranking_posicion.py             # Top 10 por posición con foto y escudo
-│   ├── 08_comparativo_1v1.py              # Infografía comparativa cara a cara
-│   ├── 10_descargar_historico.py          # Histórico completo (38 torneos)
-│   ├── 11_modelo_prediccion.py            # Modelo Poisson + heatmap de probabilidades
-│   ├── 12_resumen_jornada.py              # Resumen visual de todos los partidos de jornada
-│   ├── 12_modelo_elo.py                   # Sistema ELO histórico + evolución + ranking
+│   ├── config_visual.py                       # Paletas, Bebas Neue, banderas
+│   │
+│   ├── — LIGA MX ——————————————————————————————
+│   ├── 01_get_equipos.py                      # Equipos del torneo activo
+│   ├── 02_get_jugadores.py                    # Stats básicas de jugadores
+│   ├── 02b_get_stats_jugadores.py             # Stats detalladas por jugador
+│   ├── 02c_get_stats_liga.py                  # Stats vía data.fotmob.com
+│   ├── 04_consolidar_dataframe.py             # Consolida JSONs → CSV/PKL
+│   ├── 05_radar_p90.py                        # Pizza chart P90
+│   ├── 07_ranking_posicion.py                 # Top 10 por posición
+│   ├── 08_comparativo_1v1.py                  # Comparativo cara a cara
+│   ├── 10_descargar_historico.py              # 38 torneos históricos
+│   ├── 11_modelo_prediccion.py                # Modelo Poisson + heatmap
+│   ├── 12_resumen_jornada.py                  # Resumen visual de jornada
+│   ├── 12_modelo_elo.py                       # ELO histórico + ranking
+│   │
+│   ├── — SELECCIONES / PARTIDOS ————————————————
+│   ├── 03_get_match_stats_fotmob.py           # Scraping stats de partido FotMob
+│   ├── 04_predicciones_tracker.py             # Seguimiento de predicciones (CSV)
+│   ├── 05_viz_player_performance.py           # Infografías de rendimiento post-partido
+│   ├── 18_prediccion_selecciones.py           # Ranking ELO + últimos 5 + predicción
+│   ├── 19_predicciones_hoy.py                 # Predicciones del día (varios partidos)
+│   │
 │   └── dashboard/
-│       ├── app.py                         # Dashboard Dash — servidor principal
-│       ├── pages/
-│       │   └── home.py                    # Página HOME (layout modular)
+│       ├── app.py
+│       ├── pages/home.py
 │       └── assets/
-│           ├── style.css                  # Google Fonts + tema dark + componentes
-│           └── teams/                     # Escudos servidos estáticamente
+│           ├── style.css
+│           └── teams/
 │
 ├── output/
-│   └── charts/                            # PNGs generados (150 DPI)
+│   └── charts/
+│       ├── partidos/                          # Infografías post-partido
+│       │   ├── MEX_POR_ratings_mexico.png
+│       │   ├── MEX_POR_ratings_portugal.png
+│       │   └── MEX_POR_team_stats.png
+│       ├── predicciones_hoy/                  # Predicciones del día
+│       │   └── prediccion_{CODE}.png
+│       ├── selecciones_ranking_elo.png
+│       ├── selecciones_prediccion.png
+│       ├── selecciones_ultimos5.png
 │       ├── ranking_*.png
 │       ├── pizza_*.png
 │       ├── comparativo_*_vs_*.png
-│       ├── prediccion_*_vs_*.png
 │       ├── elo_evolucion.png
 │       ├── elo_ranking.png
 │       └── jornada13/
 │
-└── notebooks/                             # Exploración interactiva (Jupyter)
+└── notebooks/
 ```
 
 ---
 
 ## 🛠️ Scripts — Guía de uso
+
+### Infografías de rendimiento post-partido
+
+```bash
+# Genera fichas técnicas + stats comparativas desde un JSON FotMob
+.venv/bin/python scripts/05_viz_player_performance.py
+# → output/charts/partidos/MEX_POR_ratings_mexico.png
+# → output/charts/partidos/MEX_POR_ratings_portugal.png
+# → output/charts/partidos/MEX_POR_team_stats.png
+
+# Especificar partido distinto
+.venv/bin/python scripts/05_viz_player_performance.py \
+  --json data/raw/fotmob/Equipo1_Equipo2_YYYY-MM-DD.json \
+  --code EQ1_EQ2
+```
+
+**Qué genera:**
+- **Ratings por equipo** (1080×1500): bloque "FIGURA DEL PARTIDO" con foto del jugador destacado (descargada desde FotMob), sus 4 métricas clave según posición, tabla de 11 titulares con barras de rating degradadas (`#6B0000 → #C8102E → #FF6B6B`), 2 stats por jugador según posición, paleta aleatoria.
+- **Team stats comparativa** (1080×1080): donut de posesión, 6 barras enfrentadas con degradado, normalización individual por stat.
+
+**Stats por posición en las barras:**
+
+| Posición | Stat 1 | Stat 2 |
+|---|---|---|
+| POR | Saves | Goles concedidos |
+| DEF | Duelos ganados | Pases precisos |
+| MED | Pases precisos | Recuperaciones |
+| DEL | Toques en área | Faltas recibidas |
+
+---
+
+### Scraping de stats de partido FotMob
+
+```bash
+# Obtiene stats completas de un partido (jugadores + equipo) y los cachea en JSON
+.venv/bin/python -c "
+import sys; sys.path.insert(0,'scripts')
+import importlib
+m = importlib.import_module('03_get_match_stats_fotmob')
+data = m.get_match_stats('Mexico', 'Portugal', '2026-03-29')
+m.print_summary(data)
+"
+# → data/raw/fotmob/Mexico_Portugal_2026-03-29.json
+```
+
+Extrae mediante `__NEXT_DATA__` (evita Cloudflare Turnstile): stats de equipo, ratings por jugador, titulares/suplentes, eventos del partido.
+
+---
+
+### Predicciones del día — modelo ELO+Poisson
+
+```bash
+# Genera imágenes de predicción para todos los partidos configurados
+.venv/bin/python scripts/19_predicciones_hoy.py
+# → output/charts/predicciones_hoy/prediccion_COL_FRA.png  (y 6 más)
+# Registra automáticamente cada predicción en data/processed/predicciones_log.csv
+```
+
+```bash
+# Registrar resultado real y ver rendimiento del modelo
+.venv/bin/python scripts/04_predicciones_tracker.py resultado "Mexico vs Portugal" 2026-03-29 0 0
+.venv/bin/python scripts/04_predicciones_tracker.py reporte
+```
+
+**Modelo ELO+Poisson (selecciones neutras):**
+```
+elo_mean = promedio ELO de todos los equipos del día
+lambda_i = AVG_GOALS * (elo_i / elo_mean)    ← sin ventaja de local
+P(i, j)  = Poisson(i; λ_local) × Poisson(j; λ_visit)
+```
+
+---
+
+### Selecciones Nacionales — Ranking ELO + predicción
+
+```bash
+.venv/bin/python scripts/18_prediccion_selecciones.py
+# → output/charts/selecciones_ranking_elo.png
+# → output/charts/selecciones_ultimos5.png
+# → output/charts/selecciones_prediccion.png
+```
+
+Sistema ELO independiente para selecciones (K dinámico: 20/25/35/60 según importancia del partido, multiplicador de margen de goles, regresión 30% entre torneos). Últimos 5 resultados con colores por resultado. Predicción con donut de probabilidades y marcador más probable.
+
+---
 
 ### Pipeline de datos (ejecutar en orden la primera vez)
 
@@ -438,23 +573,44 @@ ELO_nuevo = ELO_actual + 0.30 × (1500 - ELO_actual)
 ## 📐 `config_visual.py` — Paleta de identidad MAU-STATISTICS
 
 ```python
-from config_visual import PALETTE, bebas, hex_rgba, hex_rgb
+from config_visual import PALETTE, PALETAS, get_paleta, bebas, hex_rgb, hex_rgba, get_escudo
 ```
 
-| Token | Hex | Uso |
+### Sistema de paletas intercambiables
+
+7 paletas disponibles, cada una con 10 claves estándar:
+
+| Paleta | `brand_color` | Estilo |
 |---|---|---|
-| `bg_main` | `#0d1117` | Fondo principal |
-| `bg_secondary` | `#161b22` | Filas alternas / header |
-| `accent` | `#D5001C` | Rojo MAU-STATISTICS |
-| `positive` | `#2ea043` | Delta positivo |
-| `negative` | `#f85149` | Delta negativo |
-| `border` | `#30363d` | Bordes |
+| `rojo_fuego` | `#FF0000` | Rojo intenso — Liga MX |
+| `cyberpunk_quetzal` | `#00FF88` | Verde neón sobre negro |
+| `matrix_neon` | `#76ff03` | Verde matrix |
+| `negro_selva` | `#00FF88` | Verde selva oscuro |
+| `medianoche_neon` | `#00ffaa` | Cyan sobre azul medianoche |
+| `radioactivo` | `#39ff14` | Verde radioactivo |
+| `oceano_esmeralda` | `#00e676` | Verde esmeralda oceánico |
 
 ```python
-bebas(size)              # kwargs Bebas Neue para matplotlib
-hex_rgb(hex)             # '#RRGGBB' → (R, G, B)
-hex_rgba(hex, a=1.0)     # '#RRGGBB' → (r, g, b, a)
-darken(hex, factor=0.55) # Oscurece un color
+# Uso en cualquier script de visualización
+import random
+from config_visual import PALETAS, get_paleta
+
+pal_key = random.choice(list(PALETAS.keys()))
+pal = get_paleta(pal_key)   # dict con bg_primary, accent, cell_high, brand_color, ...
+
+# Seleccionar paletas distintas para imágenes distintas
+pal_r = random.choice(list(PALETAS.keys()))
+pal_s = random.choice([k for k in PALETAS if k != pal_r])
+```
+
+### Utilidades
+
+```python
+bebas(size)              # kwargs Bebas Neue para matplotlib.text()
+hex_rgb(hex)             # '#RRGGBB' → (R, G, B) int
+hex_rgba(hex, a=1.0)     # '#RRGGBB' → (r, g, b, a) float
+darken(hex, factor=0.55) # Oscurece un color RGB
+get_escudo(pais, size)   # OffsetImage de bandera nacional (flagcdn.com)
 make_h_gradient(hex)     # Array RGBA (1, w, 4) gradiente horizontal
 ```
 
@@ -511,6 +667,8 @@ numpy>=2.2.0
 scipy>=1.15.0
 matplotlib>=3.10.0
 Pillow>=12.1.0
+mplsoccer>=1.4.0
+plottable>=0.1.5
 ```
 
 ---
@@ -545,7 +703,8 @@ Todos los datos provienen de **FotMob** mediante scraping del JSON embebido `__N
 | `dash` | Dashboard interactivo reactivo |
 | `dash-bootstrap-components` | Tema DARKLY, Bootstrap Icons, layout grid |
 | `plotly` | Heatmaps, barras, scatter, radar polar (dashboard) |
-| `mplsoccer` | Radar chart base (script 03) |
+| `mplsoccer` | Radar chart base |
+| `plottable` | Tablas limpias con columnas personalizadas |
 
 ---
 
@@ -566,11 +725,17 @@ Todos los datos provienen de **FotMob** mediante scraping del JSON embebido `__N
 - [x] **Pitch view** — scatter de jugadores sobre cancha real con colores por rating
 - [x] **Radar de percentiles** — por posición, coloreado por equipo
 - [x] **Comparativo 1v1 interactivo** — barras espejo en el dashboard
+- [x] **Scraping post-partido** — stats completas vía `__NEXT_DATA__` (bypass Cloudflare)
+- [x] **Infografías de rendimiento** — ficha técnica por equipo + team stats comparativa
+- [x] **Sistema ELO para selecciones** — ranking mundial + últimos 5 + predicción
+- [x] **Predicciones del día** — modelo ELO+Poisson, múltiples partidos, paleta aleatoria
+- [x] **Tracker de predicciones** — CSV append-only, registro de resultados, reporte de desempeño
+- [x] **Sistema de paletas** — 7 paletas intercambiables, selección aleatoria sin repetición consecutiva
 - [ ] Predicciones automáticas actualizadas en cada jornada
-- [ ] Análisis de rachas y forma reciente (últimos 5 partidos)
 - [ ] Comparativo de temporadas por equipo
 - [ ] Integración ELO como feature en el modelo de Poisson
 - [ ] Exportar PDF de resumen de jornada desde el dashboard
+- [ ] Infografías de rendimiento para Liga MX (mismo pipeline, distinto league_id)
 
 ---
 

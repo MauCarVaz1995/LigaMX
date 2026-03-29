@@ -179,7 +179,7 @@ PALETAS = {
     ),
 }
 
-PALETA_ACTIVA = 'cyberpunk_quetzal'
+PALETA_ACTIVA = 'rojo_fuego'
 
 
 def get_paleta(name: str = None) -> dict:
@@ -188,3 +188,89 @@ def get_paleta(name: str = None) -> dict:
     if key not in PALETAS:
         raise ValueError(f"Paleta '{key}' no existe. Disponibles: {list(PALETAS)}")
     return PALETAS[key]
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# BANDERAS NACIONALES (flagcdn.com 80×60, cacheadas en data/raw/flags/)
+# ─────────────────────────────────────────────────────────────────────────────
+_FLAG_ISO = {
+    # CONCACAF & América
+    'Mexico': 'mx',             'United States': 'us',      'Canada': 'ca',
+    'Costa Rica': 'cr',         'Honduras': 'hn',           'Panama': 'pa',
+    'El Salvador': 'sv',        'Guatemala': 'gt',          'Jamaica': 'jm',
+    'Cuba': 'cu',               'Haiti': 'ht',              'Trinidad and Tobago': 'tt',
+    'Dominican Republic': 'do', 'Nicaragua': 'ni',          'Curaçao': 'cw',
+    'Belize': 'bz',             'Guadeloupe': 'gp',         'Martinique': 'mq',
+    'Puerto Rico': 'pr',        'Aruba': 'aw',              'Barbados': 'bb',
+    'Saint Vincent and the Grenadines': 'vc', 'Anguilla': 'ai',
+    'Cayman Islands': 'ky',     'Bahamas': 'bs',            'Virgin Islands': 'vi',
+    'Bermuda': 'bm',            'Turks and Caicos Islands': 'tc',
+    # Sudamérica
+    'Brazil': 'br',             'Argentina': 'ar',          'Colombia': 'co',
+    'Uruguay': 'uy',            'Chile': 'cl',              'Peru': 'pe',
+    'Venezuela': 've',          'Ecuador': 'ec',            'Bolivia': 'bo',
+    'Paraguay': 'py',
+    # Europa Occidental
+    'Portugal': 'pt',           'Spain': 'es',              'France': 'fr',
+    'Germany': 'de',            'Italy': 'it',              'Netherlands': 'nl',
+    'Belgium': 'be',            'England': 'gb-eng',        'Wales': 'gb-wls',
+    'Scotland': 'gb-sct',       'Northern Ireland': 'gb-nir',
+    'Republic of Ireland': 'ie','Ireland': 'ie',
+    'Switzerland': 'ch',        'Austria': 'at',            'Sweden': 'se',
+    'Norway': 'no',             'Denmark': 'dk',            'Finland': 'fi',
+    'Iceland': 'is',            'Luxembourg': 'lu',
+    # Europa del Este
+    'Croatia': 'hr',            'Poland': 'pl',             'Czech Republic': 'cz',
+    'Slovakia': 'sk',           'Hungary': 'hu',            'Romania': 'ro',
+    'Serbia': 'rs',             'Ukraine': 'ua',            'Russia': 'ru',
+    'Turkey': 'tr',             'Greece': 'gr',             'Albania': 'al',
+    'Slovenia': 'si',           'Kosovo': 'xk',             'Georgia': 'ge',
+    'Armenia': 'am',            'Israel': 'il',
+    # Asia & Oceanía
+    'Japan': 'jp',              'South Korea': 'kr',        'Iran': 'ir',
+    'Saudi Arabia': 'sa',       'China PR': 'cn',           'Australia': 'au',
+    'New Zealand': 'nz',        'Qatar': 'qa',              'United Arab Emirates': 'ae',
+    'North Korea': 'kp',
+    # África
+    'Morocco': 'ma',            'Senegal': 'sn',            'Nigeria': 'ng',
+    'Ghana': 'gh',              'Egypt': 'eg',              'Algeria': 'dz',
+    'Ivory Coast': 'ci',        'Cameroon': 'cm',           'Tunisia': 'tn',
+    'Mali': 'ml',               'Burkina Faso': 'bf',       'South Africa': 'za',
+    'Zambia': 'zm',             'Cape Verde': 'cv',         'Liechtenstein': 'li',
+    'Andorra': 'ad',            'San Marino': 'sm',         'Gibraltar': 'gi',
+}
+
+
+def get_escudo(pais: str, size: tuple = (40, 27)):
+    """
+    Descarga la bandera del país desde flagcdn.com (80×60 px),
+    la cachea en data/raw/flags/{iso}.png y retorna un OffsetImage
+    listo para usar con AnnotationBbox.
+    Retorna None silenciosamente si el país no está en el diccionario
+    o si la descarga falla.
+    """
+    iso = _FLAG_ISO.get(pais)
+    if not iso:
+        return None
+    cache_dir = Path(__file__).resolve().parent.parent / 'data' / 'raw' / 'flags'
+    try:
+        cache_dir.mkdir(parents=True, exist_ok=True)
+    except Exception:
+        return None
+    cache = cache_dir / f'{iso}.png'
+    if not cache.exists():
+        try:
+            import urllib.request
+            urllib.request.urlretrieve(
+                f'https://flagcdn.com/80x60/{iso}.png', str(cache))
+        except Exception:
+            return None
+    try:
+        import numpy as np
+        from PIL import Image as _PIL
+        from matplotlib.offsetbox import OffsetImage
+        resample = _PIL.Resampling.LANCZOS if hasattr(_PIL, 'Resampling') else _PIL.LANCZOS
+        img = _PIL.open(cache).convert('RGBA').resize(size, resample)
+        return OffsetImage(np.array(img), zoom=1.0)
+    except Exception:
+        return None

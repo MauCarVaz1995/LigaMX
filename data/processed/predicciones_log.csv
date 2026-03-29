@@ -1,0 +1,9 @@
+fecha_prediccion,partido,equipo_local,equipo_visitante,elo_local,elo_visitante,prob_local,prob_empate,prob_visitante,ganador_predicho,marcador_mas_probable,lambda_local,lambda_visitante,paleta_usada,fecha_partido,resultado_real,goles_local_real,goles_visitante_real,acierto_ganador,error_marcador
+2026-03-29 12:06:15,Colombia vs France,Colombia,France,2027,2080,37.1,20.7,38.9,Visitante,1-2,1.977,2.0287,medianoche_neon,2026-03-29,,,,,
+2026-03-29 12:06:17,Aruba vs Liechtenstein,Aruba,Liechtenstein,1222,1032,40.0,29.0,30.8,Local,1-1,1.1919,1.0065,oceano_esmeralda,2026-03-29,,,,,
+2026-03-29 12:06:19,Barbados vs Saint Vincent and the Grenadines,Barbados,Saint Vincent and the Grenadines,1199,1403,31.9,26.6,41.1,Visitante,1-1,1.1694,1.3684,negro_selva,2026-03-29,,,,,
+2026-03-29 12:06:20,Virgin Islands vs Anguilla,Virgin Islands,Anguilla,1100,976,37.8,30.5,31.5,Local,1-0,1.0729,0.9519,oceano_esmeralda,2026-03-29,,,,,
+2026-03-29 12:06:22,Dominican Republic vs Cuba,Dominican Republic,Cuba,1494,1430,38.5,25.0,35.8,Local,1-1,1.4571,1.3947,rojo_fuego,2026-03-29,,,,,
+2026-03-29 12:06:23,Cayman Islands vs Bahamas,Cayman Islands,Bahamas,1115,1086,35.8,29.6,34.4,Local,1-1,1.0875,1.0592,oceano_esmeralda,2026-03-29,,,,,
+2026-03-29 12:06:25,Cape Verde vs Finland,Cape Verde,Finland,1638,1576,38.9,23.7,36.4,Local,1-1,1.5976,1.5371,cyberpunk_quetzal,2026-03-29,,,,,
+2026-03-29 12:06:36,Mexico vs Portugal,Mexico,Portugal,1884.8,1990.0,36.2,21.3,39.9,Visitante,1-1,1.248,1.317,rojo_fuego,2026-03-29,Empate,0,0,False,2
