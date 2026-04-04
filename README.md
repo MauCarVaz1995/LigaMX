@@ -739,6 +739,24 @@ Todos los datos provienen de **FotMob** mediante scraping del JSON embebido `__N
 
 ---
 
+## 📚 Para continuar el proyecto
+
+El directorio `skills/` contiene documentación detallada del estado actual del proyecto, diseñada para recuperar contexto en nuevas sesiones de trabajo:
+
+| Archivo | Contenido |
+|---|---|
+| [`skills/PROYECTO_OVERVIEW.md`](skills/PROYECTO_OVERVIEW.md) | **LEE ESTO PRIMERO** — Estado actual, qué funciona, próximos 3 pasos, convenciones |
+| [`skills/SCRIPTS_CATALOG.md`](skills/SCRIPTS_CATALOG.md) | Catálogo de los 27 scripts con propósito, inputs, outputs y estado |
+| [`skills/VISUAL_SYSTEM.md`](skills/VISUAL_SYSTEM.md) | Paletas de color (hex exactos), tipografía, tamaños, layout 1080×1080 |
+| [`skills/MODELO_METODOLOGIA.md`](skills/MODELO_METODOLOGIA.md) | Fórmulas ELO (Liga MX y Selecciones), Poisson, bootstrap CI, Dixon-Coles |
+| [`skills/DATOS_FUENTES.md`](skills/DATOS_FUENTES.md) | Endpoints FotMob, estructura de JSONs, headers necesarios |
+| [`skills/TWITTER_STRATEGY.md`](skills/TWITTER_STRATEGY.md) | Tipos de contenido, formato de tweets, calendario por jornada |
+| [`skills/ROADMAP.md`](skills/ROADMAP.md) | Fases completadas, en desarrollo y próximos pasos priorizados |
+
+> Inicio rápido de sesión: leer `PROYECTO_OVERVIEW.md` y el script relevante del `SCRIPTS_CATALOG.md`.
+
+---
+
 <p align="center">
   <strong>MAU-STATISTICS</strong> · Datos: FotMob · Liga MX 2010 – 2026
 </p>
