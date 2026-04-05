@@ -229,7 +229,7 @@ Formato de display: `IC 95%: [X.X% — X.X%]` en 9pt, alpha=0.6
 
 ---
 
-## 6. Dixon-Coles — PENDIENTE DE IMPLEMENTAR ⏳
+## 6. Dixon-Coles — ✅ IMPLEMENTADO (2026-04-04)
 
 El modelo de Poisson independiente subestima la frecuencia de resultados bajos (0-0, 1-0, 0-1, 1-1). Dixon-Coles (1997) corrige esto con un factor ρ.
 
@@ -245,11 +245,26 @@ El modelo de Poisson independiente subestima la frecuencia de resultados bajos (
 P_DC(i, j) = τ(i, j, λ, μ, ρ) × Poisson(i; λ) × Poisson(j; μ)
 ```
 
-### Plan de implementación
-1. Estimar ρ por MLE sobre el histórico (esperado: ρ ≈ -0.13 a -0.08)
-2. Agregar función `apply_dixon_coles(probs, lam_h, lam_a, rho)`
-3. Integrar en `11_modelo_prediccion.py` como opción `--dc`
-4. Comparar predicciones vs resultados reales para validar mejora
+### Implementación actual
+- `rho = -0.13` (valor estándar académico para fútbol)
+- Función `dixon_coles_correction(home_goals, away_goals, lambda_home, lambda_away, rho)`
+- Integrada en `gen_predicciones_ligamx_20260404.py`, `11_modelo_prediccion.py`, `15_prediccion_elo_poisson.py`
+- La matriz se renormaliza tras aplicar DC: `probs /= probs.sum()`
+
+### Efecto medido — Cruz Azul vs Pachuca (λh=1.59, λa=1.37)
+| Resultado | Poisson Puro | Dixon-Coles | Δ |
+|---|---|---|---|
+| Local gana | 42.51% | 41.03% | −1.48% |
+| Empate | 24.56% | 27.52% | **+2.97%** |
+| Visita gana | 32.93% | 31.45% | −1.48% |
+| 0-0 | 5.25% | 6.74% | +1.48% |
+| 1-1 | 11.40% | 12.89% | +1.48% |
+| 1-0 | 8.35% | 6.86% | −1.48% |
+| 0-1 | 7.18% | 5.70% | −1.48% |
+
+### Pendiente
+- Estimar ρ óptimo por MLE sobre el histórico de 38 torneos (esperado: −0.13 a −0.08)
+- Comparar Brier score con ρ=−0.13 vs ρ_MLE cuando haya suficientes predicciones registradas
 
 ---
 
@@ -276,3 +291,51 @@ python3 scripts/04_predicciones_tracker.py reporte
 ### Métricas de desempeño
 - `acierto_ganador`: 1 si el ganador predicho coincide con el real
 - `error_marcador`: distancia Manhattan `|goles_pred_local - real_local| + |...|`
+
+---
+
+## 8. Arquitectura objetivo del modelo
+
+### Capas del modelo final
+
+```
+CAPA 1 — ELO dinámico (✅ implementado)
+  - K dinámico por tipo de partido (20/25/35/60)
+  - Factor de localía +100 ELO
+  - Margen de goles como multiplicador
+  - Metodología eloratings.net
+
+CAPA 2 — Poisson + Dixon-Coles (🔄 en implementación)
+  - rho = -0.13 como valor inicial
+  - Corrección en marcadores bajos (0-0, 0-1, 1-0, 1-1)
+  - Reemplaza Poisson puro en todos los scripts
+
+CAPA 3 — Variables contextuales (⏳ pendiente)
+  Variables de alto impacto ya identificadas:
+  - Forma reciente ponderada (últimos 5 partidos, peso exponencial)
+  - xG por equipo por partido (fuente: FBref scraping)
+  - Días de descanso entre partidos
+  - Ausencias clave (variable binaria: titular top disponible)
+  - Head-to-head reciente (últimos 3 encuentros directos)
+  - Valor de mercado convocatoria (fuente: Transfermarkt)
+
+CAPA 4 — XGBoost calibrado (⏳ pendiente)
+  - Entrena sobre el error residual del modelo base
+  - Requiere mínimo 3 temporadas de datos con todas las variables
+  - Valida con Brier score y log-loss
+
+CAPA 5 — Value betting + Kelly fraccionado (⏳ pendiente)
+  - Compara p_modelo vs p_implícita de casas de apuestas
+  - Umbral de valor: diferencia > 5%
+  - Kelly fraccionado al 25% para reducir varianza
+  - Límite por apuesta: máximo 3% del bankroll
+  - Máximo 3 apuestas por jornada
+  - Requiere 200 predicciones históricas para validar antes de dinero real
+```
+
+### Métricas de evaluación del modelo
+- % acierto en ganador (baseline: ~50% en Liga MX)
+- Brier score (menor = mejor calibración)
+- Log-loss
+- ROI hipotético con Kelly 25%
+- Calibración: cuando modelo dice 60%, ¿ocurre 60%?

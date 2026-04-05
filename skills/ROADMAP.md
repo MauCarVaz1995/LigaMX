@@ -54,57 +54,42 @@
 
 ---
 
-## Próximos pasos ⏳ (por orden de impacto)
+## Próximos pasos priorizados (actualizado 2026-04-04)
 
-### Corto plazo (próximas sesiones)
+### Prioridad 1 — Esta semana
+- [x] Completar Dixon-Coles en `11_modelo_prediccion.py` y `15_prediccion_elo_poisson.py`
+- [x] Confirmar con regeneración de `pred_Cruz_Azul_Pachuca.png`
+- [ ] Commit con diferencia de porcentajes vs modelo anterior
 
-1. **Registrar resultados reales** en `predicciones_log.csv`
-   ```bash
-   python3 scripts/04_predicciones_tracker.py resultado "Cruz Azul vs Pachuca" 2026-04-04 X X
-   python3 scripts/04_predicciones_tracker.py reporte
-   ```
+### Prioridad 2 — Automatización (en cuanto lleguen keys de Twitter)
+- [ ] Validar credenciales Twitter API en `20_twitter_bot.py`
+- [ ] Script de jornada completa: genera imágenes + publica hilo automático
+- [ ] GitHub Actions: cron job diario para días de jornada Liga MX
 
-2. **Script canónico único de predicción Liga MX**
-   - Fusionar `11_modelo_prediccion.py` (círculos) y `gen_predicciones_ligamx_20260404.py` (bloques)
-   - Un solo script con flag `--style [bloques|circulos]`
-   - Soporte para jornada completa (`--jornada N`) y partido único (`--partido "A vs B"`)
+### Prioridad 3 — Mejorar modelo (Capa 3)
+- [ ] Scraper xG FBref para Liga MX (agregar a `02c_get_stats_liga.py`)
+- [ ] Forma reciente ponderada como variable adicional
+- [ ] Scraper cuotas casas de apuestas para tracker de value bets
 
-3. **Resumen de jornada automatizado**
-   - `12_resumen_jornada.py` necesita los 9 partidos hardcoded actualmente
-   - Meta: leer fixtures de FotMob automáticamente
+### Prioridad 4 — Infografías con Figma (cuando tengamos templates)
+- [ ] Diseñar templates en Figma para cada tipo de imagen
+- [ ] Script Python que llene templates via Figma API o exportación
+- [ ] Reemplazar matplotlib por imágenes Figma renderizadas
+- Objetivo: imágenes de calidad profesional sin depender de matplotlib
 
-### Mediano plazo
+### Prioridad 5 — Engagement @Miau_Stats_MX
+- [ ] Comentar en cuentas grandes con datos (ESPN, TUDN, Record)
+- [ ] Publicar tracker público de aciertos del modelo
+- [ ] Contenido semanal recurrente: ranking ELO lunes, predicciones viernes
+- [ ] Encuestas vinculadas a predicciones del modelo
 
-4. **Dixon-Coles correction**
-   - Corrige subestimación de resultados bajos (0-0, 1-0, 0-1, 1-1)
-   - Estimación de ρ por MLE sobre el histórico (esperado: -0.13 a -0.08)
-   - Ver `MODELO_METODOLOGIA.md` para fórmula completa
+---
 
-5. **FBref scraping**
-   - xG, presión, pases progresivos — métricas que FotMob no ofrece
-   - Pendiente de implementar para Liga MX
-
-6. **Predicciones automáticas por jornada**
-   - Script que lee fixtures de FotMob, genera todas las predicciones sin configuración manual
-   - Deduplicación vs predicciones ya generadas
-
-7. **Bot de publicación automática**
-   - Twitter API v2 para subir imágenes y texto
-   - Programar tweets para 2h antes de cada partido
-
-### Largo plazo
-
-8. **Modelo ensemble**
-   - Combinar ELO + Poisson + Dixon-Coles + features adicionales (forma reciente, bajas)
-   - Calibración de probabilidades (Platt scaling)
-
-9. **Cobertura multi-liga**
-   - Expansión a otras ligas CONCACAF (MLS, Guatemalteca)
-   - Mismo sistema ELO y pipeline visual
-
-10. **API pública**
-    - FastAPI con endpoints de predicciones
-    - Rate limiting + caché Redis
+## Filosofía del proyecto
+- Minimizar tokens de Claude: automatizar todo lo repetitivo
+- Skills actualizados en cada sesión para recuperar contexto
+- Modelo que mejora solo con más datos, no con más intervención manual
+- Engagement orgánico basado en credibilidad del modelo vs resultados reales
 
 ---
 
