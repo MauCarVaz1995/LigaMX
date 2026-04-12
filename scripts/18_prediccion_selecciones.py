@@ -244,13 +244,29 @@ def apply_extra_matches(elos, extra):
     return elos
 
 # ─────────────────────────────────────────────────────────────────────────────
-# POISSON
+# POISSON + DIXON-COLES
 # ─────────────────────────────────────────────────────────────────────────────
+DC_RHO = -0.13  # parámetro Dixon-Coles (estándar académico para fútbol)
+
+def dixon_coles_correction(i, j, lambda_home, lambda_away, rho=-0.13):
+    if i == 0 and j == 0:
+        return 1 - lambda_home * lambda_away * rho
+    elif i == 0 and j == 1:
+        return 1 + lambda_home * rho
+    elif i == 1 and j == 0:
+        return 1 + lambda_away * rho
+    elif i == 1 and j == 1:
+        return 1 - rho
+    else:
+        return 1.0
+
 def poisson_probs(lam_h, lam_a, max_goals=5):
     probs = np.zeros((max_goals+1, max_goals+1))
     for i in range(max_goals+1):
         for j in range(max_goals+1):
-            probs[i, j] = poisson.pmf(i, lam_h) * poisson.pmf(j, lam_a)
+            dc = dixon_coles_correction(i, j, lam_h, lam_a, DC_RHO)
+            probs[i, j] = poisson.pmf(i, lam_h) * poisson.pmf(j, lam_a) * dc
+    probs /= probs.sum()
     return probs, np.sum(np.tril(probs,-1)), np.sum(np.diag(probs)), np.sum(np.triu(probs,1))
 
 def elo_to_lambda(elo_local, elo_away, elo_mean, avg_goals, loc_factor=1.0):
@@ -478,7 +494,7 @@ def render_heatmap(probs, p_home, p_draw, p_away, lam_h, lam_a,
         seg.text(0.50, 0.36, f'{pval*100:.1f}%', color=pct_c, ha='center', va='center',
                  fontsize=pct_fs, fontweight='bold', transform=seg.transAxes)
 
-    _footer(fig, 'Modelo: ELO + Poisson · Fuente: martj42/international_results',
+    _footer(fig, 'Modelo: ELO + Poisson-Dixon-Coles · Fuente: martj42/international_results',
             h=FOOTER_H, fact=fact)
     plt.savefig(out_path, dpi=150, bbox_inches='tight', facecolor=BG)
     plt.close(fig)

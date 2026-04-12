@@ -193,11 +193,31 @@ def predict_poisson(model, local, visitante, max_goals=5):
     lam_v = att.get(visitante, {}).get('away', 1.0) * defe.get(local, {}).get('home', 1.0) * mu_a
     return _compute_probs(lam_l, lam_v, max_goals)
 
-def _compute_probs(lam_l, lam_v, max_goals=5):
+DC_RHO = -0.13  # parámetro Dixon-Coles (estándar académico para fútbol)
+
+def dixon_coles_correction(home_goals, away_goals, lambda_home, lambda_away, rho):
+    """
+    Factor de corrección para marcadores bajos (Dixon & Coles 1997).
+    Corrige la subestimación de 0-0, 1-0, 0-1, 1-1 en Poisson independiente.
+    """
+    if home_goals == 0 and away_goals == 0:
+        return 1 - lambda_home * lambda_away * rho
+    elif home_goals == 0 and away_goals == 1:
+        return 1 + lambda_home * rho
+    elif home_goals == 1 and away_goals == 0:
+        return 1 + lambda_away * rho
+    elif home_goals == 1 and away_goals == 1:
+        return 1 - rho
+    else:
+        return 1.0
+
+def _compute_probs(lam_l, lam_v, max_goals=5, rho=DC_RHO):
     n = max_goals + 1
-    p_l = [poisson.pmf(g, lam_l) for g in range(n)]
-    p_v = [poisson.pmf(g, lam_v) for g in range(n)]
-    mat = np.array([[p_l[gl] * p_v[gv] for gv in range(n)] for gl in range(n)])
+    mat = np.zeros((n, n))
+    for gl in range(n):
+        for gv in range(n):
+            dc = dixon_coles_correction(gl, gv, lam_l, lam_v, rho)
+            mat[gl, gv] = poisson.pmf(gl, lam_l) * poisson.pmf(gv, lam_v) * dc
     mat /= mat.sum()
     p_local = float(np.tril(mat, -1).sum())
     p_emp   = float(np.trace(mat))
@@ -447,7 +467,7 @@ def render(partidos_data, output_path):
     fax = fig.add_axes([0, 0, 1, FOOTER_H * 0.52])
     fax.set_facecolor(_pal['bg_secondary']); fax.axis('off')
     fax.axhline(1, color=RED, lw=2.0)
-    fax.text(0.015, 0.45, 'Fuente: FotMob · Histórico 2010–2026',
+    fax.text(0.015, 0.45, 'Modelo: ELO + Poisson-Dixon-Coles · Fuente: FotMob · Histórico 2010–2026',
              color=GRAY, fontsize=9, ha='left', va='center', transform=fax.transAxes)
     fax.text(0.985, 0.45, 'MAU-STATISTICS',
              color=RED, ha='right', va='center', transform=fax.transAxes, **bebas(20))
