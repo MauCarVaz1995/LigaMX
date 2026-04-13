@@ -1,0 +1,12 @@
+# Tratar fuentes como binarios (evitar conversión de line endings)
+*.ttf  binary
+*.otf  binary
+*.woff binary
+*.woff2 binary
+
+# Imágenes como binarios
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.ico  binary

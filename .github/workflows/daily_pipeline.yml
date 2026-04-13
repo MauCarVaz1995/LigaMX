@@ -45,8 +45,12 @@ import matplotlib.font_manager as fm
 from pathlib import Path
 p = Path('assets/fonts/BebasNeue-Regular.ttf')
 assert p.exists(), f'Font missing: {p}'
-fm.fontManager.addfont(str(p))
-print('Bebas Neue OK')
+print(f'Font file size: {p.stat().st_size} bytes')
+try:
+    fm.fontManager.addfont(str(p))
+    print('Bebas Neue OK — cargada correctamente')
+except Exception as e:
+    print(f'WARNING: Bebas Neue no se pudo cargar ({e}) — se usara DejaVu Sans como fallback')
 "
 
       - name: Run daily pipeline
