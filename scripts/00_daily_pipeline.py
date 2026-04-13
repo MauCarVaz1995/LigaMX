@@ -700,15 +700,27 @@ def main():
     summary["pasos"]["paso7"] = step7_git_push(summary["pasos"])
 
     # ── Guardar summary ─────────────────────────────────────────────────────
-    summary["end"]        = datetime.now().isoformat()
-    summary["elapsed_s"]  = round(time.time() - start_time, 1)
-    summary["success"]    = not any(v.get("error") for v in summary["pasos"].values())
+    summary["end"]       = datetime.now().isoformat()
+    summary["elapsed_s"] = round(time.time() - start_time, 1)
+
+    # Pasos críticos vs no-críticos
+    # Solo falla el pipeline si falla la adquisición de datos o el ELO
+    CRITICAL = {"paso1", "paso2", "paso3", "paso4"}
+    NON_CRITICAL = {"paso5", "paso6", "paso7"}
+    critical_failed   = any(summary["pasos"].get(k, {}).get("error") for k in CRITICAL)
+    noncritical_errors = [k for k in NON_CRITICAL if summary["pasos"].get(k, {}).get("error")]
+    summary["success"] = not critical_failed
+    summary["critical_failed"]    = critical_failed
+    summary["noncritical_errors"] = noncritical_errors
 
     save_summary(summary)
 
     log.info("")
     log.info("=" * 70)
-    log.info(f"Pipeline finalizado en {summary['elapsed_s']}s — {'OK' if summary['success'] else 'CON ERRORES'}")
+    status_str = "OK" if not critical_failed else "FALLO CRÍTICO"
+    if noncritical_errors:
+        status_str += f" (no-críticos con error: {', '.join(noncritical_errors)})"
+    log.info(f"Pipeline finalizado en {summary['elapsed_s']}s — {status_str}")
     log.info(f"Log: {LOG_FILE}")
     log.info(f"Summary: {SUMMARY_FILE}")
     log.info("=" * 70)
@@ -726,9 +738,12 @@ def main():
     print(f"  Aciertos modelo:     {aciertos}/{total}")
     print(f"  Predicciones hoy:    {p.get('paso6', {}).get('predicciones_generadas', 0)}")
     print(f"  Git push:            {'✓' if p.get('paso7', {}).get('pushed') else '✗'}")
+    if noncritical_errors:
+        print(f"  [WARN] Errores no-críticos: {', '.join(noncritical_errors)}")
     print("─────────────────────────────────────────────────────")
 
-    sys.exit(0 if summary["success"] else 1)
+    # Exit 1 solo si fallaron pasos críticos de datos
+    sys.exit(1 if critical_failed else 0)
 
 
 if __name__ == "__main__":

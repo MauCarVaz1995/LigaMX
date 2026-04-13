@@ -38,18 +38,34 @@ PALETTE = {
 }
 
 # ─────────────────────────────────────────────────────────────────────────────
-# FUENTE
+# FUENTE — Bebas Neue con fallback tolerante
 # ─────────────────────────────────────────────────────────────────────────────
-BEBAS_TTF = Path.home() / '.fonts/BebasNeue.ttf'
+import os
 
-if BEBAS_TTF.exists():
-    fm.fontManager.addfont(str(BEBAS_TTF))
+# Buscar la fuente en múltiples ubicaciones posibles (local, CI, sistema)
+_BEBAS_CANDIDATES = [
+    Path(__file__).parent.parent / 'assets' / 'fonts' / 'BebasNeue-Regular.ttf',
+    Path(__file__).parent / 'BebasNeue-Regular.ttf',
+    Path.home() / '.fonts' / 'BebasNeue.ttf',
+    Path.home() / '.fonts' / 'BebasNeue-Regular.ttf',
+    Path('/usr/share/fonts/truetype/bebas-neue/BebasNeue-Regular.ttf'),
+]
+BEBAS_TTF = next((p for p in _BEBAS_CANDIDATES if p.exists()), None)
 
-def bebas(size: float) -> dict:
-    """Devuelve kwargs de Bebas Neue para matplotlib text."""
-    if BEBAS_TTF.exists():
-        return {'fontproperties': FontProperties(fname=str(BEBAS_TTF), size=size)}
-    return {'fontsize': size, 'fontweight': 'bold'}
+BEBAS_AVAILABLE = False
+if BEBAS_TTF is not None:
+    try:
+        fm.fontManager.addfont(str(BEBAS_TTF))
+        BEBAS_AVAILABLE = True
+    except Exception as e:
+        print(f"[WARNING] Bebas Neue no disponible: {e}. Usando fuente fallback.")
+        BEBAS_TTF = None
+
+def bebas(size: float, **kwargs) -> dict:
+    """Devuelve kwargs de Bebas Neue para matplotlib text. Fallback a DejaVu Sans."""
+    if BEBAS_AVAILABLE and BEBAS_TTF is not None:
+        return {'fontproperties': FontProperties(fname=str(BEBAS_TTF), size=size), **kwargs}
+    return {'fontsize': size, 'fontfamily': 'DejaVu Sans', **kwargs}
 
 # ─────────────────────────────────────────────────────────────────────────────
 # UTILIDADES DE COLOR

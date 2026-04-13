@@ -37,13 +37,12 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Install Bebas Neue font
+      - name: Download Bebas Neue font
         run: |
-          mkdir -p ~/.fonts
-          # Intentar descargar BebasNeue (falla silenciosamente si no hay acceso)
-          curl -sL "https://fonts.gstatic.com/s/bebasneuepro/v2/CNz9x_HToo7aKxKBfqHVsPNF_Rt.woff2" \
-            -o ~/.fonts/BebasNeue.ttf 2>/dev/null || true
-          fc-cache -f 2>/dev/null || true
+          mkdir -p assets/fonts
+          curl -L "https://github.com/googlefonts/bebas-neue/raw/main/fonts/ttf/BebasNeue-Regular.ttf" \
+            -o assets/fonts/BebasNeue-Regular.ttf
+          echo "Font downloaded: $(ls -lh assets/fonts/)"
 
       - name: Run daily pipeline
         env:
