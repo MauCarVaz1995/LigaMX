@@ -530,43 +530,13 @@ def step6_predicciones_hoy() -> dict:
                 if not p.get("terminado") and p["fecha"][:10] == TODAY
             ]
 
-        if not partidos_hoy:
-            log.info("  Sin partidos de Liga MX hoy — saltando predicciones Liga MX")
+        # generar_prediccion.py maneja Liga MX + CCL + Internacional
+        log.info("  Ejecutando generar_prediccion.py --competition all")
+        ok = run_script("generar_prediccion.py", ["--competition", "all", "--date", TODAY])
+        if ok:
+            result["predicciones_generadas"] += max(len(partidos_hoy), 1)
         else:
-            log.info(f"  {len(partidos_hoy)} partidos de Liga MX hoy")
-            ok = run_script("19_predicciones_hoy.py")
-            if ok:
-                result["predicciones_generadas"] += len(partidos_hoy)
-            else:
-                result["error"] = "Error en 19_predicciones_hoy.py"
-
-        # Verificar partidos internacionales de hoy (via FotMob)
-        url = f"https://www.fotmob.com/api/data/matches?date={TODAY_COMPACT}"
-        data = fetch_with_retry(url)
-        intl_hoy = []
-        if data:
-            for league in data.get("leagues", []):
-                if league.get("ccode") != "INT":
-                    continue
-                for m in league.get("matches", []):
-                    if not m.get("status", {}).get("started", False) and \
-                       not m.get("status", {}).get("finished", False):
-                        intl_hoy.append(m)
-
-        if not intl_hoy and not partidos_hoy:
-            log.info("  Sin partidos hoy — predicciones saltadas")
-            result["saltado"] = True
-        elif intl_hoy:
-            log.info(f"  {len(intl_hoy)} partidos internacionales hoy (predicciones vía 18_prediccion_selecciones.py)")
-            # Solo generamos si hay partidos relevantes (Mundial, CONCACAF, etc.)
-            torneos_relevantes = ["World Cup", "Copa América", "Nations League", "Gold Cup", "Champions"]
-            relevantes = [
-                m for m in intl_hoy
-                if any(t.lower() in str(data.get("leagues", [])).lower() for t in torneos_relevantes)
-            ]
-            if relevantes:
-                run_script("18_prediccion_selecciones.py", ["--chart", "heatmap"])
-                result["predicciones_generadas"] += len(relevantes)
+            result["error"] = "Error en generar_prediccion.py"
 
     except Exception as e:
         result["error"] = str(e)

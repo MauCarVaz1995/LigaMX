@@ -68,14 +68,14 @@ jobs:
           echo "── CCL: actualizando fixtures ──"
           python scripts/update_ccl_fixtures.py || echo "[warn] CCL fixtures falló — continuando"
           echo "── CCL: generando predicciones partidos pendientes ──"
-          python scripts/gen_predicciones_ccl.py --leg2 || echo "[warn] CCL predicciones falló — continuando"
+          python scripts/generar_prediccion.py --competition ccl --leg2 || echo "[warn] CCL predicciones falló — continuando"
 
       - name: Commit and push results
         run: |
           git config user.email "bot@miau-stats.mx"
           git config user.name "MiauStats Bot"
           git add data/processed/ data/raw/historico/ data/raw/internacional/ \
-                  data/raw/fotmob/ccl/ output/charts/predicciones/CCL_2025-26/ \
+                  data/raw/fotmob/ccl/ output/charts/predicciones/ \
                   logs/daily_summary.json 2>/dev/null || true
           # Solo commitear si hay cambios staged
           git diff --staged --quiet || \
