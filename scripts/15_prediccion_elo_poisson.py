@@ -41,7 +41,10 @@ IMG_TEAMS.mkdir(parents=True, exist_ok=True)
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 if BEBAS_TTF.exists():
-    fm.fontManager.addfont(str(BEBAS_TTF))
+    try:
+        fm.fontManager.addfont(str(BEBAS_TTF))
+    except Exception:
+        BEBAS_TTF = None
 
 # ─────────────────────────────────────────────────────────────────────────────
 # PALETA

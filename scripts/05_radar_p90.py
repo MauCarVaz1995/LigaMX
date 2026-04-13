@@ -135,7 +135,10 @@ def get_bebas_neue() -> str | None:
             print(f"ERROR: {e} — se usará fuente del sistema.")
             return None
 
-    fm.fontManager.addfont(str(font_path))
+    try:
+        fm.fontManager.addfont(str(font_path))
+    except Exception:
+        return None
     prop = fm.FontProperties(fname=str(font_path))
     return prop.get_name()
 

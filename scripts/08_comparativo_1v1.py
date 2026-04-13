@@ -39,7 +39,10 @@ for d in (IMG_PLAY, IMG_TEAMS, OUT_DIR):
     d.mkdir(parents=True, exist_ok=True)
 
 if BEBAS_TTF.exists():
-    fm.fontManager.addfont(str(BEBAS_TTF))
+    try:
+        fm.fontManager.addfont(str(BEBAS_TTF))
+    except Exception:
+        BEBAS_TTF = None
 
 def bebas(size):
     return _bebas_cv(size)

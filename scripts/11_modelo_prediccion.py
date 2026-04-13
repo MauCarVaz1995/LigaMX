@@ -46,7 +46,10 @@ OUT_DIR.mkdir(parents=True, exist_ok=True)
 # ── Bebas Neue ───────────────────────────────────────────────────────────────
 _bebas_path = str(BEBAS_TTF) if BEBAS_TTF.exists() else None
 if _bebas_path:
-    fm.fontManager.addfont(_bebas_path)
+    try:
+        fm.fontManager.addfont(_bebas_path)
+    except Exception:
+        _bebas_path = None
 
 def bebas_fp(size):
     if _bebas_path:
@@ -256,9 +259,28 @@ def build_poisson_model(matches: list[dict]) -> dict:
     }
 
 
-def predict(model: dict, local: str, visitante: str, max_goals: int = 5):
+DC_RHO = -0.13  # parámetro Dixon-Coles (estándar académico para fútbol)
+
+def dixon_coles_correction(home_goals, away_goals, lambda_home, lambda_away, rho):
+    """
+    Factor de corrección para marcadores bajos (Dixon & Coles 1997).
+    Corrige la subestimación de 0-0, 1-0, 0-1, 1-1 en Poisson independiente.
+    """
+    if home_goals == 0 and away_goals == 0:
+        return 1 - lambda_home * lambda_away * rho
+    elif home_goals == 0 and away_goals == 1:
+        return 1 + lambda_home * rho
+    elif home_goals == 1 and away_goals == 0:
+        return 1 + lambda_away * rho
+    elif home_goals == 1 and away_goals == 1:
+        return 1 - rho
+    else:
+        return 1.0
+
+def predict(model: dict, local: str, visitante: str, max_goals: int = 5, rho: float = DC_RHO):
     """
     Calcula lambdas y matriz de probabilidades hasta max_goals×max_goals.
+    Aplica corrección Dixon-Coles para marcadores bajos.
     Retorna (lambda_l, lambda_v, matriz, p_local, p_empate, p_visitante)
     """
     local_n = norm(local)
@@ -277,25 +299,22 @@ def predict(model: dict, local: str, visitante: str, max_goals: int = 5):
     lambda_l = att_h * def_a * mu_h
     lambda_v = att_a * def_h * mu_a
 
-    # Distribuciones de Poisson
+    # Distribuciones de Poisson con corrección Dixon-Coles
     n = max_goals + 1
-    p_l = [poisson.pmf(g, lambda_l) for g in range(n)]
-    p_v = [poisson.pmf(g, lambda_v) for g in range(n)]
-
-    # Matriz: filas = goles local (0..max), cols = goles visitante (0..max)
     matriz = np.zeros((n, n))
     for gl in range(n):
         for gv in range(n):
-            matriz[gl, gv] = p_l[gl] * p_v[gv]
+            dc = dixon_coles_correction(gl, gv, lambda_l, lambda_v, rho)
+            matriz[gl, gv] = poisson.pmf(gl, lambda_l) * poisson.pmf(gv, lambda_v) * dc
 
-    # Normalizar al universo 0-max (no suma exactamente 1 si se trunca)
+    # Renormalizar (DC altera ligeramente la suma total)
     total = matriz.sum()
     if total > 0:
         matriz /= total
 
-    p_local    = float(np.tril(matriz, -1).sum())  # local > visitante
-    p_empate   = float(np.trace(matriz))            # iguales
-    p_visitante = float(np.triu(matriz, 1).sum())  # visitante > local
+    p_local     = float(np.tril(matriz, -1).sum())  # local > visitante
+    p_empate    = float(np.trace(matriz))            # iguales
+    p_visitante = float(np.triu(matriz, 1).sum())   # visitante > local
 
     return lambda_l, lambda_v, matriz, p_local, p_empate, p_visitante
 
@@ -578,7 +597,7 @@ def render_prediction(local: str, visitante: str,
     fax.axhline(1.0, color=RED_BRAND, lw=2.0, xmin=0, xmax=1)
 
     # Fuente: FotMob
-    fax.text(0.015, 0.42, 'Fuente: FotMob',
+    fax.text(0.015, 0.42, 'Modelo: ELO + Poisson + Dixon-Coles  |  Fuente: FotMob',
              color=GRAY, fontsize=9, va='center', ha='left',
              transform=fax.transAxes)
 

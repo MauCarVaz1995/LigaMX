@@ -48,7 +48,10 @@ BEBAS_TTF = Path.home() / '.fonts/BebasNeue.ttf'
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 if BEBAS_TTF.exists():
-    fm.fontManager.addfont(str(BEBAS_TTF))
+    try:
+        fm.fontManager.addfont(str(BEBAS_TTF))
+    except Exception:
+        BEBAS_TTF = None
 
 # ─────────────────────────────────────────────────────────────────────────────
 # PALETA  — lee de config_visual.PALETA_ACTIVA (actualmente 'rojo_fuego')

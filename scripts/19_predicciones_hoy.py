@@ -33,7 +33,10 @@ OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 BEBAS_TTF = Path.home() / '.fonts/BebasNeue.ttf'
 if BEBAS_TTF.exists():
-    fm.fontManager.addfont(str(BEBAS_TTF))
+    try:
+        fm.fontManager.addfont(str(BEBAS_TTF))
+    except Exception:
+        BEBAS_TTF = None
 
 # ─────────────────────────────────────────────────────────────────────────────
 # NOMBRES EN ESPAÑOL

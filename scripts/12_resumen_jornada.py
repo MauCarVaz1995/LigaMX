@@ -45,7 +45,10 @@ IMG_DIR.mkdir(parents=True, exist_ok=True)
 
 _bebas_path = str(BEBAS_TTF) if BEBAS_TTF.exists() else None
 if _bebas_path:
-    fm.fontManager.addfont(_bebas_path)
+    try:
+        fm.fontManager.addfont(_bebas_path)
+    except Exception:
+        _bebas_path = None
 
 def bebas(size):
     if _bebas_path:

@@ -46,7 +46,10 @@ for d in (IMG_PLAY, IMG_TEAMS, OUT_DIR):
 # ── Registrar Bebas Neue si existe ──────────────────────────────────────────
 _bebas_prop = None
 if BEBAS_TTF.exists():
-    fm.fontManager.addfont(str(BEBAS_TTF))
+    try:
+        fm.fontManager.addfont(str(BEBAS_TTF))
+    except Exception:
+        BEBAS_TTF = None
     _bebas_prop = FontProperties(fname=str(BEBAS_TTF))
 
 # ─────────────────────────────────────────────────────────────────────────────
