@@ -39,11 +39,16 @@ BASE      = Path(__file__).resolve().parent.parent
 HIST_DIR  = BASE / 'data/raw/historico'
 IMG_DIR   = BASE / 'data/raw/images/teams'
 OUT_BASE  = BASE / 'output/charts'
-BEBAS_TTF = Path.home() / '.fonts/BebasNeue.ttf'
+# Fuente centralizada desde config_visual (incluye assets/fonts/ como candidato)
+try:
+    from config_visual import BEBAS_TTF, BEBAS_AVAILABLE
+except ImportError:
+    BEBAS_TTF = None
+    BEBAS_AVAILABLE = False
 
 IMG_DIR.mkdir(parents=True, exist_ok=True)
 
-_bebas_path = str(BEBAS_TTF) if BEBAS_TTF.exists() else None
+_bebas_path = str(BEBAS_TTF) if BEBAS_TTF else None
 if _bebas_path:
     try:
         fm.fontManager.addfont(_bebas_path)

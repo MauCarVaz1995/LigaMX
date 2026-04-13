@@ -37,18 +37,18 @@ HIST_DIR    = BASE / 'data/raw/historico'
 OUT_CSV     = BASE / 'data/processed/elo_historico.csv'
 OUT_DIR     = BASE / 'output/charts'
 IMG_TEAMS   = BASE / 'data/raw/images/teams'
-BEBAS_TTF   = Path.home() / '.fonts/BebasNeue.ttf'
+# Fuente centralizada desde config_visual (incluye assets/fonts/ como candidato)
+try:
+    from config_visual import BEBAS_TTF, BEBAS_AVAILABLE
+except ImportError:
+    BEBAS_TTF = None
+    BEBAS_AVAILABLE = False
 
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
-if BEBAS_TTF.exists():
-    try:
-        fm.fontManager.addfont(str(BEBAS_TTF))
-    except Exception:
-        BEBAS_TTF = None
 
 def bebas(size):
-    if BEBAS_TTF.exists():
+    if BEBAS_TTF and BEBAS_TTF.exists():
         return {'fontproperties': FontProperties(fname=str(BEBAS_TTF), size=size)}
     return {'fontsize': size, 'fontweight': 'bold'}
 

@@ -38,19 +38,18 @@ CSV_PATH   = BASE / 'data/processed/jugadores_clausura2026.csv'
 IMG_PLAY   = BASE / 'data/raw/images/players'
 IMG_TEAMS  = BASE / 'data/raw/images/teams'
 OUT_DIR    = BASE / 'output/charts'
-BEBAS_TTF  = Path.home() / '.fonts/BebasNeue.ttf'
+# Fuente centralizada desde config_visual (incluye assets/fonts/ como candidato)
+try:
+    from config_visual import BEBAS_TTF, BEBAS_AVAILABLE
+except ImportError:
+    BEBAS_TTF = None
+    BEBAS_AVAILABLE = False
 
 for d in (IMG_PLAY, IMG_TEAMS, OUT_DIR):
     d.mkdir(parents=True, exist_ok=True)
 
 # ── Registrar Bebas Neue si existe ──────────────────────────────────────────
-_bebas_prop = None
-if BEBAS_TTF.exists():
-    try:
-        fm.fontManager.addfont(str(BEBAS_TTF))
-    except Exception:
-        BEBAS_TTF = None
-    _bebas_prop = FontProperties(fname=str(BEBAS_TTF))
+_bebas_prop = FontProperties(fname=str(BEBAS_TTF)) if BEBAS_TTF else None
 
 # ─────────────────────────────────────────────────────────────────────────────
 # PALETA

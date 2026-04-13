@@ -36,12 +36,12 @@ PHOTO_DIR = BASE / 'data/raw/fotmob/playerimages'
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 PHOTO_DIR.mkdir(parents=True, exist_ok=True)
 
-BEBAS_TTF = Path.home() / '.fonts/BebasNeue.ttf'
-if BEBAS_TTF.exists():
-    try:
-        fm.fontManager.addfont(str(BEBAS_TTF))
-    except Exception:
-        BEBAS_TTF = None
+# Fuente centralizada desde config_visual (incluye assets/fonts/ como candidato)
+try:
+    from config_visual import BEBAS_TTF, BEBAS_AVAILABLE
+except ImportError:
+    BEBAS_TTF = None
+    BEBAS_AVAILABLE = False
 
 # Paleta fija — cambiar cuando el usuario lo indique
 PALETA_ACTIVA = 'rojo_fuego'

@@ -43,15 +43,15 @@ from config_visual import PALETAS, PALETA_ACTIVA, get_paleta, bebas, hex_rgba, h
 BASE      = Path(__file__).resolve().parent.parent
 CSV_PATH  = BASE / 'data/raw/internacional/results.csv'
 OUT_DIR   = BASE / 'output/charts'
-BEBAS_TTF = Path.home() / '.fonts/BebasNeue.ttf'
+# Fuente centralizada desde config_visual (incluye assets/fonts/ como candidato)
+try:
+    from config_visual import BEBAS_TTF, BEBAS_AVAILABLE
+except ImportError:
+    BEBAS_TTF = None
+    BEBAS_AVAILABLE = False
 
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
-if BEBAS_TTF.exists():
-    try:
-        fm.fontManager.addfont(str(BEBAS_TTF))
-    except Exception:
-        BEBAS_TTF = None
 
 # ─────────────────────────────────────────────────────────────────────────────
 # PALETA  — lee de config_visual.PALETA_ACTIVA (actualmente 'rojo_fuego')
