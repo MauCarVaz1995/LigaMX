@@ -121,29 +121,57 @@ Aún NO — falta configurar Twitter API keys como secrets en GitHub.
 
 ## Datos disponibles
 
-| Dataset | Ruta | Contenido |
-|---|---|---|
-| ELO Liga MX | `data/processed/elo_historico.csv` | ELO por equipo y fecha, 38 torneos |
-| ELO Selecciones | `data/processed/elos_selecciones_20260412.json` | ~335 selecciones, actualizado al 12-abr-26 |
-| Resultados internacionales | `data/raw/internacional/results.csv` | 49,231 partidos desde 1872 |
-| Jugadores Clausura 2026 | `data/processed/jugadores_clausura2026.csv` | 41 columnas, stats P90 |
-| Histórico Liga MX | `data/raw/historico/` | 38 JSONs, 2010/11→2025/26 |
-| Predicciones | `data/processed/predicciones_log.csv` | Log de todas las predicciones hechas |
-| Logos Liga MX | `data/raw/logos/ligamx/` | 10 escudos PNG 192×192 de FotMob |
-| Banderas | `data/raw/flags/` | PNG de flagcdn.com, cacheadas |
+| Dataset | Ruta | Actualización | Confianza |
+|---|---|---|---|
+| ELO Liga MX | `data/processed/elo_historico.csv` | Daily (Actions) | ✅ Alta — 15 años, 38 torneos |
+| ELO Selecciones | `data/processed/elos_selecciones_*.json` | Daily (Actions) | ✅ Alta — 49k partidos desde 1872 |
+| Resultados internacionales | `data/raw/internacional/results.csv` | Daily (Actions) | ✅ Alta |
+| Histórico Liga MX | `data/raw/historico/` | Daily (Actions) | ✅ Alta — 38 JSONs |
+| Fixtures CCL 2025-26 | `data/raw/fotmob/ccl/ccl_fixtures_*.json` | Manual por ahora | ⚠️ Media — solo torneo actual |
+| ELO CCL | calculado en memoria | Manual | ❌ Baja — falta historial 2010-2025 |
+| Jugadores Clausura 2026 | `data/processed/jugadores_clausura2026.csv` | Manual | ⚠️ Media |
+| Logos Liga MX | `data/raw/logos/ligamx/` | Manual | ✅ Alta |
+| Logos CCL | `data/raw/logos/ccl/` | Manual | ✅ Alta — 22 equipos |
+| Banderas | `data/raw/flags/` | Manual | ✅ Alta |
 
 ---
 
-## Próximos 3 pasos más importantes
+## Arquitectura de datos — Decisiones clave
 
-### 1. CCL fixtures y predicciones
-Identificar el league ID de la CONCACAF Champions Cup en FotMob, descargar fixtures, agregar como competición con K=35 en el modelo. Generar predicciones de semifinales/finales.
+### Regla fundamental: infraestructura antes que modelo
+> Cada fuente de datos debe tener un GitHub Actions job que la actualice automáticamente ANTES de construir análisis sobre ella. Datos manuales = datos incompletos = modelo incorrecto.
 
-### 2. Twitter API bot
-Validar credenciales en `20_twitter_bot.py`. Script de jornada completa: genera imágenes + publica hilo automático. GitHub Actions cron para días de jornada Liga MX.
+### CCL — Deuda técnica documentada
+El ELO de la CCL se calculó con solo 35 partidos (torneo 2025-26). **No es confiable** para equipos con pocas apariciones.
 
-### 3. xG FBref — Capa 3
-Scraper xG FBref para Liga MX. Forma reciente ponderada como variable adicional. Scraper cuotas para tracker de value bets.
+**Plan de remediación (pendiente):**
+1. `scripts/build_ccl_historical.py` — scraper que recorre fechas históricas en FotMob para league id=915924. Estima ~500 fechas desde 2010. Persiste en `data/raw/fotmob/ccl/ccl_historical_{season}.json`.
+2. Integrar en `gen_predicciones_ccl.py`: usar ELO Liga MX como punto de partida para equipos mexicanos (ya tienen ELO calibrado de 15 años).
+3. MLS base ELOs manuales: LAFC ~1580, Seattle ~1560, LA Galaxy ~1530, Nashville ~1510, Cincinnati ~1490.
+4. Una vez con historial completo: recalibrar todos los ELOs.
+
+### FotMob API — Limitaciones conocidas
+- Endpoint: `fotmob.com/api/data/matches?date=YYYYMMDD` — solo por fecha, no por competición
+- Para historial de una liga específica: necesitas conocer las fechas de los partidos
+- Rate limit: ~1 req/seg sin bloqueos. Con 0.5s de sleep entre requests es estable.
+- League IDs relevantes: Liga MX=230, CCL=915924, Selecciones ccode=INT
+
+### GitHub Actions — Jobs activos y pendientes
+
+| Workflow | Trigger | Estado |
+|---|---|---|
+| `daily_pipeline.yml` | Diario 14:00 UTC | ✅ Activo |
+| CCL en pipeline diario (Paso 8) | Al agregar a daily_pipeline | ⏳ Pendiente |
+| `build_ccl_historical.yml` | Manual, una sola vez | ⏳ Pendiente |
+
+---
+
+## Próximos pasos (ver ROADMAP.md para detalle)
+
+1. **Integrar CCL en pipeline diario** — Paso 8 no-crítico: `update_ccl_fixtures.py` → `gen_predicciones_ccl.py`
+2. **Historial CCL** — `build_ccl_historical.py` + job manual de backfill
+3. **Twitter API** — secrets en GitHub → publicación automática
+4. **xG FBref** — Capa 3 del modelo
 
 ---
 

@@ -49,60 +49,89 @@
 
 ---
 
+## Principio rector — Infraestructura primero
+
+> **Regla de oro**: Antes de construir un modelo o análisis, construir el job que recolecta y persiste los datos en GitHub de forma automática. Un modelo que corre sobre datos incompletos produce resultados incorrectos. La infraestructura de datos es la prioridad absoluta.
+
+**Checklist antes de cualquier análisis nuevo:**
+1. ¿Existe un GitHub Actions job que descarga y persiste los datos automáticamente?
+2. ¿El historial es completo (no solo el torneo actual)?
+3. ¿Los datos sobreviven si Claude no está disponible por semanas?
+4. Solo después de responder SÍ a los tres: construir modelos encima.
+
+**Lección CCL 2025-26**: Se construyó modelo ELO con solo 35 partidos del torneo actual. Los ELOs resultantes no son confiables porque no hay historial. Fix pendiente: descargar historial completo de Concacaf CL desde 2010 (~500 fechas en FotMob).
+
+---
+
 ## Completado hoy ✅ — 2026-04-13
 - Pipeline GitHub Actions funcionando y confirmado verde
 - Dixon-Coles implementado en `11_modelo_prediccion.py`, `15_prediccion_elo_poisson.py`, `18_prediccion_selecciones.py`
 - Bebas Neue centralizada en `config_visual.py` — `FontProperties(fname=...)` directo, sin `addfont()`
-- try/except defensivo en 15 scripts
-- Jornadas 13 y 14 Liga MX actualizadas (125 partidos terminados)
-- YAML syntax fix en workflow (heredoc para scripts Python inline)
-- `.gitattributes` — TTF/imágenes marcados como binary
+- YAML syntax fix en workflow (heredoc para scripts Python inline) + `.gitattributes`
+- CONCACAF Champions Cup bootstrap: CCL id=915924, 22 logos, 35 fixtures 2025-26, 4 imágenes cuartos vuelta
+- Scripts: `scrape_ccl_logos.py`, `update_ccl_fixtures.py`, `gen_predicciones_ccl.py`
 
 ---
 
 ## Próximos pasos priorizados (actualizado 2026-04-13)
 
-### Prioridad 1 — Esta semana
+### 🔴 Prioridad 0 — Infraestructura de datos (PRIMERO, siempre)
+> Construir el job de GitHub Actions ANTES que el modelo. Sin datos completos en GitHub, no hay análisis confiable.
+
+#### CCL — Historial completo (BLOCKER para ELOs confiables)
+- [ ] **Job GitHub Actions `ccl_pipeline.yml`** — ya integrado en `daily_pipeline.yml` (Paso 8 pendiente de agregar)
+- [ ] **Scraper histórico CCL**: descargar Concacaf Champions League desde 2010 (~500 fechas FotMob, league id=915924)
+  - Script: `scripts/build_ccl_historical.py` — consulta fechas de partidos CCL históricos por año
+  - Output: `data/raw/fotmob/ccl/ccl_historical_YYYYMMDD.json` por temporada
+  - ELO arranca en 1500 por equipo y converge con ~15 años de datos
+- [ ] **Liga MX ELO como base para equipos mexicanos** en CCL
+  - Fix en `gen_predicciones_ccl.py`: si el equipo existe en `elo_historico.csv`, usar ese ELO como punto de partida en vez de 1500
+  - Equipos beneficiados: Tigres, Toluca, América, Cruz Azul, Monterrey, etc.
+- [ ] **MLS base ELOs**: asignar ELOs iniciales razonables para equipos MLS basados en rendimiento histórico en CCL
+  - LAFC ~1600, Seattle ~1560, Galaxy ~1530, Nashville ~1510, etc.
+
+#### Otros datos faltantes en GitHub Actions
+- [ ] **Clausura 2026 completo** — el pipeline diario ya corre, verificar que no se pierdan partidos
+- [ ] **Histórico internacional** — `results.csv` se actualiza diario ✅ ya funciona
+- [ ] **Apertura/Clausura histórico** — 38 torneos ya descargados ✅ completo
+
+### 🟡 Prioridad 1 — Esta semana
 - [ ] Activar write permissions: GitHub repo → Settings → Actions → General → Read and write permissions
-- [ ] CONCACAF Champions Cup: buscar league ID en FotMob, agregar como paso opcional en pipeline
-- [ ] Git pull automático en desktop: configurar script o cron local para sincronizar imágenes
+- [ ] Integrar CCL en `daily_pipeline.yml` como Paso 8 no-crítico: `update_ccl_fixtures.py` → `gen_predicciones_ccl.py`
+- [ ] Git pull automático en desktop para sincronizar imágenes generadas
 
-### Prioridad 1.5 — CONCACAF Champions Cup (detalle)
-- [ ] Identificar fixture completo de la CCL en FotMob (league ID a buscar)
-- [ ] Descargar resultados históricos de CCL para alimentar ELO
-- [ ] Agregar CCL como competición en el modelo (K=35 — continental)
-- [ ] Generar predicciones de semifinales/finales cuando aplique
-- [ ] Contenido específico para @Miau_Stats_MX sobre CCL
-
-### Prioridad 2 — Próximas 2 semanas
-- [ ] Twitter API: agregar `TWITTER_API_KEY` etc como secrets en GitHub → Settings → Secrets, modificar pipeline Paso 6 para publicar automáticamente
-- [ ] Notificación por correo: agregar paso en pipeline que mande resumen diario + imágenes a maucarvaz@gmail.com
+### 🟡 Prioridad 2 — Próximas 2 semanas
+- [ ] Twitter API: secrets en GitHub → pipeline publica imágenes automáticamente
+- [ ] Notificación diaria por correo: resumen + imágenes del día
 - [ ] xG FBref: scraper para Capa 3 del modelo
 
-### Prioridad 3 — Mes siguiente
+### 🟢 Prioridad 3 — Mes siguiente
 - [ ] Value betting: scraper de cuotas + comparador vs modelo
-- [ ] Kelly fraccionado: calcular tamaño óptimo de apuesta
-- [ ] 200 predicciones en tracker para validar modelo antes de apostar dinero real
+- [ ] Kelly fraccionado: tamaño óptimo de apuesta
+- [ ] 200 predicciones en tracker para validar modelo antes de apostar
 
-### Prioridad 4 — Infografías con Figma (cuando tengamos templates)
-- [ ] Diseñar templates en Figma para cada tipo de imagen
-- [ ] Script Python que llene templates via Figma API o exportación
-- [ ] Reemplazar matplotlib por imágenes Figma renderizadas
-- Objetivo: imágenes de calidad profesional sin depender de matplotlib
-
-### Prioridad 5 — Engagement @Miau_Stats_MX
-- [ ] Comentar en cuentas grandes con datos (ESPN, TUDN, Record)
-- [ ] Publicar tracker público de aciertos del modelo
-- [ ] Contenido semanal recurrente: ranking ELO lunes, predicciones viernes
-- [ ] Encuestas vinculadas a predicciones del modelo
+### 🟢 Prioridad 4 — Largo plazo
+- [ ] Templates Figma para infografías de calidad profesional
+- [ ] Engagement @Miau_Stats_MX: tracker público, contenido semanal recurrente
 
 ---
 
 ## Filosofía del proyecto
-- Minimizar tokens de Claude: automatizar todo lo repetitivo
-- Skills actualizados en cada sesión para recuperar contexto
+- **Infraestructura primero**: job de GitHub Actions que persiste datos ANTES de construir modelos
+- Minimizar tokens de Claude: automatizar todo lo repetitivo, Claude solo para diseño y análisis
+- Skills actualizados en cada sesión — Claude SIEMPRE lee skills antes de trabajar
 - Modelo que mejora solo con más datos, no con más intervención manual
 - Engagement orgánico basado en credibilidad del modelo vs resultados reales
+
+---
+
+## GitHub Actions Jobs — Estado
+
+| Workflow | Schedule | Estado | Hace |
+|---|---|---|---|
+| `daily_pipeline.yml` | 8am México diario | ✅ activo | Liga MX + intl + ELO + tracker + predicciones |
+| `ccl_pipeline.yml` | pendiente de crear | ⏳ | CCL fixtures + logos + predicciones |
+| `historical_backfill.yml` | manual (una vez) | ⏳ | Descargar historial CCL 2010→2025 |
 
 ---
 
@@ -113,3 +142,4 @@
 - Los scripts no tienen dependencias circulares: pipeline lineal 01→02→03→04→05...
 - `config_visual.py` es el único módulo compartido entre scripts de visualización
 - El venv está en `.venv/` — activar con `source .venv/bin/activate`
+- **Regla de naming para workflows**: `{competición}_pipeline.yml`, pasos no-críticos con `|| true`
