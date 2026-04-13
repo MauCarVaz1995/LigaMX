@@ -37,8 +37,11 @@ Thumbs.db
 *.swp
 *.swo
 
-# Logs
+# Logs — ignorar logs individuales, conservar summary y .gitkeep
+logs/pipeline_*.log
 *.log
+!logs/daily_summary.json
+!logs/.gitkeep
 
 # Data / cache (soccerdata)
 .soccerdata/

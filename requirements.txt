@@ -1,8 +1,30 @@
+# MAU-STATISTICS — dependencias de producción (scripts + pipeline)
+# Actualizado 2026-04-12
+
+# Visualización
+matplotlib==3.10.8
+mplsoccer==1.6.1
+pillow==12.1.1
+seaborn==0.13.2
+
+# Datos y modelo
+numpy==2.2.6
+pandas==2.3.3
+scipy==1.15.3
+
+# Scraping / HTTP
+requests==2.32.3
+beautifulsoup4==4.13.4
+lxml==6.0.2
+urllib3==1.26.20
+
+# Dashboard (opcional en CI — ignorar si falla)
 dash>=4.1.0
 dash-bootstrap-components>=2.0.4
 plotly>=6.6.0
-pandas>=2.3.0
-numpy>=2.2.0
-scipy>=1.15.0
-matplotlib>=3.10.0
-Pillow>=12.1.0
+
+# Utilidades
+python-dateutil==2.9.0.post0
+pytz==2026.1.post1
+tqdm==4.67.3
+packaging==26.0
