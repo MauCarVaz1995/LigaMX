@@ -40,18 +40,18 @@ jobs:
       - name: Verify Bebas Neue font
         run: |
           echo "Font in repo: $(ls -lh assets/fonts/)"
-          python -c "
-from pathlib import Path
-from matplotlib.font_manager import FontProperties
-p = Path('assets/fonts/BebasNeue-Regular.ttf')
-assert p.exists(), f'Font missing: {p}'
-print(f'Font file size: {p.stat().st_size} bytes')
-try:
-    fp = FontProperties(fname=str(p), size=12)
-    print('Bebas Neue OK — FontProperties cargado correctamente')
-except Exception as e:
-    print(f'WARNING: Bebas Neue no se pudo cargar ({e}) — se usara DejaVu Sans como fallback')
-"
+          python3 - <<'PYEOF'
+          from pathlib import Path
+          from matplotlib.font_manager import FontProperties
+          p = Path('assets/fonts/BebasNeue-Regular.ttf')
+          assert p.exists(), f'Font missing: {p}'
+          print(f'Font file size: {p.stat().st_size} bytes')
+          try:
+              fp = FontProperties(fname=str(p), size=12)
+              print('Bebas Neue OK')
+          except Exception as e:
+              print(f'WARNING: {e} — usando DejaVu Sans como fallback')
+          PYEOF
 
       - name: Run daily pipeline
         env:
