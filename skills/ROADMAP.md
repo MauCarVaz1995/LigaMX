@@ -1,6 +1,6 @@
 # ROADMAP.md — Plan de desarrollo MAU-STATISTICS
 
-> Estado al **2026-04-12**. Actualizar al completar cada fase.
+> Estado al **2026-04-13**. Actualizar al completar cada fase.
 
 ---
 
@@ -76,10 +76,16 @@
 - [ ] Generar predicciones de semifinales/finales cuando aplique
 - [ ] Contenido específico para @Miau_Stats_MX sobre CCL
 
-### Prioridad 2 — Automatización (en cuanto lleguen keys de Twitter)
+### Prioridad 2 — Automatización ✅ COMPLETADO (sesión 2026-04-13)
+- [x] `scripts/00_daily_pipeline.py` — orquestador completo con guardia, reintentos y exit codes no-críticos
+- [x] `.github/workflows/daily_pipeline.yml` — cron 8am México, workflow_dispatch, Python 3.10
+- [x] `assets/fonts/BebasNeue-Regular.ttf` incluida en repo (CI sin dependencias externas)
+- [x] `config_visual.py` centralizado — un solo punto de verdad para BEBAS_TTF
+- [x] Fix definitivo font: eliminado `addfont()`, usa `FontProperties(fname=...)` directamente
+- [x] `.gitattributes` — TTF/imágenes marcados como binary
+- [x] YAML syntax fix — heredoc para scripts Python inline en workflow
 - [ ] Validar credenciales Twitter API en `20_twitter_bot.py`
 - [ ] Script de jornada completa: genera imágenes + publica hilo automático
-- [ ] GitHub Actions: cron job diario para días de jornada Liga MX
 
 ### Prioridad 3 — Mejorar modelo (Capa 3)
 - [ ] Scraper xG FBref para Liga MX (agregar a `02c_get_stats_liga.py`)
