@@ -1,6 +1,6 @@
 # PROYECTO_OVERVIEW.md — LEE ESTO PRIMERO
 
-> Estado del proyecto al **2026-04-04**. Actualizar al cierre de cada sesión significativa.
+> Estado del proyecto al **2026-04-12**. Actualizar al cierre de cada sesión significativa.
 
 ---
 
@@ -18,7 +18,7 @@ Autor: **MauCarVaz1995** · GitHub: `MauCarVaz1995/LigaMX`
 
 ### Sistema de predicciones Liga MX ✅
 - Script principal: `scripts/gen_predicciones_ligamx_20260404.py`
-- Modelo: ELO histórico + Poisson + ventaja local (+100 ELO)
+- Modelo: ELO histórico + Poisson + Dixon-Coles (rho=-0.13) + ventaja local (+100 ELO) ✅
 - Output: 1080×1080px con heatmap degradado, círculos de % y IC 95% bootstrap
 - Paletas Liga MX: `medianoche_neon`, `oceano_esmeralda`, `rojo_fuego`
 - Escudos: descargados de FotMob CDN, cacheados en `data/raw/logos/ligamx/`
@@ -28,19 +28,21 @@ Autor: **MauCarVaz1995** · GitHub: `MauCarVaz1995/LigaMX`
 ### Sistema ELO Selecciones ✅
 - ELO histórico desde 1872, ~335 selecciones
 - Scripts: `18_prediccion_selecciones.py`, `update_elo_selecciones.py`
-- Último estado guardado: `data/processed/elos_selecciones_20260401.json`
+- Último estado guardado: `data/processed/elos_selecciones_20260412.json` ✅
 - K dinámico (20/25/35/60), multiplicador de margen de goles, sin regresión anual
 - Genera 3 imágenes: ranking top 20, últimos 5 partidos, heatmap predicción
+- Dixon-Coles implementado en `poisson_probs` (rho=-0.13) ✅
 
 ### Descarga de resultados internacionales ✅
 - Script: `scripts/update_intl_results.py`
 - Fuente: FotMob API `api/data/matches?date=YYYYMMDD`, filtro `ccode == "INT"`
-- CSV maestro: `data/raw/internacional/results.csv` (49,080+ partidos, actualizado al 2026-04-01)
+- CSV maestro: `data/raw/internacional/results.csv` (49,231 partidos, actualizado al 2026-04-12) ✅
 
 ### Tracker de predicciones ✅
 - Log: `data/processed/predicciones_log.csv`
 - Script: `scripts/04_predicciones_tracker.py`
 - Columnas: fecha, partido, ELOs, probabilidades, marcador probable, paleta, resultado real, acierto
+- **22 predicciones evaluadas, 50% acierto baseline** ✅
 
 ### Dashboard interactivo ✅
 - `scripts/dashboard/app.py` → http://localhost:8050
@@ -69,8 +71,8 @@ Autor: **MauCarVaz1995** · GitHub: `MauCarVaz1995/LigaMX`
 | Dataset | Ruta | Contenido |
 |---|---|---|
 | ELO Liga MX | `data/processed/elo_historico.csv` | ELO por equipo y fecha, 38 torneos |
-| ELO Selecciones | `data/processed/elos_selecciones_20260401.json` | ~335 selecciones, actualizado al 01-abr-26 |
-| Resultados internacionales | `data/raw/internacional/results.csv` | 49,080+ partidos desde 1872 |
+| ELO Selecciones | `data/processed/elos_selecciones_20260412.json` | ~335 selecciones, actualizado al 12-abr-26 |
+| Resultados internacionales | `data/raw/internacional/results.csv` | 49,231 partidos desde 1872 |
 | Jugadores Clausura 2026 | `data/processed/jugadores_clausura2026.csv` | 41 columnas, stats P90 |
 | Histórico Liga MX | `data/raw/historico/` | 38 JSONs, 2010/11→2025/26 |
 | Predicciones | `data/processed/predicciones_log.csv` | Log de todas las predicciones hechas |
@@ -81,17 +83,14 @@ Autor: **MauCarVaz1995** · GitHub: `MauCarVaz1995/LigaMX`
 
 ## Próximos 3 pasos más importantes
 
-### 1. Completar predicciones Jornada actual con resultado real
-Hay 5 predicciones en el log del 2026-04-04 sin `resultado_real`. Después de cada partido, actualizar:
-```bash
-python3 scripts/04_predicciones_tracker.py resultado "Monterrey vs San Luis" 2026-04-04 X X
-```
+### 1. CCL fixtures y predicciones
+Identificar el league ID de la CONCACAF Champions Cup en FotMob, descargar fixtures, agregar como competición con K=35 en el modelo. Generar predicciones de semifinales/finales.
 
-### 2. Regenerar predicciones con `11_modelo_prediccion.py` integrado al nuevo diseño
-El script `11_modelo_prediccion.py` tiene el diseño con **círculos de porcentaje** (no bloques rectangulares). El diseño actual de `gen_predicciones_ligamx_20260404.py` usa bloques. Unificar ambos en un solo script canónico de predicción para Liga MX.
+### 2. Twitter API bot
+Validar credenciales en `20_twitter_bot.py`. Script de jornada completa: genera imágenes + publica hilo automático. GitHub Actions cron para días de jornada Liga MX.
 
-### 3. Implementar Dixon-Coles
-El modelo actual es Poisson independiente. Dixon-Coles corrige la subestimación de resultados bajos (0-0, 1-0, 0-1, 1-1). Ver `skills/MODELO_METODOLOGIA.md` para la fórmula.
+### 3. xG FBref — Capa 3
+Scraper xG FBref para Liga MX. Forma reciente ponderada como variable adicional. Scraper cuotas para tracker de value bets.
 
 ---
 

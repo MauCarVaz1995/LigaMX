@@ -1,6 +1,6 @@
 # ROADMAP.md — Plan de desarrollo MAU-STATISTICS
 
-> Estado al **2026-04-04**. Actualizar al completar cada fase.
+> Estado al **2026-04-12**. Actualizar al completar cada fase.
 
 ---
 
@@ -24,6 +24,9 @@
 - ✅ IC 95% bootstrap Monte Carlo (n=1000)
 - ✅ Escudos de equipos en header (FotMob CDN, caché local)
 - ✅ Tracker de predicciones con log CSV
+- ✅ Dixon-Coles implementado en los 3 scripts de predicción (rho=-0.13)
+- ✅ Jornadas 13 y 14 Liga MX Clausura 2026 actualizadas (125/153 terminados)
+- ✅ Tracker con 22 predicciones evaluadas, 50% acierto baseline
 
 ### Fase 4 — Selecciones nacionales
 - ✅ ELO histórico desde 1872 (~335 selecciones)
@@ -32,6 +35,8 @@
 - ✅ Scraping automático de resultados internacionales (`update_intl_results.py`)
 - ✅ Actualización incremental del ELO (`update_elo_selecciones.py`)
 - ✅ Banderas nacionales de flagcdn.com (caché local)
+- ✅ 68 partidos internacionales 2-12 abril agregados (total: 49,231)
+- ✅ ELO selecciones actualizado al 12-abril (`elos_selecciones_20260412.json`, México 1892.6)
 
 ### Fase 5 — Dashboard interactivo
 - ✅ Dash + Plotly + Bootstrap DARKLY
@@ -54,12 +59,22 @@
 
 ---
 
-## Próximos pasos priorizados (actualizado 2026-04-04)
+## Próximos pasos priorizados (actualizado 2026-04-12)
 
-### Prioridad 1 — Esta semana
-- [x] Completar Dixon-Coles en `11_modelo_prediccion.py` y `15_prediccion_elo_poisson.py`
-- [x] Confirmar con regeneración de `pred_Cruz_Azul_Pachuca.png`
-- [ ] Commit con diferencia de porcentajes vs modelo anterior
+### Prioridad 1 — ✅ COMPLETADO (sesión 2026-04-12)
+- [x] Dixon-Coles implementado en `11_modelo_prediccion.py`, `15_prediccion_elo_poisson.py`, `18_prediccion_selecciones.py`
+- [x] Jornadas 13 y 14 Liga MX actualizadas (17 partidos nuevos)
+- [x] 68 partidos internacionales 2-12 abril agregados a `results.csv`
+- [x] ELO selecciones actualizado al 12-abril (`elos_selecciones_20260412.json`)
+- [x] Tracker con 22 predicciones evaluadas, 50% acierto baseline
+- [x] Footers actualizados: "Modelo: ELO + Poisson-Dixon-Coles"
+
+### Prioridad 1.5 — CONCACAF Champions Cup
+- [ ] Identificar fixture completo de la CCL en FotMob (league ID a buscar)
+- [ ] Descargar resultados históricos de CCL para alimentar ELO
+- [ ] Agregar CCL como competición en el modelo (K=35 — continental)
+- [ ] Generar predicciones de semifinales/finales cuando aplique
+- [ ] Contenido específico para @Miau_Stats_MX sobre CCL
 
 ### Prioridad 2 — Automatización (en cuanto lleguen keys de Twitter)
 - [ ] Validar credenciales Twitter API en `20_twitter_bot.py`
