@@ -81,3 +81,10 @@ jobs:
           git diff --staged --quiet || \
             git commit -m "auto: daily update $(date -u +%Y-%m-%d) [skip ci]"
           git push 2>/dev/null || true
+
+      - name: Send daily email summary (non-critical)
+        env:
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          MPLBACKEND: Agg
+        run: |
+          python scripts/send_daily_email.py || echo "[warn] Email falló — continuando"

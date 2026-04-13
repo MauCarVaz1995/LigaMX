@@ -669,6 +669,13 @@ def main():
     log.info("")
     summary["pasos"]["paso7"] = step7_git_push(summary["pasos"])
 
+    # ── Guardar summary antes del email (el email lo lee) ───────────────────
+    summary["end"]       = datetime.now().isoformat()
+    summary["elapsed_s"] = round(time.time() - start_time, 1)
+    CRITICAL_PRE = {"paso1", "paso2", "paso3", "paso4"}
+    summary["success"] = not any(summary["pasos"].get(k, {}).get("error") for k in CRITICAL_PRE)
+    save_summary(summary)
+
     # ── Guardar summary ─────────────────────────────────────────────────────
     summary["end"]       = datetime.now().isoformat()
     summary["elapsed_s"] = round(time.time() - start_time, 1)
