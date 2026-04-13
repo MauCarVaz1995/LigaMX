@@ -37,12 +37,17 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Download Bebas Neue font
+      - name: Verify Bebas Neue font
         run: |
-          mkdir -p assets/fonts
-          curl -L "https://github.com/googlefonts/bebas-neue/raw/main/fonts/ttf/BebasNeue-Regular.ttf" \
-            -o assets/fonts/BebasNeue-Regular.ttf
-          echo "Font downloaded: $(ls -lh assets/fonts/)"
+          echo "Font in repo: $(ls -lh assets/fonts/)"
+          python -c "
+import matplotlib.font_manager as fm
+from pathlib import Path
+p = Path('assets/fonts/BebasNeue-Regular.ttf')
+assert p.exists(), f'Font missing: {p}'
+fm.fontManager.addfont(str(p))
+print('Bebas Neue OK')
+"
 
       - name: Run daily pipeline
         env:
