@@ -45,19 +45,61 @@ SUMMARY_F  = LOGS_DIR / "daily_summary.json"
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Colectar imágenes generadas hoy
+# Colectar imágenes relevantes (no solo las de hoy)
 # ─────────────────────────────────────────────────────────────────────────────
-def collect_images_today() -> list[Path]:
-    """Devuelve todas las PNGs modificadas/creadas hoy en las carpetas de output."""
-    today_ts_start = datetime.combine(date.today(), datetime.min.time()).timestamp()
+CHARTS = BASE / "output/charts"
+
+def collect_all_relevant() -> list[Path]:
+    """
+    Devuelve todas las imágenes relevantes del proyecto, organizadas por sección.
+    Excluye: pizza charts, paletas de prueba, predicciones_hoy/ (formato viejo).
+    """
     imgs = []
-    for search_dir in [PRED_DIR, PARTY_DIR]:
-        if not search_dir.exists():
-            continue
-        for p in sorted(search_dir.rglob("*.png")):
-            if p.stat().st_mtime >= today_ts_start:
-                imgs.append(p)
-    return imgs
+
+    # 1. Predicciones (estructura nueva: LigaMX/J{N}/, CCL/Semis/, Internacional/)
+    if PRED_DIR.exists():
+        imgs += sorted(PRED_DIR.rglob("*.png"))
+
+    # 2. Post-partido (ratings jugadores, porteros, team stats)
+    if PARTY_DIR.exists():
+        imgs += sorted(PARTY_DIR.glob("*.png"))
+
+    # 3. ELO charts
+    for name in ["elo_ranking.png", "elo_evolucion.png"]:
+        p = CHARTS / name
+        if p.exists():
+            imgs.append(p)
+
+    # 4. Selecciones
+    for name in ["selecciones_ranking_elo.png", "selecciones_ultimos5.png",
+                 "selecciones_prediccion.png"]:
+        p = CHARTS / name
+        if p.exists():
+            imgs.append(p)
+
+    # 5. Resúmenes de jornada (raíz y subcarpetas jornada*/)
+    imgs += sorted(CHARTS.glob("resumen_postjornada*.png"))
+    for jfolder in sorted(CHARTS.glob("jornada*/")):
+        imgs += sorted(jfolder.glob("resumen_*.png"))
+        imgs += sorted(jfolder.glob("prediccion_*.png"))
+
+    # 6. Montecarlo / simulación del torneo
+    for name in ["montecarlo_clausura2026.png", "montecarlo_clausura2026_rojo_fuego.png"]:
+        p = CHARTS / name
+        if p.exists():
+            imgs.append(p)
+
+    # 7. Rankings de jugadores
+    imgs += sorted(CHARTS.glob("ranking_*.png"))
+
+    # Deduplicar manteniendo orden
+    seen = set()
+    out = []
+    for p in imgs:
+        if p not in seen:
+            seen.add(p)
+            out.append(p)
+    return out
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -174,7 +216,7 @@ def build_html(summary: dict, images: list[Path]) -> str:
 # ─────────────────────────────────────────────────────────────────────────────
 def send_email(app_password: str, dry_run: bool = False) -> bool:
     summary = load_summary()
-    images  = collect_images_today()
+    images  = collect_all_relevant()
     html    = build_html(summary, images)
 
     subject = f"MAU-STATISTICS · {TODAY} · {len(images)} imágenes"
