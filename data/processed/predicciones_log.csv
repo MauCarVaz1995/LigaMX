@@ -7,7 +7,7 @@ fecha_prediccion,partido,equipo_local,equipo_visitante,elo_local,elo_visitante,p
 2026-03-29 12:06:23,Cayman Islands vs Bahamas,Cayman Islands,Bahamas,1115.0,1086.0,35.8,29.6,34.4,Local,1-1,1.0875,1.0592,oceano_esmeralda,2026-03-29,,,,,
 2026-03-29 12:06:25,Cape Verde vs Finland,Cape Verde,Finland,1638.0,1576.0,38.9,23.7,36.4,Local,1-1,1.5976,1.5371,cyberpunk_quetzal,2026-03-29,,,,,
 2026-03-29 12:06:36,Mexico vs Portugal,Mexico,Portugal,1884.8,1990.0,36.2,21.3,39.9,Visitante,1-1,1.248,1.317,rojo_fuego,2026-03-29,Empate,0.0,0.0,False,2.0
-2026-03-29 22:18:22,Bosnia and Herzegovina vs Italy,Bosnia and Herzegovina,Italy,1605.6,1905.4,32.2,22.6,43.6,Visitante,1-1,1.5273,1.8125,medianoche_neon,2026-03-31,,,,,
+2026-03-29 22:18:22,Bosnia and Herzegovina vs Italy,Bosnia and Herzegovina,Italy,1605.6,1905.4,32.2,22.6,43.6,Visitante,1-1,1.5273,1.8125,medianoche_neon,2026-03-31,empate,1.0,1.0,False,
 2026-03-29 22:18:25,Czech Republic vs Denmark,Czech Republic,Denmark,1765.2,1872.0,36.0,22.4,39.9,Visitante,1-1,1.6792,1.7807,oceano_esmeralda,2026-03-31,,,,,
 2026-03-29 22:18:29,Kosovo vs Turkey,Kosovo,Turkey,1685.8,1853.7,34.7,22.7,41.0,Visitante,1-1,1.6036,1.7633,radioactivo,2026-03-31,,,,,
 2026-03-29 22:18:33,Sweden vs Poland,Sweden,Poland,1722.5,1777.8,36.8,22.9,38.9,Visitante,1-1,1.6385,1.6911,medianoche_neon,2026-03-31,local,3.0,2.0,False,
