@@ -49,48 +49,40 @@
 
 ---
 
-## En desarrollo 🔧
-
-### `gen_predicciones_ligamx_20260404.py` → script canónico
-- ✅ Diseño con heatmap degradado + bloques de %
-- ✅ IC 95% bootstrap
-- ✅ Escudos en header
-- ⏳ Unificar con diseño de círculos de `11_modelo_prediccion.py`
+## Completado hoy ✅ — 2026-04-13
+- Pipeline GitHub Actions funcionando y confirmado verde
+- Dixon-Coles implementado en `11_modelo_prediccion.py`, `15_prediccion_elo_poisson.py`, `18_prediccion_selecciones.py`
+- Bebas Neue centralizada en `config_visual.py` — `FontProperties(fname=...)` directo, sin `addfont()`
+- try/except defensivo en 15 scripts
+- Jornadas 13 y 14 Liga MX actualizadas (125 partidos terminados)
+- YAML syntax fix en workflow (heredoc para scripts Python inline)
+- `.gitattributes` — TTF/imágenes marcados como binary
 
 ---
 
-## Próximos pasos priorizados (actualizado 2026-04-12)
+## Próximos pasos priorizados (actualizado 2026-04-13)
 
-### Prioridad 1 — ✅ COMPLETADO (sesión 2026-04-12)
-- [x] Dixon-Coles implementado en `11_modelo_prediccion.py`, `15_prediccion_elo_poisson.py`, `18_prediccion_selecciones.py`
-- [x] Jornadas 13 y 14 Liga MX actualizadas (17 partidos nuevos)
-- [x] 68 partidos internacionales 2-12 abril agregados a `results.csv`
-- [x] ELO selecciones actualizado al 12-abril (`elos_selecciones_20260412.json`)
-- [x] Tracker con 22 predicciones evaluadas, 50% acierto baseline
-- [x] Footers actualizados: "Modelo: ELO + Poisson-Dixon-Coles"
+### Prioridad 1 — Esta semana
+- [ ] Activar write permissions: GitHub repo → Settings → Actions → General → Read and write permissions
+- [ ] CONCACAF Champions Cup: buscar league ID en FotMob, agregar como paso opcional en pipeline
+- [ ] Git pull automático en desktop: configurar script o cron local para sincronizar imágenes
 
-### Prioridad 1.5 — CONCACAF Champions Cup
+### Prioridad 1.5 — CONCACAF Champions Cup (detalle)
 - [ ] Identificar fixture completo de la CCL en FotMob (league ID a buscar)
 - [ ] Descargar resultados históricos de CCL para alimentar ELO
 - [ ] Agregar CCL como competición en el modelo (K=35 — continental)
 - [ ] Generar predicciones de semifinales/finales cuando aplique
 - [ ] Contenido específico para @Miau_Stats_MX sobre CCL
 
-### Prioridad 2 — Automatización ✅ COMPLETADO (sesión 2026-04-13)
-- [x] `scripts/00_daily_pipeline.py` — orquestador completo con guardia, reintentos y exit codes no-críticos
-- [x] `.github/workflows/daily_pipeline.yml` — cron 8am México, workflow_dispatch, Python 3.10
-- [x] `assets/fonts/BebasNeue-Regular.ttf` incluida en repo (CI sin dependencias externas)
-- [x] `config_visual.py` centralizado — un solo punto de verdad para BEBAS_TTF
-- [x] Fix definitivo font: eliminado `addfont()`, usa `FontProperties(fname=...)` directamente
-- [x] `.gitattributes` — TTF/imágenes marcados como binary
-- [x] YAML syntax fix — heredoc para scripts Python inline en workflow
-- [ ] Validar credenciales Twitter API en `20_twitter_bot.py`
-- [ ] Script de jornada completa: genera imágenes + publica hilo automático
+### Prioridad 2 — Próximas 2 semanas
+- [ ] Twitter API: agregar `TWITTER_API_KEY` etc como secrets en GitHub → Settings → Secrets, modificar pipeline Paso 6 para publicar automáticamente
+- [ ] Notificación por correo: agregar paso en pipeline que mande resumen diario + imágenes a maucarvaz@gmail.com
+- [ ] xG FBref: scraper para Capa 3 del modelo
 
-### Prioridad 3 — Mejorar modelo (Capa 3)
-- [ ] Scraper xG FBref para Liga MX (agregar a `02c_get_stats_liga.py`)
-- [ ] Forma reciente ponderada como variable adicional
-- [ ] Scraper cuotas casas de apuestas para tracker de value bets
+### Prioridad 3 — Mes siguiente
+- [ ] Value betting: scraper de cuotas + comparador vs modelo
+- [ ] Kelly fraccionado: calcular tamaño óptimo de apuesta
+- [ ] 200 predicciones en tracker para validar modelo antes de apostar dinero real
 
 ### Prioridad 4 — Infografías con Figma (cuando tengamos templates)
 - [ ] Diseñar templates en Figma para cada tipo de imagen

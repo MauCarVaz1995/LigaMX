@@ -1,6 +1,6 @@
 # PROYECTO_OVERVIEW.md — LEE ESTO PRIMERO
 
-> Estado del proyecto al **2026-04-12**. Actualizar al cierre de cada sesión significativa.
+> Estado del proyecto al **2026-04-13**. Actualizar al cierre de cada sesión significativa.
 
 ---
 
@@ -14,7 +14,60 @@ Autor: **MauCarVaz1995** · GitHub: `MauCarVaz1995/LigaMX`
 
 ---
 
-## Estado actual — qué funciona HOY
+## Estado actual — 2026-04-13
+
+### ✅ Funcionando
+- Pipeline automatizado GitHub Actions — corre cada día 8am México sin intervención
+  - Paso 1: Descarga resultados Liga MX de FotMob
+  - Paso 2: Recalcula ELO Liga MX incremental
+  - Paso 3: Descarga partidos internacionales
+  - Paso 4: Recalcula ELO selecciones incremental
+  - Paso 5: Actualiza tracker de predicciones con resultados reales
+  - Paso 6: Genera imágenes de predicción de partidos del día
+  - Paso 7: Hace commit y push automático al repo
+- Modelo: ELO + Poisson + Dixon-Coles (rho=-0.13)
+- Liga MX Clausura 2026: jornadas 1-14 completas (125 partidos)
+- Internacionales: actualizados al 2026-04-13 (49,231 partidos)
+- Tracker: 23 predicciones, 11/23 aciertos (47.8% baseline)
+- Bebas Neue: cargada desde `assets/fonts/` en CI y local
+
+### ❓ Preguntas frecuentes sobre el pipeline
+
+**¿Dónde se guardan las imágenes?**
+Las imágenes se generan en `output/charts/` dentro del repo de GitHub.
+El Paso 7 hace commit y push automático — quedan guardadas en GitHub.
+Para verlas/usarlas en tu PC: hacer `git pull` en tu terminal local.
+NO se sincronizan automáticamente con tu desktop — necesitas hacer pull.
+
+**¿Cómo sé que el job corrió bien?**
+- GitHub → repo → Actions → checkmark verde = OK
+- GitHub → repo → commits → busca "auto: daily update YYYY-MM-DD"
+- O revisar `logs/daily_summary.json` en el repo
+
+**¿Qué hace exactamente cada día?**
+1. Descarga resultados de FotMob (Liga MX + internacionales)
+2. Actualiza ELOs de todos los equipos afectados
+3. Llena resultados reales en predicciones pasadas
+4. Genera imágenes de predicción para partidos de hoy
+5. Guarda todo en GitHub con commit automático
+
+**¿Se mandan imágenes por correo?**
+Aún NO — está en el roadmap. Se puede agregar con SendGrid o Gmail API.
+
+**¿Se publican automáticamente en Twitter?**
+Aún NO — falta configurar Twitter API keys como secrets en GitHub.
+
+### ⏳ Pendiente prioritario
+1. Activar write permissions en GitHub repo Settings → Actions → General
+2. CONCACAF Champions Cup — agregar fixtures y ELO histórico
+3. Twitter API — agregar al pipeline para publicación automática
+4. Git pull automático en desktop — configurar para sincronizar imágenes
+5. Notificación por correo — SendGrid o Gmail API
+6. xG FBref — Capa 3 del modelo
+
+---
+
+## Sistemas disponibles (referencia rápida)
 
 ### Sistema de predicciones Liga MX ✅
 - Script principal: `scripts/gen_predicciones_ligamx_20260404.py`
@@ -36,13 +89,13 @@ Autor: **MauCarVaz1995** · GitHub: `MauCarVaz1995/LigaMX`
 ### Descarga de resultados internacionales ✅
 - Script: `scripts/update_intl_results.py`
 - Fuente: FotMob API `api/data/matches?date=YYYYMMDD`, filtro `ccode == "INT"`
-- CSV maestro: `data/raw/internacional/results.csv` (49,231 partidos, actualizado al 2026-04-12) ✅
+- CSV maestro: `data/raw/internacional/results.csv` (49,231 partidos, actualizado al 2026-04-13) ✅
 
 ### Tracker de predicciones ✅
 - Log: `data/processed/predicciones_log.csv`
 - Script: `scripts/04_predicciones_tracker.py`
 - Columnas: fecha, partido, ELOs, probabilidades, marcador probable, paleta, resultado real, acierto
-- **22 predicciones evaluadas, 50% acierto baseline** ✅
+- **23 predicciones evaluadas, 47.8% acierto baseline** ✅
 
 ### Dashboard interactivo ✅
 - `scripts/dashboard/app.py` → http://localhost:8050
