@@ -1,25 +1,25 @@
 {
-  "date": "2026-04-13",
-  "start": "2026-04-13T02:17:05.648120",
+  "date": "2026-04-14",
+  "start": "2026-04-14T15:06:16.988985",
   "pasos": {
     "paso1": {
-      "nuevos": 0,
+      "nuevos": 1,
       "terminados_antes": 125,
-      "terminados_despues": 125,
+      "terminados_despues": 126,
       "error": null,
-      "elapsed_s": 73.3
+      "elapsed_s": 68.7
     },
     "paso2": {
-      "equipos_afectados": 0,
-      "registros_nuevos": 0,
+      "equipos_afectados": 2,
+      "registros_nuevos": 2,
       "error": null,
       "elapsed_s": 0.0
     },
     "paso3": {
       "nuevos": 0,
-      "fechas_procesadas": 4,
+      "fechas_procesadas": 0,
       "error": null,
-      "elapsed_s": 7.9
+      "elapsed_s": 408.0
     },
     "paso4": {
       "selecciones_afectadas": 0,
@@ -28,18 +28,18 @@
       "elapsed_s": 0.1
     },
     "paso5": {
-      "actualizados": 1,
-      "pendientes": 10,
+      "actualizados": 0,
+      "pendientes": 9,
       "aciertos": 11,
       "total_evaluados": 23,
       "error": null,
-      "elapsed_s": 2.5
+      "elapsed_s": 2.6
     },
     "paso6": {
-      "predicciones_generadas": 3,
+      "predicciones_generadas": 1,
       "saltado": false,
       "error": null,
-      "elapsed_s": 9.5
+      "elapsed_s": 1.6
     },
     "paso7": {
       "committed": false,
@@ -47,8 +47,8 @@
       "error": null
     }
   },
-  "end": "2026-04-13T02:18:38.879350",
-  "elapsed_s": 93.2,
+  "end": "2026-04-14T15:14:18.019014",
+  "elapsed_s": 481.0,
   "success": true,
   "critical_failed": false,
   "noncritical_errors": []

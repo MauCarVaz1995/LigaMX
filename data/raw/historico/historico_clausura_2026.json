@@ -60,8 +60,8 @@
       "g": 7,
       "e": 6,
       "p": 1,
-      "gf": 19,
-      "gc": 8,
+      "gf": 20,
+      "gc": 9,
       "pts": 27
     },
     {
@@ -168,8 +168,8 @@
       "g": 4,
       "e": 3,
       "p": 7,
-      "gf": 20,
-      "gc": 22,
+      "gf": 21,
+      "gc": 23,
       "pts": 15
     },
     {
@@ -1849,16 +1849,16 @@
     },
     {
       "id": "5101840",
-      "fecha": "2026-04-13T01:00:00.000Z",
+      "fecha": "2026-04-13T01:00:00Z",
       "jornada": "14",
       "local": "Toluca",
       "local_id": "6618",
       "visitante": "Atletico de San Luis",
       "visitante_id": "6358",
-      "goles_local": null,
-      "goles_visit": null,
-      "score": "0 - 0",
-      "terminado": false
+      "goles_local": 1,
+      "goles_visit": 1,
+      "score": "1 - 1",
+      "terminado": true
     },
     {
       "id": "5101841",
@@ -1887,19 +1887,6 @@
       "terminado": false
     },
     {
-      "id": "5101843",
-      "fecha": "2026-04-18T03:00:00Z",
-      "jornada": "15",
-      "local": "Necaxa",
-      "local_id": "1842",
-      "visitante": "Tigres",
-      "visitante_id": "8561",
-      "goles_local": null,
-      "goles_visit": null,
-      "score": "",
-      "terminado": false
-    },
-    {
       "id": "5101844",
       "fecha": "2026-04-18T23:00:00Z",
       "jornada": "15",
@@ -1907,6 +1894,19 @@
       "local_id": "6578",
       "visitante": "Tijuana",
       "visitante_id": "162418",
+      "goles_local": null,
+      "goles_visit": null,
+      "score": "",
+      "terminado": false
+    },
+    {
+      "id": "5101843",
+      "fecha": "2026-04-18T23:00:00Z",
+      "jornada": "15",
+      "local": "Necaxa",
+      "local_id": "1842",
+      "visitante": "Tigres",
+      "visitante_id": "8561",
       "goles_local": null,
       "goles_visit": null,
       "score": "",
