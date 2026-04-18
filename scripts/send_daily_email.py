@@ -47,59 +47,85 @@ SUMMARY_F  = LOGS_DIR / "daily_summary.json"
 # ─────────────────────────────────────────────────────────────────────────────
 # Colectar imágenes relevantes (no solo las de hoy)
 # ─────────────────────────────────────────────────────────────────────────────
-CHARTS = BASE / "output/charts"
+CHARTS   = BASE / "output/charts"
+PRED_DIR = BASE / "output/charts/predicciones"
 
-def collect_all_relevant() -> list[Path]:
+
+def collect_by_section() -> dict[str, list[Path]]:
     """
-    Devuelve todas las imágenes relevantes del proyecto, organizadas por sección.
-    Excluye: pizza charts, paletas de prueba, predicciones_hoy/ (formato viejo).
+    Devuelve imágenes agrupadas por sección para el email.
+    Estructura:
+      "Liga MX"       → predicciones J{N} + postpartido J{N}
+      "CCL"           → predicciones CCL
+      "Internacional" → predicciones Intl + selecciones
+      "ELO & Stats"   → ELO, montecarlo, rankings
     """
-    imgs = []
+    sections: dict[str, list[Path]] = {
+        "Liga MX": [],
+        "CCL": [],
+        "Internacional": [],
+        "ELO & Stats": [],
+    }
 
-    # 1. Predicciones (estructura nueva: LigaMX/J{N}/, CCL/Semis/, Internacional/)
-    if PRED_DIR.exists():
-        imgs += sorted(PRED_DIR.rglob("*.png"))
+    # Liga MX — predicciones + postpartido en J{N}/
+    liga_root = PRED_DIR / "LigaMX_Clausura_2026"
+    if liga_root.exists():
+        for jdir in sorted(liga_root.iterdir()):
+            if not jdir.is_dir():
+                continue
+            # Predicciones directas en J{N}/
+            sections["Liga MX"] += sorted(jdir.glob("pred_*.png"))
+            # Post-partido en J{N}/postpartido/
+            pp_dir = jdir / "postpartido"
+            if pp_dir.exists():
+                sections["Liga MX"] += sorted(pp_dir.glob("*.png"))
 
-    # 2. Post-partido (ratings jugadores, porteros, team stats)
-    if PARTY_DIR.exists():
-        imgs += sorted(PARTY_DIR.glob("*.png"))
+    # CCL
+    ccl_root = PRED_DIR / "CCL_2025-26"
+    if ccl_root.exists():
+        sections["CCL"] += sorted(ccl_root.rglob("*.png"))
 
-    # 3. ELO charts
-    for name in ["elo_ranking.png", "elo_evolucion.png"]:
-        p = CHARTS / name
-        if p.exists():
-            imgs.append(p)
+    # Internacional — predicciones
+    intl_root = PRED_DIR / "Internacional"
+    if intl_root.exists():
+        sections["Internacional"] += sorted(intl_root.rglob("*.png"))
 
-    # 4. Selecciones
+    # Internacional — selecciones charts
     for name in ["selecciones_ranking_elo.png", "selecciones_ultimos5.png",
                  "selecciones_prediccion.png"]:
         p = CHARTS / name
         if p.exists():
-            imgs.append(p)
+            sections["Internacional"].append(p)
 
-    # 5. Resúmenes de jornada (raíz y subcarpetas jornada*/)
-    imgs += sorted(CHARTS.glob("resumen_postjornada*.png"))
-    for jfolder in sorted(CHARTS.glob("jornada*/")):
-        imgs += sorted(jfolder.glob("resumen_*.png"))
-        imgs += sorted(jfolder.glob("prediccion_*.png"))
+    # Internacional — Mexico_vs_X predicciones antiguas
+    for folder in sorted(PRED_DIR.glob("Mexico_vs_*")):
+        sections["Internacional"] += sorted(folder.glob("*.png"))
 
-    # 6. Montecarlo / simulación del torneo
-    for name in ["montecarlo_clausura2026.png", "montecarlo_clausura2026_rojo_fuego.png"]:
+    # ELO & Stats
+    for name in ["elo_ranking.png", "elo_evolucion.png",
+                 "montecarlo_clausura2026.png",
+                 "ranking_portero.png", "ranking_defensa.png",
+                 "ranking_mediocampista.png", "ranking_delantero.png"]:
         p = CHARTS / name
         if p.exists():
-            imgs.append(p)
+            sections["ELO & Stats"].append(p)
 
-    # 7. Rankings de jugadores
-    imgs += sorted(CHARTS.glob("ranking_*.png"))
+    # Resúmenes de jornada viejos (raíz)
+    old_resumenes = sorted(CHARTS.glob("resumen_postjornada*.png"))
+    if old_resumenes:
+        sections["Liga MX"] += old_resumenes
 
-    # Deduplicar manteniendo orden
-    seen = set()
-    out = []
-    for p in imgs:
-        if p not in seen:
-            seen.add(p)
-            out.append(p)
-    return out
+    # Deduplicar por sección
+    for k in sections:
+        seen: set = set()
+        deduped = []
+        for p in sections[k]:
+            if p not in seen:
+                seen.add(p)
+                deduped.append(p)
+        sections[k] = deduped
+
+    return sections
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -117,7 +143,14 @@ def load_summary() -> dict:
 # ─────────────────────────────────────────────────────────────────────────────
 # Construir cuerpo HTML
 # ─────────────────────────────────────────────────────────────────────────────
-def build_html(summary: dict, images: list[Path]) -> str:
+SECTION_COLORS = {
+    "Liga MX":       "#e53935",
+    "CCL":           "#1565C0",
+    "Internacional": "#2E7D32",
+    "ELO & Stats":   "#6A1B9A",
+}
+
+def build_html(summary: dict, sections: dict[str, list[Path]]) -> str:
     p = summary.get("pasos", {})
     nuevos_liga = p.get("paso1", {}).get("nuevos", 0)
     nuevos_intl = p.get("paso3", {}).get("nuevos", 0)
@@ -127,85 +160,80 @@ def build_html(summary: dict, images: list[Path]) -> str:
     aciertos    = p.get("paso5", {}).get("aciertos", 0)
     total_eval  = p.get("paso5", {}).get("total_evaluados", 0)
     pct_acierto = f"{100*aciertos/total_eval:.1f}%" if total_eval else "N/A"
-    imgs_gen    = p.get("paso6", {}).get("predicciones_generadas", 0)
     git_pushed  = "✅" if p.get("paso7", {}).get("pushed") else "⚠️ No"
     elapsed     = summary.get("elapsed_s", "?")
     pipeline_ok = "✅ OK" if summary.get("success") else "❌ FALLO"
+    total_imgs  = sum(len(v) for v in sections.values())
 
     rows_stats = [
-        ("Liga MX — resultados nuevos",    nuevos_liga),
-        ("Internacional — resultados nuevos", nuevos_intl),
-        ("ELO Liga MX — equipos afectados",  equipos_elo),
-        ("ELO Selecciones — actualizadas",   sels_elo),
-        ("Tracker — predicciones resueltas", tracker_upd),
+        ("Liga MX — resultados nuevos",       nuevos_liga),
+        ("Internacional — resultados nuevos",  nuevos_intl),
+        ("ELO Liga MX — equipos afectados",    equipos_elo),
+        ("ELO Selecciones — actualizadas",     sels_elo),
+        ("Tracker — predicciones resueltas",   tracker_upd),
         (f"Tracker — aciertos ({pct_acierto})", f"{aciertos}/{total_eval}"),
-        ("Imágenes generadas hoy",           len(images)),
-        ("Git push",                         git_pushed),
-        ("Pipeline",                         f"{pipeline_ok} ({elapsed}s)"),
+        ("Total imágenes adjuntas",            total_imgs),
+        ("Git push",                           git_pushed),
+        ("Pipeline",                           f"{pipeline_ok} ({elapsed}s)"),
     ]
 
     rows_html = "".join(
-        f"<tr><td style='padding:6px 12px;color:#aaa'>{k}</td>"
-        f"<td style='padding:6px 12px;color:#fff;font-weight:bold'>{v}</td></tr>"
+        f"<tr><td style='padding:5px 12px;color:#aaa;font-size:13px'>{k}</td>"
+        f"<td style='padding:5px 12px;color:#fff;font-weight:bold;font-size:13px'>{v}</td></tr>"
         for k, v in rows_stats
     )
 
-    # Agrupar imágenes por carpeta relativa
-    by_folder: dict[str, list[Path]] = {}
-    for img in images:
-        folder = img.parent.relative_to(BASE / "output/charts")
-        by_folder.setdefault(str(folder), []).append(img)
-
-    img_sections = ""
-    for folder, imgs in sorted(by_folder.items()):
+    # Secciones de imágenes
+    sections_html = ""
+    for section_name, imgs in sections.items():
+        if not imgs:
+            continue
+        color = SECTION_COLORS.get(section_name, "#e53935")
         items = "".join(
-            f"<li style='color:#ccc;font-size:13px'>{i.name}</li>" for i in imgs
+            f"<li style='color:#ccc;font-size:12px;padding:2px 0'>{i.name}</li>"
+            for i in imgs
         )
-        img_sections += f"""
-        <div style='margin-bottom:16px'>
-            <div style='color:#e53935;font-weight:bold;font-size:14px;
-                        text-transform:uppercase;margin-bottom:4px'>{folder}</div>
-            <ul style='margin:0;padding-left:20px'>{items}</ul>
+        sections_html += f"""
+        <div style='margin-bottom:18px;border-left:3px solid {color};padding-left:12px'>
+          <div style='color:{color};font-weight:bold;font-size:14px;
+                      text-transform:uppercase;margin-bottom:6px'>
+            {section_name} &nbsp;<span style='color:#555;font-size:12px;font-weight:normal'>
+            ({len(imgs)} imagen{'es' if len(imgs)!=1 else ''})</span>
+          </div>
+          <ul style='margin:0;padding-left:16px'>{items}</ul>
         </div>"""
 
-    if not img_sections:
-        img_sections = "<p style='color:#888'>Sin imágenes nuevas hoy.</p>"
+    if not sections_html:
+        sections_html = "<p style='color:#888'>Sin imágenes.</p>"
 
-    return f"""
-<!DOCTYPE html>
+    return f"""<!DOCTYPE html>
 <html>
 <head><meta charset="utf-8"></head>
 <body style="background:#121212;font-family:Arial,sans-serif;padding:24px">
-
   <div style="max-width:600px;margin:0 auto">
 
     <div style="background:#1e1e1e;border-top:4px solid #e53935;
-                border-radius:6px;padding:24px;margin-bottom:20px">
-      <div style="color:#e53935;font-size:22px;font-weight:bold;
-                  letter-spacing:2px">MAU-STATISTICS</div>
-      <div style="color:#888;font-size:13px;margin-top:4px">
-        Resumen diario — {TODAY}
-      </div>
+                border-radius:6px;padding:20px 24px;margin-bottom:16px">
+      <div style="color:#e53935;font-size:22px;font-weight:bold;letter-spacing:2px">
+        MAU-STATISTICS</div>
+      <div style="color:#888;font-size:13px;margin-top:4px">Resumen diario — {TODAY}</div>
     </div>
 
-    <div style="background:#1e1e1e;border-radius:6px;padding:20px;margin-bottom:20px">
-      <div style="color:#fff;font-size:16px;font-weight:bold;
-                  margin-bottom:12px">📊 Pipeline</div>
-      <table style="width:100%;border-collapse:collapse">
-        {rows_html}
-      </table>
+    <div style="background:#1e1e1e;border-radius:6px;padding:16px 20px;margin-bottom:16px">
+      <div style="color:#fff;font-size:15px;font-weight:bold;margin-bottom:10px">
+        📊 Pipeline</div>
+      <table style="width:100%;border-collapse:collapse">{rows_html}</table>
     </div>
 
-    <div style="background:#1e1e1e;border-radius:6px;padding:20px;margin-bottom:20px">
-      <div style="color:#fff;font-size:16px;font-weight:bold;
-                  margin-bottom:12px">🖼️ Imágenes adjuntas ({len(images)})</div>
-      {img_sections}
+    <div style="background:#1e1e1e;border-radius:6px;padding:16px 20px;margin-bottom:16px">
+      <div style="color:#fff;font-size:15px;font-weight:bold;margin-bottom:14px">
+        🖼️ Imágenes adjuntas ({total_imgs})</div>
+      {sections_html}
     </div>
 
-    <div style="color:#555;font-size:11px;text-align:center;margin-top:16px">
-      Generado automáticamente por MAU-STATISTICS Bot · @Miau_Stats_MX
+    <div style="color:#444;font-size:11px;text-align:center;margin-top:12px">
+      MAU-STATISTICS Bot · @Miau_Stats_MX · generado automáticamente
     </div>
-
   </div>
 </body>
 </html>"""
@@ -215,11 +243,12 @@ def build_html(summary: dict, images: list[Path]) -> str:
 # Enviar
 # ─────────────────────────────────────────────────────────────────────────────
 def send_email(app_password: str, dry_run: bool = False) -> bool:
-    summary = load_summary()
-    images  = collect_all_relevant()
-    html    = build_html(summary, images)
+    summary  = load_summary()
+    sections = collect_by_section()
+    all_imgs = [img for imgs in sections.values() for img in imgs]
+    html     = build_html(summary, sections)
 
-    subject = f"MAU-STATISTICS · {TODAY} · {len(images)} imágenes"
+    subject = f"MAU-STATISTICS · {TODAY} · {len(all_imgs)} imágenes"
 
     msg = MIMEMultipart("related")
     msg["Subject"] = subject
@@ -230,9 +259,9 @@ def send_email(app_password: str, dry_run: bool = False) -> bool:
     alt.attach(MIMEText(html, "html", "utf-8"))
     msg.attach(alt)
 
-    # Adjuntar imágenes
+    # Adjuntar imágenes en orden por sección
     attached = 0
-    for img_path in images:
+    for img_path in all_imgs:
         try:
             data = img_path.read_bytes()
             mime_img = MIMEImage(data, name=img_path.name)
@@ -245,6 +274,9 @@ def send_email(app_password: str, dry_run: bool = False) -> bool:
         except Exception as e:
             print(f"  [warn] No se pudo adjuntar {img_path.name}: {e}")
 
+    for sec, imgs in sections.items():
+        if imgs:
+            print(f"  {sec}: {len(imgs)} imgs")
     print(f"  Asunto : {subject}")
     print(f"  Para   : {TO_ADDR}")
     print(f"  Adjuntos: {attached} imágenes")
