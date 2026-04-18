@@ -73,7 +73,40 @@
 
 ---
 
-## Próximos pasos priorizados (actualizado 2026-04-13)
+## Próximos pasos priorizados (actualizado 2026-04-18)
+
+### 🔴 Prioridad 0 — Betting infrastructure (nuevo objetivo central)
+
+> **Objetivo**: monetizar el modelo mediante value betting en Liga MX.
+> Mercados objetivo: corners, BTTS, tarjetas, gol de jugador (NO 1X2 directo — muy eficiente).
+> Ver `skills/BETTING_MODEL.md` para arquitectura completa.
+
+#### Fase B1 — Datos granulares de partido (BLOCKER inmediato)
+- [x] `scrape_match_events.py` — 126/126 partidos Clausura 2026 con corners, tarjetas, shots, xG ✅
+  - μ corners=9.32 | μ amarillas=4.43 | μ xG_local=1.48 | μ xG_visita=1.16
+  - Integrado en daily_pipeline.yml (`--days 4` diario)
+- [ ] `scrape_match_events.py --all` — extendiendo a 5+ torneos históricos (~980 partidos, EN PROCESO)
+- [ ] `scrape_xg_fbref.py` — xG por partido y jugador desde FBref Liga MX
+
+#### Fase B2 — Modelos por mercado
+- [x] `modelo_corners.py` — Poisson bivariado, att/def por equipo, HOME_ADV=1.08 ✅
+- [x] `modelo_btts.py` — Dixon-Coles, P(BTTS) + P(Over/Under 1.5/2.5) ✅
+- [x] `modelo_tarjetas.py` — Poisson sobre card_rate + factor rivalidad ✅
+- [x] `calcular_ev.py` — EV unificado de los 3 modelos para un partido ✅
+- [ ] `modelo_jugador_gol.py` — Poisson por jugador con xG (requiere FBref)
+
+#### Fase B3 — Odds scraper + EV calculator
+- [ ] `scrape_odds.py` — The Odds API wrapper (free tier: 500 req/mes)
+- [ ] Integrar cuotas automáticas en `calcular_ev.py`
+- [ ] Sección "🎯 Value bets" en email diario
+
+#### Gate de producción (antes de apostar dinero real)
+- [ ] 200 predicciones por mercado en tracker
+- [ ] Brier score < 0.22
+- [ ] CLV positivo en backtesting vs Pinnacle
+- [ ] ROI > 3% hipotético con Kelly 25%
+
+---
 
 ### 🔴 Prioridad 0 — Infraestructura de datos (PRIMERO, siempre)
 > Construir el job de GitHub Actions ANTES que el modelo. Sin datos completos en GitHub, no hay análisis confiable.

@@ -1,0 +1,704 @@
+[
+  {
+    "match_id": "5101841",
+    "fecha": "2026-04-18",
+    "jornada": 15,
+    "local": "Atletico de San Luis",
+    "visita": "Pumas",
+    "torneo": "Liga MX Clausura 2026",
+    "elo_local": 1500.0,
+    "elo_visita": 1604.28,
+    "corners": {
+      "over_8.5": 0.388,
+      "under_8.5": 0.612,
+      "over_9.5": 0.267,
+      "under_9.5": 0.733,
+      "over_10.5": 0.171,
+      "under_10.5": 0.829,
+      "lambda_total": 7.86,
+      "lambda_local": 5.53,
+      "lambda_visita": 2.33,
+      "notes": [
+        "Fase regular_late: ×1.12 tarjetas"
+      ]
+    },
+    "tarjetas": {},
+    "btts": {
+      "btts_si": 0.591,
+      "btts_no": 0.409,
+      "over_1.5": 0.791,
+      "over_2.5": 0.54,
+      "under_2.5": 0.46,
+      "btts_over_2.5": 0.458,
+      "lambda_local": 1.407,
+      "lambda_visita": 1.435
+    },
+    "value_bets": [],
+    "errors": [
+      "tarjetas: predecir_tarjetas() got an unexpected keyword argument 'jornada'"
+    ]
+  },
+  {
+    "match_id": "5101842",
+    "fecha": "2026-04-18",
+    "jornada": 15,
+    "local": "Mazatlan FC",
+    "visita": "Queretaro FC",
+    "torneo": "Liga MX Clausura 2026",
+    "elo_local": 1500.0,
+    "elo_visita": 1500.0,
+    "corners": {
+      "over_8.5": 0.832,
+      "under_8.5": 0.168,
+      "over_9.5": 0.741,
+      "under_9.5": 0.259,
+      "over_10.5": 0.633,
+      "under_10.5": 0.367,
+      "lambda_total": 11.81,
+      "lambda_local": 4.99,
+      "lambda_visita": 6.82,
+      "notes": [
+        "Fase regular_late: ×1.12 tarjetas"
+      ]
+    },
+    "tarjetas": {},
+    "btts": {
+      "btts_si": 0.565,
+      "btts_no": 0.435,
+      "over_1.5": 0.79,
+      "over_2.5": 0.54,
+      "under_2.5": 0.46,
+      "btts_over_2.5": 0.439,
+      "lambda_local": 1.739,
+      "lambda_visita": 1.103
+    },
+    "value_bets": [],
+    "errors": [
+      "tarjetas: predecir_tarjetas() got an unexpected keyword argument 'jornada'"
+    ]
+  },
+  {
+    "match_id": "5101844",
+    "fecha": "2026-04-18",
+    "jornada": 15,
+    "local": "Cruz Azul",
+    "visita": "Tijuana",
+    "torneo": "Liga MX Clausura 2026",
+    "elo_local": 1656.07,
+    "elo_visita": 1508.62,
+    "corners": {
+      "over_8.5": 0.585,
+      "under_8.5": 0.415,
+      "over_9.5": 0.454,
+      "under_9.5": 0.546,
+      "over_10.5": 0.332,
+      "under_10.5": 0.668,
+      "lambda_total": 9.31,
+      "lambda_local": 6.41,
+      "lambda_visita": 2.9,
+      "notes": [
+        "Fase regular_late: ×1.12 tarjetas"
+      ]
+    },
+    "tarjetas": {},
+    "btts": {
+      "btts_si": 0.465,
+      "btts_no": 0.535,
+      "over_1.5": 0.787,
+      "over_2.5": 0.54,
+      "under_2.5": 0.46,
+      "btts_over_2.5": 0.364,
+      "lambda_local": 2.117,
+      "lambda_visita": 0.725
+    },
+    "value_bets": [],
+    "errors": [
+      "tarjetas: predecir_tarjetas() got an unexpected keyword argument 'jornada'"
+    ]
+  },
+  {
+    "match_id": "5101843",
+    "fecha": "2026-04-18",
+    "jornada": 15,
+    "local": "Necaxa",
+    "visita": "Tigres",
+    "torneo": "Liga MX Clausura 2026",
+    "elo_local": 1433.61,
+    "elo_visita": 1560.28,
+    "corners": {
+      "over_8.5": 0.664,
+      "under_8.5": 0.336,
+      "over_9.5": 0.539,
+      "under_9.5": 0.461,
+      "over_10.5": 0.414,
+      "under_10.5": 0.586,
+      "lambda_total": 9.98,
+      "lambda_local": 3.98,
+      "lambda_visita": 6.0,
+      "notes": [
+        "Fase regular_late: ×1.12 tarjetas"
+      ]
+    },
+    "tarjetas": {},
+    "btts": {
+      "btts_si": 0.589,
+      "btts_no": 0.411,
+      "over_1.5": 0.791,
+      "over_2.5": 0.54,
+      "under_2.5": 0.46,
+      "btts_over_2.5": 0.456,
+      "lambda_local": 1.334,
+      "lambda_visita": 1.508
+    },
+    "value_bets": [],
+    "errors": [
+      "tarjetas: predecir_tarjetas() got an unexpected keyword argument 'jornada'"
+    ]
+  },
+  {
+    "match_id": "5101846",
+    "fecha": "2026-04-19",
+    "jornada": 15,
+    "local": "Monterrey",
+    "visita": "Pachuca",
+    "torneo": "Liga MX Clausura 2026",
+    "elo_local": 1487.05,
+    "elo_visita": 1584.11,
+    "corners": {
+      "over_8.5": 0.687,
+      "under_8.5": 0.313,
+      "over_9.5": 0.564,
+      "under_9.5": 0.436,
+      "over_10.5": 0.439,
+      "under_10.5": 0.561,
+      "lambda_total": 10.18,
+      "lambda_local": 4.92,
+      "lambda_visita": 5.26,
+      "notes": [
+        "Fase regular_late: ×1.12 tarjetas"
+      ]
+    },
+    "tarjetas": {},
+    "btts": {
+      "btts_si": 0.591,
+      "btts_no": 0.409,
+      "over_1.5": 0.791,
+      "over_2.5": 0.54,
+      "under_2.5": 0.46,
+      "btts_over_2.5": 0.458,
+      "lambda_local": 1.431,
+      "lambda_visita": 1.411
+    },
+    "value_bets": [],
+    "errors": [
+      "tarjetas: predecir_tarjetas() got an unexpected keyword argument 'jornada'"
+    ]
+  },
+  {
+    "match_id": "5101845",
+    "fecha": "2026-04-19",
+    "jornada": 15,
+    "local": "Chivas",
+    "visita": "Puebla",
+    "torneo": "Liga MX Clausura 2026",
+    "elo_local": 1624.33,
+    "elo_visita": 1363.65,
+    "corners": {
+      "over_8.5": 0.76,
+      "under_8.5": 0.24,
+      "over_9.5": 0.65,
+      "under_9.5": 0.35,
+      "over_10.5": 0.53,
+      "under_10.5": 0.47,
+      "lambda_total": 10.91,
+      "lambda_local": 8.51,
+      "lambda_visita": 2.41,
+      "notes": [
+        "Fase regular_late: ×1.12 tarjetas"
+      ]
+    },
+    "tarjetas": {},
+    "btts": {
+      "btts_si": 0.384,
+      "btts_no": 0.616,
+      "over_1.5": 0.785,
+      "over_2.5": 0.539,
+      "under_2.5": 0.461,
+      "btts_over_2.5": 0.302,
+      "lambda_local": 2.304,
+      "lambda_visita": 0.538
+    },
+    "value_bets": [],
+    "errors": [
+      "tarjetas: predecir_tarjetas() got an unexpected keyword argument 'jornada'"
+    ]
+  },
+  {
+    "match_id": "5101848",
+    "fecha": "2026-04-19",
+    "jornada": 15,
+    "local": "Leon",
+    "visita": "FC Juarez",
+    "torneo": "Liga MX Clausura 2026",
+    "elo_local": 1439.21,
+    "elo_visita": 1500.0,
+    "corners": {
+      "over_8.5": 0.814,
+      "under_8.5": 0.186,
+      "over_9.5": 0.717,
+      "under_9.5": 0.283,
+      "over_10.5": 0.604,
+      "under_10.5": 0.396,
+      "lambda_total": 11.56,
+      "lambda_local": 5.97,
+      "lambda_visita": 5.59,
+      "notes": [
+        "Fase regular_late: ×1.12 tarjetas"
+      ]
+    },
+    "tarjetas": {},
+    "btts": {
+      "btts_si": 0.587,
+      "btts_no": 0.413,
+      "over_1.5": 0.791,
+      "over_2.5": 0.54,
+      "under_2.5": 0.46,
+      "btts_over_2.5": 0.455,
+      "lambda_local": 1.549,
+      "lambda_visita": 1.293
+    },
+    "value_bets": [],
+    "errors": [
+      "tarjetas: predecir_tarjetas() got an unexpected keyword argument 'jornada'"
+    ]
+  },
+  {
+    "match_id": "5101847",
+    "fecha": "2026-04-19",
+    "jornada": 15,
+    "local": "CF America",
+    "visita": "Toluca",
+    "torneo": "Liga MX Clausura 2026",
+    "elo_local": 1500.0,
+    "elo_visita": 1663.99,
+    "corners": {
+      "over_8.5": 0.357,
+      "under_8.5": 0.643,
+      "over_9.5": 0.24,
+      "under_9.5": 0.76,
+      "over_10.5": 0.15,
+      "under_10.5": 0.85,
+      "lambda_total": 7.64,
+      "lambda_local": 3.14,
+      "lambda_visita": 4.5,
+      "notes": [
+        "Fase regular_late: ×1.12 tarjetas"
+      ]
+    },
+    "tarjetas": {},
+    "btts": {
+      "btts_si": 0.58,
+      "btts_no": 0.42,
+      "over_1.5": 0.791,
+      "over_2.5": 0.54,
+      "under_2.5": 0.46,
+      "btts_over_2.5": 0.45,
+      "lambda_local": 1.214,
+      "lambda_visita": 1.628
+    },
+    "value_bets": [],
+    "errors": [
+      "tarjetas: predecir_tarjetas() got an unexpected keyword argument 'jornada'"
+    ]
+  },
+  {
+    "match_id": "5101849",
+    "fecha": "2026-04-19",
+    "jornada": 15,
+    "local": "Santos Laguna",
+    "visita": "Atlas",
+    "torneo": "Liga MX Clausura 2026",
+    "elo_local": 1372.42,
+    "elo_visita": 1436.18,
+    "corners": {
+      "over_8.5": 0.286,
+      "under_8.5": 0.714,
+      "over_9.5": 0.181,
+      "under_9.5": 0.819,
+      "over_10.5": 0.107,
+      "under_10.5": 0.893,
+      "lambda_total": 7.12,
+      "lambda_local": 4.61,
+      "lambda_visita": 2.51,
+      "notes": [
+        "Fase regular_late: ×1.12 tarjetas"
+      ]
+    },
+    "tarjetas": {},
+    "btts": {
+      "btts_si": 0.587,
+      "btts_no": 0.413,
+      "over_1.5": 0.791,
+      "over_2.5": 0.54,
+      "under_2.5": 0.46,
+      "btts_over_2.5": 0.455,
+      "lambda_local": 1.539,
+      "lambda_visita": 1.303
+    },
+    "value_bets": [],
+    "errors": [
+      "tarjetas: predecir_tarjetas() got an unexpected keyword argument 'jornada'"
+    ]
+  },
+  {
+    "match_id": "5101851",
+    "fecha": "2026-04-22",
+    "jornada": 16,
+    "local": "Pumas",
+    "visita": "FC Juarez",
+    "torneo": "Liga MX Clausura 2026",
+    "elo_local": 1604.28,
+    "elo_visita": 1500.0,
+    "corners": {
+      "over_8.5": 0.752,
+      "under_8.5": 0.248,
+      "over_9.5": 0.64,
+      "under_9.5": 0.36,
+      "over_10.5": 0.519,
+      "under_10.5": 0.481,
+      "lambda_total": 10.82,
+      "lambda_local": 4.24,
+      "lambda_visita": 6.58,
+      "notes": [
+        "Fase regular_late: ×1.12 tarjetas"
+      ]
+    },
+    "tarjetas": {},
+    "btts": {
+      "btts_si": 0.498,
+      "btts_no": 0.502,
+      "over_1.5": 0.788,
+      "over_2.5": 0.54,
+      "under_2.5": 0.46,
+      "btts_over_2.5": 0.389,
+      "lambda_local": 2.022,
+      "lambda_visita": 0.82
+    },
+    "value_bets": [],
+    "errors": [
+      "tarjetas: predecir_tarjetas() got an unexpected keyword argument 'jornada'"
+    ]
+  },
+  {
+    "match_id": "5101850",
+    "fecha": "2026-04-22",
+    "jornada": 16,
+    "local": "Queretaro FC",
+    "visita": "Cruz Azul",
+    "torneo": "Liga MX Clausura 2026",
+    "elo_local": 1500.0,
+    "elo_visita": 1656.07,
+    "corners": {
+      "over_8.5": 0.793,
+      "under_8.5": 0.207,
+      "over_9.5": 0.691,
+      "under_9.5": 0.309,
+      "over_10.5": 0.575,
+      "under_10.5": 0.425,
+      "lambda_total": 11.29,
+      "lambda_local": 4.61,
+      "lambda_visita": 6.68,
+      "notes": [
+        "Fase regular_late: ×1.12 tarjetas"
+      ]
+    },
+    "tarjetas": {},
+    "btts": {
+      "btts_si": 0.582,
+      "btts_no": 0.418,
+      "over_1.5": 0.791,
+      "over_2.5": 0.54,
+      "under_2.5": 0.46,
+      "btts_over_2.5": 0.451,
+      "lambda_local": 1.239,
+      "lambda_visita": 1.603
+    },
+    "value_bets": [],
+    "errors": [
+      "tarjetas: predecir_tarjetas() got an unexpected keyword argument 'jornada'"
+    ]
+  },
+  {
+    "match_id": "5101853",
+    "fecha": "2026-04-22",
+    "jornada": 16,
+    "local": "Monterrey",
+    "visita": "Puebla",
+    "torneo": "Liga MX Clausura 2026",
+    "elo_local": 1487.05,
+    "elo_visita": 1363.65,
+    "corners": {
+      "over_8.5": 0.916,
+      "under_8.5": 0.084,
+      "over_9.5": 0.857,
+      "under_9.5": 0.143,
+      "over_10.5": 0.779,
+      "under_10.5": 0.221,
+      "lambda_total": 13.37,
+      "lambda_local": 7.98,
+      "lambda_visita": 5.39,
+      "notes": [
+        "Fase regular_late: ×1.12 tarjetas"
+      ]
+    },
+    "tarjetas": {},
+    "btts": {
+      "btts_si": 0.484,
+      "btts_no": 0.516,
+      "over_1.5": 0.788,
+      "over_2.5": 0.54,
+      "under_2.5": 0.46,
+      "btts_over_2.5": 0.378,
+      "lambda_local": 2.065,
+      "lambda_visita": 0.777
+    },
+    "value_bets": [],
+    "errors": [
+      "tarjetas: predecir_tarjetas() got an unexpected keyword argument 'jornada'"
+    ]
+  },
+  {
+    "match_id": "5101852",
+    "fecha": "2026-04-22",
+    "jornada": 16,
+    "local": "Leon",
+    "visita": "CF America",
+    "torneo": "Liga MX Clausura 2026",
+    "elo_local": 1439.21,
+    "elo_visita": 1500.0,
+    "corners": {
+      "over_8.5": 0.566,
+      "under_8.5": 0.434,
+      "over_9.5": 0.434,
+      "under_9.5": 0.566,
+      "over_10.5": 0.314,
+      "under_10.5": 0.686,
+      "lambda_total": 9.17,
+      "lambda_local": 4.36,
+      "lambda_visita": 4.81,
+      "notes": [
+        "Fase regular_late: ×1.12 tarjetas"
+      ]
+    },
+    "tarjetas": {},
+    "btts": {
+      "btts_si": 0.587,
+      "btts_no": 0.413,
+      "over_1.5": 0.791,
+      "over_2.5": 0.54,
+      "under_2.5": 0.46,
+      "btts_over_2.5": 0.455,
+      "lambda_local": 1.549,
+      "lambda_visita": 1.293
+    },
+    "value_bets": [],
+    "errors": [
+      "tarjetas: predecir_tarjetas() got an unexpected keyword argument 'jornada'"
+    ]
+  },
+  {
+    "match_id": "5101854",
+    "fecha": "2026-04-23",
+    "jornada": 16,
+    "local": "Atlas",
+    "visita": "Tigres",
+    "torneo": "Liga MX Clausura 2026",
+    "elo_local": 1436.18,
+    "elo_visita": 1560.28,
+    "corners": {
+      "over_8.5": 0.387,
+      "under_8.5": 0.613,
+      "over_9.5": 0.265,
+      "under_9.5": 0.735,
+      "over_10.5": 0.17,
+      "under_10.5": 0.83,
+      "lambda_total": 7.85,
+      "lambda_local": 2.8,
+      "lambda_visita": 5.05,
+      "notes": [
+        "Fase regular_late: ×1.12 tarjetas"
+      ]
+    },
+    "tarjetas": {},
+    "btts": {
+      "btts_si": 0.589,
+      "btts_no": 0.411,
+      "over_1.5": 0.791,
+      "over_2.5": 0.54,
+      "under_2.5": 0.46,
+      "btts_over_2.5": 0.456,
+      "lambda_local": 1.342,
+      "lambda_visita": 1.5
+    },
+    "value_bets": [],
+    "errors": [
+      "tarjetas: predecir_tarjetas() got an unexpected keyword argument 'jornada'"
+    ]
+  },
+  {
+    "match_id": "5101855",
+    "fecha": "2026-04-23",
+    "jornada": 16,
+    "local": "Atletico de San Luis",
+    "visita": "Santos Laguna",
+    "torneo": "Liga MX Clausura 2026",
+    "elo_local": 1500.0,
+    "elo_visita": 1372.42,
+    "corners": {
+      "over_8.5": 0.154,
+      "under_8.5": 0.846,
+      "over_9.5": 0.085,
+      "under_9.5": 0.915,
+      "over_10.5": 0.043,
+      "under_10.5": 0.957,
+      "lambda_total": 6.01,
+      "lambda_local": 3.19,
+      "lambda_visita": 2.82,
+      "notes": [
+        "Fase regular_late: ×1.12 tarjetas"
+      ]
+    },
+    "tarjetas": {},
+    "btts": {
+      "btts_si": 0.48,
+      "btts_no": 0.52,
+      "over_1.5": 0.788,
+      "over_2.5": 0.54,
+      "under_2.5": 0.46,
+      "btts_over_2.5": 0.375,
+      "lambda_local": 2.075,
+      "lambda_visita": 0.767
+    },
+    "value_bets": [],
+    "errors": [
+      "tarjetas: predecir_tarjetas() got an unexpected keyword argument 'jornada'"
+    ]
+  },
+  {
+    "match_id": "5101856",
+    "fecha": "2026-04-23",
+    "jornada": 16,
+    "local": "Mazatlan FC",
+    "visita": "Toluca",
+    "torneo": "Liga MX Clausura 2026",
+    "elo_local": 1500.0,
+    "elo_visita": 1663.99,
+    "corners": {
+      "over_8.5": 0.685,
+      "under_8.5": 0.315,
+      "over_9.5": 0.562,
+      "under_9.5": 0.438,
+      "over_10.5": 0.437,
+      "under_10.5": 0.563,
+      "lambda_total": 10.16,
+      "lambda_local": 2.61,
+      "lambda_visita": 7.55,
+      "notes": [
+        "Fase regular_late: ×1.12 tarjetas"
+      ]
+    },
+    "tarjetas": {},
+    "btts": {
+      "btts_si": 0.58,
+      "btts_no": 0.42,
+      "over_1.5": 0.791,
+      "over_2.5": 0.54,
+      "under_2.5": 0.46,
+      "btts_over_2.5": 0.45,
+      "lambda_local": 1.214,
+      "lambda_visita": 1.628
+    },
+    "value_bets": [],
+    "errors": [
+      "tarjetas: predecir_tarjetas() got an unexpected keyword argument 'jornada'"
+    ]
+  },
+  {
+    "match_id": "5101858",
+    "fecha": "2026-04-23",
+    "jornada": 16,
+    "local": "Necaxa",
+    "visita": "Chivas",
+    "torneo": "Liga MX Clausura 2026",
+    "elo_local": 1433.61,
+    "elo_visita": 1624.33,
+    "corners": {
+      "over_8.5": 0.513,
+      "under_8.5": 0.487,
+      "over_9.5": 0.382,
+      "under_9.5": 0.618,
+      "over_10.5": 0.267,
+      "under_10.5": 0.733,
+      "lambda_total": 8.77,
+      "lambda_local": 2.62,
+      "lambda_visita": 6.15,
+      "notes": [
+        "Fase regular_late: ×1.12 tarjetas"
+      ]
+    },
+    "tarjetas": {},
+    "btts": {
+      "btts_si": 0.569,
+      "btts_no": 0.431,
+      "over_1.5": 0.791,
+      "over_2.5": 0.54,
+      "under_2.5": 0.46,
+      "btts_over_2.5": 0.442,
+      "lambda_local": 1.131,
+      "lambda_visita": 1.711
+    },
+    "value_bets": [],
+    "errors": [
+      "tarjetas: predecir_tarjetas() got an unexpected keyword argument 'jornada'"
+    ]
+  },
+  {
+    "match_id": "5101857",
+    "fecha": "2026-04-23",
+    "jornada": 16,
+    "local": "Tijuana",
+    "visita": "Pachuca",
+    "torneo": "Liga MX Clausura 2026",
+    "elo_local": 1508.62,
+    "elo_visita": 1584.11,
+    "corners": {
+      "over_8.5": 0.414,
+      "under_8.5": 0.586,
+      "over_9.5": 0.289,
+      "under_9.5": 0.711,
+      "over_10.5": 0.189,
+      "under_10.5": 0.811,
+      "lambda_total": 8.05,
+      "lambda_local": 3.33,
+      "lambda_visita": 4.71,
+      "notes": [
+        "Fase regular_late: ×1.12 tarjetas"
+      ]
+    },
+    "tarjetas": {},
+    "btts": {
+      "btts_si": 0.589,
+      "btts_no": 0.411,
+      "over_1.5": 0.791,
+      "over_2.5": 0.54,
+      "under_2.5": 0.46,
+      "btts_over_2.5": 0.456,
+      "lambda_local": 1.501,
+      "lambda_visita": 1.341
+    },
+    "value_bets": [],
+    "errors": [
+      "tarjetas: predecir_tarjetas() got an unexpected keyword argument 'jornada'"
+    ]
+  }
+]

@@ -136,10 +136,64 @@ Log append-only de todas las predicciones generadas. Ver `MODELO_METODOLOGIA.md`
 
 ---
 
-## FBref — Fuente secundaria (no implementada aún)
+## FBref — xG y stats avanzados (pendiente implementar)
 
-FBref tiene datos avanzados (xG, presión, pases progresivos) que FotMob no ofrece.
-Pendiente de implementar scraping de FBref para Liga MX.
+FBref (StatsBomb) tiene xG, presión, pases progresivos. Crítico para modelo de betting.
+
+### URLs relevantes Liga MX
+```
+https://fbref.com/en/comps/31/schedule/Liga-MX-Scores-and-Fixtures
+https://fbref.com/en/comps/31/shooting/Liga-MX-Stats  ← xG por equipo
+https://fbref.com/en/comps/31/Liga-MX-Stats           ← stats generales
+```
+- No tiene API pública, requiere scraping HTML con `BeautifulSoup`
+- Rate limit estricto: ~3-5s entre requests o bloquea IP
+- Datos disponibles desde ~2017/18 para Liga MX
+
+### Script pendiente: `scrape_xg_fbref.py`
+```
+Output: data/processed/xg_equipos_clausura2026.csv
+        data/processed/xg_jugadores_clausura2026.csv
+Columnas: partido, fecha, equipo, xG, xGA, shots, shots_on_target
+```
+
+---
+
+## The Odds API — Cuotas para value betting
+
+**URL**: `https://api.the-odds-api.com/v4/sports/soccer_mexico_ligamx/odds/`
+**Free tier**: 500 requests/mes, suficiente para uso diario en Liga MX
+**Documentación**: the-odds-api.com
+
+### Endpoints clave
+```
+GET /v4/sports/                          ← ligas disponibles
+GET /v4/sports/{sport}/odds/             ← cuotas actuales
+    ?apiKey=KEY&regions=eu&markets=h2h,totals,btts
+GET /v4/sports/{sport}/scores/           ← resultados
+GET /v4/sports/{sport}/historical/odds/  ← histórico (plan de pago)
+```
+
+### Script pendiente: `scrape_odds.py`
+```python
+MARKETS = ['h2h', 'totals', 'btts', 'asian_handicap', 'player_props']
+# Output: data/processed/odds_ligamx_{fecha}.json
+# Columnas: partido, mercado, casa, cuota, cuota_implicita, EV_modelo
+```
+
+---
+
+## football-data.co.uk — Cuotas históricas gratuitas
+
+URL: `https://www.football-data.co.uk/mexico.php`
+Formato: CSV con columnas de cuotas de múltiples casas (B365, Max, Avg, etc.)
+Cubre: Liga MX desde ~2012
+Uso: backtesting histórico de value betting sin costo
+
+### Script pendiente: `scrape_historical_odds.py`
+```
+Output: data/processed/historical_odds_ligamx.csv
+```
 
 ---
 

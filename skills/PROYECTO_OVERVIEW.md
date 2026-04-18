@@ -1,6 +1,6 @@
 # PROYECTO_OVERVIEW.md — LEE ESTO PRIMERO
 
-> Estado del proyecto al **2026-04-13**. Actualizar al cierre de cada sesión significativa.
+> Estado del proyecto al **2026-04-18**. Actualizar al cierre de cada sesión significativa.
 
 ---
 
@@ -8,6 +8,7 @@
 
 **MAU-STATISTICS / @Miau_Stats_MX** — Motor de análisis estadístico de Liga MX y Selecciones Nacionales.
 Produce infografías de élite para redes sociales, predicciones de partidos y un dashboard interactivo.
+**Objetivo de monetización**: value betting en mercados de corners, BTTS y tarjetas en Liga MX.
 Todo en Python puro sobre datos de FotMob.
 
 Autor: **MauCarVaz1995** · GitHub: `MauCarVaz1995/LigaMX`
@@ -57,13 +58,23 @@ Aún NO — está en el roadmap. Se puede agregar con SendGrid o Gmail API.
 **¿Se publican automáticamente en Twitter?**
 Aún NO — falta configurar Twitter API keys como secrets en GitHub.
 
-### ⏳ Pendiente prioritario
-1. Activar write permissions en GitHub repo Settings → Actions → General
-2. CONCACAF Champions Cup — agregar fixtures y ELO histórico
-3. Twitter API — agregar al pipeline para publicación automática
-4. Git pull automático en desktop — configurar para sincronizar imágenes
-5. Notificación por correo — SendGrid o Gmail API
-6. xG FBref — Capa 3 del modelo
+### ✅ Completado en esta sesión (2026-04-18)
+- `generar_prediccion.py` — script canónico unificado (Liga MX + CCL + Intl, mismo diseño)
+- `gen_postpartido.py` — ratings post-partido automáticos, guarda en `J{N}/postpartido/`
+- `send_daily_email.py` — resumen diario con imágenes por sección a maucarvaz@gmail.com
+- Pipeline completo: pasos 1-8 + email automático cada 8am México
+- `skills/BETTING_MODEL.md` — arquitectura completa del modelo de value betting
+- `scrape_match_events.py` — 126/126 partidos Clausura 2026 con corners, tarjetas, shots, xG ✅
+  - μ corners = 9.32 | μ amarillas = 4.43 | μ xG_local = 1.48 | μ xG_visita = 1.16
+  - Integrado en daily_pipeline.yml (paso diario no-crítico, `--days 4`)
+
+### ⏳ Pendiente prioritario (actualizado 2026-04-18)
+1. **Fase B1 BETTING** — `build_corners_dataset.py`: agregar 3+ temporadas históricas para calibrar λ
+2. **Fase B1 BETTING** — `scrape_xg_fbref.py`: xG por partido y jugador desde FBref
+3. **Fase B2 BETTING** — `modelo_corners.py` + `modelo_tarjetas.py` + `modelo_btts.py`
+4. **Fase B3 BETTING** — `scrape_odds.py`: The Odds API wrapper para detectar value bets
+5. CONCACAF Champions Cup — historial completo 2010→hoy (ELOs confiables)
+6. Twitter API — publicación automática desde pipeline
 
 ---
 

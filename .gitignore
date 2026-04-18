@@ -51,3 +51,5 @@ logs/pipeline_*.log
 
 # Project cache
 .cache/
+data/raw/fotmob/raw_matchfacts_*.json
+data/raw/fotmob/playerimages/

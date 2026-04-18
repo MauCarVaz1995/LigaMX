@@ -38,10 +38,11 @@ FROM_ADDR = "maucarvaz@gmail.com"
 SMTP_HOST = "smtp.gmail.com"
 SMTP_PORT = 587
 
-PRED_DIR   = BASE / "output/charts/predicciones"
-PARTY_DIR  = BASE / "output/charts/partidos"
-LOGS_DIR   = BASE / "logs"
-SUMMARY_F  = LOGS_DIR / "daily_summary.json"
+PRED_DIR    = BASE / "output/charts/predicciones"
+PARTY_DIR   = BASE / "output/charts/partidos"
+LOGS_DIR    = BASE / "logs"
+SUMMARY_F   = LOGS_DIR / "daily_summary.json"
+REPORTS_DIR = BASE / "output/reports"
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -150,7 +151,32 @@ SECTION_COLORS = {
     "ELO & Stats":   "#6A1B9A",
 }
 
+def load_betting_html() -> str:
+    """Carga el reporte HTML de betting más reciente."""
+    if not REPORTS_DIR.exists():
+        return ""
+    reports = sorted(REPORTS_DIR.glob("betting_*.html"))
+    if not reports:
+        return ""
+    # El más reciente
+    latest = reports[-1]
+    try:
+        return latest.read_text()
+    except Exception:
+        return ""
+
+
 def build_html(summary: dict, sections: dict[str, list[Path]]) -> str:
+    betting_html = load_betting_html()
+    betting_section = ""
+    if betting_html:
+        betting_section = f"""
+    <div style="background:#1e1e1e;border-radius:6px;padding:16px 20px;margin-bottom:16px">
+      <div style="color:#E53935;font-size:15px;font-weight:bold;margin-bottom:10px">
+        🎰 Análisis Betting — próximos partidos</div>
+      {betting_html}
+    </div>"""
+
     p = summary.get("pasos", {})
     nuevos_liga = p.get("paso1", {}).get("nuevos", 0)
     nuevos_intl = p.get("paso3", {}).get("nuevos", 0)
@@ -230,6 +256,8 @@ def build_html(summary: dict, sections: dict[str, list[Path]]) -> str:
         🖼️ Imágenes adjuntas ({total_imgs})</div>
       {sections_html}
     </div>
+
+    {betting_section}
 
     <div style="color:#444;font-size:11px;text-align:center;margin-top:12px">
       MAU-STATISTICS Bot · @Miau_Stats_MX · generado automáticamente

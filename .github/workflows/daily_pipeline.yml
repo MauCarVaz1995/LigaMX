@@ -60,6 +60,28 @@ jobs:
         run: |
           python scripts/00_daily_pipeline.py
 
+      - name: Scrape match events corners/tarjetas (non-critical)
+        env:
+          PYTHONPATH: ${{ github.workspace }}/scripts
+          MPLBACKEND: Agg
+        run: |
+          # --days 4: solo partidos recientes (incremental diario)
+          python scripts/scrape_match_events.py --days 4 || echo "[warn] match_events falló — continuando"
+
+      - name: Retrain betting models if needed (non-critical)
+        env:
+          PYTHONPATH: ${{ github.workspace }}/scripts
+          MPLBACKEND: Agg
+        run: |
+          python bots/retrain_bot.py || echo "[warn] retrain_bot falló — continuando"
+
+      - name: Run daily betting analysis bot (non-critical)
+        env:
+          PYTHONPATH: ${{ github.workspace }}/scripts
+          MPLBACKEND: Agg
+        run: |
+          python bots/daily_betting_bot.py --days 3 || echo "[warn] betting_bot falló — continuando"
+
       - name: Generate post-match infographics (non-critical)
         env:
           PYTHONPATH: ${{ github.workspace }}/scripts
@@ -82,7 +104,7 @@ jobs:
           git config user.email "bot@miau-stats.mx"
           git config user.name "MiauStats Bot"
           git add data/processed/ data/raw/historico/ data/raw/internacional/ \
-                  data/raw/fotmob/ccl/ output/charts/predicciones/ \
+                  data/raw/fotmob/ output/charts/predicciones/ output/reports/ \
                   logs/daily_summary.json 2>/dev/null || true
           # Solo commitear si hay cambios staged
           git diff --staged --quiet || \
