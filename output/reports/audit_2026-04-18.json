@@ -1,0 +1,131 @@
+{
+  "fecha": "2026-04-18",
+  "overall": "error",
+  "sections": [
+    {
+      "section": "datos",
+      "checks": [
+        {
+          "name": "match_events.csv existe",
+          "level": "ok",
+          "msg": "126 partidos"
+        },
+        {
+          "name": "match_events actualizado",
+          "level": "ok",
+          "msg": "hace 0 días"
+        },
+        {
+          "name": "corners sin nulos",
+          "level": "ok",
+          "msg": "100% completo"
+        },
+        {
+          "name": "xG sin nulos",
+          "level": "ok",
+          "msg": "100% completo"
+        },
+        {
+          "name": "corners sin valores imposibles",
+          "level": "ok",
+          "msg": "0 filas con >40 corners"
+        },
+        {
+          "name": "elo_historico actualizado",
+          "level": "ok",
+          "msg": "hace 0 días, 26 equipos"
+        },
+        {
+          "name": "ELOs en rango razonable",
+          "level": "ok",
+          "msg": "0 equipos con ELO fuera de rango"
+        },
+        {
+          "name": "predicciones_log actualizado",
+          "level": "warn",
+          "msg": "32 total, 23 resueltas, hace 6 días"
+        }
+      ],
+      "status": "warn"
+    },
+    {
+      "section": "modelos",
+      "checks": [
+        {
+          "name": "corners_model existe",
+          "level": "ok",
+          "msg": "126 partidos, 18 equipos"
+        },
+        {
+          "name": "corners_model tiene datos suficientes",
+          "level": "ok",
+          "msg": "126 partidos entrenados"
+        },
+        {
+          "name": "corners_model MLE convergió",
+          "level": "ok",
+          "msg": "✅ convergido"
+        },
+        {
+          "name": "corners_model no obsoleto",
+          "level": "ok",
+          "msg": "entrenado hace 0 días"
+        },
+        {
+          "name": "retrain_log existe",
+          "level": "error",
+          "msg": "ejecutar: python bots/retrain_bot.py --force"
+        }
+      ],
+      "status": "error"
+    },
+    {
+      "section": "bots",
+      "checks": [
+        {
+          "name": "daily_betting_bot corrió",
+          "level": "ok",
+          "msg": "hace 0 días — 18 partidos analizados, 0 value bets"
+        },
+        {
+          "name": "retrain_bot tiene log",
+          "level": "ok",
+          "msg": "aún sin log — se generará en el próximo retrain_bot.py"
+        },
+        {
+          "name": "daily_pipeline corrió",
+          "level": "ok",
+          "msg": "hace 0 días, ✅ OK (470.5s)"
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "section": "tracker",
+      "checks": [
+        {
+          "name": "predicciones evaluadas",
+          "level": "ok",
+          "msg": "23/32 resueltas"
+        }
+      ],
+      "status": "ok",
+      "stats": {
+        "n_predicciones": 32,
+        "n_evaluadas": 23
+      }
+    },
+    {
+      "section": "bankroll",
+      "checks": [
+        {
+          "name": "bankroll_log",
+          "level": "ok",
+          "msg": "sin apuestas reales aún — correcto hasta validar 200 predicciones por mercado"
+        }
+      ],
+      "status": "ok",
+      "stats": {}
+    }
+  ]
+}

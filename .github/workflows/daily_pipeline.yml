@@ -111,6 +111,12 @@ jobs:
             git commit -m "auto: daily update $(date -u +%Y-%m-%d) [skip ci]"
           git push 2>/dev/null || true
 
+      - name: Run audit bot (non-critical)
+        env:
+          PYTHONPATH: ${{ github.workspace }}/scripts
+        run: |
+          python bots/audit_bot.py || echo "[warn] audit_bot detectó problemas — revisar reporte"
+
       - name: Send daily email summary (non-critical)
         env:
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}

@@ -158,10 +158,21 @@ def load_betting_html() -> str:
     reports = sorted(REPORTS_DIR.glob("betting_*.html"))
     if not reports:
         return ""
-    # El más reciente
-    latest = reports[-1]
     try:
-        return latest.read_text()
+        return reports[-1].read_text()
+    except Exception:
+        return ""
+
+
+def load_audit_html() -> str:
+    """Carga el reporte HTML del audit más reciente."""
+    if not REPORTS_DIR.exists():
+        return ""
+    reports = sorted(REPORTS_DIR.glob("audit_*.html"))
+    if not reports:
+        return ""
+    try:
+        return reports[-1].read_text()
     except Exception:
         return ""
 
@@ -175,6 +186,16 @@ def build_html(summary: dict, sections: dict[str, list[Path]]) -> str:
       <div style="color:#E53935;font-size:15px;font-weight:bold;margin-bottom:10px">
         🎰 Análisis Betting — próximos partidos</div>
       {betting_html}
+    </div>"""
+
+    audit_html = load_audit_html()
+    audit_section = ""
+    if audit_html:
+        audit_section = f"""
+    <div style="background:#1e1e1e;border-radius:6px;padding:16px 20px;margin-bottom:16px">
+      <div style="color:#90CAF9;font-size:15px;font-weight:bold;margin-bottom:10px">
+        🔍 Estado del sistema — Audit Bot</div>
+      {audit_html}
     </div>"""
 
     p = summary.get("pasos", {})
@@ -258,6 +279,8 @@ def build_html(summary: dict, sections: dict[str, list[Path]]) -> str:
     </div>
 
     {betting_section}
+
+    {audit_section}
 
     <div style="color:#444;font-size:11px;text-align:center;margin-top:12px">
       MAU-STATISTICS Bot · @Miau_Stats_MX · generado automáticamente

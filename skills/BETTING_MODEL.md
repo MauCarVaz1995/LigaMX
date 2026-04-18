@@ -36,13 +36,26 @@ Si el modelo dice 55% y la cuota implica 53% → EV = 0.02 → NO apostar (ruido
 
 ### Corners
 ```
-Modelo: Poisson bivariado sobre corner_rate
-  λ_corners_local   = att_corner[local]  × defe_corner[visita] × μ_corners
-  λ_corners_visita  = att_corner[visita] × defe_corner[local]  × μ_corners
+Modelo: Poisson MLE con time decay  [Dixon-Coles 1997 + Rue-Salvesen 2000]
 
-μ_corners Liga MX = 9.32 por partido (calibrado en 126 partidos Clausura 2026)
+  λ_local  = exp(μ + att[local]  + def[visita] + home_adv[local])
+  λ_visita = exp(μ + att[visita] + def[local])
 
-Over/Under línea X: P(total > X) = 1 - CDF_Poisson(X, λ_total)
+  Constraint sum-to-zero: Σ att_i = 0, Σ def_i = 0  (identificabilidad)
+  Pesos por recencia: w_t = max(0.15, exp(-0.003 × días))  [Rue-Salvesen]
+  Fitting: L-BFGS-B sobre NLL ponderada
+
+  Capa feeling (liga_mx_knowledge.py):
+  - home_adv calibrado por estadio (Azteca: ×1.10, altura Toluca: ×1.05)
+  - rivalry_bonus aditivo (Clásico Regio: +0.8 total corners)
+  - altitude_penalty visitante (Toluca 2680m: ×0.88 λ_visita)
+  - phase_mult (liguilla: ×1.05)
+
+  Validación holdout 20 partidos:
+  Brier Over 8.5 = 0.127  (baseline naïve = 0.25) → +49% mejor ✅
+  MAE total corners = 2.31
+
+Over/Under línea X: convolución de dos Poisson independientes (max_k=50)
 ```
 
 ### BTTS (Both Teams To Score)
@@ -57,12 +70,22 @@ Modelo: Poisson independiente por equipo
 
 ### Tarjetas
 ```
-Modelo: Poisson simple sobre card_rate histórico
-  λ_tarjetas = card_rate[local] + card_rate[visita]
-             + factor_rivalidad[local vs visita]
-             + factor_árbitro (pendiente)
+Modelo: Poisson sobre card_rate ponderado + factores contextuales
 
-Over/Under X tarjetas: directo de CDF Poisson
+  λ_tarjetas = card_rate[local] + card_rate[visita]
+             + rivalry_bonus     (Clásico Nacional: +1.2)
+             + referee_factor    (árbitros severos: ×1.25)
+             × phase_mult        (liguilla semis: ×1.30)
+
+  card_rate = media histórica de tarjetas ponderadas (amarilla=1, roja=2) por equipo
+  Fitting: media simple (MLE colapsa a media con Poisson sin covariables)
+
+  Feeling:
+  - 7 árbitros Liga MX calibrados (0.90 a 1.25)
+  - 4 rivalidades con bonus de cards (Clásico Nacional: +1.2)
+  - Fase del torneo: liguilla cuartos ×1.20, semis ×1.30, final ×1.35
+
+Over/Under X tarjetas: CDF Poisson(X, λ_tarjetas)
 ```
 
 ### Gol de jugador específico

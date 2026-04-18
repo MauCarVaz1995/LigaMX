@@ -75,11 +75,12 @@
 
 ## Próximos pasos priorizados (actualizado 2026-04-18)
 
-### 🔴 Prioridad 0 — Betting infrastructure (nuevo objetivo central)
+### 🔴 Prioridad 0 — Portafolio global de value betting
 
-> **Objetivo**: monetizar el modelo mediante value betting en Liga MX.
-> Mercados objetivo: corners, BTTS, tarjetas, gol de jugador (NO 1X2 directo — muy eficiente).
-> Ver `skills/BETTING_MODEL.md` para arquitectura completa.
+> **Objetivo**: portafolio diversificado de value bets en todas las ligas principales.
+> Filosofía: 10-20 apuestas semanales independientes → EV positivo + baja varianza.
+> Ver `skills/VISION_GLOBAL.md` para arquitectura completa y ligas objetivo.
+> Ver `skills/BETTING_MODEL.md` para modelos científicos (Dixon-Coles, Rue-Salvesen).
 
 #### Fase B1 — Datos granulares de partido (BLOCKER inmediato)
 - [x] `scrape_match_events.py` — 126/126 partidos Clausura 2026 con corners, tarjetas, shots, xG ✅
@@ -95,10 +96,21 @@
 - [x] `calcular_ev.py` — EV unificado de los 3 modelos para un partido ✅
 - [ ] `modelo_jugador_gol.py` — Poisson por jugador con xG (requiere FBref)
 
-#### Fase B3 — Odds scraper + EV calculator
+#### Fase B3 — Odds scraper + EV automático
 - [ ] `scrape_odds.py` — The Odds API wrapper (free tier: 500 req/mes)
-- [ ] Integrar cuotas automáticas en `calcular_ev.py`
-- [ ] Sección "🎯 Value bets" en email diario
+- [ ] Integrar cuotas en `daily_betting_bot.py` para EV automático en el email
+- [ ] Sección "🎯 Value bets detectadas hoy" con EV real en email diario
+
+#### Fase B4 — Portafolio global (ver VISION_GLOBAL.md para detalle)
+- [ ] Tier 1: Brasileirão + Liga Argentina data pipeline
+- [ ] Tier 1: MLS (muchos partidos vs CONCACAF = ventaja de ELO)
+- [ ] Knowledge Base por liga (árbitros, altitud Bogotá/La Paz, rivalidades)
+- [ ] `bankroll_log.csv` tracker de apuestas reales + auditoría automática
+
+#### Infraestructura de auditoría ✅
+- [x] `bots/audit_bot.py` — valida datos, modelos, bots, tracker, bankroll diariamente
+- [x] Integrado en daily_pipeline.yml — corre al final, reporta problemas
+- [x] Sección "Estado del sistema" en email diario con semáforo visual
 
 #### Gate de producción (antes de apostar dinero real)
 - [ ] 200 predicciones por mercado en tracker
