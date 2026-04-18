@@ -32,9 +32,42 @@ Si el modelo dice 55% y la cuota implica 53% → EV = 0.02 → NO apostar (ruido
 
 ---
 
-## Arquitectura del modelo por mercado
+## Arquitectura del modelo (dos capas)
 
-### Corners
+### Capa 1: Modelo estadístico (Poisson MLE)
+Usado en `modelo_corners.py`, `modelo_tarjetas.py`, `modelo_btts.py`
+
+### Capa 2: Modelo ML (LightGBM calibrado) — PRINCIPAL
+Usado en `modelo_ml.py`. Reemplaza Poisson en todos los mercados excepto BTTS.
+
+```
+Features (23 variables):
+  - ELO diff, ELO local, ELO visita, win_expected
+  - Rolling 5 partidos: corners_for, corners_against, cards_avg,
+    goals_scored, goals_allowed, xg_scored, win_rate (local + visita)
+  - sum_corners_rate, sum_cards_rate
+  - altitude_local, altitude_visita, altitude_diff
+  - phase_pressure (0=J1, 1=Liguilla)
+  - h2h_n (número de antecedentes, no el promedio — evita leakage)
+
+Calibración: Isotónica temporal (split 80/20 cronológico, no random k-fold)
+h2h_corners: ajuste Bayesiano POSTERIOR (30% peso si h2h_n >= 3)
+Monotonicity: P(Over 8.5) >= P(Over 9.5) >= P(Over 10.5)
+
+Métricas actuales (686 partidos, 137 holdout):
+  corners_over_8.5:  Brier=0.215  skill=+12.4%  ✅ USAR
+  cards_over_4.5:    Brier=0.206  skill=+13.7%  ✅ USAR
+  cards_over_3.5:    Brier=0.138  skill=+12.7%  ✅ USAR
+  corners_over_9.5:  Brier=0.249  skill=-1.5%   ⚠️ marginal
+  btts:              Brier=0.313  skill=-29.6%   ❌ NO usar ML (usar Poisson)
+  resultado_1X2:     LogLoss=1.56 vs naive 1.10  ❌ no hay edge aún
+
+SHAP top features (corners_over_9.5):
+  1. v_corners_against (defensiva visitante vulnerable)
+  2. altitude_diff (altitud local da ventaja de corners)
+  3. sum_cards_rate (partidos tensos → menos corners)
+
+## Corners (modelo_corners.py — Poisson base)
 ```
 Modelo: Poisson MLE con time decay  [Dixon-Coles 1997 + Rue-Salvesen 2000]
 
@@ -123,6 +156,28 @@ Si CLV ≈ 0 → modelo sin ventaja, no apostar
 - 23 predicciones evaluadas, solo 1X2
 - Acierto: 47.8% → por debajo del baseline — modelo 1X2 NO está listo para apostar
 - Corners/BTTS/tarjetas: 0 predicciones — falta construir
+
+---
+
+## Sistema de retroalimentación — discovery_bot.py
+
+`bots/discovery_bot.py` corre diariamente y analiza:
+
+1. **Calibración** — ¿el modelo sobreestima o subestima los mercados?
+2. **Outliers por equipo** — equipos con comportamiento atípico (z-score > 1.5σ)
+3. **Deriva temporal** — ¿hay drift en corners/tarjetas vs historial?
+4. **Correlaciones** — ¿qué mercados son independientes entre sí?
+5. **Patrones alta presión** — partidos candidatos para portafolio múltiple
+6. **Recomendaciones** — accionables con prioridad alta/media/baja
+
+Output: `output/reports/discovery/discovery_YYYY-MM-DD.json` + `.html`
+También `output/reports/discovery_latest.html` para el email diario.
+
+**Hallazgos actuales (2026-04-18):**
+- Drift corners +1.3 (reciente=10.6 vs hist=9.2) → retrain urgente ✅ detectado
+- Querétaro FC y Puebla: +0.8σ de corners generados
+- Corners y tarjetas son independientes (r=-0.12) → portafolio mixto válido
+- Corners independientes de goles (r=0.00) → apostar ambos OK
 
 ---
 
