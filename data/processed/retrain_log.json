@@ -1,0 +1,26 @@
+{
+  "last_train_date": "2026-04-18",
+  "n_partidos_at_train": 794,
+  "torneos": [
+    "Liga MX Clausura 2026",
+    "Liga MX Clausura 2024",
+    "Liga MX Apertura 2024",
+    "Liga MX Clausura 2025",
+    "Liga MX Apertura 2025"
+  ],
+  "corners_metrics": {
+    "brier_over_8.5": 0.1327,
+    "brier_over_9.5": 0.207,
+    "brier_over_10.5": 0.2216,
+    "mae_total_corners": 2.25,
+    "baseline_brier": 0.25,
+    "n_holdout": 20
+  },
+  "tarjetas_metrics": {
+    "brier_over_3.5": 0.2677,
+    "brier_over_4.5": 0.3194,
+    "brier_over_5.5": 0.1803,
+    "baseline_brier": 0.25,
+    "n_holdout": 20
+  }
+}

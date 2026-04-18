@@ -52,7 +52,9 @@ class TarjetasModel:
         self.rivalidades   = {}     # (local, visita) → factor adicional
         self.n_partidos    = 0
 
-    def fit(self, df: pd.DataFrame, verbose: bool = True) -> "TarjetasModel":
+    def fit(self, df: pd.DataFrame = None, verbose: bool = True) -> "TarjetasModel":
+        if df is None:
+            df = _load_data()
         self.n_partidos = len(df)
         self.mu = df["tarjetas_total"].mean()
 
