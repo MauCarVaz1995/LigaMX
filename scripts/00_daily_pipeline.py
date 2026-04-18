@@ -665,6 +665,18 @@ def main():
         status = "✓" if not paso_result.get("error") else "✗"
         log.info(f"  [{status}] {name} completado en {paso_result['elapsed_s']}s")
 
+    # ── Post-partido (no-crítico) ───────────────────────────────────────────
+    log.info("")
+    log.info("── PASO 8 (no-crítico): Infografías post-partido ──")
+    t0 = time.time()
+    ok8 = run_script("gen_postpartido.py", ["--days", "2"])
+    summary["pasos"]["paso8"] = {
+        "ok": ok8,
+        "elapsed_s": round(time.time() - t0, 1),
+        "error": None if ok8 else "gen_postpartido.py falló",
+    }
+    log.info(f"  [{'✓' if ok8 else '✗'}] Post-partido completado en {summary['pasos']['paso8']['elapsed_s']}s")
+
     # ── Git commit ──────────────────────────────────────────────────────────
     log.info("")
     summary["pasos"]["paso7"] = step7_git_push(summary["pasos"])

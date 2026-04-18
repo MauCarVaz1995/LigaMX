@@ -60,6 +60,13 @@ jobs:
         run: |
           python scripts/00_daily_pipeline.py
 
+      - name: Generate post-match infographics (non-critical)
+        env:
+          PYTHONPATH: ${{ github.workspace }}/scripts
+          MPLBACKEND: Agg
+        run: |
+          python scripts/gen_postpartido.py --days 2 || echo "[warn] post-partido falló — continuando"
+
       - name: Update CCL fixtures and predictions (non-critical)
         env:
           PYTHONPATH: ${{ github.workspace }}/scripts

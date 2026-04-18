@@ -443,6 +443,104 @@ def get_match_stats(
     return result
 
 
+def get_match_stats_by_id(
+    match_id: int,
+    local: str,
+    visitante: str,
+    fecha: str,
+    score_home: int = None,
+    score_away: int = None,
+    force: bool = False,
+) -> dict | None:
+    """
+    Igual que get_match_stats pero usando el match_id directamente.
+    Útil cuando ya tenemos el ID del historico y el endpoint de fechas no responde.
+    """
+    local_safe     = re.sub(r"[^\w]", "_", local)
+    visitante_safe = re.sub(r"[^\w]", "_", visitante)
+    cache_path     = OUT_DIR / f"{local_safe}_{visitante_safe}_{fecha}.json"
+
+    if cache_path.exists() and not force:
+        print(f"[cache] {cache_path.name}", file=sys.stderr)
+        with open(cache_path, encoding="utf-8") as f:
+            return json.load(f)
+
+    score_str = f"{score_home}-{score_away}" if score_home is not None else ""
+
+    match_info = {
+        "match_id":   match_id,
+        "home":       local,
+        "away":       visitante,
+        "home_id":    None,
+        "away_id":    None,
+        "score_home": score_home,
+        "score_away": score_away,
+        "score_str":  score_str,
+        "finished":   True,
+        "utc_time":   fecha,
+        "league":     "Liga MX",
+        "league_id":  230,
+    }
+
+    print(f"[1/3] Usando match_id={match_id} directamente")
+    content = fetch_match_details(match_info)
+    if not content:
+        result = {**match_info, "players_home": [], "players_away": [],
+                  "team_stats": {}, "events": [], "error": "matchfacts_unavailable"}
+        _save(result, cache_path)
+        return result
+
+    print("[2/3] Procesando datos...")
+    lineup       = content.get("lineup") or {}
+    player_stats = content.get("playerStats") or {}
+    team_stats   = content.get("stats") or {}
+    match_facts  = content.get("matchFacts") or {}
+
+    home_lineup  = lineup.get("homeTeam", {})
+    away_lineup  = lineup.get("awayTeam", {})
+
+    players_home = _parse_players(
+        home_lineup.get("starters", []),
+        home_lineup.get("subs",     []),
+        player_stats,
+    )
+    players_away = _parse_players(
+        away_lineup.get("starters", []),
+        away_lineup.get("subs",     []),
+        player_stats,
+    )
+
+    result = {
+        "match_id":          match_id,
+        "date":              fecha,
+        "home_team":         local,
+        "away_team":         visitante,
+        "home_team_id":      match_info["home_id"],
+        "away_team_id":      match_info["away_id"],
+        "score_home":        score_home,
+        "score_away":        score_away,
+        "score_str":         score_str,
+        "finished":          True,
+        "utc_time":          fecha,
+        "league":            "Liga MX",
+        "league_id":         230,
+        "formation_home":    home_lineup.get("formation"),
+        "formation_away":    away_lineup.get("formation"),
+        "avg_rating_home":   home_lineup.get("rating"),
+        "avg_rating_away":   away_lineup.get("rating"),
+        "player_of_the_match": match_facts.get("playerOfTheMatch"),
+        "team_stats":        _flatten_team_stats(team_stats),
+        "players_home":      players_home,
+        "players_away":      players_away,
+        "events":            match_facts.get("events", []),
+        "fetched_at":        datetime.utcnow().isoformat() + "Z",
+        "source":            "fotmob/__NEXT_DATA__/by_id",
+    }
+
+    _save(result, cache_path)
+    return result
+
+
 def _save(data: dict, path: Path) -> None:
     with open(path, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)

@@ -1,0 +1,184 @@
+{
+  "fixtures": [
+    {
+      "date": "2026-03-31",
+      "home_team": "Bosnia and Herzegovina",
+      "home_raw": "Bosnia and Herzegovina",
+      "away_team": "Italy",
+      "away_raw": "Italy",
+      "tournament": "World Cup Qualification UEFA 2nd Round",
+      "league_id": 913098,
+      "match_id": 5067299
+    },
+    {
+      "date": "2026-03-31",
+      "home_team": "Czech Republic",
+      "home_raw": "Czechia",
+      "away_team": "Denmark",
+      "away_raw": "Denmark",
+      "tournament": "World Cup Qualification UEFA 2nd Round",
+      "league_id": 913098,
+      "match_id": 5067302
+    },
+    {
+      "date": "2026-03-31",
+      "home_team": "Kosovo",
+      "home_raw": "Kosovo",
+      "away_team": "Turkey",
+      "away_raw": "Turkiye",
+      "tournament": "World Cup Qualification UEFA 2nd Round",
+      "league_id": 913098,
+      "match_id": 5067301
+    },
+    {
+      "date": "2026-03-31",
+      "home_team": "Sweden",
+      "home_raw": "Sweden",
+      "away_team": "Poland",
+      "away_raw": "Poland",
+      "tournament": "World Cup Qualification UEFA 2nd Round",
+      "league_id": 913098,
+      "match_id": 5067300
+    },
+    {
+      "date": "2026-03-31",
+      "home_team": "Maldives",
+      "home_raw": "Maldives",
+      "away_team": "Timor-Leste",
+      "away_raw": "Timor-Leste",
+      "tournament": "Asian Cup Qualification Round 3 Grp. A",
+      "league_id": 896468,
+      "match_id": 4687495
+    },
+    {
+      "date": "2026-03-31",
+      "home_team": "Tajikistan",
+      "home_raw": "Tajikistan",
+      "away_team": "Philippines",
+      "away_raw": "Philippines",
+      "tournament": "Asian Cup Qualification Round 3 Grp. A",
+      "league_id": 896468,
+      "match_id": 4687494
+    },
+    {
+      "date": "2026-03-31",
+      "home_team": "Bhutan",
+      "home_raw": "Bhutan",
+      "away_team": "Brunei",
+      "away_raw": "Brunei",
+      "tournament": "Asian Cup Qualification Round 3 Grp. B",
+      "league_id": 896469,
+      "match_id": 4687579
+    },
+    {
+      "date": "2026-03-31",
+      "home_team": "Singapore",
+      "home_raw": "Singapore",
+      "away_team": "Bangladesh",
+      "away_raw": "Bangladesh",
+      "tournament": "Asian Cup Qualification Round 3 Grp. C",
+      "league_id": 896470,
+      "match_id": 4687591
+    },
+    {
+      "date": "2026-03-31",
+      "home_team": "India",
+      "home_raw": "India",
+      "away_team": "Hong Kong",
+      "away_raw": "Hong Kong",
+      "tournament": "Asian Cup Qualification Round 3 Grp. C",
+      "league_id": 896470,
+      "match_id": 4687590
+    },
+    {
+      "date": "2026-03-31",
+      "home_team": "Thailand",
+      "home_raw": "Thailand",
+      "away_team": "Turkmenistan",
+      "away_raw": "Turkmenistan",
+      "tournament": "Asian Cup Qualification Round 3 Grp. D",
+      "league_id": 896471,
+      "match_id": 4687506
+    },
+    {
+      "date": "2026-03-31",
+      "home_team": "Pakistan",
+      "home_raw": "Pakistan",
+      "away_team": "Myanmar",
+      "away_raw": "Myanmar",
+      "tournament": "Asian Cup Qualification Round 3 Grp. E",
+      "league_id": 896472,
+      "match_id": 4687555
+    },
+    {
+      "date": "2026-03-31",
+      "home_team": "Syria",
+      "home_raw": "Syria",
+      "away_team": "Afghanistan",
+      "away_raw": "Afghanistan",
+      "tournament": "Asian Cup Qualification Round 3 Grp. E",
+      "league_id": 896472,
+      "match_id": 4687554
+    },
+    {
+      "date": "2026-03-31",
+      "home_team": "Nepal",
+      "home_raw": "Nepal",
+      "away_team": "Laos",
+      "away_raw": "Laos",
+      "tournament": "Asian Cup Qualification Round 3 Grp. F",
+      "league_id": 896473,
+      "match_id": 4687567
+    },
+    {
+      "date": "2026-03-31",
+      "home_team": "Vietnam",
+      "home_raw": "Vietnam",
+      "away_team": "Malaysia",
+      "away_raw": "Malaysia",
+      "tournament": "Asian Cup Qualification Round 3 Grp. F",
+      "league_id": 896473,
+      "match_id": 4687566
+    },
+    {
+      "date": "2026-03-31",
+      "home_team": "Latvia",
+      "home_raw": "Latvia",
+      "away_team": "Gibraltar",
+      "away_raw": "Gibraltar",
+      "tournament": "UEFA Nations League C Qualification",
+      "league_id": 896148,
+      "match_id": 4679406
+    },
+    {
+      "date": "2026-03-31",
+      "home_team": "Luxembourg",
+      "home_raw": "Luxembourg",
+      "away_team": "Malta",
+      "away_raw": "Malta",
+      "tournament": "UEFA Nations League C Qualification",
+      "league_id": 896148,
+      "match_id": 4679408
+    },
+    {
+      "date": "2026-03-31",
+      "home_team": "DR Congo",
+      "home_raw": "DR Congo",
+      "away_team": "Jamaica",
+      "away_raw": "Jamaica",
+      "tournament": "World Cup Qualification Inter-Confederation Playoff",
+      "league_id": 10201,
+      "match_id": 5067218
+    },
+    {
+      "date": "2026-04-01",
+      "home_team": "Iraq",
+      "home_raw": "Iraq",
+      "away_team": "Bolivia",
+      "away_raw": "Bolivia",
+      "tournament": "World Cup Qualification Inter-Confederation Playoff",
+      "league_id": 10201,
+      "match_id": 5067219
+    }
+  ]
+}
