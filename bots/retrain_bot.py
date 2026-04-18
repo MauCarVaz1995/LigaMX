@@ -196,14 +196,25 @@ def retrain_all(verbose: bool = True) -> dict:
     print(f"  Train: {len(df_train)} | Holdout: {len(df_holdout)} partidos")
 
     # Re-entrenar sobre TODOS los datos (el holdout solo es para métricas)
-    print("\n  ── Corners ──")
+    print("\n  ── Corners (Dixon-Coles) ──")
     CornersModel().fit(verbose=verbose)
 
-    print("\n  ── Tarjetas ──")
+    print("\n  ── Tarjetas (Poisson) ──")
     TarjetasModel().fit(verbose=verbose)
 
+    # ML models (LightGBM calibrado)
+    ml_metrics = {}
+    try:
+        sys.path.insert(0, str(SCRIPTS))
+        import modelo_ml as mml
+        print("\n  ── ML models (LightGBM) ──")
+        ml_result = mml.train(verbose=verbose)
+        ml_metrics = ml_result.get("metrics", {})
+    except Exception as e:
+        print(f"  [warn] modelo_ml.py falló: {e}")
+
     # Evaluar sobre holdout
-    print("\n  ── Evaluación holdout ──")
+    print("\n  ── Evaluación holdout (Poisson) ──")
     corners_metrics  = brier_score_corners(CORNERS_MODEL, df_holdout)
     tarjetas_metrics = brier_score_tarjetas(TARJETAS_MODEL, df_holdout)
 
@@ -219,6 +230,7 @@ def retrain_all(verbose: bool = True) -> dict:
         "torneos":              df["torneo"].unique().tolist(),
         "corners_metrics":      corners_metrics,
         "tarjetas_metrics":     tarjetas_metrics,
+        "ml_metrics":           ml_metrics,
     }
     RETRAIN_LOG.write_text(json.dumps(log, ensure_ascii=False, indent=2))
     print(f"\n  Log guardado → {RETRAIN_LOG}")

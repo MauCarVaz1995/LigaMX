@@ -33,10 +33,10 @@ from pathlib import Path
 
 BASE    = Path(__file__).resolve().parent.parent
 TODAY   = date.today().isoformat()         # "2026-04-12"
-TO_ADDR = "maucarvaz@gmail.com"
-FROM_ADDR = "maucarvaz@gmail.com"
-SMTP_HOST = "smtp.gmail.com"
-SMTP_PORT = 587
+TO_ADDR   = os.environ.get("GMAIL_TO",   "maucarvaz@gmail.com")
+FROM_ADDR = os.environ.get("GMAIL_FROM", "maucarvaz@gmail.com")
+SMTP_HOST = os.environ.get("SMTP_HOST",  "smtp.gmail.com")
+SMTP_PORT = int(os.environ.get("SMTP_PORT", "587"))
 
 PRED_DIR    = BASE / "output/charts/predicciones"
 PARTY_DIR   = BASE / "output/charts/partidos"

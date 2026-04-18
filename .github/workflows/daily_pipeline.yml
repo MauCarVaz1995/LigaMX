@@ -117,9 +117,18 @@ jobs:
         run: |
           python bots/audit_bot.py || echo "[warn] audit_bot detectó problemas — revisar reporte"
 
+      - name: Run discovery bot — hallazgos y retroalimentación (non-critical)
+        env:
+          PYTHONPATH: ${{ github.workspace }}/scripts
+          MPLBACKEND: Agg
+        run: |
+          python bots/discovery_bot.py || echo "[warn] discovery_bot falló — continuando"
+
       - name: Send daily email summary (non-critical)
         env:
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          GMAIL_TO: ${{ secrets.GMAIL_TO }}
+          GMAIL_FROM: ${{ secrets.GMAIL_FROM }}
           MPLBACKEND: Agg
         run: |
           python scripts/send_daily_email.py || echo "[warn] Email falló — continuando"
