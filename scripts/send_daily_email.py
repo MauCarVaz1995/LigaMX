@@ -52,15 +52,139 @@ CHARTS   = BASE / "output/charts"
 PRED_DIR = BASE / "output/charts/predicciones"
 
 
+def _load_pending_matches() -> dict:
+    """
+    Carga partidos pendientes del historico activo.
+    Retorna {liga: set_of_slugs} para filtrar qué predicciones son relevantes.
+    """
+    import json, re
+    pending: dict[str, set] = {"ligamx": set(), "ccl": set()}
+    today_s = TODAY
+
+    # Liga MX
+    hist = BASE / "data/raw/historico/historico_clausura_2026.json"
+    if hist.exists():
+        d = json.loads(hist.read_text())
+        for p in d["partidos"]:
+            if not p.get("terminado") and p.get("fecha", "")[:10] >= today_s:
+                slug = re.sub(r"[^\w]", "_", f"{p['local']}_{p['visitante']}")
+                pending["ligamx"].add(slug.lower())
+
+    # CCL fixtures
+    ccl_fixtures = sorted((BASE / "data/raw/fotmob/ccl").glob("ccl_fixtures_*.json")) if (BASE / "data/raw/fotmob/ccl").exists() else []
+    if ccl_fixtures:
+        d = json.loads(ccl_fixtures[-1].read_text())
+        matches = d if isinstance(d, list) else d.get("matches", d.get("fixtures", []))
+        for m in matches:
+            fecha = str(m.get("date", "")).replace("-", "")[:8]
+            fecha_iso = f"{fecha[:4]}-{fecha[4:6]}-{fecha[6:8]}" if len(fecha) >= 8 else ""
+            if fecha_iso >= today_s:
+                h = re.sub(r"[^\w]", "_", m.get("home", m.get("homeTeam", {}).get("name", "")))
+                a = re.sub(r"[^\w]", "_", m.get("away", m.get("awayTeam", {}).get("name", "")))
+                pending["ccl"].add(f"{h}_{a}".lower())
+
+    return pending
+
+
+def _image_is_relevant(path: Path, pending: dict, today_s: str,
+                        last_jornada: int) -> bool:
+    """
+    Decide si una imagen tiene valor ahora mismo.
+    Reglas:
+      pred_*.png           → solo si el partido aún no se jugó (fecha >= hoy)
+      postpartido/*.png    → solo de la última jornada jugada (o la anterior)
+      ELO/ranking*.png     → siempre relevantes
+      Mexico_vs_X/*.png    → solo si la fecha en el nombre >= hoy-7
+    """
+    import re
+    name  = path.name
+    parts = path.parts
+
+    # Predicciones Liga MX
+    if "pred_" in name and "LigaMX" in str(path):
+        # Extraer fecha del nombre si existe: pred_A_B_20260419.png
+        m = re.search(r"(\d{8})", name)
+        if m:
+            fecha = m.group(1)
+            return fecha >= today_s.replace("-", "")
+        # Sin fecha en nombre: pertenece a una carpeta J{N}
+        for part in parts:
+            j_match = re.match(r"J(\d+)$", part)
+            if j_match:
+                j = int(j_match.group(1))
+                return j >= last_jornada  # solo jornada actual o futura
+
+    # Post-partido: solo las 2 últimas jornadas
+    if "postpartido" in parts:
+        for part in parts:
+            j_match = re.match(r"J(\d+)$", part)
+            if j_match:
+                j = int(j_match.group(1))
+                return j >= last_jornada - 1
+
+    # CCL predicciones: solo partidos pendientes
+    if "pred_" in name and "CCL" in str(path):
+        m = re.search(r"(\d{8})", name)
+        if m:
+            return m.group(1) >= today_s.replace("-", "")
+        return True  # sin fecha → incluir por defecto
+
+    # Internacional carpetas Mexico_vs_X: solo últimos 7 días
+    if "Mexico_vs_" in str(path):
+        m = re.search(r"(\d{8})", name)
+        if m:
+            from datetime import datetime, timedelta
+            try:
+                img_date = datetime.strptime(m.group(1), "%Y%m%d").date()
+                cutoff = date.today() - timedelta(days=7)
+                return img_date >= cutoff
+            except Exception:
+                pass
+        # Sin fecha en nombre: verificar mtime
+        mtime = date.fromtimestamp(path.stat().st_mtime)
+        return (date.today() - mtime).days <= 7
+
+    # Internacional/FECHA/: solo últimos 7 días
+    if "Internacional" in str(path):
+        for part in parts:
+            # carpeta con fecha YYYY-MM-DD
+            import re as _re
+            if _re.match(r"\d{4}-\d{2}-\d{2}", part):
+                from datetime import datetime, timedelta
+                try:
+                    folder_date = date.fromisoformat(part)
+                    return (date.today() - folder_date).days <= 7
+                except Exception:
+                    pass
+        return True
+
+    return True  # por defecto incluir
+
+
+def _get_last_jornada() -> int:
+    """Obtiene la última jornada jugada del historico activo."""
+    import json
+    hist = BASE / "data/raw/historico/historico_clausura_2026.json"
+    if not hist.exists():
+        return 1
+    d = json.loads(hist.read_text())
+    played = [int(p.get("jornada", 0)) for p in d["partidos"] if p.get("terminado")]
+    return max(played) if played else 1
+
+
 def collect_by_section() -> dict[str, list[Path]]:
     """
-    Devuelve imágenes agrupadas por sección para el email.
-    Estructura:
-      "Liga MX"       → predicciones J{N} + postpartido J{N}
-      "CCL"           → predicciones CCL
-      "Internacional" → predicciones Intl + selecciones
-      "ELO & Stats"   → ELO, montecarlo, rankings
+    Devuelve SOLO imágenes relevantes agrupadas por sección.
+    Regla dura: nada del pasado que ya no aporta valor.
+      "Liga MX"       → pred partidos PENDIENTES + postpartido última jornada
+      "CCL"           → pred partidos CCL PENDIENTES
+      "Internacional" → pred intl últimos 7 días + ELO selecciones
+      "ELO & Stats"   → ELO, montecarlo, rankings (siempre relevantes)
     """
+    today_s      = TODAY
+    last_jornada = _get_last_jornada()
+    pending      = _load_pending_matches()
+
     sections: dict[str, list[Path]] = {
         "Liga MX": [],
         "CCL": [],
@@ -68,41 +192,46 @@ def collect_by_section() -> dict[str, list[Path]]:
         "ELO & Stats": [],
     }
 
-    # Liga MX — predicciones + postpartido en J{N}/
+    # ── Liga MX ───────────────────────────────────────────────────────────────
     liga_root = PRED_DIR / "LigaMX_Clausura_2026"
     if liga_root.exists():
         for jdir in sorted(liga_root.iterdir()):
             if not jdir.is_dir():
                 continue
-            # Predicciones directas en J{N}/
-            sections["Liga MX"] += sorted(jdir.glob("pred_*.png"))
-            # Post-partido en J{N}/postpartido/
+            for img in sorted(jdir.glob("pred_*.png")):
+                if _image_is_relevant(img, pending, today_s, last_jornada):
+                    sections["Liga MX"].append(img)
             pp_dir = jdir / "postpartido"
             if pp_dir.exists():
-                sections["Liga MX"] += sorted(pp_dir.glob("*.png"))
+                for img in sorted(pp_dir.glob("*.png")):
+                    if _image_is_relevant(img, pending, today_s, last_jornada):
+                        sections["Liga MX"].append(img)
 
-    # CCL
+    # ── CCL ───────────────────────────────────────────────────────────────────
     ccl_root = PRED_DIR / "CCL_2025-26"
     if ccl_root.exists():
-        sections["CCL"] += sorted(ccl_root.rglob("*.png"))
+        for img in sorted(ccl_root.rglob("*.png")):
+            if _image_is_relevant(img, pending, today_s, last_jornada):
+                sections["CCL"].append(img)
 
-    # Internacional — predicciones
+    # ── Internacional ─────────────────────────────────────────────────────────
     intl_root = PRED_DIR / "Internacional"
     if intl_root.exists():
-        sections["Internacional"] += sorted(intl_root.rglob("*.png"))
+        for img in sorted(intl_root.rglob("*.png")):
+            if _image_is_relevant(img, pending, today_s, last_jornada):
+                sections["Internacional"].append(img)
 
-    # Internacional — selecciones charts
-    for name in ["selecciones_ranking_elo.png", "selecciones_ultimos5.png",
-                 "selecciones_prediccion.png"]:
+    for folder in sorted(PRED_DIR.glob("Mexico_vs_*")):
+        for img in sorted(folder.glob("*.png")):
+            if _image_is_relevant(img, pending, today_s, last_jornada):
+                sections["Internacional"].append(img)
+
+    for name in ["selecciones_ranking_elo.png"]:
         p = CHARTS / name
         if p.exists():
             sections["Internacional"].append(p)
 
-    # Internacional — Mexico_vs_X predicciones antiguas
-    for folder in sorted(PRED_DIR.glob("Mexico_vs_*")):
-        sections["Internacional"] += sorted(folder.glob("*.png"))
-
-    # ELO & Stats
+    # ── ELO & Stats ───────────────────────────────────────────────────────────
     for name in ["elo_ranking.png", "elo_evolucion.png",
                  "montecarlo_clausura2026.png",
                  "ranking_portero.png", "ranking_defensa.png",
@@ -111,12 +240,7 @@ def collect_by_section() -> dict[str, list[Path]]:
         if p.exists():
             sections["ELO & Stats"].append(p)
 
-    # Resúmenes de jornada viejos (raíz)
-    old_resumenes = sorted(CHARTS.glob("resumen_postjornada*.png"))
-    if old_resumenes:
-        sections["Liga MX"] += old_resumenes
-
-    # Deduplicar por sección
+    # Deduplicar
     for k in sections:
         seen: set = set()
         deduped = []

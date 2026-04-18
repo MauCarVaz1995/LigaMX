@@ -15,21 +15,24 @@ Autor: **MauCarVaz1995** · GitHub: `MauCarVaz1995/LigaMX`
 
 ---
 
-## Estado actual — 2026-04-13
+## Estado actual — 2026-04-18
 
 ### ✅ Funcionando
 - Pipeline automatizado GitHub Actions — corre cada día 8am México sin intervención
-  - Paso 1: Descarga resultados Liga MX de FotMob
-  - Paso 2: Recalcula ELO Liga MX incremental
-  - Paso 3: Descarga partidos internacionales
-  - Paso 4: Recalcula ELO selecciones incremental
-  - Paso 5: Actualiza tracker de predicciones con resultados reales
-  - Paso 6: Genera imágenes de predicción de partidos del día
-  - Paso 7: Hace commit y push automático al repo
-- Modelo: ELO + Poisson + Dixon-Coles (rho=-0.13)
-- Liga MX Clausura 2026: jornadas 1-14 completas (125 partidos)
-- Internacionales: actualizados al 2026-04-13 (49,231 partidos)
-- Tracker: 23 predicciones, 11/23 aciertos (47.8% baseline)
+  - Paso 1: `00_daily_pipeline.py` — Liga MX + ELO + internacionales + ELO selecciones + tracker + predicciones
+  - Paso 2: `scrape_match_events.py --days 4` — corners/tarjetas/xG (incremental)
+  - Paso 3: `bots/retrain_bot.py` — re-calibra modelos si hay ≥5 partidos nuevos o ≥7 días
+  - Paso 4: `bots/daily_betting_bot.py --days 3` — análisis value bets próximos 3 días
+  - Paso 5: `scripts/gen_postpartido.py --days 2` — infografías post-partido
+  - Paso 6: `scripts/update_ccl_fixtures.py` + `generar_prediccion.py --competition ccl`
+  - Paso 7: git commit + push (incluye `output/reports/`)
+  - Paso 8: `bots/audit_bot.py` — auditoría completa + depuración imágenes obsoletas
+  - Paso 9: `scripts/send_daily_email.py` — email diario con imágenes relevantes + audit + betting
+- Modelos científicos: Dixon-Coles MLE + Rue-Salvesen time decay + "feeling" Liga MX
+- Liga MX corners/tarjetas: 794 partidos en 5 temporadas (`match_events.csv`)
+  - μ corners = 9.32 | μ amarillas = 4.43 | μ xG_local = 1.48 | μ xG_visita = 1.16
+  - Brier Score Over 8.5 corners = 0.127 (baseline naïve = 0.25, +49% mejora)
+- Tracker: 23 predicciones, 47.8% baseline
 - Bebas Neue: cargada desde `assets/fonts/` en CI y local
 
 ### ❓ Preguntas frecuentes sobre el pipeline
@@ -43,38 +46,46 @@ NO se sincronizan automáticamente con tu desktop — necesitas hacer pull.
 **¿Cómo sé que el job corrió bien?**
 - GitHub → repo → Actions → checkmark verde = OK
 - GitHub → repo → commits → busca "auto: daily update YYYY-MM-DD"
-- O revisar `logs/daily_summary.json` en el repo
+- O revisar `output/reports/audit_{fecha}.json` en el repo
 
 **¿Qué hace exactamente cada día?**
 1. Descarga resultados de FotMob (Liga MX + internacionales)
 2. Actualiza ELOs de todos los equipos afectados
 3. Llena resultados reales en predicciones pasadas
-4. Genera imágenes de predicción para partidos de hoy
-5. Guarda todo en GitHub con commit automático
+4. Scrape corners/tarjetas/xG de partidos recientes
+5. Re-calibra modelos si hay datos nuevos suficientes
+6. Genera análisis de value bets para próximos 3 días
+7. Genera infografías post-partido de jornadas recientes
+8. Hace commit y push de todo
+9. Audita integridad + depura imágenes obsoletas
+10. Manda email con resumen + imágenes relevantes
 
 **¿Se mandan imágenes por correo?**
-Aún NO — está en el roadmap. Se puede agregar con SendGrid o Gmail API.
+SÍ — `send_daily_email.py` corre diario. Filtra solo imágenes relevantes (predicciones futuras, post-partido reciente). Auditoría con semáforo visual incluida.
 
 **¿Se publican automáticamente en Twitter?**
 Aún NO — falta configurar Twitter API keys como secrets en GitHub.
 
-### ✅ Completado en esta sesión (2026-04-18)
-- `generar_prediccion.py` — script canónico unificado (Liga MX + CCL + Intl, mismo diseño)
-- `gen_postpartido.py` — ratings post-partido automáticos, guarda en `J{N}/postpartido/`
-- `send_daily_email.py` — resumen diario con imágenes por sección a maucarvaz@gmail.com
-- Pipeline completo: pasos 1-8 + email automático cada 8am México
-- `skills/BETTING_MODEL.md` — arquitectura completa del modelo de value betting
-- `scrape_match_events.py` — 126/126 partidos Clausura 2026 con corners, tarjetas, shots, xG ✅
-  - μ corners = 9.32 | μ amarillas = 4.43 | μ xG_local = 1.48 | μ xG_visita = 1.16
-  - Integrado en daily_pipeline.yml (paso diario no-crítico, `--days 4`)
+### ✅ Completado en sesiones 2026-04-18
+- `scripts/liga_mx_knowledge.py` — "feeling" layer: rivalidades, altitud, árbitros, fases
+- `scripts/modelo_corners.py` — Dixon-Coles MLE + Rue-Salvesen time decay + feeling
+- `scripts/modelo_tarjetas.py` — Poisson calibrado sobre card_rate + rivalidades + árbitro
+- `scripts/modelo_btts.py` — Dixon-Coles ρ=-0.13 + lambdas desde ELO
+- `scripts/calcular_ev.py` — EV unificado CLI para los 3 modelos + cuotas manuales
+- `bots/daily_betting_bot.py` — análisis autónomo, reporte HTML dark-themed + JSON
+- `bots/retrain_bot.py` — re-entrena automáticamente cuando hay datos suficientes
+- `bots/audit_bot.py` (expandido) — 6 secciones + GAP CHECK + auto-depuración imágenes
+- `scripts/send_daily_email.py` (reescrito) — filtrado estricto de relevancia por fecha/jornada
+- `skills/VISION_GLOBAL.md` — estrategia global de portafolio (Liga MX → LATAM → Europa)
+- `scrape_match_events.py --seasons 5` — 794 partidos multi-temporada
 
 ### ⏳ Pendiente prioritario (actualizado 2026-04-18)
-1. **Fase B1 BETTING** — `build_corners_dataset.py`: agregar 3+ temporadas históricas para calibrar λ
-2. **Fase B1 BETTING** — `scrape_xg_fbref.py`: xG por partido y jugador desde FBref
-3. **Fase B2 BETTING** — `modelo_corners.py` + `modelo_tarjetas.py` + `modelo_btts.py`
-4. **Fase B3 BETTING** — `scrape_odds.py`: The Odds API wrapper para detectar value bets
-5. CONCACAF Champions Cup — historial completo 2010→hoy (ELOs confiables)
-6. Twitter API — publicación automática desde pipeline
+1. **Fix ELO naming** — 5 equipos sin ELO: "CF America", "Atletico de San Luis", "Mazatlan FC", "FC Juarez", "Queretaro FC" (normalización de nombres)
+2. **Run retrain inicial** — `python bots/retrain_bot.py --force` para generar `retrain_log.json`
+3. **Fase B3 BETTING** — `scrape_odds.py`: The Odds API wrapper (500 req/mes gratis)
+4. **Historical odds backtest** — `football-data.co.uk` free CSVs para validar CLV vs Pinnacle
+5. **CCL historial completo** — 2010→2025 (~500 fechas en FotMob league_id=915924)
+6. **Twitter API** — publicación automática desde pipeline
 
 ---
 
@@ -118,6 +129,22 @@ Aún NO — falta configurar Twitter API keys como secrets en GitHub.
 - Input: JSON de FotMob scrapeado con `03_get_match_stats_fotmob.py`
 - Output: ratings por equipo (1080×1500) + team stats (1080×1080)
 
+### Sistema de Value Betting ✅
+- Dataset: `data/processed/match_events.csv` — 794 partidos, 5 temporadas Liga MX
+- Modelo corners: `scripts/modelo_corners.py` — Dixon-Coles MLE + Rue-Salvesen + Liga MX Knowledge
+  - Brier Score Over 8.5 = 0.127 (baseline naïve 0.25, +49%)
+  - home_adv MLE = 1.157x (vs hardcoded 1.07 anterior)
+- Modelo tarjetas: `scripts/modelo_tarjetas.py` — Poisson + rivalidades + factor árbitro
+- Modelo BTTS: `scripts/modelo_btts.py` — Dixon-Coles ρ=-0.13 + lambdas desde ELO
+- EV unificado: `scripts/calcular_ev.py` — CLI con cuotas manuales, tags VALUE/borderline/❌
+- Bot diario: `bots/daily_betting_bot.py` — analiza partidos 3 días, output HTML+JSON
+- Bot reentrenamiento: `bots/retrain_bot.py` — re-calibra si ≥5 nuevos o ≥7 días
+- Bot auditoría: `bots/audit_bot.py` — 6 secciones, GAP CHECK, auto-elimina imágenes obsoletas
+- Knowledge base: `scripts/liga_mx_knowledge.py` — rivalidades, altitud, árbitros, fases, estadios
+- Modelos guardados: `data/processed/corners_model.json`, `tarjetas_model.json`
+- Reportes: `output/reports/betting_{fecha}.html` + `audit_{fecha}.json`
+- Gate producción: 200 predicciones | Brier < 0.22 | CLV > 0% | ROI > 3%
+
 ### Modelo Poisson Liga MX ✅
 - Script: `scripts/11_modelo_prediccion.py`
 - Círculos de % + división visual local/visitante + heatmap 7×7
@@ -138,7 +165,12 @@ Aún NO — falta configurar Twitter API keys como secrets en GitHub.
 | ELO Selecciones | `data/processed/elos_selecciones_*.json` | Daily (Actions) | ✅ Alta — 49k partidos desde 1872 |
 | Resultados internacionales | `data/raw/internacional/results.csv` | Daily (Actions) | ✅ Alta |
 | Histórico Liga MX | `data/raw/historico/` | Daily (Actions) | ✅ Alta — 38 JSONs |
-| Fixtures CCL 2025-26 | `data/raw/fotmob/ccl/ccl_fixtures_*.json` | Manual por ahora | ⚠️ Media — solo torneo actual |
+| Match events (corners/xG) | `data/processed/match_events.csv` | Daily (Actions, `--days 4`) | ✅ Alta — 794 partidos, 5 temporadas |
+| Modelos betting | `data/processed/corners_model.json`, `tarjetas_model.json` | Auto retrain_bot | ✅ Alta — MLE Dixon-Coles |
+| Retrain log | `data/processed/retrain_log.json` | Auto retrain_bot | ✅ Alta |
+| Reportes betting | `output/reports/betting_{fecha}.html` | Daily (Actions) | ✅ Alta |
+| Reportes auditoría | `output/reports/audit_{fecha}.json` | Daily (Actions) | ✅ Alta |
+| Fixtures CCL 2025-26 | `data/raw/fotmob/ccl/ccl_fixtures_*.json` | Daily (Actions paso 6) | ⚠️ Media — solo torneo actual |
 | ELO CCL | calculado en memoria | Manual | ❌ Baja — falta historial 2010-2025 |
 | Jugadores Clausura 2026 | `data/processed/jugadores_clausura2026.csv` | Manual | ⚠️ Media |
 | Logos Liga MX | `data/raw/logos/ligamx/` | Manual | ✅ Alta |

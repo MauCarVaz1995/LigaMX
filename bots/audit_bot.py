@@ -93,56 +93,107 @@ def audit_datos(verbose: bool = False) -> dict:
         if verbose:
             print(f"  {status(ok, warn)} {name}: {msg}")
 
-    # match_events.csv
+    # ── match_events.csv — integridad completa ─────────────────────────────
     me = BASE / "data/processed/match_events.csv"
+    hist_file = BASE / "data/raw/historico/historico_clausura_2026.json"
+
     if me.exists():
-        df = pd.read_csv(me)
-        n  = len(df)
-        d  = days_since(me)
-        pct_corners = df["corners_total"].notna().mean()
-        pct_xg      = df["xg_local"].notna().mean()
-        bad_corners = (df["corners_total"] > 40).sum()
+        df  = pd.read_csv(me)
+        n   = len(df)
+        d   = days_since(me)
+        pct_corners  = df["corners_total"].notna().mean()
+        pct_xg       = df["xg_local"].notna().mean()
+        bad_corners  = (df["corners_total"].dropna() > 40).sum()
+        bad_shots    = (df["shots_local"].dropna() > 50).sum()
+        dup_ids      = df["match_id"].duplicated().sum()
 
-        check("match_events.csv existe",   True,  False, f"{n} partidos")
-        check("match_events actualizado",  d <= THRESHOLDS["max_days_since_match_events_update"],
+        check("match_events actualizado",
+              d <= THRESHOLDS["max_days_since_match_events_update"],
               d <= THRESHOLDS["max_days_since_match_events_update"] + 2,
-              f"hace {d} días")
-        check("corners sin nulos",         pct_corners > 0.95, pct_corners > 0.85,
+              f"{n} partidos, hace {d} días")
+        check("corners sin nulos",    pct_corners > 0.95, pct_corners > 0.85,
               f"{pct_corners:.0%} completo")
-        check("xG sin nulos",              pct_xg > 0.80, pct_xg > 0.60,
+        check("xG sin nulos",         pct_xg > 0.80, pct_xg > 0.60,
               f"{pct_xg:.0%} completo")
-        check("corners sin valores imposibles", bad_corners == 0, bad_corners < 3,
-              f"{bad_corners} filas con >40 corners")
-    else:
-        check("match_events.csv existe", False, False, "archivo no encontrado")
+        check("sin valores imposibles",
+              bad_corners == 0 and bad_shots == 0,
+              bad_corners < 3 and bad_shots < 3,
+              f"{bad_corners} corners>40, {bad_shots} shots>50")
+        check("sin match_ids duplicados", dup_ids == 0, dup_ids < 3,
+              f"{dup_ids} duplicados" if dup_ids else "limpio")
 
-    # elo_historico.csv
+        # GAP CHECK: ¿hay partidos terminados del historico que NO están en match_events?
+        if hist_file.exists():
+            hist_data    = json.loads(hist_file.read_text())
+            terminados   = {int(p["id"]) for p in hist_data["partidos"] if p.get("terminado")}
+            en_events    = set(df["match_id"].astype(int).tolist())
+            faltantes    = terminados - en_events
+            pct_coverage = len(en_events & terminados) / len(terminados) if terminados else 1.0
+            check("cobertura partidos terminados",
+                  pct_coverage >= 0.98, pct_coverage >= 0.90,
+                  f"{len(en_events & terminados)}/{len(terminados)} partidos "
+                  f"({pct_coverage:.0%})"
+                  + (f" — faltan {len(faltantes)}: ver audit_log" if faltantes else ""))
+            if faltantes:
+                results["missing_match_ids"] = sorted(faltantes)[:20]
+    else:
+        check("match_events.csv existe", False, False,
+              "ejecutar: python scripts/scrape_match_events.py --days 30")
+
+    # ── elo_historico.csv ─────────────────────────────────────────────────
     elo_csv = BASE / "data/processed/elo_historico.csv"
     if elo_csv.exists():
-        df_elo = pd.read_csv(elo_csv)
-        d = days_since(elo_csv)
+        df_elo    = pd.read_csv(elo_csv)
+        d         = days_since(elo_csv)
         n_equipos = df_elo["equipo"].nunique()
-        # ELOs fuera de rango (Liga MX típicamente 1300-1900)
         last_elos = df_elo.groupby("equipo")["elo"].last()
         bad_elos  = ((last_elos < 1100) | (last_elos > 2100)).sum()
-        check("elo_historico actualizado", d <= THRESHOLDS["max_days_since_elo_update"],
-              d <= 5, f"hace {d} días, {n_equipos} equipos")
-        check("ELOs en rango razonable", bad_elos == 0, bad_elos < 3,
-              f"{bad_elos} equipos con ELO fuera de rango")
+        # Verificar que la última fecha del ELO sea reciente
+        last_fecha = pd.to_datetime(df_elo["fecha"]).max().date()
+        dias_ult   = (date.today() - last_fecha).days
+
+        check("elo_historico actualizado",
+              dias_ult <= THRESHOLDS["max_days_since_elo_update"],
+              dias_ult <= 5,
+              f"último partido: {last_fecha} (hace {dias_ult} días), {n_equipos} equipos")
+        check("ELOs en rango [1100-2100]", bad_elos == 0, bad_elos < 3,
+              f"{bad_elos} fuera de rango")
+
+        # Verificar que todos los equipos actuales tienen ELO
+        if hist_file.exists():
+            hist_data    = json.loads(hist_file.read_text())
+            equipos_hist = {p["local"] for p in hist_data["partidos"]} | \
+                           {p["visitante"] for p in hist_data["partidos"]}
+            equipos_elo  = set(df_elo["equipo"].unique())
+            sin_elo      = equipos_hist - equipos_elo
+            check("todos los equipos tienen ELO", len(sin_elo) == 0, len(sin_elo) <= 2,
+                  "OK" if not sin_elo else f"sin ELO: {sin_elo}")
     else:
         check("elo_historico.csv existe", False, False, "archivo no encontrado")
 
-    # predicciones_log.csv
+    # ── predicciones_log.csv ──────────────────────────────────────────────
     log_csv = BASE / "data/processed/predicciones_log.csv"
     if log_csv.exists():
-        df_log = pd.read_csv(log_csv)
+        df_log     = pd.read_csv(log_csv)
         n_total    = len(df_log)
         n_resolved = df_log["resultado_real"].notna().sum() if "resultado_real" in df_log.columns else 0
-        d = days_since(log_csv)
+        d          = days_since(log_csv)
+        # Check: partidos pasados sin resolver
+        if "fecha" in df_log.columns and "resultado_real" in df_log.columns:
+            df_log["fecha"] = pd.to_datetime(df_log["fecha"])
+            cutoff = pd.Timestamp.today() - pd.Timedelta(days=3)
+            no_resueltos_viejos = df_log[
+                (df_log["fecha"] < cutoff) & (df_log["resultado_real"].isna())
+            ]
+            check("predicciones pasadas resueltas",
+                  len(no_resueltos_viejos) == 0,
+                  len(no_resueltos_viejos) <= 3,
+                  f"{len(no_resueltos_viejos)} partidos pasados sin resultado real"
+                  if no_resueltos_viejos.shape[0] else "OK")
         check("predicciones_log actualizado", d <= 3, d <= 7,
-              f"{n_total} total, {n_resolved} resueltas, hace {d} días")
+              f"{n_total} predicciones, {n_resolved} resueltas, hace {d} días")
     else:
-        check("predicciones_log existe", False, False, "sin tracker de predicciones")
+        check("predicciones_log existe", False, False, "sin tracker")
 
     return results
 
@@ -330,7 +381,143 @@ def audit_tracker(verbose: bool = False) -> dict:
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Sección 5 — BANKROLL (si existe el tracker de apuestas reales)
+# Sección 5 — IMÁGENES (depurar obsoletas, validar organización)
+# ─────────────────────────────────────────────────────────────────────────────
+
+def audit_imagenes(verbose: bool = False) -> dict:
+    """
+    Audita y depura imágenes obsoletas de output/charts/.
+    Elimina automáticamente predicciones de partidos ya jugados con más de 7 días,
+    reporta imágenes huérfanas y verifica estructura de carpetas.
+    """
+    import re
+    results = {"section": "imagenes", "checks": [], "status": "ok", "stats": {}}
+    pred_dir = BASE / "output/charts/predicciones"
+
+    def check(name: str, ok: bool, warn: bool, msg: str):
+        level = "ok" if ok else ("warn" if warn else "error")
+        if level == "error" and results["status"] != "error":
+            results["status"] = "error"
+        elif level == "warn" and results["status"] == "ok":
+            results["status"] = "warn"
+        results["checks"].append({"name": name, "level": level, "msg": msg})
+        if verbose:
+            print(f"  {status(ok, warn)} {name}: {msg}")
+
+    if not pred_dir.exists():
+        check("output/charts/predicciones existe", False, False, "directorio no encontrado")
+        return results
+
+    today_s    = TODAY.replace("-", "")
+    cutoff_old = (date.today() - timedelta(days=7)).strftime("%Y%m%d")
+
+    all_pngs    = list(pred_dir.rglob("*.png"))
+    total       = len(all_pngs)
+    obsoletas   = []
+    huerfanas   = []
+
+    # ── Detectar imágenes obsoletas ───────────────────────────────────────
+    for img in all_pngs:
+        name  = img.name
+        parts = img.parts
+
+        # pred_*.png con fecha en nombre: si la fecha ya pasó >7 días → obsoleta
+        if name.startswith("pred_"):
+            m = re.search(r"(\d{8})", name)
+            if m and m.group(1) < cutoff_old:
+                obsoletas.append(img)
+                continue
+            # Sin fecha: verificar por carpeta J{N} de jornada pasada
+            for part in parts:
+                j_m = re.match(r"J(\d+)$", part)
+                if j_m:
+                    j = int(j_m.group(1))
+                    # ¿Esta jornada ya se jugó completamente?
+                    hist_file = BASE / "data/raw/historico/historico_clausura_2026.json"
+                    if hist_file.exists():
+                        hist_data = json.loads(hist_file.read_text())
+                        j_partidos = [p for p in hist_data["partidos"]
+                                      if int(p.get("jornada", 0)) == j]
+                        if j_partidos and all(p.get("terminado") for p in j_partidos):
+                            # Jornada completa: las predicciones ya no tienen valor
+                            # Solo borrar si tiene más de 7 días
+                            mtime = date.fromtimestamp(img.stat().st_mtime)
+                            if (date.today() - mtime).days > 7:
+                                obsoletas.append(img)
+                    break
+
+        # Carpetas México_vs_X sin fecha reciente
+        if "Mexico_vs_" in str(img):
+            mtime = date.fromtimestamp(img.stat().st_mtime)
+            if (date.today() - mtime).days > 7:
+                obsoletas.append(img)
+
+    # ── Eliminar obsoletas ────────────────────────────────────────────────
+    deleted = []
+    for img in set(obsoletas):
+        try:
+            img.unlink()
+            deleted.append(img.name)
+        except Exception as e:
+            if verbose:
+                print(f"  [warn] No se pudo borrar {img.name}: {e}")
+
+    # Limpiar directorios vacíos
+    for d in sorted(pred_dir.rglob("*"), reverse=True):
+        if d.is_dir():
+            try:
+                d.rmdir()  # solo funciona si está vacío
+            except Exception:
+                pass
+
+    check("imágenes obsoletas depuradas",
+          len(deleted) == 0,
+          len(deleted) <= 5,
+          f"{len(deleted)} eliminadas" if deleted else "ninguna obsoleta")
+    if deleted and verbose:
+        for name in deleted[:10]:
+            print(f"    🗑️  {name}")
+
+    # ── Verificar estructura correcta de carpetas ─────────────────────────
+    remaining = list(pred_dir.rglob("*.png"))
+    n_after   = len(remaining)
+
+    # LigaMX debe estar en LigaMX_Clausura_2026/J{N}/pred_*.png
+    bad_structure = [
+        img for img in remaining
+        if "pred_" in img.name
+        and "LigaMX" not in str(img)
+        and "CCL" not in str(img)
+        and "Internacional" not in str(img)
+        and "Mexico_vs_" not in str(img)
+    ]
+    check("estructura de carpetas correcta",
+          len(bad_structure) == 0,
+          len(bad_structure) <= 2,
+          f"{len(bad_structure)} imágenes fuera de estructura" if bad_structure
+          else "OK — todas en carpeta correcta")
+
+    # Post-partido en su lugar
+    pp_imgs = [img for img in remaining if "postpartido" in img.parts]
+    bad_pp  = [img for img in pp_imgs if "LigaMX" not in str(img)]
+    check("post-partido en LigaMX_*/J{N}/postpartido/",
+          len(bad_pp) == 0, True,
+          f"{len(pp_imgs)} post-partido, {len(bad_pp)} fuera de lugar")
+
+    results["stats"] = {
+        "total_antes":  total,
+        "eliminadas":   len(deleted),
+        "total_despues": n_after,
+        "obsoletas_detectadas": len(obsoletas),
+    }
+    check("total imágenes restantes", n_after <= 60, n_after <= 100,
+          f"{n_after} imágenes en output/charts/predicciones/")
+
+    return results
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Sección 6 — BANKROLL (si existe el tracker de apuestas reales)
 # ─────────────────────────────────────────────────────────────────────────────
 
 def audit_bankroll(verbose: bool = False) -> dict:
@@ -473,11 +660,12 @@ def generar_reporte(sections: list[dict]) -> tuple[Path, Path]:
 # ─────────────────────────────────────────────────────────────────────────────
 
 SECTIONS_MAP = {
-    "datos":    audit_datos,
-    "modelos":  audit_modelos,
-    "bots":     audit_bots,
-    "tracker":  audit_tracker,
-    "bankroll": audit_bankroll,
+    "datos":     audit_datos,
+    "modelos":   audit_modelos,
+    "bots":      audit_bots,
+    "tracker":   audit_tracker,
+    "imagenes":  audit_imagenes,
+    "bankroll":  audit_bankroll,
 }
 
 def main():
