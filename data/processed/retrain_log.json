@@ -1,6 +1,6 @@
 {
-  "last_train_date": "2026-04-18",
-  "n_partidos_at_train": 794,
+  "last_train_date": "2026-04-19",
+  "n_partidos_at_train": 802,
   "torneos": [
     "Liga MX Clausura 2026",
     "Liga MX Clausura 2024",
@@ -9,18 +9,97 @@
     "Liga MX Apertura 2025"
   ],
   "corners_metrics": {
-    "brier_over_8.5": 0.1327,
-    "brier_over_9.5": 0.207,
-    "brier_over_10.5": 0.2216,
-    "mae_total_corners": 2.25,
+    "brier_over_8.5": 0.14,
+    "brier_over_9.5": 0.1882,
+    "brier_over_10.5": 0.1694,
+    "mae_total_corners": 2.12,
     "baseline_brier": 0.25,
     "n_holdout": 20
   },
   "tarjetas_metrics": {
-    "brier_over_3.5": 0.2677,
-    "brier_over_4.5": 0.3194,
-    "brier_over_5.5": 0.1803,
+    "brier_over_3.5": 0.3544,
+    "brier_over_4.5": 0.3351,
+    "brier_over_5.5": 0.2052,
     "baseline_brier": 0.25,
     "n_holdout": 20
+  },
+  "ml_metrics": {
+    "corners_over_8.5": {
+      "brier": 0.2102,
+      "brier_naive": 0.2397,
+      "skill": 0.123,
+      "prevalence": 0.612,
+      "n_train": 556,
+      "n_test": 138
+    },
+    "corners_over_9.5": {
+      "brier": 0.2657,
+      "brier_naive": 0.2481,
+      "skill": -0.071,
+      "prevalence": 0.45,
+      "n_train": 556,
+      "n_test": 138
+    },
+    "corners_over_10.5": {
+      "brier": 0.2092,
+      "brier_naive": 0.2246,
+      "skill": 0.068,
+      "prevalence": 0.335,
+      "n_train": 556,
+      "n_test": 138
+    },
+    "cards_over_3.5": {
+      "brier": 0.1509,
+      "brier_naive": 0.1742,
+      "skill": 0.134,
+      "prevalence": 0.777,
+      "n_train": 556,
+      "n_test": 138
+    },
+    "cards_over_4.5": {
+      "brier": 0.227,
+      "brier_naive": 0.2447,
+      "skill": 0.072,
+      "prevalence": 0.565,
+      "n_train": 556,
+      "n_test": 138
+    },
+    "cards_over_5.5": {
+      "brier": 0.2166,
+      "brier_naive": 0.2348,
+      "skill": 0.078,
+      "prevalence": 0.378,
+      "n_train": 556,
+      "n_test": 138
+    },
+    "btts": {
+      "brier": 0.2916,
+      "brier_naive": 0.2382,
+      "skill": -0.224,
+      "prevalence": 0.558,
+      "n_train": 556,
+      "n_test": 138
+    },
+    "resultado_1X2": {
+      "log_loss": 2.5095,
+      "log_loss_naive": 1.0986,
+      "classes": [
+        "A",
+        "D",
+        "H"
+      ],
+      "n_train": 556,
+      "n_test": 138
+    },
+    "shap_corners_over_9.5": {
+      "v_corners_against": 0.3235,
+      "sum_cards_rate": 0.2626,
+      "l_goals_allowed": 0.2447,
+      "altitude_diff": 0.2005,
+      "v_cards_avg": 0.1743,
+      "elo_visita": 0.1648,
+      "altitude_local": 0.1644,
+      "v_goals_scored": 0.1614
+    }
   }
 }

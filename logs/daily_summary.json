@@ -1,17 +1,17 @@
 {
-  "date": "2026-04-17",
-  "start": "2026-04-17T14:47:54.666873",
+  "date": "2026-04-19",
+  "start": "2026-04-19T14:34:18.852320",
   "pasos": {
     "paso1": {
-      "nuevos": 0,
+      "nuevos": 8,
       "terminados_antes": 126,
-      "terminados_despues": 126,
+      "terminados_despues": 134,
       "error": null,
-      "elapsed_s": 65.2
+      "elapsed_s": 67.3
     },
     "paso2": {
-      "equipos_afectados": 0,
-      "registros_nuevos": 0,
+      "equipos_afectados": 16,
+      "registros_nuevos": 16,
       "error": null,
       "elapsed_s": 0.0
     },
@@ -19,7 +19,7 @@
       "nuevos": 0,
       "fechas_procesadas": 0,
       "error": null,
-      "elapsed_s": 402.0
+      "elapsed_s": 375.0
     },
     "paso4": {
       "selecciones_afectadas": 0,
@@ -41,14 +41,19 @@
       "error": null,
       "elapsed_s": 1.4
     },
+    "paso8": {
+      "ok": true,
+      "elapsed_s": 29.2,
+      "error": null
+    },
     "paso7": {
       "committed": false,
       "pushed": false,
       "error": null
     }
   },
-  "end": "2026-04-17T14:55:45.149800",
-  "elapsed_s": 470.5,
+  "end": "2026-04-19T14:42:13.571797",
+  "elapsed_s": 474.7,
   "success": true,
   "critical_failed": false,
   "noncritical_errors": []

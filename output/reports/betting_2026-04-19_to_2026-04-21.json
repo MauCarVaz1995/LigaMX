@@ -1,0 +1,41 @@
+[
+  {
+    "match_id": "5101849",
+    "fecha": "2026-04-19",
+    "jornada": 15,
+    "local": "Santos Laguna",
+    "visita": "Atlas",
+    "torneo": "Liga MX Clausura 2026",
+    "elo_local": 1372.42,
+    "elo_visita": 1436.18,
+    "corners": {
+      "over_8.5": 0.27,
+      "under_8.5": 0.73,
+      "over_9.5": 0.169,
+      "under_9.5": 0.831,
+      "over_10.5": 0.098,
+      "under_10.5": 0.902,
+      "lambda_total": 6.99,
+      "lambda_local": 3.75,
+      "lambda_visita": 3.24,
+      "notes": [
+        "Fase regular_late: ×1.12 tarjetas"
+      ]
+    },
+    "tarjetas": {},
+    "btts": {
+      "btts_si": 0.587,
+      "btts_no": 0.413,
+      "over_1.5": 0.791,
+      "over_2.5": 0.54,
+      "under_2.5": 0.46,
+      "btts_over_2.5": 0.455,
+      "lambda_local": 1.539,
+      "lambda_visita": 1.303
+    },
+    "value_bets": [],
+    "errors": [
+      "tarjetas: predecir_tarjetas() got an unexpected keyword argument 'jornada'"
+    ]
+  }
+]
