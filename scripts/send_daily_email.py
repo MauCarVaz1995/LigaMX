@@ -301,14 +301,194 @@ def load_audit_html() -> str:
         return ""
 
 
+def load_discovery_html() -> str:
+    """Carga el reporte de discovery más reciente."""
+    latest = REPORTS_DIR / "discovery_latest.html"
+    if latest.exists():
+        try:
+            return latest.read_text()
+        except Exception:
+            pass
+    discovery_dir = REPORTS_DIR / "discovery"
+    if discovery_dir.exists():
+        reports = sorted(discovery_dir.glob("discovery_*.html"))
+        if reports:
+            try:
+                return reports[-1].read_text()
+            except Exception:
+                pass
+    return ""
+
+
+def build_tracker_section() -> str:
+    """Genera HTML con resumen del tracker de predicciones + resultados recientes."""
+    import pandas as pd
+    log_csv = BASE / "data/processed/predicciones_log.csv"
+    if not log_csv.exists():
+        return ""
+    try:
+        df = pd.read_csv(log_csv)
+        n_total    = len(df)
+        n_eval     = df["resultado_real"].notna().sum() if "resultado_real" in df.columns else 0
+        n_correct  = (df["acierto"] == True).sum() if "acierto" in df.columns else 0
+        pct        = f"{100*n_correct/n_eval:.1f}%" if n_eval > 0 else "N/A"
+        color_pct  = "#44ff88" if n_eval > 0 and n_correct/n_eval >= 0.50 else "#ff9800"
+
+        # Últimas 8 predicciones con resultado
+        recientes = df[df["resultado_real"].notna()].tail(8)
+        rows = ""
+        for _, r in recientes.iterrows():
+            acierto = r.get("acierto", None)
+            icon = "✅" if acierto == True else ("❌" if acierto == False else "⏳")
+            pred_col = "#aaa"
+            partido = r.get("partido", r.get("local", "") + " vs " + r.get("visitante", ""))
+            pred    = r.get("prediccion", r.get("ganador_predicho", "?"))
+            real    = r.get("resultado_real", "?")
+            fecha   = str(r.get("fecha", ""))[:10]
+            rows += (
+                f"<tr>"
+                f"<td style='padding:4px 8px;color:#888;font-size:11px'>{fecha}</td>"
+                f"<td style='padding:4px 8px;color:#ccc;font-size:11px'>{partido}</td>"
+                f"<td style='padding:4px 8px;color:{pred_col};font-size:11px'>{pred}</td>"
+                f"<td style='padding:4px 8px;color:#ccc;font-size:11px'>{real}</td>"
+                f"<td style='padding:4px 8px;font-size:14px;text-align:center'>{icon}</td>"
+                f"</tr>"
+            )
+
+        # Pendientes
+        pendientes = df[df["resultado_real"].isna()]
+        pend_rows = ""
+        for _, r in pendientes.tail(5).iterrows():
+            partido = r.get("partido", r.get("local", "") + " vs " + r.get("visitante", ""))
+            pred    = r.get("prediccion", r.get("ganador_predicho", "?"))
+            fecha   = str(r.get("fecha", ""))[:10]
+            pend_rows += (
+                f"<tr>"
+                f"<td style='padding:3px 8px;color:#888;font-size:11px'>{fecha}</td>"
+                f"<td style='padding:3px 8px;color:#ccc;font-size:11px'>{partido}</td>"
+                f"<td style='padding:3px 8px;color:#ffaa00;font-size:11px'>{pred}</td>"
+                f"<td style='padding:3px 8px;color:#555;font-size:11px'>⏳ pendiente</td>"
+                f"</tr>"
+            )
+
+        return f"""
+        <div style="background:#1e1e1e;border-radius:6px;padding:16px 20px;margin-bottom:16px">
+          <div style="color:#ffa726;font-size:15px;font-weight:bold;margin-bottom:10px">
+            📈 Tracker de Predicciones</div>
+          <div style="margin-bottom:12px">
+            <span style="background:#2a2a2a;padding:6px 14px;border-radius:4px;
+                         color:#ccc;font-size:13px;margin-right:8px">
+              Total: <b style="color:#fff">{n_total}</b></span>
+            <span style="background:#2a2a2a;padding:6px 14px;border-radius:4px;
+                         color:#ccc;font-size:13px;margin-right:8px">
+              Evaluadas: <b style="color:#fff">{n_eval}</b></span>
+            <span style="background:#2a2a2a;padding:6px 14px;border-radius:4px;
+                         color:#ccc;font-size:13px">
+              Acierto: <b style="color:{color_pct}">{pct}</b></span>
+          </div>
+          {'<div style="color:#aaa;font-size:12px;margin-bottom:6px">Últimos resultados:</div>' if rows else ''}
+          {'<table style="width:100%;border-collapse:collapse"><tr><th style="color:#555;font-size:11px;text-align:left;padding:4px 8px">Fecha</th><th style="color:#555;font-size:11px;text-align:left;padding:4px 8px">Partido</th><th style="color:#555;font-size:11px;text-align:left;padding:4px 8px">Pred</th><th style="color:#555;font-size:11px;text-align:left;padding:4px 8px">Real</th><th style="color:#555;font-size:11px;text-align:center;padding:4px 8px">✓</th></tr>' + rows + '</table>' if rows else ''}
+          {'<div style="color:#aaa;font-size:12px;margin:10px 0 6px">Sin resultado aún:</div>' if pend_rows else ''}
+          {'<table style="width:100%;border-collapse:collapse"><tr><th style="color:#555;font-size:11px;text-align:left;padding:3px 8px">Fecha</th><th style="color:#555;font-size:11px;text-align:left;padding:3px 8px">Partido</th><th style="color:#555;font-size:11px;text-align:left;padding:3px 8px">Pred</th><th style="color:#555;font-size:11px;text-align:left;padding:3px 8px">Estado</th></tr>' + pend_rows + '</table>' if pend_rows else ''}
+        </div>"""
+    except Exception as e:
+        return f"<p style='color:#888'>Error tracker: {e}</p>"
+
+
+def build_betting_analysis() -> str:
+    """Genera HTML con análisis ML de los próximos partidos (corners + cards)."""
+    try:
+        import sys
+        sys.path.insert(0, str(BASE / "scripts"))
+        from modelo_ml import MLPredictor
+
+        predictor = MLPredictor().load()
+
+        # Leer fixtures próximos del betting_bot JSON
+        reports = sorted((BASE / "output/reports").glob("betting_*.json"))
+        if not reports:
+            return ""
+        data = json.loads(reports[-1].read_text())
+        partidos = data.get("partidos", [])[:10]
+        if not partidos:
+            return ""
+
+        rows = ""
+        value_count = 0
+        for p in partidos:
+            local  = p.get("local", "")
+            visita = p.get("visitante", "")
+            fecha  = p.get("fecha", "")[:10]
+            try:
+                ml = predictor.predict(local, visita)
+                c85  = ml.get("corners_over_8.5",  0)
+                c95  = ml.get("corners_over_9.5",  0)
+                t45  = ml.get("cards_over_4.5",    0)
+                btts = ml.get("btts",              0)
+
+                def pct_color(p_val):
+                    if p_val >= 0.65: return "#44ff88"
+                    if p_val >= 0.50: return "#ffaa00"
+                    return "#ff6b6b"
+
+                # Detectar si hay valor (>60% en cualquier mercado)
+                has_value = any(x >= 0.62 for x in [c85, c95, t45])
+                if has_value:
+                    value_count += 1
+
+                bg = "#1a2e1a" if has_value else "#1e1e1e"
+                badge = " 🎯" if has_value else ""
+
+                rows += f"""
+                <tr style="background:{bg}">
+                  <td style="padding:6px 8px;color:#888;font-size:11px">{fecha}</td>
+                  <td style="padding:6px 8px;color:#fff;font-size:12px;font-weight:bold">{local[:10]} vs {visita[:10]}{badge}</td>
+                  <td style="padding:6px 8px;color:{pct_color(c85)};font-size:12px;text-align:center">{c85:.0%}</td>
+                  <td style="padding:6px 8px;color:{pct_color(c95)};font-size:12px;text-align:center">{c95:.0%}</td>
+                  <td style="padding:6px 8px;color:{pct_color(t45)};font-size:12px;text-align:center">{t45:.0%}</td>
+                  <td style="padding:6px 8px;color:{pct_color(btts)};font-size:12px;text-align:center">{btts:.0%}</td>
+                </tr>"""
+            except Exception:
+                continue
+
+        if not rows:
+            return ""
+
+        return f"""
+        <div style="background:#1e1e1e;border-radius:6px;padding:16px 20px;margin-bottom:16px">
+          <div style="color:#00d4ff;font-size:15px;font-weight:bold;margin-bottom:4px">
+            🤖 Análisis ML — Próximos partidos</div>
+          <div style="color:#555;font-size:11px;margin-bottom:10px">
+            🎯 = valor detectado (prob ≥ 62%) · LightGBM calibrado · 686 partidos</div>
+          <table style="width:100%;border-collapse:collapse">
+            <tr>
+              <th style="color:#555;font-size:11px;text-align:left;padding:4px 8px">Fecha</th>
+              <th style="color:#555;font-size:11px;text-align:left;padding:4px 8px">Partido</th>
+              <th style="color:#00d4ff;font-size:11px;text-align:center;padding:4px 8px">C&gt;8.5</th>
+              <th style="color:#00d4ff;font-size:11px;text-align:center;padding:4px 8px">C&gt;9.5</th>
+              <th style="color:#ffaa00;font-size:11px;text-align:center;padding:4px 8px">T&gt;4.5</th>
+              <th style="color:#aaa;font-size:11px;text-align:center;padding:4px 8px">BTTS</th>
+            </tr>
+            {rows}
+          </table>
+          <div style="color:#555;font-size:11px;margin-top:8px">
+            Verde ≥65% · Naranja ≥50% · Rojo &lt;50% · C=Corners · T=Tarjetas</div>
+        </div>"""
+    except Exception as e:
+        return f"<p style='color:#666;font-size:11px'>ML analysis: {e}</p>"
+
+
 def build_html(summary: dict, sections: dict[str, list[Path]]) -> str:
+    tracker_section  = build_tracker_section()
+    ml_section       = build_betting_analysis()
+
     betting_html = load_betting_html()
     betting_section = ""
     if betting_html:
         betting_section = f"""
     <div style="background:#1e1e1e;border-radius:6px;padding:16px 20px;margin-bottom:16px">
       <div style="color:#E53935;font-size:15px;font-weight:bold;margin-bottom:10px">
-        🎰 Análisis Betting — próximos partidos</div>
+        🎰 Análisis Betting (Poisson) — próximos partidos</div>
       {betting_html}
     </div>"""
 
@@ -320,6 +500,16 @@ def build_html(summary: dict, sections: dict[str, list[Path]]) -> str:
       <div style="color:#90CAF9;font-size:15px;font-weight:bold;margin-bottom:10px">
         🔍 Estado del sistema — Audit Bot</div>
       {audit_html}
+    </div>"""
+
+    discovery_html = load_discovery_html()
+    discovery_section = ""
+    if discovery_html:
+        discovery_section = f"""
+    <div style="background:#1e1e1e;border-radius:6px;padding:16px 20px;margin-bottom:16px">
+      <div style="color:#a855f7;font-size:15px;font-weight:bold;margin-bottom:10px">
+        🔬 Hallazgos automáticos — Discovery Bot</div>
+      {discovery_html}
     </div>"""
 
     p = summary.get("pasos", {})
@@ -402,7 +592,13 @@ def build_html(summary: dict, sections: dict[str, list[Path]]) -> str:
       {sections_html}
     </div>
 
+    {tracker_section}
+
+    {ml_section}
+
     {betting_section}
+
+    {discovery_section}
 
     {audit_section}
 
