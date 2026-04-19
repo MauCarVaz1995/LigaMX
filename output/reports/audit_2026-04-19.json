@@ -1,0 +1,188 @@
+{
+  "fecha": "2026-04-19",
+  "overall": "error",
+  "sections": [
+    {
+      "section": "datos",
+      "checks": [
+        {
+          "name": "match_events actualizado",
+          "level": "ok",
+          "msg": "802 partidos, hace 0 días"
+        },
+        {
+          "name": "corners sin nulos",
+          "level": "warn",
+          "msg": "87% completo"
+        },
+        {
+          "name": "xG sin nulos",
+          "level": "ok",
+          "msg": "87% completo"
+        },
+        {
+          "name": "sin valores imposibles",
+          "level": "ok",
+          "msg": "0 corners>40, 0 shots>50"
+        },
+        {
+          "name": "sin match_ids duplicados",
+          "level": "ok",
+          "msg": "limpio"
+        },
+        {
+          "name": "cobertura partidos terminados",
+          "level": "ok",
+          "msg": "134/134 partidos (100%)"
+        },
+        {
+          "name": "elo_historico actualizado",
+          "level": "ok",
+          "msg": "último partido: 2026-04-19 (hace 0 días), 26 equipos"
+        },
+        {
+          "name": "ELOs en rango [1100-2100]",
+          "level": "ok",
+          "msg": "0 fuera de rango"
+        },
+        {
+          "name": "todos los equipos tienen ELO",
+          "level": "error",
+          "msg": "sin ELO: {'CF America', 'Queretaro FC', 'Mazatlan FC', 'FC Juarez', 'Atletico de San Luis'}"
+        },
+        {
+          "name": "predicciones_log actualizado",
+          "level": "warn",
+          "msg": "32 predicciones, 23 resueltas, hace 7 días"
+        }
+      ],
+      "status": "error"
+    },
+    {
+      "section": "modelos",
+      "checks": [
+        {
+          "name": "corners_model existe",
+          "level": "ok",
+          "msg": "694 partidos, 18 equipos"
+        },
+        {
+          "name": "corners_model tiene datos suficientes",
+          "level": "ok",
+          "msg": "694 partidos entrenados"
+        },
+        {
+          "name": "corners_model MLE convergió",
+          "level": "ok",
+          "msg": "✅ convergido"
+        },
+        {
+          "name": "corners_model no obsoleto",
+          "level": "ok",
+          "msg": "entrenado hace 0 días"
+        },
+        {
+          "name": "Brier corners Over 9.5",
+          "level": "ok",
+          "msg": "0.1882 (baseline=0.25)"
+        },
+        {
+          "name": "Brier tarjetas Over 4.5",
+          "level": "error",
+          "msg": "0.3351 (baseline=0.25)"
+        },
+        {
+          "name": "MAE corners totales",
+          "level": "ok",
+          "msg": "2.12 córners promedio"
+        }
+      ],
+      "status": "error"
+    },
+    {
+      "section": "bots",
+      "checks": [
+        {
+          "name": "daily_betting_bot corrió",
+          "level": "ok",
+          "msg": "hace 0 días — 1 partidos analizados, 0 value bets"
+        },
+        {
+          "name": "retrain_bot tiene log",
+          "level": "ok",
+          "msg": "último entrenamiento hace 0 días con 802 partidos"
+        },
+        {
+          "name": "retrain_bot no obsoleto",
+          "level": "ok",
+          "msg": "hace 0 días"
+        },
+        {
+          "name": "daily_pipeline corrió",
+          "level": "ok",
+          "msg": "hace 0 días, ✅ OK (474.7s)"
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "section": "tracker",
+      "checks": [
+        {
+          "name": "predicciones evaluadas",
+          "level": "ok",
+          "msg": "23/32 resueltas"
+        }
+      ],
+      "status": "ok",
+      "stats": {
+        "n_predicciones": 32,
+        "n_evaluadas": 23
+      }
+    },
+    {
+      "section": "imagenes",
+      "checks": [
+        {
+          "name": "imágenes obsoletas depuradas",
+          "level": "ok",
+          "msg": "ninguna obsoleta"
+        },
+        {
+          "name": "estructura de carpetas correcta",
+          "level": "ok",
+          "msg": "OK — todas en carpeta correcta"
+        },
+        {
+          "name": "post-partido en LigaMX_*/J{N}/postpartido/",
+          "level": "ok",
+          "msg": "51 post-partido, 0 fuera de lugar"
+        },
+        {
+          "name": "total imágenes restantes",
+          "level": "ok",
+          "msg": "60 imágenes en output/charts/predicciones/"
+        }
+      ],
+      "status": "ok",
+      "stats": {
+        "total_antes": 60,
+        "eliminadas": 0,
+        "total_despues": 60,
+        "obsoletas_detectadas": 0
+      }
+    },
+    {
+      "section": "bankroll",
+      "checks": [
+        {
+          "name": "bankroll_log",
+          "level": "ok",
+          "msg": "sin apuestas reales aún — correcto hasta validar 200 predicciones por mercado"
+        }
+      ],
+      "status": "ok",
+      "stats": {}
+    }
+  ]
+}

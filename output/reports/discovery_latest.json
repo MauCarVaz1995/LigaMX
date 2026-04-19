@@ -1,0 +1,459 @@
+{
+  "generated_at": "2026-04-18T17:50:24.543995",
+  "n_partidos": 794,
+  "calibracion": {
+    "mu_corners": 9.31,
+    "mu_cards": 5.09,
+    "real_btts": 0.566,
+    "real_corners": {
+      "over_8.5": 0.606,
+      "over_9.5": 0.449,
+      "over_10.5": 0.334
+    },
+    "real_cards": {
+      "over_3.5": 0.78,
+      "over_4.5": 0.57
+    },
+    "n_partidos": 686,
+    "findings": []
+  },
+  "equipos": {
+    "n_equipos": 18,
+    "outliers": [
+      {
+        "equipo": "Toluca",
+        "tags": [
+          "GOLEADOR goals=2.0"
+        ],
+        "n": 82
+      },
+      {
+        "equipo": "Atletico de San Luis",
+        "tags": [
+          "PASIVO corners_for=3.7"
+        ],
+        "n": 78
+      },
+      {
+        "equipo": "Queretaro FC",
+        "tags": [
+          "MUY_ACTIVO corners_for=5.5"
+        ],
+        "n": 74
+      },
+      {
+        "equipo": "Puebla",
+        "tags": [
+          "CONCEDE_CORNERS corners_against=5.7",
+          "POROSO goals_allowed=1.9"
+        ],
+        "n": 70
+      },
+      {
+        "equipo": "Santos Laguna",
+        "tags": [
+          "POROSO goals_allowed=1.8"
+        ],
+        "n": 70
+      }
+    ],
+    "top5_corners_for": [
+      {
+        "equipo": "Queretaro FC",
+        "val": 5.47
+      },
+      {
+        "equipo": "Puebla",
+        "val": 5.41
+      },
+      {
+        "equipo": "Mazatlan FC",
+        "val": 5.39
+      },
+      {
+        "equipo": "Necaxa",
+        "val": 5.3
+      },
+      {
+        "equipo": "FC Juarez",
+        "val": 5.01
+      }
+    ],
+    "top5_corners_against": [
+      {
+        "equipo": "Puebla",
+        "val": 5.66
+      },
+      {
+        "equipo": "Queretaro FC",
+        "val": 5.46
+      },
+      {
+        "equipo": "Leon",
+        "val": 5.43
+      },
+      {
+        "equipo": "Monterrey",
+        "val": 5.28
+      },
+      {
+        "equipo": "Pumas",
+        "val": 5.22
+      }
+    ],
+    "findings": [
+      "⚽ Queretaro FC genera +5.5 corners/partido (muy activo ofensivamente)",
+      "⚽ Puebla genera +5.4 corners/partido (muy activo ofensivamente)",
+      "⚽ Mazatlan FC genera +5.4 corners/partido (muy activo ofensivamente)",
+      "⚽ Necaxa genera +5.3 corners/partido (muy activo ofensivamente)",
+      "🚩 Puebla concede +5.7 corners/partido (defensiva vulnerable)",
+      "🚩 Queretaro FC concede +5.5 corners/partido (defensiva vulnerable)",
+      "🚩 Leon concede +5.4 corners/partido (defensiva vulnerable)"
+    ]
+  },
+  "correlaciones": {
+    "n_partidos": 686,
+    "findings": [
+      "Mercados INDEPENDIENTES corners y goles: r=0.00 → apostar ambos OK",
+      "Mercados INDEPENDIENTES xG vs goles reales: r=0.03 → apostar ambos OK",
+      "Correlación POSITIVA disparos y corners: r=0.31"
+    ]
+  },
+  "deriva": {
+    "mu_corners_historical": 9.25,
+    "mu_corners_recent": 10.57,
+    "mu_cards_historical": 5.08,
+    "mu_cards_recent": 5.2,
+    "drift_corners": 1.32,
+    "drift_cards": 0.12,
+    "monthly_trend": [
+      {
+        "mes": "2024-01",
+        "mu_corners": 9.538461538461538,
+        "mu_cards": 5.6923076923076925,
+        "n": 26
+      },
+      {
+        "mes": "2024-02",
+        "mu_corners": 8.842105263157896,
+        "mu_cards": 5.0,
+        "n": 38
+      },
+      {
+        "mes": "2024-03",
+        "mu_corners": 9.71875,
+        "mu_cards": 5.21875,
+        "n": 32
+      },
+      {
+        "mes": "2024-04",
+        "mu_corners": 9.5,
+        "mu_cards": 4.625,
+        "n": 32
+      },
+      {
+        "mes": "2024-05",
+        "mu_corners": 9.0,
+        "mu_cards": 4.857142857142857,
+        "n": 14
+      },
+      {
+        "mes": "2024-07",
+        "mu_corners": 8.925925925925926,
+        "mu_cards": 5.0,
+        "n": 27
+      },
+      {
+        "mes": "2024-08",
+        "mu_corners": 8.4,
+        "mu_cards": 5.2,
+        "n": 15
+      },
+      {
+        "mes": "2024-09",
+        "mu_corners": 9.485714285714286,
+        "mu_cards": 5.285714285714286,
+        "n": 35
+      },
+      {
+        "mes": "2024-10",
+        "mu_corners": 9.703703703703704,
+        "mu_cards": 4.37037037037037,
+        "n": 27
+      },
+      {
+        "mes": "2024-11",
+        "mu_corners": 9.923076923076923,
+        "mu_cards": 5.384615384615385,
+        "n": 26
+      },
+      {
+        "mes": "2024-12",
+        "mu_corners": 11.0,
+        "mu_cards": 2.875,
+        "n": 8
+      },
+      {
+        "mes": "2025-01",
+        "mu_corners": 9.285714285714286,
+        "mu_cards": 4.714285714285714,
+        "n": 28
+      },
+      {
+        "mes": "2025-02",
+        "mu_corners": 9.052631578947368,
+        "mu_cards": 5.078947368421052,
+        "n": 38
+      },
+      {
+        "mes": "2025-03",
+        "mu_corners": 9.535714285714286,
+        "mu_cards": 5.642857142857143,
+        "n": 28
+      },
+      {
+        "mes": "2025-04",
+        "mu_corners": 9.647058823529411,
+        "mu_cards": 5.0,
+        "n": 34
+      },
+      {
+        "mes": "2025-05",
+        "mu_corners": 8.4,
+        "mu_cards": 4.4,
+        "n": 10
+      },
+      {
+        "mes": "2025-07",
+        "mu_corners": 9.375,
+        "mu_cards": 5.583333333333333,
+        "n": 24
+      },
+      {
+        "mes": "2025-08",
+        "mu_corners": 8.8,
+        "mu_cards": 4.466666666666667,
+        "n": 30
+      },
+      {
+        "mes": "2025-09",
+        "mu_corners": 9.518518518518519,
+        "mu_cards": 5.481481481481482,
+        "n": 27
+      },
+      {
+        "mes": "2025-10",
+        "mu_corners": 9.21875,
+        "mu_cards": 5.375,
+        "n": 32
+      },
+      {
+        "mes": "2025-11",
+        "mu_corners": 9.818181818181818,
+        "mu_cards": 5.136363636363637,
+        "n": 22
+      },
+      {
+        "mes": "2025-12",
+        "mu_corners": 5.428571428571429,
+        "mu_cards": 6.571428571428571,
+        "n": 7
+      },
+      {
+        "mes": "2026-01",
+        "mu_corners": 9.090909090909092,
+        "mu_cards": 4.424242424242424,
+        "n": 33
+      },
+      {
+        "mes": "2026-02",
+        "mu_corners": 8.142857142857142,
+        "mu_cards": 5.371428571428571,
+        "n": 35
+      },
+      {
+        "mes": "2026-03",
+        "mu_corners": 9.846153846153847,
+        "mu_cards": 5.435897435897436,
+        "n": 39
+      },
+      {
+        "mes": "2026-04",
+        "mu_corners": 10.789473684210526,
+        "mu_cards": 5.2631578947368425,
+        "n": 19
+      }
+    ],
+    "findings": [
+      "⚠️ Drift corners SUBIENDO: reciente=10.6 vs hist=9.2 (+1.3). Reentrenar modelo."
+    ]
+  },
+  "alta_presion": {
+    "both_over_rate": 0.235,
+    "corners_cards_corr": -0.122,
+    "top_equipos_presion": [
+      {
+        "equipo": "Puebla",
+        "partidos": 30
+      },
+      {
+        "equipo": "Necaxa",
+        "partidos": 30
+      },
+      {
+        "equipo": "Cruz Azul",
+        "partidos": 27
+      },
+      {
+        "equipo": "Toluca",
+        "partidos": 27
+      },
+      {
+        "equipo": "FC Juarez",
+        "partidos": 22
+      },
+      {
+        "equipo": "Leon",
+        "partidos": 20
+      },
+      {
+        "equipo": "Tijuana",
+        "partidos": 20
+      },
+      {
+        "equipo": "Mazatlan FC",
+        "partidos": 20
+      }
+    ],
+    "jornadas_presion": {
+      "8": 15,
+      "2": 13,
+      "11": 12,
+      "4": 12,
+      "13": 12
+    },
+    "findings": [
+      "✅ Corners y tarjetas son independientes (r=-0.12). Portafolio mixto válido."
+    ]
+  },
+  "recomendaciones": [
+    {
+      "prioridad": "alta",
+      "accion": "retrain_corners",
+      "razon": "Drift corners=+1.3. Modelos desactualizados."
+    },
+    {
+      "prioridad": "media",
+      "accion": "target_corners_Queretaro_FC",
+      "razon": "Queretaro FC genera muchos corners. Apostar Over cuando juegue como local."
+    }
+  ],
+  "all_findings": [
+    "⚽ Queretaro FC genera +5.5 corners/partido (muy activo ofensivamente)",
+    "⚽ Puebla genera +5.4 corners/partido (muy activo ofensivamente)",
+    "⚽ Mazatlan FC genera +5.4 corners/partido (muy activo ofensivamente)",
+    "⚽ Necaxa genera +5.3 corners/partido (muy activo ofensivamente)",
+    "🚩 Puebla concede +5.7 corners/partido (defensiva vulnerable)",
+    "🚩 Queretaro FC concede +5.5 corners/partido (defensiva vulnerable)",
+    "🚩 Leon concede +5.4 corners/partido (defensiva vulnerable)",
+    "⚠️ Drift corners SUBIENDO: reciente=10.6 vs hist=9.2 (+1.3). Reentrenar modelo.",
+    "Mercados INDEPENDIENTES corners y goles: r=0.00 → apostar ambos OK",
+    "Mercados INDEPENDIENTES xG vs goles reales: r=0.03 → apostar ambos OK",
+    "Correlación POSITIVA disparos y corners: r=0.31",
+    "✅ Corners y tarjetas son independientes (r=-0.12). Portafolio mixto válido."
+  ],
+  "ml_metrics": {
+    "trained_at": "2026-04-18T17:42:12.963263",
+    "n_partidos": 686,
+    "n_holdout": 137,
+    "targets_saved": [
+      "corners_over_8.5",
+      "corners_over_9.5",
+      "corners_over_10.5",
+      "cards_over_3.5",
+      "cards_over_4.5",
+      "cards_over_5.5",
+      "btts",
+      "resultado_1X2"
+    ],
+    "metrics": {
+      "corners_over_8.5": {
+        "brier": 0.0081,
+        "brier_naive": 0.2452,
+        "skill": 0.967,
+        "prevalence": 0.616,
+        "n_train": 549,
+        "n_test": 137
+      },
+      "corners_over_9.5": {
+        "brier": 0.0085,
+        "brier_naive": 0.2452,
+        "skill": 0.965,
+        "prevalence": 0.454,
+        "n_train": 549,
+        "n_test": 137
+      },
+      "corners_over_10.5": {
+        "brier": 0.0052,
+        "brier_naive": 0.2154,
+        "skill": 0.976,
+        "prevalence": 0.339,
+        "n_train": 549,
+        "n_test": 137
+      },
+      "cards_over_3.5": {
+        "brier": 0.056,
+        "brier_naive": 0.1582,
+        "skill": 0.646,
+        "prevalence": 0.774,
+        "n_train": 549,
+        "n_test": 137
+      },
+      "cards_over_4.5": {
+        "brier": 0.0496,
+        "brier_naive": 0.2388,
+        "skill": 0.792,
+        "prevalence": 0.561,
+        "n_train": 549,
+        "n_test": 137
+      },
+      "cards_over_5.5": {
+        "brier": 0.0658,
+        "brier_naive": 0.2388,
+        "skill": 0.724,
+        "prevalence": 0.377,
+        "n_train": 549,
+        "n_test": 137
+      },
+      "btts": {
+        "brier": 0.2571,
+        "brier_naive": 0.2417,
+        "skill": -0.064,
+        "prevalence": 0.559,
+        "n_train": 549,
+        "n_test": 137
+      },
+      "resultado_1X2": {
+        "log_loss": 1.0355,
+        "log_loss_naive": 1.0986,
+        "classes": [
+          "A",
+          "D",
+          "H"
+        ],
+        "n_train": 549,
+        "n_test": 137
+      },
+      "shap_corners_over_9.5": {
+        "h2h_corners": 6.6075,
+        "sum_cards_rate": 0.0991,
+        "v_corners_against": 0.0756,
+        "h2h_cards": 0.0425,
+        "elo_local": 0.037,
+        "v_goals_scored": 0.0296,
+        "v_goals_allowed": 0.0247,
+        "l_goals_scored": 0.0215
+      }
+    }
+  }
+}

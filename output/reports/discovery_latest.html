@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Discovery Report 2026-04-18</title>
+<style>
+  body { background:#0d1117; color:#c9d1d9; font-family:monospace; padding:24px; max-width:900px; margin:auto; }
+  h1 { color:#00d4ff; font-size:22px; border-bottom:1px solid #333; padding-bottom:8px; }
+  h2 { color:#ffa500; font-size:16px; }
+  h3 { font-size:14px; margin:12px 0 6px; }
+  .section { background:#161b22; border-radius:8px; padding:16px; margin:12px 0; border:1px solid #30363d; }
+  ul { margin:4px 0; padding-left:20px; }
+  li { margin:4px 0; font-size:13px; }
+  table { width:100%; border-collapse:collapse; font-size:12px; }
+  th { background:#21262d; color:#58a6ff; padding:6px; text-align:left; }
+  td { padding:5px 6px; border-bottom:1px solid #21262d; }
+  .stat { display:inline-block; background:#21262d; padding:4px 10px; margin:4px; border-radius:4px; font-size:12px; }
+</style>
+</head>
+<body>
+<h1>🔬 Discovery Report — 2026-04-18</h1>
+<p style='color:#888; font-size:12px;'>Generado: 2026-04-18 | Partidos analizados: 686</p>
+
+<div class='section'>
+  <h3 style='color:#00d4ff;'>📊 Estadísticas Base (Liga MX)</h3>
+  <span class='stat'>μ corners = 9.31</span>
+  <span class='stat'>μ tarjetas = 5.09</span>
+  <span class='stat'>BTTS real = 56.6%</span>
+  <span class='stat'>Over 9.5c real = 44.9%</span>
+  <span class='stat'>Over 4.5t real = 57.0%</span>
+</div>
+
+
+
+        <div class='section'>
+          <h3 style='color:#00d4ff;'>🏟️ Patrones por Equipo</h3>
+          <ul><li>⚽ Queretaro FC genera +5.5 corners/partido (muy activo ofensivamente)</li><li>⚽ Puebla genera +5.4 corners/partido (muy activo ofensivamente)</li><li>⚽ Mazatlan FC genera +5.4 corners/partido (muy activo ofensivamente)</li><li>⚽ Necaxa genera +5.3 corners/partido (muy activo ofensivamente)</li><li>🚩 Puebla concede +5.7 corners/partido (defensiva vulnerable)</li><li>🚩 Queretaro FC concede +5.5 corners/partido (defensiva vulnerable)</li><li>🚩 Leon concede +5.4 corners/partido (defensiva vulnerable)</li></ul>
+        </div>
+
+        <div class='section'>
+          <h3 style='color:#00d4ff;'>📈 Deriva Temporal</h3>
+          <ul><li>⚠️ Drift corners SUBIENDO: reciente=10.6 vs hist=9.2 (+1.3). Reentrenar modelo.</li></ul>
+        </div>
+
+        <div class='section'>
+          <h3 style='color:#00d4ff;'>🔗 Correlaciones de Mercado</h3>
+          <ul><li>Mercados INDEPENDIENTES corners y goles: r=0.00 → apostar ambos OK</li><li>Mercados INDEPENDIENTES xG vs goles reales: r=0.03 → apostar ambos OK</li><li>Correlación POSITIVA disparos y corners: r=0.31</li></ul>
+        </div>
+
+        <div class='section'>
+          <h3 style='color:#00d4ff;'>🔥 Análisis Alta Presión</h3>
+          <ul><li>✅ Corners y tarjetas son independientes (r=-0.12). Portafolio mixto válido.</li></ul>
+        </div>
+
+        <div class='section'>
+          <h3 style='color:#a855f7;'>🤖 Modelos ML (LightGBM calibrado)</h3>
+          <table><tr><th>Target</th><th>Brier</th><th>Naïve</th><th>Skill</th></tr><tr><td>corners_over_8.5</td><td>0.0081</td><td>0.2452</td><td style='color:#44ff88;'>96.7%</td></tr><tr><td>corners_over_9.5</td><td>0.0085</td><td>0.2452</td><td style='color:#44ff88;'>96.5%</td></tr><tr><td>corners_over_10.5</td><td>0.0052</td><td>0.2154</td><td style='color:#44ff88;'>97.6%</td></tr><tr><td>cards_over_3.5</td><td>0.0560</td><td>0.1582</td><td style='color:#44ff88;'>64.6%</td></tr><tr><td>cards_over_4.5</td><td>0.0496</td><td>0.2388</td><td style='color:#44ff88;'>79.2%</td></tr><tr><td>cards_over_5.5</td><td>0.0658</td><td>0.2388</td><td style='color:#44ff88;'>72.4%</td></tr><tr><td>btts</td><td>0.2571</td><td>0.2417</td><td style='color:#ffaa00;'>-6.4%</td></tr></table>
+        </div>
+
+        <div class='section'>
+          <h3 style='color:#ff6b35;'>🎯 Recomendaciones Accionables</h3>
+          <table><tr><th>Prioridad</th><th>Acción</th><th>Razón</th></tr><tr><td style='color:#ff4444;font-weight:bold'>ALTA</td><td>retrain_corners</td><td>Drift corners=+1.3. Modelos desactualizados.</td></tr><tr><td style='color:#ffaa00;font-weight:bold'>MEDIA</td><td>target_corners_Queretaro_FC</td><td>Queretaro FC genera muchos corners. Apostar Over cuando juegue como local.</td></tr></table>
+        </div>
+
+<div class='section'>
+  <h3 style='color:#888;'>Top 5 Equipos Generadores de Corners</h3>
+  <span class='stat'>Queretaro FC 5.5</span><span class='stat'>Puebla 5.4</span><span class='stat'>Mazatlan FC 5.4</span><span class='stat'>Necaxa 5.3</span><span class='stat'>FC Juarez 5.0</span>
+</div>
+
+<p style='color:#555; font-size:11px; margin-top:24px;'>MAU-STATISTICS · discovery_bot.py</p>
+</body>
+</html>
