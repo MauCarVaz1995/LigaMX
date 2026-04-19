@@ -127,8 +127,6 @@ jobs:
       - name: Send daily email summary (non-critical)
         env:
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
-          GMAIL_TO: ${{ secrets.GMAIL_TO }}
-          GMAIL_FROM: ${{ secrets.GMAIL_FROM }}
           MPLBACKEND: Agg
         run: |
           python scripts/send_daily_email.py || echo "[warn] Email falló — continuando"
