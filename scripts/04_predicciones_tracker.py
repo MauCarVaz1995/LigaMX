@@ -96,11 +96,11 @@ def _ganador_predicho(prob_local: float, prob_empate: float, prob_visitante: flo
 
 def _resultado_real(goles_local: int, goles_visitante: int) -> str:
     if goles_local > goles_visitante:
-        return "Local"
+        return "local"
     elif goles_local == goles_visitante:
-        return "Empate"
+        return "empate"
     else:
-        return "Visitante"
+        return "visitante"
 
 
 def _error_marcador(marcador_predicho: str, goles_local_real: int, goles_visitante_real: int) -> int:
@@ -257,7 +257,7 @@ def registrar_resultado(
     err = _error_marcador(df.at[idx, "marcador_mas_probable"], goles_local, goles_visitante)
 
     ganador_pred = df.at[idx, "ganador_predicho"]
-    acierto      = (ganador_pred == res)
+    acierto      = (str(ganador_pred).lower().strip() == res)
 
     df.at[idx, "resultado_real"]         = res
     df.at[idx, "goles_local_real"]       = goles_local

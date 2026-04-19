@@ -89,76 +89,52 @@ def _load_pending_matches() -> dict:
 def _image_is_relevant(path: Path, pending: dict, today_s: str,
                         last_jornada: int) -> bool:
     """
-    Decide si una imagen tiene valor ahora mismo.
-    Reglas:
-      pred_*.png           → solo si el partido aún no se jugó (fecha >= hoy)
-      postpartido/*.png    → solo de la última jornada jugada (o la anterior)
-      ELO/ranking*.png     → siempre relevantes
-      Mexico_vs_X/*.png    → solo si la fecha en el nombre >= hoy-7
+    Reglas estrictas — si la imagen ya no aporta valor HOY, no se envía.
+
+    pred LigaMX J{N}     → solo jornada >= last_jornada (NO la anterior)
+    postpartido J{N}     → SOLO la última jornada jugada (j == last_jornada)
+    pred CCL con fecha   → fecha >= hoy (pasados = fuera)
+    pred CCL sin fecha   → EXCLUIR (no sabemos si ya se jugó)
+    Internacional        → mtime <= 5 días
+    Mexico_vs_X          → mtime <= 5 días
+    ELO/ranking          → siempre
     """
     import re
+    from datetime import timedelta
     name  = path.name
-    parts = path.parts
+    path_s = str(path)
+    today_dt = date.today()
+    today_compact = today_s.replace("-", "")
 
-    # Predicciones Liga MX
-    if "pred_" in name and "LigaMX" in str(path):
-        # Extraer fecha del nombre si existe: pred_A_B_20260419.png
-        m = re.search(r"(\d{8})", name)
-        if m:
-            fecha = m.group(1)
-            return fecha >= today_s.replace("-", "")
-        # Sin fecha en nombre: pertenece a una carpeta J{N}
-        for part in parts:
-            j_match = re.match(r"J(\d+)$", part)
+    # ── pred Liga MX en carpeta J{N} ─────────────────────────────────────────
+    if "pred_" in name and "LigaMX" in path_s:
+        for part in path.parts:
+            j_match = re.match(r"^J(\d+)$", part)
             if j_match:
                 j = int(j_match.group(1))
-                return j >= last_jornada  # solo jornada actual o futura
+                return j >= last_jornada   # solo jornada pendiente/actual
 
-    # Post-partido: solo las 2 últimas jornadas
-    if "postpartido" in parts:
-        for part in parts:
-            j_match = re.match(r"J(\d+)$", part)
+    # ── postpartido en J{N} ───────────────────────────────────────────────────
+    if "postpartido" in path.parts:
+        for part in path.parts:
+            j_match = re.match(r"^J(\d+)$", part)
             if j_match:
                 j = int(j_match.group(1))
-                return j >= last_jornada - 1
+                return j == last_jornada   # SOLO la última jornada, nada más
 
-    # CCL predicciones: solo partidos pendientes
-    if "pred_" in name and "CCL" in str(path):
+    # ── pred CCL ─────────────────────────────────────────────────────────────
+    if "pred_" in name and "CCL" in path_s:
         m = re.search(r"(\d{8})", name)
         if m:
-            return m.group(1) >= today_s.replace("-", "")
-        return True  # sin fecha → incluir por defecto
+            return m.group(1) >= today_compact   # solo futuros
+        return False   # sin fecha → no sabemos, excluir
 
-    # Internacional carpetas Mexico_vs_X: solo últimos 7 días
-    if "Mexico_vs_" in str(path):
-        m = re.search(r"(\d{8})", name)
-        if m:
-            from datetime import datetime, timedelta
-            try:
-                img_date = datetime.strptime(m.group(1), "%Y%m%d").date()
-                cutoff = date.today() - timedelta(days=7)
-                return img_date >= cutoff
-            except Exception:
-                pass
-        # Sin fecha en nombre: verificar mtime
+    # ── Internacional y Mexico_vs_X → solo recientes (5 días) ────────────────
+    if "Internacional" in path_s or "Mexico_vs_" in path_s:
         mtime = date.fromtimestamp(path.stat().st_mtime)
-        return (date.today() - mtime).days <= 7
+        return (today_dt - mtime).days <= 5
 
-    # Internacional/FECHA/: solo últimos 7 días
-    if "Internacional" in str(path):
-        for part in parts:
-            # carpeta con fecha YYYY-MM-DD
-            import re as _re
-            if _re.match(r"\d{4}-\d{2}-\d{2}", part):
-                from datetime import datetime, timedelta
-                try:
-                    folder_date = date.fromisoformat(part)
-                    return (date.today() - folder_date).days <= 7
-                except Exception:
-                    pass
-        return True
-
-    return True  # por defecto incluir
+    return True   # ELO, rankings, otros → siempre relevantes
 
 
 def _get_last_jornada() -> int:
@@ -193,12 +169,36 @@ def collect_by_section() -> dict[str, list[Path]]:
     }
 
     # ── Liga MX ───────────────────────────────────────────────────────────────
+    import re as _re
+    # Construir set de pares ya jugados usando los team_stats de postpartido
+    # Formato: CF_America_Toluca_2026-04-19_team_stats.png → slug "cf_america_toluca"
+    _pp_played: set = set()
     liga_root = PRED_DIR / "LigaMX_Clausura_2026"
+    if liga_root.exists():
+        for pp_dir in liga_root.rglob("postpartido"):
+            for f in pp_dir.glob("*_team_stats.png"):
+                # e.g. "CF_America_Toluca_2026-04-19_team_stats.png"
+                stem = f.stem.replace("_team_stats", "")
+                # quitar la fecha del final: _YYYY-MM-DD
+                stem = _re.sub(r"_\d{4}-\d{2}-\d{2}.*", "", stem)
+                _pp_played.add(stem.lower())
+
     if liga_root.exists():
         for jdir in sorted(liga_root.iterdir()):
             if not jdir.is_dir():
                 continue
             for img in sorted(jdir.glob("pred_*.png")):
+                # Excluir si ya existe postpartido para ese partido
+                # pred_América_Toluca.png → "américa_toluca"
+                pred_slug = img.stem.lower().replace("pred_", "")
+                # Normalizar tildes/espacios para comparar
+                pred_norm = pred_slug.replace("á","a").replace("é","e").replace("í","i").replace("ó","o").replace("ú","u").replace("ñ","n")
+                already_played = any(
+                    pred_norm in pp.replace("á","a").replace("é","e").replace("í","i").replace("ó","o").replace("ú","u").replace("ñ","n")
+                    for pp in _pp_played
+                )
+                if already_played:
+                    continue
                 if _image_is_relevant(img, pending, today_s, last_jornada):
                     sections["Liga MX"].append(img)
             pp_dir = jdir / "postpartido"

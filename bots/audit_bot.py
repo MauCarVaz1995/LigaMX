@@ -387,19 +387,45 @@ def audit_tracker(verbose: bool = False) -> dict:
         check("predicciones evaluadas", n_eval >= 20, n_eval >= 5,
               f"{n_eval}/{n_total} resueltas")
 
-        if n_eval >= 5 and "acierto" in df_eval.columns:
-            hit_rate = df_eval["acierto"].mean()
+        # Normalizar resultado_real a lowercase para evitar falsos negativos
+        df["resultado_real"] = df["resultado_real"].str.lower().str.strip()
+        df_eval = df[df["resultado_real"].isin(["local", "empate", "visitante"])]
+        n_eval = len(df_eval)
+        results["stats"]["n_evaluadas"] = n_eval
+        check("predicciones evaluadas", n_eval >= 20, n_eval >= 5,
+              f"{n_eval}/{n_total} resueltas")
+
+        acierto_col = "acierto_ganador" if "acierto_ganador" in df_eval.columns else ("acierto" if "acierto" in df_eval.columns else None)
+        if n_eval >= 5 and acierto_col:
+            # Recalcular aciertos correctamente
+            if "ganador_predicho" in df_eval.columns:
+                df_eval = df_eval.copy()
+                df_eval["_acierto"] = df_eval["ganador_predicho"].str.lower().str.strip() == df_eval["resultado_real"]
+                hit_rate = float(df_eval["_acierto"].mean())
+            else:
+                hit_rate = float(df_eval[acierto_col].mean())
             results["stats"]["hit_rate_1x2"] = round(hit_rate, 3)
             check("hit rate 1X2 > 35%", hit_rate > 0.35, hit_rate > 0.28,
                   f"{hit_rate:.0%} ({n_eval} evaluadas) — baseline = 33%")
 
+        # Calibración empate: advertir solo si n≥15 (muestra estadísticamente válida)
+        if n_eval >= 15 and "prob_empate" in df_eval.columns:
+            pred_draw_mean = df_eval["prob_empate"].mean() / 100
+            real_draw_rate = (df_eval["resultado_real"] == "empate").mean()
+            draw_bias = pred_draw_mean - real_draw_rate
+            results["stats"]["draw_bias"] = round(draw_bias, 3)
+            check("calibración empates (n≥15)", abs(draw_bias) < 0.10, abs(draw_bias) < 0.15,
+                  f"bias empate = {draw_bias:+.1%} (pred={pred_draw_mean:.1%} vs real={real_draw_rate:.1%}, n={n_eval})")
+
     # Predicciones recientes (últimos 7 días)
-    if "fecha" in df.columns:
-        df["fecha"] = pd.to_datetime(df["fecha"])
+    date_col = "fecha_prediccion" if "fecha_prediccion" in df.columns else ("fecha" if "fecha" in df.columns else None)
+    if date_col:
+        df[date_col] = pd.to_datetime(df[date_col], errors="coerce")
         cutoff = pd.Timestamp.today() - pd.Timedelta(days=7)
-        n_recientes = (df["fecha"] >= cutoff).sum()
-        check("predicciones recientes", n_recientes >= 3, n_recientes >= 1,
-              f"{n_recientes} predicciones en los últimos 7 días")
+        n_recientes = (df[date_col] >= cutoff).sum()
+        # Warn (no error): el ritmo depende del calendario de jornadas
+        check("predicciones recientes", n_recientes >= 3, n_recientes >= 0,
+              f"{n_recientes} predicciones en los últimos 7 días (ok si jornada recién terminó)")
 
     return results
 

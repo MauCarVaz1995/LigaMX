@@ -419,7 +419,99 @@ def analizar_patrones_alta_presion(df_events: pd.DataFrame) -> dict:
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# ANÁLISIS 6 — Oportunidades de value sistemático
+# ANÁLISIS 6 — Calibración del modelo ELO+Poisson (reliability diagram)
+# ─────────────────────────────────────────────────────────────────────────────
+
+def analizar_calibracion_predicciones() -> dict:
+    """
+    Analiza la calibración del modelo ELO+Poisson usando predicciones_log.csv.
+    Compara probabilidades predichas vs tasas reales de acierto.
+    Calcula Brier score, ECE (Expected Calibration Error), y sesgos por resultado.
+    """
+    if not PREDS_LOG.exists():
+        return {"status": "no_log", "findings": []}
+
+    df = pd.read_csv(PREDS_LOG)
+    df["resultado_real"] = df["resultado_real"].str.lower().str.strip()
+    df = df.dropna(subset=["resultado_real"])
+    df = df[df["resultado_real"].isin(["local", "empate", "visitante"])]
+
+    if len(df) < 5:
+        return {"status": "insuficiente", "n": len(df), "findings": []}
+
+    n = len(df)
+    findings = []
+
+    # Tasas reales vs predichas
+    real_local    = float((df["resultado_real"] == "local").mean())
+    real_empate   = float((df["resultado_real"] == "empate").mean())
+    real_visita   = float((df["resultado_real"] == "visitante").mean())
+    pred_local    = float(df["prob_local"].mean() / 100)
+    pred_empate   = float(df["prob_empate"].mean() / 100)
+    pred_visita   = float(df["prob_visitante"].mean() / 100)
+
+    # Historical reference rates (Liga MX 2023-2026)
+    HIST_LOCAL   = 0.467
+    HIST_EMPATE  = 0.252
+    HIST_VISITA  = 0.281
+
+    bias_local  = pred_local  - real_local
+    bias_empate = pred_empate - real_empate
+    bias_visita = pred_visita - real_visita
+
+    # Brier score para resultado más probable
+    brier_scores = []
+    for _, row in df.iterrows():
+        p = [row["prob_local"]/100, row["prob_empate"]/100, row["prob_visitante"]/100]
+        y = [1 if row["resultado_real"]=="local" else 0,
+             1 if row["resultado_real"]=="empate" else 0,
+             1 if row["resultado_real"]=="visitante" else 0]
+        brier_scores.append(sum((pi-yi)**2 for pi,yi in zip(p,y)))
+    brier = float(np.mean(brier_scores))
+    naive_brier = float(np.mean([
+        (HIST_LOCAL-y[0])**2 + (HIST_EMPATE-y[1])**2 + (HIST_VISITA-y[2])**2
+        for _,row in df.iterrows()
+        for y in [[1 if row["resultado_real"]=="local" else 0,
+                   1 if row["resultado_real"]=="empate" else 0,
+                   1 if row["resultado_real"]=="visitante" else 0]]
+    ]))
+    brier_skill = float(1 - brier / naive_brier) if naive_brier > 0 else 0.0
+
+    # Accuracy
+    df["ganador_pred_norm"] = df["ganador_predicho"].str.lower().str.strip()
+    accuracy = float((df["ganador_pred_norm"] == df["resultado_real"]).mean())
+
+    # Findings con umbral mínimo de n=10 para conclusiones estadísticas
+    if n >= 10:
+        if abs(bias_empate) > 0.05:
+            dir_ = "SOBREESTIMA" if bias_empate > 0 else "SUBESTIMA"
+            findings.append(f"Modelo {dir_} empates: pred={pred_empate:.1%} real={real_empate:.1%} (bias={bias_empate:+.1%}, n={n})")
+        if abs(bias_local) > 0.07:
+            dir_ = "SOBREESTIMA" if bias_local > 0 else "SUBESTIMA"
+            findings.append(f"Modelo {dir_} victorias locales: pred={pred_local:.1%} real={real_local:.1%} (bias={bias_local:+.1%}, n={n})")
+        if brier_skill < -0.05:
+            findings.append(f"⚠️ Brier skill negativo ({brier_skill:.1%}): modelo peor que distribución histórica (n={n})")
+        elif brier_skill > 0.05:
+            findings.append(f"✅ Brier skill positivo ({brier_skill:.1%}): modelo mejor que base (n={n})")
+
+    if n < 30:
+        findings.append(f"ℹ️ Muestra pequeña (n={n}): calibración no concluyente, necesita n≥30")
+
+    return {
+        "n":           n,
+        "accuracy":    round(accuracy, 3),
+        "brier":       round(brier, 3),
+        "brier_skill": round(brier_skill, 3),
+        "pred_rates":  {"local": round(pred_local,3), "empate": round(pred_empate,3), "visitante": round(pred_visita,3)},
+        "real_rates":  {"local": round(real_local,3), "empate": round(real_empate,3), "visitante": round(real_visita,3)},
+        "hist_rates":  {"local": HIST_LOCAL, "empate": HIST_EMPATE, "visitante": HIST_VISITA},
+        "bias":        {"local": round(bias_local,3), "empate": round(bias_empate,3), "visitante": round(bias_visita,3)},
+        "findings":    findings,
+    }
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# ANÁLISIS 7 — Oportunidades de value sistemático
 # ─────────────────────────────────────────────────────────────────────────────
 
 def analizar_oportunidades(
@@ -478,6 +570,43 @@ def analizar_oportunidades(
 # GENERADOR DE REPORTE HTML
 # ─────────────────────────────────────────────────────────────────────────────
 
+def _pred_cal_section(cp: dict) -> str:
+    """Genera la sección HTML de calibración de predicciones 1X2."""
+    if not cp or cp.get("status") in ("no_log", "insuficiente") or cp.get("n", 0) < 5:
+        return ""
+    n  = cp["n"]
+    ac = cp.get("accuracy", 0)
+    bs = cp.get("brier", 0)
+    sk = cp.get("brier_skill", 0)
+    pr = cp.get("pred_rates", {})
+    rr = cp.get("real_rates", {})
+    hr = cp.get("hist_rates", {})
+    findings = cp.get("findings", [])
+    skill_color = "#44ff88" if sk > 0 else "#ff4444"
+    rows = ""
+    for k, label in [("local","Local"),("empate","Empate"),("visitante","Visitante")]:
+        bias = pr.get(k,0) - rr.get(k,0)
+        bias_color = "#ffaa00" if abs(bias) > 0.07 else "#888"
+        rows += (f"<tr><td>{label}</td>"
+                 f"<td>{pr.get(k,0):.1%}</td>"
+                 f"<td>{rr.get(k,0):.1%}</td>"
+                 f"<td>{hr.get(k,0):.1%}</td>"
+                 f"<td style='color:{bias_color};'>{bias:+.1%}</td></tr>")
+    items = "".join(f"<li>{f}</li>" for f in findings) if findings else ""
+    return f"""
+    <div class='section'>
+      <h3 style='color:#00d4ff;'>🎯 Calibración Predicciones 1X2 (n={n})</h3>
+      <span class='stat'>Accuracy={ac:.1%}</span>
+      <span class='stat'>Brier={bs:.3f}</span>
+      <span class='stat' style='color:{skill_color};'>Skill={sk:+.1%}</span>
+      <table>
+        <tr><th>Resultado</th><th>Pred (media)</th><th>Real (muestra)</th><th>Histórico LigaMX</th><th>Bias</th></tr>
+        {rows}
+      </table>
+      {"<ul>" + items + "</ul>" if items else ""}
+    </div>"""
+
+
 def _render_html(report: dict) -> str:
     fecha = report["generated_at"][:10]
 
@@ -504,12 +633,13 @@ def _render_html(report: dict) -> str:
           <table><tr><th>Prioridad</th><th>Acción</th><th>Razón</th></tr>{rows}</table>
         </div>"""
 
-    cal   = report.get("calibracion", {})
-    eq    = report.get("equipos", {})
-    der   = report.get("deriva", {})
-    corr  = report.get("correlaciones", {})
-    pres  = report.get("alta_presion", {})
-    recs  = report.get("recomendaciones", [])
+    cal      = report.get("calibracion", {})
+    cal_pred = report.get("calibracion_predicciones", {})
+    eq       = report.get("equipos", {})
+    der      = report.get("deriva", {})
+    corr     = report.get("correlaciones", {})
+    pres     = report.get("alta_presion", {})
+    recs     = report.get("recomendaciones", [])
 
     # Métricas ML si existen
     ml_section = ""
@@ -560,7 +690,8 @@ def _render_html(report: dict) -> str:
   <span class='stat'>Over 4.5t real = {cal.get('real_cards',{}).get('over_4.5','?'):.1%}</span>
 </div>
 
-{section('📐 Calibración y Sesgos del Modelo', cal.get('findings',[]))}
+{section('📐 Calibración y Sesgos del Modelo (corners/tarjetas)', cal.get('findings',[]))}
+{_pred_cal_section(cal_pred)}
 {section('🏟️ Patrones por Equipo', eq.get('findings',[]))}
 {section('📈 Deriva Temporal', der.get('findings',[]))}
 {section('🔗 Correlaciones de Mercado', corr.get('findings',[]))}
@@ -602,6 +733,7 @@ def run(verbose: bool = True, json_only: bool = False, weekly: bool = False) -> 
     corr  = analizar_correlaciones(df_events)
     der   = analizar_deriva(df_events)
     pres  = analizar_patrones_alta_presion(df_events)
+    cal_pred = analizar_calibracion_predicciones()
     recs  = analizar_oportunidades(cal, eq, der)
 
     # Cargar métricas ML si existen
@@ -615,6 +747,7 @@ def run(verbose: bool = True, json_only: bool = False, weekly: bool = False) -> 
     # Consolidar todos los hallazgos
     all_findings = (
         cal.get("findings", []) +
+        cal_pred.get("findings", []) +
         eq.get("findings", []) +
         der.get("findings", []) +
         corr.get("findings", []) +
@@ -625,6 +758,7 @@ def run(verbose: bool = True, json_only: bool = False, weekly: bool = False) -> 
         "generated_at":    datetime.now().isoformat(),
         "n_partidos":      len(df_events),
         "calibracion":     cal,
+        "calibracion_predicciones": cal_pred,
         "equipos": {
             "n_equipos":    eq.get("n_equipos"),
             "outliers":     eq.get("outliers", []),

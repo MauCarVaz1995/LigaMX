@@ -1,6 +1,6 @@
 {
   "fecha": "2026-04-19",
-  "overall": "error",
+  "overall": "warn",
   "sections": [
     {
       "section": "datos",
@@ -47,16 +47,16 @@
         },
         {
           "name": "todos los equipos tienen ELO",
-          "level": "error",
-          "msg": "sin ELO: {'CF America', 'Queretaro FC', 'Mazatlan FC', 'FC Juarez', 'Atletico de San Luis'}"
+          "level": "ok",
+          "msg": "OK"
         },
         {
           "name": "predicciones_log actualizado",
-          "level": "warn",
-          "msg": "32 predicciones, 23 resueltas, hace 7 días"
+          "level": "ok",
+          "msg": "32 predicciones, 23 resueltas, hace 0 días"
         }
       ],
-      "status": "error"
+      "status": "warn"
     },
     {
       "section": "modelos",
@@ -87,9 +87,9 @@
           "msg": "0.1882 (baseline=0.25)"
         },
         {
-          "name": "Brier tarjetas Over 4.5",
-          "level": "error",
-          "msg": "0.3351 (baseline=0.25)"
+          "name": "Brier tarjetas Over 4.5 (ML)",
+          "level": "warn",
+          "msg": "ML=0.2270 Poisson=0.3351 (baseline=0.25)"
         },
         {
           "name": "MAE corners totales",
@@ -97,7 +97,7 @@
           "msg": "2.12 córners promedio"
         }
       ],
-      "status": "error"
+      "status": "warn"
     },
     {
       "section": "bots",
@@ -105,7 +105,7 @@
         {
           "name": "daily_betting_bot corrió",
           "level": "ok",
-          "msg": "hace 0 días — 1 partidos analizados, 0 value bets"
+          "msg": "hace 0 días — 10 partidos analizados, 0 value bets"
         },
         {
           "name": "retrain_bot tiene log",
@@ -132,12 +132,34 @@
           "name": "predicciones evaluadas",
           "level": "ok",
           "msg": "23/32 resueltas"
+        },
+        {
+          "name": "predicciones evaluadas",
+          "level": "ok",
+          "msg": "23/32 resueltas"
+        },
+        {
+          "name": "hit rate 1X2 > 35%",
+          "level": "ok",
+          "msg": "48% (23 evaluadas) — baseline = 33%"
+        },
+        {
+          "name": "calibración empates (n≥15)",
+          "level": "ok",
+          "msg": "bias empate = +8.5% (pred=25.9% vs real=17.4%, n=23)"
+        },
+        {
+          "name": "predicciones recientes",
+          "level": "warn",
+          "msg": "0 predicciones en los últimos 7 días (ok si jornada recién terminó)"
         }
       ],
-      "status": "ok",
+      "status": "warn",
       "stats": {
         "n_predicciones": 32,
-        "n_evaluadas": 23
+        "n_evaluadas": 23,
+        "hit_rate_1x2": 0.478,
+        "draw_bias": 0.085
       }
     },
     {
@@ -160,15 +182,15 @@
         },
         {
           "name": "total imágenes restantes",
-          "level": "ok",
-          "msg": "60 imágenes en output/charts/predicciones/"
+          "level": "warn",
+          "msg": "69 imágenes en output/charts/predicciones/"
         }
       ],
-      "status": "ok",
+      "status": "warn",
       "stats": {
-        "total_antes": 60,
+        "total_antes": 69,
         "eliminadas": 0,
-        "total_despues": 60,
+        "total_despues": 69,
         "obsoletas_detectadas": 0
       }
     },
