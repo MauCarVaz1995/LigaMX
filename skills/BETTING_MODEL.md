@@ -152,32 +152,63 @@ Si CLV ≈ 0 → modelo sin ventaja, no apostar
 - [ ] ROI hipotético > 3% con Kelly 25% en últimas 100 predicciones
 - [ ] Al menos 50 predicciones en el mercado específico (no mezclar corners con 1X2)
 
-### Estado actual del tracker
-- 23 predicciones evaluadas, solo 1X2
-- Acierto: 47.8% → por debajo del baseline — modelo 1X2 NO está listo para apostar
-- Corners/BTTS/tarjetas: 0 predicciones — falta construir
+### Estado actual del tracker (2026-04-19)
+- 23 predicciones evaluadas (solo 1X2 — corners/tarjetas no logueadas aún)
+- Acierto: 47.8% → baseline histórico Liga MX ~47% (la predicción siempre es el favorito)
+- Brier 1X2: 0.613 | Skill: −11.2% (muestra n=23, insuficiente — necesita n≥30)
+- **IMPORTANTE**: n=23 no es estadísticamente concluyente. Esperar n≥50 para conclusiones.
+- Calibración base del modelo (para equipos promedio ELO=1500): local=49.1%, empate=24.3%, visita=26.6% — **bien calibrado vs histórico Liga MX (46.7%/25.2%/28.1%)**
+
+### Análisis de datos disponibles (2026-04-19)
+```
+match_events.csv: 802 partidos (694 con datos completos, 108 sin eventos)
+  Datos faltantes: Apertura 2024 (29), Clausura 2025 (29), Clausura 2024 (25), Apertura 2025 (25)
+  → Scrape de eventos históricos prioritario para completar dataset
+
+xG de FotMob: r=0.035 con goles reales → datos INUTILIZABLES para BTTS
+  → Usar FBref/StatsBomb xG para mercados de goles (r esperado ≈ 0.35+)
+  → Mientras tanto: shots como proxy (r=0.621 con corners, r≈0.30 con goles)
+
+Mejor predictor de corners: shots_local+visitante (r=0.303/0.268)
+```
+
+---
+
+## Gaps de datos para mejorar modelos
+
+| Dato faltante | Impacto | Fuente |
+|---|---|---|
+| **xG de calidad** (StatsBomb/FBref) | Alto para BTTS y 1X2 | FBref.com — Liga MX coverage desde 2022 |
+| **Asignación de árbitros por partido** | Alto para tarjetas | FotMob API / Soccerway |
+| **Cuotas históricas** (Pinnacle) | Alto para CLV backtesting | football-data.co.uk (parcial) |
+| **Eventos faltantes 2024-2025** | Medio para ML training | Re-scrape FotMob (108 partidos) |
+| **Lesiones / disponibilidad** | Medio para 1X2 | Transfermarkt / FotMob API |
+| **Datos CCL históricos 2010-2025** | Bajo para CCL | RSSSF / Wikipedia scrape |
 
 ---
 
 ## Sistema de retroalimentación — discovery_bot.py
 
-`bots/discovery_bot.py` corre diariamente y analiza:
+`bots/discovery_bot.py` corre diariamente y analiza (7 secciones):
 
-1. **Calibración** — ¿el modelo sobreestima o subestima los mercados?
-2. **Outliers por equipo** — equipos con comportamiento atípico (z-score > 1.5σ)
-3. **Deriva temporal** — ¿hay drift en corners/tarjetas vs historial?
-4. **Correlaciones** — ¿qué mercados son independientes entre sí?
-5. **Patrones alta presión** — partidos candidatos para portafolio múltiple
-6. **Recomendaciones** — accionables con prioridad alta/media/baja
+1. **Calibración corners/tarjetas** — ¿modelo naïve sobreestima/subestima vs datos reales?
+2. **Calibración predicciones 1X2** — Brier, ECE, bias por resultado (local/empate/visita)
+3. **Outliers por equipo** — equipos con comportamiento atípico (z-score > 1.5σ)
+4. **Deriva temporal** — ¿hay drift en corners/tarjetas vs historial?
+5. **Correlaciones** — ¿qué mercados son independientes entre sí?
+6. **Patrones alta presión** — partidos candidatos para portafolio múltiple
+7. **Recomendaciones** — accionables con prioridad alta/media/baja
 
 Output: `output/reports/discovery/discovery_YYYY-MM-DD.json` + `.html`
 También `output/reports/discovery_latest.html` para el email diario.
 
-**Hallazgos actuales (2026-04-18):**
-- Drift corners +1.3 (reciente=10.6 vs hist=9.2) → retrain urgente ✅ detectado
-- Querétaro FC y Puebla: +0.8σ de corners generados
+**Hallazgos actuales (2026-04-19):**
+- Drift corners +1.3 (reciente=10.6 vs hist=9.3) → retrain urgente ✅ detectado
+- Querétaro FC (+5.5c/j), Mazatlán (+5.4c/j), Puebla (+5.3c/j): top generadores
+- Puebla y Querétaro también top en corners concedidos → mercado double-sided
 - Corners y tarjetas son independientes (r=-0.12) → portafolio mixto válido
-- Corners independientes de goles (r=0.00) → apostar ambos OK
+- Correlación shots vs corners: r=0.621 → mejor feature para corners ML
+- xG FotMob inutilizable para BTTS (r=0.035 con goles reales)
 
 ---
 
