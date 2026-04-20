@@ -92,26 +92,53 @@ def _norm(s: str) -> str:
 # ─────────────────────────────────────────────────────────────────────────────
 def log_predictions(verbose: bool = True) -> int:
     """
-    Lee el último betting_*.json generado por daily_betting_bot.py
-    y agrega filas nuevas a betting_log.csv.
-    Deduplicación: no duplica (partido, mercado, fecha_partido).
+    Lee el último betting_*.json (Liga MX) y el último betting_intl_*.json
+    (ligas internacionales) y agrega filas nuevas a betting_log.csv.
+    Para ligas internacionales: solo btts_si, goles_over_1.5, goles_over_2.5.
+    Deduplicación por (fecha_partido, equipo_local, equipo_visita, mercado).
     """
-    reports = sorted(REPORTS_DIR.glob("betting_*.json"))
-    if not reports:
+    # Buscar archivos: Liga MX (betting_YYYY-MM-DD*) y Intl (betting_intl_*)
+    mx_reports   = [f for f in sorted(REPORTS_DIR.glob("betting_*.json"))
+                    if not f.name.startswith("betting_intl_")]
+    intl_reports = sorted(REPORTS_DIR.glob("betting_intl_*.json"))
+
+    sources = []
+    if mx_reports:
+        sources.append(("mx", mx_reports[-1]))
+    if intl_reports:
+        sources.append(("intl", intl_reports[-1]))
+
+    if not sources:
         if verbose:
             print("  [warn] No hay betting_*.json en output/reports/")
         return 0
 
-    latest = reports[-1]
-    if verbose:
-        print(f"  Leyendo {latest.name}")
+    total_nuevas = 0
+    for source_type, report_file in sources:
+        if verbose:
+            print(f"  Leyendo {report_file.name} [{source_type}]")
+        data = json.loads(report_file.read_text())
+        partidos = data if isinstance(data, list) else data.get("partidos", [])
+        total_nuevas += _log_from_partidos(partidos, source_type, verbose)
 
-    data = json.loads(latest.read_text())
-    partidos = data if isinstance(data, list) else data.get("partidos", [])
+    return total_nuevas
+
+
+def _log_from_partidos(partidos: list, source_type: str, verbose: bool) -> int:
+    """Agrega predicciones al betting_log desde una lista de partidos."""
+    # Para intl: solo btts/goles (sin corners ni tarjetas)
+    MERCADOS_INTL = [
+        ("btts",  "btts_si",   "btts_si",        None),
+        ("btts",  "over_2.5",  "goles_over_2.5",  2.5),
+        ("btts",  "over_1.5",  "goles_over_1.5",  1.5),
+    ]
+    mercados_a_usar = MERCADOS_INTL if source_type == "intl" else MERCADOS
+
+    if not partidos:
+        return 0
 
     df = _load_log()
 
-    # Key de deduplicación existente
     existing_keys = set(
         zip(df["fecha_partido"].astype(str),
             df["equipo_local"].astype(str).str.strip().str.lower(),
@@ -128,7 +155,7 @@ def log_predictions(verbose: bool = True) -> int:
         jornada  = p.get("jornada", "")
         partido  = f"{local} vs {visita}"
 
-        for cat, sub_key, mercado_label, linea in MERCADOS:
+        for cat, sub_key, mercado_label, linea in mercados_a_usar:
             prob = p.get(cat, {}).get(sub_key)
             if prob is None:
                 continue
@@ -163,10 +190,10 @@ def log_predictions(verbose: bool = True) -> int:
         df = pd.concat([df, pd.DataFrame(nuevas)], ignore_index=True)
         _save_log(df)
         if verbose:
-            print(f"  → {len(nuevas)} nuevas predicciones en betting_log.csv")
+            print(f"  → {len(nuevas)} nuevas predicciones [{source_type}]")
     else:
         if verbose:
-            print("  → Sin predicciones nuevas (ya logueadas o sin datos)")
+            print(f"  → Sin predicciones nuevas [{source_type}]")
 
     return len(nuevas)
 

@@ -28,11 +28,13 @@ from scipy.stats import poisson
 # ─────────────────────────────────────────────────────────────────────────────
 # PATHS
 # ─────────────────────────────────────────────────────────────────────────────
-BASE         = Path(__file__).resolve().parent.parent
-ELOS_DIR     = BASE / "data/processed/elos_ligas"
-PRED_LOG     = BASE / "data/processed/predicciones_log.csv"
-INTL_CSV     = BASE / "data/raw/internacional/results.csv"
-REPORTS_DIR  = BASE / "output/reports"
+BASE             = Path(__file__).resolve().parent.parent
+ELOS_DIR         = BASE / "data/processed/elos_ligas"
+PRED_LOG         = BASE / "data/processed/predicciones_log.csv"
+INTL_CSV         = BASE / "data/raw/internacional/results.csv"
+ODDS_HISTORICO   = BASE / "data/processed/odds_historico.csv"
+BETTING_LOG      = BASE / "data/processed/betting_log.csv"
+REPORTS_DIR      = BASE / "output/reports"
 
 ELOS_DIR.mkdir(parents=True, exist_ok=True)
 REPORTS_DIR.mkdir(parents=True, exist_ok=True)
@@ -43,20 +45,32 @@ TODAY = date.today().isoformat()
 # LIGAS
 # ─────────────────────────────────────────────────────────────────────────────
 LIGAS: dict[str, dict] = {
-    "champions":   {"id": 42,  "nombre": "UEFA Champions League"},
-    "libertadores": {"id": 384, "nombre": "Copa Libertadores"},
-    "mls":         {"id": 130, "nombre": "MLS"},
-    "argentina":   {"id": 112, "nombre": "Liga Argentina"},
-    "brasileirao": {"id": 268, "nombre": "Brasileirao"},
+    # Copas / torneos de clubes
+    "champions":    {"id": 42,    "nombre": "UEFA Champions League"},
+    "libertadores": {"id": 384,   "nombre": "Copa Libertadores"},
+    "mls":          {"id": 913550,"nombre": "MLS"},
+    "argentina":    {"id": 905256,"nombre": "Liga Profesional Argentina"},
+    "brasileirao":  {"id": 268,   "nombre": "Brasileirao Serie A"},
+    # Ligas europeas (ELO desde odds_historico.csv — 5 años reales)
+    "premier":      {"id": 47,    "nombre": "Premier League",  "odds_key": "premier"},
+    "laliga":       {"id": 87,    "nombre": "La Liga",          "odds_key": "laliga"},
+    "bundesliga":   {"id": 54,    "nombre": "Bundesliga",       "odds_key": "bundesliga"},
+    "seriea":       {"id": 55,    "nombre": "Serie A",          "odds_key": "seriea"},
+    "ligue1":       {"id": 53,    "nombre": "Ligue 1",          "odds_key": "ligue1"},
 }
 
-# Palabras clave en results.csv para mapear a cada liga
+# Ligas cuyo ELO se bootstrapea desde odds_historico.csv (no desde results.csv)
+LIGAS_ODDS_BOOTSTRAP = {"premier", "laliga", "bundesliga", "seriea", "ligue1"}
+
+# Para Champions: ligas domésticas desde las que se toma el ELO de cada club
+LIGAS_EUROPEAS_KEYS = ["premier", "laliga", "bundesliga", "seriea", "ligue1"]
+
+# Palabras clave en results.csv para mapear a cada liga (solo las que tienen datos reales)
 LIGA_TOURNAMENT_KEYWORDS: dict[str, list[str]] = {
-    "champions":   ["champions league", "uefa champions"],
     "libertadores": ["copa libertadores", "libertadores"],
-    "mls":         ["major league soccer", "mls"],
-    "argentina":   ["primera division", "liga profesional", "superliga argentina"],
-    "brasileirao": ["brasileirao", "campeonato brasileiro", "serie a"],
+    "mls":          ["major league soccer", "mls"],
+    "argentina":    ["primera division", "liga profesional", "superliga argentina"],
+    "brasileirao":  ["brasileirao", "campeonato brasileiro"],
 }
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -256,11 +270,129 @@ def bootstrap_elo_from_history(liga_key: str) -> dict[str, float]:
     return elos
 
 
+def bootstrap_elo_from_odds_historico(liga_key: str) -> dict[str, float]:
+    """
+    Bootstrap ELO para ligas europeas usando odds_historico.csv (5 años reales).
+    Mucho más preciso que results.csv para clubes.
+    """
+    odds_key = LIGAS.get(liga_key, {}).get("odds_key", liga_key)
+    print(f"  [bootstrap] ELO desde odds_historico para {liga_key} (key={odds_key})...")
+
+    if not ODDS_HISTORICO.exists():
+        print(f"  [WARN] odds_historico.csv no encontrado")
+        return {}
+
+    try:
+        df = pd.read_csv(ODDS_HISTORICO, parse_dates=["fecha"])
+    except Exception as e:
+        print(f"  [WARN] Error leyendo odds_historico: {e}")
+        return {}
+
+    df_liga = df[df["liga"] == odds_key].copy().sort_values("fecha")
+    if df_liga.empty:
+        print(f"  [WARN] Sin datos para liga {odds_key} en odds_historico")
+        return {}
+
+    df_liga = df_liga[df_liga["goles_local"].notna() & df_liga["goles_visita"].notna()]
+    print(f"  [bootstrap] {liga_key}: {len(df_liga)} partidos en odds_historico")
+
+    dates    = df_liga["fecha"]
+    min_date = dates.min()
+    max_date = dates.max()
+    date_range = max(1, (max_date - min_date).days)
+
+    elos: dict[str, float] = {}
+    registros: list[dict] = []
+
+    for _, row in df_liga.iterrows():
+        home = norm_team(str(row["local"]))
+        away = norm_team(str(row["visitante"]))
+        hs   = int(row["goles_local"])
+        as_  = int(row["goles_visita"])
+
+        fecha_str = row["fecha"].strftime("%Y-%m-%d") if hasattr(row["fecha"], "strftime") else str(row["fecha"])[:10]
+        age_ratio = (row["fecha"] - min_date).days / date_range
+        k_eff     = K_ELO * (0.5 + age_ratio)
+
+        elo_h = elos.get(home, ELO_INIT)
+        elo_a = elos.get(away, ELO_INIT)
+
+        exp_h = elo_expected(elo_h + HOME_ADV_ELO, elo_a)
+        res_h = 1.0 if hs > as_ else (0.5 if hs == as_ else 0.0)
+
+        elos[home] = elo_h + k_eff * (res_h - exp_h)
+        elos[away] = elo_a + k_eff * ((1 - res_h) - (1 - exp_h))
+
+        registros.append({"equipo": home, "elo": round(elos[home], 2), "fecha": fecha_str, "liga": liga_key})
+        registros.append({"equipo": away, "elo": round(elos[away], 2), "fecha": fecha_str, "liga": liga_key})
+
+    if registros:
+        save_elos_atomic(liga_key, registros)
+        elo_vals = list(elos.values())
+        print(f"  [bootstrap] {liga_key}: {len(elos)} equipos | ELO {min(elo_vals):.0f}–{max(elo_vals):.0f}")
+
+    return elos
+
+
+# Cache de ELOs europeos para lookup Champions/Libertadores
+_EUROPEAN_ELO_CACHE: dict[str, float] = {}
+
+def load_all_european_elos() -> dict[str, float]:
+    """
+    Carga ELOs de todas las ligas europeas en un solo dict para
+    usarlos en Champions League (lookup cross-liga).
+    """
+    global _EUROPEAN_ELO_CACHE
+    if _EUROPEAN_ELO_CACHE:
+        return _EUROPEAN_ELO_CACHE
+
+    combined: dict[str, float] = {}
+    for key in LIGAS_EUROPEAS_KEYS:
+        p = elo_csv_path(key)
+        if not p.exists():
+            continue
+        try:
+            df = pd.read_csv(p)
+            # Solo el ELO más reciente por equipo
+            latest = df.sort_values("fecha").groupby("equipo")["elo"].last()
+            for team, elo in latest.items():
+                # Si el equipo ya está, tomar el mayor (mejor estimación)
+                if team not in combined or float(elo) > combined[team]:
+                    combined[team] = float(elo)
+        except Exception:
+            pass
+
+    _EUROPEAN_ELO_CACHE = combined
+    print(f"  [cache] ELOs europeos cargados: {len(combined)} equipos")
+    return combined
+
+
 def get_or_bootstrap_elos(liga_key: str) -> dict[str, float]:
-    """Si el CSV ya existe, lo carga. Si no, ejecuta bootstrap desde histórico."""
+    """
+    Si el CSV ya existe, lo carga.
+    Si no, ejecuta bootstrap desde la fuente correcta:
+      - Ligas europeas (premier/laliga/bundesliga/seriea/ligue1): desde odds_historico.csv
+      - Champions: desde ELOs europeos ya cargados (cross-liga)
+      - Resto: desde results.csv de selecciones (fallback)
+    """
     p = elo_csv_path(liga_key)
     if p.exists() and p.stat().st_size > 100:
         return load_elos(liga_key)
+
+    if liga_key in LIGAS_ODDS_BOOTSTRAP:
+        return bootstrap_elo_from_odds_historico(liga_key)
+
+    if liga_key == "champions":
+        # Para Champions, primero asegurar que las ligas europeas estén bootstrapeadas
+        eu_elos = load_all_european_elos()
+        if eu_elos:
+            print(f"  [champions] Usando ELOs de ligas europeas ({len(eu_elos)} clubes)")
+            # Guardar el cross-elo como base para Champions
+            registros = [{"equipo": t, "elo": round(e, 2), "fecha": TODAY, "liga": "champions"}
+                         for t, e in eu_elos.items()]
+            save_elos_atomic("champions", registros)
+            return eu_elos
+
     return bootstrap_elo_from_history(liga_key)
 
 
@@ -335,32 +467,110 @@ def ganador_predicho(prob_local: float, prob_empate: float, prob_visitante: floa
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# FOTMOB API
+# FOTMOB API — endpoint por fecha (leagues endpoint da 404)
 # ─────────────────────────────────────────────────────────────────────────────
-def fetch_fotmob(league_id: int) -> dict | None:
-    """Obtiene datos de la liga desde FotMob API. Retorna JSON o None."""
-    url = f"https://www.fotmob.com/api/leagues?id={league_id}&ccode3=MEX"
-    for attempt in range(1, 4):
+def fetch_fotmob_by_date(league_id: int, days_ahead: int = 7) -> list[dict]:
+    """
+    Obtiene fixtures próximos de una liga usando el endpoint /api/data/matches?date=
+    (el endpoint /api/leagues?id= da 404 en la versión actual de FotMob).
+    Retorna lista de raw match dicts del JSON de FotMob.
+    """
+    all_matches = []
+    today = date.today()
+
+    for delta in range(days_ahead):
+        d = (today + timedelta(days=delta)).strftime("%Y%m%d")
+        url = f"https://www.fotmob.com/api/data/matches?date={d}"
         try:
             r = requests.get(url, headers=FOTMOB_HEADERS, timeout=20)
             r.raise_for_status()
-            return r.json()
-        except requests.exceptions.HTTPError as e:
-            print(f"  [WARN] HTTP {e.response.status_code} para liga {league_id} (intento {attempt}/3)")
+            data = r.json()
         except Exception as e:
-            print(f"  [WARN] Error fetch liga {league_id} (intento {attempt}/3): {e}")
-        if attempt < 3:
-            time.sleep(5 * attempt)
-    return None
+            print(f"  [WARN] FotMob fecha {d}: {e}")
+            time.sleep(2)
+            continue
+
+        for league in data.get("leagues", []):
+            if league.get("id") == league_id:
+                for m in league.get("matches", []):
+                    if not m.get("status", {}).get("finished", True):
+                        all_matches.append({**m, "_date": d})
+        time.sleep(0.5)
+
+    return all_matches
+
+
+def fetch_fotmob_from_cache(league_id: int, max_age_days: int = 3) -> list[dict]:
+    """
+    Lee fixtures del intl JSON más reciente en caché.
+    Útil cuando FotMob está caído o rate-limited.
+    """
+    raw_dir = BASE / "data/raw/fotmob"
+    cutoff  = (date.today() - timedelta(days=max_age_days)).isoformat().replace("-", "")
+    cached  = sorted(raw_dir.glob("intl_*.json"), reverse=True)
+
+    for f in cached:
+        # intl_YYYYMMDD.json
+        name = f.stem.replace("intl_", "")
+        if name < cutoff:
+            break
+        try:
+            data = json.loads(f.read_text())
+            matches = []
+            for league in data.get("leagues", []):
+                if league.get("id") == league_id:
+                    for m in league.get("matches", []):
+                        if not m.get("status", {}).get("finished", True):
+                            matches.append(m)
+            if matches:
+                print(f"  [cache] {len(matches)} fixtures desde {f.name}")
+                return matches
+        except Exception:
+            continue
+    return []
+
+
+def fetch_fotmob(league_id: int) -> dict | None:
+    """
+    Obtiene fixtures próximos de una liga.
+    Intenta primero el API live; si falla, usa caché local.
+    """
+    matches = fetch_fotmob_by_date(league_id, days_ahead=10)
+    if not matches:
+        matches = fetch_fotmob_from_cache(league_id)
+    if not matches:
+        return None
+    return {"_raw_matches": matches, "league_id": league_id}
 
 
 def parse_fixtures(data: dict, liga_key: str) -> list[dict]:
     """
-    Extrae fixtures próximos (no terminados) desde la respuesta de FotMob.
+    Extrae fixtures próximos desde la respuesta de FotMob.
+    Soporta el nuevo formato (_raw_matches) y el formato antiguo (matches dict).
     Retorna lista de dicts con: home, away, fecha, match_id.
     """
     fixtures = []
     try:
+        # Nuevo formato: _raw_matches (lista directa de matches)
+        if "_raw_matches" in data:
+            match_list = data["_raw_matches"]
+            for m in match_list:
+                try:
+                    home = norm_team(m["home"]["name"])
+                    away = norm_team(m["away"]["name"])
+                    utc  = m.get("status", {}).get("utcTime", "")
+                    fecha = utc[:10] if utc else m.get("_date", TODAY)[:4] + "-" + m.get("_date", "")[4:6] + "-" + m.get("_date", "")[6:8]
+                    fixtures.append({
+                        "home":     home,
+                        "away":     away,
+                        "fecha":    fecha,
+                        "match_id": m.get("id"),
+                    })
+                except (KeyError, TypeError):
+                    continue
+            return fixtures
+
+        # Formato antiguo (para compatibilidad)
         # Estructura FotMob: data["matches"]["upcoming"] o data["matches"]["allMatches"]
         matches_section = data.get("matches", {})
 
@@ -491,6 +701,78 @@ def generate_prediction(
         "error_marcador":      None,
         "liga":                liga_key,
     }
+
+
+def generate_betting_dict(
+    liga_key: str,
+    liga_nombre: str,
+    local: str,
+    visitante: str,
+    fecha: str,
+    elo_local: float,
+    elo_visitante: float,
+) -> dict:
+    """
+    Genera un dict de predicción de apuestas (btts/goles) en el mismo formato
+    que daily_betting_bot.py — para que betting_tracker.py lo pueda loguear.
+    No incluye corners ni tarjetas (sin datos para ligas internacionales).
+    """
+    lam_l, lam_v = lambdas_from_elo(elo_local, elo_visitante)
+
+    # Cálculo Poisson de probs para btts y goles
+    import math as _math
+    def _poisson_pmf(k: int, lam: float) -> float:
+        return (_math.exp(-lam) * (lam ** k)) / _math.factorial(k)
+
+    # P(BTTS) = P(local >= 1) * P(visitante >= 1)
+    p_l0 = _poisson_pmf(0, lam_l)
+    p_v0 = _poisson_pmf(0, lam_v)
+    p_btts = (1 - p_l0) * (1 - p_v0)
+
+    # P(Over 1.5) = 1 - P(0 goles) - P(1 gol total)
+    # P(Over 2.5) = 1 - P(0) - P(1) - P(2)
+    lam_total = lam_l + lam_v
+    p_over_1_5 = 1 - _poisson_pmf(0, lam_total) - _poisson_pmf(1, lam_total)
+    p_over_2_5 = p_over_1_5 - _poisson_pmf(2, lam_total)
+
+    return {
+        "match_id":  None,
+        "fecha":     fecha,
+        "jornada":   0,
+        "local":     local,
+        "visita":    visitante,
+        "torneo":    liga_nombre,
+        "liga":      liga_key,
+        "elo_local":   round(elo_local, 1),
+        "elo_visita":  round(elo_visitante, 1),
+        "corners":  {},    # sin datos para ligas internacionales
+        "tarjetas": {},    # sin datos para ligas internacionales
+        "btts": {
+            "btts_si":      round(p_btts, 4),
+            "btts_no":      round(1 - p_btts, 4),
+            "over_1.5":     round(p_over_1_5, 4),
+            "over_2.5":     round(p_over_2_5, 4),
+            "under_2.5":    round(1 - p_over_2_5, 4),
+            "lambda_local":   round(lam_l, 3),
+            "lambda_visita":  round(lam_v, 3),
+        },
+        "value_bets": [],
+        "errors":    [],
+    }
+
+
+def save_betting_json_intl(partidos: list[dict]):
+    """
+    Guarda betting_intl_{fecha}.json con predicciones de ligas internacionales.
+    El betting_tracker.py lo leerá para loguear btts/goles en betting_log.csv.
+    """
+    if not partidos:
+        return None
+    today_compact = TODAY.replace("-", "")
+    path = REPORTS_DIR / f"betting_intl_{today_compact}.json"
+    path.write_text(json.dumps(partidos, indent=2, ensure_ascii=False), encoding="utf-8")
+    print(f"  [betting_intl] {len(partidos)} partidos → {path.name}")
+    return path
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -661,51 +943,61 @@ def run_liga(liga_key: str, df_log: pd.DataFrame, results_idx: dict) -> dict:
 
     n_fixtures = len(fixtures)
 
-    # 4. Generar predicciones
-    nuevas_preds: list[dict] = []
-    picks: list[dict] = []
+    # 4. Generar predicciones (1X2 para predicciones_log + btts/goles para betting_log)
+    nuevas_preds:   list[dict] = []
+    betting_dicts:  list[dict] = []
+    picks:          list[dict] = []
 
     for fix in fixtures:
-        local    = fix["home"]
+        local     = fix["home"]
         visitante = fix["away"]
-        fecha    = fix["fecha"]
+        fecha     = fix["fecha"]
 
-        # Saltar si ya está predicho
-        if already_predicted(df_log, local, visitante, fecha):
-            continue
-
-        elo_l = elos.get(local,    ELO_INIT)
+        # Para Champions: buscar ELO en ligas europeas si no está en el CSV de champions
+        elo_l = elos.get(local, ELO_INIT)
         elo_v = elos.get(visitante, ELO_INIT)
 
-        pred = generate_prediction(liga_key, local, visitante, fecha, elo_l, elo_v)
-        nuevas_preds.append(pred)
-        picks.append({
-            "partido":   pred["partido"],
-            "fecha":     fecha,
-            "ganador":   pred["ganador_predicho"],
-            "prob_local": pred["prob_local"],
-            "prob_empate": pred["prob_empate"],
-            "prob_visitante": pred["prob_visitante"],
-            "marcador":  pred["marcador_mas_probable"],
-            "elo_local": pred["elo_local"],
-            "elo_visitante": pred["elo_visitante"],
-        })
+        if liga_key == "champions" and (elo_l == ELO_INIT or elo_v == ELO_INIT):
+            eu = load_all_european_elos()
+            elo_l = eu.get(local, elo_l)
+            elo_v = eu.get(visitante, elo_v)
 
-    # Agregar nuevas predicciones al log
+        # Predicción 1X2 → predicciones_log.csv
+        if not already_predicted(df_log, local, visitante, fecha):
+            pred = generate_prediction(liga_key, local, visitante, fecha, elo_l, elo_v)
+            nuevas_preds.append(pred)
+            picks.append({
+                "partido":       pred["partido"],
+                "fecha":         fecha,
+                "ganador":       pred["ganador_predicho"],
+                "prob_local":    pred["prob_local"],
+                "prob_empate":   pred["prob_empate"],
+                "prob_visitante":pred["prob_visitante"],
+                "marcador":      pred["marcador_mas_probable"],
+                "elo_local":     pred["elo_local"],
+                "elo_visitante": pred["elo_visitante"],
+            })
+
+        # Predicción btts/goles → betting_log.csv (siempre, no deduplicar aquí)
+        bet = generate_betting_dict(liga_key, nombre, local, visitante, fecha, elo_l, elo_v)
+        betting_dicts.append(bet)
+
+    # Agregar nuevas predicciones al log 1X2
     if nuevas_preds:
         df_new = pd.DataFrame(nuevas_preds)
         df_log = pd.concat([df_log, df_new], ignore_index=True)
 
     n_pred = len(nuevas_preds)
-    print(f"  [{liga_key}] {n_fixtures} fixtures | {n_pred} predicciones generadas")
+    print(f"  [{liga_key}] {n_fixtures} fixtures | {n_pred} preds 1X2 | {len(betting_dicts)} betting dicts")
 
     return {
-        "liga_key":   liga_key,
-        "nombre":     nombre,
-        "n_fixtures": n_fixtures,
-        "n_predicciones": n_pred,
-        "picks":      picks,
-        "df_log":     df_log,
+        "liga_key":      liga_key,
+        "nombre":        nombre,
+        "n_fixtures":    n_fixtures,
+        "n_predicciones":n_pred,
+        "picks":         picks,
+        "betting_dicts": betting_dicts,
+        "df_log":        df_log,
     }
 
 
@@ -747,16 +1039,26 @@ def main():
         save_pred_log(df_log)
         df_log = load_pred_log()  # recargar
 
+    # Para Champions: precargar ELOs europeos una sola vez
+    if "champions" in ligas_a_correr or any(k in LIGAS_ODDS_BOOTSTRAP for k in ligas_a_correr):
+        for eu_key in LIGAS_EUROPEAS_KEYS:
+            if not elo_csv_path(eu_key).exists():
+                get_or_bootstrap_elos(eu_key)
+        load_all_european_elos()
+
     # Ejecutar pipeline por liga
     reporte: dict = {
         "generated_at": datetime.now().isoformat(),
         "ligas": {},
     }
+    all_betting_dicts: list[dict] = []
 
     for liga_key in ligas_a_correr:
         try:
-            result = run_liga(liga_key, df_log, results_idx)
-            df_log = result.pop("df_log")  # propagar el log actualizado
+            result  = run_liga(liga_key, df_log, results_idx)
+            df_log  = result.pop("df_log")
+            betting = result.pop("betting_dicts", [])
+            all_betting_dicts.extend(betting)
             reporte["ligas"][liga_key] = {
                 "nombre":     result["nombre"],
                 "n_fixtures": result["n_fixtures"],
@@ -765,6 +1067,9 @@ def main():
         except Exception as e:
             print(f"  [ERROR] Liga {liga_key} falló: {e}")
             reporte["ligas"][liga_key] = {"error": str(e)}
+
+    # Guardar betting JSON para que betting_tracker.py lo procese
+    save_betting_json_intl(all_betting_dicts)
 
     # Guardar tracker final
     save_pred_log(df_log)

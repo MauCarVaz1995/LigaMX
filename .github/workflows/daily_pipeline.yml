@@ -112,7 +112,13 @@ jobs:
           echo "── CCL: generando predicciones partidos pendientes ──"
           python scripts/generar_prediccion.py --competition ccl --leg2 || echo "[warn] CCL predicciones falló — continuando"
 
-      - name: Ligas internacionales — Champions, Libertadores, MLS, Argentina, Brasileirao (non-critical)
+      - name: Actualizar fixtures internacionales FotMob (non-critical)
+        env:
+          PYTHONPATH: ${{ github.workspace }}/scripts
+        run: |
+          python scripts/update_intl_results.py || echo "[warn] update_intl_results falló — continuando"
+
+      - name: Ligas internacionales — Premier, LaLiga, Bundesliga, MLS, Brasileirao, Argentina, Champions (non-critical)
         env:
           PYTHONPATH: ${{ github.workspace }}/scripts
           MPLBACKEND: Agg
