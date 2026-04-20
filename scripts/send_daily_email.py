@@ -204,6 +204,10 @@ def collect_by_section() -> dict[str, list[Path]]:
             pp_dir = jdir / "postpartido"
             if pp_dir.exists():
                 for img in sorted(pp_dir.glob("*.png")):
+                    # Solo team_stats (resumen) — no ratings individuales
+                    # ratings = 2 imgs por partido × 9 = 18 imgs innecesarias en email
+                    if "_ratings_" in img.name:
+                        continue
                     if _image_is_relevant(img, pending, today_s, last_jornada):
                         sections["Liga MX"].append(img)
 
@@ -215,21 +219,41 @@ def collect_by_section() -> dict[str, list[Path]]:
                 sections["CCL"].append(img)
 
     # ── Internacional ─────────────────────────────────────────────────────────
+    # Predicciones de selecciones en carpeta Internacional
     intl_root = PRED_DIR / "Internacional"
     if intl_root.exists():
         for img in sorted(intl_root.rglob("*.png")):
             if _image_is_relevant(img, pending, today_s, last_jornada):
                 sections["Internacional"].append(img)
 
+    # Carpetas Mexico_vs_X
     for folder in sorted(PRED_DIR.glob("Mexico_vs_*")):
         for img in sorted(folder.glob("*.png")):
             if _image_is_relevant(img, pending, today_s, last_jornada):
                 sections["Internacional"].append(img)
 
-    for name in ["selecciones_ranking_elo.png"]:
+    # Imágenes de predicción de selecciones en output/charts/ (últimos 7 días)
+    today_dt = date.today()
+    for name in ["selecciones_prediccion.png", "selecciones_ultimos5.png",
+                 "selecciones_ranking_elo.png"]:
         p = CHARTS / name
         if p.exists():
-            sections["Internacional"].append(p)
+            mtime = date.fromtimestamp(p.stat().st_mtime)
+            if (today_dt - mtime).days <= 7:
+                sections["Internacional"].append(p)
+
+    # Post-partido internacionales (MEX_POR etc.) en output/charts/partidos/
+    # Solo imágenes con códigos de país (ej. MEX_POR) — no las de Liga MX (tienen fecha YYYY-MM-DD)
+    import re as _re
+    partidos_dir = BASE / "output/charts/partidos"
+    if partidos_dir.exists():
+        for img in sorted(partidos_dir.glob("*_team_stats.png")):
+            # Patrón internacional: XXX_YYY_team_stats.png (sin fecha)
+            if not _re.match(r"^[A-Z]{2,3}_[A-Z]{2,3}_team_stats\.png$", img.name):
+                continue
+            mtime = date.fromtimestamp(img.stat().st_mtime)
+            if (today_dt - mtime).days <= 7:
+                sections["Internacional"].append(img)
 
     # ── ELO & Stats ───────────────────────────────────────────────────────────
     for name in ["elo_ranking.png", "elo_evolucion.png",

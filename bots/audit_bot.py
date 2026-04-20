@@ -646,22 +646,23 @@ def generar_reporte(sections: list[dict]) -> tuple[Path, Path]:
     json_out.write_text(json.dumps(data, ensure_ascii=False, indent=2))
 
     # HTML
-    STATUS_COLORS = {"ok": "#1B5E20", "warn": "#E65100", "error": "#B71C1C"}
+    STATUS_COLORS = {"ok": "#1a7a1a", "warn": "#c07000", "error": "#b00000"}
+    STATUS_BG     = {"ok": "#e8f5e9", "warn": "#fff8e1", "error": "#ffebee"}
     STATUS_ICONS  = {"ok": "✅", "warn": "⚠️", "error": "❌"}
 
     section_blocks = ""
     for s in sections:
-        color   = STATUS_COLORS.get(s["status"], "#333")
+        color   = STATUS_COLORS.get(s["status"], "#555")
         icon    = STATUS_ICONS.get(s["status"], "?")
         checks  = s.get("checks", [])
         stats   = s.get("stats", {})
 
         rows = "".join(
             "<tr style='background:{bg};'>"
-            "<td style='padding:3px 10px;color:#eee;font-size:12px'>{icon} {name}</td>"
-            "<td style='padding:3px 10px;color:#ccc;font-size:12px'>{msg}</td>"
+            "<td style='padding:4px 10px;color:#333;font-size:12px'>{icon} {name}</td>"
+            "<td style='padding:4px 10px;color:#555;font-size:12px'>{msg}</td>"
             "</tr>".format(
-                bg=STATUS_COLORS.get(c["level"], "#111"),
+                bg=STATUS_BG.get(c["level"], "#fff"),
                 icon=STATUS_ICONS.get(c["level"], "?"),
                 name=c["name"], msg=c["msg"]
             )
@@ -671,29 +672,31 @@ def generar_reporte(sections: list[dict]) -> tuple[Path, Path]:
         stats_html = ""
         if stats:
             stat_items = " &nbsp;|&nbsp; ".join(f"<b>{k}</b>: {v}" for k, v in stats.items())
-            stats_html = f"<div style='color:#90CAF9;font-size:11px;margin-top:6px;'>{stat_items}</div>"
+            stats_html = f"<div style='color:#555;font-size:11px;margin-top:6px;'>{stat_items}</div>"
 
         section_blocks += f"""
-        <div style='background:#111;border-left:3px solid {color};
-                    padding:10px;margin-bottom:10px;border-radius:4px;'>
+        <div style='background:#fff;border-left:3px solid {color};
+                    padding:10px;margin-bottom:8px;border-radius:4px;
+                    box-shadow:0 1px 3px rgba(0,0,0,.08)'>
           <div style='color:{color};font-weight:bold;font-size:13px;margin-bottom:6px;'>
             {icon} {s["section"].upper()}</div>
           <table style='width:100%;border-collapse:collapse;'>{rows}</table>
           {stats_html}
         </div>"""
 
-    overall_color = STATUS_COLORS.get(overall, "#333")
+    overall_color = STATUS_COLORS.get(overall, "#555")
+    overall_bg    = STATUS_BG.get(overall, "#f0f0f0")
     overall_icon  = STATUS_ICONS.get(overall, "?")
     overall_label = {"ok": "SISTEMA OPERATIVO", "warn": "REVISIÓN NECESARIA",
                      "error": "ERROR CRÍTICO"}[overall]
 
     html = f"""
-    <div style='font-family:monospace;max-width:640px;'>
-      <div style='background:{overall_color};padding:12px 16px;border-radius:8px;
-                  margin-bottom:12px;'>
-        <div style='color:#fff;font-size:16px;font-weight:bold;'>
+    <div style='font-family:Arial,sans-serif;max-width:640px;'>
+      <div style='background:{overall_bg};border:2px solid {overall_color};
+                  padding:12px 16px;border-radius:8px;margin-bottom:12px;'>
+        <div style='color:{overall_color};font-size:15px;font-weight:bold;'>
           {overall_icon} AUDIT BOT — {overall_label}</div>
-        <div style='color:rgba(255,255,255,0.7);font-size:11px;margin-top:4px;'>
+        <div style='color:#888;font-size:11px;margin-top:4px;'>
           MAU-STATISTICS · {TODAY} · {sum(len(s["checks"]) for s in sections)} checks
         </div>
       </div>

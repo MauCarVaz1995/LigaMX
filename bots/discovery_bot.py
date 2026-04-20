@@ -582,7 +582,7 @@ def _pred_cal_section(cp: dict) -> str:
     rr = cp.get("real_rates", {})
     hr = cp.get("hist_rates", {})
     findings = cp.get("findings", [])
-    skill_color = "#44ff88" if sk > 0 else "#ff4444"
+    skill_color = "#1a7a1a" if sk > 0 else "#ff4444"
     rows = ""
     for k, label in [("local","Local"),("empate","Empate"),("visitante","Visitante")]:
         bias = pr.get(k,0) - rr.get(k,0)
@@ -594,11 +594,11 @@ def _pred_cal_section(cp: dict) -> str:
                  f"<td style='color:{bias_color};'>{bias:+.1%}</td></tr>")
     items = "".join(f"<li>{f}</li>" for f in findings) if findings else ""
     return f"""
-    <div class='section'>
+    <div class='disc-section'>
       <h3 style='color:#00d4ff;'>🎯 Calibración Predicciones 1X2 (n={n})</h3>
-      <span class='stat'>Accuracy={ac:.1%}</span>
-      <span class='stat'>Brier={bs:.3f}</span>
-      <span class='stat' style='color:{skill_color};'>Skill={sk:+.1%}</span>
+      <span class='disc-stat'>Accuracy={ac:.1%}</span>
+      <span class='disc-stat'>Brier={bs:.3f}</span>
+      <span class='disc-stat' style='color:{skill_color};'>Skill={sk:+.1%}</span>
       <table>
         <tr><th>Resultado</th><th>Pred (media)</th><th>Real (muestra)</th><th>Histórico LigaMX</th><th>Bias</th></tr>
         {rows}
@@ -615,7 +615,7 @@ def _render_html(report: dict) -> str:
             return ""
         items = "".join(f"<li>{f}</li>" for f in findings)
         return f"""
-        <div class='section'>
+        <div class='disc-section'>
           <h3 style='color:{color};'>{title}</h3>
           <ul>{items}</ul>
         </div>"""
@@ -625,10 +625,10 @@ def _render_html(report: dict) -> str:
             return ""
         rows = ""
         for r in recs:
-            color = {"alta": "#ff4444", "media": "#ffaa00", "baja": "#44ff88"}.get(r["prioridad"], "#aaa")
+            color = {"alta": "#b00000", "media": "#c07000", "baja": "#1a7a1a"}.get(r["prioridad"], "#aaa")
             rows += f"<tr><td style='color:{color};font-weight:bold'>{r['prioridad'].upper()}</td><td>{r['accion']}</td><td>{r['razon']}</td></tr>"
         return f"""
-        <div class='section'>
+        <div class='disc-section'>
           <h3 style='color:#ff6b35;'>🎯 Recomendaciones Accionables</h3>
           <table><tr><th>Prioridad</th><th>Acción</th><th>Razón</th></tr>{rows}</table>
         </div>"""
@@ -650,44 +650,42 @@ def _render_html(report: dict) -> str:
             if "brier" in met:
                 sk = met.get("skill", "?")
                 sk_pct = f"{sk:.1%}" if isinstance(sk, float) else sk
-                color = "#44ff88" if isinstance(sk, float) and sk > 0.15 else "#ffaa00"
+                color = "#1a7a1a" if isinstance(sk, float) and sk > 0.15 else "#ffaa00"
                 rows += f"<tr><td>{name}</td><td>{met['brier']:.4f}</td><td>{met['brier_naive']:.4f}</td><td style='color:{color};'>{sk_pct}</td></tr>"
         ml_section = f"""
-        <div class='section'>
+        <div class='disc-section'>
           <h3 style='color:#a855f7;'>🤖 Modelos ML (LightGBM calibrado)</h3>
           <table><tr><th>Target</th><th>Brier</th><th>Naïve</th><th>Skill</th></tr>{rows}</table>
         </div>"""
 
-    html = f"""<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>Discovery Report {fecha}</title>
+    html = f"""<div style='font-family:Arial,sans-serif;color:#222;'>
 <style>
-  body {{ background:#0d1117; color:#c9d1d9; font-family:monospace; padding:24px; max-width:900px; margin:auto; }}
-  h1 {{ color:#00d4ff; font-size:22px; border-bottom:1px solid #333; padding-bottom:8px; }}
-  h2 {{ color:#ffa500; font-size:16px; }}
-  h3 {{ font-size:14px; margin:12px 0 6px; }}
-  .section {{ background:#161b22; border-radius:8px; padding:16px; margin:12px 0; border:1px solid #30363d; }}
-  ul {{ margin:4px 0; padding-left:20px; }}
-  li {{ margin:4px 0; font-size:13px; }}
-  table {{ width:100%; border-collapse:collapse; font-size:12px; }}
-  th {{ background:#21262d; color:#58a6ff; padding:6px; text-align:left; }}
-  td {{ padding:5px 6px; border-bottom:1px solid #21262d; }}
-  .stat {{ display:inline-block; background:#21262d; padding:4px 10px; margin:4px; border-radius:4px; font-size:12px; }}
+  .disc-section {{ background:#fff;border-radius:6px;padding:14px 16px;margin:10px 0;
+                   box-shadow:0 1px 3px rgba(0,0,0,.08);border-left:3px solid #7b1fa2; }}
+  .disc-section h3 {{ font-size:13px;margin:0 0 8px;color:#333; }}
+  .disc-section ul {{ margin:4px 0;padding-left:18px; }}
+  .disc-section li {{ margin:3px 0;font-size:12px;color:#444; }}
+  .disc-table {{ width:100%;border-collapse:collapse;font-size:12px; }}
+  .disc-table th {{ background:#f0f0f0;color:#555;padding:5px 7px;text-align:left;
+                    border-bottom:2px solid #ddd; }}
+  .disc-table td {{ padding:4px 7px;border-bottom:1px solid #f0f0f0;color:#333; }}
+  .disc-stat {{ display:inline-block;background:#f4f4f4;border:1px solid #ddd;
+               border-radius:10px;padding:3px 10px;margin:3px;font-size:12px;color:#333; }}
 </style>
-</head>
-<body>
-<h1>🔬 Discovery Report — {fecha}</h1>
-<p style='color:#888; font-size:12px;'>Generado: {fecha} | Partidos analizados: {cal.get('n_partidos','?')}</p>
+<div style='background:#7b1fa2;color:#fff;padding:10px 14px;border-radius:6px;margin-bottom:10px;'>
+  <b>🔬 Discovery Report — {fecha}</b>
+  <span style='font-size:11px;opacity:.8;margin-left:8px;'>
+    Partidos analizados: {cal.get("n_partidos","?")}
+  </span>
+</div>
 
-<div class='section'>
+<div class='disc-section'>
   <h3 style='color:#00d4ff;'>📊 Estadísticas Base (Liga MX)</h3>
-  <span class='stat'>μ corners = {cal.get('mu_corners','?')}</span>
-  <span class='stat'>μ tarjetas = {cal.get('mu_cards','?')}</span>
-  <span class='stat'>BTTS real = {cal.get('real_btts','?'):.1%}</span>
-  <span class='stat'>Over 9.5c real = {cal.get('real_corners',{}).get('over_9.5','?'):.1%}</span>
-  <span class='stat'>Over 4.5t real = {cal.get('real_cards',{}).get('over_4.5','?'):.1%}</span>
+  <span class='disc-stat'>μ corners = {cal.get('mu_corners','?')}</span>
+  <span class='disc-stat'>μ tarjetas = {cal.get('mu_cards','?')}</span>
+  <span class='disc-stat'>BTTS real = {cal.get('real_btts','?'):.1%}</span>
+  <span class='disc-stat'>Over 9.5c real = {cal.get('real_corners',{}).get('over_9.5','?'):.1%}</span>
+  <span class='disc-stat'>Over 4.5t real = {cal.get('real_cards',{}).get('over_4.5','?'):.1%}</span>
 </div>
 
 {section('📐 Calibración y Sesgos del Modelo (corners/tarjetas)', cal.get('findings',[]))}
@@ -699,14 +697,13 @@ def _render_html(report: dict) -> str:
 {ml_section}
 {rec_cards(recs)}
 
-<div class='section'>
-  <h3 style='color:#888;'>Top 5 Equipos Generadores de Corners</h3>
-  {''.join(f"<span class='stat'>{x['equipo']} {x['val']:.1f}</span>" for x in eq.get('top5_corners_for',[]))}
+<div class='disc-section'>
+  <h3>Top 5 Equipos Generadores de Corners</h3>
+  {''.join(f"<span class='disc-stat'>{x['equipo']} {x['val']:.1f}</span>" for x in eq.get('top5_corners_for',[]))}
 </div>
 
-<p style='color:#555; font-size:11px; margin-top:24px;'>MAU-STATISTICS · discovery_bot.py</p>
-</body>
-</html>"""
+<p style='color:#888; font-size:11px; margin-top:16px;'>MAU-STATISTICS · discovery_bot.py</p>
+</div>"""
     return html
 
 
