@@ -106,13 +106,20 @@ jobs:
         run: |
           python scripts/ligas_internacionales.py --all || echo "[warn] ligas_internacionales falló — continuando"
 
+      - name: Scrape cuotas históricas football-data.co.uk (non-critical)
+        env:
+          PYTHONPATH: ${{ github.workspace }}/scripts
+        run: |
+          # --temporadas 1: solo temporada actual (incremental diario)
+          python scripts/scrape_odds.py --all --temporadas 1 || echo "[warn] scrape_odds falló — continuando"
+
       - name: Commit and push results
         run: |
           git config user.email "bot@miau-stats.mx"
           git config user.name "MiauStats Bot"
           git add data/processed/ data/raw/historico/ data/raw/internacional/ \
                   data/raw/fotmob/ output/charts/predicciones/ output/reports/ \
-                  logs/daily_summary.json 2>/dev/null || true
+                  logs/daily_summary.json .github/workflows/ 2>/dev/null || true
           # Solo commitear si hay cambios staged
           git diff --staged --quiet || \
             git commit -m "auto: daily update $(date -u +%Y-%m-%d) [skip ci]"
