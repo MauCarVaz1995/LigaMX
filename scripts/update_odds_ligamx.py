@@ -80,6 +80,43 @@ def norm_team(name: str) -> str:
     return TEAM_NAME_MAP.get(name.strip(), name.strip())
 
 
+# Mapa para igualar nombres de odds_ligamx.csv → equipo_local/visita en betting_log.csv
+# odds side → betting_log side
+_ODDS_TO_LOG_MAP = {
+    "querétaro":         "queretaro fc",
+    "queretaro":         "queretaro fc",
+    "atlético san luis": "atletico de san luis",
+    "atletico san luis": "atletico de san luis",
+    "guadalajara":       "chivas",
+    "cf monterrey":      "monterrey",
+    "pumas unam":        "pumas",
+    "mazatlán":          "mazatlan fc",
+    "mazatlan":          "mazatlan fc",
+    "mazatlán fc":       "mazatlan fc",
+    "fc juárez":         "fc juarez",
+    "fc juarez":         "fc juarez",
+    "América":           "cf america",
+    "américa":           "cf america",
+    "léon":              "leon",
+    "león":              "leon",
+    "santos laguna":     "santos laguna",
+    "cruz azul":         "cruz azul",
+    "tigres":            "tigres",
+    "atlas":             "atlas",
+    "necaxa":            "necaxa",
+    "toluca":            "toluca",
+    "puebla":            "puebla",
+    "tijuana":           "tijuana",
+    "pachuca":           "pachuca",
+    "pumas":             "pumas",
+}
+
+def norm_for_match(name: str) -> str:
+    """Normaliza para comparación cruzada odds ↔ betting_log."""
+    n = name.strip().lower()
+    return _ODDS_TO_LOG_MAP.get(n, n)
+
+
 # ─────────────────────────────────────────────────────────────────────────────
 # API helpers
 # ─────────────────────────────────────────────────────────────────────────────
@@ -241,10 +278,15 @@ def update_betting_log_ev(partidos: list[dict], dry_run: bool = False) -> int:
         return 0
 
     # Índice rápido: (fecha, local_norm, visita_norm) → cuotas
+    # Doble índice: clave exacta + clave normalizada con _ODDS_TO_LOG_MAP
     odds_idx = {}
     for p in partidos:
-        key = (p["fecha"], p["local"].strip().lower(), p["visitante"].strip().lower())
-        odds_idx[key] = p
+        # clave exacta (por si los nombres ya coinciden)
+        key_exact = (p["fecha"], p["local"].strip().lower(), p["visitante"].strip().lower())
+        odds_idx[key_exact] = p
+        # clave normalizada (para cruzar con betting_log)
+        key_norm = (p["fecha"], norm_for_match(p["local"]), norm_for_match(p["visitante"]))
+        odds_idx[key_norm] = p
 
     actualizados = 0
     for idx, row in df_log.iterrows():
@@ -252,11 +294,11 @@ def update_betting_log_ev(partidos: list[dict], dry_run: bool = False) -> int:
         if pd.notna(row.get("cuota_vista")):
             continue
 
-        key = (
-            str(row["fecha_partido"])[:10],
-            str(row["equipo_local"]).strip().lower(),
-            str(row["equipo_visita"]).strip().lower(),
-        )
+        local_lower  = str(row["equipo_local"]).strip().lower()
+        visita_lower = str(row["equipo_visita"]).strip().lower()
+        fecha_str    = str(row["fecha_partido"])[:10]
+
+        key = (fecha_str, local_lower, visita_lower)
         p = odds_idx.get(key)
         if p is None:
             continue
@@ -316,34 +358,85 @@ def show_value_bets(partidos: list[dict]):
     if not partidos:
         return
 
-    print(f"\n── VALUE BETS Liga MX — {TODAY} ──\n")
-    print(f"{'Partido':<30} {'Mercado':<20} {'Prob':>5} {'Cuota':>6} {'EV':>6}")
-    print("─" * 70)
+    # Leer model probs del betting_log
+    model_probs = {}   # (fecha, local_norm, visita_norm, mercado) → prob_modelo
+    if BETTING_LOG.exists():
+        try:
+            df_log = pd.read_csv(BETTING_LOG, low_memory=False)
+            for _, row in df_log.iterrows():
+                key = (
+                    str(row["fecha_partido"])[:10],
+                    norm_for_match(str(row["equipo_local"])),
+                    norm_for_match(str(row["equipo_visita"])),
+                    str(row["mercado"]),
+                )
+                model_probs[key] = float(row["prob_modelo"])
+        except Exception:
+            pass
 
-    found = False
+    MIN_EV = 0.04   # solo mostrar si EV >= 4%
+
+    print(f"\n── VALUE BETS Liga MX — {TODAY} (EV ≥ {MIN_EV:.0%}) ──\n")
+    print(f"{'Partido':<34} {'Mercado':<20} {'ProbM':>6} {'Cuota':>6} {'EV':>7}")
+    print("─" * 78)
+
+    rows = []
     for p in partidos:
         local  = p["local"]
         visita = p["visitante"]
+        fecha  = p["fecha"]
+        local_n  = norm_for_match(local)
+        visita_n = norm_for_match(visita)
         partido_str = f"{local} vs {visita}"
 
-        # Over 2.5 goles
-        for bk in BOOKMAKERS:
-            cuota = p.get(f"{bk}_odd_over25")
-            if not cuota:
-                continue
-            # Prob implícita justa (descounting overround)
-            o25  = p.get(f"{bk}_odd_over25", 0) or 0
-            u25  = p.get(f"{bk}_odd_under25", 0) or 0
-            if o25 > 1 and u25 > 1:
-                overround = (1/o25 + 1/u25)
-                fair_over = (1/o25) / overround
-                # Comparar vs cualquier prob del betting_log si existe
-                print(f"  {partido_str:<28} Over 2.5   fair_prob={fair_over:.1%}  {bk}: {cuota}")
-                found = True
-                break
+        mercado_map = {
+            "goles_over_2.5": [f"{bk}_odd_over25" for bk in BOOKMAKERS],
+            "goles_over_1.5": [f"{bk}_odd_over15" for bk in BOOKMAKERS],
+            "btts_si":        [f"{bk}_odd_btts_si" for bk in BOOKMAKERS],
+        }
 
-    if not found:
-        print("  Sin datos suficientes para calcular EV (necesita prob del modelo)")
+        for mercado, cuota_cols in mercado_map.items():
+            mkey = (fecha, local_n, visita_n, mercado)
+            prob = model_probs.get(mkey)
+            if prob is None:
+                continue
+
+            best_cuota = None
+            best_bk    = None
+            for col in cuota_cols:
+                v = p.get(col)
+                if v and float(v) > 1.0:
+                    if best_cuota is None or float(v) > best_cuota:
+                        best_cuota = float(v)
+                        best_bk    = col.split("_odd_")[0]
+
+            if best_cuota is None:
+                continue
+
+            ev = round(prob * best_cuota - 1, 4)
+            if ev >= MIN_EV:
+                rows.append((ev, partido_str, mercado, prob, best_cuota, best_bk))
+
+    rows.sort(key=lambda x: -x[0])
+    for ev, partido_str, mercado, prob, cuota, bk in rows:
+        print(f"  {partido_str:<32} {mercado:<20} {prob:>5.1%} {cuota:>6.2f} {ev:>+7.1%}  [{bk}]")
+
+    if not rows:
+        print("  Sin value bets con EV suficiente para los próximos partidos")
+        # Mostrar resumen de todos los mercados con modelo
+        print(f"\n  Todos los mercados con prob (EV < {MIN_EV:.0%}):")
+        for p in partidos[:5]:
+            local_n  = norm_for_match(p["local"])
+            visita_n = norm_for_match(p["visitante"])
+            for col in [f"{bk}_odd_over25" for bk in BOOKMAKERS]:
+                v = p.get(col)
+                if v and float(v) > 1.0:
+                    mkey = (p["fecha"], local_n, visita_n, "goles_over_2.5")
+                    prob = model_probs.get(mkey, None)
+                    if prob:
+                        ev = round(prob * float(v) - 1, 4)
+                        print(f"    {p['local']} vs {p['visitante']}: Over2.5 prob={prob:.1%} cuota={v:.2f} EV={ev:+.1%}")
+                    break
     print()
 
 
