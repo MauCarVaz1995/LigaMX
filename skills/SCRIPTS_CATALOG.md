@@ -1,6 +1,6 @@
 # SCRIPTS_CATALOG.md — Catálogo completo de scripts
 
-> 27 scripts en `scripts/` + 2 en `scripts/dashboard/`. Actualizado al 2026-04-04.
+> 30 scripts en `scripts/` + 2 en `scripts/dashboard/`. Actualizado al 2026-04-19.
 
 ---
 
@@ -243,6 +243,33 @@
 | **Outputs** | `data/processed/elos_selecciones_{nueva_fecha}.json`, tabla de cambios |
 | **Estado** | ✅ Funcionando |
 | **Notas** | Filtra U21, femenino, club. Normaliza nombres (Czechia→Czech Republic, Turkiye→Turkey, etc.) |
+
+---
+
+## Ligas internacionales de clubes
+
+### `ligas_internacionales.py` ⭐ NUEVO 2026-04-19
+| | |
+|---|---|
+| **Propósito** | Bot multi-liga: Champions, Libertadores, MLS, Argentina, Brasileirao. Obtiene fixtures de FotMob, mantiene ELO por liga, genera predicciones ELO+Poisson y registra resultados en el tracker |
+| **Inputs** | FotMob API (`/api/leagues?id={id}`), `data/raw/internacional/results.csv`, `data/processed/elos_ligas/{liga}.csv` |
+| **Outputs** | `data/processed/elos_ligas/{liga}.csv` (ELO por liga), append a `data/processed/predicciones_log.csv` (con columna `liga`), `output/reports/ligas_internacionales_{fecha}.json` |
+| **Dependencias** | `scipy`, `pandas`, `requests` |
+| **Estado** | ✅ Funcionando |
+| **Notas** | ELO bootstrapped desde `results.csv` con time-decay (K_eff hasta 3× para partidos recientes). FotMob 404s capturados como warnings — no falla en CI. `HOME_ADV_ELO=80`, `MU_HOME=1.5`, `MU_AWAY=1.1`, `DC_RHO=-0.10`. CLI: `--liga champions` o `--all`. Integrado en `daily_pipeline.yml` |
+
+---
+
+## Email y reporting
+
+### `send_daily_email.py` ⭐ (actualizado 2026-04-19)
+| | |
+|---|---|
+| **Propósito** | Genera y envía el resumen diario a maucarvaz@gmail.com con imágenes adjuntas, TOP PICKS accionables, tracker de predicciones y análisis de mercados |
+| **Inputs** | `logs/daily_summary.json`, imágenes en `output/charts/`, `output/reports/betting_*.json`, `data/processed/predicciones_log.csv` |
+| **Outputs** | Email HTML a maucarvaz@gmail.com |
+| **Estado** | ✅ Funcionando |
+| **Notas** | Tema blanco legible (fondo #f4f4f4, cards blancos). TOP PICKS muestra partido/mercado/prob/cuota_mínima para corners≥60% y tarjetas≥65%. Tabla de análisis con nombres completos (no abreviaturas): "Corners >8.5", "Tarjetas >3.5", "Over 2.5 goles". Tracker recalcula aciertos correctamente desde `ganador_predicho` vs `resultado_real`. Secciones audit/discovery incluidas |
 
 ### `gen_predicciones_20260331.py`
 | | |

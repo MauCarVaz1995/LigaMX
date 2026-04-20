@@ -1,6 +1,6 @@
 # ROADMAP.md — Plan de desarrollo MAU-STATISTICS
 
-> Estado al **2026-04-13**. Actualizar al completar cada fase.
+> Estado al **2026-04-19**. Actualizar al completar cada fase.
 
 ---
 
@@ -63,7 +63,17 @@
 
 ---
 
-## Completado hoy ✅ — 2026-04-13
+## Completado hoy ✅ — 2026-04-19
+- **Email tema claro**: redesign completo a fondo blanco (#f4f4f4), CSS classes reutilizables, sin texto negro ilegible
+- **Abreviaturas corregidas**: C>8.5 → "Corners >8.5", T>3.5 → "Tarjetas >3.5", O2.5 → "Over 2.5 goles"
+- **Tracker fix**: aciertos recalculados correctamente desde `ganador_predicho` vs `resultado_real`; racha reciente con ✅/❌; pendientes con fecha
+- **TOP PICKS accionables**: solo corners≥60% o tarjetas≥65%; muestra cuota mínima para EV>5%; niveles ALTA/MEDIA/BAJA
+- **Lambda bug fix** en `modelo_btts.py`: `lam_l+lam_v` ya no es constante; usa `MU_HOME=1.636`, `MU_AWAY=1.222` escalados por ELO ratio
+- **`ligas_internacionales.py`**: bot multi-liga con ELO por liga, predicciones ELO+Poisson, tracker integrado
+- **Pipeline**: `ligas_internacionales.py --all` agregado a `daily_pipeline.yml` como non-critical step
+- **28 predicciones evaluadas** en tracker (13/28 = 46%) — nombre normalization fixes: León, Santos→Santos Laguna, Czechia, Turkiye, ±1 día tolerancia
+
+## Completado — 2026-04-13
 - Pipeline GitHub Actions funcionando y confirmado verde
 - Dixon-Coles implementado en `11_modelo_prediccion.py`, `15_prediccion_elo_poisson.py`, `18_prediccion_selecciones.py`
 - Bebas Neue centralizada en `config_visual.py` — `FontProperties(fname=...)` directo, sin `addfont()`
@@ -102,8 +112,8 @@
 - [ ] Sección "🎯 Value bets detectadas hoy" con EV real en email diario
 
 #### Fase B4 — Portafolio global (ver VISION_GLOBAL.md para detalle)
-- [ ] Tier 1: Brasileirão + Liga Argentina data pipeline
-- [ ] Tier 1: MLS (muchos partidos vs CONCACAF = ventaja de ELO)
+- [x] `ligas_internacionales.py` — Champions, Libertadores, MLS, Argentina, Brasileirao con ELO por liga + predicciones en tracker ✅ 2026-04-19
+- [x] Integrado en `daily_pipeline.yml` — corre diariamente, non-critical ✅
 - [ ] Knowledge Base por liga (árbitros, altitud Bogotá/La Paz, rivalidades)
 - [ ] `bankroll_log.csv` tracker de apuestas reales + auditoría automática
 
@@ -174,8 +184,8 @@
 
 | Workflow | Schedule | Estado | Hace |
 |---|---|---|---|
-| `daily_pipeline.yml` | 8am México diario | ✅ activo | Liga MX + intl + ELO + tracker + predicciones |
-| `ccl_pipeline.yml` | pendiente de crear | ⏳ | CCL fixtures + logos + predicciones |
+| `daily_pipeline.yml` | 8am México diario | ✅ activo | Liga MX + intl + ELO + tracker + predicciones + ligas internacionales |
+| `ccl_pipeline.yml` | pendiente de crear | ⏳ | CCL fixtures + logos + predicciones (ya integrado en daily_pipeline) |
 | `historical_backfill.yml` | manual (una vez) | ⏳ | Descargar historial CCL 2010→2025 |
 
 ---
