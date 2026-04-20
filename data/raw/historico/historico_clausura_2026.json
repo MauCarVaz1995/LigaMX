@@ -78,6 +78,18 @@
     },
     {
       "pos": 7,
+      "equipo": "Atlas",
+      "equipo_id": 6577,
+      "pj": 15,
+      "g": 6,
+      "e": 4,
+      "p": 5,
+      "gf": 15,
+      "gc": 18,
+      "pts": 22
+    },
+    {
+      "pos": 8,
       "equipo": "Leon",
       "equipo_id": 1841,
       "pj": 15,
@@ -89,7 +101,7 @@
       "pts": 22
     },
     {
-      "pos": 8,
+      "pos": 9,
       "equipo": "Tigres",
       "equipo_id": 8561,
       "pj": 15,
@@ -101,7 +113,7 @@
       "pts": 21
     },
     {
-      "pos": 9,
+      "pos": 10,
       "equipo": "Tijuana",
       "equipo_id": 162418,
       "pj": 15,
@@ -110,18 +122,6 @@
       "p": 4,
       "gf": 16,
       "gc": 16,
-      "pts": 19
-    },
-    {
-      "pos": 10,
-      "equipo": "Atlas",
-      "equipo_id": 6577,
-      "pj": 14,
-      "g": 5,
-      "e": 4,
-      "p": 5,
-      "gf": 14,
-      "gc": 18,
       "pts": 19
     },
     {
@@ -212,12 +212,12 @@
       "pos": 18,
       "equipo": "Santos Laguna",
       "equipo_id": 7857,
-      "pj": 14,
+      "pj": 15,
       "g": 2,
       "e": 3,
-      "p": 9,
+      "p": 10,
       "gf": 17,
-      "gc": 35,
+      "gc": 36,
       "pts": 9
     }
   ],
@@ -1914,7 +1914,7 @@
     },
     {
       "id": "5101846",
-      "fecha": "2026-04-19T01:05:00.000Z",
+      "fecha": "2026-04-19T01:05:00Z",
       "jornada": "15",
       "local": "Monterrey",
       "local_id": "7849",
@@ -1927,7 +1927,7 @@
     },
     {
       "id": "5101845",
-      "fecha": "2026-04-19T01:07:00.000Z",
+      "fecha": "2026-04-19T01:07:00Z",
       "jornada": "15",
       "local": "Chivas",
       "local_id": "7807",
@@ -1940,7 +1940,7 @@
     },
     {
       "id": "5101848",
-      "fecha": "2026-04-19T03:06:00.000Z",
+      "fecha": "2026-04-19T03:06:00Z",
       "jornada": "15",
       "local": "Leon",
       "local_id": "1841",
@@ -1953,7 +1953,7 @@
     },
     {
       "id": "5101847",
-      "fecha": "2026-04-19T03:10:00.000Z",
+      "fecha": "2026-04-19T03:10:00Z",
       "jornada": "15",
       "local": "CF America",
       "local_id": "6576",
@@ -1966,16 +1966,16 @@
     },
     {
       "id": "5101849",
-      "fecha": "2026-04-19T23:00:00.000Z",
+      "fecha": "2026-04-19T23:00:00Z",
       "jornada": "15",
       "local": "Santos Laguna",
       "local_id": "7857",
       "visitante": "Atlas",
       "visitante_id": "6577",
-      "goles_local": null,
-      "goles_visit": null,
-      "score": "",
-      "terminado": false
+      "goles_local": 0,
+      "goles_visit": 1,
+      "score": "0 - 1",
+      "terminado": true
     },
     {
       "id": "5101851",
