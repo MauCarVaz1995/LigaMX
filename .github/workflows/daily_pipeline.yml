@@ -82,6 +82,12 @@ jobs:
         run: |
           python bots/daily_betting_bot.py --days 3 || echo "[warn] betting_bot falló — continuando"
 
+      - name: Log y actualizar betting tracker corners/tarjetas (non-critical)
+        env:
+          PYTHONPATH: ${{ github.workspace }}/scripts
+        run: |
+          python scripts/betting_tracker.py --log --update || echo "[warn] betting_tracker falló — continuando"
+
       - name: Generate post-match infographics (non-critical)
         env:
           PYTHONPATH: ${{ github.workspace }}/scripts
