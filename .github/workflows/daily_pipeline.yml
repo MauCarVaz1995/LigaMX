@@ -99,6 +99,13 @@ jobs:
           echo "── CCL: generando predicciones partidos pendientes ──"
           python scripts/generar_prediccion.py --competition ccl --leg2 || echo "[warn] CCL predicciones falló — continuando"
 
+      - name: Ligas internacionales — Champions, Libertadores, MLS, Argentina, Brasileirao (non-critical)
+        env:
+          PYTHONPATH: ${{ github.workspace }}/scripts
+          MPLBACKEND: Agg
+        run: |
+          python scripts/ligas_internacionales.py --all || echo "[warn] ligas_internacionales falló — continuando"
+
       - name: Commit and push results
         run: |
           git config user.email "bot@miau-stats.mx"
