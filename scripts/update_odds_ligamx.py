@@ -46,9 +46,24 @@ API_KEY      = os.environ.get("ODDS_API_KEY", "")
 BASE_URL     = "https://api.the-odds-api.com/v4"
 SPORT        = "soccer_mexico_ligamx"
 
-# Casas de apuestas relevantes para México (en orden de preferencia para EV)
-# Pinnacle no opera en MX pero sus líneas son el benchmark de eficiencia
-BOOKMAKERS   = ["pinnacle", "bet365", "betcris", "codere", "betsson", "draftkings"]
+# Casas de apuestas disponibles en The Odds API para Liga MX
+# Orden: Pinnacle primero (menor margen, benchmark de eficiencia), luego por relevancia para MX
+# Caliente no está disponible en The Odds API (sin API pública)
+BOOKMAKERS   = [
+    "pinnacle",       # benchmark eficiencia — margen ~2-3%
+    "betsson",        # disponible MX — margen ~6-8%
+    "onexbet",        # 1xBet — disponible en MX
+    "betway",         # Betway — disponible
+    "marathonbet",    # Marathon Bet
+    "williamhill",    # William Hill
+    "bet365",         # Bet365 — margen ~5%
+    "draftkings",     # DraftKings — USA
+    "betonlineag",    # BetOnline
+    "fanduel",        # FanDuel
+]
+
+# Regiones a consultar (us2 incluye más casas americanas)
+API_REGIONS  = "us,eu,uk"   # us2 cuesta requests extra — mantener en 3 regiones
 
 # Mercados disponibles en free tier
 MARKETS_FREE = ["h2h", "totals"]        # 1X2 + Over/Under goles
@@ -164,7 +179,7 @@ def fetch_odds(markets: list[str] = None, verbose: bool = True) -> list[dict]:
 
     params = {
         "sport":      SPORT,
-        "regions":    "us,eu,uk",     # regiones con Pinnacle, Bet365
+        "regions":    API_REGIONS,
         "markets":    ",".join(markets),
         "oddsFormat": "decimal",
         "dateFormat": "iso",

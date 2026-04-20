@@ -283,9 +283,7 @@ def update_results(verbose: bool = True) -> int:
 # 3. STATS — métricas por mercado
 # ─────────────────────────────────────────────────────────────────────────────
 def show_stats() -> dict:
-    """
-    Muestra hit rate, Brier score y ROI hipotético por mercado.
-    """
+    """Muestra hit rate, Brier score y skill por mercado."""
     if not BETTING_LOG.exists():
         print("  betting_log.csv no existe aún — corre --log primero")
         return {}
@@ -306,28 +304,16 @@ def show_stats() -> dict:
 
     stats = {}
     for mercado, g in df_eval.groupby("mercado"):
-        n       = len(g)
-        hit     = g["resultado_real"].mean()
-        brier   = float(((g["prob_modelo"] - g["resultado_real"].astype(float)) ** 2).mean())
-        base_rate = g["resultado_real"].mean()           # baseline: siempre predice la media
-        brier_naive = float((base_rate * (1 - base_rate)))  # Brier de predictor constante
-        skill   = (brier_naive - brier) / brier_naive if brier_naive > 0 else 0
-
-        # ROI hipotético: si apostaste cuando prob >= 0.60 a cuota justa
-        picks_ev = g[g["prob_modelo"] >= 0.60]
-        if len(picks_ev) > 0:
-            # Cuota justa = 1 / prob_modelo
-            roi = float(((picks_ev["prob_modelo"].apply(lambda p: 1/p) *
-                          picks_ev["resultado_real"].astype(float)) - 1).mean())
-        else:
-            roi = None
+        n           = len(g)
+        hit         = g["resultado_real"].mean()
+        brier       = float(((g["prob_modelo"] - g["resultado_real"].astype(float)) ** 2).mean())
+        base_rate   = g["resultado_real"].mean()
+        brier_naive = float(base_rate * (1 - base_rate))
+        skill       = (brier_naive - brier) / brier_naive if brier_naive > 0 else 0
 
         skill_str = f"{skill:+.1%}" if n >= 10 else "n<10"
-        roi_str   = f"{roi:+.1%}" if roi is not None else "—"
         print(f"{mercado:<22} {n:>4} {hit:>6.1%} {brier:>6.3f} {brier_naive:>8.3f} {skill_str:>7}")
-
-        stats[mercado] = {"n": n, "hit_rate": round(hit, 3), "brier": round(brier, 3),
-                          "skill": round(skill, 3), "roi_hipotetico": roi}
+        stats[mercado] = {"n": n, "hit_rate": round(hit, 3), "brier": round(brier, 3), "skill": round(skill, 3)}
 
     print()
 
@@ -335,11 +321,112 @@ def show_stats() -> dict:
     pendientes = df[df["resultado_real"].isna()]
     if not pendientes.empty:
         print(f"⏳ Pendientes de resolver: {len(pendientes)} predicciones")
-        prox = pendientes.groupby("mercado")["fecha_partido"].count()
-        for m, c in prox.items():
+        for m, c in pendientes.groupby("mercado")["fecha_partido"].count().items():
             print(f"   {m}: {c}")
 
     return stats
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 4. P&L — ganancia/pérdida simulada
+# ─────────────────────────────────────────────────────────────────────────────
+def show_pnl(unidad: float = 100.0) -> dict:
+    """
+    Muestra P&L simulado por mercado en dos modalidades:
+      - P&L Real:     usa cuota_vista cuando está disponible
+      - P&L Justo:    usa cuota teórica = 1/prob_modelo (sin margen de casa)
+    Solo incluye picks donde prob_modelo >= 0.55 (margen mínimo para apostar).
+    Unidad = monto por apuesta en MXN (default 100).
+    """
+    if not BETTING_LOG.exists():
+        print("  betting_log.csv no existe aún")
+        return {}
+
+    df = _load_log()
+    df_eval = df[df["resultado_real"].notna()].copy()
+
+    if df_eval.empty:
+        print(f"  Sin resultados resueltos aún ({len(df)} predicciones pendientes)")
+        return {}
+
+    df_eval["resultado_real"] = df_eval["resultado_real"].astype(bool)
+    df_eval["prob_modelo"]    = df_eval["prob_modelo"].astype(float)
+
+    # Umbral: solo apostar cuando prob >= 0.55
+    UMBRAL = 0.55
+    picks = df_eval[df_eval["prob_modelo"] >= UMBRAL].copy()
+
+    print(f"\n── P&L Simulado — picks con prob ≥ {UMBRAL:.0%} (unidad = ${unidad:.0f} MXN) ──\n")
+    print(f"{'Mercado':<22} {'N':>4} {'Gan':>4} {'Per':>4}  {'P&L Real':>10}  {'P&L Justo':>10}  {'ROI Justo':>10}")
+    print("─" * 75)
+
+    totals = {"n": 0, "gan": 0, "per": 0, "pnl_real": 0.0, "pnl_justo": 0.0}
+    resultado = {}
+
+    for mercado, g in picks.groupby("mercado"):
+        n   = len(g)
+        gan = int(g["resultado_real"].sum())
+        per = n - gan
+
+        # P&L real: usa cuota_vista si existe, si no usa cuota justa
+        pnl_real = 0.0
+        for _, row in g.iterrows():
+            cuota = row.get("cuota_vista")
+            won   = bool(row["resultado_real"])
+            if pd.notna(cuota) and float(cuota) > 1.0:
+                c = float(cuota)
+            else:
+                c = 1.0 / float(row["prob_modelo"])   # cuota justa si no hay real
+            pnl_real += (c - 1) * unidad if won else -unidad
+
+        # P&L justo: siempre usa 1/prob (sin margen, upper bound teórico)
+        pnl_justo = 0.0
+        for _, row in g.iterrows():
+            c   = 1.0 / float(row["prob_modelo"])
+            won = bool(row["resultado_real"])
+            pnl_justo += (c - 1) * unidad if won else -unidad
+
+        roi_justo = pnl_justo / (n * unidad) if n > 0 else 0
+
+        pnl_real_str  = f"${pnl_real:+.0f}"
+        pnl_justo_str = f"${pnl_justo:+.0f}"
+        roi_str       = f"{roi_justo:+.1%}"
+        print(f"{mercado:<22} {n:>4} {gan:>4} {per:>4}  {pnl_real_str:>10}  {pnl_justo_str:>10}  {roi_str:>10}")
+
+        totals["n"]         += n
+        totals["gan"]       += gan
+        totals["per"]       += per
+        totals["pnl_real"]  += pnl_real
+        totals["pnl_justo"] += pnl_justo
+        resultado[mercado]   = {"n": n, "ganadas": gan, "pnl_real": round(pnl_real, 2),
+                                 "pnl_justo": round(pnl_justo, 2), "roi_justo": round(roi_justo, 4)}
+
+    print("─" * 75)
+    roi_total = totals["pnl_justo"] / (totals["n"] * unidad) if totals["n"] > 0 else 0
+    print(f"{'TOTAL':<22} {totals['n']:>4} {totals['gan']:>4} {totals['per']:>4}  "
+          f"${totals['pnl_real']:>+9.0f}  ${totals['pnl_justo']:>+9.0f}  {roi_total:>+10.1%}")
+
+    n_con_cuota = picks["cuota_vista"].notna().sum()
+    print(f"\n  * P&L Real usa cuota_vista en {n_con_cuota}/{totals['n']} picks; resto usa cuota justa (1/prob)")
+    print(f"  * P&L Justo = hipotético sin margen de casa (upper bound)")
+    print(f"  * Umbral: prob ≥ {UMBRAL:.0%} | Unidad: ${unidad:.0f} MXN por apuesta")
+
+    # Value bets reales con EV > 0
+    vb = df_eval[df_eval["ev_estimado"].notna() & (df_eval["ev_estimado"] > 0)]
+    if not vb.empty:
+        print(f"\n  💰 Value bets con cuota real y EV > 0%:")
+        for _, row in vb.iterrows():
+            won = bool(row["resultado_real"]) if pd.notna(row["resultado_real"]) else None
+            pnl_str = ""
+            if won is not None:
+                c = float(row["cuota_vista"])
+                pnl = (c - 1) * unidad if won else -unidad
+                pnl_str = f"→ {'GANÓ' if won else 'PERDIÓ'} ${pnl:+.0f}"
+            print(f"    {row['fecha_partido']} {row['partido']} | {row['mercado']} "
+                  f"@ {row['cuota_vista']:.2f} EV={float(row['ev_estimado']):.1%} {pnl_str}")
+
+    print()
+    return resultado
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -352,15 +439,16 @@ def main():
     parser.add_argument("--log",    action="store_true", help="Loguear predicciones del último betting JSON")
     parser.add_argument("--update", action="store_true", help="Resolver resultados desde match_events.csv")
     parser.add_argument("--stats",  action="store_true", help="Mostrar métricas por mercado")
-    parser.add_argument("--all",    action="store_true", help="Log + update + stats")
+    parser.add_argument("--pnl",    action="store_true", help="Mostrar P&L simulado por mercado")
+    parser.add_argument("--unidad", type=float, default=100.0, help="Monto por apuesta en MXN (default 100)")
+    parser.add_argument("--all",    action="store_true", help="Log + update + stats + pnl")
     args = parser.parse_args()
 
     if args.all:
-        args.log = args.update = args.stats = True
+        args.log = args.update = args.stats = args.pnl = True
 
-    if not any([args.log, args.update, args.stats]):
-        # Por defecto: todo
-        args.log = args.update = args.stats = True
+    if not any([args.log, args.update, args.stats, args.pnl]):
+        args.stats = True   # Por defecto: solo stats
 
     if args.log:
         print("\n── Logueando predicciones ──")
@@ -372,6 +460,9 @@ def main():
 
     if args.stats:
         show_stats()
+
+    if args.pnl:
+        show_pnl(unidad=args.unidad)
 
 
 if __name__ == "__main__":
