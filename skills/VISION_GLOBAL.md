@@ -160,10 +160,58 @@ Cada día 8am México (GitHub Actions):
 |---------|--------|--------------|
 | Brier Score corners | < 0.20 | `retrain_bot.py --evaluate` |
 | Brier Score tarjetas | < 0.23 | `retrain_bot.py --evaluate` |
-| CLV vs Pinnacle | > 0% en 200+ predicciones | Manual por ahora |
-| ROI portafolio | > 5% mensual | `predicciones_log.csv` |
+| CLV vs Pinnacle | > 0% en 200+ predicciones | `python scripts/scrape_odds.py --clv` |
+| ROI portafolio | > 5% mensual sobre bankroll | `predicciones_log.csv` + bankroll_log |
 | Drawdown máximo | < 20% del bankroll | Tracker automático |
 | Hit rate corners EV>5% | > 58% | Log de resultados |
+
+## Target junio 2026 — Ruta crítica al dinero real
+
+**Meta del usuario: apostar en producción con bankroll real antes de fin de junio.**
+
+### Lo que ya tenemos ✅
+- Modelos corners/tarjetas con skill demostrado (+12/+13%)
+- Pipeline automático diario
+- 11,601 partidos con cuotas históricas para CLV backtesting
+- Casas mexicanas mapeadas (ver `skills/CASAS_APUESTAS_MX.md`)
+
+### Lo que falta — en orden de prioridad
+
+**1. Cuotas Liga MX en tiempo real** ← BLOCKER más urgente
+   - The Odds API key (free tier 500 req/mes — suficiente para Liga MX)
+   - Script: `update_odds_ligamx.py`
+   - Sin esto: no hay EV automático en Liga MX
+
+**2. Logear corners/tarjetas en predicciones_log.csv** ← BLOCKER #2
+   - Hoy solo logueamos el resultado 1X2
+   - Necesitamos loguear: prob_corners_over85, prob_tarjetas_over45
+   - Para tener 50+ predicciones validadas por mercado antes de junio
+
+**3. CLV backtesting con Bundesliga/La Liga** ← validación del modelo
+   - Ya tenemos odds_historico.csv con 11,601 partidos
+   - Necesitamos predicciones de esas ligas en el tracker
+
+### Proyección realista a junio
+```
+Jornadas Liga MX restantes Clausura 2026: ~6 (J16-J17 + Liguilla ~4 rondas)
+Partidos estimados: ~60 en Liga MX + ~30 internacionales = ~90 predicciones
+Corners/tarjetas logueadas: si se activa hoy → 90 picks por mercado para junio
+
+Con 90 predicciones en corners:
+  Hit rate esperado: ~62% (modelo tiene skill +12%)
+  EV promedio por apuesta: +8-12% (basado en Brier score)
+  Con Kelly 25% sobre bankroll $10,000 MXN:
+    ~$300-600 por apuesta × 90 apuestas = $27,000-54,000 de turnover
+    ROI esperado: 8% sobre turnover = ~$2,160-4,320 MXN de ganancia
+    = 21-43% de retorno sobre bankroll inicial ← esto es lo que se puede lograr
+```
+
+**Nota científica importante sobre el ROI:**
+- 30-50% de ROI sobre BANKROLL es posible con Kelly compuesto si el modelo tiene edge
+- 30-50% de ROI sobre cada APUESTA individual NO es realista (eso sería cuotas de 1.30-1.50 con 100% hit rate)
+- La magia es el VOLUMEN: muchas apuestas pequeñas con EV positivo → ROI total alto
+- El riesgo real está en la varianza: con n=90 y hit rate 62%, puedes tener rachas de 8-10 pérdidas seguidas (absolutamente normal estadísticamente)
+- Stop-loss: si el bankroll baja 20% en cualquier semana → parar y auditar
 
 ---
 

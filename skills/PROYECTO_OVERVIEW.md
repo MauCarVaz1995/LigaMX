@@ -1,6 +1,6 @@
 # PROYECTO_OVERVIEW.md — LEE ESTO PRIMERO
 
-> Estado del proyecto al **2026-04-18**. Actualizar al cierre de cada sesión significativa.
+> Estado del proyecto al **2026-04-19**. Actualizar al cierre de cada sesión significativa.
 
 ---
 

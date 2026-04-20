@@ -159,6 +159,20 @@ Si CLV ≈ 0 → modelo sin ventaja, no apostar
 - **IMPORTANTE**: n=23 no es estadísticamente concluyente. Esperar n≥50 para conclusiones.
 - Calibración base del modelo (para equipos promedio ELO=1500): local=49.1%, empate=24.3%, visita=26.6% — **bien calibrado vs histórico Liga MX (46.7%/25.2%/28.1%)**
 
+### Cuotas históricas disponibles (2026-04-19)
+```
+odds_historico.csv: 11,601 partidos — football-data.co.uk (GRATIS, sin API key)
+  Bundesliga (1,485), La Liga (1,830), Serie A (1,840), Ligue 1 (1,630)
+  Premier League (1,839), Eredivisie (1,494), Primeira Liga (1,483)
+  Temporadas: 2021-2026 | Cobertura de cuotas: ~93%
+  Columnas: odd_1, odd_X, odd_2 (Pinnacle/Bet365), odd_over25, odd_under25
+  CLV backtesting listo cuando tengamos 50+ predicciones en esas ligas.
+  Argentina y Brasileirao: NO cubiertos por football-data.co.uk → The Odds API
+  Liga MX: NO cubierta por football-data.co.uk → The Odds API (500 req/mes gratis)
+Script: python scripts/scrape_odds.py --all --temporadas 1  (corre diario en pipeline)
+CLV:    python scripts/scrape_odds.py --clv
+```
+
 ### Análisis de datos disponibles (2026-04-19)
 ```
 match_events.csv: 802 partidos (694 con datos completos, 108 sin eventos)
