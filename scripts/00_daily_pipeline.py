@@ -87,14 +87,27 @@ FOTMOB_HEADERS = {
 }
 
 LIGA_NAME_MAP = {
-    "CF America": "América", "Atletico de San Luis": "San Luis",
-    "Queretaro FC": "Querétaro", "FC Juarez": "FC Juárez",
-    "Mazatlan FC": "Mazatlán",
+    # historico → canonical (forma con acento usada en predicciones)
+    "CF America": "América",         "Atletico de San Luis": "San Luis",
+    "Queretaro FC": "Querétaro",     "FC Juarez": "FC Juárez",
+    "Mazatlan FC": "Mazatlán",       "Leon": "León",
+    "Santos Laguna": "Santos Laguna",
+    # formas cortas usadas en algunos scripts de predicción → canónica
+    "Santos": "Santos Laguna",
+    # asegurar idempotencia para formas ya canónicas
+    "América": "América",  "San Luis": "San Luis",
+    "Querétaro": "Querétaro", "FC Juárez": "FC Juárez", "Mazatlán": "Mazatlán",
 }
 def norm_liga(n): return LIGA_NAME_MAP.get(str(n).strip(), str(n).strip())
 
 INTL_NAME_FIXES = {
+    # results.csv usa ciertos nombres que difieren de los almacenados en predicciones
     "Bosnia and Herzegovina": "Bosnia-Herzegovina",
+    "Czechia": "Czech Republic",   # results.csv → predicción
+    "Turkiye": "Turkey",           # results.csv → predicción
+    # también mapear en dirección predicción→results para que norm_intl sea idempotente
+    "Czech Republic": "Czech Republic",
+    "Turkey": "Turkey",
 }
 def norm_intl(n): return INTL_NAME_FIXES.get(str(n).strip(), str(n).strip())
 
@@ -474,10 +487,22 @@ def step5_update_tracker() -> dict:
             loc   = str(row.get("equipo_local", "")).strip()
             vis   = str(row.get("equipo_visitante", "")).strip()
 
-            # Buscar en Liga MX primero, luego en internacionales
+            # Buscar en Liga MX primero, luego en internacionales (con tolerancia ±1 día)
             score = ligamx_res.get((fecha, norm_liga(loc), norm_liga(vis)))
             if score is None:
                 score = intl_res.get((fecha, norm_intl(loc), norm_intl(vis)))
+            if score is None:
+                # Tolerancia ±1 día para partidos internacionales con fecha incorrecta
+                from datetime import datetime, timedelta
+                try:
+                    d = datetime.strptime(fecha, "%Y-%m-%d")
+                    for delta in [-1, 1]:
+                        alt = (d + timedelta(days=delta)).strftime("%Y-%m-%d")
+                        score = intl_res.get((alt, norm_intl(loc), norm_intl(vis)))
+                        if score is not None:
+                            break
+                except ValueError:
+                    pass
             if score is None:
                 continue
 
