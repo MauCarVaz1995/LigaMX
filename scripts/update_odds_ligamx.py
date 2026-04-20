@@ -1,0 +1,386 @@
+#!/usr/bin/env python3
+"""
+update_odds_ligamx.py — Cuotas en tiempo real para Liga MX via The Odds API
+============================================================================
+Descarga cuotas de Bet365, Betcris, Caliente y otras casas para los próximos
+partidos de Liga MX. Guarda en data/processed/odds_ligamx.csv y actualiza
+betting_log.csv con la cuota vista y el EV estimado.
+
+The Odds API — free tier: 500 req/mes (suficiente para Liga MX completo)
+  Liga MX sport key: "soccer_mexico_ligamx"
+  Mercados: h2h (1X2), totals (Over/Under goles), btts
+
+API key: variable de entorno ODDS_API_KEY
+  Local:  export ODDS_API_KEY=xxxxxxxxxxxx
+  GitHub: Settings → Secrets → Actions → ODDS_API_KEY
+
+Uso:
+  python scripts/update_odds_ligamx.py              # descarga + actualiza EV
+  python scripts/update_odds_ligamx.py --dry-run    # muestra sin guardar
+  python scripts/update_odds_ligamx.py --status     # cuántos requests quedan
+"""
+
+import argparse
+import json
+import os
+import tempfile
+import warnings
+from datetime import date, datetime
+from pathlib import Path
+
+import pandas as pd
+import requests
+
+warnings.filterwarnings("ignore")
+
+BASE         = Path(__file__).resolve().parent.parent
+ODDS_LIGAMX  = BASE / "data/processed/odds_ligamx.csv"
+BETTING_LOG  = BASE / "data/processed/betting_log.csv"
+
+TODAY = date.today().isoformat()
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Configuración
+# ─────────────────────────────────────────────────────────────────────────────
+API_KEY      = os.environ.get("ODDS_API_KEY", "")
+BASE_URL     = "https://api.the-odds-api.com/v4"
+SPORT        = "soccer_mexico_ligamx"
+
+# Casas de apuestas relevantes para México (en orden de preferencia para EV)
+# Pinnacle no opera en MX pero sus líneas son el benchmark de eficiencia
+BOOKMAKERS   = ["pinnacle", "bet365", "betcris", "codere", "betsson", "draftkings"]
+
+# Mercados disponibles en free tier
+MARKETS_FREE = ["h2h", "totals"]        # 1X2 + Over/Under goles
+MARKETS_PAID = ["btts"]                 # requiere plan básico (~$10 USD/mes)
+
+# Conversión de nombre The Odds API → nuestro sistema
+TEAM_NAME_MAP = {
+    "Club America":         "América",
+    "Cruz Azul":            "Cruz Azul",
+    "Chivas Guadalajara":   "Guadalajara",
+    "CF Monterrey":         "Monterrey",
+    "Tigres UANL":          "Tigres",
+    "Pumas UNAM":           "Pumas",
+    "Toluca":               "Toluca",
+    "Atlas":                "Atlas",
+    "Santos Laguna":        "Santos Laguna",
+    "Necaxa":               "Necaxa",
+    "Mazatlan FC":          "Mazatlán",
+    "FC Juarez":            "FC Juárez",
+    "Atletico San Luis":    "San Luis",
+    "Queretaro":            "Querétaro",
+    "Tijuana":              "Tijuana",
+    "Leon":                 "León",
+    "Puebla":               "Puebla",
+    "Pachuca":              "Pachuca",
+}
+
+def norm_team(name: str) -> str:
+    return TEAM_NAME_MAP.get(name.strip(), name.strip())
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# API helpers
+# ─────────────────────────────────────────────────────────────────────────────
+def _get(endpoint: str, params: dict) -> dict | None:
+    if not API_KEY:
+        print("  [ERROR] ODDS_API_KEY no configurado. Exporta: export ODDS_API_KEY=xxxx")
+        return None
+    params["apiKey"] = API_KEY
+    try:
+        r = requests.get(f"{BASE_URL}/{endpoint}", params=params, timeout=15)
+        r.raise_for_status()
+        return r.json()
+    except requests.HTTPError as e:
+        print(f"  [ERROR] API: {e} — {r.text[:200]}")
+        return None
+    except Exception as e:
+        print(f"  [ERROR] {e}")
+        return None
+
+
+def check_status() -> dict:
+    """Muestra los requests restantes del mes."""
+    if not API_KEY:
+        print("  ODDS_API_KEY no configurado")
+        return {}
+    r = requests.get(f"{BASE_URL}/sports", params={"apiKey": API_KEY}, timeout=10)
+    remaining = r.headers.get("x-requests-remaining", "?")
+    used      = r.headers.get("x-requests-used", "?")
+    print(f"\n── The Odds API — uso del mes ──")
+    print(f"  Requests usados:    {used}")
+    print(f"  Requests restantes: {remaining}")
+    return {"used": used, "remaining": remaining}
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Descarga de cuotas
+# ─────────────────────────────────────────────────────────────────────────────
+def fetch_odds(markets: list[str] = None, verbose: bool = True) -> list[dict]:
+    """
+    Descarga cuotas de los próximos partidos de Liga MX.
+    Retorna lista de dicts normalizados.
+    """
+    if markets is None:
+        markets = MARKETS_FREE
+
+    params = {
+        "sport":      SPORT,
+        "regions":    "us,eu,uk",     # regiones con Pinnacle, Bet365
+        "markets":    ",".join(markets),
+        "oddsFormat": "decimal",
+        "dateFormat": "iso",
+    }
+
+    data = _get("sports/{sport}/odds".replace("{sport}", SPORT), params)
+    if not data:
+        return []
+
+    partidos = []
+    for event in data:
+        local  = norm_team(event.get("home_team", ""))
+        visita = norm_team(event.get("away_team", ""))
+        fecha_raw = event.get("commence_time", "")
+        try:
+            fecha = datetime.fromisoformat(fecha_raw.replace("Z", "+00:00")).strftime("%Y-%m-%d")
+        except Exception:
+            fecha = fecha_raw[:10]
+
+        row = {
+            "fecha":       fecha,
+            "fecha_hora":  fecha_raw[:19].replace("T", " "),
+            "partido":     f"{local} vs {visita}",
+            "local":       local,
+            "visitante":   visita,
+            "descargado":  TODAY,
+        }
+
+        # Procesar cada bookmaker
+        for bk in event.get("bookmakers", []):
+            bk_key = bk.get("key", "")
+            if bk_key not in BOOKMAKERS and bk_key not in [b.lower() for b in BOOKMAKERS]:
+                continue
+
+            for market in bk.get("markets", []):
+                key = market.get("key", "")
+                outcomes = {o["name"]: o["price"] for o in market.get("outcomes", [])}
+
+                if key == "h2h":
+                    row[f"{bk_key}_odd_1"] = outcomes.get(event.get("home_team", local))
+                    row[f"{bk_key}_odd_X"] = outcomes.get("Draw")
+                    row[f"{bk_key}_odd_2"] = outcomes.get(event.get("away_team", visita))
+
+                elif key == "totals":
+                    for o in market.get("outcomes", []):
+                        if o["name"] == "Over" and o.get("point") == 2.5:
+                            row[f"{bk_key}_odd_over25"] = o["price"]
+                        elif o["name"] == "Under" and o.get("point") == 2.5:
+                            row[f"{bk_key}_odd_under25"] = o["price"]
+
+                elif key == "btts":
+                    row[f"{bk_key}_odd_btts_si"] = outcomes.get("Yes")
+                    row[f"{bk_key}_odd_btts_no"] = outcomes.get("No")
+
+        partidos.append(row)
+        if verbose:
+            print(f"    {fecha} {local} vs {visita}")
+
+    if verbose:
+        print(f"  → {len(partidos)} partidos con cuotas")
+
+    return partidos
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Guardar y calcular EV
+# ─────────────────────────────────────────────────────────────────────────────
+def save_odds_ligamx(partidos: list[dict], dry_run: bool = False) -> int:
+    """Guarda/actualiza odds_ligamx.csv con deduplicación."""
+    if not partidos:
+        return 0
+
+    df_new = pd.DataFrame(partidos)
+
+    if ODDS_LIGAMX.exists():
+        df_old = pd.read_csv(ODDS_LIGAMX, low_memory=False)
+        df_out = pd.concat([df_old, df_new], ignore_index=True)
+    else:
+        df_out = df_new.copy()
+
+    df_out = df_out.drop_duplicates(
+        subset=["fecha", "local", "visitante", "descargado"], keep="last"
+    ).sort_values(["fecha", "local"]).reset_index(drop=True)
+
+    if not dry_run:
+        tmp_fd, tmp_path = tempfile.mkstemp(dir=str(ODDS_LIGAMX.parent), suffix=".tmp")
+        try:
+            df_out.to_csv(tmp_path, index=False)
+            os.close(tmp_fd)
+            os.replace(tmp_path, str(ODDS_LIGAMX))
+        except Exception:
+            os.close(tmp_fd)
+            os.unlink(tmp_path)
+            raise
+        print(f"  → odds_ligamx.csv: {len(df_out)} registros")
+
+    return len(df_new)
+
+
+def update_betting_log_ev(partidos: list[dict], dry_run: bool = False) -> int:
+    """
+    Actualiza betting_log.csv con cuota_vista y ev_estimado
+    para los partidos que tenemos cuotas.
+    Usa la cuota más alta disponible entre los bookmakers (mejor EV para el apostador).
+    """
+    if not BETTING_LOG.exists() or not partidos:
+        return 0
+
+    df_log = pd.read_csv(BETTING_LOG, low_memory=False)
+    if df_log.empty:
+        return 0
+
+    # Índice rápido: (fecha, local_norm, visita_norm) → cuotas
+    odds_idx = {}
+    for p in partidos:
+        key = (p["fecha"], p["local"].strip().lower(), p["visitante"].strip().lower())
+        odds_idx[key] = p
+
+    actualizados = 0
+    for idx, row in df_log.iterrows():
+        # Solo actualizar si no tiene cuota aún
+        if pd.notna(row.get("cuota_vista")):
+            continue
+
+        key = (
+            str(row["fecha_partido"])[:10],
+            str(row["equipo_local"]).strip().lower(),
+            str(row["equipo_visita"]).strip().lower(),
+        )
+        p = odds_idx.get(key)
+        if p is None:
+            continue
+
+        mercado   = str(row["mercado"])
+        prob      = float(row["prob_modelo"])
+        cuota_col = None
+
+        # Encontrar la cuota del mercado correspondiente
+        if mercado == "corners_over_8.5":
+            pass  # corners no disponible en free tier — requiere plan pagado
+        elif mercado == "goles_over_2.5":
+            # Tomar la cuota más alta disponible entre los bookmakers
+            candidates = [v for k, v in p.items()
+                          if "_odd_over25" in k and pd.notna(v) and v]
+            if candidates:
+                cuota_col = max(float(c) for c in candidates)
+        elif mercado == "goles_over_1.5":
+            candidates = [v for k, v in p.items()
+                          if "_odd_over15" in k and pd.notna(v) and v]
+            if candidates:
+                cuota_col = max(float(c) for c in candidates)
+        elif mercado == "btts_si":
+            candidates = [v for k, v in p.items()
+                          if "_odd_btts_si" in k and pd.notna(v) and v]
+            if candidates:
+                cuota_col = max(float(c) for c in candidates)
+
+        if cuota_col and cuota_col > 1.0:
+            ev = round(prob * cuota_col - 1, 4)
+            df_log.at[idx, "cuota_vista"]  = round(cuota_col, 3)
+            df_log.at[idx, "ev_estimado"]  = ev
+            actualizados += 1
+
+    if actualizados > 0 and not dry_run:
+        tmp_fd, tmp_path = tempfile.mkstemp(
+            dir=str(BETTING_LOG.parent), suffix=".tmp"
+        )
+        try:
+            df_log.to_csv(tmp_path, index=False)
+            os.close(tmp_fd)
+            os.replace(tmp_path, str(BETTING_LOG))
+        except Exception:
+            os.close(tmp_fd)
+            os.unlink(tmp_path)
+            raise
+        print(f"  → {actualizados} filas en betting_log con cuota y EV actualizados")
+
+    return actualizados
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Mostrar picks con EV
+# ─────────────────────────────────────────────────────────────────────────────
+def show_value_bets(partidos: list[dict]):
+    """Imprime tabla de value bets detectados."""
+    if not partidos:
+        return
+
+    print(f"\n── VALUE BETS Liga MX — {TODAY} ──\n")
+    print(f"{'Partido':<30} {'Mercado':<20} {'Prob':>5} {'Cuota':>6} {'EV':>6}")
+    print("─" * 70)
+
+    found = False
+    for p in partidos:
+        local  = p["local"]
+        visita = p["visitante"]
+        partido_str = f"{local} vs {visita}"
+
+        # Over 2.5 goles
+        for bk in BOOKMAKERS:
+            cuota = p.get(f"{bk}_odd_over25")
+            if not cuota:
+                continue
+            # Prob implícita justa (descounting overround)
+            o25  = p.get(f"{bk}_odd_over25", 0) or 0
+            u25  = p.get(f"{bk}_odd_under25", 0) or 0
+            if o25 > 1 and u25 > 1:
+                overround = (1/o25 + 1/u25)
+                fair_over = (1/o25) / overround
+                # Comparar vs cualquier prob del betting_log si existe
+                print(f"  {partido_str:<28} Over 2.5   fair_prob={fair_over:.1%}  {bk}: {cuota}")
+                found = True
+                break
+
+    if not found:
+        print("  Sin datos suficientes para calcular EV (necesita prob del modelo)")
+    print()
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# CLI
+# ─────────────────────────────────────────────────────────────────────────────
+def main():
+    parser = argparse.ArgumentParser(
+        description="Descarga cuotas Liga MX de The Odds API y calcula EV"
+    )
+    parser.add_argument("--dry-run", action="store_true",
+                        help="Muestra sin guardar en CSV")
+    parser.add_argument("--status",  action="store_true",
+                        help="Muestra requests restantes del mes")
+    parser.add_argument("--btts",    action="store_true",
+                        help="Incluye mercado BTTS (requiere plan pagado)")
+    args = parser.parse_args()
+
+    if args.status:
+        check_status()
+        return
+
+    markets = MARKETS_FREE + (MARKETS_PAID if args.btts else [])
+    print(f"\n── Descargando cuotas Liga MX (mercados: {', '.join(markets)}) ──")
+
+    partidos = fetch_odds(markets=markets, verbose=True)
+
+    if partidos:
+        save_odds_ligamx(partidos, dry_run=args.dry_run)
+        update_betting_log_ev(partidos, dry_run=args.dry_run)
+        show_value_bets(partidos)
+    else:
+        print("  Sin partidos con cuotas disponibles hoy")
+
+    if not args.dry_run and not args.status:
+        check_status()
+
+
+if __name__ == "__main__":
+    main()

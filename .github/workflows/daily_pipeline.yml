@@ -82,6 +82,13 @@ jobs:
         run: |
           python bots/daily_betting_bot.py --days 3 || echo "[warn] betting_bot falló — continuando"
 
+      - name: Cuotas Liga MX en tiempo real — The Odds API (non-critical)
+        env:
+          PYTHONPATH: ${{ github.workspace }}/scripts
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+        run: |
+          python scripts/update_odds_ligamx.py || echo "[warn] update_odds_ligamx falló — continuando"
+
       - name: Log y actualizar betting tracker corners/tarjetas (non-critical)
         env:
           PYTHONPATH: ${{ github.workspace }}/scripts
