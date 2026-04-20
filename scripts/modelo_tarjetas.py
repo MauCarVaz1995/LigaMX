@@ -142,7 +142,8 @@ class TarjetasModel:
 # ─────────────────────────────────────────────────────────────────────────────
 def predecir_tarjetas(local: str, visita: str,
                       cuota_over: float = None, cuota_under: float = None,
-                      linea: float = 4.5) -> dict:
+                      linea: float = 4.5,
+                      jornada: int = None) -> dict:
     m = TarjetasModel()
     if MODEL_OUT.exists():
         m.load()

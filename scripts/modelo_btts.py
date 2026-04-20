@@ -54,20 +54,23 @@ def _get_latest_elos(local: str, visita: str) -> tuple[float, float]:
 
 def _lambdas_from_elo(elo_local: float, elo_visita: float) -> tuple[float, float]:
     """
-    Convierte diferencia de ELO a λ_local y λ_visita usando el modelo
-    logístico calibrado con mu=1.421.
+    Convierte ELOs a λ_local y λ_visita.
+
+    λ_l = MU_HOME × (elo_l_adj / ELO_REF)
+    λ_v = MU_AWAY × (elo_v_adj / ELO_REF)
+
+    Esto permite que la suma total varíe según la calidad de los equipos
+    (partidos entre equipos fuertes tienden a más goles que equipos débiles).
+    MU_HOME=1.636, MU_AWAY=1.222 calibrados del modelo Dixon-Coles.
     """
-    diff = (elo_local + HOME_ADV) - elo_visita
-    we   = 1 / (1 + 10 ** (-diff / K_SCALE))   # P(victoria local)
-
-    # Calibración: when we=0.5, λ_l ≈ λ_v ≈ MU_GOALS
-    # Pendiente calibrada empíricamente sobre Liga MX
-    # λ_l = MU × (1 + β × (we - 0.5))   β≈1.6 da buen ajuste
-    BETA = 1.6
-    lam_l = MU_GOALS * (1 + BETA * (we - 0.5))
-    lam_v = MU_GOALS * (1 - BETA * (we - 0.5))
-
-    return max(lam_l, 0.1), max(lam_v, 0.1)
+    ELO_REF  = 1500.0
+    MU_HOME  = 1.636  # media goles local (histórico Liga MX ponderado)
+    MU_AWAY  = 1.222  # media goles visita
+    elo_eff_l = elo_local  + HOME_ADV * 0.5
+    elo_eff_v = elo_visita - HOME_ADV * 0.5
+    lam_l = MU_HOME * (elo_eff_l / ELO_REF)
+    lam_v = MU_AWAY * (elo_eff_v / ELO_REF)
+    return max(lam_l, 0.15), max(lam_v, 0.15)
 
 
 def _dixon_coles_rho(lam_l: float, lam_v: float, rho: float = -0.13) -> np.ndarray:

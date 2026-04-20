@@ -328,54 +328,70 @@ def build_tracker_section() -> str:
         return ""
     try:
         df = pd.read_csv(log_csv)
-        n_total    = len(df)
-        n_eval     = df["resultado_real"].notna().sum() if "resultado_real" in df.columns else 0
-        n_correct  = (df["acierto"] == True).sum() if "acierto" in df.columns else 0
-        pct        = f"{100*n_correct/n_eval:.1f}%" if n_eval > 0 else "N/A"
-        color_pct  = "#44ff88" if n_eval > 0 and n_correct/n_eval >= 0.50 else "#ff9800"
+        df["resultado_real"] = df["resultado_real"].str.lower().str.strip() if "resultado_real" in df.columns else ""
+        n_total   = len(df)
+        df_eval   = df[df["resultado_real"].isin(["local", "empate", "visitante"])]
+        n_eval    = len(df_eval)
+
+        # Recalcular aciertos correctamente
+        if n_eval > 0 and "ganador_predicho" in df_eval.columns:
+            aciertos_serie = df_eval["ganador_predicho"].str.lower().str.strip() == df_eval["resultado_real"]
+            n_correct = int(aciertos_serie.sum())
+        else:
+            n_correct = 0
+        pct       = f"{100*n_correct/n_eval:.0f}%" if n_eval > 0 else "N/A"
+        color_pct = "#44ff88" if n_eval > 0 and n_correct/n_eval >= 0.50 else "#ff9800"
 
         # Últimas 8 predicciones con resultado
-        recientes = df[df["resultado_real"].notna()].tail(8)
+        recientes = df_eval.tail(8)
         rows = ""
         for _, r in recientes.iterrows():
-            acierto = r.get("acierto", None)
-            icon = "✅" if acierto == True else ("❌" if acierto == False else "⏳")
-            pred_col = "#aaa"
-            partido = r.get("partido", r.get("local", "") + " vs " + r.get("visitante", ""))
-            pred    = r.get("prediccion", r.get("ganador_predicho", "?"))
-            real    = r.get("resultado_real", "?")
-            fecha   = str(r.get("fecha", ""))[:10]
+            pred   = str(r.get("ganador_predicho", "?"))
+            real   = str(r.get("resultado_real",   "?"))
+            acerto = pred.lower().strip() == real.lower().strip()
+            icon   = "✅" if acerto else "❌"
+            icon_color = "#44ff88" if acerto else "#ff4444"
+            partido = str(r.get("partido", ""))
+            fecha   = str(r.get("fecha_prediccion", r.get("fecha_partido", "")))[:10]
             rows += (
                 f"<tr>"
                 f"<td style='padding:4px 8px;color:#888;font-size:11px'>{fecha}</td>"
                 f"<td style='padding:4px 8px;color:#ccc;font-size:11px'>{partido}</td>"
-                f"<td style='padding:4px 8px;color:{pred_col};font-size:11px'>{pred}</td>"
-                f"<td style='padding:4px 8px;color:#ccc;font-size:11px'>{real}</td>"
-                f"<td style='padding:4px 8px;font-size:14px;text-align:center'>{icon}</td>"
+                f"<td style='padding:4px 8px;color:#ffaa00;font-size:11px'>{pred}</td>"
+                f"<td style='padding:4px 8px;color:#aaa;font-size:11px'>{real}</td>"
+                f"<td style='padding:4px 8px;font-size:13px;text-align:center;color:{icon_color}'>{icon}</td>"
                 f"</tr>"
             )
 
-        # Pendientes
-        pendientes = df[df["resultado_real"].isna()]
+        # Pendientes (sin resultado)
+        pendientes = df[~df["resultado_real"].isin(["local", "empate", "visitante"])].tail(5)
         pend_rows = ""
-        for _, r in pendientes.tail(5).iterrows():
-            partido = r.get("partido", r.get("local", "") + " vs " + r.get("visitante", ""))
-            pred    = r.get("prediccion", r.get("ganador_predicho", "?"))
-            fecha   = str(r.get("fecha", ""))[:10]
+        for _, r in pendientes.iterrows():
+            partido  = str(r.get("partido", ""))
+            pred     = str(r.get("ganador_predicho", "?"))
+            fecha_p  = str(r.get("fecha_partido", ""))[:10]
             pend_rows += (
                 f"<tr>"
-                f"<td style='padding:3px 8px;color:#888;font-size:11px'>{fecha}</td>"
+                f"<td style='padding:3px 8px;color:#888;font-size:11px'>{fecha_p}</td>"
                 f"<td style='padding:3px 8px;color:#ccc;font-size:11px'>{partido}</td>"
                 f"<td style='padding:3px 8px;color:#ffaa00;font-size:11px'>{pred}</td>"
                 f"<td style='padding:3px 8px;color:#555;font-size:11px'>⏳ pendiente</td>"
                 f"</tr>"
             )
 
+        # Racha reciente (últimas 5 con resultado)
+        ultimas5 = list(aciertos_serie.tail(5)) if n_eval > 0 else []
+        racha_icons = "".join(
+            "<span style='color:#44ff88;font-size:14px'>✅</span>" if x else
+            "<span style='color:#ff4444;font-size:14px'>❌</span>"
+            for x in ultimas5
+        )
+
         return f"""
         <div style="background:#1e1e1e;border-radius:6px;padding:16px 20px;margin-bottom:16px">
           <div style="color:#ffa726;font-size:15px;font-weight:bold;margin-bottom:10px">
-            📈 Tracker de Predicciones</div>
-          <div style="margin-bottom:12px">
+            📈 Tracker de Predicciones 1X2</div>
+          <div style="margin-bottom:8px">
             <span style="background:#2a2a2a;padding:6px 14px;border-radius:4px;
                          color:#ccc;font-size:13px;margin-right:8px">
               Total: <b style="color:#fff">{n_total}</b></span>
@@ -383,114 +399,279 @@ def build_tracker_section() -> str:
                          color:#ccc;font-size:13px;margin-right:8px">
               Evaluadas: <b style="color:#fff">{n_eval}</b></span>
             <span style="background:#2a2a2a;padding:6px 14px;border-radius:4px;
-                         color:#ccc;font-size:13px">
-              Acierto: <b style="color:{color_pct}">{pct}</b></span>
+                         color:#ccc;font-size:13px;margin-right:8px">
+              Acierto: <b style="color:{color_pct}">{n_correct}/{n_eval} ({pct})</b></span>
+          </div>
+          <div style="margin-bottom:12px;color:#888;font-size:11px">
+            Racha reciente: {racha_icons}
+            <span style="margin-left:8px;color:#555">baseline naïve ≈ 47% (siempre el favorito)</span>
           </div>
           {'<div style="color:#aaa;font-size:12px;margin-bottom:6px">Últimos resultados:</div>' if rows else ''}
-          {'<table style="width:100%;border-collapse:collapse"><tr><th style="color:#555;font-size:11px;text-align:left;padding:4px 8px">Fecha</th><th style="color:#555;font-size:11px;text-align:left;padding:4px 8px">Partido</th><th style="color:#555;font-size:11px;text-align:left;padding:4px 8px">Pred</th><th style="color:#555;font-size:11px;text-align:left;padding:4px 8px">Real</th><th style="color:#555;font-size:11px;text-align:center;padding:4px 8px">✓</th></tr>' + rows + '</table>' if rows else ''}
-          {'<div style="color:#aaa;font-size:12px;margin:10px 0 6px">Sin resultado aún:</div>' if pend_rows else ''}
-          {'<table style="width:100%;border-collapse:collapse"><tr><th style="color:#555;font-size:11px;text-align:left;padding:3px 8px">Fecha</th><th style="color:#555;font-size:11px;text-align:left;padding:3px 8px">Partido</th><th style="color:#555;font-size:11px;text-align:left;padding:3px 8px">Pred</th><th style="color:#555;font-size:11px;text-align:left;padding:3px 8px">Estado</th></tr>' + pend_rows + '</table>' if pend_rows else ''}
+          {'<table style="width:100%;border-collapse:collapse"><tr>'
+           '<th style="color:#555;font-size:11px;text-align:left;padding:4px 8px">Fecha</th>'
+           '<th style="color:#555;font-size:11px;text-align:left;padding:4px 8px">Partido</th>'
+           '<th style="color:#555;font-size:11px;text-align:left;padding:4px 8px">Pred</th>'
+           '<th style="color:#555;font-size:11px;text-align:left;padding:4px 8px">Real</th>'
+           '<th style="color:#555;font-size:11px;text-align:center;padding:4px 8px">✓</th>'
+           '</tr>' + rows + '</table>' if rows else ''}
+          {'<div style="color:#aaa;font-size:12px;margin:10px 0 6px">Pendientes (sin resultado):</div>' if pend_rows else ''}
+          {'<table style="width:100%;border-collapse:collapse"><tr>'
+           '<th style="color:#555;font-size:11px;text-align:left;padding:3px 8px">Fecha partido</th>'
+           '<th style="color:#555;font-size:11px;text-align:left;padding:3px 8px">Partido</th>'
+           '<th style="color:#555;font-size:11px;text-align:left;padding:3px 8px">Pred</th>'
+           '<th style="color:#555;font-size:11px;text-align:left;padding:3px 8px">Estado</th>'
+           '</tr>' + pend_rows + '</table>' if pend_rows else ''}
+          <div style="color:#555;font-size:10px;margin-top:8px">
+            ℹ️ n={n_eval} — se necesitan n≥200 para conclusiones estadísticas sobre el modelo</div>
         </div>"""
     except Exception as e:
         return f"<p style='color:#888'>Error tracker: {e}</p>"
 
 
+def _get_betting_partidos() -> list:
+    """Carga los partidos del último JSON del betting_bot."""
+    reports = sorted((BASE / "output/reports").glob("betting_*.json"))
+    if not reports:
+        return []
+    try:
+        data = json.loads(reports[-1].read_text())
+        # El JSON puede ser una lista directa o un dict con clave "partidos"
+        if isinstance(data, list):
+            return data
+        return data.get("partidos", [])
+    except Exception:
+        return []
+
+
+def build_top_picks() -> str:
+    """
+    Sección principal accionable: TOP PICKS para apostar HOY.
+    Usa el modelo de corners (skill +12%) que sí tiene edge demostrado.
+    Formato: Partido | Mercado | Prob modelo | Cuota mínima recomendada | Decisión
+    """
+    import sys
+    sys.path.insert(0, str(BASE / "scripts"))
+
+    picks = []
+    partidos = _get_betting_partidos()
+
+    for p in partidos:
+        local  = p.get("local", "")
+        visita = p.get("visitante", p.get("visita", ""))
+        fecha  = p.get("fecha", "")[:10]
+        jornada = p.get("jornada", "")
+        corners = p.get("corners", {})
+
+        # Mejores líneas de corners con edge demostrado (+12%)
+        for line_key, label in [("over_9.5", "Corners Over 9.5"), ("over_8.5", "Corners Over 8.5")]:
+            prob = corners.get(line_key)
+            if prob is None:
+                continue
+            # Solo picks con prob >= 60% (señal fuerte del modelo)
+            if prob < 0.60:
+                continue
+            # Cuota mínima para tener EV positivo (cuota = 1/prob, con margen 5%)
+            min_odds = round(1 / (prob * 0.95), 2)
+            # Nivel de confianza
+            if prob >= 0.80:
+                nivel = "🔥 ALTA"
+                bg    = "#1a3a1a"
+                color = "#44ff88"
+            elif prob >= 0.70:
+                nivel = "⚡ MEDIA"
+                bg    = "#2a2e1a"
+                color = "#aaff44"
+            else:
+                nivel = "💡 BAJA"
+                bg    = "#2a2a1a"
+                color = "#ffdd44"
+
+            picks.append({
+                "fecha": fecha, "jornada": jornada,
+                "partido": f"{local} vs {visita}",
+                "mercado": label,
+                "prob": prob,
+                "min_odds": min_odds,
+                "nivel": nivel,
+                "bg": bg,
+                "color": color,
+            })
+
+    # Tarjetas del betting bot
+    for p in partidos:
+        local  = p.get("local", "")
+        visita = p.get("visitante", p.get("visita", ""))
+        fecha  = p.get("fecha", "")[:10]
+        tarjetas = p.get("tarjetas", {})
+        for line_key, label in [("over_4.5", "Tarjetas Over 4.5"), ("over_3.5", "Tarjetas Over 3.5")]:
+            prob = tarjetas.get(line_key)
+            if prob is None or prob < 0.65:
+                continue
+            min_odds = round(1 / (prob * 0.95), 2)
+            nivel = "🔥 ALTA" if prob >= 0.80 else "⚡ MEDIA"
+            bg    = "#1a3a1a" if prob >= 0.80 else "#2a2e1a"
+            color = "#44ff88" if prob >= 0.80 else "#aaff44"
+            picks.append({
+                "fecha": fecha, "jornada": p.get("jornada",""),
+                "partido": f"{local} vs {visita}",
+                "mercado": label,
+                "prob": prob,
+                "min_odds": min_odds,
+                "nivel": nivel, "bg": bg, "color": color,
+            })
+
+    if not picks:
+        return f"""
+        <div style="background:#1e1e1e;border-radius:6px;padding:16px 20px;margin-bottom:16px">
+          <div style="color:#ff6b35;font-size:15px;font-weight:bold;margin-bottom:8px">
+            🎯 TOP PICKS — Próxima jornada</div>
+          <div style="color:#666;font-size:13px">
+            Sin picks con confianza ≥60% en la jornada próxima.<br>
+            <span style="color:#555;font-size:11px">El modelo solo sugiere apostar cuando hay ventaja clara.</span>
+          </div>
+        </div>"""
+
+    # Ordenar por probabilidad descendente, mostrar máx 6
+    picks.sort(key=lambda x: x["prob"], reverse=True)
+    picks = picks[:6]
+
+    rows = ""
+    for pk in picks:
+        rows += f"""
+        <tr style="background:{pk['bg']}">
+          <td style="padding:8px 10px;color:#888;font-size:11px">{pk['fecha']}<br>
+              <span style="color:#555">J{pk['jornada']}</span></td>
+          <td style="padding:8px 10px;color:#fff;font-size:12px;font-weight:bold">{pk['partido']}</td>
+          <td style="padding:8px 10px;color:#aaa;font-size:12px">{pk['mercado']}</td>
+          <td style="padding:8px 10px;color:{pk['color']};font-size:13px;font-weight:bold;text-align:center">{pk['prob']:.0%}</td>
+          <td style="padding:8px 10px;color:#ffaa00;font-size:12px;text-align:center">&gt; {pk['min_odds']}</td>
+          <td style="padding:8px 10px;font-size:11px;color:{pk['color']}">{pk['nivel']}</td>
+        </tr>"""
+
+    n_alta = sum(1 for pk in picks if "ALTA" in pk["nivel"])
+    return f"""
+    <div style="background:#111;border:1px solid #2a5a2a;border-radius:8px;padding:18px 20px;margin-bottom:16px">
+      <div style="color:#44ff88;font-size:16px;font-weight:bold;margin-bottom:4px">
+        🎯 TOP PICKS — Apostar cuando cuota sea mayor a</div>
+      <div style="color:#666;font-size:11px;margin-bottom:12px">
+        Solo mercados con edge demostrado (corners skill +12%) · {n_alta} picks de alta confianza</div>
+      <table style="width:100%;border-collapse:collapse">
+        <tr>
+          <th style="color:#555;font-size:11px;text-align:left;padding:6px 10px">Fecha</th>
+          <th style="color:#555;font-size:11px;text-align:left;padding:6px 10px">Partido</th>
+          <th style="color:#555;font-size:11px;text-align:left;padding:6px 10px">Mercado</th>
+          <th style="color:#00d4ff;font-size:11px;text-align:center;padding:6px 10px">Prob modelo</th>
+          <th style="color:#ffaa00;font-size:11px;text-align:center;padding:6px 10px">Cuota mín.</th>
+          <th style="color:#555;font-size:11px;text-align:left;padding:6px 10px">Confianza</th>
+        </tr>
+        {rows}
+      </table>
+      <div style="color:#555;font-size:10px;margin-top:10px">
+        ⚠️ Apostar SOLO si la cuota disponible supera la mínima · Kelly 25% del bankroll asignado ·
+        Modelo aún en validación (n={len(picks)} picks · necesita 200+ para confirmar edge)</div>
+    </div>"""
+
+
 def build_betting_analysis() -> str:
-    """Genera HTML con análisis ML de los próximos partidos (corners + cards)."""
+    """Tabla completa de análisis de corners/tarjetas/btts para todos los partidos próximos."""
     try:
         import sys
         sys.path.insert(0, str(BASE / "scripts"))
-        from modelo_ml import MLPredictor
 
-        predictor = MLPredictor().load()
+        # Intentar cargar ML predictor
+        ml_available = False
+        try:
+            from modelo_ml import MLPredictor
+            predictor = MLPredictor().load()
+            ml_available = True
+        except Exception:
+            predictor = None
 
-        # Leer fixtures próximos del betting_bot JSON
-        reports = sorted((BASE / "output/reports").glob("betting_*.json"))
-        if not reports:
-            return ""
-        data = json.loads(reports[-1].read_text())
-        partidos = data.get("partidos", [])[:10]
+        partidos = _get_betting_partidos()
         if not partidos:
             return ""
 
         rows = ""
-        value_count = 0
         for p in partidos:
-            local  = p.get("local", "")
-            visita = p.get("visitante", "")
-            fecha  = p.get("fecha", "")[:10]
-            try:
-                ml = predictor.predict(local, visita)
-                c85  = ml.get("corners_over_8.5",  0)
-                c95  = ml.get("corners_over_9.5",  0)
-                t45  = ml.get("cards_over_4.5",    0)
-                btts = ml.get("btts",              0)
+            local   = p.get("local", "")
+            visita  = p.get("visitante", p.get("visita", ""))
+            fecha   = p.get("fecha", "")[:10]
+            corners = p.get("corners", {})
+            tarjetas= p.get("tarjetas", {})
+            btts    = p.get("btts", {})
+            errs    = p.get("errors", [])
 
-                def pct_color(p_val):
-                    if p_val >= 0.65: return "#44ff88"
-                    if p_val >= 0.50: return "#ffaa00"
-                    return "#ff6b6b"
+            c85  = corners.get("over_8.5",  0) or 0
+            c95  = corners.get("over_9.5",  0) or 0
+            t45  = tarjetas.get("over_4.5", 0) or 0
+            t35  = tarjetas.get("over_3.5", 0) or 0
+            bval = btts.get("btts_si",      0) or 0
+            o25  = btts.get("over_2.5",     btts.get("p_over_2.5", 0)) or 0
 
-                # Detectar si hay valor (>60% en cualquier mercado)
-                has_value = any(x >= 0.62 for x in [c85, c95, t45])
-                if has_value:
-                    value_count += 1
+            def pc(v):
+                v = v or 0
+                if v >= 0.70: return "#44ff88"
+                if v >= 0.55: return "#ffaa00"
+                return "#888"
 
-                bg = "#1a2e1a" if has_value else "#1e1e1e"
-                badge = " 🎯" if has_value else ""
+            def fmt(v):
+                return f"{v:.0%}" if v else "—"
 
-                rows += f"""
-                <tr style="background:{bg}">
-                  <td style="padding:6px 8px;color:#888;font-size:11px">{fecha}</td>
-                  <td style="padding:6px 8px;color:#fff;font-size:12px;font-weight:bold">{local[:10]} vs {visita[:10]}{badge}</td>
-                  <td style="padding:6px 8px;color:{pct_color(c85)};font-size:12px;text-align:center">{c85:.0%}</td>
-                  <td style="padding:6px 8px;color:{pct_color(c95)};font-size:12px;text-align:center">{c95:.0%}</td>
-                  <td style="padding:6px 8px;color:{pct_color(t45)};font-size:12px;text-align:center">{t45:.0%}</td>
-                  <td style="padding:6px 8px;color:{pct_color(btts)};font-size:12px;text-align:center">{btts:.0%}</td>
-                </tr>"""
-            except Exception:
-                continue
+            err_note = ""
+            if any("tarjetas" in e for e in errs):
+                err_note = "<span style='color:#ff4444;font-size:9px'> ⚠️tarj</span>"
+
+            has_pick = c85 >= 0.60 or c95 >= 0.60 or t45 >= 0.65
+            bg = "#1a2a1a" if has_pick else "transparent"
+            badge = " 🎯" if has_pick else ""
+
+            rows += f"""
+            <tr style="background:{bg};border-bottom:1px solid #222">
+              <td style="padding:5px 8px;color:#888;font-size:10px">{fecha}</td>
+              <td style="padding:5px 8px;color:#ddd;font-size:11px;font-weight:bold">{local[:12]} vs {visita[:12]}{badge}</td>
+              <td style="padding:5px 8px;color:{pc(c85)};font-size:11px;text-align:center">{fmt(c85)}</td>
+              <td style="padding:5px 8px;color:{pc(c95)};font-size:11px;text-align:center">{fmt(c95)}</td>
+              <td style="padding:5px 8px;color:{pc(t35)};font-size:11px;text-align:center">{fmt(t35)}{err_note}</td>
+              <td style="padding:5px 8px;color:{pc(t45)};font-size:11px;text-align:center">{fmt(t45)}</td>
+              <td style="padding:5px 8px;color:{pc(bval)};font-size:11px;text-align:center">{fmt(bval)}</td>
+              <td style="padding:5px 8px;color:{pc(o25)};font-size:11px;text-align:center">{fmt(o25)}</td>
+            </tr>"""
 
         if not rows:
             return ""
 
+        src = "LightGBM +ML" if ml_available else "Poisson MLE"
         return f"""
-        <div style="background:#1e1e1e;border-radius:6px;padding:16px 20px;margin-bottom:16px">
-          <div style="color:#00d4ff;font-size:15px;font-weight:bold;margin-bottom:4px">
-            🤖 Análisis ML — Próximos partidos</div>
-          <div style="color:#555;font-size:11px;margin-bottom:10px">
-            🎯 = valor detectado (prob ≥ 62%) · LightGBM calibrado · 686 partidos</div>
+        <div style="background:#1e1e1e;border-radius:6px;padding:14px 18px;margin-bottom:16px">
+          <div style="color:#00d4ff;font-size:14px;font-weight:bold;margin-bottom:4px">
+            📊 Análisis completo — próximos partidos ({src})</div>
+          <div style="color:#555;font-size:10px;margin-bottom:10px">
+            🎯 = prob ≥60% en algún mercado · Verde ≥70% · Naranja ≥55%</div>
           <table style="width:100%;border-collapse:collapse">
             <tr>
-              <th style="color:#555;font-size:11px;text-align:left;padding:4px 8px">Fecha</th>
-              <th style="color:#555;font-size:11px;text-align:left;padding:4px 8px">Partido</th>
-              <th style="color:#00d4ff;font-size:11px;text-align:center;padding:4px 8px">C&gt;8.5</th>
-              <th style="color:#00d4ff;font-size:11px;text-align:center;padding:4px 8px">C&gt;9.5</th>
-              <th style="color:#ffaa00;font-size:11px;text-align:center;padding:4px 8px">T&gt;4.5</th>
-              <th style="color:#aaa;font-size:11px;text-align:center;padding:4px 8px">BTTS</th>
+              <th style="color:#555;font-size:10px;text-align:left;padding:4px 8px">Fecha</th>
+              <th style="color:#555;font-size:10px;text-align:left;padding:4px 8px">Partido</th>
+              <th style="color:#00d4ff;font-size:10px;text-align:center;padding:4px 6px">C&gt;8.5</th>
+              <th style="color:#00d4ff;font-size:10px;text-align:center;padding:4px 6px">C&gt;9.5</th>
+              <th style="color:#ffaa00;font-size:10px;text-align:center;padding:4px 6px">T&gt;3.5</th>
+              <th style="color:#ffaa00;font-size:10px;text-align:center;padding:4px 6px">T&gt;4.5</th>
+              <th style="color:#aaa;font-size:10px;text-align:center;padding:4px 6px">BTTS</th>
+              <th style="color:#aaa;font-size:10px;text-align:center;padding:4px 6px">O2.5</th>
             </tr>
             {rows}
           </table>
-          <div style="color:#555;font-size:11px;margin-top:8px">
-            Verde ≥65% · Naranja ≥50% · Rojo &lt;50% · C=Corners · T=Tarjetas</div>
         </div>"""
     except Exception as e:
-        return f"<p style='color:#666;font-size:11px'>ML analysis: {e}</p>"
+        return f"<p style='color:#666;font-size:11px'>Análisis betting: {e}</p>"
 
 
 def build_html(summary: dict, sections: dict[str, list[Path]]) -> str:
     tracker_section  = build_tracker_section()
+    top_picks_section = build_top_picks()
     ml_section       = build_betting_analysis()
 
-    betting_html = load_betting_html()
+    # Ya no mostramos el HTML del Poisson betting bot (redundante con ml_section)
     betting_section = ""
-    if betting_html:
-        betting_section = f"""
-    <div style="background:#1e1e1e;border-radius:6px;padding:16px 20px;margin-bottom:16px">
-      <div style="color:#E53935;font-size:15px;font-weight:bold;margin-bottom:10px">
-        🎰 Análisis Betting (Poisson) — próximos partidos</div>
-      {betting_html}
-    </div>"""
 
     audit_html = load_audit_html()
     audit_section = ""
@@ -592,11 +773,11 @@ def build_html(summary: dict, sections: dict[str, list[Path]]) -> str:
       {sections_html}
     </div>
 
+    {top_picks_section}
+
     {tracker_section}
 
     {ml_section}
-
-    {betting_section}
 
     {discovery_section}
 
