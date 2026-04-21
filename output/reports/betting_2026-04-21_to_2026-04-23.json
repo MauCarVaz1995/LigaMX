@@ -1,0 +1,434 @@
+[
+  {
+    "match_id": "5101851",
+    "fecha": "2026-04-22",
+    "jornada": 16,
+    "local": "Pumas",
+    "visita": "FC Juarez",
+    "torneo": "Liga MX Clausura 2026",
+    "elo_local": 1623.84,
+    "elo_visita": 1500.0,
+    "corners": {
+      "over_8.5": 0.789,
+      "under_8.5": 0.211,
+      "over_9.5": 0.686,
+      "under_9.5": 0.314,
+      "over_10.5": 0.569,
+      "under_10.5": 0.431,
+      "lambda_total": 11.25,
+      "lambda_local": 5.28,
+      "lambda_visita": 5.97,
+      "notes": [
+        "Fase regular_late: ×1.12 tarjetas"
+      ]
+    },
+    "tarjetas": {
+      "over_3.5": 0.682,
+      "under_3.5": null,
+      "over_4.5": 0.496,
+      "under_4.5": 0.504,
+      "over_5.5": 0.322,
+      "under_5.5": 0.678,
+      "lambda_total": 4.65,
+      "cr_local": 2.13,
+      "cr_visita": 2.52,
+      "rival_bonus": 0.0
+    },
+    "btts": {
+      "btts_si": 0.595,
+      "btts_no": 0.405,
+      "over_1.5": 0.816,
+      "over_2.5": 0.578,
+      "under_2.5": 0.422,
+      "btts_over_2.5": 0.475,
+      "lambda_local": 1.826,
+      "lambda_visita": 1.181
+    },
+    "value_bets": [],
+    "errors": []
+  },
+  {
+    "match_id": "5101850",
+    "fecha": "2026-04-22",
+    "jornada": 16,
+    "local": "Queretaro FC",
+    "visita": "Cruz Azul",
+    "torneo": "Liga MX Clausura 2026",
+    "elo_local": 1500.0,
+    "elo_visita": 1646.28,
+    "corners": {
+      "over_8.5": 0.776,
+      "under_8.5": 0.224,
+      "over_9.5": 0.669,
+      "under_9.5": 0.331,
+      "over_10.5": 0.551,
+      "under_10.5": 0.449,
+      "lambda_total": 11.09,
+      "lambda_local": 5.38,
+      "lambda_visita": 5.72,
+      "notes": [
+        "Fase regular_late: ×1.12 tarjetas"
+      ]
+    },
+    "tarjetas": {
+      "over_3.5": 0.779,
+      "under_3.5": null,
+      "over_4.5": 0.616,
+      "under_4.5": 0.384,
+      "over_5.5": 0.443,
+      "under_5.5": 0.557,
+      "lambda_total": 5.34,
+      "cr_local": 2.85,
+      "cr_visita": 2.48,
+      "rival_bonus": 0.0
+    },
+    "btts": {
+      "btts_si": 0.608,
+      "btts_no": 0.392,
+      "over_1.5": 0.814,
+      "over_2.5": 0.575,
+      "under_2.5": 0.425,
+      "btts_over_2.5": 0.483,
+      "lambda_local": 1.691,
+      "lambda_visita": 1.3
+    },
+    "value_bets": [],
+    "errors": []
+  },
+  {
+    "match_id": "5101853",
+    "fecha": "2026-04-22",
+    "jornada": 16,
+    "local": "Monterrey",
+    "visita": "Puebla",
+    "torneo": "Liga MX Clausura 2026",
+    "elo_local": 1462.05,
+    "elo_visita": 1356.89,
+    "corners": {
+      "over_8.5": 0.898,
+      "under_8.5": 0.102,
+      "over_9.5": 0.831,
+      "under_9.5": 0.169,
+      "over_10.5": 0.744,
+      "under_10.5": 0.256,
+      "lambda_total": 12.95,
+      "lambda_local": 7.18,
+      "lambda_visita": 5.77,
+      "notes": [
+        "Fase regular_late: ×1.12 tarjetas"
+      ]
+    },
+    "tarjetas": {
+      "over_3.5": 0.665,
+      "under_3.5": null,
+      "over_4.5": 0.476,
+      "under_4.5": 0.524,
+      "over_5.5": 0.304,
+      "under_5.5": 0.696,
+      "lambda_total": 4.54,
+      "cr_local": 1.97,
+      "cr_visita": 2.58,
+      "rival_bonus": 0.0
+    },
+    "btts": {
+      "btts_si": 0.544,
+      "btts_no": 0.456,
+      "over_1.5": 0.769,
+      "over_2.5": 0.51,
+      "under_2.5": 0.49,
+      "btts_over_2.5": 0.413,
+      "lambda_local": 1.649,
+      "lambda_visita": 1.065
+    },
+    "value_bets": [],
+    "errors": []
+  },
+  {
+    "match_id": "5101852",
+    "fecha": "2026-04-22",
+    "jornada": 16,
+    "local": "Leon",
+    "visita": "CF America",
+    "torneo": "Liga MX Clausura 2026",
+    "elo_local": 1458.39,
+    "elo_visita": 1500.0,
+    "corners": {
+      "over_8.5": 0.602,
+      "under_8.5": 0.398,
+      "over_9.5": 0.472,
+      "under_9.5": 0.528,
+      "over_10.5": 0.349,
+      "under_10.5": 0.651,
+      "lambda_total": 9.45,
+      "lambda_local": 4.64,
+      "lambda_visita": 4.81,
+      "notes": [
+        "Fase regular_late: ×1.12 tarjetas"
+      ]
+    },
+    "tarjetas": {
+      "over_3.5": 0.691,
+      "under_3.5": null,
+      "over_4.5": 0.506,
+      "under_4.5": 0.494,
+      "over_5.5": 0.333,
+      "under_5.5": 0.667,
+      "lambda_total": 4.71,
+      "cr_local": 2.67,
+      "cr_visita": 2.03,
+      "rival_bonus": 0.0
+    },
+    "btts": {
+      "btts_si": 0.574,
+      "btts_no": 0.426,
+      "over_1.5": 0.788,
+      "over_2.5": 0.537,
+      "under_2.5": 0.463,
+      "btts_over_2.5": 0.444,
+      "lambda_local": 1.645,
+      "lambda_visita": 1.181
+    },
+    "value_bets": [],
+    "errors": []
+  },
+  {
+    "match_id": "5101854",
+    "fecha": "2026-04-23",
+    "jornada": 16,
+    "local": "Atlas",
+    "visita": "Tigres",
+    "torneo": "Liga MX Clausura 2026",
+    "elo_local": 1436.18,
+    "elo_visita": 1559.05,
+    "corners": {
+      "over_8.5": 0.358,
+      "under_8.5": 0.642,
+      "over_9.5": 0.241,
+      "under_9.5": 0.759,
+      "over_10.5": 0.151,
+      "under_10.5": 0.849,
+      "lambda_total": 7.65,
+      "lambda_local": 3.53,
+      "lambda_visita": 4.12,
+      "notes": [
+        "Fase regular_late: ×1.12 tarjetas"
+      ]
+    },
+    "tarjetas": {
+      "over_3.5": 0.818,
+      "under_3.5": null,
+      "over_4.5": 0.67,
+      "under_4.5": 0.33,
+      "over_5.5": 0.502,
+      "under_5.5": 0.498,
+      "lambda_total": 5.68,
+      "cr_local": 2.6,
+      "cr_visita": 3.08,
+      "rival_bonus": 0.0
+    },
+    "btts": {
+      "btts_si": 0.583,
+      "btts_no": 0.417,
+      "over_1.5": 0.792,
+      "over_2.5": 0.542,
+      "under_2.5": 0.458,
+      "btts_over_2.5": 0.452,
+      "lambda_local": 1.621,
+      "lambda_visita": 1.229
+    },
+    "value_bets": [],
+    "errors": []
+  },
+  {
+    "match_id": "5101855",
+    "fecha": "2026-04-23",
+    "jornada": 16,
+    "local": "Atletico de San Luis",
+    "visita": "Santos Laguna",
+    "torneo": "Liga MX Clausura 2026",
+    "elo_local": 1500.0,
+    "elo_visita": 1372.42,
+    "corners": {
+      "over_8.5": 0.176,
+      "under_8.5": 0.824,
+      "over_9.5": 0.1,
+      "under_9.5": 0.9,
+      "over_10.5": 0.052,
+      "under_10.5": 0.948,
+      "lambda_total": 6.22,
+      "lambda_local": 3.2,
+      "lambda_visita": 3.02,
+      "notes": [
+        "Fase regular_late: ×1.12 tarjetas"
+      ]
+    },
+    "tarjetas": {
+      "over_3.5": 0.818,
+      "under_3.5": null,
+      "over_4.5": 0.67,
+      "under_4.5": 0.33,
+      "over_5.5": 0.502,
+      "under_5.5": 0.498,
+      "lambda_total": 5.68,
+      "cr_local": 2.57,
+      "cr_visita": 3.11,
+      "rival_bonus": 0.0
+    },
+    "btts": {
+      "btts_si": 0.553,
+      "btts_no": 0.447,
+      "over_1.5": 0.778,
+      "over_2.5": 0.523,
+      "under_2.5": 0.477,
+      "btts_over_2.5": 0.423,
+      "lambda_local": 1.691,
+      "lambda_visita": 1.077
+    },
+    "value_bets": [],
+    "errors": []
+  },
+  {
+    "match_id": "5101856",
+    "fecha": "2026-04-23",
+    "jornada": 16,
+    "local": "Mazatlan FC",
+    "visita": "Toluca",
+    "torneo": "Liga MX Clausura 2026",
+    "elo_local": 1500.0,
+    "elo_visita": 1640.89,
+    "corners": {
+      "over_8.5": 0.6,
+      "under_8.5": 0.4,
+      "over_9.5": 0.469,
+      "under_9.5": 0.531,
+      "over_10.5": 0.346,
+      "under_10.5": 0.654,
+      "lambda_total": 9.43,
+      "lambda_local": 4.29,
+      "lambda_visita": 5.14,
+      "notes": [
+        "Fase regular_late: ×1.12 tarjetas"
+      ]
+    },
+    "tarjetas": {
+      "over_3.5": 0.697,
+      "under_3.5": null,
+      "over_4.5": 0.513,
+      "under_4.5": 0.487,
+      "over_5.5": 0.339,
+      "under_5.5": 0.661,
+      "lambda_total": 4.74,
+      "cr_local": 1.96,
+      "cr_visita": 2.78,
+      "rival_bonus": 0.0
+    },
+    "btts": {
+      "btts_si": 0.607,
+      "btts_no": 0.393,
+      "over_1.5": 0.813,
+      "over_2.5": 0.574,
+      "under_2.5": 0.426,
+      "btts_over_2.5": 0.482,
+      "lambda_local": 1.691,
+      "lambda_visita": 1.296
+    },
+    "value_bets": [],
+    "errors": []
+  },
+  {
+    "match_id": "5101858",
+    "fecha": "2026-04-23",
+    "jornada": 16,
+    "local": "Necaxa",
+    "visita": "Chivas",
+    "torneo": "Liga MX Clausura 2026",
+    "elo_local": 1434.84,
+    "elo_visita": 1631.09,
+    "corners": {
+      "over_8.5": 0.486,
+      "under_8.5": 0.514,
+      "over_9.5": 0.355,
+      "under_9.5": 0.645,
+      "over_10.5": 0.244,
+      "under_10.5": 0.756,
+      "lambda_total": 8.56,
+      "lambda_local": 3.7,
+      "lambda_visita": 4.86,
+      "notes": [
+        "Fase regular_late: ×1.12 tarjetas"
+      ]
+    },
+    "tarjetas": {
+      "over_3.5": 0.782,
+      "under_3.5": null,
+      "over_4.5": 0.62,
+      "under_4.5": 0.38,
+      "over_5.5": 0.447,
+      "under_5.5": 0.553,
+      "lambda_total": 5.36,
+      "cr_local": 2.42,
+      "cr_visita": 2.94,
+      "rival_bonus": 0.0
+    },
+    "btts": {
+      "btts_si": 0.596,
+      "btts_no": 0.404,
+      "over_1.5": 0.801,
+      "over_2.5": 0.556,
+      "under_2.5": 0.444,
+      "btts_over_2.5": 0.467,
+      "lambda_local": 1.619,
+      "lambda_visita": 1.288
+    },
+    "value_bets": [],
+    "errors": []
+  },
+  {
+    "match_id": "5101857",
+    "fecha": "2026-04-23",
+    "jornada": 16,
+    "local": "Tijuana",
+    "visita": "Pachuca",
+    "torneo": "Liga MX Clausura 2026",
+    "elo_local": 1518.41,
+    "elo_visita": 1609.11,
+    "corners": {
+      "over_8.5": 0.401,
+      "under_8.5": 0.599,
+      "over_9.5": 0.278,
+      "under_9.5": 0.722,
+      "over_10.5": 0.18,
+      "under_10.5": 0.82,
+      "lambda_total": 7.96,
+      "lambda_local": 4.01,
+      "lambda_visita": 3.95,
+      "notes": [
+        "Fase regular_late: ×1.12 tarjetas"
+      ]
+    },
+    "tarjetas": {
+      "over_3.5": 0.742,
+      "under_3.5": null,
+      "over_4.5": 0.569,
+      "under_4.5": 0.431,
+      "over_5.5": 0.393,
+      "under_5.5": 0.607,
+      "lambda_total": 5.05,
+      "cr_local": 2.48,
+      "cr_visita": 2.57,
+      "rival_bonus": 0.0
+    },
+    "btts": {
+      "btts_si": 0.603,
+      "btts_no": 0.397,
+      "over_1.5": 0.812,
+      "over_2.5": 0.572,
+      "under_2.5": 0.428,
+      "btts_over_2.5": 0.479,
+      "lambda_local": 1.711,
+      "lambda_visita": 1.27
+    },
+    "value_bets": [],
+    "errors": []
+  }
+]
