@@ -8,13 +8,13 @@
       "pos": 1,
       "equipo": "Chivas",
       "equipo_id": 7807,
-      "pj": 15,
+      "pj": 16,
       "g": 11,
-      "e": 1,
+      "e": 2,
       "p": 3,
       "gf": 33,
       "gc": 17,
-      "pts": 34
+      "pts": 35
     },
     {
       "pos": 2,
@@ -32,12 +32,12 @@
       "pos": 3,
       "equipo": "Pachuca",
       "equipo_id": 7848,
-      "pj": 15,
+      "pj": 16,
       "g": 9,
       "e": 4,
-      "p": 2,
-      "gf": 24,
-      "gc": 14,
+      "p": 3,
+      "gf": 25,
+      "gc": 17,
       "pts": 31
     },
     {
@@ -56,12 +56,12 @@
       "pos": 5,
       "equipo": "Toluca",
       "equipo_id": 6618,
-      "pj": 15,
+      "pj": 16,
       "g": 7,
       "e": 6,
-      "p": 2,
-      "gf": 21,
-      "gc": 11,
+      "p": 3,
+      "gf": 24,
+      "gc": 15,
       "pts": 27
     },
     {
@@ -80,16 +80,40 @@
       "pos": 7,
       "equipo": "Atlas",
       "equipo_id": 6577,
-      "pj": 15,
+      "pj": 16,
       "g": 6,
-      "e": 4,
+      "e": 5,
       "p": 5,
       "gf": 15,
       "gc": 18,
-      "pts": 22
+      "pts": 23
     },
     {
       "pos": 8,
+      "equipo": "Tigres",
+      "equipo_id": 8561,
+      "pj": 16,
+      "g": 6,
+      "e": 4,
+      "p": 6,
+      "gf": 23,
+      "gc": 17,
+      "pts": 22
+    },
+    {
+      "pos": 9,
+      "equipo": "Tijuana",
+      "equipo_id": 162418,
+      "pj": 16,
+      "g": 5,
+      "e": 7,
+      "p": 4,
+      "gf": 19,
+      "gc": 17,
+      "pts": 22
+    },
+    {
+      "pos": 10,
       "equipo": "Leon",
       "equipo_id": 1841,
       "pj": 16,
@@ -99,30 +123,6 @@
       "gf": 21,
       "gc": 28,
       "pts": 22
-    },
-    {
-      "pos": 9,
-      "equipo": "Tigres",
-      "equipo_id": 8561,
-      "pj": 15,
-      "g": 6,
-      "e": 3,
-      "p": 6,
-      "gf": 23,
-      "gc": 17,
-      "pts": 21
-    },
-    {
-      "pos": 10,
-      "equipo": "Tijuana",
-      "equipo_id": 162418,
-      "pj": 15,
-      "g": 4,
-      "e": 7,
-      "p": 4,
-      "gf": 16,
-      "gc": 16,
-      "pts": 19
     },
     {
       "pos": 11,
@@ -138,18 +138,30 @@
     },
     {
       "pos": 12,
-      "equipo": "Necaxa",
-      "equipo_id": 1842,
-      "pj": 15,
+      "equipo": "Atletico de San Luis",
+      "equipo_id": 6358,
+      "pj": 16,
       "g": 5,
-      "e": 2,
+      "e": 3,
       "p": 8,
-      "gf": 18,
-      "gc": 21,
-      "pts": 17
+      "gf": 23,
+      "gc": 25,
+      "pts": 18
     },
     {
       "pos": 13,
+      "equipo": "Necaxa",
+      "equipo_id": 1842,
+      "pj": 16,
+      "g": 5,
+      "e": 3,
+      "p": 8,
+      "gf": 18,
+      "gc": 21,
+      "pts": 18
+    },
+    {
+      "pos": 14,
       "equipo": "Queretaro FC",
       "equipo_id": 1943,
       "pj": 16,
@@ -161,7 +173,7 @@
       "pts": 17
     },
     {
-      "pos": 14,
+      "pos": 15,
       "equipo": "FC Juarez",
       "equipo_id": 649424,
       "pj": 16,
@@ -173,19 +185,19 @@
       "pts": 16
     },
     {
-      "pos": 15,
-      "equipo": "Atletico de San Luis",
-      "equipo_id": 6358,
-      "pj": 15,
+      "pos": 16,
+      "equipo": "Mazatlan FC",
+      "equipo_id": 1170234,
+      "pj": 16,
       "g": 4,
       "e": 3,
-      "p": 8,
+      "p": 9,
       "gf": 21,
-      "gc": 25,
+      "gc": 32,
       "pts": 15
     },
     {
-      "pos": 16,
+      "pos": 17,
       "equipo": "Puebla",
       "equipo_id": 7847,
       "pj": 16,
@@ -197,27 +209,15 @@
       "pts": 13
     },
     {
-      "pos": 17,
-      "equipo": "Mazatlan FC",
-      "equipo_id": 1170234,
-      "pj": 15,
-      "g": 3,
-      "e": 3,
-      "p": 9,
-      "gf": 17,
-      "gc": 29,
-      "pts": 12
-    },
-    {
       "pos": 18,
       "equipo": "Santos Laguna",
       "equipo_id": 7857,
-      "pj": 15,
+      "pj": 16,
       "g": 2,
       "e": 3,
-      "p": 10,
+      "p": 11,
       "gf": 17,
-      "gc": 36,
+      "gc": 38,
       "pts": 9
     }
   ],
@@ -1979,7 +1979,7 @@
     },
     {
       "id": "5101851",
-      "fecha": "2026-04-22T01:00:00.000Z",
+      "fecha": "2026-04-22T01:00:00Z",
       "jornada": "16",
       "local": "Pumas",
       "local_id": "1946",
@@ -1992,7 +1992,7 @@
     },
     {
       "id": "5101850",
-      "fecha": "2026-04-22T01:00:00.000Z",
+      "fecha": "2026-04-22T01:00:00Z",
       "jornada": "16",
       "local": "Queretaro FC",
       "local_id": "1943",
@@ -2005,7 +2005,7 @@
     },
     {
       "id": "5101853",
-      "fecha": "2026-04-22T03:05:00.000Z",
+      "fecha": "2026-04-22T03:05:00Z",
       "jornada": "16",
       "local": "Monterrey",
       "local_id": "7849",
@@ -2018,7 +2018,7 @@
     },
     {
       "id": "5101852",
-      "fecha": "2026-04-22T03:06:00.000Z",
+      "fecha": "2026-04-22T03:06:00Z",
       "jornada": "16",
       "local": "Leon",
       "local_id": "1841",
@@ -2031,68 +2031,68 @@
     },
     {
       "id": "5101854",
-      "fecha": "2026-04-23T01:00:00Z",
+      "fecha": "2026-04-23T01:00:00.000Z",
       "jornada": "16",
       "local": "Atlas",
       "local_id": "6577",
       "visitante": "Tigres",
       "visitante_id": "8561",
-      "goles_local": null,
-      "goles_visit": null,
-      "score": "",
-      "terminado": false
+      "goles_local": 0,
+      "goles_visit": 0,
+      "score": "0 - 0",
+      "terminado": true
     },
     {
       "id": "5101855",
-      "fecha": "2026-04-23T01:00:00Z",
+      "fecha": "2026-04-23T01:00:00.000Z",
       "jornada": "16",
       "local": "Atletico de San Luis",
       "local_id": "6358",
       "visitante": "Santos Laguna",
       "visitante_id": "7857",
-      "goles_local": null,
-      "goles_visit": null,
-      "score": "",
-      "terminado": false
+      "goles_local": 2,
+      "goles_visit": 0,
+      "score": "2 - 0",
+      "terminado": true
     },
     {
       "id": "5101856",
-      "fecha": "2026-04-23T01:00:00Z",
+      "fecha": "2026-04-23T01:00:00.000Z",
       "jornada": "16",
       "local": "Mazatlan FC",
       "local_id": "1170234",
       "visitante": "Toluca",
       "visitante_id": "6618",
-      "goles_local": null,
-      "goles_visit": null,
-      "score": "",
-      "terminado": false
-    },
-    {
-      "id": "5101858",
-      "fecha": "2026-04-23T03:00:00Z",
-      "jornada": "16",
-      "local": "Necaxa",
-      "local_id": "1842",
-      "visitante": "Chivas",
-      "visitante_id": "7807",
-      "goles_local": null,
-      "goles_visit": null,
-      "score": "",
-      "terminado": false
+      "goles_local": 4,
+      "goles_visit": 3,
+      "score": "4 - 3",
+      "terminado": true
     },
     {
       "id": "5101857",
-      "fecha": "2026-04-23T03:00:00Z",
+      "fecha": "2026-04-23T03:06:00.000Z",
       "jornada": "16",
       "local": "Tijuana",
       "local_id": "162418",
       "visitante": "Pachuca",
       "visitante_id": "7848",
-      "goles_local": null,
-      "goles_visit": null,
-      "score": "",
-      "terminado": false
+      "goles_local": 3,
+      "goles_visit": 1,
+      "score": "3 - 1",
+      "terminado": true
+    },
+    {
+      "id": "5101858",
+      "fecha": "2026-04-23T03:10:00.000Z",
+      "jornada": "16",
+      "local": "Necaxa",
+      "local_id": "1842",
+      "visitante": "Chivas",
+      "visitante_id": "7807",
+      "goles_local": 0,
+      "goles_visit": 0,
+      "score": "0 - 0",
+      "terminado": true
     },
     {
       "id": "5101859",

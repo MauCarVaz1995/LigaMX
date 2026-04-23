@@ -1,0 +1,148 @@
+[
+  {
+    "match_id": "5101859",
+    "fecha": "2026-04-25",
+    "jornada": 17,
+    "local": "Puebla",
+    "visita": "Queretaro FC",
+    "torneo": "Liga MX Clausura 2026",
+    "elo_local": 1346.77,
+    "elo_visita": 1500.0,
+    "corners": {
+      "over_8.5": 0.897,
+      "under_8.5": 0.103,
+      "over_9.5": 0.83,
+      "under_9.5": 0.17,
+      "over_10.5": 0.743,
+      "under_10.5": 0.257,
+      "lambda_total": 12.93,
+      "lambda_local": 6.66,
+      "lambda_visita": 6.27,
+      "notes": [
+        "Fase regular_late: ×1.12 tarjetas",
+        "Cancha en altura (Puebla): ×0.93 corners visitante"
+      ]
+    },
+    "tarjetas": {
+      "over_3.5": 0.788,
+      "under_3.5": null,
+      "over_4.5": 0.628,
+      "under_4.5": 0.372,
+      "over_5.5": 0.456,
+      "under_5.5": 0.544,
+      "lambda_total": 5.41,
+      "cr_local": 2.56,
+      "cr_visita": 2.86,
+      "rival_bonus": 0.0
+    },
+    "btts": {
+      "btts_si": 0.558,
+      "btts_no": 0.442,
+      "over_1.5": 0.768,
+      "over_2.5": 0.507,
+      "under_2.5": 0.493,
+      "btts_over_2.5": 0.422,
+      "lambda_local": 1.523,
+      "lambda_visita": 1.181
+    },
+    "value_bets": [],
+    "errors": []
+  },
+  {
+    "match_id": "5101860",
+    "fecha": "2026-04-25",
+    "jornada": 17,
+    "local": "Pachuca",
+    "visita": "Pumas",
+    "torneo": "Liga MX Clausura 2026",
+    "elo_local": 1584.98,
+    "elo_visita": 1631.94,
+    "corners": {
+      "over_8.5": 0.58,
+      "under_8.5": 0.42,
+      "over_9.5": 0.448,
+      "under_9.5": 0.552,
+      "over_10.5": 0.327,
+      "under_10.5": 0.673,
+      "lambda_total": 9.27,
+      "lambda_local": 5.33,
+      "lambda_visita": 3.94,
+      "notes": [
+        "Fase regular_late: ×1.12 tarjetas",
+        "Cancha en altura (Pachuca): ×0.90 corners visitante"
+      ]
+    },
+    "tarjetas": {
+      "over_3.5": 0.695,
+      "under_3.5": null,
+      "over_4.5": 0.511,
+      "under_4.5": 0.489,
+      "over_5.5": 0.337,
+      "under_5.5": 0.663,
+      "lambda_total": 4.73,
+      "cr_local": 2.61,
+      "cr_visita": 2.12,
+      "rival_bonus": 0.0
+    },
+    "btts": {
+      "btts_si": 0.616,
+      "btts_no": 0.384,
+      "over_1.5": 0.825,
+      "over_2.5": 0.592,
+      "under_2.5": 0.408,
+      "btts_over_2.5": 0.496,
+      "lambda_local": 1.783,
+      "lambda_visita": 1.289
+    },
+    "value_bets": [],
+    "errors": []
+  },
+  {
+    "match_id": "5101861",
+    "fecha": "2026-04-25",
+    "jornada": 17,
+    "local": "Tigres",
+    "visita": "Mazatlan FC",
+    "torneo": "Liga MX Clausura 2026",
+    "elo_local": 1558.0,
+    "elo_visita": 1500.0,
+    "corners": {
+      "over_8.5": 0.702,
+      "under_8.5": 0.298,
+      "over_9.5": 0.582,
+      "under_9.5": 0.418,
+      "over_10.5": 0.457,
+      "under_10.5": 0.543,
+      "lambda_total": 10.32,
+      "lambda_local": 6.12,
+      "lambda_visita": 4.2,
+      "notes": [
+        "Fase regular_late: ×1.12 tarjetas"
+      ]
+    },
+    "tarjetas": {
+      "over_3.5": 0.741,
+      "under_3.5": null,
+      "over_4.5": 0.567,
+      "under_4.5": 0.433,
+      "over_5.5": 0.392,
+      "under_5.5": 0.608,
+      "lambda_total": 5.05,
+      "cr_local": 3.07,
+      "cr_visita": 1.97,
+      "rival_bonus": 0.0
+    },
+    "btts": {
+      "btts_si": 0.587,
+      "btts_no": 0.413,
+      "over_1.5": 0.805,
+      "over_2.5": 0.562,
+      "under_2.5": 0.438,
+      "btts_over_2.5": 0.463,
+      "lambda_local": 1.754,
+      "lambda_visita": 1.181
+    },
+    "value_bets": [],
+    "errors": []
+  }
+]
