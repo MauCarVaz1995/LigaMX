@@ -126,6 +126,18 @@
     },
     {
       "pos": 11,
+      "equipo": "Queretaro FC",
+      "equipo_id": 1943,
+      "pj": 17,
+      "g": 4,
+      "e": 8,
+      "p": 5,
+      "gf": 17,
+      "gc": 21,
+      "pts": 20
+    },
+    {
+      "pos": 12,
       "equipo": "Monterrey",
       "equipo_id": 7849,
       "pj": 16,
@@ -137,7 +149,7 @@
       "pts": 18
     },
     {
-      "pos": 12,
+      "pos": 13,
       "equipo": "Atletico de San Luis",
       "equipo_id": 6358,
       "pj": 16,
@@ -149,7 +161,7 @@
       "pts": 18
     },
     {
-      "pos": 13,
+      "pos": 14,
       "equipo": "Necaxa",
       "equipo_id": 1842,
       "pj": 16,
@@ -159,18 +171,6 @@
       "gf": 18,
       "gc": 21,
       "pts": 18
-    },
-    {
-      "pos": 14,
-      "equipo": "Queretaro FC",
-      "equipo_id": 1943,
-      "pj": 16,
-      "g": 3,
-      "e": 8,
-      "p": 5,
-      "gf": 15,
-      "gc": 20,
-      "pts": 17
     },
     {
       "pos": 15,
@@ -200,12 +200,12 @@
       "pos": 17,
       "equipo": "Puebla",
       "equipo_id": 7847,
-      "pj": 16,
+      "pj": 17,
       "g": 3,
       "e": 4,
-      "p": 9,
-      "gf": 12,
-      "gc": 24,
+      "p": 10,
+      "gf": 13,
+      "gc": 26,
       "pts": 13
     },
     {
@@ -2096,20 +2096,20 @@
     },
     {
       "id": "5101859",
-      "fecha": "2026-04-25T03:00:00Z",
+      "fecha": "2026-04-25T03:00:00.000Z",
       "jornada": "17",
       "local": "Puebla",
       "local_id": "7847",
       "visitante": "Queretaro FC",
       "visitante_id": "1943",
-      "goles_local": null,
-      "goles_visit": null,
-      "score": "",
-      "terminado": false
+      "goles_local": 1,
+      "goles_visit": 2,
+      "score": "1 - 2",
+      "terminado": true
     },
     {
       "id": "5101860",
-      "fecha": "2026-04-25T23:00:00Z",
+      "fecha": "2026-04-25T23:00:00.000Z",
       "jornada": "17",
       "local": "Pachuca",
       "local_id": "7848",
@@ -2122,7 +2122,7 @@
     },
     {
       "id": "5101861",
-      "fecha": "2026-04-25T23:00:00Z",
+      "fecha": "2026-04-25T23:00:00.000Z",
       "jornada": "17",
       "local": "Tigres",
       "local_id": "8561",
@@ -2135,7 +2135,7 @@
     },
     {
       "id": "5101863",
-      "fecha": "2026-04-26T01:00:00Z",
+      "fecha": "2026-04-26T01:05:00Z",
       "jornada": "17",
       "local": "Toluca",
       "local_id": "6618",
@@ -2160,19 +2160,6 @@
       "terminado": false
     },
     {
-      "id": "5101864",
-      "fecha": "2026-04-26T03:00:00Z",
-      "jornada": "17",
-      "local": "CF America",
-      "local_id": "6576",
-      "visitante": "Atlas",
-      "visitante_id": "6577",
-      "goles_local": null,
-      "goles_visit": null,
-      "score": "",
-      "terminado": false
-    },
-    {
       "id": "5101865",
       "fecha": "2026-04-26T03:00:00Z",
       "jornada": "17",
@@ -2180,6 +2167,19 @@
       "local_id": "649424",
       "visitante": "Atletico de San Luis",
       "visitante_id": "6358",
+      "goles_local": null,
+      "goles_visit": null,
+      "score": "",
+      "terminado": false
+    },
+    {
+      "id": "5101864",
+      "fecha": "2026-04-26T03:10:00Z",
+      "jornada": "17",
+      "local": "CF America",
+      "local_id": "6576",
+      "visitante": "Atlas",
+      "visitante_id": "6577",
       "goles_local": null,
       "goles_visit": null,
       "score": "",
@@ -2200,7 +2200,7 @@
     },
     {
       "id": "5101867",
-      "fecha": "2026-04-27T01:00:00Z",
+      "fecha": "2026-04-27T01:05:00Z",
       "jornada": "17",
       "local": "Cruz Azul",
       "local_id": "6578",

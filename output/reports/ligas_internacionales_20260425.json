@@ -1,0 +1,55 @@
+{
+  "generated_at": "2026-04-25T14:45:07.944775",
+  "ligas": {
+    "champions": {
+      "nombre": "UEFA Champions League",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "libertadores": {
+      "nombre": "Copa Libertadores",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "mls": {
+      "nombre": "MLS",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "argentina": {
+      "nombre": "Liga Profesional Argentina",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "brasileirao": {
+      "nombre": "Brasileirao Serie A",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "premier": {
+      "nombre": "Premier League",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "laliga": {
+      "nombre": "La Liga",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "bundesliga": {
+      "nombre": "Bundesliga",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "seriea": {
+      "nombre": "Serie A",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "ligue1": {
+      "nombre": "Ligue 1",
+      "n_fixtures": 0,
+      "picks": []
+    }
+  }
+}
