@@ -89,33 +89,33 @@ fecha_prediccion,fecha_partido,partido,liga,jornada,equipo_local,equipo_visita,m
 2026-04-19,2026-04-23,Tijuana vs Pachuca,Liga MX Clausura 2026,16,Tijuana,Pachuca,btts_si,,0.603,,,True,True,9.0,8.0,3.0,1.0
 2026-04-19,2026-04-23,Tijuana vs Pachuca,Liga MX Clausura 2026,16,Tijuana,Pachuca,goles_over_2.5,2.5,0.572,1.7,-0.0276,True,True,9.0,8.0,3.0,1.0
 2026-04-19,2026-04-23,Tijuana vs Pachuca,Liga MX Clausura 2026,16,Tijuana,Pachuca,goles_over_1.5,1.5,0.812,,,True,True,9.0,8.0,3.0,1.0
-2026-04-23,2026-04-25,Puebla vs Queretaro FC,Liga MX Clausura 2026,17,Puebla,Queretaro FC,corners_over_8.5,8.5,0.897,,,,,,,,
-2026-04-23,2026-04-25,Puebla vs Queretaro FC,Liga MX Clausura 2026,17,Puebla,Queretaro FC,corners_over_9.5,9.5,0.83,,,,,,,,
-2026-04-23,2026-04-25,Puebla vs Queretaro FC,Liga MX Clausura 2026,17,Puebla,Queretaro FC,corners_over_10.5,10.5,0.743,,,,,,,,
-2026-04-23,2026-04-25,Puebla vs Queretaro FC,Liga MX Clausura 2026,17,Puebla,Queretaro FC,tarjetas_over_3.5,3.5,0.788,,,,,,,,
-2026-04-23,2026-04-25,Puebla vs Queretaro FC,Liga MX Clausura 2026,17,Puebla,Queretaro FC,tarjetas_over_4.5,4.5,0.628,,,,,,,,
-2026-04-23,2026-04-25,Puebla vs Queretaro FC,Liga MX Clausura 2026,17,Puebla,Queretaro FC,tarjetas_over_5.5,5.5,0.456,,,,,,,,
-2026-04-23,2026-04-25,Puebla vs Queretaro FC,Liga MX Clausura 2026,17,Puebla,Queretaro FC,btts_si,,0.558,,,,,,,,
-2026-04-23,2026-04-25,Puebla vs Queretaro FC,Liga MX Clausura 2026,17,Puebla,Queretaro FC,goles_over_2.5,2.5,0.507,1.87,-0.0519,,,,,,
-2026-04-23,2026-04-25,Puebla vs Queretaro FC,Liga MX Clausura 2026,17,Puebla,Queretaro FC,goles_over_1.5,1.5,0.768,,,,,,,,
-2026-04-23,2026-04-25,Pachuca vs Pumas,Liga MX Clausura 2026,17,Pachuca,Pumas,corners_over_8.5,8.5,0.58,,,,,,,,
-2026-04-23,2026-04-25,Pachuca vs Pumas,Liga MX Clausura 2026,17,Pachuca,Pumas,corners_over_9.5,9.5,0.448,,,,,,,,
-2026-04-23,2026-04-25,Pachuca vs Pumas,Liga MX Clausura 2026,17,Pachuca,Pumas,corners_over_10.5,10.5,0.327,,,,,,,,
-2026-04-23,2026-04-25,Pachuca vs Pumas,Liga MX Clausura 2026,17,Pachuca,Pumas,tarjetas_over_3.5,3.5,0.695,,,,,,,,
-2026-04-23,2026-04-25,Pachuca vs Pumas,Liga MX Clausura 2026,17,Pachuca,Pumas,tarjetas_over_4.5,4.5,0.511,,,,,,,,
-2026-04-23,2026-04-25,Pachuca vs Pumas,Liga MX Clausura 2026,17,Pachuca,Pumas,tarjetas_over_5.5,5.5,0.337,,,,,,,,
-2026-04-23,2026-04-25,Pachuca vs Pumas,Liga MX Clausura 2026,17,Pachuca,Pumas,btts_si,,0.616,,,,,,,,
-2026-04-23,2026-04-25,Pachuca vs Pumas,Liga MX Clausura 2026,17,Pachuca,Pumas,goles_over_2.5,2.5,0.592,1.72,0.0182,,,,,,
-2026-04-23,2026-04-25,Pachuca vs Pumas,Liga MX Clausura 2026,17,Pachuca,Pumas,goles_over_1.5,1.5,0.825,,,,,,,,
-2026-04-23,2026-04-25,Tigres vs Mazatlan FC,Liga MX Clausura 2026,17,Tigres,Mazatlan FC,corners_over_8.5,8.5,0.702,,,,,,,,
-2026-04-23,2026-04-25,Tigres vs Mazatlan FC,Liga MX Clausura 2026,17,Tigres,Mazatlan FC,corners_over_9.5,9.5,0.582,,,,,,,,
-2026-04-23,2026-04-25,Tigres vs Mazatlan FC,Liga MX Clausura 2026,17,Tigres,Mazatlan FC,corners_over_10.5,10.5,0.457,,,,,,,,
-2026-04-23,2026-04-25,Tigres vs Mazatlan FC,Liga MX Clausura 2026,17,Tigres,Mazatlan FC,tarjetas_over_3.5,3.5,0.741,,,,,,,,
-2026-04-23,2026-04-25,Tigres vs Mazatlan FC,Liga MX Clausura 2026,17,Tigres,Mazatlan FC,tarjetas_over_4.5,4.5,0.567,,,,,,,,
-2026-04-23,2026-04-25,Tigres vs Mazatlan FC,Liga MX Clausura 2026,17,Tigres,Mazatlan FC,tarjetas_over_5.5,5.5,0.392,,,,,,,,
-2026-04-23,2026-04-25,Tigres vs Mazatlan FC,Liga MX Clausura 2026,17,Tigres,Mazatlan FC,btts_si,,0.587,,,,,,,,
-2026-04-23,2026-04-25,Tigres vs Mazatlan FC,Liga MX Clausura 2026,17,Tigres,Mazatlan FC,goles_over_2.5,2.5,0.562,1.43,-0.1963,,,,,,
-2026-04-23,2026-04-25,Tigres vs Mazatlan FC,Liga MX Clausura 2026,17,Tigres,Mazatlan FC,goles_over_1.5,1.5,0.805,,,,,,,,
+2026-04-23,2026-04-25,Puebla vs Queretaro FC,Liga MX Clausura 2026,17,Puebla,Queretaro FC,corners_over_8.5,8.5,0.897,,,True,True,15.0,3.0,1.0,2.0
+2026-04-23,2026-04-25,Puebla vs Queretaro FC,Liga MX Clausura 2026,17,Puebla,Queretaro FC,corners_over_9.5,9.5,0.83,,,True,True,15.0,3.0,1.0,2.0
+2026-04-23,2026-04-25,Puebla vs Queretaro FC,Liga MX Clausura 2026,17,Puebla,Queretaro FC,corners_over_10.5,10.5,0.743,,,True,True,15.0,3.0,1.0,2.0
+2026-04-23,2026-04-25,Puebla vs Queretaro FC,Liga MX Clausura 2026,17,Puebla,Queretaro FC,tarjetas_over_3.5,3.5,0.788,,,False,False,15.0,3.0,1.0,2.0
+2026-04-23,2026-04-25,Puebla vs Queretaro FC,Liga MX Clausura 2026,17,Puebla,Queretaro FC,tarjetas_over_4.5,4.5,0.628,,,False,False,15.0,3.0,1.0,2.0
+2026-04-23,2026-04-25,Puebla vs Queretaro FC,Liga MX Clausura 2026,17,Puebla,Queretaro FC,tarjetas_over_5.5,5.5,0.456,,,False,True,15.0,3.0,1.0,2.0
+2026-04-23,2026-04-25,Puebla vs Queretaro FC,Liga MX Clausura 2026,17,Puebla,Queretaro FC,btts_si,,0.558,,,True,True,15.0,3.0,1.0,2.0
+2026-04-23,2026-04-25,Puebla vs Queretaro FC,Liga MX Clausura 2026,17,Puebla,Queretaro FC,goles_over_2.5,2.5,0.507,1.87,-0.0519,True,True,15.0,3.0,1.0,2.0
+2026-04-23,2026-04-25,Puebla vs Queretaro FC,Liga MX Clausura 2026,17,Puebla,Queretaro FC,goles_over_1.5,1.5,0.768,,,True,True,15.0,3.0,1.0,2.0
+2026-04-23,2026-04-25,Pachuca vs Pumas,Liga MX Clausura 2026,17,Pachuca,Pumas,corners_over_8.5,8.5,0.58,,,True,True,12.0,8.0,0.0,2.0
+2026-04-23,2026-04-25,Pachuca vs Pumas,Liga MX Clausura 2026,17,Pachuca,Pumas,corners_over_9.5,9.5,0.448,,,True,False,12.0,8.0,0.0,2.0
+2026-04-23,2026-04-25,Pachuca vs Pumas,Liga MX Clausura 2026,17,Pachuca,Pumas,corners_over_10.5,10.5,0.327,,,True,False,12.0,8.0,0.0,2.0
+2026-04-23,2026-04-25,Pachuca vs Pumas,Liga MX Clausura 2026,17,Pachuca,Pumas,tarjetas_over_3.5,3.5,0.695,,,True,True,12.0,8.0,0.0,2.0
+2026-04-23,2026-04-25,Pachuca vs Pumas,Liga MX Clausura 2026,17,Pachuca,Pumas,tarjetas_over_4.5,4.5,0.511,,,True,True,12.0,8.0,0.0,2.0
+2026-04-23,2026-04-25,Pachuca vs Pumas,Liga MX Clausura 2026,17,Pachuca,Pumas,tarjetas_over_5.5,5.5,0.337,,,True,False,12.0,8.0,0.0,2.0
+2026-04-23,2026-04-25,Pachuca vs Pumas,Liga MX Clausura 2026,17,Pachuca,Pumas,btts_si,,0.616,,,False,False,12.0,8.0,0.0,2.0
+2026-04-23,2026-04-25,Pachuca vs Pumas,Liga MX Clausura 2026,17,Pachuca,Pumas,goles_over_2.5,2.5,0.592,1.72,0.0182,False,False,12.0,8.0,0.0,2.0
+2026-04-23,2026-04-25,Pachuca vs Pumas,Liga MX Clausura 2026,17,Pachuca,Pumas,goles_over_1.5,1.5,0.825,,,True,True,12.0,8.0,0.0,2.0
+2026-04-23,2026-04-25,Tigres vs Mazatlan FC,Liga MX Clausura 2026,17,Tigres,Mazatlan FC,corners_over_8.5,8.5,0.702,,,False,False,7.0,2.0,5.0,1.0
+2026-04-23,2026-04-25,Tigres vs Mazatlan FC,Liga MX Clausura 2026,17,Tigres,Mazatlan FC,corners_over_9.5,9.5,0.582,,,False,False,7.0,2.0,5.0,1.0
+2026-04-23,2026-04-25,Tigres vs Mazatlan FC,Liga MX Clausura 2026,17,Tigres,Mazatlan FC,corners_over_10.5,10.5,0.457,,,False,True,7.0,2.0,5.0,1.0
+2026-04-23,2026-04-25,Tigres vs Mazatlan FC,Liga MX Clausura 2026,17,Tigres,Mazatlan FC,tarjetas_over_3.5,3.5,0.741,,,False,False,7.0,2.0,5.0,1.0
+2026-04-23,2026-04-25,Tigres vs Mazatlan FC,Liga MX Clausura 2026,17,Tigres,Mazatlan FC,tarjetas_over_4.5,4.5,0.567,,,False,False,7.0,2.0,5.0,1.0
+2026-04-23,2026-04-25,Tigres vs Mazatlan FC,Liga MX Clausura 2026,17,Tigres,Mazatlan FC,tarjetas_over_5.5,5.5,0.392,,,False,True,7.0,2.0,5.0,1.0
+2026-04-23,2026-04-25,Tigres vs Mazatlan FC,Liga MX Clausura 2026,17,Tigres,Mazatlan FC,btts_si,,0.587,,,True,True,7.0,2.0,5.0,1.0
+2026-04-23,2026-04-25,Tigres vs Mazatlan FC,Liga MX Clausura 2026,17,Tigres,Mazatlan FC,goles_over_2.5,2.5,0.562,1.43,-0.1963,True,True,7.0,2.0,5.0,1.0
+2026-04-23,2026-04-25,Tigres vs Mazatlan FC,Liga MX Clausura 2026,17,Tigres,Mazatlan FC,goles_over_1.5,1.5,0.805,,,True,True,7.0,2.0,5.0,1.0
 2026-04-24,2026-04-26,Toluca vs Leon,Liga MX Clausura 2026,17,Toluca,Leon,corners_over_8.5,8.5,0.589,,,,,,,,
 2026-04-24,2026-04-26,Toluca vs Leon,Liga MX Clausura 2026,17,Toluca,Leon,corners_over_9.5,9.5,0.458,,,,,,,,
 2026-04-24,2026-04-26,Toluca vs Leon,Liga MX Clausura 2026,17,Toluca,Leon,corners_over_10.5,10.5,0.336,,,,,,,,
@@ -168,5 +168,5 @@ fecha_prediccion,fecha_partido,partido,liga,jornada,equipo_local,equipo_visita,m
 2026-04-25,2026-04-27,Cruz Azul vs Necaxa,Liga MX Clausura 2026,17,Cruz Azul,Necaxa,tarjetas_over_4.5,4.5,0.548,,,,,,,,
 2026-04-25,2026-04-27,Cruz Azul vs Necaxa,Liga MX Clausura 2026,17,Cruz Azul,Necaxa,tarjetas_over_5.5,5.5,0.373,,,,,,,,
 2026-04-25,2026-04-27,Cruz Azul vs Necaxa,Liga MX Clausura 2026,17,Cruz Azul,Necaxa,btts_si,,0.584,,,,,,,,
-2026-04-25,2026-04-27,Cruz Azul vs Necaxa,Liga MX Clausura 2026,17,Cruz Azul,Necaxa,goles_over_2.5,2.5,0.571,,,,,,,,
+2026-04-25,2026-04-27,Cruz Azul vs Necaxa,Liga MX Clausura 2026,17,Cruz Azul,Necaxa,goles_over_2.5,2.5,0.571,1.49,-0.1492,,,,,,
 2026-04-25,2026-04-27,Cruz Azul vs Necaxa,Liga MX Clausura 2026,17,Cruz Azul,Necaxa,goles_over_1.5,1.5,0.811,,,,,,,,

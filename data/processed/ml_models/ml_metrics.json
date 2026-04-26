@@ -1,7 +1,7 @@
 {
-  "trained_at": "2026-04-23T15:38:45.393535",
-  "n_partidos": 704,
-  "n_holdout": 140,
+  "trained_at": "2026-04-26T14:44:54.748394",
+  "n_partidos": 711,
+  "n_holdout": 142,
   "targets_saved": [
     "corners_over_8.5",
     "corners_over_9.5",
@@ -14,81 +14,81 @@
   ],
   "metrics": {
     "corners_over_8.5": {
-      "brier": 0.2189,
-      "brier_naive": 0.2296,
-      "skill": 0.046,
+      "brier": 0.2334,
+      "brier_naive": 0.2302,
+      "skill": -0.014,
       "prevalence": 0.603,
-      "n_train": 564,
-      "n_test": 140
+      "n_train": 569,
+      "n_test": 142
     },
     "corners_over_9.5": {
-      "brier": 0.2554,
+      "brier": 0.2596,
       "brier_naive": 0.2492,
-      "skill": -0.025,
+      "skill": -0.042,
       "prevalence": 0.443,
-      "n_train": 564,
-      "n_test": 140
+      "n_train": 569,
+      "n_test": 142
     },
     "corners_over_10.5": {
-      "brier": 0.2475,
-      "brier_naive": 0.2296,
-      "skill": -0.078,
-      "prevalence": 0.33,
-      "n_train": 564,
-      "n_test": 140
+      "brier": 0.2388,
+      "brier_naive": 0.2302,
+      "skill": -0.038,
+      "prevalence": 0.329,
+      "n_train": 569,
+      "n_test": 142
     },
     "cards_over_3.5": {
-      "brier": 0.1525,
-      "brier_naive": 0.1642,
-      "skill": 0.071,
-      "prevalence": 0.775,
-      "n_train": 564,
-      "n_test": 140
+      "brier": 0.1643,
+      "brier_naive": 0.1707,
+      "skill": 0.037,
+      "prevalence": 0.773,
+      "n_train": 569,
+      "n_test": 142
     },
     "cards_over_4.5": {
-      "brier": 0.2283,
-      "brier_naive": 0.2427,
-      "skill": 0.059,
-      "prevalence": 0.566,
-      "n_train": 564,
-      "n_test": 140
+      "brier": 0.2365,
+      "brier_naive": 0.244,
+      "skill": 0.031,
+      "prevalence": 0.564,
+      "n_train": 569,
+      "n_test": 142
     },
     "cards_over_5.5": {
-      "brier": 0.2323,
-      "brier_naive": 0.24,
-      "skill": 0.032,
-      "prevalence": 0.376,
-      "n_train": 564,
-      "n_test": 140
+      "brier": 0.2281,
+      "brier_naive": 0.2416,
+      "skill": 0.056,
+      "prevalence": 0.373,
+      "n_train": 569,
+      "n_test": 142
     },
     "btts": {
-      "brier": 0.2693,
-      "brier_naive": 0.2369,
-      "skill": -0.137,
-      "prevalence": 0.557,
-      "n_train": 564,
-      "n_test": 140
+      "brier": 0.2597,
+      "brier_naive": 0.2388,
+      "skill": -0.087,
+      "prevalence": 0.559,
+      "n_train": 569,
+      "n_test": 142
     },
     "resultado_1X2": {
-      "log_loss": 2.0382,
+      "log_loss": 1.7503,
       "log_loss_naive": 1.0986,
       "classes": [
         "A",
         "D",
         "H"
       ],
-      "n_train": 564,
-      "n_test": 140
+      "n_train": 569,
+      "n_test": 142
     },
     "shap_corners_over_9.5": {
-      "v_corners_against": 0.3081,
-      "l_goals_allowed": 0.2438,
-      "sum_cards_rate": 0.209,
-      "altitude_diff": 0.1958,
-      "v_cards_avg": 0.188,
-      "elo_visita": 0.1806,
-      "v_goals_allowed": 0.1778,
-      "elo_local": 0.1691
+      "v_corners_against": 0.2905,
+      "l_goals_allowed": 0.2656,
+      "v_cards_avg": 0.2156,
+      "sum_cards_rate": 0.2055,
+      "v_goals_allowed": 0.1917,
+      "altitude_diff": 0.1896,
+      "elo_local": 0.184,
+      "elo_visita": 0.184
     }
   }
 }

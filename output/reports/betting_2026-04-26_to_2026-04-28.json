@@ -1,0 +1,98 @@
+[
+  {
+    "match_id": "5101866",
+    "fecha": "2026-04-26",
+    "jornada": 17,
+    "local": "Santos Laguna",
+    "visita": "Monterrey",
+    "torneo": "Liga MX Clausura 2026",
+    "elo_local": 1356.98,
+    "elo_visita": 1472.17,
+    "corners": {
+      "over_8.5": 0.573,
+      "under_8.5": 0.427,
+      "over_9.5": 0.442,
+      "under_9.5": 0.558,
+      "over_10.5": 0.321,
+      "under_10.5": 0.679,
+      "lambda_total": 9.22,
+      "lambda_local": 4.88,
+      "lambda_visita": 4.34,
+      "notes": [
+        "Fase regular_late: ×1.12 tarjetas"
+      ]
+    },
+    "tarjetas": {
+      "over_3.5": 0.745,
+      "under_3.5": null,
+      "over_4.5": 0.572,
+      "under_4.5": 0.428,
+      "over_5.5": 0.397,
+      "under_5.5": 0.603,
+      "lambda_total": 5.07,
+      "cr_local": 3.1,
+      "cr_visita": 1.98,
+      "rival_bonus": 0.0
+    },
+    "btts": {
+      "btts_si": 0.554,
+      "btts_no": 0.446,
+      "over_1.5": 0.766,
+      "over_2.5": 0.505,
+      "under_2.5": 0.495,
+      "btts_over_2.5": 0.418,
+      "lambda_local": 1.535,
+      "lambda_visita": 1.159
+    },
+    "value_bets": [],
+    "errors": []
+  },
+  {
+    "match_id": "5101867",
+    "fecha": "2026-04-27",
+    "jornada": 17,
+    "local": "Cruz Azul",
+    "visita": "Necaxa",
+    "torneo": "Liga MX Clausura 2026",
+    "elo_local": 1642.51,
+    "elo_visita": 1439.16,
+    "corners": {
+      "over_8.5": 0.688,
+      "under_8.5": 0.312,
+      "over_9.5": 0.566,
+      "under_9.5": 0.434,
+      "over_10.5": 0.441,
+      "under_10.5": 0.559,
+      "lambda_total": 10.19,
+      "lambda_local": 5.94,
+      "lambda_visita": 4.25,
+      "notes": [
+        "Fase regular_late: ×1.12 tarjetas"
+      ]
+    },
+    "tarjetas": {
+      "over_3.5": 0.726,
+      "under_3.5": null,
+      "over_4.5": 0.548,
+      "under_4.5": 0.452,
+      "over_5.5": 0.373,
+      "under_5.5": 0.627,
+      "lambda_total": 4.94,
+      "cr_local": 2.48,
+      "cr_visita": 2.46,
+      "rival_bonus": 0.0
+    },
+    "btts": {
+      "btts_si": 0.584,
+      "btts_no": 0.416,
+      "over_1.5": 0.811,
+      "over_2.5": 0.571,
+      "under_2.5": 0.429,
+      "btts_over_2.5": 0.464,
+      "lambda_local": 1.846,
+      "lambda_visita": 1.132
+    },
+    "value_bets": [],
+    "errors": []
+  }
+]
