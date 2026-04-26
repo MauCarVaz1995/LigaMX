@@ -42,6 +42,15 @@ TODAY = date.today().isoformat()
 # ─────────────────────────────────────────────────────────────────────────────
 # Configuración
 # ─────────────────────────────────────────────────────────────────────────────
+# Cargar .env si existe (para uso local sin exportar variable)
+_env_file = BASE / ".env"
+if _env_file.exists():
+    for _line in _env_file.read_text().splitlines():
+        _line = _line.strip()
+        if _line and not _line.startswith("#") and "=" in _line:
+            _k, _v = _line.split("=", 1)
+            os.environ.setdefault(_k.strip(), _v.strip())
+
 API_KEY      = os.environ.get("ODDS_API_KEY", "")
 BASE_URL     = "https://api.the-odds-api.com/v4"
 SPORT        = "soccer_mexico_ligamx"
@@ -373,8 +382,9 @@ def show_value_bets(partidos: list[dict]):
     if not partidos:
         return
 
-    # Leer model probs del betting_log
+    # Leer model probs: primero betting_log, luego JSONs del betting bot (más frescos)
     model_probs = {}   # (fecha, local_norm, visita_norm, mercado) → prob_modelo
+
     if BETTING_LOG.exists():
         try:
             df_log = pd.read_csv(BETTING_LOG, low_memory=False)
@@ -388,6 +398,60 @@ def show_value_bets(partidos: list[dict]):
                 model_probs[key] = float(row["prob_modelo"])
         except Exception:
             pass
+
+    # Leer JSONs del betting bot (tienen probs frescas no escritas aún en betting_log)
+    REPORTS_DIR = BASE / "output/reports"
+    if REPORTS_DIR.exists():
+        import glob as _glob
+        for jf in sorted(_glob.glob(str(REPORTS_DIR / "betting_*.json")), reverse=True)[:5]:
+            try:
+                with open(jf, encoding="utf-8") as _f:
+                    j_data = json.load(_f)
+                if not isinstance(j_data, list):
+                    continue
+                for entry in j_data:
+                    fecha_j = entry.get("fecha", "")[:10]
+                    local_j = norm_for_match(entry.get("local", ""))
+                    visita_j = norm_for_match(entry.get("visita", ""))
+                    btts = entry.get("btts", {}) or {}
+                    tarjetas = entry.get("tarjetas", {}) or {}
+                    # goles mercados
+                    _probe = {
+                        "goles_over_2.5": btts.get("over_2.5"),
+                        "goles_over_1.5": btts.get("over_1.5"),
+                        "btts_si": btts.get("btts_si"),
+                        "tarjetas_over_3.5": tarjetas.get("over_3.5"),
+                        "tarjetas_over_4.5": tarjetas.get("over_4.5"),
+                        "tarjetas_over_5.5": tarjetas.get("over_5.5"),
+                    }
+                    for mercado, prob in _probe.items():
+                        if prob is not None:
+                            key = (fecha_j, local_j, visita_j, mercado)
+                            model_probs.setdefault(key, float(prob))  # newest file wins
+                    # Calcular 1X2 con Dixon-Coles desde lambdas
+                    lam_l = btts.get("lambda_local")
+                    lam_v = btts.get("lambda_visita")
+                    if lam_l and lam_v:
+                        try:
+                            from scipy.stats import poisson as _pois
+                            _rho = -0.22
+                            _w1 = _d = _w2 = 0.0
+                            for _i in range(10):
+                                for _j in range(10):
+                                    _p = _pois.pmf(_i, lam_l) * _pois.pmf(_j, lam_v)
+                                    if _i == 0 and _j == 0: _p *= (1 - lam_l * lam_v * _rho)
+                                    elif _i == 1 and _j == 0: _p *= (1 + lam_v * _rho)
+                                    elif _i == 0 and _j == 1: _p *= (1 + lam_l * _rho)
+                                    elif _i == 1 and _j == 1: _p *= (1 - _rho)
+                                    if _i > _j: _w1 += _p
+                                    elif _i == _j: _d += _p
+                                    else: _w2 += _p
+                            for _mercado, _prob in [("1x2_local", _w1), ("1x2_draw", _d), ("1x2_visita", _w2)]:
+                                model_probs.setdefault((fecha_j, local_j, visita_j, _mercado), round(_prob, 4))  # newest wins
+                        except Exception:
+                            pass
+            except Exception:
+                pass
 
     MIN_EV = 0.04   # solo mostrar si EV >= 4%
 
@@ -403,6 +467,24 @@ def show_value_bets(partidos: list[dict]):
         local_n  = norm_for_match(local)
         visita_n = norm_for_match(visita)
         partido_str = f"{local} vs {visita}"
+
+        # Para 1X2: buscar la cuota del equipo local/visita/draw por nombre
+        # La API devuelve odds con nombre original del equipo
+        local_raw  = p.get("_local_raw",  local)
+        visita_raw = p.get("_visita_raw", visita)
+        h2h_cuotas = {"1x2_local": None, "1x2_draw": None, "1x2_visita": None}
+        h2h_bk     = {"1x2_local": None, "1x2_draw": None, "1x2_visita": None}
+        for bk in BOOKMAKERS:
+            for side, col in [("1x2_local", f"{bk}_odd_1"), ("1x2_draw", f"{bk}_odd_X"), ("1x2_visita", f"{bk}_odd_2")]:
+                v = p.get(col)
+                if v:
+                    try:
+                        fv = float(v)
+                        if fv > 1.0 and (h2h_cuotas[side] is None or fv > h2h_cuotas[side]):
+                            h2h_cuotas[side] = fv
+                            h2h_bk[side] = bk
+                    except (ValueError, TypeError):
+                        pass
 
         mercado_map = {
             "goles_over_2.5": [f"{bk}_odd_over25" for bk in BOOKMAKERS],
@@ -431,6 +513,18 @@ def show_value_bets(partidos: list[dict]):
             ev = round(prob * best_cuota - 1, 4)
             if ev >= MIN_EV:
                 rows.append((ev, partido_str, mercado, prob, best_cuota, best_bk))
+
+        # 1X2 value bets
+        for side in ["1x2_local", "1x2_draw", "1x2_visita"]:
+            mkey = (fecha, local_n, visita_n, side)
+            prob = model_probs.get(mkey)
+            cuota = h2h_cuotas.get(side)
+            if prob is None or cuota is None:
+                continue
+            ev = round(prob * cuota - 1, 4)
+            if ev >= MIN_EV:
+                label = side.replace("1x2_local", f"1X ({local})").replace("1x2_draw", "X (Empate)").replace("1x2_visita", f"2 ({visita})")
+                rows.append((ev, partido_str, label, prob, cuota, h2h_bk.get(side, "")))
 
     rows.sort(key=lambda x: -x[0])
     for ev, partido_str, mercado, prob, cuota, bk in rows:
