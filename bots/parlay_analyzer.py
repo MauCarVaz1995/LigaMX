@@ -34,21 +34,26 @@ BASE    = Path(__file__).resolve().parent.parent
 REPORTS = BASE / "output" / "reports"
 LOG_CSV = BASE / "data" / "processed" / "betting_log.csv"
 
-# Mercados que incluimos en parlays (key en JSON → descripción)
-MERCADOS_PARLAY = {
+# Mercados con edge comprobado para Liga MX (corners Brier +49%, tarjetas calibrado)
+MERCADOS_LIGAMX = {
     "corners":   [("over_8.5",  "Corners +8.5"),
                   ("over_9.5",  "Corners +9.5"),
-                  ("over_10.5", "Corners +10.5"),
-                  ("under_8.5", "Corners -8.5"),
                   ("under_9.5", "Corners -9.5"),
                   ("under_10.5","Corners -10.5")],
     "tarjetas":  [("over_3.5",  "Tarjetas +3.5"),
-                  ("over_4.5",  "Tarjetas +4.5"),
-                  ("over_5.5",  "Tarjetas +5.5")],
+                  ("over_4.5",  "Tarjetas +4.5")],
     "btts":      [("btts_si",   "BTTS Sí"),
-                  ("over_1.5",  "Goles +1.5"),
-                  ("over_2.5",  "Goles +2.5")],
+                  ("over_2.5",  "Goles +2.5")],   # solo 2.5 para Liga MX (más difícil, más valor)
 }
+
+# Para internacional: solo goles 2.5 (más exigente, menos ruido) y btts_si
+MERCADOS_INTL = {
+    "btts":      [("over_2.5",  "Goles +2.5"),
+                  ("btts_si",   "BTTS Sí")],
+}
+
+# Alias: MERCADOS_PARLAY = Liga MX por defecto
+MERCADOS_PARLAY = MERCADOS_LIGAMX
 
 # Nombres de campo en el JSON de betting
 MERCADO_FIELD = {
@@ -66,21 +71,53 @@ BTTS_FIELD_MAP = {
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-def load_betting_json(fecha_str: str) -> list[dict]:
-    """Carga el betting_*.json más cercano a la fecha dada."""
-    candidates = sorted(REPORTS.glob("betting_*.json"), reverse=True)
-    for path in candidates:
+def load_betting_json(fecha_str: str) -> tuple[list[dict], str]:
+    """
+    Carga picks del día combinando:
+    1. Liga MX (betting_YYYY-MM-DD_*.json) — fuente primaria, modelos calibrados
+    2. Internacional (betting_intl_*.json) — solo picks ≥70% (modelo menos validado)
+    """
+    partidos: list[dict] = []
+    fuentes: list[str] = []
+
+    # ── Liga MX ──
+    ligamx_files = sorted(
+        [p for p in REPORTS.glob("betting_*.json") if "intl" not in p.name],
+        reverse=True
+    )
+    for path in ligamx_files:
         try:
-            with open(path) as f:
-                data = json.load(f)
+            data = json.load(open(path))
             if isinstance(data, list) and data:
-                # Verifica que contenga partidos de esa fecha o cercanos
                 fechas = [p.get("fecha", "") for p in data]
                 if any(f >= fecha_str for f in fechas):
-                    return data, path.name
+                    for p in data:
+                        p["_source"] = "ligamx"
+                    partidos.extend(data)
+                    fuentes.append(path.name)
+                    break
         except Exception:
             continue
-    return [], ""
+
+    # ── Internacional — solo picks muy seguros ──
+    intl_files = sorted(REPORTS.glob("betting_intl_*.json"), reverse=True)
+    for path in intl_files:
+        try:
+            data = json.load(open(path))
+            if isinstance(data, list) and data:
+                fechas = [p.get("fecha", "") for p in data]
+                if any(f >= fecha_str for f in fechas):
+                    for p in data:
+                        p["_source"] = "intl"
+                        p["_min_prob_override"] = 0.70  # umbral más alto para intl
+                    partidos.extend(data)
+                    fuentes.append(path.name)
+                    break
+        except Exception:
+            continue
+
+    fname = " + ".join(fuentes) if fuentes else ""
+    return partidos, fname
 
 
 def load_real_odds(partido_id: str, mercado: str, linea: str) -> float | None:
@@ -120,7 +157,13 @@ def extract_picks(partidos: list[dict], min_prob: float) -> list[dict]:
         jornada   = p.get("jornada", "?")
         partido_str = f"{local} vs {visita}"
 
-        for cat, mercados in MERCADOS_PARLAY.items():
+        # Para fuentes internacionales: umbral más alto y mercados limitados
+        is_intl = p.get("_source", "ligamx") == "intl"
+        source_min = p.get("_min_prob_override", min_prob)
+        effective_min = max(min_prob, source_min)
+        mercados_activos = MERCADOS_INTL if is_intl else MERCADOS_LIGAMX
+
+        for cat, mercados in mercados_activos.items():
             cat_data = p.get(MERCADO_FIELD[cat], {})
             if not isinstance(cat_data, dict):
                 continue
@@ -129,7 +172,7 @@ def extract_picks(partidos: list[dict], min_prob: float) -> list[dict]:
                 prob = cat_data.get(campo)
                 if not isinstance(prob, float):
                     continue
-                if prob < min_prob:
+                if prob < effective_min:
                     continue
                 # Evitar duplicados: si over_8.5 > 0.65 y over_9.5 > 0.65, son picks distintos
                 # pero dentro del mismo partido/cat solo tomamos el de mayor EV

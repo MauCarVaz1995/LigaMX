@@ -52,24 +52,52 @@ class TarjetasModel:
         self.rivalidades   = {}     # (local, visita) → factor adicional
         self.n_partidos    = 0
 
-    def fit(self, df: pd.DataFrame = None, verbose: bool = True) -> "TarjetasModel":
+    def fit(self, df: pd.DataFrame = None, verbose: bool = True,
+            time_weight: bool = True) -> "TarjetasModel":
+        """
+        Ajusta el modelo de tarjetas.
+        time_weight=True aplica decay exponencial: juegos recientes pesan más.
+        Esto hace que el modelo se adapte a drift de tarjetas automáticamente.
+        Decay: τ = 120 partidos (≈ 2 torneos). El último partido pesa ~2.7x más que el de hace 2 torneos.
+        """
         if df is None:
             df = _load_data()
+        df = df.sort_values("fecha").reset_index(drop=True)
         self.n_partidos = len(df)
-        self.mu = df["tarjetas_total"].mean()
+
+        # ── Pesos exponenciales por antigüedad ──
+        if time_weight and len(df) > 30:
+            tau = 120.0  # partidos de vida media
+            n = len(df)
+            weights = np.exp(np.arange(n) / tau - (n - 1) / tau)
+            weights = weights / weights.sum() * n  # normalizar a media=1
+        else:
+            weights = np.ones(len(df))
+
+        # Mu ponderado (media con tiempo-peso)
+        self.mu = float(np.average(df["tarjetas_total"], weights=weights))
 
         if verbose:
+            mu_raw = df["tarjetas_total"].mean()
             print(f"  Dataset: {self.n_partidos} partidos")
-            print(f"  μ tarjetas ponderadas = {self.mu:.2f} por partido")
-            print(f"  μ amarillas = {df['amarillas_local'].mean() + df['amarillas_visitante'].mean():.2f}")
+            print(f"  μ tarjetas crudo={mu_raw:.2f} | ponderado={self.mu:.2f} "
+                  f"({'time-weighted' if time_weight else 'sin peso'})")
 
+        # Card rate por equipo — también ponderado por recencia
         equipos = set(df["local"].tolist() + df["visitante"].tolist())
         for eq in equipos:
-            as_local  = df[df["local"]    == eq]["tarjetas_local"]
-            as_visita = df[df["visitante"] == eq]["tarjetas_visitante"]
-            todas = pd.concat([as_local, as_visita])
-            if len(todas) >= 3:
-                self.card_rate[eq] = float(todas.mean())
+            idx_l = df.index[df["local"]     == eq].tolist()
+            idx_v = df.index[df["visitante"] == eq].tolist()
+            vals_l = df.loc[idx_l, "tarjetas_local"].values
+            vals_v = df.loc[idx_v, "tarjetas_visitante"].values
+            w_l    = weights[idx_l]
+            w_v    = weights[idx_v]
+
+            all_vals = np.concatenate([vals_l, vals_v])
+            all_w    = np.concatenate([w_l, w_v])
+
+            if len(all_vals) >= 3:
+                self.card_rate[eq] = float(np.average(all_vals, weights=all_w))
             else:
                 self.card_rate[eq] = float(self.mu / 2)
 

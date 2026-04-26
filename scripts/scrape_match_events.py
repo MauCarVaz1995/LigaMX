@@ -204,7 +204,9 @@ def main():
     elif args.all:
         hist_files = sorted(HIST_DIR.glob("historico_*.json"))
     else:
-        hist_files = [HIST_DIR / "historico_clausura_2026.json"]
+        # Tomar el JSON de historico más reciente (puede ser clausura_2026 o liguilla_2026)
+        all_files = sorted(HIST_DIR.glob("historico_*.json"), reverse=True)
+        hist_files = all_files[:1] if all_files else []
 
     since_date = None
     if args.days:

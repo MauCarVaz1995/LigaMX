@@ -819,10 +819,119 @@ def build_betting_analysis() -> str:
         return f"<p style='color:#666;font-size:11px'>Análisis betting: {e}</p>"
 
 
+def build_parlay_section() -> str:
+    """
+    Tabla de parlays del día: combinaciones 2-3 selecciones de alta confianza.
+    Llama a parlay_analyzer.py en modo silencioso y parsea la salida.
+    """
+    import subprocess, sys, re
+    bot = BASE / "bots" / "parlay_analyzer.py"
+    if not bot.exists():
+        return ""
+    try:
+        result = subprocess.run(
+            [sys.executable, str(bot), "--monto", "1000", "--min-prob", "0.65", "--max-legs", "3", "--top", "5"],
+            capture_output=True, text=True, timeout=30,
+            cwd=str(BASE)
+        )
+        lines = result.stdout.strip().split("\n") if result.stdout else []
+    except Exception:
+        return ""
+
+    if not lines:
+        return ""
+
+    # Parsear picks individuales y parlays del output de texto
+    in_picks = in_parlays = False
+    picks_rows = ""
+    parlay_rows = ""
+    n_parlays_ev_pos = 0
+
+    for line in lines:
+        if "PICKS INDIVIDUALES" in line:
+            in_picks = True; in_parlays = False; continue
+        if "TOP PARLAYS" in line or "RESUMEN POR" in line:
+            in_picks = False
+            if "TOP PARLAYS" in line:
+                in_parlays = True
+                # Extraer cuántos tienen EV positivo
+                m = re.search(r"(\d+) de \d+", line)
+                if m: n_parlays_ev_pos = int(m.group(1))
+            continue
+        if "═" in line or "──" in line[:4]:
+            in_parlays = False; continue
+
+        if in_picks and "→" in line and "%" in line:
+            # Extraer: pick | prob | cuota | ev | retorno
+            parts = [p.strip() for p in line.strip().split("  ") if p.strip()]
+            if len(parts) >= 3:
+                # El pick es todo antes del primer número de prob
+                m = re.search(r"(.+?)\s+(\d+\.\d+%)\s+([\d\.]+[~*])\s+([+\-]\d+\.\d+%)\s+\+?\$\s*([\d,]+)", line)
+                if m:
+                    pick_lbl = m.group(1).strip().replace("•", "").strip()
+                    prob     = m.group(2)
+                    cuota    = m.group(3)
+                    ev       = m.group(4)
+                    retorno  = m.group(5)
+                    ev_color = "green" if "+" in ev and ev != "+0.0%" else "gray"
+                    picks_rows += f"""
+                    <tr>
+                      <td>{pick_lbl}</td>
+                      <td style="text-align:center"><b class="green">{prob}</b></td>
+                      <td style="text-align:center">{cuota}</td>
+                      <td style="text-align:center" class="{ev_color}">{ev}</td>
+                      <td style="text-align:center" class="orange">+${retorno}</td>
+                    </tr>"""
+
+        if in_parlays and "selecciones" in line.lower() and "──" in line:
+            # nueva entrada de parlay
+            pass
+        if in_parlays and "•" in line and "%" in line:
+            pass  # líneas de picks dentro del parlay — no las parseamos individualmente
+        if in_parlays and "Cuota combinada" in line:
+            m = re.search(r"Cuota combinada:\s*([\d\.]+).+Prob combinada:\s*([\d\.]+%).+EV:\s*([+\-\d\.]+%)", line)
+            if m:
+                cuota_c = m.group(1); prob_c = m.group(2); ev_c = m.group(3)
+                parlay_rows += f'<tr class="pick-row"><td colspan="3" style="color:#666;font-size:11px">Cuota: {cuota_c} | Prob: {prob_c} | EV: {ev_c}</td></tr>'
+        if in_parlays and "Invertir" in line:
+            m = re.search(r"Invertir \$([\d,]+).+ganarías \$([\d,]+)", line)
+            if m:
+                inv = m.group(1); gan = m.group(2)
+                parlay_rows += f'<tr class="pick-alta"><td colspan="3"><b class="green">💰 $1,000 → ganas $+{gan}</b></td></tr>'
+
+    if not picks_rows:
+        return ""
+
+    return f"""
+    <div class="card" style="border-left:4px solid #6a1b9a">
+      <div class="hdr" style="border-color:#6a1b9a">🎰 PARLAY ANALYZER — Combinadas de hoy</div>
+      <div style="color:#555;font-size:11px;margin-bottom:10px">
+        Picks con prob ≥65% · {n_parlays_ev_pos} parlays con EV positivo · Cuotas justas (~)</div>
+
+      <div style="font-weight:bold;font-size:12px;margin-bottom:6px;color:#444">PICKS INDIVIDUALES</div>
+      <table>
+        <tr>
+          <th>Pick</th><th style="text-align:center">Prob</th>
+          <th style="text-align:center">Cuota</th><th style="text-align:center">EV</th>
+          <th style="text-align:center">Retorno/$1000</th>
+        </tr>
+        {picks_rows}
+      </table>
+
+      <div style="font-weight:bold;font-size:12px;margin:12px 0 6px;color:#444">MEJORES PARLAYS</div>
+      <table>{parlay_rows if parlay_rows else "<tr><td class='gray'>Sin parlays con EV positivo disponibles.</td></tr>"}</table>
+
+      <div style="color:#888;font-size:10px;margin-top:8px">
+        ~ cuota justa (1/prob). Para EV real necesitas cuota del bookmaker.
+        Kelly 25% · max 3% bankroll · modelo en validación</div>
+    </div>"""
+
+
 def build_html(summary: dict, sections: dict[str, list[Path]]) -> str:
-    tracker_section  = build_tracker_section()
+    tracker_section   = build_tracker_section()
     top_picks_section = build_top_picks()
-    ml_section       = build_betting_analysis()
+    ml_section        = build_betting_analysis()
+    parlay_section    = build_parlay_section()
 
     # Ya no mostramos el HTML del Poisson betting bot (redundante con ml_section)
     betting_section = ""
@@ -948,6 +1057,8 @@ def build_html(summary: dict, sections: dict[str, list[Path]]) -> str:
   </div>
 
   {top_picks_section}
+
+  {parlay_section}
 
   {tracker_section}
 
