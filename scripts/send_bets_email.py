@@ -379,7 +379,7 @@ def _row_color(ev_val):
     return "#1a1a2e"
 
 def build_html(value_bets: list, intl_picks: list, parlays: list,
-               partidos_hoy: list) -> str:
+               partidos_hoy: list, portfolio_html: str = "") -> str:
     now_str = NOW_MX.strftime("%A %d %b · %H:%M CST")
 
     # ── Próximos partidos header ──
@@ -458,14 +458,17 @@ def build_html(value_bets: list, intl_picks: list, parlays: list,
 
   <!-- HEADER -->
   <div style="background:#0a0a1a;padding:12px 16px;border-radius:8px;
-              margin-bottom:12px;border-left:4px solid #E53935">
-    <div style="color:#E53935;font-size:18px;font-weight:bold">
-      🎰 VALUE BETS · MAU-STATISTICS
+              margin-bottom:12px;border-left:4px solid #00C853">
+    <div style="color:#00C853;font-size:18px;font-weight:bold">
+      📊 PORTAFOLIO DE APUESTAS · MAU-STATISTICS
     </div>
     <div style="color:#888;font-size:11px;margin-top:4px">
-      {now_str} · Modelos: Dixon-Coles 1997 · ELO Liga MX
+      {now_str} · Dixon-Coles · ELO Liga MX · Kelly 25% · Multi-posición EV+
     </div>
   </div>
+
+  <!-- PORTAFOLIO (sección principal) -->
+  {portfolio_html}
 
   <!-- PARTIDOS DE HOY -->
   <div style="background:#111827;padding:12px;border-radius:6px;margin-bottom:12px">
@@ -595,17 +598,39 @@ def main():
     intl_picks = load_intl_picks()
     print(f"  Picks internacionales: {len(intl_picks)}")
 
-    # Parlays
-    parlays = build_parlays(value_bets)
-    print(f"  Parlays con EV+: {len(parlays)}")
+    # ── Portafolio (núcleo de la estrategia) ──
+    try:
+        sys.path.insert(0, str(BASE / "scripts"))
+        from portfolio_betting import (
+            load_opportunities, build_portfolio, log_portfolio,
+            get_performance_stats, build_portfolio_html,
+            load_bankroll, update_results
+        )
+        update_results({})  # actualiza resultados de días anteriores
+        bk_data   = load_bankroll()
+        bankroll  = bk_data.get("actual", bk_data["inicial"])
+        opps      = load_opportunities()
+        portfolio = build_portfolio(opps, bankroll)
+        stats     = get_performance_stats()
+        log_portfolio(portfolio)
+        portfolio_html = build_portfolio_html(portfolio, stats)
+        n_pos = portfolio["n_posiciones"]
+        total_ev_port = portfolio["total_ev"]
+        print(f"  Portafolio: {n_pos} posiciones · E[Ret] +${total_ev_port:.1f} MXN")
+    except Exception as e:
+        print(f"  [warn] Portfolio engine: {e}")
+        portfolio_html = ""
+        n_pos = len(value_bets)
+        total_ev_port = sum(vb.get("ev",0) * 15 for vb in value_bets)
 
-    # Construir email
-    html = build_html(value_bets, intl_picks, parlays, partidos_hoy)
+    # Construir email (portafolio como sección principal + tabla clásica como ref)
+    html = build_html(value_bets, intl_picks, [], partidos_hoy,
+                      portfolio_html=portfolio_html)
 
     n_value = len(value_bets)
     n_intl  = len(intl_picks)
-    subject = (f"🎰 BETS {TODAY} {NOW_H} · "
-               f"{n_value} value bets Liga MX · {n_intl} picks intl")
+    subject = (f"📊 PORTAFOLIO {TODAY} {NOW_H} · "
+               f"{n_pos} posiciones · E[+${total_ev_port:.0f}] · {n_intl} picks intl")
 
     if args.dry_run:
         out = BASE / "output/reports/bets_email_preview.html"

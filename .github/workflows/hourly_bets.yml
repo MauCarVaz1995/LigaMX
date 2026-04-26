@@ -51,10 +51,27 @@ jobs:
         run: |
           python scripts/update_odds_ligamx.py || echo "[warn] odds falló"
 
-      - name: Enviar email de value bets
+      - name: Portafolio — actualizar resultados + construir posiciones del día
+        env:
+          PYTHONPATH: ${{ github.workspace }}/scripts
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+        run: |
+          python scripts/portfolio_betting.py --update-results || echo "[warn] portfolio falló"
+
+      - name: Enviar email de portafolio + value bets
         env:
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
           PYTHONPATH: ${{ github.workspace }}/scripts
         run: |
           python scripts/send_bets_email.py --hours-ahead 6
+
+      - name: Guardar portfolio_log (commit ligero)
+        run: |
+          git config user.email "bot@miau-stats.mx"
+          git config user.name "MiauStats Bot"
+          git add data/processed/portfolio_log.csv data/processed/bankroll.json \
+                  data/processed/odds_ligamx.csv output/reports/ 2>/dev/null || true
+          git diff --staged --quiet || \
+            git commit -m "auto: portfolio update $(date -u +%Y-%m-%dT%H:%M) [skip ci]"
+          git push 2>/dev/null || true
