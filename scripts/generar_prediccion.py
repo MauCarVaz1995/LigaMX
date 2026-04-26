@@ -28,8 +28,17 @@ import json
 import random
 import sys
 import warnings
-from datetime import date, datetime
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
+
+MX_TZ = timezone(timedelta(hours=-6))
+
+def utc_str_to_mx_date(utc_str: str) -> str:
+    try:
+        dt = datetime.fromisoformat(utc_str.replace("Z", "+00:00"))
+        return dt.astimezone(MX_TZ).strftime("%Y-%m-%d")
+    except Exception:
+        return utc_str[:10]
 
 import numpy as np
 import pandas as pd
@@ -522,7 +531,7 @@ def load_ligamx_matches(target_date: str) -> list[dict]:
     d = json.loads(f.read_text())
     out = []
     for p in d['partidos']:
-        if p['fecha'][:10] != target_date:
+        if utc_str_to_mx_date(p['fecha']) != target_date:
             continue
         if p.get('terminado'):
             continue
@@ -531,7 +540,7 @@ def load_ligamx_matches(target_date: str) -> list[dict]:
         out.append({
             'home':    home,
             'away':    away,
-            'fecha':   p['fecha'][:10],
+            'fecha':   utc_str_to_mx_date(p['fecha']),
             'torneo':  'Liga MX Clausura 2026',
             'jornada': p.get('jornada', '?'),
         })

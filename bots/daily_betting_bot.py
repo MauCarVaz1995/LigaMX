@@ -30,10 +30,23 @@ Uso:
 import argparse
 import json
 import sys
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 import pandas as pd
+
+# Zona horaria de México (UTC-6, sin DST desde 2023)
+MX_TZ = timezone(timedelta(hours=-6))
+
+def utc_str_to_mx_date(utc_str: str) -> str:
+    """Convierte timestamp UTC (ISO) a fecha en hora México CDMX (UTC-6).
+    e.g. '2026-04-27T01:05:00Z' → '2026-04-26' (son las 19:05 en CDMX)
+    """
+    try:
+        dt = datetime.fromisoformat(utc_str.replace("Z", "+00:00"))
+        return dt.astimezone(MX_TZ).strftime("%Y-%m-%d")
+    except Exception:
+        return utc_str[:10]
 
 BASE    = Path(__file__).resolve().parent.parent
 SCRIPTS = BASE / "scripts"
@@ -89,7 +102,7 @@ def get_fixtures(target_dates: list[str]) -> list[dict]:
         for p in d["partidos"]:
             if p.get("terminado"):
                 continue
-            fecha = p["fecha"][:10]
+            fecha = utc_str_to_mx_date(p["fecha"])  # hora México, no UTC
             if fecha not in target_dates:
                 continue
             pid = str(p.get("id", f"{p.get('local','')}_{p.get('visitante','')}_{fecha}"))

@@ -25,7 +25,7 @@ import json
 import os
 import tempfile
 import warnings
-from datetime import date, datetime
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 import pandas as pd
@@ -37,7 +37,16 @@ BASE         = Path(__file__).resolve().parent.parent
 ODDS_LIGAMX  = BASE / "data/processed/odds_ligamx.csv"
 BETTING_LOG  = BASE / "data/processed/betting_log.csv"
 
+MX_TZ = timezone(timedelta(hours=-6))
 TODAY = date.today().isoformat()
+
+def utc_to_mx_date(utc_str: str) -> str:
+    """Convierte timestamp UTC a fecha México City (UTC-6, sin DST desde 2023)."""
+    try:
+        dt = datetime.fromisoformat(utc_str.replace("Z", "+00:00"))
+        return dt.astimezone(MX_TZ).strftime("%Y-%m-%d")
+    except Exception:
+        return utc_str[:10]
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Configuración
@@ -203,10 +212,7 @@ def fetch_odds(markets: list[str] = None, verbose: bool = True) -> list[dict]:
         local  = norm_team(event.get("home_team", ""))
         visita = norm_team(event.get("away_team", ""))
         fecha_raw = event.get("commence_time", "")
-        try:
-            fecha = datetime.fromisoformat(fecha_raw.replace("Z", "+00:00")).strftime("%Y-%m-%d")
-        except Exception:
-            fecha = fecha_raw[:10]
+        fecha = utc_to_mx_date(fecha_raw)  # fecha en hora México City
 
         row = {
             "fecha":       fecha,
