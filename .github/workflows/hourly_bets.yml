@@ -44,12 +44,18 @@ jobs:
         run: |
           python bots/daily_betting_bot.py --days 1 || echo "[warn] betting_bot falló"
 
-      - name: Fetch odds + calcular EV (Liga MX)
+      - name: Fetch odds + calcular EV (Liga MX — The Odds API)
         env:
           PYTHONPATH: ${{ github.workspace }}/scripts
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
         run: |
           python scripts/update_odds_ligamx.py || echo "[warn] odds falló"
+
+      - name: Scraper Caliente / BetCris / Codere (guía manual si sin Playwright)
+        env:
+          PYTHONPATH: ${{ github.workspace }}/scripts
+        run: |
+          python bots/odds_scraper_bot.py --targets || echo "[warn] scraper falló"
 
       - name: Portafolio — actualizar resultados + construir posiciones del día
         env:

@@ -238,11 +238,30 @@ def build_portfolio(opps: list[dict], bankroll: float) -> dict:
                  if not o["tiene_cuota"] and o["prob"] >= 0.65]
     watchlist.sort(key=lambda x: -x["prob"])
 
+    # Guía "donde apostar": cuotas mínimas para cada mercado del portafolio
+    # + mejor casa disponible en The Odds API accesible desde MX
+    MX_ACCESSIBLE = ["onexbet", "betway", "betonlineag", "lowvig", "marathonbet",
+                     "betus", "coolbet", "everygame", "betsson"]
+    MIN_EV_GUIDE  = 0.04
+    guia_casas = []
+    for p in posiciones:
+        cuota_min_caliente = round(1 / p["prob"] * (1 + MIN_EV_GUIDE), 2)
+        # Buscar la mejor cuota accesible desde MX (no solo Pinnacle)
+        best_mx = p["cuota"]  # ya tenemos la mejor cuota de todo The Odds API
+        bk_mx   = p.get("bk","?")
+        guia_casas.append({
+            **{k: p[k] for k in ("partido","mercado","prob","cuota","ev","bk")},
+            "cuota_min_caliente": cuota_min_caliente,
+            "best_cuota_mx":      best_mx,
+            "best_bk_mx":         bk_mx,
+        })
+
     return {
         "fecha":         TODAY,
         "bankroll":      bankroll,
         "posiciones":    posiciones,
         "watchlist":     watchlist[:12],
+        "guia_casas":    guia_casas,
         "total_invertido": round(total_bet, 1),
         "total_ev":      round(total_ev, 2),
         "roi_esperado":  round(roi_esperado, 2),
