@@ -24,8 +24,9 @@ import argparse
 import json
 import os
 import smtplib
+import subprocess
 import sys
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -50,6 +51,132 @@ REPORTS_DIR = BASE / "output/reports"
 # ─────────────────────────────────────────────────────────────────────────────
 CHARTS   = BASE / "output/charts"
 PRED_DIR = BASE / "output/charts/predicciones"
+
+
+def _img_age_days(path: Path) -> float:
+    """
+    Días reales de antigüedad de una imagen.
+    En GitHub Actions el mtime = checkout time → usamos git log como fallback.
+    """
+    import time
+    mtime_days = (time.time() - path.stat().st_mtime) / 86400
+    # Si parece reciente (< 1 día), confiar en mtime
+    if mtime_days < 1:
+        return mtime_days
+    # Si mtime parece ser el checkout (todos los archivos igual), usar git log
+    try:
+        result = subprocess.run(
+            ["git", "log", "-1", "--format=%ct", "--", str(path)],
+            capture_output=True, text=True, cwd=str(BASE), timeout=5
+        )
+        ct = result.stdout.strip()
+        if ct:
+            return (time.time() - int(ct)) / 86400
+    except Exception:
+        pass
+    return mtime_days
+
+
+def _mexico_has_match(past_days: int = 7, future_days: int = 7) -> bool:
+    """
+    True si México tiene partido registrado dentro de la ventana [hoy-past, hoy+future].
+    Consulta data/raw/internacional/results.csv.
+    """
+    intl_csv = BASE / "data/raw/internacional/results.csv"
+    if not intl_csv.exists():
+        return False
+    try:
+        import pandas as pd
+        today    = date.today()
+        win_from = (today - timedelta(days=past_days)).isoformat()
+        win_to   = (today + timedelta(days=future_days)).isoformat()
+        df = pd.read_csv(intl_csv, usecols=["date", "home_team", "away_team"])
+        mask = (
+            ((df["home_team"] == "Mexico") | (df["away_team"] == "Mexico")) &
+            (df["date"] >= win_from) &
+            (df["date"] <= win_to)
+        )
+        return bool(mask.any())
+    except Exception:
+        return False
+
+
+def _intl_match_date(country_a: str, country_b: str) -> str | None:
+    """
+    Busca la fecha más reciente de un partido internacional entre dos países.
+    country_a/b en formato FotMob (ej. "Mexico", "Portugal").
+    """
+    intl_csv = BASE / "data/raw/internacional/results.csv"
+    if not intl_csv.exists():
+        return None
+    try:
+        import pandas as pd
+        df = pd.read_csv(intl_csv, usecols=["date", "home_team", "away_team"])
+        mask = (
+            ((df["home_team"] == country_a) & (df["away_team"] == country_b)) |
+            ((df["home_team"] == country_b) & (df["away_team"] == country_a))
+        )
+        rows = df[mask].sort_values("date", ascending=False)
+        if rows.empty:
+            return None
+        return str(rows.iloc[0]["date"])[:10]
+    except Exception:
+        return None
+
+
+# Mapa código FotMob → nombre en results.csv
+_ISO_TO_COUNTRY = {
+    "MEX": "Mexico", "ARG": "Argentina", "BRA": "Brazil",
+    "USA": "United States", "COL": "Colombia", "CHI": "Chile",
+    "URU": "Uruguay", "PER": "Peru",    "PAR": "Paraguay",
+    "VEN": "Venezuela", "ECU": "Ecuador", "BOL": "Bolivia",
+    "POR": "Portugal",  "ESP": "Spain",   "FRA": "France",
+    "GER": "Germany",   "ITA": "Italy",   "ENG": "England",
+    "NED": "Netherlands","BEL": "Belgium", "CRO": "Croatia",
+    "SEN": "Senegal",   "GHA": "Ghana",   "MAR": "Morocco",
+    "JPN": "Japan",     "KOR": "South Korea", "IRN": "Iran",
+    "AUS": "Australia", "CAN": "Canada",  "COS": "Costa Rica",
+    "HON": "Honduras",  "PAN": "Panama",  "JAM": "Jamaica",
+    "HAI": "Haiti",     "SLV": "El Salvador", "GUA": "Guatemala",
+}
+
+
+def _regenerate_rankings_if_stale(max_age_days: int = 7):
+    """
+    Regenera los rankings de jugadores si tienen más de max_age_days.
+    Llama a scripts/05_viz_player_performance.py silenciosamente.
+    """
+    ranking_files = [
+        CHARTS / "ranking_portero.png",
+        CHARTS / "ranking_defensa.png",
+        CHARTS / "ranking_mediocampista.png",
+        CHARTS / "ranking_delantero.png",
+    ]
+    needs_regen = any(
+        not f.exists() or _img_age_days(f) > max_age_days
+        for f in ranking_files
+    )
+    if not needs_regen:
+        return
+
+    print(f"  [rankings] Imágenes tienen >{max_age_days}d — regenerando...")
+    script = BASE / "scripts" / "05_viz_player_performance.py"
+    if not script.exists():
+        print(f"  [rankings] WARN: {script} no encontrado")
+        return
+    try:
+        result = subprocess.run(
+            [sys.executable, str(script)],
+            cwd=str(BASE),
+            env={**os.environ, "MPLBACKEND": "Agg"},
+            capture_output=True, text=True, timeout=120
+        )
+        if result.returncode == 0:
+            print("  [rankings] Regenerados OK")
+        else:
+            print(f"  [rankings] WARN: {result.stderr[:200]}")
+    except Exception as e:
+        print(f"  [rankings] WARN al regenerar: {e}")
 
 
 def _load_pending_matches() -> dict:
@@ -131,8 +258,7 @@ def _image_is_relevant(path: Path, pending: dict, today_s: str,
 
     # ── Internacional y Mexico_vs_X → solo recientes (5 días) ────────────────
     if "Internacional" in path_s or "Mexico_vs_" in path_s:
-        mtime = date.fromtimestamp(path.stat().st_mtime)
-        return (today_dt - mtime).days <= 5
+        return _img_age_days(path) <= 5
 
     return True   # ELO, rankings, otros → siempre relevantes
 
@@ -219,49 +345,81 @@ def collect_by_section() -> dict[str, list[Path]]:
                 sections["CCL"].append(img)
 
     # ── Internacional ─────────────────────────────────────────────────────────
-    # Predicciones de selecciones en carpeta Internacional
+    import re as _re
+    today_dt = date.today()
+
+    # ¿México jugó en los últimos 7 días o tiene partido en los próximos 7?
+    mex_recent  = _mexico_has_match(past_days=7,  future_days=0)
+    mex_upcoming = _mexico_has_match(past_days=0, future_days=7)
+
+    # Predicciones de selecciones en carpeta Internacional (< 5 días por git age)
     intl_root = PRED_DIR / "Internacional"
     if intl_root.exists():
         for img in sorted(intl_root.rglob("*.png")):
             if _image_is_relevant(img, pending, today_s, last_jornada):
                 sections["Internacional"].append(img)
 
-    # Carpetas Mexico_vs_X
+    # Carpetas Mexico_vs_X (< 5 días por git age)
     for folder in sorted(PRED_DIR.glob("Mexico_vs_*")):
         for img in sorted(folder.glob("*.png")):
             if _image_is_relevant(img, pending, today_s, last_jornada):
                 sections["Internacional"].append(img)
 
-    # Imágenes de predicción de selecciones en output/charts/ (últimos 7 días)
-    today_dt = date.today()
-    for name in ["selecciones_prediccion.png", "selecciones_ultimos5.png",
-                 "selecciones_ranking_elo.png"]:
-        p = CHARTS / name
-        if p.exists():
-            mtime = date.fromtimestamp(p.stat().st_mtime)
-            if (today_dt - mtime).days <= 7:
-                sections["Internacional"].append(p)
+    # selecciones_ranking_elo.png → siempre útil si < 30 días
+    p = CHARTS / "selecciones_ranking_elo.png"
+    if p.exists() and _img_age_days(p) <= 30:
+        sections["Internacional"].append(p)
+
+    # selecciones_prediccion.png → solo si México tiene partido próximo (7 días)
+    p = CHARTS / "selecciones_prediccion.png"
+    if p.exists() and mex_upcoming and _img_age_days(p) <= 7:
+        sections["Internacional"].append(p)
+
+    # selecciones_ultimos5.png → solo si México jugó en los últimos 7 días
+    p = CHARTS / "selecciones_ultimos5.png"
+    if p.exists() and mex_recent and _img_age_days(p) <= 7:
+        sections["Internacional"].append(p)
 
     # Post-partido internacionales (MEX_POR etc.) en output/charts/partidos/
-    # Solo imágenes con códigos de país (ej. MEX_POR) — no las de Liga MX (tienen fecha YYYY-MM-DD)
-    import re as _re
+    # Solo imágenes con códigos de país ISO3 — verificar fecha real del partido en results.csv
     partidos_dir = BASE / "output/charts/partidos"
     if partidos_dir.exists():
         for img in sorted(partidos_dir.glob("*_team_stats.png")):
-            # Patrón internacional: XXX_YYY_team_stats.png (sin fecha)
-            if not _re.match(r"^[A-Z]{2,3}_[A-Z]{2,3}_team_stats\.png$", img.name):
+            # Patrón internacional: AAA_BBB_team_stats.png (sin fecha YYYY-MM-DD)
+            m = _re.match(r"^([A-Z]{2,3})_([A-Z]{2,3})_team_stats\.png$", img.name)
+            if not m:
                 continue
-            mtime = date.fromtimestamp(img.stat().st_mtime)
-            if (today_dt - mtime).days <= 7:
-                sections["Internacional"].append(img)
+            code_a, code_b = m.group(1), m.group(2)
+            country_a = _ISO_TO_COUNTRY.get(code_a, code_a.capitalize())
+            country_b = _ISO_TO_COUNTRY.get(code_b, code_b.capitalize())
+            # Buscar fecha real del partido en results.csv
+            match_date = _intl_match_date(country_a, country_b)
+            if match_date:
+                age = (today_dt - date.fromisoformat(match_date)).days
+                if age <= 7:
+                    sections["Internacional"].append(img)
+            else:
+                # Sin fecha en BD → usar git age como fallback (< 7 días)
+                if _img_age_days(img) <= 7:
+                    sections["Internacional"].append(img)
 
     # ── ELO & Stats ───────────────────────────────────────────────────────────
-    for name in ["elo_ranking.png", "elo_evolucion.png",
-                 "montecarlo_clausura2026.png",
-                 "ranking_portero.png", "ranking_defensa.png",
+    # ELO rankings y evolución: generados por el pipeline diario → incluir si < 2 días
+    for name in ["elo_ranking.png", "elo_evolucion.png"]:
+        p = CHARTS / name
+        if p.exists() and _img_age_days(p) <= 2:
+            sections["ELO & Stats"].append(p)
+
+    # Montecarlo: generado semanalmente → incluir si < 8 días
+    p = CHARTS / "montecarlo_clausura2026.png"
+    if p.exists() and _img_age_days(p) <= 8:
+        sections["ELO & Stats"].append(p)
+
+    # Rankings de jugadores: regenerados justo antes del email → incluir si < 2 días
+    for name in ["ranking_portero.png", "ranking_defensa.png",
                  "ranking_mediocampista.png", "ranking_delantero.png"]:
         p = CHARTS / name
-        if p.exists():
+        if p.exists() and _img_age_days(p) <= 2:
             sections["ELO & Stats"].append(p)
 
     # Deduplicar
@@ -811,6 +969,9 @@ def build_html(summary: dict, sections: dict[str, list[Path]]) -> str:
 # Enviar
 # ─────────────────────────────────────────────────────────────────────────────
 def send_email(app_password: str, dry_run: bool = False) -> bool:
+    # Regenerar rankings si están desactualizados (antes de recolectar secciones)
+    _regenerate_rankings_if_stale(max_age_days=7)
+
     summary  = load_summary()
     sections = collect_by_section()
     all_imgs = [img for imgs in sections.values() for img in imgs]

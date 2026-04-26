@@ -157,6 +157,13 @@ jobs:
         run: |
           python bots/discovery_bot.py || echo "[warn] discovery_bot falló — continuando"
 
+      - name: Actualizar rankings de jugadores (non-critical)
+        env:
+          PYTHONPATH: ${{ github.workspace }}/scripts
+          MPLBACKEND: Agg
+        run: |
+          python scripts/05_viz_player_performance.py || echo "[warn] rankings falló — continuando"
+
       - name: Send daily email summary (non-critical)
         env:
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
