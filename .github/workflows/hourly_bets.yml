@@ -1,0 +1,60 @@
+name: Hourly Bets Email
+
+on:
+  schedule:
+    # Cada hora de 17:00 a 04:00 UTC = 11am a 10pm CDMX (partidos Liga MX 17-22 CDMX)
+    - cron: '0 17 * * *'
+    - cron: '0 18 * * *'
+    - cron: '0 19 * * *'
+    - cron: '0 20 * * *'
+    - cron: '0 21 * * *'
+    - cron: '0 22 * * *'
+    - cron: '0 23 * * *'
+    - cron: '0 0 * * *'
+    - cron: '0 1 * * *'
+    - cron: '0 2 * * *'
+    - cron: '0 3 * * *'
+    - cron: '0 4 * * *'
+  workflow_dispatch:   # disparo manual para pruebas
+
+jobs:
+  send-bets:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          pip install -q requests pandas scipy numpy
+
+      - name: Run betting bot (actualiza probs del día)
+        env:
+          PYTHONPATH: ${{ github.workspace }}/scripts
+        run: |
+          python bots/daily_betting_bot.py --days 1 || echo "[warn] betting_bot falló"
+
+      - name: Fetch odds + calcular EV (Liga MX)
+        env:
+          PYTHONPATH: ${{ github.workspace }}/scripts
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+        run: |
+          python scripts/update_odds_ligamx.py || echo "[warn] odds falló"
+
+      - name: Enviar email de value bets
+        env:
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+          PYTHONPATH: ${{ github.workspace }}/scripts
+        run: |
+          python scripts/send_bets_email.py --hours-ahead 6

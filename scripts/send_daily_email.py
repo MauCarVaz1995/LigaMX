@@ -927,11 +927,37 @@ def build_parlay_section() -> str:
     </div>"""
 
 
+def build_value_bets_section() -> str:
+    """Incluye el HTML del email de value bets (generado por send_bets_email.py)."""
+    try:
+        import sys as _sys
+        _sys.path.insert(0, str(BASE / "scripts"))
+        from send_bets_email import (
+            get_ligamx_today, fetch_ligamx_odds, load_model_probs,
+            build_ligamx_value_bets, load_intl_picks, build_parlays, build_html as _build_bets
+        )
+        partidos = get_ligamx_today()
+        odds     = fetch_ligamx_odds()
+        probs    = load_model_probs()
+        vb       = build_ligamx_value_bets(partidos, odds, probs)
+        intl     = load_intl_picks()
+        parlays  = build_parlays(vb)
+        inner    = _build_bets(vb, intl, parlays, partidos)
+        # Extraer solo el body
+        import re
+        m = re.search(r'<body[^>]*>(.*)</body>', inner, re.DOTALL)
+        content = m.group(1).strip() if m else inner
+        return f'<div class="card" style="padding:0">{content}</div>'
+    except Exception as e:
+        return f'<div class="card"><div class="hdr" style="border-color:#E53935">🎰 Value Bets</div><p style="color:#888">Error cargando: {e}</p></div>'
+
+
 def build_html(summary: dict, sections: dict[str, list[Path]]) -> str:
-    tracker_section   = build_tracker_section()
-    top_picks_section = build_top_picks()
-    ml_section        = build_betting_analysis()
-    parlay_section    = build_parlay_section()
+    tracker_section    = build_tracker_section()
+    top_picks_section  = build_top_picks()
+    ml_section         = build_betting_analysis()
+    parlay_section     = build_parlay_section()
+    value_bets_section = build_value_bets_section()
 
     # Ya no mostramos el HTML del Poisson betting bot (redundante con ml_section)
     betting_section = ""
@@ -1055,6 +1081,8 @@ def build_html(summary: dict, sections: dict[str, list[Path]]) -> str:
     <div class="hdr">🖼️ Imágenes adjuntas — {total_imgs} en total</div>
     {sections_html}
   </div>
+
+  {value_bets_section}
 
   {top_picks_section}
 
