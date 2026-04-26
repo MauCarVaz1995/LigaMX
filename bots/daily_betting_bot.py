@@ -64,29 +64,59 @@ EV_THRESHOLD = 0.05
 
 def get_fixtures(target_dates: list[str]) -> list[dict]:
     """
-    Lee historico_clausura_2026.json y devuelve partidos pendientes
-    en las fechas pedidas.
+    Lee todos los JSON de histórico disponibles y devuelve partidos pendientes.
+    Soporta fase regular Y Liguilla (cuartos, semifinales, final — partidos de ida y vuelta).
+    Busca en este orden: historico_clausura_2026.json, historico_liguilla_2026.json,
+    y cualquier historico_*.json reciente.
     """
     fixtures = []
-    hist_file = HIST_DIR / "historico_clausura_2026.json"
-    if not hist_file.exists():
+    seen_ids = set()
+
+    # Buscar todos los JSONs de histórico disponibles
+    hist_files = sorted(HIST_DIR.glob("historico_*.json"), reverse=True)
+    if not hist_files:
         return []
 
-    with open(hist_file) as f:
-        d = json.load(f)
-
-    for p in d["partidos"]:
-        if p.get("terminado"):
+    for hist_file in hist_files:
+        try:
+            with open(hist_file) as f:
+                d = json.load(f)
+        except Exception:
             continue
-        fecha = p["fecha"][:10]
-        if fecha in target_dates:
+
+        torneo = d.get("torneo", hist_file.stem.replace("historico_", "").replace("_", " ").title())
+
+        for p in d["partidos"]:
+            if p.get("terminado"):
+                continue
+            fecha = p["fecha"][:10]
+            if fecha not in target_dates:
+                continue
+            pid = str(p.get("id", f"{p.get('local','')}_{p.get('visitante','')}_{fecha}"))
+            if pid in seen_ids:
+                continue
+            seen_ids.add(pid)
+
+            # Detectar si es Liguilla
+            jornada_raw = str(p.get("jornada", "0"))
+            is_liguilla = any(k in jornada_raw.lower() for k in
+                              ["cuartos", "semifinal", "final", "liguilla"]) or \
+                          any(k in torneo.lower() for k in
+                              ["liguilla", "playoff", "cuartos", "semifinal"])
+            fase = "liguilla" if is_liguilla else "regular"
+
+            # Leg (ida/vuelta) para Liguilla
+            leg = p.get("leg", p.get("vuelta", None))
+
             fixtures.append({
-                "match_id":  p.get("id"),
+                "match_id":  pid,
                 "fecha":     fecha,
-                "jornada":   int(p.get("jornada", 0)),
+                "jornada":   jornada_raw,
                 "local":     p["local"],
-                "visita":    p["visitante"],
-                "torneo":    "Liga MX Clausura 2026",
+                "visita":    p.get("visitante", p.get("visita", "?")),
+                "torneo":    torneo,
+                "fase":      fase,
+                "leg":       leg,
             })
 
     return fixtures

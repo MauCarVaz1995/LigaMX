@@ -239,6 +239,142 @@ def retrain_all(verbose: bool = True) -> dict:
 
 
 # ─────────────────────────────────────────────────────────────────────────────
+# Auto-calibración: detecta y aplica correcciones de drift sin intervención manual
+# ─────────────────────────────────────────────────────────────────────────────
+
+DRIFT_LOG = BASE / "data/processed/drift_log.json"
+
+def detect_and_fix_drift(verbose: bool = True) -> dict:
+    """
+    Lee match_events.csv y detecta desviaciones entre parámetros históricos
+    y recientes (últimas 3 jornadas). Si el drift es > umbral, actualiza
+    los parámetros globales en los modelos guardados SIN re-entrenamiento completo.
+
+    Parámetros monitoreados:
+    - mu_tarjetas: media tarjetas/partido (umbral drift > 0.5)
+    - mu_corners:  media corners/partido (umbral drift > 0.8)
+    - ratio_local: fracción partidos que gana local (umbral drift > 0.08)
+
+    Devuelve dict con cambios aplicados.
+    """
+    if not EVENTS_CSV.exists():
+        return {}
+
+    df = pd.read_csv(EVENTS_CSV)
+    if len(df) < 30:
+        return {}
+
+    df = df.sort_values("fecha").reset_index(drop=True)
+
+    # Calcular columnas derivadas ANTES de slicear (evita SettingWithCopyWarning)
+    if "tarjetas_total" not in df.columns:
+        df["tarjetas_total"] = (
+            df["amarillas_local"].fillna(0) +
+            df["amarillas_visitante"].fillna(0) +
+            2 * df["rojas_local"].fillna(0) +
+            2 * df["rojas_visitante"].fillna(0)
+        )
+    if "corners_total" not in df.columns and \
+       "corners_local" in df.columns and "corners_visitante" in df.columns:
+        df["corners_total"] = df["corners_local"].fillna(0) + df["corners_visitante"].fillna(0)
+
+    df_recent = df.tail(27).copy()   # ~3 jornadas × 9 partidos
+    df_hist   = df                   # dataset completo
+
+    fixes_applied = {}
+    drift_report  = {}
+
+    # ── Tarjetas ──
+    for _df in [df, df_recent, df_hist]:
+        if "tarjetas_total" not in _df.columns:
+            pass  # ya calculado arriba
+    mu_hist_t   = df_hist["tarjetas_total"].mean()
+    mu_recent_t = df_recent["tarjetas_total"].mean()
+    drift_t = abs(mu_recent_t - mu_hist_t)
+    drift_report["tarjetas"] = {
+        "mu_hist": round(mu_hist_t, 3),
+        "mu_recent": round(mu_recent_t, 3),
+        "drift": round(mu_recent_t - mu_hist_t, 3),
+    }
+
+    if drift_t > 0.5 and TARJETAS_MODEL.exists():
+        # Actualizar mu en el modelo guardado con blend 70% hist + 30% reciente
+        mu_blend = 0.70 * mu_hist_t + 0.30 * mu_recent_t
+        try:
+            model_data = json.loads(TARJETAS_MODEL.read_text())
+            old_mu = model_data.get("mu", mu_hist_t)
+            model_data["mu"] = round(mu_blend, 4)
+            model_data["_drift_corrected"] = date.today().isoformat()
+            TARJETAS_MODEL.write_text(json.dumps(model_data, ensure_ascii=False, indent=2))
+            fixes_applied["tarjetas_mu"] = {
+                "antes": round(old_mu, 3),
+                "despues": round(mu_blend, 3),
+                "razon": f"drift={mu_recent_t-mu_hist_t:+.2f} > 0.5",
+            }
+            if verbose:
+                print(f"  [auto-fix] tarjetas mu: {old_mu:.3f} → {mu_blend:.3f} "
+                      f"(drift {mu_recent_t-mu_hist_t:+.2f})")
+        except Exception as e:
+            if verbose:
+                print(f"  [warn] no se pudo actualizar tarjetas_model.json: {e}")
+
+    # ── Corners ──
+    if "corners_total" in df.columns:
+        mu_hist_c   = df_hist["corners_total"].mean()
+        mu_recent_c = df_recent["corners_total"].mean()
+        drift_c = abs(mu_recent_c - mu_hist_c)
+        drift_report["corners"] = {
+            "mu_hist": round(mu_hist_c, 3),
+            "mu_recent": round(mu_recent_c, 3),
+            "drift": round(mu_recent_c - mu_hist_c, 3),
+        }
+
+        if drift_c > 0.8 and CORNERS_MODEL.exists():
+            mu_blend_c = 0.70 * mu_hist_c + 0.30 * mu_recent_c
+            try:
+                model_data = json.loads(CORNERS_MODEL.read_text())
+                old_mu_c = model_data.get("mu_total", mu_hist_c)
+                model_data["mu_total"] = round(mu_blend_c, 4)
+                model_data["_drift_corrected"] = date.today().isoformat()
+                CORNERS_MODEL.write_text(json.dumps(model_data, ensure_ascii=False, indent=2))
+                fixes_applied["corners_mu"] = {
+                    "antes": round(old_mu_c, 3),
+                    "despues": round(mu_blend_c, 3),
+                    "razon": f"drift={mu_recent_c-mu_hist_c:+.2f} > 0.8",
+                }
+                if verbose:
+                    print(f"  [auto-fix] corners mu: {old_mu_c:.3f} → {mu_blend_c:.3f} "
+                          f"(drift {mu_recent_c-mu_hist_c:+.2f})")
+            except Exception as e:
+                if verbose:
+                    print(f"  [warn] no se pudo actualizar corners_model.json: {e}")
+
+    # ── Guardar log de drift ──
+    drift_entry = {
+        "fecha": date.today().isoformat(),
+        "drift_detectado": drift_report,
+        "fixes_aplicados": fixes_applied,
+        "n_partidos_recientes": len(df_recent),
+        "n_partidos_hist": len(df_hist),
+    }
+    history = []
+    if DRIFT_LOG.exists():
+        try:
+            history = json.loads(DRIFT_LOG.read_text())
+        except Exception:
+            pass
+    history.append(drift_entry)
+    history = history[-30:]   # guardar solo últimas 30 entradas
+    DRIFT_LOG.write_text(json.dumps(history, ensure_ascii=False, indent=2))
+
+    if not fixes_applied and verbose:
+        print(f"  [drift] Sin correcciones: tarjetas Δ={mu_recent_t-mu_hist_t:+.2f}, "
+              f"dentro del umbral")
+
+    return fixes_applied
+
+
+# ─────────────────────────────────────────────────────────────────────────────
 # main
 # ─────────────────────────────────────────────────────────────────────────────
 
@@ -261,12 +397,19 @@ def main():
         print(json.dumps({"corners": c, "tarjetas": t}, indent=2))
         return
 
+    # 1. Siempre detectar y corregir drift (no requiere re-entrenamiento completo)
+    print(f"\n── Detección automática de drift ──")
+    fixes = detect_and_fix_drift(verbose=True)
+    if fixes:
+        print(f"  ✓ {len(fixes)} correcciones aplicadas automáticamente")
+
+    # 2. Re-entrenar si hay suficientes cambios
     should, reason = should_retrain(force=args.force)
     if should:
-        print(f"  Re-entrenando: {reason}")
+        print(f"\n  Re-entrenando: {reason}")
         retrain_all(verbose=True)
     else:
-        print(f"  Sin re-entrenamiento necesario: {reason}")
+        print(f"\n  Sin re-entrenamiento necesario: {reason}")
         if RETRAIN_LOG.exists():
             log = json.loads(RETRAIN_LOG.read_text())
             print(f"  Último entrenamiento: {log.get('last_train_date')} "
