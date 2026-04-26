@@ -1,0 +1,76 @@
+[
+  {
+    "match_id": "5101866",
+    "fecha": "2026-04-26",
+    "jornada": "17",
+    "local": "Santos Laguna",
+    "visita": "Monterrey",
+    "torneo": "Clausura 2026",
+    "elo_local": 1356.98,
+    "elo_visita": 1472.17,
+    "corners": {},
+    "tarjetas": {
+      "over_3.5": 0.745,
+      "under_3.5": null,
+      "over_4.5": 0.572,
+      "under_4.5": 0.428,
+      "over_5.5": 0.397,
+      "under_5.5": 0.603,
+      "lambda_total": 5.07,
+      "cr_local": 3.1,
+      "cr_visita": 1.98,
+      "rival_bonus": 0.0
+    },
+    "btts": {
+      "btts_si": 0.604,
+      "btts_no": 0.396,
+      "over_1.5": 0.804,
+      "over_2.5": 0.544,
+      "under_2.5": 0.456,
+      "btts_over_2.5": 0.461,
+      "lambda_local": 1.404,
+      "lambda_visita": 1.454
+    },
+    "value_bets": [],
+    "errors": [
+      "corners: '<=' not supported between instances of 'str' and 'int'"
+    ]
+  },
+  {
+    "match_id": "5101867",
+    "fecha": "2026-04-26",
+    "jornada": "17",
+    "local": "Cruz Azul",
+    "visita": "Necaxa",
+    "torneo": "Clausura 2026",
+    "elo_local": 1642.51,
+    "elo_visita": 1439.16,
+    "corners": {},
+    "tarjetas": {
+      "over_3.5": 0.726,
+      "under_3.5": null,
+      "over_4.5": 0.548,
+      "under_4.5": 0.452,
+      "over_5.5": 0.373,
+      "under_5.5": 0.627,
+      "lambda_total": 4.94,
+      "cr_local": 2.48,
+      "cr_visita": 2.46,
+      "rival_bonus": 0.0
+    },
+    "btts": {
+      "btts_si": 0.538,
+      "btts_no": 0.462,
+      "over_1.5": 0.801,
+      "over_2.5": 0.544,
+      "under_2.5": 0.456,
+      "btts_over_2.5": 0.413,
+      "lambda_local": 1.935,
+      "lambda_visita": 0.923
+    },
+    "value_bets": [],
+    "errors": [
+      "corners: '<=' not supported between instances of 'str' and 'int'"
+    ]
+  }
+]
