@@ -264,7 +264,7 @@ def build_poisson_model(matches: list[dict]) -> dict:
     }
 
 
-DC_RHO = -0.13  # parámetro Dixon-Coles (estándar académico para fútbol)
+DC_RHO = -0.22  # parámetro Dixon-Coles calibrado de datos históricos Liga MX (1-1 ratio=1.22)
 
 def dixon_coles_correction(home_goals, away_goals, lambda_home, lambda_away, rho):
     """

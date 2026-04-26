@@ -54,26 +54,26 @@ def _get_latest_elos(local: str, visita: str) -> tuple[float, float]:
 
 def _lambdas_from_elo(elo_local: float, elo_visita: float) -> tuple[float, float]:
     """
-    Convierte ELOs a λ_local y λ_visita.
+    Convierte ELOs a λ_local y λ_visita usando fórmula aditiva.
 
-    λ_l = MU_HOME × (elo_l_adj / ELO_REF)
-    λ_v = MU_AWAY × (elo_v_adj / ELO_REF)
+    Fórmula: diferencia de ELO determina la diferencia esperada de goles.
+    Calibración: 300 ELO points ≈ 1 gol de diferencia esperado.
+    Preserva el total de goles (MU_TOTAL=2.858) como suma constante.
 
-    Esto permite que la suma total varíe según la calidad de los equipos
-    (partidos entre equipos fuertes tienden a más goles que equipos débiles).
-    MU_HOME=1.636, MU_AWAY=1.222 calibrados del modelo Dixon-Coles.
+    Ejemplos con HOME_ADV=100:
+      ELOs iguales:              lam_l=1.595, lam_v=1.263  → modo 1-1
+      ELO diff=200 (home fav):   lam_l=1.928, lam_v=0.930  → modo 1-0
+      ELO diff=-200 (away fav):  lam_l=1.262, lam_v=1.596  → modo 1-1 o 0-1
     """
-    ELO_REF  = 1500.0
-    MU_HOME  = 1.636  # media goles local (histórico Liga MX ponderado)
-    MU_AWAY  = 1.222  # media goles visita
-    elo_eff_l = elo_local  + HOME_ADV * 0.5
-    elo_eff_v = elo_visita - HOME_ADV * 0.5
-    lam_l = MU_HOME * (elo_eff_l / ELO_REF)
-    lam_v = MU_AWAY * (elo_eff_v / ELO_REF)
-    return max(lam_l, 0.15), max(lam_v, 0.15)
+    MU_TOTAL = 1.636 + 1.222     # 2.858 — total goles esperado (Liga MX histórico)
+    elo_diff  = (elo_local + HOME_ADV) - elo_visita
+    goal_diff = elo_diff / 300.0  # calibrado: 300 ELO ≈ 1 gol de diferencia
+    lam_l = (MU_TOTAL + goal_diff) / 2.0
+    lam_v = (MU_TOTAL - goal_diff) / 2.0
+    return max(lam_l, 0.20), max(lam_v, 0.20)
 
 
-def _dixon_coles_rho(lam_l: float, lam_v: float, rho: float = -0.13) -> np.ndarray:
+def _dixon_coles_rho(lam_l: float, lam_v: float, rho: float = -0.22) -> np.ndarray:
     """Matriz de probabilidades Dixon-Coles hasta max_g×max_g."""
     max_g = 8
     tau = np.ones((max_g, max_g))
@@ -95,7 +95,7 @@ def predecir_btts(local: str, visita: str,
                   elo_local: float = None, elo_visita: float = None,
                   cuota_btts_si: float = None, cuota_btts_no: float = None,
                   cuota_over25: float = None, cuota_under25: float = None,
-                  rho: float = -0.13) -> dict:
+                  rho: float = -0.22) -> dict:
     """
     Predice BTTS y mercados relacionados.
 

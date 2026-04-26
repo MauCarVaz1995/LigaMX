@@ -1,15 +1,23 @@
 # PROYECTO_OVERVIEW.md — LEE ESTO PRIMERO
 
-> Estado del proyecto al **2026-04-19**. Actualizar al cierre de cada sesión significativa.
+> Estado del proyecto al **2026-04-26**. Actualizar al cierre de cada sesión significativa.
 
 ---
 
 ## ¿Qué es esto?
 
-**MAU-STATISTICS / @Miau_Stats_MX** — Motor de análisis estadístico de Liga MX y Selecciones Nacionales.
-Produce infografías de élite para redes sociales, predicciones de partidos y un dashboard interactivo.
-**Objetivo de monetización**: value betting en mercados de corners, BTTS y tarjetas en Liga MX.
-Todo en Python puro sobre datos de FotMob.
+**MAU-STATISTICS / @Miau_Stats_MX** — Motor cuantitativo de análisis y apuestas de valor en fútbol.
+Produce predicciones estadísticas, infografías de élite y un sistema de apuestas orientado a generar
+retorno positivo a largo plazo usando ventaja matemática (EV+).
+
+**Rol del asistente IA**: Claude actúa como **quant experto en deportes** que propone ideas y estrategias
+para generar dinero mediante apuestas de valor, construye y calibra los modelos, y supervisa la
+infraestructura de datos. El objetivo es construir un portafolio de apuestas con ROI positivo
+comprobable sobre una muestra suficiente de predicciones.
+
+**Objetivo de monetización (corto plazo)**: value betting en corners, BTTS y tarjetas en Liga MX.
+**Objetivo (mediano plazo)**: expandir a ligas internacionales (Premier, LaLiga, Bundesliga, UCL,
+Brasileirao, MLS, Argentina) con parlays optimizados por EV.
 
 Autor: **MauCarVaz1995** · GitHub: `MauCarVaz1995/LigaMX`
 
@@ -66,6 +74,29 @@ SÍ — `send_daily_email.py` corre diario. Filtra solo imágenes relevantes (pr
 **¿Se publican automáticamente en Twitter?**
 Aún NO — falta configurar Twitter API keys como secrets en GitHub.
 
+### ✅ Completado en sesiones 2026-04-26
+- `bots/parlay_analyzer.py` — combina picks de alta confianza (≥65%) en 2-4 selecciones, calcula cuota combinada, EV, probabilidad de ganar y retorno en MXN. Backtest sobre historial resuelto. Corre diario antes del email.
+- **ESPN API** como fuente principal de fixtures internacionales (FotMob lleva semanas con 502). Cubre: Premier, LaLiga, Bundesliga, Serie A, Ligue 1, MLS, Brasileirao, Argentina, UCL, Libertadores — sin API key.
+- **Fix heatmap 1-1**: recalibrado DC_RHO = -0.22 (empírico de Liga MX histórico) y nueva fórmula aditiva de lambdas desde ELO. 300 ELO ≈ 1 gol de diferencia. Equipos fuertes ahora predicen 2-0/1-0, no siempre 1-1.
+- **Fix bias home wins**: nueva `lambdas_from_elo` preserva total de goles pero diferencia correctamente por ELO. Para favoritos claros (+300 ELO): lam_l≈2.1, lam_v≈0.76 → modo 2-0.
+- **Fix email freshness**: selecciones/internacional filtradas por edad real de archivo (git log fallback para CI), rankings regenerados antes del email, montecarlo/ELO con límite de edad.
+
+### ✅ Estado de bots — 2026-04-26
+| Bot | Estado | Función |
+|---|---|---|
+| `daily_betting_bot.py` | ✅ Corre diario | Genera picks Liga MX próximos 3 días (HTML+JSON) |
+| `parlay_analyzer.py` | ✅ Corre diario | Combinadas 2-4 picks ≥65%, calcula retorno en MXN |
+| `retrain_bot.py` | ✅ Corre diario | Re-calibra modelos si hay ≥5 partidos o ≥7 días |
+| `audit_bot.py` | ✅ Corre diario | Audita integridad, detecta drift, depura imágenes |
+| `discovery_bot.py` | ✅ Corre diario | Detecta patrones, bias, recomienda ajustes |
+| `ligas_internacionales.py` | ✅ Corre diario | Predicciones UCL/Premier/LaLiga/Bundesliga/etc. |
+| `send_daily_email.py` | ✅ Corre diario | Email con contenido relevante y filtrado por edad |
+
+### ✅ Alertas activas detectadas por discovery_bot (2026-04-26)
+- **Bias local wins**: predicho 37.6% vs real 53.6% (-16pp). FIX APLICADO: nueva fórmula lambdas.
+- **Drift tarjetas**: card_rate reciente 4.4 vs histórico 5.1 (-0.7). Pendiente: actualizar card_rates.
+- **n=9 evaluadas**: muestra muy pequeña — no tomar decisiones de bankroll real hasta n≥90 (~J19-J20).
+
 ### ✅ Completado en sesiones 2026-04-18
 - `scripts/liga_mx_knowledge.py` — "feeling" layer: rivalidades, altitud, árbitros, fases
 - `scripts/modelo_corners.py` — Dixon-Coles MLE + Rue-Salvesen time decay + feeling
@@ -79,13 +110,14 @@ Aún NO — falta configurar Twitter API keys como secrets en GitHub.
 - `skills/VISION_GLOBAL.md` — estrategia global de portafolio (Liga MX → LATAM → Europa)
 - `scrape_match_events.py --seasons 5` — 794 partidos multi-temporada
 
-### ⏳ Pendiente prioritario (actualizado 2026-04-18)
-1. **Fix ELO naming** — 5 equipos sin ELO: "CF America", "Atletico de San Luis", "Mazatlan FC", "FC Juarez", "Queretaro FC" (normalización de nombres)
-2. **Run retrain inicial** — `python bots/retrain_bot.py --force` para generar `retrain_log.json`
-3. **Fase B3 BETTING** — `scrape_odds.py`: The Odds API wrapper (500 req/mes gratis)
-4. **Historical odds backtest** — `football-data.co.uk` free CSVs para validar CLV vs Pinnacle
-5. **CCL historial completo** — 2010→2025 (~500 fechas en FotMob league_id=915924)
-6. **Twitter API** — publicación automática desde pipeline
+### ⏳ Pendiente prioritario (actualizado 2026-04-26)
+1. **Validación estadística** — esperar J19-J20 (≥90 predicciones) para Brier Score confiable antes de bankroll real
+2. **Drift tarjetas** — actualizar `card_rates` en `liga_mx_knowledge.py`: actual=4.4 vs modelo=5.1
+3. **The Odds API** — expandir coverage de bookmakers: actualmente solo h2h+totals. Corners/tarjetas requieren plan de pago (~$10/mes). Evaluar después de J19.
+4. **backtest CLV** — cruzar `odds_historico.csv` vs predicciones del modelo para validar Closing Line Value
+5. **Parlay reportería en email** — incluir tabla de parlays del día en `send_daily_email.py`
+6. **108 missing match_events** — backfill corners/tarjetas Apertura/Clausura 2024-2025
+7. **Twitter API** — publicación automática desde pipeline
 
 ---
 

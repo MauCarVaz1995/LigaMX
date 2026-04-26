@@ -46,17 +46,17 @@ TODAY = date.today().isoformat()
 # ─────────────────────────────────────────────────────────────────────────────
 LIGAS: dict[str, dict] = {
     # Copas / torneos de clubes
-    "champions":    {"id": 42,    "nombre": "UEFA Champions League"},
-    "libertadores": {"id": 384,   "nombre": "Copa Libertadores"},
-    "mls":          {"id": 913550,"nombre": "MLS"},
-    "argentina":    {"id": 905256,"nombre": "Liga Profesional Argentina"},
-    "brasileirao":  {"id": 268,   "nombre": "Brasileirao Serie A"},
+    "champions":    {"id": 42,    "nombre": "UEFA Champions League", "espn": "UEFA.CHAMPIONS"},
+    "libertadores": {"id": 384,   "nombre": "Copa Libertadores",     "espn": "CONMEBOL.LIBERTADORES"},
+    "mls":          {"id": 913550,"nombre": "MLS",                   "espn": "usa.1"},
+    "argentina":    {"id": 905256,"nombre": "Liga Profesional Argentina", "espn": "arg.1"},
+    "brasileirao":  {"id": 268,   "nombre": "Brasileirao Serie A",   "espn": "bra.1"},
     # Ligas europeas (ELO desde odds_historico.csv — 5 años reales)
-    "premier":      {"id": 47,    "nombre": "Premier League",  "odds_key": "premier"},
-    "laliga":       {"id": 87,    "nombre": "La Liga",          "odds_key": "laliga"},
-    "bundesliga":   {"id": 54,    "nombre": "Bundesliga",       "odds_key": "bundesliga"},
-    "seriea":       {"id": 55,    "nombre": "Serie A",          "odds_key": "seriea"},
-    "ligue1":       {"id": 53,    "nombre": "Ligue 1",          "odds_key": "ligue1"},
+    "premier":      {"id": 47,    "nombre": "Premier League",  "odds_key": "premier",    "espn": "eng.1"},
+    "laliga":       {"id": 87,    "nombre": "La Liga",          "odds_key": "laliga",     "espn": "esp.1"},
+    "bundesliga":   {"id": 54,    "nombre": "Bundesliga",       "odds_key": "bundesliga", "espn": "ger.1"},
+    "seriea":       {"id": 55,    "nombre": "Serie A",          "odds_key": "seriea",     "espn": "ita.1"},
+    "ligue1":       {"id": 53,    "nombre": "Ligue 1",          "odds_key": "ligue1",     "espn": "fra.1"},
 }
 
 # Ligas cuyo ELO se bootstrapea desde odds_historico.csv (no desde results.csv)
@@ -83,7 +83,7 @@ ELO_BASE     = 1500.0
 ELO_INIT     = 1500.0
 K_ELO        = 32
 SCALE        = 400
-DC_RHO       = -0.10  # Dixon-Coles rho (draw correction)
+DC_RHO       = -0.20  # Dixon-Coles rho calibrado de datos reales Liga MX (1-1 ratio=1.22)
 
 # ─────────────────────────────────────────────────────────────────────────────
 # FOTMOB HEADERS
@@ -413,12 +413,24 @@ def dixon_coles_correction(home_goals: int, away_goals: int,
 
 
 def lambdas_from_elo(elo_local: float, elo_visitante: float) -> tuple[float, float]:
-    """Convierte ELOs a λ_local y λ_visitante para el modelo Poisson."""
-    elo_eff_l = elo_local    + HOME_ADV_ELO * 0.5
-    elo_eff_v = elo_visitante - HOME_ADV_ELO * 0.5
-    lam_l = MU_HOME * (elo_eff_l / ELO_BASE)
-    lam_v = MU_AWAY * (elo_eff_v / ELO_BASE)
-    return max(lam_l, 0.15), max(lam_v, 0.15)
+    """
+    Convierte ELOs a λ_local y λ_visitante para el modelo Poisson.
+
+    Fórmula aditiva: la diferencia de ELO determina cuántos goles separa a los equipos.
+    Escala calibrada: 300 ELO points ≈ 1 gol de diferencia esperado.
+    Preserva el total de goles esperado (MU_HOME + MU_AWAY = 2.6) como suma constante.
+
+    Ejemplos:
+      ELOs iguales + home adv 80:     lam_l=1.43, lam_v=1.17  → modo 1-0 o 1-1
+      ELO diff=200 (home+adv=280):    lam_l=1.77, lam_v=0.83  → modo 1-0
+      ELO diff=-200 (away stronger):  lam_l=1.10, lam_v=1.50  → modo 1-1 o 0-1
+    """
+    mu_total   = MU_HOME + MU_AWAY          # 2.6 goles totales esperados
+    elo_diff   = (elo_local + HOME_ADV_ELO) - elo_visitante
+    goal_diff  = elo_diff / 300.0           # calibración: 300 ELO ≈ 1 gol de diferencia
+    lam_l = (mu_total + goal_diff) / 2.0
+    lam_v = (mu_total - goal_diff) / 2.0
+    return max(lam_l, 0.20), max(lam_v, 0.20)
 
 
 def compute_probs(lam_l: float, lam_v: float,
@@ -467,7 +479,77 @@ def ganador_predicho(prob_local: float, prob_empate: float, prob_visitante: floa
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# FOTMOB API — endpoint por fecha (leagues endpoint da 404)
+# ESPN API — fuente principal de fixtures (sin API key, cobre todas las ligas)
+# ─────────────────────────────────────────────────────────────────────────────
+ESPN_BASE    = "https://site.api.espn.com/apis/site/v2/sports/soccer/{}/scoreboard"
+ESPN_HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; LigaMXBot/1.0)"}
+
+
+def fetch_espn(liga_key: str, days_ahead: int = 10) -> list[dict]:
+    """
+    Obtiene fixtures próximos de una liga via ESPN API (sin API key).
+    Retorna lista de dicts con: home, away, fecha, match_id.
+    """
+    espn_code = LIGAS.get(liga_key, {}).get("espn")
+    if not espn_code:
+        return []
+
+    fixtures = []
+    today = date.today()
+
+    # ESPN /scoreboard incluye partidos del día actual y recientes.
+    # Para cubrir días futuros hacemos requests por fecha.
+    for delta in range(days_ahead):
+        d = (today + timedelta(days=delta)).strftime("%Y%m%d")
+        url = f"{ESPN_BASE.format(espn_code)}?dates={d}"
+        try:
+            r = requests.get(url, headers=ESPN_HEADERS, timeout=10)
+            r.raise_for_status()
+            data = r.json()
+        except Exception as e:
+            print(f"  [WARN] ESPN {espn_code} fecha {d}: {e}")
+            time.sleep(1)
+            continue
+
+        for event in data.get("events", []):
+            try:
+                comps = event.get("competitions", [{}])[0]
+                status = comps.get("status", {}).get("type", {})
+                # Solo partidos no terminados
+                if status.get("completed", False):
+                    continue
+                competitors = comps.get("competitors", [])
+                home = next((c for c in competitors if c.get("homeAway") == "home"), None)
+                away = next((c for c in competitors if c.get("homeAway") == "away"), None)
+                if not home or not away:
+                    continue
+                home_name = norm_team(home["team"]["displayName"])
+                away_name = norm_team(away["team"]["displayName"])
+                fecha_str  = event.get("date", "")[:10]
+                match_id   = event.get("id", "")
+                fixtures.append({
+                    "home":     home_name,
+                    "away":     away_name,
+                    "fecha":    fecha_str,
+                    "match_id": match_id,
+                })
+            except (KeyError, TypeError, IndexError):
+                continue
+        time.sleep(0.3)
+
+    # Deduplicar por match_id
+    seen = set()
+    unique = []
+    for f in fixtures:
+        key = f.get("match_id") or f"{f['home']}_{f['away']}_{f['fecha']}"
+        if key not in seen:
+            seen.add(key)
+            unique.append(f)
+    return unique
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# FOTMOB API — fallback (leagues endpoint da 404 desde abril 2026)
 # ─────────────────────────────────────────────────────────────────────────────
 def fetch_fotmob_by_date(league_id: int, days_ahead: int = 7) -> list[dict]:
     """
@@ -933,13 +1015,17 @@ def run_liga(liga_key: str, df_log: pd.DataFrame, results_idx: dict) -> dict:
     update_elo_from_results(liga_key, results_idx)
     elos = load_elos(liga_key)  # recargar tras actualización
 
-    # 3. Obtener fixtures de FotMob
-    data = fetch_fotmob(league_id)
-    fixtures = []
-    if data is not None:
-        fixtures = parse_fixtures(data, liga_key)
+    # 3. Obtener fixtures — ESPN primero, FotMob como fallback
+    fixtures = fetch_espn(liga_key, days_ahead=10)
+    if fixtures:
+        print(f"  [{liga_key}] {len(fixtures)} fixtures desde ESPN")
     else:
-        print(f"  [{liga_key}] No se obtuvieron fixtures de FotMob")
+        print(f"  [WARN] ESPN sin fixtures para {liga_key}, intentando FotMob...")
+        data = fetch_fotmob(league_id)
+        if data is not None:
+            fixtures = parse_fixtures(data, liga_key)
+        else:
+            print(f"  [{liga_key}] Sin fixtures disponibles (ESPN y FotMob fallaron)")
 
     n_fixtures = len(fixtures)
 
