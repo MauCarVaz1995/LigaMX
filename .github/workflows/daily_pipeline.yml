@@ -164,6 +164,12 @@ jobs:
         run: |
           python scripts/05_viz_player_performance.py || echo "[warn] rankings falló — continuando"
 
+      - name: Parlay analyzer — combinaciones de alta confianza (non-critical)
+        env:
+          PYTHONPATH: ${{ github.workspace }}/scripts
+        run: |
+          python bots/parlay_analyzer.py --monto 1000 --min-prob 0.65 || echo "[warn] parlay_analyzer falló — continuando"
+
       - name: Send daily email summary (non-critical)
         env:
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}

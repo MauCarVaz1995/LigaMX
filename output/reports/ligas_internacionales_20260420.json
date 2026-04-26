@@ -1,28 +1,8 @@
 {
-  "generated_at": "2026-04-20T15:18:03.471979",
+  "generated_at": "2026-04-20T12:39:50.795311",
   "ligas": {
-    "champions": {
-      "nombre": "UEFA Champions League",
-      "n_fixtures": 0,
-      "picks": []
-    },
-    "libertadores": {
-      "nombre": "Copa Libertadores",
-      "n_fixtures": 0,
-      "picks": []
-    },
     "mls": {
       "nombre": "MLS",
-      "n_fixtures": 0,
-      "picks": []
-    },
-    "argentina": {
-      "nombre": "Liga Argentina",
-      "n_fixtures": 0,
-      "picks": []
-    },
-    "brasileirao": {
-      "nombre": "Brasileirao",
       "n_fixtures": 0,
       "picks": []
     }
