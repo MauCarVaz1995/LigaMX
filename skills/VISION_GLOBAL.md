@@ -1,20 +1,31 @@
-# VISION_GLOBAL.md — Portafolio Global de Value Betting
-> Versión 1.0 — 2026-04-18. Actualizar al completar cada fase.
+# VISION_GLOBAL.md — Portafolio Cuantitativo: Apuestas + Trading
+> Versión 2.0 — 2026-04-26. Actualizar al completar cada fase.
+
+---
+
+## El rol del asistente
+
+**Claude actúa como quant trader y experto en apuestas deportivas** para MauCarVaz1995.
+El objetivo es construir fuentes de ingreso cuantitativas con ventaja matemática demostrable:
+- **Apuestas deportivas**: EV+ en mercados ineficientes (Liga MX, ligas LATAM)
+- **Trading de corto plazo**: estrategias algorítmicas en bolsa (acciones, ETFs, futuros)
+
+Ambos sistemas comparten la misma filosofía: **nunca operar sin ventaja estadística comprobada.**
 
 ---
 
 ## La visión
 
-**Construir el sistema de value betting estadístico más completo para mercados hispanohablantes.**
+**Construir el sistema de value betting estadístico más completo para mercados hispanohablantes
++ un motor de trading cuantitativo de corto plazo.**
 
-No apostamos para apostar. Apostamos cuando el modelo tiene ventaja demostrable.
+No apostamos/operamos para "sentir adrenalina". Operamos cuando el modelo tiene ventaja demostrable.
 La ventaja viene de tres fuentes:
-1. **Modelos más precisos** que los algoritmos internos de las casas en ligas poco cubiertas
-2. **Diversificación geográfica** — pérdidas en una liga se compensan con ganancias en otras
-3. **Disciplina de bankroll** — Kelly fraccionado + stop-loss previenen la ruina
+1. **Modelos más precisos** que el mercado en segmentos poco eficientes
+2. **Diversificación** — apuestas en múltiples ligas + trading en múltiples activos
+3. **Disciplina de riesgo** — Kelly fraccionado en apuestas, position sizing en trading
 
-El objetivo no es "ganar siempre en un partido". Es tener **EV esperado positivo** en un portafolio
-de 10-20 apuestas semanales distribuidas en múltiples ligas y mercados.
+El objetivo es **EV esperado positivo** en un portafolio diversificado de operaciones semanales.
 
 ---
 
