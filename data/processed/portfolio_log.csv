@@ -4,3 +4,4 @@ fecha,liga,partido,hora,mercado,prob_modelo,cuota,bookmaker,ev,bet_mxn,expected_
 2026-04-26,Liga MX,Santos Laguna vs Monterrey,17:00,1 (Santos Laguna),0.4331,3.05,betfair_ex_eu,0.321,25.0,8.02,,
 2026-04-26,Liga MX,Santos Laguna vs Monterrey,17:00,Over 2.5 goles,0.505,2.32,matchbook,0.1716,25.0,4.29,,
 2026-04-26,Liga MX,Cruz Azul vs Necaxa,19:05,Under 2.5 goles,0.456,2.52,nordicbet,0.1491,24.5,3.65,,
+2026-04-26,Liga MX,Cruz Azul vs Necaxa,19:05,Over 2.5 goles,0.544,2.14,matchbook,0.1642,25.0,4.11,,
