@@ -1493,6 +1493,15 @@ fecha,liga,nombre_liga,pais,temporada,local,visitante,goles_local,goles_visita,o
 2026-04-19,bundesliga,Bundesliga,Germany,2025/2026,Freiburg,Heidenheim,2,1,,,,1.62,2.3
 2026-04-19,bundesliga,Bundesliga,Germany,2025/2026,Bayern Munich,Stuttgart,4,2,,,,1.25,4.0
 2026-04-19,bundesliga,Bundesliga,Germany,2025/2026,M'gladbach,Mainz,1,1,,,,1.9,1.95
+2026-04-24,bundesliga,Bundesliga,Germany,2025/2026,RB Leipzig,Union Berlin,3,1,,,,1.5,2.63
+2026-04-25,bundesliga,Bundesliga,Germany,2025/2026,Augsburg,Ein Frankfurt,1,1,,,,1.53,2.5
+2026-04-25,bundesliga,Bundesliga,Germany,2025/2026,FC Koln,Leverkusen,1,2,,,,1.53,2.5
+2026-04-25,bundesliga,Bundesliga,Germany,2025/2026,Heidenheim,St Pauli,2,0,,,,1.91,1.91
+2026-04-25,bundesliga,Bundesliga,Germany,2025/2026,Mainz,Bayern Munich,3,4,,,,1.44,2.75
+2026-04-25,bundesliga,Bundesliga,Germany,2025/2026,Wolfsburg,M'gladbach,0,0,,,,1.62,2.3
+2026-04-25,bundesliga,Bundesliga,Germany,2025/2026,Hamburg,Hoffenheim,1,2,,,,1.53,2.5
+2026-04-26,bundesliga,Bundesliga,Germany,2025/2026,Stuttgart,Werder Bremen,1,1,,,,1.44,2.75
+2026-04-26,bundesliga,Bundesliga,Germany,2025/2026,Dortmund,Freiburg,4,0,,,,1.53,2.5
 2021-08-13,eredivisie,Eredivisie,Netherlands,2021/2022,Go Ahead Eagles,Heerenveen,0,1,2.81,3.39,2.65,2.05,1.8
 2021-08-14,eredivisie,Eredivisie,Netherlands,2021/2022,Waalwijk,AZ Alkmaar,1,0,6.49,4.94,1.47,1.44,2.7
 2021-08-14,eredivisie,Eredivisie,Netherlands,2021/2022,Heracles,PSV Eindhoven,0,2,6.37,4.72,1.5,1.5,2.5
@@ -2990,6 +2999,12 @@ fecha,liga,nombre_liga,pais,temporada,local,visitante,goles_local,goles_visita,o
 2026-04-22,eredivisie,Eredivisie,Netherlands,2025/2026,Telstar,Sparta Rotterdam,4,1,,,,1.57,2.35
 2026-04-23,eredivisie,Eredivisie,Netherlands,2025/2026,Go Ahead Eagles,AZ Alkmaar,0,0,,,,1.53,2.4
 2026-04-23,eredivisie,Eredivisie,Netherlands,2025/2026,PSV Eindhoven,Zwolle,6,1,,,,1.22,4.2
+2026-04-25,eredivisie,Eredivisie,Netherlands,2025/2026,Feyenoord,Groningen,3,1,,,,1.48,2.6
+2026-04-25,eredivisie,Eredivisie,Netherlands,2025/2026,Heerenveen,For Sittard,2,1,,,,1.44,2.7
+2026-04-25,eredivisie,Eredivisie,Netherlands,2025/2026,NAC Breda,Ajax,0,2,,,,1.67,2.15
+2026-04-25,eredivisie,Eredivisie,Netherlands,2025/2026,Twente,Nijmegen,1,1,,,,1.44,2.7
+2026-04-26,eredivisie,Eredivisie,Netherlands,2025/2026,Excelsior,Utrecht,5,0,,,,1.75,2.05
+2026-04-26,eredivisie,Eredivisie,Netherlands,2025/2026,Heracles,Volendam,0,2,,,,1.62,2.25
 2021-08-13,laliga,La Liga,Spain,2021/2022,Valencia,Getafe,1,0,2.7,3.03,3.11,2.62,1.5
 2021-08-14,laliga,La Liga,Spain,2021/2022,Cadiz,Levante,1,1,2.86,3.28,2.73,2.1,1.72
 2021-08-14,laliga,La Liga,Spain,2021/2022,Mallorca,Betis,1,1,3.51,3.35,2.28,2.0,1.8
@@ -4830,6 +4845,15 @@ fecha,liga,nombre_liga,pais,temporada,local,visitante,goles_local,goles_visita,o
 2026-04-23,laliga,La Liga,Spain,2025/2026,Levante,Sevilla,2,0,,,,2.1,1.73
 2026-04-23,laliga,La Liga,Spain,2025/2026,Vallecano,Espanol,1,0,,,,2.1,1.73
 2026-04-23,laliga,La Liga,Spain,2025/2026,Oviedo,Villarreal,1,1,,,,1.98,1.88
+2026-04-24,laliga,La Liga,Spain,2025/2026,Betis,Real Madrid,1,1,,,,1.5,2.63
+2026-04-25,laliga,La Liga,Spain,2025/2026,Alaves,Mallorca,2,1,,,,2.1,1.73
+2026-04-25,laliga,La Liga,Spain,2025/2026,Getafe,Barcelona,0,2,,,,1.88,1.98
+2026-04-25,laliga,La Liga,Spain,2025/2026,Valencia,Girona,2,1,,,,1.93,1.93
+2026-04-25,laliga,La Liga,Spain,2025/2026,Ath Madrid,Ath Bilbao,3,2,,,,1.88,1.98
+2026-04-26,laliga,La Liga,Spain,2025/2026,Vallecano,Sociedad,3,3,,,,2.0,1.8
+2026-04-26,laliga,La Liga,Spain,2025/2026,Oviedo,Elche,1,2,,,,2.1,1.73
+2026-04-26,laliga,La Liga,Spain,2025/2026,Osasuna,Sevilla,2,1,,,,2.1,1.73
+2026-04-26,laliga,La Liga,Spain,2025/2026,Villarreal,Celta,2,1,,,,1.83,2.03
 2021-08-06,ligue1,Ligue 1,France,2021/2022,Monaco,Nantes,1,1,1.51,4.62,6.82,1.66,2.2
 2021-08-07,ligue1,Ligue 1,France,2021/2022,Lyon,Brest,1,1,1.35,5.95,8.71,1.36,3.2
 2021-08-07,ligue1,Ligue 1,France,2021/2022,Troyes,Paris SG,1,2,11.77,6.04,1.28,1.57,2.37
@@ -6470,6 +6494,15 @@ fecha,liga,nombre_liga,pais,temporada,local,visitante,goles_local,goles_visita,o
 2026-04-19,ligue1,Ligue 1,France,2025/2026,Strasbourg,Rennes,0,3,,,,1.67,2.2
 2026-04-19,ligue1,Ligue 1,France,2025/2026,Paris SG,Lyon,1,2,,,,1.44,2.75
 2026-04-22,ligue1,Ligue 1,France,2025/2026,Paris SG,Nantes,3,0,,,,1.33,3.4
+2026-04-24,ligue1,Ligue 1,France,2025/2026,Brest,Lens,3,3,,,,1.67,2.2
+2026-04-25,ligue1,Ligue 1,France,2025/2026,Lyon,Auxerre,3,2,,,,1.8,2.0
+2026-04-25,ligue1,Ligue 1,France,2025/2026,Angers,Paris SG,0,3,,,,1.53,2.5
+2026-04-25,ligue1,Ligue 1,France,2025/2026,Toulouse,Monaco,2,2,,,,1.67,2.2
+2026-04-26,ligue1,Ligue 1,France,2025/2026,Lorient,Strasbourg,2,3,,,,1.8,2.0
+2026-04-26,ligue1,Ligue 1,France,2025/2026,Le Havre,Metz,4,4,,,,1.91,1.91
+2026-04-26,ligue1,Ligue 1,France,2025/2026,Paris FC,Lille,0,1,,,,1.88,1.98
+2026-04-26,ligue1,Ligue 1,France,2025/2026,Rennes,Nantes,2,1,,,,1.62,2.3
+2026-04-26,ligue1,Ligue 1,France,2025/2026,Marseille,Nice,1,1,,,,1.44,2.75
 2021-08-06,portuguesa,Primeira Liga,Portugal,2021/2022,Sp Lisbon,Vizela,3,0,1.27,6.14,12.01,1.72,2.07
 2021-08-07,portuguesa,Primeira Liga,Portugal,2021/2022,Arouca,Estoril,0,2,2.27,3.36,3.44,2.3,1.6
 2021-08-07,portuguesa,Primeira Liga,Portugal,2021/2022,Moreirense,Benfica,1,2,6.9,4.8,1.47,1.65,2.2
@@ -7963,6 +7996,14 @@ fecha,liga,nombre_liga,pais,temporada,local,visitante,goles_local,goles_visita,o
 2026-04-19,portuguesa,Primeira Liga,Portugal,2025/2026,Sp Braga,Famalicao,2,2,,,,1.98,1.88
 2026-04-20,portuguesa,Primeira Liga,Portugal,2025/2026,Moreirense,Estoril,1,0,,,,1.93,1.93
 2026-04-23,portuguesa,Primeira Liga,Portugal,2025/2026,Casa Pia,Sp Braga,0,1,,,,1.95,1.85
+2026-04-24,portuguesa,Primeira Liga,Portugal,2025/2026,Alverca,Arouca,2,1,,,,1.93,1.93
+2026-04-25,portuguesa,Primeira Liga,Portugal,2025/2026,Tondela,Nacional,0,2,,,,1.95,1.9
+2026-04-25,portuguesa,Primeira Liga,Portugal,2025/2026,Benfica,Moreirense,4,1,,,,1.44,2.7
+2026-04-25,portuguesa,Primeira Liga,Portugal,2025/2026,Guimaraes,Rio Ave,2,0,,,,1.83,2.03
+2026-04-26,portuguesa,Primeira Liga,Portugal,2025/2026,Estoril,Famalicao,0,1,,,,1.7,2.1
+2026-04-26,portuguesa,Primeira Liga,Portugal,2025/2026,Estrela,Porto,1,2,,,,1.83,2.03
+2026-04-26,portuguesa,Primeira Liga,Portugal,2025/2026,Santa Clara,Sp Braga,2,1,,,,2.25,1.62
+2026-04-26,portuguesa,Primeira Liga,Portugal,2025/2026,AVS,Sp Lisbon,1,1,,,,1.3,3.5
 2021-08-13,premier,Premier League,England,2021/2022,Brentford,Arsenal,2,0,4.05,3.46,2.05,2.1,1.72
 2021-08-14,premier,Premier League,England,2021/2022,Man United,Leeds,5,1,1.56,4.57,5.96,1.61,2.3
 2021-08-14,premier,Premier League,England,2021/2022,Burnley,Brighton,1,2,3.3,3.12,2.51,2.5,1.53
@@ -9815,6 +9856,12 @@ fecha,liga,nombre_liga,pais,temporada,local,visitante,goles_local,goles_visita,o
 2026-04-21,premier,Premier League,England,2025/2026,Brighton,Chelsea,3,0,,,,1.67,2.2
 2026-04-22,premier,Premier League,England,2025/2026,Bournemouth,Leeds,2,2,,,,1.73,2.1
 2026-04-22,premier,Premier League,England,2025/2026,Burnley,Man City,0,1,,,,1.33,3.4
+2026-04-24,premier,Premier League,England,2025/2026,Sunderland,Nott'm Forest,0,5,,,,2.2,1.67
+2026-04-25,premier,Premier League,England,2025/2026,Fulham,Aston Villa,1,0,,,,1.73,2.1
+2026-04-25,premier,Premier League,England,2025/2026,Liverpool,Crystal Palace,3,1,,,,1.57,2.38
+2026-04-25,premier,Premier League,England,2025/2026,West Ham,Everton,2,1,,,,1.9,1.95
+2026-04-25,premier,Premier League,England,2025/2026,Wolves,Tottenham,0,1,,,,1.67,2.2
+2026-04-25,premier,Premier League,England,2025/2026,Arsenal,Newcastle,1,0,,,,1.57,2.38
 2021-08-21,seriea,Serie A,Italy,2021/2022,Inter,Genoa,4,0,1.36,5.37,9.65,1.66,2.2
 2021-08-21,seriea,Serie A,Italy,2021/2022,Verona,Sassuolo,2,3,2.66,3.55,2.75,1.9,2.03
 2021-08-21,seriea,Serie A,Italy,2021/2022,Empoli,Lazio,1,3,5.01,4.02,1.74,1.72,2.1
@@ -11665,3 +11712,11 @@ fecha,liga,nombre_liga,pais,temporada,local,visitante,goles_local,goles_visita,o
 2026-04-19,seriea,Serie A,Italy,2025/2026,Pisa,Genoa,1,2,,,,2.5,1.53
 2026-04-19,seriea,Serie A,Italy,2025/2026,Juventus,Bologna,2,0,,,,1.73,2.1
 2026-04-20,seriea,Serie A,Italy,2025/2026,Lecce,Fiorentina,1,1,,,,2.1,1.73
+2026-04-24,seriea,Serie A,Italy,2025/2026,Napoli,Cremonese,4,0,,,,1.91,1.91
+2026-04-25,seriea,Serie A,Italy,2025/2026,Parma,Pisa,1,0,,,,2.3,1.62
+2026-04-25,seriea,Serie A,Italy,2025/2026,Bologna,Roma,0,2,,,,2.1,1.73
+2026-04-25,seriea,Serie A,Italy,2025/2026,Verona,Lecce,0,0,,,,2.75,1.44
+2026-04-26,seriea,Serie A,Italy,2025/2026,Fiorentina,Sassuolo,0,0,,,,1.88,1.98
+2026-04-26,seriea,Serie A,Italy,2025/2026,Genoa,Como,0,2,,,,2.0,1.8
+2026-04-26,seriea,Serie A,Italy,2025/2026,Torino,Inter,2,2,,,,1.67,2.2
+2026-04-26,seriea,Serie A,Italy,2025/2026,Milan,Juventus,0,0,,,,1.98,1.88

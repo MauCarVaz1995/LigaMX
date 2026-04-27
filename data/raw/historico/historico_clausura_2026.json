@@ -30,6 +30,18 @@
     },
     {
       "pos": 3,
+      "equipo": "Cruz Azul",
+      "equipo_id": 6578,
+      "pj": 17,
+      "g": 9,
+      "e": 6,
+      "p": 2,
+      "gf": 31,
+      "gc": 18,
+      "pts": 33
+    },
+    {
+      "pos": 4,
       "equipo": "Pachuca",
       "equipo_id": 7848,
       "pj": 17,
@@ -41,7 +53,7 @@
       "pts": 31
     },
     {
-      "pos": 4,
+      "pos": 5,
       "equipo": "Toluca",
       "equipo_id": 6618,
       "pj": 17,
@@ -50,18 +62,6 @@
       "p": 3,
       "gf": 28,
       "gc": 16,
-      "pts": 30
-    },
-    {
-      "pos": 5,
-      "equipo": "Cruz Azul",
-      "equipo_id": 6578,
-      "pj": 16,
-      "g": 8,
-      "e": 6,
-      "p": 2,
-      "gf": 27,
-      "gc": 17,
       "pts": 30
     },
     {
@@ -152,12 +152,12 @@
       "pos": 13,
       "equipo": "Monterrey",
       "equipo_id": 7849,
-      "pj": 16,
+      "pj": 17,
       "g": 5,
       "e": 3,
-      "p": 8,
+      "p": 9,
       "gf": 22,
-      "gc": 21,
+      "gc": 24,
       "pts": 18
     },
     {
@@ -176,12 +176,12 @@
       "pos": 15,
       "equipo": "Necaxa",
       "equipo_id": 1842,
-      "pj": 16,
+      "pj": 17,
       "g": 5,
       "e": 3,
-      "p": 8,
-      "gf": 18,
-      "gc": 21,
+      "p": 9,
+      "gf": 19,
+      "gc": 25,
       "pts": 18
     },
     {
@@ -212,13 +212,13 @@
       "pos": 18,
       "equipo": "Santos Laguna",
       "equipo_id": 7857,
-      "pj": 16,
-      "g": 2,
+      "pj": 17,
+      "g": 3,
       "e": 3,
       "p": 11,
-      "gf": 17,
+      "gf": 20,
       "gc": 38,
-      "pts": 9
+      "pts": 12
     }
   ],
   "partidos": [
@@ -2135,7 +2135,7 @@
     },
     {
       "id": "5101863",
-      "fecha": "2026-04-26T01:05:00.000Z",
+      "fecha": "2026-04-26T01:05:00Z",
       "jornada": "17",
       "local": "Toluca",
       "local_id": "6618",
@@ -2148,7 +2148,7 @@
     },
     {
       "id": "5101862",
-      "fecha": "2026-04-26T01:07:00.000Z",
+      "fecha": "2026-04-26T01:07:00Z",
       "jornada": "17",
       "local": "Chivas",
       "local_id": "7807",
@@ -2161,7 +2161,7 @@
     },
     {
       "id": "5101865",
-      "fecha": "2026-04-26T03:10:00.000Z",
+      "fecha": "2026-04-26T03:10:00Z",
       "jornada": "17",
       "local": "FC Juarez",
       "local_id": "649424",
@@ -2174,7 +2174,7 @@
     },
     {
       "id": "5101864",
-      "fecha": "2026-04-26T03:20:00.000Z",
+      "fecha": "2026-04-26T03:20:00Z",
       "jornada": "17",
       "local": "CF America",
       "local_id": "6576",
@@ -2187,29 +2187,29 @@
     },
     {
       "id": "5101866",
-      "fecha": "2026-04-26T23:00:00.000Z",
+      "fecha": "2026-04-26T23:00:00Z",
       "jornada": "17",
       "local": "Santos Laguna",
       "local_id": "7857",
       "visitante": "Monterrey",
       "visitante_id": "7849",
-      "goles_local": null,
-      "goles_visit": null,
-      "score": "",
-      "terminado": false
+      "goles_local": 3,
+      "goles_visit": 0,
+      "score": "3 - 0",
+      "terminado": true
     },
     {
       "id": "5101867",
-      "fecha": "2026-04-27T01:05:00Z",
+      "fecha": "2026-04-27T01:10:00.000Z",
       "jornada": "17",
       "local": "Cruz Azul",
       "local_id": "6578",
       "visitante": "Necaxa",
       "visitante_id": "1842",
-      "goles_local": null,
-      "goles_visit": null,
-      "score": "",
-      "terminado": false
+      "goles_local": 4,
+      "goles_visit": 1,
+      "score": "4 - 1",
+      "terminado": true
     }
   ]
 }

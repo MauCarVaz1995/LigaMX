@@ -31,3 +31,128 @@ fecha_prediccion,partido,equipo_local,equipo_visitante,elo_local,elo_visitante,p
 2026-04-04 12:00:44,Cruz Azul vs Pachuca,Cruz Azul,Pachuca,1691.8,1541.7,42.6,24.4,33.0,Local,1-1,1.6099,1.3852,oceano_esmeralda,2026-04-05,visitante,1.0,2.0,False,1.2247,
 2026-04-04 12:00:44,León vs Atlas,León,Atlas,1390.2,1461.4,37.5,26.2,36.3,Local,1-1,1.339,1.313,medianoche_neon,2026-04-05,local,2.0,0.0,True,,
 2026-04-04 12:00:44,Santos vs América,Santos,América,1377.1,1541.0,35.8,25.9,38.4,Visitante,1-1,1.3272,1.3846,oceano_esmeralda,2026-04-05,empate,1.0,1.0,False,,
+2026-04-27 15:39:21,Paris Saint-Germain vs Bayern Munich,Paris Saint-Germain,Bayern Munich,1747.4,1869.6,31.0,31.3,37.6,visitante,1-1,1.2297,1.3703,ligas_internacionales,2026-04-28,,,,,,champions
+2026-04-27 15:39:21,Atlético Madrid vs Arsenal,Atlético Madrid,Arsenal,1500.0,1727.6,23.5,30.3,46.2,visitante,1-1,1.054,1.546,ligas_internacionales,2026-04-29,,,,,,champions
+2026-04-27 15:39:21,Arsenal vs Atlético Madrid,Arsenal,Atlético Madrid,1727.6,1500.0,59.5,26.8,13.7,local,1-1,1.8127,0.7873,ligas_internacionales,2026-05-05,,,,,,champions
+2026-04-27 15:39:21,Bayern Munich vs Paris Saint-Germain,Bayern Munich,Paris Saint-Germain,1869.6,1747.4,50.8,29.4,19.9,local,1-1,1.637,0.963,ligas_internacionales,2026-05-06,,,,,,champions
+2026-04-27 15:39:26,Lanús vs Liga de Quito,Lanús,Liga de Quito,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-04-28,,,,,,libertadores
+2026-04-27 15:39:26,Libertad vs Independiente del Valle,Libertad,Independiente del Valle,1481.3,1500.0,39.1,31.2,29.6,local,1-1,1.4022,1.1978,ligas_internacionales,2026-04-28,,,,,,libertadores
+2026-04-27 15:39:26,Universidad Central vs Rosario Central,Universidad Central,Rosario Central,1518.7,1500.0,42.2,30.9,26.9,local,1-1,1.4645,1.1355,ligas_internacionales,2026-04-29,,,,,,libertadores
+2026-04-27 15:39:26,Cruzeiro vs Boca Juniors,Cruzeiro,Boca Juniors,1513.3,1513.3,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-04-29,,,,,,libertadores
+2026-04-27 15:39:26,Deportes Tolima vs Coquimbo Unido,Deportes Tolima,Coquimbo Unido,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-04-29,,,,,,libertadores
+2026-04-27 15:39:26,Sporting Cristal vs Atlético Junior,Sporting Cristal,Atlético Junior,1518.7,1500.0,42.2,30.9,26.9,local,1-1,1.4645,1.1355,ligas_internacionales,2026-04-29,,,,,,libertadores
+2026-04-27 15:39:26,Mirassol vs Always Ready,Mirassol,Always Ready,1513.3,1486.7,42.8,30.9,26.3,local,1-1,1.4778,1.1222,ligas_internacionales,2026-04-29,,,,,,libertadores
+2026-04-27 15:39:26,Platense vs Independiente Santa Fe,Platense,Independiente Santa Fe,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-04-29,,,,,,libertadores
+2026-04-27 15:39:26,Barcelona SC vs Universidad Católica,Barcelona SC,Universidad Católica,1486.7,1500.0,39.6,31.2,29.2,local,1-1,1.4111,1.1889,ligas_internacionales,2026-04-30,,,,,,libertadores
+2026-04-27 15:39:26,Cerro Porteño vs Palmeiras,Cerro Porteño,Palmeiras,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-04-30,,,,,,libertadores
+2026-04-27 15:39:26,Estudiantes de La Plata vs Flamengo,Estudiantes de La Plata,Flamengo,1500.0,1518.7,39.1,31.2,29.6,local,1-1,1.4022,1.1978,ligas_internacionales,2026-04-30,,,,,,libertadores
+2026-04-27 15:39:26,Universitario vs Nacional,Universitario,Nacional,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-04-30,,,,,,libertadores
+2026-04-27 15:39:26,Bolívar vs Fluminense,Bolívar,Fluminense,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-04-30,,,,,,libertadores
+2026-04-27 15:39:26,Independiente Rivadavia vs Deportivo La Guaira,Independiente Rivadavia,Deportivo La Guaira,1508.0,1500.0,41.3,31.0,27.7,local,1-1,1.4467,1.1533,ligas_internacionales,2026-04-30,,,,,,libertadores
+2026-04-27 15:39:26,Corinthians vs Peñarol,Corinthians,Peñarol,1524.0,1500.0,42.6,30.9,26.5,local,1-1,1.4733,1.1267,ligas_internacionales,2026-05-01,,,,,,libertadores
+2026-04-27 15:39:26,Independiente Medellín vs Cusco FC,Independiente Medellín,Cusco FC,1500.0,1481.3,42.2,30.9,26.9,local,1-1,1.4645,1.1355,ligas_internacionales,2026-05-01,,,,,,libertadores
+2026-04-27 15:39:26,Rosario Central vs Libertad,Rosario Central,Libertad,1500.0,1481.3,42.2,30.9,26.9,local,1-1,1.4645,1.1355,ligas_internacionales,2026-05-05,,,,,,libertadores
+2026-04-27 15:39:26,Sporting Cristal vs Palmeiras,Sporting Cristal,Palmeiras,1518.7,1500.0,42.2,30.9,26.9,local,1-1,1.4645,1.1355,ligas_internacionales,2026-05-05,,,,,,libertadores
+2026-04-27 15:39:26,Barcelona SC vs Boca Juniors,Barcelona SC,Boca Juniors,1486.7,1513.3,38.5,31.3,30.2,local,1-1,1.3889,1.2111,ligas_internacionales,2026-05-06,,,,,,libertadores
+2026-04-27 15:39:26,Universidad Central vs Independiente del Valle,Universidad Central,Independiente del Valle,1518.7,1500.0,42.2,30.9,26.9,local,1-1,1.4645,1.1355,ligas_internacionales,2026-05-06,,,,,,libertadores
+2026-04-27 15:39:26,Always Ready vs Lanús,Always Ready,Lanús,1486.7,1500.0,39.6,31.2,29.2,local,1-1,1.4111,1.1889,ligas_internacionales,2026-05-06,,,,,,libertadores
+2026-04-27 15:39:26,Cusco FC vs Estudiantes de La Plata,Cusco FC,Estudiantes de La Plata,1481.3,1500.0,39.1,31.2,29.6,local,1-1,1.4022,1.1978,ligas_internacionales,2026-05-06,,,,,,libertadores
+2026-04-27 15:39:26,Deportivo La Guaira vs Bolívar,Deportivo La Guaira,Bolívar,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-06,,,,,,libertadores
+2026-04-27 15:39:26,Independiente Rivadavia vs Fluminense,Independiente Rivadavia,Fluminense,1508.0,1500.0,41.3,31.0,27.7,local,1-1,1.4467,1.1533,ligas_internacionales,2026-05-07,,,,,,libertadores
+2026-04-27 15:39:26,Independiente Santa Fe vs Corinthians,Independiente Santa Fe,Corinthians,1500.0,1524.0,38.7,31.3,30.0,local,1-1,1.3933,1.2067,ligas_internacionales,2026-05-07,,,,,,libertadores
+2026-04-27 15:39:26,Deportes Tolima vs Nacional,Deportes Tolima,Nacional,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-07,,,,,,libertadores
+2026-04-27 15:39:26,Universidad Católica vs Cruzeiro,Universidad Católica,Cruzeiro,1500.0,1513.3,39.6,31.2,29.2,local,1-1,1.4111,1.1889,ligas_internacionales,2026-05-07,,,,,,libertadores
+2026-04-27 15:39:30,Toronto FC vs San Jose Earthquakes,Toronto FC,San Jose Earthquakes,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-02,,,,,,mls
+2026-04-27 15:39:30,Sporting Kansas City vs Seattle Sounders FC,Sporting Kansas City,Seattle Sounders FC,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-02,,,,,,mls
+2026-04-27 15:39:30,Real Salt Lake vs Portland Timbers,Real Salt Lake,Portland Timbers,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-02,,,,,,mls
+2026-04-27 15:39:30,Inter Miami CF vs Orlando City SC,Inter Miami CF,Orlando City SC,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-02,,,,,,mls
+2026-04-27 15:39:30,Atlanta United vs CF Montréal,Atlanta United,CF Montréal,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-02,,,,,,mls
+2026-04-27 15:39:30,Columbus Crew vs Minnesota United FC,Columbus Crew,Minnesota United FC,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-02,,,,,,mls
+2026-04-27 15:39:30,New England Revolution vs Charlotte FC,New England Revolution,Charlotte FC,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-02,,,,,,mls
+2026-04-27 15:39:30,Philadelphia Union vs Nashville SC,Philadelphia Union,Nashville SC,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-02,,,,,,mls
+2026-04-27 15:39:30,Red Bull New York vs FC Dallas,Red Bull New York,FC Dallas,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-02,,,,,,mls
+2026-04-27 15:39:30,Chicago Fire FC vs FC Cincinnati,Chicago Fire FC,FC Cincinnati,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-03,,,,,,mls
+2026-04-27 15:39:30,Houston Dynamo FC vs Colorado Rapids,Houston Dynamo FC,Colorado Rapids,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-03,,,,,,mls
+2026-04-27 15:39:30,San Diego FC vs LAFC,San Diego FC,LAFC,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-03,,,,,,mls
+2026-04-27 15:39:30,LA Galaxy vs Vancouver Whitecaps,LA Galaxy,Vancouver Whitecaps,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-03,,,,,,mls
+2026-04-27 15:39:30,New York City FC vs D.C. United,New York City FC,D.C. United,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-03,,,,,,mls
+2026-04-27 15:39:30,Austin FC vs St. Louis CITY SC,Austin FC,St. Louis CITY SC,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-03,,,,,,mls
+2026-04-27 15:39:34,Vélez Sarsfield vs Unión (Santa Fe),Vélez Sarsfield,Unión (Santa Fe),1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-04-27,,,,,,argentina
+2026-04-27 15:39:34,Huracán vs Argentinos Juniors,Huracán,Argentinos Juniors,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-04-28,,,,,,argentina
+2026-04-27 15:39:34,Aldosivi vs Independiente Rivadavia,Aldosivi,Independiente Rivadavia,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-03,,,,,,argentina
+2026-04-27 15:39:34,Barracas Central vs Banfield,Barracas Central,Banfield,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-03,,,,,,argentina
+2026-04-27 15:39:34,Belgrano (Córdoba) vs Sarmiento (Junín),Belgrano (Córdoba),Sarmiento (Junín),1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-03,,,,,,argentina
+2026-04-27 15:39:34,Central Córdoba (Santiago del Estero) vs Boca Juniors,Central Córdoba (Santiago del Estero),Boca Juniors,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-03,,,,,,argentina
+2026-04-27 15:39:34,Estudiantes de Río Cuarto vs Instituto (Córdoba),Estudiantes de Río Cuarto,Instituto (Córdoba),1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-03,,,,,,argentina
+2026-04-27 15:39:34,Gimnasia (Mendoza) vs Defensa y Justicia,Gimnasia (Mendoza),Defensa y Justicia,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-03,,,,,,argentina
+2026-04-27 15:39:34,Gimnasia La Plata vs Argentinos Juniors,Gimnasia La Plata,Argentinos Juniors,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-03,,,,,,argentina
+2026-04-27 15:39:34,Lanús vs Deportivo Riestra,Lanús,Deportivo Riestra,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-03,,,,,,argentina
+2026-04-27 15:39:34,Platense vs Estudiantes de La Plata,Platense,Estudiantes de La Plata,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-03,,,,,,argentina
+2026-04-27 15:39:34,Racing Club vs Huracán,Racing Club,Huracán,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-03,,,,,,argentina
+2026-04-27 15:39:34,River Plate vs Atlético Tucumán,River Plate,Atlético Tucumán,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-03,,,,,,argentina
+2026-04-27 15:39:34,Rosario Central vs Tigre,Rosario Central,Tigre,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-03,,,,,,argentina
+2026-04-27 15:39:34,San Lorenzo vs Independiente,San Lorenzo,Independiente,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-03,,,,,,argentina
+2026-04-27 15:39:34,Unión (Santa Fe) vs Talleres (Córdoba),Unión (Santa Fe),Talleres (Córdoba),1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-03,,,,,,argentina
+2026-04-27 15:39:34,Vélez Sarsfield vs Newell's Old Boys,Vélez Sarsfield,Newell's Old Boys,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-03,,,,,,argentina
+2026-04-27 15:39:38,Botafogo vs Remo,Botafogo,Remo,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-02,,,,,,brasileirao
+2026-04-27 15:39:38,Palmeiras vs Santos,Palmeiras,Santos,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-02,,,,,,brasileirao
+2026-04-27 15:39:38,Vitória vs Coritiba,Vitória,Coritiba,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-02,,,,,,brasileirao
+2026-04-27 15:39:38,Athletico-PR vs Grêmio,Athletico-PR,Grêmio,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-02,,,,,,brasileirao
+2026-04-27 15:39:38,Cruzeiro vs Atlético-MG,Cruzeiro,Atlético-MG,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-03,,,,,,brasileirao
+2026-04-27 15:39:38,Flamengo vs Vasco da Gama,Flamengo,Vasco da Gama,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-03,,,,,,brasileirao
+2026-04-27 15:39:38,São Paulo vs Bahia,São Paulo,Bahia,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-03,,,,,,brasileirao
+2026-04-27 15:39:38,Chapecoense vs Red Bull Bragantino,Chapecoense,Red Bull Bragantino,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-03,,,,,,brasileirao
+2026-04-27 15:39:38,Internacional vs Fluminense,Internacional,Fluminense,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-03,,,,,,brasileirao
+2026-04-27 15:39:38,Mirassol vs Corinthians,Mirassol,Corinthians,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-03,,,,,,brasileirao
+2026-04-27 15:39:42,Manchester United vs Brentford,Manchester United,Brentford,1500.0,1576.7,34.5,31.4,34.0,local,1-1,1.3055,1.2945,ligas_internacionales,2026-04-27,,,,,,premier
+2026-04-27 15:39:42,Leeds United vs Burnley,Leeds United,Burnley,1500.0,1339.7,53.9,28.5,17.5,local,1-1,1.7005,0.8995,ligas_internacionales,2026-05-01,,,,,,premier
+2026-04-27 15:39:42,Brentford vs West Ham United,Brentford,West Ham United,1576.7,1500.0,47.0,30.2,22.8,local,1-1,1.5611,1.0389,ligas_internacionales,2026-05-02,,,,,,premier
+2026-04-27 15:39:42,Newcastle United vs Brighton & Hove Albion,Newcastle United,Brighton & Hove Albion,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-02,,,,,,premier
+2026-04-27 15:39:42,Wolverhampton Wanderers vs Sunderland,Wolverhampton Wanderers,Sunderland,1500.0,1542.4,37.2,31.4,31.4,local,1-1,1.3626,1.2374,ligas_internacionales,2026-05-02,,,,,,premier
+2026-04-27 15:39:42,Arsenal vs Fulham,Arsenal,Fulham,1727.6,1537.5,56.4,27.8,15.8,local,1-1,1.7501,0.8499,ligas_internacionales,2026-05-02,,,,,,premier
+2026-04-27 15:39:42,AFC Bournemouth vs Crystal Palace,AFC Bournemouth,Crystal Palace,1500.0,1540.4,37.4,31.4,31.2,local,1-1,1.366,1.234,ligas_internacionales,2026-05-03,,,,,,premier
+2026-04-27 15:39:42,Manchester United vs Liverpool,Manchester United,Liverpool,1500.0,1633.4,30.2,31.3,38.5,visitante,1-1,1.211,1.389,ligas_internacionales,2026-05-03,,,,,,premier
+2026-04-27 15:39:42,Aston Villa vs Tottenham Hotspur,Aston Villa,Tottenham Hotspur,1623.3,1500.0,50.8,29.4,19.8,local,1-1,1.6389,0.9611,ligas_internacionales,2026-05-03,,,,,,premier
+2026-04-27 15:39:42,Chelsea vs Nottingham Forest,Chelsea,Nottingham Forest,1546.1,1500.0,44.4,30.6,24.9,local,1-1,1.5101,1.0899,ligas_internacionales,2026-05-04,,,,,,premier
+2026-04-27 15:39:42,Everton vs Manchester City,Everton,Manchester City,1572.8,1764.2,26.0,30.8,43.2,visitante,1-1,1.1144,1.4856,ligas_internacionales,2026-05-04,,,,,,premier
+2026-04-27 15:39:45,Espanyol vs Levante,Espanyol,Levante,1500.0,1461.0,43.8,30.7,25.4,local,1-1,1.4983,1.1017,ligas_internacionales,2026-04-27,,,,,,laliga
+2026-04-27 15:39:45,Girona vs Mallorca,Girona,Mallorca,1551.1,1491.6,45.5,30.4,24.0,local,1-1,1.5325,1.0675,ligas_internacionales,2026-05-01,,,,,,laliga
+2026-04-27 15:39:45,Villarreal vs Levante,Villarreal,Levante,1667.0,1461.0,57.7,27.4,14.9,local,1-1,1.7766,0.8234,ligas_internacionales,2026-05-02,,,,,,laliga
+2026-04-27 15:39:45,Valencia vs Atlético Madrid,Valencia,Atlético Madrid,1485.0,1500.0,39.4,31.2,29.3,local,1-1,1.4083,1.1917,ligas_internacionales,2026-05-02,,,,,,laliga
+2026-04-27 15:39:45,Alavés vs Athletic Club,Alavés,Athletic Club,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-02,,,,,,laliga
+2026-04-27 15:39:45,Osasuna vs Barcelona,Osasuna,Barcelona,1541.3,1848.0,18.3,28.9,52.8,visitante,1-1,0.9221,1.6779,ligas_internacionales,2026-05-02,,,,,,laliga
+2026-04-27 15:39:45,Celta Vigo vs Elche,Celta Vigo,Elche,1500.0,1434.0,46.1,30.4,23.6,local,1-1,1.5434,1.0566,ligas_internacionales,2026-05-03,,,,,,laliga
+2026-04-27 15:39:45,Getafe vs Rayo Vallecano,Getafe,Rayo Vallecano,1529.6,1500.0,43.1,30.8,26.1,local,1-1,1.4827,1.1173,ligas_internacionales,2026-05-03,,,,,,laliga
+2026-04-27 15:39:45,Real Betis vs Real Oviedo,Real Betis,Real Oviedo,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-03,,,,,,laliga
+2026-04-27 15:39:45,Espanyol vs Real Madrid,Espanyol,Real Madrid,1500.0,1722.4,23.8,30.4,45.8,visitante,1-1,1.0627,1.5373,ligas_internacionales,2026-05-03,,,,,,laliga
+2026-04-27 15:39:45,Sevilla vs Real Sociedad,Sevilla,Real Sociedad,1449.9,1500.0,36.6,31.4,32.0,local,1-1,1.3499,1.2501,ligas_internacionales,2026-05-04,,,,,,laliga
+2026-04-27 15:39:49,1. FC Union Berlin vs FC Cologne,1. FC Union Berlin,FC Cologne,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-02,,,,,,bundesliga
+2026-04-27 15:39:49,Bayern Munich vs 1. FC Heidenheim 1846,Bayern Munich,1. FC Heidenheim 1846,1869.6,1500.0,70.9,22.0,7.2,local,2-0,2.0494,0.5507,ligas_internacionales,2026-05-02,,,,,,bundesliga
+2026-04-27 15:39:49,Eintracht Frankfurt vs Hamburg SV,Eintracht Frankfurt,Hamburg SV,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-02,,,,,,bundesliga
+2026-04-27 15:39:49,TSG Hoffenheim vs VfB Stuttgart,TSG Hoffenheim,VfB Stuttgart,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-02,,,,,,bundesliga
+2026-04-27 15:39:49,Werder Bremen vs FC Augsburg,Werder Bremen,FC Augsburg,1448.6,1500.0,36.5,31.4,32.1,local,1-1,1.3476,1.2524,ligas_internacionales,2026-05-02,,,,,,bundesliga
+2026-04-27 15:39:49,Bayer Leverkusen vs RB Leipzig,Bayer Leverkusen,RB Leipzig,1500.0,1675.2,27.1,31.0,41.9,visitante,1-1,1.1413,1.4587,ligas_internacionales,2026-05-02,,,,,,bundesliga
+2026-04-27 15:39:49,St. Pauli vs Mainz,St. Pauli,Mainz,1500.0,1558.8,35.9,31.4,32.6,local,1-1,1.3354,1.2646,ligas_internacionales,2026-05-03,,,,,,bundesliga
+2026-04-27 15:39:49,Borussia Mönchengladbach vs Borussia Dortmund,Borussia Mönchengladbach,Borussia Dortmund,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-03,,,,,,bundesliga
+2026-04-27 15:39:49,SC Freiburg vs VfL Wolfsburg,SC Freiburg,VfL Wolfsburg,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-03,,,,,,bundesliga
+2026-04-27 15:39:53,Cagliari vs Atalanta,Cagliari,Atalanta,1428.0,1652.2,23.7,30.4,45.9,visitante,1-1,1.0596,1.5404,ligas_internacionales,2026-04-27,,,,,,seriea
+2026-04-27 15:39:53,Lazio vs Udinese,Lazio,Udinese,1608.4,1524.5,47.6,30.1,22.4,local,1-1,1.5731,1.0269,ligas_internacionales,2026-04-27,,,,,,seriea
+2026-04-27 15:39:53,Pisa vs Lecce,Pisa,Lecce,1335.0,1409.8,34.7,31.4,33.9,local,1-1,1.3087,1.2913,ligas_internacionales,2026-05-01,,,,,,seriea
+2026-04-27 15:39:53,Udinese vs Torino,Udinese,Torino,1524.5,1495.4,43.0,30.8,26.1,local,1-1,1.4818,1.1182,ligas_internacionales,2026-05-02,,,,,,seriea
+2026-04-27 15:39:53,Como vs Napoli,Como,Napoli,1637.6,1692.6,36.2,31.4,32.3,local,1-1,1.3417,1.2583,ligas_internacionales,2026-05-02,,,,,,seriea
+2026-04-27 15:39:53,Atalanta vs Genoa,Atalanta,Genoa,1652.2,1532.7,50.5,29.4,20.0,local,1-1,1.6326,0.9674,ligas_internacionales,2026-05-02,,,,,,seriea
+2026-04-27 15:39:53,Bologna vs Cagliari,Bologna,Cagliari,1531.3,1428.0,49.2,29.7,21.1,local,1-1,1.6054,0.9946,ligas_internacionales,2026-05-03,,,,,,seriea
+2026-04-27 15:39:53,Sassuolo vs AC Milan,Sassuolo,AC Milan,1534.5,1500.0,43.5,30.8,25.8,local,1-1,1.4909,1.1091,ligas_internacionales,2026-05-03,,,,,,seriea
+2026-04-27 15:39:53,Juventus vs Hellas Verona,Juventus,Hellas Verona,1713.5,1500.0,58.4,27.2,14.5,local,1-1,1.7892,0.8108,ligas_internacionales,2026-05-03,,,,,,seriea
+2026-04-27 15:39:53,Inter Milan vs Parma,Inter Milan,Parma,1820.0,1540.8,63.7,25.2,11.1,local,2-0,1.8988,0.7012,ligas_internacionales,2026-05-03,,,,,,seriea
+2026-04-27 15:39:53,Cremonese vs Lazio,Cremonese,Lazio,1359.0,1608.4,22.0,30.0,48.0,visitante,1-1,1.0177,1.5823,ligas_internacionales,2026-05-04,,,,,,seriea
+2026-04-27 15:39:53,AS Roma vs Fiorentina,AS Roma,Fiorentina,1500.0,1566.6,35.3,31.4,33.2,local,1-1,1.3224,1.2776,ligas_internacionales,2026-05-04,,,,,,seriea
+2026-04-27 15:39:57,Nantes vs Marseille,Nantes,Marseille,1364.4,1597.7,23.1,30.2,46.7,visitante,1-1,1.0445,1.5555,ligas_internacionales,2026-05-02,,,,,,ligue1
+2026-04-27 15:39:57,Paris Saint-Germain vs Lorient,Paris Saint-Germain,Lorient,1747.4,1555.2,56.6,27.8,15.7,local,1-1,1.7537,0.8463,ligas_internacionales,2026-05-02,,,,,,ligue1
+2026-04-27 15:39:57,Metz vs AS Monaco,Metz,AS Monaco,1298.8,1500.0,25.3,30.7,44.0,visitante,1-1,1.0981,1.5019,ligas_internacionales,2026-05-02,,,,,,ligue1
+2026-04-27 15:39:57,Nice vs Lens,Nice,Lens,1470.5,1664.7,25.8,30.8,43.4,visitante,1-1,1.1097,1.4903,ligas_internacionales,2026-05-02,,,,,,ligue1
+2026-04-27 15:39:57,Lille vs Le Havre AC,Lille,Le Havre AC,1676.5,1500.0,55.3,28.2,16.6,local,1-1,1.7275,0.8725,ligas_internacionales,2026-05-03,,,,,,ligue1
+2026-04-27 15:39:57,AJ Auxerre vs Angers,AJ Auxerre,Angers,1500.0,1436.4,45.9,30.4,23.7,local,1-1,1.5393,1.0607,ligas_internacionales,2026-05-03,,,,,,ligue1
+2026-04-27 15:39:57,Paris FC vs Brest,Paris FC,Brest,1578.7,1519.5,45.5,30.5,24.0,local,1-1,1.5319,1.0681,ligas_internacionales,2026-05-03,,,,,,ligue1
+2026-04-27 15:39:57,Strasbourg vs Toulouse,Strasbourg,Toulouse,1571.0,1485.3,47.7,30.0,22.2,local,1-1,1.5761,1.0239,ligas_internacionales,2026-05-03,,,,,,ligue1
+2026-04-27 15:39:57,Lyon vs Stade Rennais,Lyon,Stade Rennais,1638.7,1500.0,52.1,29.0,18.8,local,1-1,1.6644,0.9356,ligas_internacionales,2026-05-03,,,,,,ligue1

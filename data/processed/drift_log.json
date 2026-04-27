@@ -1,0 +1,20 @@
+[
+  {
+    "fecha": "2026-04-27",
+    "drift_detectado": {
+      "tarjetas": {
+        "mu_hist": 4.41,
+        "mu_recent": 4.852,
+        "drift": 0.441
+      },
+      "corners": {
+        "mu_hist": 9.318,
+        "mu_recent": 9.63,
+        "drift": 0.311
+      }
+    },
+    "fixes_aplicados": {},
+    "n_partidos_recientes": 27,
+    "n_partidos_hist": 821
+  }
+]
