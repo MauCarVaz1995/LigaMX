@@ -156,3 +156,13 @@ fecha_prediccion,partido,equipo_local,equipo_visitante,elo_local,elo_visitante,p
 2026-04-27 15:39:57,Paris FC vs Brest,Paris FC,Brest,1578.7,1519.5,45.5,30.5,24.0,local,1-1,1.5319,1.0681,ligas_internacionales,2026-05-03,,,,,,ligue1
 2026-04-27 15:39:57,Strasbourg vs Toulouse,Strasbourg,Toulouse,1571.0,1485.3,47.7,30.0,22.2,local,1-1,1.5761,1.0239,ligas_internacionales,2026-05-03,,,,,,ligue1
 2026-04-27 15:39:57,Lyon vs Stade Rennais,Lyon,Stade Rennais,1638.7,1500.0,52.1,29.0,18.8,local,1-1,1.6644,0.9356,ligas_internacionales,2026-05-03,,,,,,ligue1
+2026-04-28 16:18:48,Mirassol vs Liga de Quito,Mirassol,Liga de Quito,1513.3,1500.0,41.7,31.0,27.3,local,1-1,1.4555,1.1445,ligas_internacionales,2026-05-07,,,,,,libertadores
+2026-04-28 16:18:48,Platense vs Peñarol,Platense,Peñarol,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-07,,,,,,libertadores
+2026-04-28 16:18:48,Coquimbo Unido vs Universitario,Coquimbo Unido,Universitario,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-08,,,,,,libertadores
+2026-04-28 16:18:48,Independiente Medellín vs Flamengo,Independiente Medellín,Flamengo,1500.0,1518.7,39.1,31.2,29.6,local,1-1,1.4022,1.1978,ligas_internacionales,2026-05-08,,,,,,libertadores
+2026-04-28 16:18:48,Atlético Junior vs Cerro Porteño,Atlético Junior,Cerro Porteño,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-08,,,,,,libertadores
+2026-04-28 16:18:57,Barracas Central vs Banfield,Barracas Central,Banfield,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-02,,,,,,argentina
+2026-04-28 16:18:57,Lanús vs Deportivo Riestra,Lanús,Deportivo Riestra,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-02,,,,,,argentina
+2026-04-28 16:18:57,Central Córdoba (Santiago del Estero) vs Boca Juniors,Central Córdoba (Santiago del Estero),Boca Juniors,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-02,,,,,,argentina
+2026-04-28 16:18:57,San Lorenzo vs Independiente,San Lorenzo,Independiente,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-02,,,,,,argentina
+2026-04-28 16:18:57,Unión (Santa Fe) vs Talleres (Córdoba),Unión (Santa Fe),Talleres (Córdoba),1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-02,,,,,,argentina
