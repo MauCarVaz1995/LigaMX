@@ -166,3 +166,7 @@ fecha_prediccion,partido,equipo_local,equipo_visitante,elo_local,elo_visitante,p
 2026-04-28 16:18:57,Central Córdoba (Santiago del Estero) vs Boca Juniors,Central Córdoba (Santiago del Estero),Boca Juniors,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-02,,,,,,argentina
 2026-04-28 16:18:57,San Lorenzo vs Independiente,San Lorenzo,Independiente,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-02,,,,,,argentina
 2026-04-28 16:18:57,Unión (Santa Fe) vs Talleres (Córdoba),Unión (Santa Fe),Talleres (Córdoba),1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-02,,,,,,argentina
+2026-04-29 16:02:18,Levante vs Osasuna,Levante,Osasuna,1461.0,1541.3,34.3,31.4,34.3,local,1-1,1.2996,1.3004,ligas_internacionales,2026-05-08,,,,,,laliga
+2026-04-29 16:02:21,Borussia Dortmund vs Eintracht Frankfurt,Borussia Dortmund,Eintracht Frankfurt,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-08,,,,,,bundesliga
+2026-04-29 16:02:25,Torino vs Sassuolo,Torino,Sassuolo,1495.4,1534.5,37.5,31.4,31.1,local,1-1,1.3681,1.2319,ligas_internacionales,2026-05-08,,,,,,seriea
+2026-04-29 16:02:29,Lens vs Nantes,Lens,Nantes,1664.7,1364.4,65.4,24.5,10.1,local,2-0,1.9338,0.6662,ligas_internacionales,2026-05-08,,,,,,ligue1

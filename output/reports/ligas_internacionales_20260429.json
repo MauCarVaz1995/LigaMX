@@ -1,0 +1,103 @@
+{
+  "generated_at": "2026-04-29T16:01:48.536989",
+  "ligas": {
+    "champions": {
+      "nombre": "UEFA Champions League",
+      "n_fixtures": 3,
+      "picks": []
+    },
+    "libertadores": {
+      "nombre": "Copa Libertadores",
+      "n_fixtures": 26,
+      "picks": []
+    },
+    "mls": {
+      "nombre": "MLS",
+      "n_fixtures": 15,
+      "picks": []
+    },
+    "argentina": {
+      "nombre": "Liga Profesional Argentina",
+      "n_fixtures": 15,
+      "picks": []
+    },
+    "brasileirao": {
+      "nombre": "Brasileirao Serie A",
+      "n_fixtures": 10,
+      "picks": []
+    },
+    "premier": {
+      "nombre": "Premier League",
+      "n_fixtures": 10,
+      "picks": []
+    },
+    "laliga": {
+      "nombre": "La Liga",
+      "n_fixtures": 11,
+      "picks": [
+        {
+          "partido": "Levante vs Osasuna",
+          "fecha": "2026-05-08",
+          "ganador": "local",
+          "prob_local": 34.3,
+          "prob_empate": 31.4,
+          "prob_visitante": 34.3,
+          "marcador": "1-1",
+          "elo_local": 1461.0,
+          "elo_visitante": 1541.3
+        }
+      ]
+    },
+    "bundesliga": {
+      "nombre": "Bundesliga",
+      "n_fixtures": 10,
+      "picks": [
+        {
+          "partido": "Borussia Dortmund vs Eintracht Frankfurt",
+          "fecha": "2026-05-08",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        }
+      ]
+    },
+    "seriea": {
+      "nombre": "Serie A",
+      "n_fixtures": 11,
+      "picks": [
+        {
+          "partido": "Torino vs Sassuolo",
+          "fecha": "2026-05-08",
+          "ganador": "local",
+          "prob_local": 37.5,
+          "prob_empate": 31.4,
+          "prob_visitante": 31.1,
+          "marcador": "1-1",
+          "elo_local": 1495.4,
+          "elo_visitante": 1534.5
+        }
+      ]
+    },
+    "ligue1": {
+      "nombre": "Ligue 1",
+      "n_fixtures": 10,
+      "picks": [
+        {
+          "partido": "Lens vs Nantes",
+          "fecha": "2026-05-08",
+          "ganador": "local",
+          "prob_local": 65.4,
+          "prob_empate": 24.5,
+          "prob_visitante": 10.1,
+          "marcador": "2-0",
+          "elo_local": 1664.7,
+          "elo_visitante": 1364.4
+        }
+      ]
+    }
+  }
+}
