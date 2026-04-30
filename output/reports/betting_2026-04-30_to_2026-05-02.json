@@ -1,0 +1,76 @@
+[
+  {
+    "match_id": "5407882",
+    "fecha": "2026-05-02",
+    "jornada": "1/4",
+    "local": "Tigres",
+    "visita": "Chivas",
+    "torneo": "Clausura 2026",
+    "elo_local": 1558.0,
+    "elo_visita": 1619.0,
+    "corners": {},
+    "tarjetas": {
+      "over_3.5": 0.914,
+      "under_3.5": null,
+      "over_4.5": 0.819,
+      "under_4.5": 0.181,
+      "over_5.5": 0.688,
+      "under_5.5": 0.312,
+      "lambda_total": 6.91,
+      "cr_local": 3.05,
+      "cr_visita": 2.94,
+      "rival_bonus": 0.93
+    },
+    "btts": {
+      "btts_si": 0.603,
+      "btts_no": 0.397,
+      "over_1.5": 0.804,
+      "over_2.5": 0.544,
+      "under_2.5": 0.456,
+      "btts_over_2.5": 0.46,
+      "lambda_local": 1.494,
+      "lambda_visita": 1.364
+    },
+    "value_bets": [],
+    "errors": [
+      "corners: '<=' not supported between instances of 'str' and 'int'"
+    ]
+  },
+  {
+    "match_id": "5407883",
+    "fecha": "2026-05-02",
+    "jornada": "1/4",
+    "local": "Atlas",
+    "visita": "Cruz Azul",
+    "torneo": "Clausura 2026",
+    "elo_local": 1472.01,
+    "elo_visita": 1650.56,
+    "corners": {},
+    "tarjetas": {
+      "over_3.5": 0.75,
+      "under_3.5": null,
+      "over_4.5": 0.578,
+      "under_4.5": 0.422,
+      "over_5.5": 0.403,
+      "under_5.5": 0.597,
+      "lambda_total": 5.11,
+      "cr_local": 2.63,
+      "cr_visita": 2.48,
+      "rival_bonus": 0.0
+    },
+    "btts": {
+      "btts_si": 0.6,
+      "btts_no": 0.4,
+      "over_1.5": 0.804,
+      "over_2.5": 0.544,
+      "under_2.5": 0.456,
+      "btts_over_2.5": 0.458,
+      "lambda_local": 1.298,
+      "lambda_visita": 1.56
+    },
+    "value_bets": [],
+    "errors": [
+      "corners: '<=' not supported between instances of 'str' and 'int'"
+    ]
+  }
+]

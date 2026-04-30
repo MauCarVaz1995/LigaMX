@@ -170,3 +170,35 @@ fecha_prediccion,partido,equipo_local,equipo_visitante,elo_local,elo_visitante,p
 2026-04-29 16:02:21,Borussia Dortmund vs Eintracht Frankfurt,Borussia Dortmund,Eintracht Frankfurt,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-08,,,,,,bundesliga
 2026-04-29 16:02:25,Torino vs Sassuolo,Torino,Sassuolo,1495.4,1534.5,37.5,31.4,31.1,local,1-1,1.3681,1.2319,ligas_internacionales,2026-05-08,,,,,,seriea
 2026-04-29 16:02:29,Lens vs Nantes,Lens,Nantes,1664.7,1364.4,65.4,24.5,10.1,local,2-0,1.9338,0.6662,ligas_internacionales,2026-05-08,,,,,,ligue1
+2026-04-30 15:53:15,Toronto FC vs Inter Miami CF,Toronto FC,Inter Miami CF,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-09,,,,,,mls
+2026-04-30 15:53:15,Chicago Fire FC vs Red Bull New York,Chicago Fire FC,Red Bull New York,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-09,,,,,,mls
+2026-04-30 15:53:15,CF Montréal vs Orlando City SC,CF Montréal,Orlando City SC,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-09,,,,,,mls
+2026-04-30 15:53:15,Atlanta United vs LA Galaxy,Atlanta United,LA Galaxy,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-09,,,,,,mls
+2026-04-30 15:53:15,Charlotte FC vs FC Cincinnati,Charlotte FC,FC Cincinnati,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-09,,,,,,mls
+2026-04-30 15:53:15,New England Revolution vs Philadelphia Union,New England Revolution,Philadelphia Union,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-09,,,,,,mls
+2026-04-30 15:53:15,FC Dallas vs Real Salt Lake,FC Dallas,Real Salt Lake,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-10,,,,,,mls
+2026-04-30 15:53:15,Nashville SC vs D.C. United,Nashville SC,D.C. United,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-10,,,,,,mls
+2026-04-30 15:53:15,Colorado Rapids vs St. Louis CITY SC,Colorado Rapids,St. Louis CITY SC,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-10,,,,,,mls
+2026-04-30 15:53:15,Portland Timbers vs Sporting Kansas City,Portland Timbers,Sporting Kansas City,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-10,,,,,,mls
+2026-04-30 15:53:15,San Jose Earthquakes vs Vancouver Whitecaps,San Jose Earthquakes,Vancouver Whitecaps,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-10,,,,,,mls
+2026-04-30 15:53:15,Seattle Sounders FC vs San Diego FC,Seattle Sounders FC,San Diego FC,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-10,,,,,,mls
+2026-04-30 15:53:23,Coritiba vs Internacional,Coritiba,Internacional,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-09,,,,,,brasileirao
+2026-04-30 15:53:23,Fluminense vs Vitória,Fluminense,Vitória,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-09,,,,,,brasileirao
+2026-04-30 15:53:23,Bahia vs Cruzeiro,Bahia,Cruzeiro,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-10,,,,,,brasileirao
+2026-04-30 15:53:26,Liverpool vs Chelsea,Liverpool,Chelsea,1633.4,1546.1,47.8,30.0,22.1,local,1-1,1.5788,1.0212,ligas_internacionales,2026-05-09,,,,,,premier
+2026-04-30 15:53:26,Brighton & Hove Albion vs Wolverhampton Wanderers,Brighton & Hove Albion,Wolverhampton Wanderers,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-09,,,,,,premier
+2026-04-30 15:53:26,Fulham vs AFC Bournemouth,Fulham,AFC Bournemouth,1537.5,1500.0,43.7,30.7,25.5,local,1-1,1.4959,1.1041,ligas_internacionales,2026-05-09,,,,,,premier
+2026-04-30 15:53:26,Sunderland vs Manchester United,Sunderland,Manchester United,1542.4,1500.0,44.1,30.7,25.2,local,1-1,1.504,1.096,ligas_internacionales,2026-05-09,,,,,,premier
+2026-04-30 15:53:26,Manchester City vs Brentford,Manchester City,Brentford,1764.2,1576.7,56.2,27.9,15.9,local,1-1,1.7459,0.8541,ligas_internacionales,2026-05-09,,,,,,premier
+2026-04-30 15:53:30,Elche vs Alavés,Elche,Alavés,1434.0,1500.0,35.4,31.4,33.2,local,1-1,1.3233,1.2767,ligas_internacionales,2026-05-09,,,,,,laliga
+2026-04-30 15:53:30,Sevilla vs Espanyol,Sevilla,Espanyol,1449.9,1500.0,36.6,31.4,32.0,local,1-1,1.3499,1.2501,ligas_internacionales,2026-05-09,,,,,,laliga
+2026-04-30 15:53:30,Atlético Madrid vs Celta Vigo,Atlético Madrid,Celta Vigo,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-09,,,,,,laliga
+2026-04-30 15:53:30,Real Sociedad vs Real Betis,Real Sociedad,Real Betis,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-09,,,,,,laliga
+2026-04-30 15:53:33,FC Augsburg vs Borussia Mönchengladbach,FC Augsburg,Borussia Mönchengladbach,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-09,,,,,,bundesliga
+2026-04-30 15:53:33,RB Leipzig vs St. Pauli,RB Leipzig,St. Pauli,1675.2,1500.0,55.2,28.2,16.6,local,1-1,1.7253,0.8747,ligas_internacionales,2026-05-09,,,,,,bundesliga
+2026-04-30 15:53:33,TSG Hoffenheim vs Werder Bremen,TSG Hoffenheim,Werder Bremen,1500.0,1448.6,44.9,30.6,24.6,local,1-1,1.5191,1.0809,ligas_internacionales,2026-05-09,,,,,,bundesliga
+2026-04-30 15:53:33,VfB Stuttgart vs Bayer Leverkusen,VfB Stuttgart,Bayer Leverkusen,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-09,,,,,,bundesliga
+2026-04-30 15:53:33,VfL Wolfsburg vs Bayern Munich,VfL Wolfsburg,Bayern Munich,1500.0,1869.6,14.7,27.3,58.0,visitante,1-1,0.8173,1.7827,ligas_internacionales,2026-05-09,,,,,,bundesliga
+2026-04-30 15:53:37,Cagliari vs Udinese,Cagliari,Udinese,1428.0,1524.5,33.0,31.4,35.6,visitante,1-1,1.2726,1.3274,ligas_internacionales,2026-05-09,,,,,,seriea
+2026-04-30 15:53:37,Lazio vs Inter Milan,Lazio,Inter Milan,1608.4,1820.0,24.6,30.6,44.9,visitante,1-1,1.0805,1.5195,ligas_internacionales,2026-05-09,,,,,,seriea
+2026-04-30 15:53:37,Lecce vs Juventus,Lecce,Juventus,1409.8,1713.5,18.5,28.9,52.5,visitante,1-1,0.9272,1.6728,ligas_internacionales,2026-05-09,,,,,,seriea
