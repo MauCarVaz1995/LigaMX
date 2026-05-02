@@ -1,0 +1,91 @@
+{
+  "generated_at": "2026-05-02T14:50:04.821823",
+  "ligas": {
+    "champions": {
+      "nombre": "UEFA Champions League",
+      "n_fixtures": 2,
+      "picks": []
+    },
+    "libertadores": {
+      "nombre": "Copa Libertadores",
+      "n_fixtures": 16,
+      "picks": []
+    },
+    "mls": {
+      "nombre": "MLS",
+      "n_fixtures": 30,
+      "picks": []
+    },
+    "argentina": {
+      "nombre": "Liga Profesional Argentina",
+      "n_fixtures": 15,
+      "picks": []
+    },
+    "brasileirao": {
+      "nombre": "Brasileirao Serie A",
+      "n_fixtures": 20,
+      "picks": []
+    },
+    "premier": {
+      "nombre": "Premier League",
+      "n_fixtures": 19,
+      "picks": [
+        {
+          "partido": "Tottenham Hotspur vs Leeds United",
+          "fecha": "2026-05-11",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        }
+      ]
+    },
+    "laliga": {
+      "nombre": "La Liga",
+      "n_fixtures": 18,
+      "picks": [
+        {
+          "partido": "Rayo Vallecano vs Girona",
+          "fecha": "2026-05-11",
+          "ganador": "local",
+          "prob_local": 36.6,
+          "prob_empate": 31.4,
+          "prob_visitante": 32.1,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1551.1
+        }
+      ]
+    },
+    "bundesliga": {
+      "nombre": "Bundesliga",
+      "n_fixtures": 18,
+      "picks": []
+    },
+    "seriea": {
+      "nombre": "Serie A",
+      "n_fixtures": 19,
+      "picks": [
+        {
+          "partido": "Napoli vs Bologna",
+          "fecha": "2026-05-11",
+          "ganador": "local",
+          "prob_local": 54.0,
+          "prob_empate": 28.5,
+          "prob_visitante": 17.5,
+          "marcador": "1-1",
+          "elo_local": 1692.6,
+          "elo_visitante": 1531.3
+        }
+      ]
+    },
+    "ligue1": {
+      "nombre": "Ligue 1",
+      "n_fixtures": 18,
+      "picks": []
+    }
+  }
+}
