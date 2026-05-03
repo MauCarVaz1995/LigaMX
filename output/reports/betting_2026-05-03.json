@@ -1,0 +1,76 @@
+[
+  {
+    "match_id": "5407884",
+    "fecha": "2026-05-03",
+    "jornada": "1/4",
+    "local": "CF America",
+    "visita": "Pumas",
+    "torneo": "Clausura 2026",
+    "elo_local": 1500.0,
+    "elo_visita": 1631.94,
+    "corners": {},
+    "tarjetas": {
+      "over_3.5": 0.742,
+      "under_3.5": null,
+      "over_4.5": 0.569,
+      "under_4.5": 0.431,
+      "over_5.5": 0.393,
+      "under_5.5": 0.607,
+      "lambda_total": 5.05,
+      "cr_local": 2.0,
+      "cr_visita": 2.12,
+      "rival_bonus": 0.93
+    },
+    "btts": {
+      "btts_si": 0.603,
+      "btts_no": 0.397,
+      "over_1.5": 0.804,
+      "over_2.5": 0.544,
+      "under_2.5": 0.456,
+      "btts_over_2.5": 0.461,
+      "lambda_local": 1.376,
+      "lambda_visita": 1.482
+    },
+    "value_bets": [],
+    "errors": [
+      "corners: '<=' not supported between instances of 'str' and 'int'"
+    ]
+  },
+  {
+    "match_id": "5407885",
+    "fecha": "2026-05-03",
+    "jornada": "1/4",
+    "local": "Toluca",
+    "visita": "Pachuca",
+    "torneo": "Clausura 2026",
+    "elo_local": 1621.11,
+    "elo_visita": 1584.98,
+    "corners": {},
+    "tarjetas": {
+      "over_3.5": 0.968,
+      "under_3.5": null,
+      "over_4.5": 0.921,
+      "under_4.5": 0.079,
+      "over_5.5": 0.843,
+      "under_5.5": 0.157,
+      "lambda_total": 8.4,
+      "cr_local": 2.82,
+      "cr_visita": 2.65,
+      "rival_bonus": 2.93
+    },
+    "btts": {
+      "btts_si": 0.591,
+      "btts_no": 0.409,
+      "over_1.5": 0.804,
+      "over_2.5": 0.544,
+      "under_2.5": 0.456,
+      "btts_over_2.5": 0.452,
+      "lambda_local": 1.656,
+      "lambda_visita": 1.202
+    },
+    "value_bets": [],
+    "errors": [
+      "corners: '<=' not supported between instances of 'str' and 'int'"
+    ]
+  }
+]
