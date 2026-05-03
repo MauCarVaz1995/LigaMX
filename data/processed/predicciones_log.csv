@@ -239,3 +239,9 @@ fecha_prediccion,partido,equipo_local,equipo_visitante,elo_local,elo_visitante,p
 2026-05-02 14:50:30,Tottenham Hotspur vs Leeds United,Tottenham Hotspur,Leeds United,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-11,,,,,,premier
 2026-05-02 14:50:33,Rayo Vallecano vs Girona,Rayo Vallecano,Girona,1500.0,1551.1,36.6,31.4,32.1,local,1-1,1.3482,1.2518,ligas_internacionales,2026-05-11,,,,,,laliga
 2026-05-02 14:50:43,Napoli vs Bologna,Napoli,Bologna,1692.6,1531.3,54.0,28.5,17.5,local,1-1,1.7022,0.8978,ligas_internacionales,2026-05-11,,,,,,seriea
+2026-05-03 14:50:38,Gimnasia (Mendoza) vs Defensa y Justicia,Gimnasia (Mendoza),Defensa y Justicia,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-04,,,,,,argentina
+2026-05-03 14:50:38,Vélez Sarsfield vs Newell's Old Boys,Vélez Sarsfield,Newell's Old Boys,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-04,,,,,,argentina
+2026-05-03 14:50:38,Estudiantes de Río Cuarto vs Instituto (Córdoba),Estudiantes de Río Cuarto,Instituto (Córdoba),1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-05,,,,,,argentina
+2026-05-03 14:50:49,Celta Vigo vs Levante,Celta Vigo,Levante,1500.0,1461.0,43.8,30.7,25.4,local,1-1,1.4983,1.1017,ligas_internacionales,2026-05-12,,,,,,laliga
+2026-05-03 14:50:49,Real Betis vs Elche,Real Betis,Elche,1500.0,1434.0,46.1,30.4,23.6,local,1-1,1.5434,1.0566,ligas_internacionales,2026-05-12,,,,,,laliga
+2026-05-03 14:50:49,Osasuna vs Atlético Madrid,Osasuna,Atlético Madrid,1541.3,1500.0,44.0,30.7,25.3,local,1-1,1.5021,1.0979,ligas_internacionales,2026-05-12,,,,,,laliga

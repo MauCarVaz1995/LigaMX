@@ -106,5 +106,29 @@
     "fixes_aplicados": {},
     "n_partidos_recientes": 27,
     "n_partidos_hist": 821
+  },
+  {
+    "fecha": "2026-05-03",
+    "drift_detectado": {
+      "tarjetas": {
+        "mu_hist": 4.412,
+        "mu_recent": 4.963,
+        "drift": 0.551
+      },
+      "corners": {
+        "mu_hist": 9.313,
+        "mu_recent": 9.519,
+        "drift": 0.205
+      }
+    },
+    "fixes_aplicados": {
+      "tarjetas_mu": {
+        "antes": 5.073,
+        "despues": 4.577,
+        "razon": "drift=+0.55 > 0.5"
+      }
+    },
+    "n_partidos_recientes": 27,
+    "n_partidos_hist": 823
   }
 ]

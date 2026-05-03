@@ -1,0 +1,123 @@
+{
+  "generated_at": "2026-05-03T14:50:17.342169",
+  "ligas": {
+    "champions": {
+      "nombre": "UEFA Champions League",
+      "n_fixtures": 2,
+      "picks": []
+    },
+    "libertadores": {
+      "nombre": "Copa Libertadores",
+      "n_fixtures": 16,
+      "picks": []
+    },
+    "mls": {
+      "nombre": "MLS",
+      "n_fixtures": 17,
+      "picks": []
+    },
+    "argentina": {
+      "nombre": "Liga Profesional Argentina",
+      "n_fixtures": 9,
+      "picks": [
+        {
+          "partido": "Gimnasia (Mendoza) vs Defensa y Justicia",
+          "fecha": "2026-05-04",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Vélez Sarsfield vs Newell's Old Boys",
+          "fecha": "2026-05-04",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Estudiantes de Río Cuarto vs Instituto (Córdoba)",
+          "fecha": "2026-05-05",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        }
+      ]
+    },
+    "brasileirao": {
+      "nombre": "Brasileirao Serie A",
+      "n_fixtures": 15,
+      "picks": []
+    },
+    "premier": {
+      "nombre": "Premier League",
+      "n_fixtures": 15,
+      "picks": []
+    },
+    "laliga": {
+      "nombre": "La Liga",
+      "n_fixtures": 17,
+      "picks": [
+        {
+          "partido": "Celta Vigo vs Levante",
+          "fecha": "2026-05-12",
+          "ganador": "local",
+          "prob_local": 43.8,
+          "prob_empate": 30.7,
+          "prob_visitante": 25.4,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1461.0
+        },
+        {
+          "partido": "Real Betis vs Elche",
+          "fecha": "2026-05-12",
+          "ganador": "local",
+          "prob_local": 46.1,
+          "prob_empate": 30.4,
+          "prob_visitante": 23.6,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1434.0
+        },
+        {
+          "partido": "Osasuna vs Atlético Madrid",
+          "fecha": "2026-05-12",
+          "ganador": "local",
+          "prob_local": 44.0,
+          "prob_empate": 30.7,
+          "prob_visitante": 25.3,
+          "marcador": "1-1",
+          "elo_local": 1541.3,
+          "elo_visitante": 1500.0
+        }
+      ]
+    },
+    "bundesliga": {
+      "nombre": "Bundesliga",
+      "n_fixtures": 12,
+      "picks": []
+    },
+    "seriea": {
+      "nombre": "Serie A",
+      "n_fixtures": 15,
+      "picks": []
+    },
+    "ligue1": {
+      "nombre": "Ligue 1",
+      "n_fixtures": 14,
+      "picks": []
+    }
+  }
+}

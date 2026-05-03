@@ -1,0 +1,3418 @@
+{
+  "match_id": 5407882,
+  "date": "2026-05-03",
+  "home_team": "Tigres",
+  "away_team": "Chivas",
+  "home_team_id": null,
+  "away_team_id": null,
+  "score_home": 3,
+  "score_away": 1,
+  "score_str": "3-1",
+  "finished": true,
+  "utc_time": "2026-05-03",
+  "league": "Liga MX",
+  "league_id": 230,
+  "formation_home": "4-2-3-1",
+  "formation_away": "4-4-2",
+  "avg_rating_home": 7.2,
+  "avg_rating_away": 6.4,
+  "player_of_the_match": {
+    "id": 793586,
+    "name": {
+      "firstName": "Juan",
+      "lastName": "Brunetta",
+      "fullName": "Juan Brunetta"
+    },
+    "teamName": "Tigres",
+    "teamId": 8561,
+    "rating": {
+      "num": "8.6",
+      "isTop": {
+        "isTopRating": true,
+        "isMatchFinished": true
+      }
+    },
+    "minutesPlayed": 86,
+    "shotmap": [
+      {
+        "id": 2932650559,
+        "eventType": "AttemptSaved",
+        "teamId": 8561,
+        "playerId": 793586,
+        "playerName": "Juan Brunetta",
+        "x": 83.38592233039999,
+        "y": 24.349554145,
+        "min": 43,
+        "minAdded": null,
+        "isBlocked": false,
+        "isOnTarget": true,
+        "blockedX": 103.2931034484,
+        "blockedY": 33.695,
+        "goalCrossedY": 36.21125,
+        "goalCrossedZ": 1.4254736772,
+        "expectedGoals": 0.06598278880119324,
+        "expectedGoalsOnTarget": 0.12339697033166885,
+        "shotType": "RightFoot",
+        "situation": "FreeKick",
+        "period": "FirstHalf",
+        "isOwnGoal": false,
+        "onGoalShot": {
+          "x": 0.41501322751322767,
+          "y": 0.3771094384126984,
+          "zoomRatio": 1
+        },
+        "isSavedOffLine": false,
+        "isFromInsideBox": false,
+        "keeperId": 522580,
+        "teamColor": "#0053A2"
+      },
+      {
+        "id": 2932651529,
+        "eventType": "AttemptSaved",
+        "teamId": 8561,
+        "playerId": 793586,
+        "playerName": "Juan Brunetta",
+        "x": 85.06470588159999,
+        "y": 42.2928125,
+        "min": 45,
+        "minAdded": 0,
+        "isBlocked": false,
+        "isOnTarget": true,
+        "blockedX": 104.1465517242,
+        "blockedY": 33.695,
+        "goalCrossedY": 35.83,
+        "goalCrossedZ": 0.3274736826,
+        "expectedGoals": 0.04577428475022316,
+        "expectedGoalsOnTarget": 0.12294811010360718,
+        "shotType": "RightFoot",
+        "situation": "IndividualPlay",
+        "period": "FirstHalf",
+        "isOwnGoal": false,
+        "onGoalShot": {
+          "x": 0.5158730158730164,
+          "y": 0.08663324936507935,
+          "zoomRatio": 1
+        },
+        "isSavedOffLine": false,
+        "isFromInsideBox": false,
+        "keeperId": 522580,
+        "teamColor": "#0053A2"
+      },
+      {
+        "id": 2932653171,
+        "eventType": "AttemptSaved",
+        "teamId": 8561,
+        "playerId": 793586,
+        "playerName": "Juan Brunetta",
+        "x": 81.471359224,
+        "y": 23.859108284899996,
+        "min": 45,
+        "minAdded": 4,
+        "isBlocked": false,
+        "isOnTarget": true,
+        "blockedX": 103.2931034484,
+        "blockedY": 33.31375,
+        "goalCrossedY": 35.525000000000006,
+        "goalCrossedZ": 0.6099999970000001,
+        "expectedGoals": 0.022263972088694572,
+        "expectedGoalsOnTarget": 0.039842743426561356,
+        "shotType": "LeftFoot",
+        "situation": "RegularPlay",
+        "period": "FirstHalf",
+        "isOwnGoal": false,
+        "onGoalShot": {
+          "x": 0.5965608465608451,
+          "y": 0.16137566058201058,
+          "zoomRatio": 1
+        },
+        "isSavedOffLine": false,
+        "isFromInsideBox": false,
+        "keeperId": 522580,
+        "teamColor": "#0053A2"
+      },
+      {
+        "id": 2932662975,
+        "eventType": "Goal",
+        "teamId": 8561,
+        "playerId": 793586,
+        "playerName": "Juan Brunetta",
+        "x": 94.1929824545,
+        "y": 39.545000001,
+        "min": 52,
+        "minAdded": null,
+        "isBlocked": false,
+        "isOnTarget": true,
+        "blockedX": null,
+        "blockedY": null,
+        "goalCrossedY": 36.21125,
+        "goalCrossedZ": 1.3034736778000002,
+        "expectedGoals": 0.12093618512153625,
+        "expectedGoalsOnTarget": 0.5053063035011292,
+        "shotType": "RightFoot",
+        "situation": "RegularPlay",
+        "period": "SecondHalf",
+        "isOwnGoal": false,
+        "onGoalShot": {
+          "x": 0.41501322751322767,
+          "y": 0.34483430629629636,
+          "zoomRatio": 1
+        },
+        "isSavedOffLine": false,
+        "isFromInsideBox": true,
+        "keeperId": 522580,
+        "teamColor": "#0053A2"
+      },
+      {
+        "id": 2932665629,
+        "eventType": "Miss",
+        "teamId": 8561,
+        "playerId": 793586,
+        "playerName": "Juan Brunetta",
+        "x": 93.5,
+        "y": 25.7071875,
+        "min": 60,
+        "minAdded": null,
+        "isBlocked": false,
+        "isOnTarget": false,
+        "blockedX": null,
+        "blockedY": null,
+        "goalCrossedY": 41.772499999999994,
+        "goalCrossedZ": 1.2456842044,
+        "expectedGoals": 0.07752696424722672,
+        "expectedGoalsOnTarget": 0,
+        "shotType": "RightFoot",
+        "situation": "RegularPlay",
+        "period": "SecondHalf",
+        "isOwnGoal": false,
+        "onGoalShot": {
+          "x": 0,
+          "y": 0.16026815109681583,
+          "zoomRatio": 0.48633000964940537
+        },
+        "isSavedOffLine": false,
+        "isFromInsideBox": true,
+        "keeperId": null,
+        "teamColor": "#0053A2"
+      },
+      {
+        "id": 2932669729,
+        "eventType": "Miss",
+        "teamId": 8561,
+        "playerId": 793586,
+        "playerName": "Juan Brunetta",
+        "x": 92.6,
+        "y": 36.135000000000005,
+        "min": 74,
+        "minAdded": null,
+        "isBlocked": false,
+        "isOnTarget": false,
+        "blockedX": null,
+        "blockedY": null,
+        "goalCrossedY": 40.217380953,
+        "goalCrossedZ": 5.305931043199999,
+        "expectedGoals": 0.22468703985214233,
+        "expectedGoalsOnTarget": 0,
+        "shotType": "RightFoot",
+        "situation": "RegularPlay",
+        "period": "SecondHalf",
+        "isOwnGoal": false,
+        "onGoalShot": {
+          "x": 0.20641391829493183,
+          "y": 0.6772486772486772,
+          "zoomRatio": 0.48247894274480957
+        },
+        "isSavedOffLine": false,
+        "isFromInsideBox": true,
+        "keeperId": null,
+        "teamColor": "#0053A2"
+      }
+    ],
+    "pageUrl": "/players/793586/juan-brunetta",
+    "isHomeTeam": true,
+    "stats": [
+      {
+        "title": "Top stats",
+        "key": "top_stats",
+        "stats": {
+          "FotMob rating": {
+            "key": "rating_title",
+            "stat": {
+              "value": 8.6,
+              "type": "double"
+            }
+          },
+          "Minutes played": {
+            "key": "minutes_played",
+            "stat": {
+              "value": 86,
+              "type": "integer"
+            }
+          },
+          "Goals": {
+            "key": "goals",
+            "stat": {
+              "value": 1,
+              "type": "integer"
+            }
+          },
+          "Assists": {
+            "key": "assists",
+            "stat": {
+              "value": 1,
+              "type": "integer"
+            }
+          },
+          "Expected goals (xG)": {
+            "key": "expected_goals",
+            "stat": {
+              "value": 0.56,
+              "type": "double"
+            }
+          },
+          "Expected goals on target (xGOT)": {
+            "key": "expected_goals_on_target_variant",
+            "stat": {
+              "value": 0.79,
+              "type": "double"
+            }
+          },
+          "Expected assists (xA)": {
+            "key": "expected_assists",
+            "stat": {
+              "value": 0.42,
+              "type": "double"
+            }
+          },
+          "xG + xA": {
+            "key": "xg_and_xa",
+            "stat": {
+              "value": 0.98,
+              "type": "double"
+            }
+          },
+          "Accurate passes": {
+            "key": "accurate_passes",
+            "stat": {
+              "value": 29,
+              "total": 32,
+              "type": "fractionWithPercentage"
+            }
+          },
+          "Chances created": {
+            "key": "chances_created",
+            "stat": {
+              "value": 3,
+              "type": "integer"
+            }
+          },
+          "Big chances created": {
+            "key": "big_chance_created_team_title",
+            "stat": {
+              "value": 1,
+              "type": "integer"
+            }
+          },
+          "Shots on target": {
+            "key": "ShotsOnTarget",
+            "stat": {
+              "value": 4,
+              "type": "integer"
+            }
+          },
+          "Shots off target": {
+            "key": "ShotsOffTarget",
+            "stat": {
+              "value": 2,
+              "type": "integer"
+            }
+          },
+          "Shot accuracy": {
+            "key": "shot_accuracy",
+            "stat": {
+              "value": 4,
+              "total": 6,
+              "type": "fractionWithPercentage"
+            }
+          },
+          "Shotmap": {
+            "key": null,
+            "stat": {
+              "value": 1,
+              "type": "boolean"
+            }
+          },
+          "Defensive actions": {
+            "key": "defensive_actions",
+            "stat": {
+              "value": 0,
+              "type": "integer"
+            }
+          }
+        }
+      },
+      {
+        "title": "Attack",
+        "key": "attack",
+        "stats": {
+          "Touches": {
+            "key": "touches",
+            "stat": {
+              "value": 44,
+              "type": "integer"
+            }
+          },
+          "Touches in opposition box": {
+            "key": "touches_opp_box",
+            "stat": {
+              "value": 5,
+              "type": "integer"
+            }
+          },
+          "Passes into final third": {
+            "key": "passes_into_final_third",
+            "stat": {
+              "value": 1,
+              "type": "integer"
+            }
+          },
+          "Accurate crosses": {
+            "key": "accurate_crosses",
+            "stat": {
+              "value": 2,
+              "total": 2,
+              "type": "fractionWithPercentage"
+            }
+          },
+          "Corners": {
+            "key": "corners",
+            "stat": {
+              "value": 1,
+              "type": "integer"
+            }
+          },
+          "Dispossessed": {
+            "key": "dispossessed",
+            "stat": {
+              "value": 3,
+              "type": "integer"
+            }
+          },
+          "xG Non-penalty": {
+            "key": "expected_goals_non_penalty",
+            "stat": {
+              "value": 0.56,
+              "type": "double"
+            }
+          }
+        }
+      },
+      {
+        "title": "Defense",
+        "key": "defense",
+        "stats": {
+          "Defensive actions": {
+            "key": "defensive_actions",
+            "stat": {
+              "value": 0,
+              "type": "integer"
+            }
+          },
+          "Tackles": {
+            "key": "matchstats.headers.tackles",
+            "stat": {
+              "value": 0,
+              "type": "integer"
+            }
+          },
+          "Blocks": {
+            "key": "shot_blocks",
+            "stat": {
+              "value": 0,
+              "type": "integer"
+            }
+          },
+          "Clearances": {
+            "key": "clearances",
+            "stat": {
+              "value": 0,
+              "type": "integer"
+            }
+          },
+          "Interceptions": {
+            "key": "interceptions",
+            "stat": {
+              "value": 0,
+              "type": "integer"
+            }
+          },
+          "Recoveries": {
+            "key": "recoveries",
+            "stat": {
+              "value": 2,
+              "type": "integer"
+            }
+          },
+          "Dribbled past": {
+            "key": "dribbled_past",
+            "stat": {
+              "value": 0,
+              "type": "integer"
+            }
+          }
+        }
+      },
+      {
+        "title": "Duels",
+        "key": "duels",
+        "stats": {
+          "Ground duels won": {
+            "key": "ground_duels_won",
+            "stat": {
+              "value": 0,
+              "total": 4,
+              "type": "fractionWithPercentage"
+            }
+          },
+          "Aerial duels won": {
+            "key": "aerials_won",
+            "stat": {
+              "value": 0,
+              "total": 0,
+              "type": "fractionWithPercentage"
+            }
+          },
+          "Was fouled": {
+            "key": "was_fouled",
+            "stat": {
+              "type": "integer"
+            }
+          },
+          "Fouls committed": {
+            "key": "fouls",
+            "stat": {
+              "value": 1,
+              "type": "integer"
+            }
+          },
+          "Duels lost": {
+            "key": "duel_lost",
+            "stat": {
+              "value": 4,
+              "type": "integer"
+            },
+            "hideInPopupCard": true
+          }
+        }
+      }
+    ],
+    "role": "Midfielder",
+    "teamData": {
+      "home": {
+        "id": 8561,
+        "color": "#0053A2"
+      },
+      "away": {
+        "id": 7807,
+        "color": "#CE142C"
+      }
+    }
+  },
+  "team_stats": {
+    "ballpossesion": [
+      58,
+      42
+    ],
+    "expected_goals": [
+      "1.57",
+      "0.75"
+    ],
+    "total_shots": [
+      16,
+      12
+    ],
+    "shotsontarget": [
+      9,
+      1
+    ],
+    "big_chance": [
+      2,
+      2
+    ],
+    "big_chance_missed_title": [
+      0,
+      1
+    ],
+    "accurate_passes": [
+      "449 (83%)",
+      "318 (82%)"
+    ],
+    "fouls": [
+      15,
+      7
+    ],
+    "corners": [
+      4,
+      4
+    ],
+    "shots": [
+      null,
+      null
+    ],
+    "shotsofftarget": [
+      4,
+      7
+    ],
+    "blocked_shots": [
+      3,
+      4
+    ],
+    "shots_woodwork": [
+      0,
+      0
+    ],
+    "shots_inside_box": [
+      10,
+      8
+    ],
+    "shots_outside_box": [
+      6,
+      4
+    ],
+    "expected_goals_open_play": [
+      "1.25",
+      "0.70"
+    ],
+    "expected_goals_set_play": [
+      "0.32",
+      "0.05"
+    ],
+    "expected_goals_non_penalty": [
+      "1.57",
+      "0.75"
+    ],
+    "expected_goals_on_target": [
+      "2.29",
+      "0.22"
+    ],
+    "passes": [
+      538,
+      388
+    ],
+    "own_half_passes": [
+      214,
+      181
+    ],
+    "opposition_half_passes": [
+      235,
+      137
+    ],
+    "long_balls_accurate": [
+      "21 (40%)",
+      "21 (34%)"
+    ],
+    "accurate_crosses": [
+      "5 (28%)",
+      "5 (33%)"
+    ],
+    "player_throws": [
+      23,
+      9
+    ],
+    "touches_opp_box": [
+      20,
+      17
+    ],
+    "offsides": [
+      0,
+      1
+    ],
+    "defense": [
+      null,
+      null
+    ],
+    "matchstats.headers.tackles": [
+      13,
+      14
+    ],
+    "interceptions": [
+      9,
+      10
+    ],
+    "shot_blocks": [
+      4,
+      3
+    ],
+    "clearances": [
+      17,
+      25
+    ],
+    "keeper_saves": [
+      0,
+      6
+    ],
+    "duels": [
+      null,
+      null
+    ],
+    "duel_won": [
+      38,
+      47
+    ],
+    "ground_duels_won": [
+      "24 (41%)",
+      "34 (59%)"
+    ],
+    "aerials_won": [
+      "14 (52%)",
+      "13 (48%)"
+    ],
+    "dribbles_succeeded": [
+      "5 (71%)",
+      "5 (36%)"
+    ],
+    "discipline": [
+      null,
+      null
+    ],
+    "yellow_cards": [
+      4,
+      1
+    ],
+    "red_cards": [
+      0,
+      0
+    ]
+  },
+  "players_home": [
+    {
+      "id": 193993,
+      "name": "Nahuel Guzmán",
+      "shirt_number": "1",
+      "position_id": 11,
+      "usual_position": 0,
+      "is_starter": true,
+      "country": "Argentina",
+      "country_code": "ARG",
+      "club": null,
+      "age": 40,
+      "market_value": 468771,
+      "rating": 6.4,
+      "stats": {
+        "rating_title": 6.36,
+        "minutes_played": 90,
+        "saves": 0,
+        "goals_conceded": 1,
+        "expected_goals_on_target_faced": 0.22,
+        "goals_prevented": -0.78,
+        "null": 1,
+        "accurate_passes": {
+          "value": 24,
+          "total": 35
+        },
+        "long_balls_accurate": {
+          "value": 5,
+          "total": 16
+        },
+        "keeper_diving_save": 0,
+        "saves_inside_box": 0,
+        "keeper_sweeper": 1,
+        "punches": 0,
+        "player_throws": 3,
+        "keeper_high_claim": 1,
+        "recoveries": 11,
+        "clearances": 0,
+        "touches": 41,
+        "defensive_actions": 0,
+        "duel_won": 1,
+        "aerials_won": {
+          "value": 1,
+          "total": 1
+        },
+        "fouls": 0,
+        "matchstats.headers.tackles": 0,
+        "passes_into_final_third": 5,
+        "interceptions": 0
+      }
+    },
+    {
+      "id": 1075104,
+      "name": "Jesús Garza",
+      "shirt_number": "14",
+      "position_id": 32,
+      "usual_position": 1,
+      "is_starter": true,
+      "country": "Mexico",
+      "country_code": "MEX",
+      "club": null,
+      "age": 25,
+      "market_value": 1945904,
+      "rating": 7.4,
+      "stats": {
+        "rating_title": 7.36,
+        "minutes_played": 90,
+        "goals": 0,
+        "assists": 0,
+        "expected_assists": 0.01,
+        "xg_and_xa": 0.01,
+        "accurate_passes": {
+          "value": 51,
+          "total": 57
+        },
+        "chances_created": 0,
+        "null": 0,
+        "defensive_actions": 10,
+        "touches": 85,
+        "touches_opp_box": 0,
+        "passes_into_final_third": 18,
+        "accurate_crosses": {
+          "value": 0,
+          "total": 2
+        },
+        "long_balls_accurate": {
+          "value": 1,
+          "total": 4
+        },
+        "dispossessed": 1,
+        "matchstats.headers.tackles": 4,
+        "shot_blocks": 1,
+        "clearances": 5,
+        "headed_clearance": 3,
+        "interceptions": 0,
+        "recoveries": 3,
+        "dribbled_past": 0,
+        "ground_duels_won": {
+          "value": 4,
+          "total": 5
+        },
+        "aerials_won": {
+          "value": 1,
+          "total": 1
+        },
+        "fouls": 0,
+        "duel_won": 5,
+        "duel_lost": 1
+      }
+    },
+    {
+      "id": 1072253,
+      "name": "Rômulo",
+      "shirt_number": "23",
+      "position_id": 34,
+      "usual_position": 1,
+      "is_starter": true,
+      "country": "Brazil",
+      "country_code": "BRA",
+      "club": null,
+      "age": 26,
+      "market_value": 4642865,
+      "rating": 7.7,
+      "stats": {
+        "rating_title": 7.69,
+        "minutes_played": 90,
+        "goals": 0,
+        "assists": 0,
+        "expected_assists": 0.02,
+        "xg_and_xa": 0.02,
+        "accurate_passes": {
+          "value": 91,
+          "total": 97
+        },
+        "chances_created": 1,
+        "null": 0,
+        "defensive_actions": 5,
+        "touches": 106,
+        "touches_opp_box": 0,
+        "passes_into_final_third": 6,
+        "accurate_crosses": {
+          "value": 0,
+          "total": 1
+        },
+        "long_balls_accurate": {
+          "value": 3,
+          "total": 5
+        },
+        "dispossessed": 0,
+        "matchstats.headers.tackles": 0,
+        "shot_blocks": 1,
+        "clearances": 2,
+        "interceptions": 2,
+        "recoveries": 7,
+        "dribbled_past": 0,
+        "ground_duels_won": {
+          "value": 1,
+          "total": 1
+        },
+        "aerials_won": {
+          "value": 3,
+          "total": 5
+        },
+        "was_fouled": 1,
+        "fouls": 0,
+        "duel_won": 4,
+        "duel_lost": 2
+      }
+    },
+    {
+      "id": 882469,
+      "name": "Jesús Angulo",
+      "shirt_number": "27",
+      "position_id": 36,
+      "usual_position": 1,
+      "is_starter": true,
+      "country": "Mexico",
+      "country_code": "MEX",
+      "club": null,
+      "age": 28,
+      "market_value": 3834238,
+      "rating": 8.3,
+      "stats": {
+        "rating_title": 8.27,
+        "minutes_played": 80,
+        "goals": 1,
+        "assists": 0,
+        "expected_goals": 0.21,
+        "expected_goals_on_target_variant": 0.89,
+        "expected_assists": 0.01,
+        "xg_and_xa": 0.22,
+        "accurate_passes": {
+          "value": 79,
+          "total": 86
+        },
+        "chances_created": 0,
+        "ShotsOnTarget": 1,
+        "ShotsOffTarget": 0,
+        "shot_accuracy": {
+          "value": 1,
+          "total": 1
+        },
+        "null": 1,
+        "defensive_actions": 6,
+        "touches": 100,
+        "touches_opp_box": 1,
+        "dribbles_succeeded": {
+          "value": 0,
+          "total": 1
+        },
+        "passes_into_final_third": 8,
+        "long_balls_accurate": {
+          "value": 2,
+          "total": 7
+        },
+        "dispossessed": 0,
+        "expected_goals_non_penalty": 0.21,
+        "matchstats.headers.tackles": 1,
+        "shot_blocks": 0,
+        "clearances": 2,
+        "interceptions": 3,
+        "recoveries": 3,
+        "dribbled_past": 0,
+        "ground_duels_won": {
+          "value": 3,
+          "total": 5
+        },
+        "aerials_won": {
+          "value": 2,
+          "total": 3
+        },
+        "was_fouled": 2,
+        "fouls": 1,
+        "duel_won": 5,
+        "duel_lost": 3
+      }
+    },
+    {
+      "id": 1382531,
+      "name": "Francisco Reyes",
+      "shirt_number": "2",
+      "position_id": 38,
+      "usual_position": 1,
+      "is_starter": true,
+      "country": "Mexico",
+      "country_code": "MEX",
+      "club": null,
+      "age": 27,
+      "market_value": null,
+      "rating": 6.4,
+      "stats": {
+        "rating_title": 6.43,
+        "minutes_played": 45,
+        "goals": 0,
+        "assists": 0,
+        "expected_assists": 0.01,
+        "xg_and_xa": 0.01,
+        "accurate_passes": {
+          "value": 21,
+          "total": 24
+        },
+        "chances_created": 0,
+        "null": 0,
+        "defensive_actions": 1,
+        "touches": 28,
+        "touches_opp_box": 0,
+        "long_balls_accurate": {
+          "value": 2,
+          "total": 3
+        },
+        "dispossessed": 0,
+        "matchstats.headers.tackles": 0,
+        "shot_blocks": 0,
+        "clearances": 0,
+        "interceptions": 1,
+        "recoveries": 3,
+        "dribbled_past": 0,
+        "aerials_won": {
+          "value": 0,
+          "total": 0
+        },
+        "fouls": 0
+      }
+    },
+    {
+      "id": 1076308,
+      "name": "César Araújo",
+      "shirt_number": "5",
+      "position_id": 64,
+      "usual_position": 2,
+      "is_starter": true,
+      "country": "Uruguay",
+      "country_code": "URU",
+      "club": null,
+      "age": 25,
+      "market_value": 2283957,
+      "rating": 7.1,
+      "stats": {
+        "rating_title": 7.14,
+        "minutes_played": 90,
+        "goals": 0,
+        "assists": 0,
+        "expected_goals": 0.09,
+        "expected_assists": 0.03,
+        "xg_and_xa": 0.12,
+        "accurate_passes": {
+          "value": 35,
+          "total": 42
+        },
+        "chances_created": 0,
+        "ShotsOnTarget": 0,
+        "ShotsOffTarget": 0,
+        "blocked_shots": 1,
+        "null": 1,
+        "defensive_actions": 7,
+        "touches": 51,
+        "touches_opp_box": 1,
+        "passes_into_final_third": 6,
+        "long_balls_accurate": {
+          "value": 1,
+          "total": 1
+        },
+        "dispossessed": 0,
+        "expected_goals_non_penalty": 0.09,
+        "matchstats.headers.tackles": 2,
+        "shot_blocks": 0,
+        "clearances": 3,
+        "headed_clearance": 1,
+        "interceptions": 2,
+        "recoveries": 4,
+        "dribbled_past": 1,
+        "ground_duels_won": {
+          "value": 2,
+          "total": 4
+        },
+        "aerials_won": {
+          "value": 1,
+          "total": 2
+        },
+        "fouls": 1,
+        "duel_won": 3,
+        "duel_lost": 3
+      }
+    },
+    {
+      "id": 495198,
+      "name": "Fernando Gorriarán",
+      "shirt_number": "8",
+      "position_id": 66,
+      "usual_position": 2,
+      "is_starter": true,
+      "country": "Uruguay",
+      "country_code": "URU",
+      "club": null,
+      "age": 31,
+      "market_value": 2007068,
+      "rating": 7.6,
+      "stats": {
+        "rating_title": 7.59,
+        "minutes_played": 90,
+        "goals": 0,
+        "assists": 1,
+        "expected_assists": 0.13,
+        "xg_and_xa": 0.13,
+        "accurate_passes": {
+          "value": 33,
+          "total": 46
+        },
+        "chances_created": 2,
+        "null": 0,
+        "defensive_actions": 3,
+        "touches": 64,
+        "touches_opp_box": 2,
+        "passes_into_final_third": 8,
+        "accurate_crosses": {
+          "value": 1,
+          "total": 4
+        },
+        "long_balls_accurate": {
+          "value": 0,
+          "total": 4
+        },
+        "dispossessed": 1,
+        "matchstats.headers.tackles": 3,
+        "shot_blocks": 0,
+        "clearances": 0,
+        "interceptions": 0,
+        "recoveries": 5,
+        "dribbled_past": 1,
+        "ground_duels_won": {
+          "value": 4,
+          "total": 7
+        },
+        "aerials_won": {
+          "value": 0,
+          "total": 3
+        },
+        "was_fouled": 1,
+        "fouls": 1,
+        "duel_won": 4,
+        "duel_lost": 6
+      }
+    },
+    {
+      "id": 828972,
+      "name": "Diego Lainez",
+      "shirt_number": "16",
+      "position_id": 83,
+      "usual_position": 3,
+      "is_starter": true,
+      "country": "Mexico",
+      "country_code": "MEX",
+      "club": null,
+      "age": 25,
+      "market_value": 5498910,
+      "rating": 7,
+      "stats": {
+        "rating_title": 7.03,
+        "minutes_played": 86,
+        "goals": 0,
+        "assists": 0,
+        "expected_goals": 0.03,
+        "expected_assists": 0.08,
+        "xg_and_xa": 0.11,
+        "accurate_passes": {
+          "value": 31,
+          "total": 42
+        },
+        "chances_created": 2,
+        "ShotsOnTarget": 0,
+        "ShotsOffTarget": 0,
+        "blocked_shots": 1,
+        "null": 1,
+        "defensive_actions": 1,
+        "touches": 56,
+        "touches_opp_box": 1,
+        "dribbles_succeeded": {
+          "value": 1,
+          "total": 1
+        },
+        "passes_into_final_third": 3,
+        "accurate_crosses": {
+          "value": 0,
+          "total": 6
+        },
+        "long_balls_accurate": {
+          "value": 3,
+          "total": 4
+        },
+        "corners": 3,
+        "dispossessed": 1,
+        "expected_goals_non_penalty": 0.03,
+        "matchstats.headers.tackles": 1,
+        "shot_blocks": 0,
+        "clearances": 0,
+        "interceptions": 0,
+        "recoveries": 1,
+        "dribbled_past": 0,
+        "ground_duels_won": {
+          "value": 2,
+          "total": 5
+        },
+        "aerials_won": {
+          "value": 0,
+          "total": 0
+        },
+        "fouls": 2,
+        "duel_won": 2,
+        "duel_lost": 3
+      }
+    },
+    {
+      "id": 793586,
+      "name": "Juan Brunetta",
+      "shirt_number": "11",
+      "position_id": 85,
+      "usual_position": 2,
+      "is_starter": true,
+      "country": "Argentina",
+      "country_code": "ARG",
+      "club": null,
+      "age": 28,
+      "market_value": 5821355,
+      "rating": 8.6,
+      "stats": {
+        "rating_title": 8.6,
+        "minutes_played": 86,
+        "goals": 1,
+        "assists": 1,
+        "expected_goals": 0.56,
+        "expected_goals_on_target_variant": 0.79,
+        "expected_assists": 0.42,
+        "xg_and_xa": 0.98,
+        "accurate_passes": {
+          "value": 29,
+          "total": 32
+        },
+        "chances_created": 3,
+        "big_chance_created_team_title": 1,
+        "ShotsOnTarget": 4,
+        "ShotsOffTarget": 2,
+        "shot_accuracy": {
+          "value": 4,
+          "total": 6
+        },
+        "null": 1,
+        "defensive_actions": 0,
+        "touches": 44,
+        "touches_opp_box": 5,
+        "passes_into_final_third": 1,
+        "accurate_crosses": {
+          "value": 2,
+          "total": 2
+        },
+        "corners": 1,
+        "dispossessed": 3,
+        "expected_goals_non_penalty": 0.56,
+        "matchstats.headers.tackles": 0,
+        "shot_blocks": 0,
+        "clearances": 0,
+        "interceptions": 0,
+        "recoveries": 2,
+        "dribbled_past": 0,
+        "ground_duels_won": {
+          "value": 0,
+          "total": 4
+        },
+        "aerials_won": {
+          "value": 0,
+          "total": 0
+        },
+        "fouls": 1,
+        "duel_lost": 4
+      }
+    },
+    {
+      "id": 432950,
+      "name": "Ángel Correa",
+      "shirt_number": "7",
+      "position_id": 87,
+      "usual_position": 3,
+      "is_starter": true,
+      "country": "Argentina",
+      "country_code": "ARG",
+      "club": null,
+      "age": 31,
+      "market_value": 7348406,
+      "rating": 7.1,
+      "stats": {
+        "rating_title": 7.08,
+        "minutes_played": 90,
+        "goals": 0,
+        "assists": 0,
+        "expected_goals": 0.15,
+        "expected_assists": 0.18,
+        "xg_and_xa": 0.32999999999999996,
+        "accurate_passes": {
+          "value": 22,
+          "total": 37
+        },
+        "chances_created": 1,
+        "ShotsOnTarget": 0,
+        "ShotsOffTarget": 2,
+        "blocked_shots": 1,
+        "shot_accuracy": {
+          "value": 0,
+          "total": 2
+        },
+        "null": 1,
+        "defensive_actions": 2,
+        "touches": 53,
+        "touches_opp_box": 5,
+        "dribbles_succeeded": {
+          "value": 2,
+          "total": 2
+        },
+        "passes_into_final_third": 5,
+        "accurate_crosses": {
+          "value": 1,
+          "total": 1
+        },
+        "long_balls_accurate": {
+          "value": 3,
+          "total": 3
+        },
+        "dispossessed": 2,
+        "expected_goals_non_penalty": 0.15,
+        "matchstats.headers.tackles": 0,
+        "shot_blocks": 0,
+        "clearances": 1,
+        "headed_clearance": 1,
+        "interceptions": 1,
+        "recoveries": 4,
+        "dribbled_past": 1,
+        "ground_duels_won": {
+          "value": 4,
+          "total": 11
+        },
+        "aerials_won": {
+          "value": 2,
+          "total": 2
+        },
+        "was_fouled": 2,
+        "fouls": 4,
+        "duel_won": 6,
+        "duel_lost": 7
+      }
+    },
+    {
+      "id": 401095,
+      "name": "Rodrigo Aguirre",
+      "shirt_number": "17",
+      "position_id": 115,
+      "usual_position": 3,
+      "is_starter": true,
+      "country": "Uruguay",
+      "country_code": "URU",
+      "club": null,
+      "age": 31,
+      "market_value": 1780381,
+      "rating": 7.1,
+      "stats": {
+        "rating_title": 7.08,
+        "minutes_played": 65,
+        "goals": 0,
+        "assists": 0,
+        "expected_goals": 0.2,
+        "expected_goals_on_target_variant": 0.14,
+        "expected_assists": 0.01,
+        "xg_and_xa": 0.21000000000000002,
+        "accurate_passes": {
+          "value": 7,
+          "total": 8
+        },
+        "chances_created": 0,
+        "ShotsOnTarget": 2,
+        "ShotsOffTarget": 0,
+        "shot_accuracy": {
+          "value": 2,
+          "total": 2
+        },
+        "null": 1,
+        "defensive_actions": 2,
+        "touches": 18,
+        "touches_opp_box": 2,
+        "dribbles_succeeded": {
+          "value": 1,
+          "total": 1
+        },
+        "passes_into_final_third": 1,
+        "accurate_crosses": {
+          "value": 1,
+          "total": 2
+        },
+        "dispossessed": 0,
+        "expected_goals_non_penalty": 0.2,
+        "matchstats.headers.tackles": 1,
+        "shot_blocks": 1,
+        "clearances": 0,
+        "interceptions": 0,
+        "recoveries": 2,
+        "dribbled_past": 0,
+        "ground_duels_won": {
+          "value": 2,
+          "total": 5
+        },
+        "aerials_won": {
+          "value": 2,
+          "total": 3
+        },
+        "fouls": 3,
+        "duel_won": 4,
+        "duel_lost": 4
+      }
+    },
+    {
+      "id": 1612708,
+      "name": "Diego Sánchez",
+      "shirt_number": "30",
+      "position_id": null,
+      "usual_position": 2,
+      "is_starter": false,
+      "country": "Mexico",
+      "country_code": "MEX",
+      "club": null,
+      "age": 21,
+      "market_value": null,
+      "rating": 7.2,
+      "stats": {
+        "rating_title": 7.23,
+        "minutes_played": 45,
+        "goals": 1,
+        "assists": 0,
+        "expected_goals": 0.34,
+        "expected_goals_on_target_variant": 0.46,
+        "expected_assists": 0.11,
+        "xg_and_xa": 0.45,
+        "accurate_passes": {
+          "value": 11,
+          "total": 13
+        },
+        "chances_created": 1,
+        "ShotsOnTarget": 2,
+        "ShotsOffTarget": 0,
+        "shot_accuracy": {
+          "value": 2,
+          "total": 2
+        },
+        "null": 1,
+        "defensive_actions": 1,
+        "touches": 23,
+        "touches_opp_box": 3,
+        "dribbles_succeeded": {
+          "value": 1,
+          "total": 2
+        },
+        "long_balls_accurate": {
+          "value": 0,
+          "total": 1
+        },
+        "dispossessed": 4,
+        "expected_goals_non_penalty": 0.34,
+        "matchstats.headers.tackles": 1,
+        "shot_blocks": 0,
+        "clearances": 0,
+        "interceptions": 0,
+        "recoveries": 2,
+        "dribbled_past": 1,
+        "ground_duels_won": {
+          "value": 2,
+          "total": 9
+        },
+        "aerials_won": {
+          "value": 0,
+          "total": 1
+        },
+        "fouls": 1,
+        "duel_won": 2,
+        "duel_lost": 8
+      }
+    },
+    {
+      "id": 350153,
+      "name": "Juan Vigón",
+      "shirt_number": "6",
+      "position_id": null,
+      "usual_position": 2,
+      "is_starter": false,
+      "country": "Mexico",
+      "country_code": "MEX",
+      "club": null,
+      "age": 34,
+      "market_value": 349186,
+      "rating": 6.2,
+      "stats": {
+        "rating_title": 6.19,
+        "minutes_played": 25,
+        "goals": 0,
+        "assists": 0,
+        "expected_assists": 0.01,
+        "xg_and_xa": 0.01,
+        "accurate_passes": {
+          "value": 8,
+          "total": 10
+        },
+        "chances_created": 0,
+        "null": 0,
+        "defensive_actions": 1,
+        "touches": 13,
+        "touches_opp_box": 0,
+        "passes_into_final_third": 1,
+        "long_balls_accurate": {
+          "value": 1,
+          "total": 3
+        },
+        "dispossessed": 0,
+        "matchstats.headers.tackles": 0,
+        "shot_blocks": 0,
+        "clearances": 1,
+        "headed_clearance": 1,
+        "interceptions": 0,
+        "recoveries": 2,
+        "dribbled_past": 1,
+        "ground_duels_won": {
+          "value": 0,
+          "total": 1
+        },
+        "aerials_won": {
+          "value": 0,
+          "total": 1
+        },
+        "fouls": 0,
+        "duel_lost": 2
+      }
+    },
+    {
+      "id": 1295538,
+      "name": "Rafael Guerrero",
+      "shirt_number": "33",
+      "position_id": null,
+      "usual_position": 1,
+      "is_starter": false,
+      "country": "Mexico",
+      "country_code": "MEX",
+      "club": null,
+      "age": 23,
+      "market_value": 668988,
+      "rating": 6.1,
+      "stats": {
+        "rating_title": 6.09,
+        "minutes_played": 10,
+        "goals": 0,
+        "assists": 0,
+        "accurate_passes": {
+          "value": 3,
+          "total": 4
+        },
+        "chances_created": 0,
+        "null": 0,
+        "defensive_actions": 3,
+        "touches": 7,
+        "touches_opp_box": 0,
+        "long_balls_accurate": {
+          "value": 0,
+          "total": 1
+        },
+        "dispossessed": 0,
+        "matchstats.headers.tackles": 0,
+        "shot_blocks": 1,
+        "clearances": 2,
+        "headed_clearance": 2,
+        "interceptions": 0,
+        "recoveries": 0,
+        "dribbled_past": 0,
+        "ground_duels_won": {
+          "value": 0,
+          "total": 1
+        },
+        "aerials_won": {
+          "value": 2,
+          "total": 4
+        },
+        "fouls": 1,
+        "duel_won": 2,
+        "duel_lost": 3
+      }
+    },
+    {
+      "id": 950917,
+      "name": "Vladimir Loroña",
+      "shirt_number": "32",
+      "position_id": null,
+      "usual_position": 1,
+      "is_starter": false,
+      "country": "Mexico",
+      "country_code": "MEX",
+      "club": null,
+      "age": 27,
+      "market_value": 400089,
+      "rating": null,
+      "stats": {
+        "minutes_played": 4,
+        "goals": 0,
+        "assists": 0,
+        "accurate_passes": {
+          "value": 1,
+          "total": 2
+        },
+        "chances_created": 0,
+        "null": 0,
+        "defensive_actions": 0,
+        "touches": 3,
+        "touches_opp_box": 0,
+        "passes_into_final_third": 1,
+        "dispossessed": 0,
+        "matchstats.headers.tackles": 0,
+        "shot_blocks": 0,
+        "clearances": 0,
+        "interceptions": 0,
+        "recoveries": 0,
+        "dribbled_past": 0,
+        "aerials_won": {
+          "value": 0,
+          "total": 0
+        },
+        "fouls": 0
+      }
+    },
+    {
+      "id": 38098,
+      "name": "André-Pierre Gignac",
+      "shirt_number": "10",
+      "position_id": null,
+      "usual_position": 3,
+      "is_starter": false,
+      "country": "France",
+      "country_code": "FRA",
+      "club": null,
+      "age": 40,
+      "market_value": 644417,
+      "rating": null,
+      "stats": {
+        "minutes_played": 4,
+        "goals": 0,
+        "assists": 0,
+        "expected_assists": 0.02,
+        "xg_and_xa": 0.02,
+        "accurate_passes": {
+          "value": 3,
+          "total": 3
+        },
+        "chances_created": 0,
+        "null": 0,
+        "defensive_actions": 1,
+        "touches": 4,
+        "touches_opp_box": 0,
+        "dispossessed": 0,
+        "matchstats.headers.tackles": 0,
+        "shot_blocks": 0,
+        "clearances": 1,
+        "interceptions": 0,
+        "recoveries": 1,
+        "dribbled_past": 0,
+        "aerials_won": {
+          "value": 0,
+          "total": 1
+        },
+        "fouls": 0,
+        "duel_lost": 1
+      }
+    },
+    {
+      "id": 182467,
+      "name": "Felipe Rodríguez",
+      "shirt_number": "25",
+      "position_id": null,
+      "usual_position": 0,
+      "is_starter": false,
+      "country": "Mexico",
+      "country_code": "MEX",
+      "club": null,
+      "age": 37,
+      "market_value": 378423,
+      "rating": null,
+      "stats": {}
+    },
+    {
+      "id": 950069,
+      "name": "Juan Purata",
+      "shirt_number": "4",
+      "position_id": null,
+      "usual_position": 1,
+      "is_starter": false,
+      "country": "Mexico",
+      "country_code": "MEX",
+      "club": null,
+      "age": 28,
+      "market_value": 2718501,
+      "rating": null,
+      "stats": {}
+    },
+    {
+      "id": 1926960,
+      "name": "Henrique Simeone",
+      "shirt_number": "204",
+      "position_id": null,
+      "usual_position": 2,
+      "is_starter": false,
+      "country": "Brazil",
+      "country_code": "BRA",
+      "club": null,
+      "age": 18,
+      "market_value": null,
+      "rating": null,
+      "stats": {}
+    },
+    {
+      "id": 1470109,
+      "name": "Isaias Galván",
+      "shirt_number": "198",
+      "position_id": null,
+      "usual_position": 3,
+      "is_starter": false,
+      "country": "Mexico",
+      "country_code": "MEX",
+      "club": null,
+      "age": 21,
+      "market_value": 100000,
+      "rating": null,
+      "stats": {}
+    },
+    {
+      "id": 1186513,
+      "name": "Marcelo Flores",
+      "shirt_number": "20",
+      "position_id": null,
+      "usual_position": 3,
+      "is_starter": false,
+      "country": "Canada",
+      "country_code": "CAN",
+      "club": null,
+      "age": 22,
+      "market_value": 956090,
+      "rating": null,
+      "stats": {}
+    }
+  ],
+  "players_away": [
+    {
+      "id": 522580,
+      "name": "Óscar Whalley",
+      "shirt_number": "13",
+      "position_id": 11,
+      "usual_position": 0,
+      "is_starter": true,
+      "country": "Spain",
+      "country_code": "ESP",
+      "club": null,
+      "age": 32,
+      "market_value": 394381,
+      "rating": 5.6,
+      "stats": {
+        "rating_title": 5.63,
+        "minutes_played": 90,
+        "saves": 6,
+        "goals_conceded": 3,
+        "expected_goals_on_target_faced": 2.29,
+        "goals_prevented": -0.71,
+        "null": 1,
+        "accurate_passes": {
+          "value": 15,
+          "total": 30
+        },
+        "long_balls_accurate": {
+          "value": 7,
+          "total": 22
+        },
+        "keeper_diving_save": 3,
+        "saves_inside_box": 2,
+        "keeper_sweeper": 0,
+        "punches": 0,
+        "player_throws": 6,
+        "keeper_high_claim": 0,
+        "recoveries": 10,
+        "clearances": 0,
+        "touches": 43,
+        "defensive_actions": 0,
+        "fouls": 0,
+        "matchstats.headers.tackles": 0,
+        "passes_into_final_third": 5,
+        "interceptions": 0
+      }
+    },
+    {
+      "id": 1184671,
+      "name": "José Castillo",
+      "shirt_number": "2",
+      "position_id": 32,
+      "usual_position": 1,
+      "is_starter": true,
+      "country": "Mexico",
+      "country_code": "MEX",
+      "club": null,
+      "age": 24,
+      "market_value": 2359536,
+      "rating": 5.6,
+      "stats": {
+        "rating_title": 5.59,
+        "minutes_played": 90,
+        "goals": 0,
+        "assists": 0,
+        "expected_goals": 0.03,
+        "expected_assists": 0.01,
+        "xg_and_xa": 0.04,
+        "accurate_passes": {
+          "value": 36,
+          "total": 43
+        },
+        "chances_created": 1,
+        "ShotsOnTarget": 0,
+        "ShotsOffTarget": 0,
+        "blocked_shots": 1,
+        "null": 1,
+        "defensive_actions": 4,
+        "touches": 50,
+        "touches_opp_box": 1,
+        "passes_into_final_third": 10,
+        "long_balls_accurate": {
+          "value": 4,
+          "total": 10
+        },
+        "dispossessed": 0,
+        "expected_goals_non_penalty": 0.03,
+        "matchstats.headers.tackles": 2,
+        "shot_blocks": 0,
+        "clearances": 2,
+        "headed_clearance": 2,
+        "interceptions": 0,
+        "recoveries": 1,
+        "dribbled_past": 1,
+        "ground_duels_won": {
+          "value": 2,
+          "total": 3
+        },
+        "aerials_won": {
+          "value": 1,
+          "total": 3
+        },
+        "fouls": 0,
+        "duel_won": 3,
+        "duel_lost": 3
+      }
+    },
+    {
+      "id": 1169763,
+      "name": "Diego Campillo",
+      "shirt_number": "19",
+      "position_id": 34,
+      "usual_position": 1,
+      "is_starter": true,
+      "country": "Mexico",
+      "country_code": "MEX",
+      "club": null,
+      "age": 24,
+      "market_value": 1671457,
+      "rating": 5.7,
+      "stats": {
+        "rating_title": 5.68,
+        "minutes_played": 90,
+        "goals": 0,
+        "assists": 0,
+        "expected_assists": 0.02,
+        "xg_and_xa": 0.02,
+        "accurate_passes": {
+          "value": 47,
+          "total": 53
+        },
+        "chances_created": 1,
+        "null": 0,
+        "defensive_actions": 6,
+        "touches": 61,
+        "touches_opp_box": 1,
+        "passes_into_final_third": 4,
+        "accurate_crosses": {
+          "value": 0,
+          "total": 1
+        },
+        "long_balls_accurate": {
+          "value": 0,
+          "total": 4
+        },
+        "dispossessed": 0,
+        "matchstats.headers.tackles": 0,
+        "shot_blocks": 1,
+        "clearances": 3,
+        "headed_clearance": 2,
+        "interceptions": 2,
+        "recoveries": 0,
+        "dribbled_past": 0,
+        "aerials_won": {
+          "value": 2,
+          "total": 4
+        },
+        "fouls": 0,
+        "duel_won": 2,
+        "duel_lost": 2
+      }
+    },
+    {
+      "id": 950047,
+      "name": "Miguel Tapias",
+      "shirt_number": "4",
+      "position_id": 36,
+      "usual_position": 1,
+      "is_starter": true,
+      "country": "Mexico",
+      "country_code": "MEX",
+      "club": null,
+      "age": 29,
+      "market_value": 1370452,
+      "rating": 6.2,
+      "stats": {
+        "rating_title": 6.22,
+        "minutes_played": 90,
+        "goals": 0,
+        "assists": 0,
+        "expected_goals": 0.02,
+        "expected_assists": 0.01,
+        "xg_and_xa": 0.03,
+        "accurate_passes": {
+          "value": 31,
+          "total": 41
+        },
+        "chances_created": 0,
+        "ShotsOnTarget": 0,
+        "ShotsOffTarget": 1,
+        "shot_accuracy": {
+          "value": 0,
+          "total": 1
+        },
+        "null": 1,
+        "defensive_actions": 13,
+        "touches": 65,
+        "touches_opp_box": 1,
+        "passes_into_final_third": 5,
+        "long_balls_accurate": {
+          "value": 2,
+          "total": 8
+        },
+        "dispossessed": 0,
+        "expected_goals_non_penalty": 0.02,
+        "matchstats.headers.tackles": 1,
+        "shot_blocks": 0,
+        "clearances": 11,
+        "headed_clearance": 3,
+        "interceptions": 1,
+        "recoveries": 2,
+        "dribbled_past": 0,
+        "ground_duels_won": {
+          "value": 1,
+          "total": 1
+        },
+        "aerials_won": {
+          "value": 1,
+          "total": 1
+        },
+        "fouls": 0,
+        "duel_won": 2
+      }
+    },
+    {
+      "id": 1112940,
+      "name": "Bryan González",
+      "shirt_number": "5",
+      "position_id": 38,
+      "usual_position": 1,
+      "is_starter": true,
+      "country": "Mexico",
+      "country_code": "MEX",
+      "club": null,
+      "age": 23,
+      "market_value": 4597317,
+      "rating": 6.3,
+      "stats": {
+        "rating_title": 6.33,
+        "minutes_played": 90,
+        "goals": 0,
+        "assists": 0,
+        "expected_goals": 0.03,
+        "expected_assists": 0.06,
+        "xg_and_xa": 0.09,
+        "accurate_passes": {
+          "value": 24,
+          "total": 28
+        },
+        "chances_created": 1,
+        "ShotsOnTarget": 0,
+        "ShotsOffTarget": 2,
+        "shot_accuracy": {
+          "value": 0,
+          "total": 2
+        },
+        "null": 1,
+        "defensive_actions": 3,
+        "touches": 48,
+        "touches_opp_box": 1,
+        "dribbles_succeeded": {
+          "value": 2,
+          "total": 3
+        },
+        "passes_into_final_third": 5,
+        "accurate_crosses": {
+          "value": 1,
+          "total": 2
+        },
+        "long_balls_accurate": {
+          "value": 2,
+          "total": 3
+        },
+        "dispossessed": 0,
+        "expected_goals_non_penalty": 0.03,
+        "matchstats.headers.tackles": 1,
+        "shot_blocks": 0,
+        "clearances": 1,
+        "headed_clearance": 1,
+        "interceptions": 1,
+        "recoveries": 4,
+        "dribbled_past": 0,
+        "ground_duels_won": {
+          "value": 4,
+          "total": 5
+        },
+        "aerials_won": {
+          "value": 2,
+          "total": 3
+        },
+        "was_fouled": 1,
+        "fouls": 0,
+        "duel_won": 6,
+        "duel_lost": 2
+      }
+    },
+    {
+      "id": 942980,
+      "name": "Richard Ledezma",
+      "shirt_number": "37",
+      "position_id": 72,
+      "usual_position": 2,
+      "is_starter": true,
+      "country": "Mexico",
+      "country_code": "MEX",
+      "club": null,
+      "age": 25,
+      "market_value": 3023891,
+      "rating": 5.9,
+      "stats": {
+        "rating_title": 5.92,
+        "minutes_played": 68,
+        "goals": 0,
+        "assists": 0,
+        "expected_goals": 0.01,
+        "expected_assists": 0.02,
+        "xg_and_xa": 0.03,
+        "accurate_passes": {
+          "value": 14,
+          "total": 17
+        },
+        "chances_created": 0,
+        "ShotsOnTarget": 0,
+        "ShotsOffTarget": 0,
+        "blocked_shots": 1,
+        "null": 1,
+        "defensive_actions": 0,
+        "touches": 25,
+        "touches_opp_box": 2,
+        "dribbles_succeeded": {
+          "value": 0,
+          "total": 1
+        },
+        "long_balls_accurate": {
+          "value": 0,
+          "total": 1
+        },
+        "dispossessed": 0,
+        "expected_goals_non_penalty": 0.01,
+        "matchstats.headers.tackles": 0,
+        "shot_blocks": 0,
+        "clearances": 0,
+        "interceptions": 0,
+        "recoveries": 3,
+        "dribbled_past": 1,
+        "ground_duels_won": {
+          "value": 1,
+          "total": 3
+        },
+        "aerials_won": {
+          "value": 0,
+          "total": 0
+        },
+        "was_fouled": 1,
+        "fouls": 0,
+        "duel_won": 1,
+        "duel_lost": 2
+      }
+    },
+    {
+      "id": 610473,
+      "name": "Omar Govea",
+      "shirt_number": "6",
+      "position_id": 74,
+      "usual_position": 2,
+      "is_starter": true,
+      "country": "Mexico",
+      "country_code": "MEX",
+      "club": null,
+      "age": 30,
+      "market_value": 1418060,
+      "rating": 8.2,
+      "stats": {
+        "rating_title": 8.21,
+        "minutes_played": 90,
+        "goals": 0,
+        "assists": 0,
+        "expected_assists": 0.24,
+        "xg_and_xa": 0.24,
+        "accurate_passes": {
+          "value": 56,
+          "total": 60
+        },
+        "chances_created": 4,
+        "null": 0,
+        "defensive_actions": 10,
+        "touches": 82,
+        "touches_opp_box": 1,
+        "dribbles_succeeded": {
+          "value": 2,
+          "total": 2
+        },
+        "passes_into_final_third": 9,
+        "accurate_crosses": {
+          "value": 1,
+          "total": 4
+        },
+        "long_balls_accurate": {
+          "value": 1,
+          "total": 3
+        },
+        "corners": 2,
+        "dispossessed": 0,
+        "matchstats.headers.tackles": 4,
+        "shot_blocks": 1,
+        "clearances": 1,
+        "interceptions": 4,
+        "recoveries": 8,
+        "dribbled_past": 0,
+        "ground_duels_won": {
+          "value": 7,
+          "total": 7
+        },
+        "aerials_won": {
+          "value": 0,
+          "total": 0
+        },
+        "was_fouled": 1,
+        "fouls": 0,
+        "duel_won": 7
+      }
+    },
+    {
+      "id": 430764,
+      "name": "Rubén González",
+      "shirt_number": "28",
+      "position_id": 76,
+      "usual_position": 2,
+      "is_starter": true,
+      "country": "Mexico",
+      "country_code": "MEX",
+      "club": null,
+      "age": 32,
+      "market_value": 1231842,
+      "rating": 7,
+      "stats": {
+        "rating_title": 6.95,
+        "minutes_played": 90,
+        "goals": 0,
+        "assists": 0,
+        "expected_goals": 0.03,
+        "expected_assists": 0.03,
+        "xg_and_xa": 0.06,
+        "accurate_passes": {
+          "value": 34,
+          "total": 40
+        },
+        "chances_created": 1,
+        "big_chance_created_team_title": 1,
+        "ShotsOnTarget": 0,
+        "ShotsOffTarget": 1,
+        "shot_accuracy": {
+          "value": 0,
+          "total": 1
+        },
+        "null": 1,
+        "defensive_actions": 8,
+        "touches": 55,
+        "touches_opp_box": 0,
+        "passes_into_final_third": 6,
+        "long_balls_accurate": {
+          "value": 0,
+          "total": 3
+        },
+        "dispossessed": 0,
+        "expected_goals_non_penalty": 0.03,
+        "matchstats.headers.tackles": 1,
+        "shot_blocks": 1,
+        "clearances": 5,
+        "headed_clearance": 2,
+        "interceptions": 1,
+        "recoveries": 7,
+        "dribbled_past": 2,
+        "ground_duels_won": {
+          "value": 3,
+          "total": 6
+        },
+        "aerials_won": {
+          "value": 1,
+          "total": 2
+        },
+        "was_fouled": 2,
+        "fouls": 1,
+        "duel_won": 4,
+        "duel_lost": 4
+      }
+    },
+    {
+      "id": 927365,
+      "name": "Efraín Álvarez",
+      "shirt_number": "10",
+      "position_id": 78,
+      "usual_position": 2,
+      "is_starter": true,
+      "country": "Mexico",
+      "country_code": "MEX",
+      "club": null,
+      "age": 23,
+      "market_value": 4736057,
+      "rating": 6.6,
+      "stats": {
+        "rating_title": 6.59,
+        "minutes_played": 68,
+        "goals": 0,
+        "assists": 0,
+        "expected_assists": 0.03,
+        "xg_and_xa": 0.03,
+        "accurate_passes": {
+          "value": 21,
+          "total": 24
+        },
+        "chances_created": 1,
+        "null": 0,
+        "defensive_actions": 1,
+        "touches": 36,
+        "touches_opp_box": 2,
+        "dribbles_succeeded": {
+          "value": 1,
+          "total": 6
+        },
+        "passes_into_final_third": 2,
+        "accurate_crosses": {
+          "value": 1,
+          "total": 1
+        },
+        "long_balls_accurate": {
+          "value": 1,
+          "total": 3
+        },
+        "corners": 1,
+        "dispossessed": 0,
+        "matchstats.headers.tackles": 0,
+        "shot_blocks": 0,
+        "clearances": 0,
+        "interceptions": 1,
+        "recoveries": 7,
+        "dribbled_past": 0,
+        "ground_duels_won": {
+          "value": 2,
+          "total": 7
+        },
+        "aerials_won": {
+          "value": 0,
+          "total": 0
+        },
+        "was_fouled": 1,
+        "fouls": 1,
+        "duel_won": 2,
+        "duel_lost": 5
+      }
+    },
+    {
+      "id": 1786010,
+      "name": "Santiago Sandoval",
+      "shirt_number": "226",
+      "position_id": 104,
+      "usual_position": 3,
+      "is_starter": true,
+      "country": "Mexico",
+      "country_code": "MEX",
+      "club": null,
+      "age": 18,
+      "market_value": 4682939,
+      "rating": 6,
+      "stats": {
+        "rating_title": 5.95,
+        "minutes_played": 61,
+        "goals": 0,
+        "assists": 0,
+        "accurate_passes": {
+          "value": 14,
+          "total": 15
+        },
+        "chances_created": 0,
+        "null": 0,
+        "defensive_actions": 1,
+        "touches": 28,
+        "touches_opp_box": 0,
+        "passes_into_final_third": 1,
+        "accurate_crosses": {
+          "value": 0,
+          "total": 1
+        },
+        "long_balls_accurate": {
+          "value": 1,
+          "total": 1
+        },
+        "dispossessed": 2,
+        "Offsides": 1,
+        "matchstats.headers.tackles": 0,
+        "shot_blocks": 0,
+        "clearances": 1,
+        "interceptions": 0,
+        "recoveries": 1,
+        "dribbled_past": 0,
+        "ground_duels_won": {
+          "value": 4,
+          "total": 6
+        },
+        "aerials_won": {
+          "value": 0,
+          "total": 1
+        },
+        "was_fouled": 4,
+        "fouls": 0,
+        "duel_won": 4,
+        "duel_lost": 3
+      }
+    },
+    {
+      "id": 693676,
+      "name": "Ricardo Marín",
+      "shirt_number": "17",
+      "position_id": 106,
+      "usual_position": 3,
+      "is_starter": true,
+      "country": "Mexico",
+      "country_code": "MEX",
+      "club": null,
+      "age": 28,
+      "market_value": 1157316,
+      "rating": 7.2,
+      "stats": {
+        "rating_title": 7.22,
+        "minutes_played": 80,
+        "goals": 1,
+        "assists": 0,
+        "expected_goals": 0.49,
+        "expected_goals_on_target_variant": 0.22,
+        "expected_assists": 0.05,
+        "xg_and_xa": 0.54,
+        "accurate_passes": {
+          "value": 7,
+          "total": 13
+        },
+        "chances_created": 0,
+        "ShotsOnTarget": 1,
+        "ShotsOffTarget": 1,
+        "blocked_shots": 1,
+        "shot_accuracy": {
+          "value": 1,
+          "total": 2
+        },
+        "null": 1,
+        "defensive_actions": 2,
+        "touches": 25,
+        "touches_opp_box": 4,
+        "dribbles_succeeded": {
+          "value": 0,
+          "total": 1
+        },
+        "passes_into_final_third": 3,
+        "long_balls_accurate": {
+          "value": 1,
+          "total": 2
+        },
+        "dispossessed": 0,
+        "expected_goals_non_penalty": 0.49,
+        "matchstats.headers.tackles": 1,
+        "shot_blocks": 0,
+        "clearances": 1,
+        "headed_clearance": 1,
+        "interceptions": 0,
+        "recoveries": 1,
+        "dribbled_past": 0,
+        "ground_duels_won": {
+          "value": 1,
+          "total": 6
+        },
+        "aerials_won": {
+          "value": 3,
+          "total": 6
+        },
+        "fouls": 4,
+        "duel_won": 4,
+        "duel_lost": 8
+      }
+    },
+    {
+      "id": 215428,
+      "name": "Ángel Sepúlveda",
+      "shirt_number": "20",
+      "position_id": null,
+      "usual_position": 3,
+      "is_starter": false,
+      "country": "Mexico",
+      "country_code": "MEX",
+      "club": null,
+      "age": 35,
+      "market_value": 734965,
+      "rating": 6,
+      "stats": {
+        "rating_title": 5.98,
+        "minutes_played": 29,
+        "goals": 0,
+        "assists": 0,
+        "expected_goals": 0.09,
+        "expected_assists": 0.01,
+        "xg_and_xa": 0.09999999999999999,
+        "accurate_passes": {
+          "value": 4,
+          "total": 7
+        },
+        "chances_created": 0,
+        "ShotsOnTarget": 0,
+        "ShotsOffTarget": 2,
+        "shot_accuracy": {
+          "value": 0,
+          "total": 2
+        },
+        "null": 1,
+        "defensive_actions": 0,
+        "big_chance_missed_title": 1,
+        "touches": 10,
+        "touches_opp_box": 2,
+        "dribbles_succeeded": {
+          "value": 0,
+          "total": 1
+        },
+        "dispossessed": 0,
+        "expected_goals_non_penalty": 0.09,
+        "matchstats.headers.tackles": 0,
+        "shot_blocks": 0,
+        "clearances": 0,
+        "interceptions": 0,
+        "recoveries": 1,
+        "dribbled_past": 0,
+        "ground_duels_won": {
+          "value": 0,
+          "total": 1
+        },
+        "aerials_won": {
+          "value": 2,
+          "total": 4
+        },
+        "fouls": 0,
+        "duel_won": 2,
+        "duel_lost": 3
+      }
+    },
+    {
+      "id": 1333094,
+      "name": "Miguel Gómez",
+      "shirt_number": "24",
+      "position_id": null,
+      "usual_position": 1,
+      "is_starter": false,
+      "country": "Mexico",
+      "country_code": "MEX",
+      "club": null,
+      "age": 23,
+      "market_value": 990983,
+      "rating": 7.2,
+      "stats": {
+        "rating_title": 7.22,
+        "minutes_played": 22,
+        "goals": 0,
+        "assists": 0,
+        "expected_assists": 0.15,
+        "xg_and_xa": 0.15,
+        "accurate_passes": {
+          "value": 7,
+          "total": 7
+        },
+        "chances_created": 2,
+        "null": 0,
+        "defensive_actions": 4,
+        "touches": 19,
+        "touches_opp_box": 1,
+        "passes_into_final_third": 1,
+        "accurate_crosses": {
+          "value": 2,
+          "total": 4
+        },
+        "long_balls_accurate": {
+          "value": 1,
+          "total": 1
+        },
+        "corners": 1,
+        "dispossessed": 0,
+        "matchstats.headers.tackles": 4,
+        "shot_blocks": 0,
+        "clearances": 0,
+        "interceptions": 0,
+        "recoveries": 2,
+        "dribbled_past": 0,
+        "ground_duels_won": {
+          "value": 6,
+          "total": 6
+        },
+        "aerials_won": {
+          "value": 0,
+          "total": 1
+        },
+        "was_fouled": 2,
+        "fouls": 0,
+        "duel_won": 6,
+        "duel_lost": 1
+      }
+    },
+    {
+      "id": 1457724,
+      "name": "Jonathan Padilla",
+      "shirt_number": "31",
+      "position_id": null,
+      "usual_position": 2,
+      "is_starter": false,
+      "country": "Mexico",
+      "country_code": "MEX",
+      "club": null,
+      "age": 20,
+      "market_value": null,
+      "rating": 5.7,
+      "stats": {
+        "rating_title": 5.65,
+        "minutes_played": 22,
+        "goals": 0,
+        "assists": 0,
+        "expected_assists": 0.01,
+        "xg_and_xa": 0.01,
+        "accurate_passes": {
+          "value": 6,
+          "total": 7
+        },
+        "chances_created": 0,
+        "null": 0,
+        "defensive_actions": 0,
+        "touches": 15,
+        "touches_opp_box": 0,
+        "accurate_crosses": {
+          "value": 0,
+          "total": 2
+        },
+        "dispossessed": 2,
+        "matchstats.headers.tackles": 0,
+        "shot_blocks": 0,
+        "clearances": 0,
+        "interceptions": 0,
+        "recoveries": 0,
+        "dribbled_past": 1,
+        "ground_duels_won": {
+          "value": 1,
+          "total": 4
+        },
+        "aerials_won": {
+          "value": 0,
+          "total": 1
+        },
+        "was_fouled": 1,
+        "fouls": 0,
+        "duel_won": 1,
+        "duel_lost": 4
+      }
+    },
+    {
+      "id": 1603853,
+      "name": "Sergio Aguayo",
+      "shirt_number": "67",
+      "position_id": null,
+      "usual_position": 3,
+      "is_starter": false,
+      "country": "Mexico",
+      "country_code": "MEX",
+      "club": null,
+      "age": 23,
+      "market_value": null,
+      "rating": 6.2,
+      "stats": {
+        "rating_title": 6.2,
+        "minutes_played": 10,
+        "goals": 0,
+        "assists": 0,
+        "expected_goals": 0.05,
+        "xg_and_xa": 0.05,
+        "accurate_passes": {
+          "value": 2,
+          "total": 3
+        },
+        "chances_created": 0,
+        "ShotsOnTarget": 0,
+        "ShotsOffTarget": 0,
+        "blocked_shots": 1,
+        "null": 1,
+        "defensive_actions": 0,
+        "touches": 8,
+        "touches_opp_box": 1,
+        "long_balls_accurate": {
+          "value": 1,
+          "total": 1
+        },
+        "dispossessed": 0,
+        "expected_goals_non_penalty": 0.05,
+        "matchstats.headers.tackles": 0,
+        "shot_blocks": 0,
+        "clearances": 0,
+        "interceptions": 0,
+        "recoveries": 0,
+        "dribbled_past": 0,
+        "ground_duels_won": {
+          "value": 2,
+          "total": 3
+        },
+        "aerials_won": {
+          "value": 1,
+          "total": 1
+        },
+        "was_fouled": 2,
+        "fouls": 1,
+        "duel_won": 3,
+        "duel_lost": 1
+      }
+    },
+    {
+      "id": 1577179,
+      "name": "Sebastián Liceaga",
+      "shirt_number": "201",
+      "position_id": null,
+      "usual_position": 0,
+      "is_starter": false,
+      "country": "Mexico",
+      "country_code": "MEX",
+      "club": null,
+      "age": 19,
+      "market_value": null,
+      "rating": null,
+      "stats": {}
+    },
+    {
+      "id": 1457481,
+      "name": "Ángel Chávez",
+      "shirt_number": "56",
+      "position_id": null,
+      "usual_position": 1,
+      "is_starter": false,
+      "country": "Mexico",
+      "country_code": "MEX",
+      "club": null,
+      "age": 21,
+      "market_value": null,
+      "rating": null,
+      "stats": {}
+    },
+    {
+      "id": 988723,
+      "name": "Gilberto Sepúlveda",
+      "shirt_number": "3",
+      "position_id": null,
+      "usual_position": 1,
+      "is_starter": false,
+      "country": "Mexico",
+      "country_code": "MEX",
+      "club": null,
+      "age": 27,
+      "market_value": 2250922,
+      "rating": null,
+      "stats": {}
+    },
+    {
+      "id": 1661668,
+      "name": "Hugo Mata",
+      "shirt_number": "217",
+      "position_id": null,
+      "usual_position": 2,
+      "is_starter": false,
+      "country": "Mexico",
+      "country_code": "MEX",
+      "club": null,
+      "age": 20,
+      "market_value": null,
+      "rating": null,
+      "stats": {}
+    },
+    {
+      "id": 1801113,
+      "name": "Samir Inda",
+      "shirt_number": "225",
+      "position_id": null,
+      "usual_position": 2,
+      "is_starter": false,
+      "country": "Mexico",
+      "country_code": "MEX",
+      "club": null,
+      "age": 18,
+      "market_value": null,
+      "rating": null,
+      "stats": {}
+    },
+    {
+      "id": 1136270,
+      "name": "Jonathan Pérez",
+      "shirt_number": "18",
+      "position_id": null,
+      "usual_position": 3,
+      "is_starter": false,
+      "country": "Mexico",
+      "country_code": "MEX",
+      "club": null,
+      "age": 23,
+      "market_value": null,
+      "rating": null,
+      "stats": {}
+    }
+  ],
+  "events": {
+    "ongoing": false,
+    "events": [
+      {
+        "reactKey": "1408425311Goal693676undefinedfalse",
+        "timeStr": 11,
+        "type": "Goal",
+        "time": 11,
+        "overloadTime": null,
+        "eventId": 14084253,
+        "player": {
+          "id": 693676,
+          "name": "Ricardo Marín",
+          "profileUrl": "/players/693676/ricardo-marin"
+        },
+        "homeScore": 0,
+        "awayScore": 0,
+        "profileUrl": "/players/693676/ricardo-marin",
+        "overloadTimeStr": false,
+        "isHome": false,
+        "ownGoal": null,
+        "goalDescription": null,
+        "goalDescriptionKey": null,
+        "suffix": null,
+        "suffixKey": null,
+        "isPenaltyShootoutEvent": false,
+        "nameStr": "Ricardo Marín",
+        "firstName": "Ricardo",
+        "lastName": "Marín",
+        "fullName": "Ricardo Marín",
+        "playerId": 693676,
+        "newScore": [
+          0,
+          1
+        ],
+        "penShootoutScore": null,
+        "shotmapEvent": {
+          "id": 2932630339,
+          "eventType": "Goal",
+          "teamId": 7807,
+          "playerId": 693676,
+          "playerName": "Ricardo Marín",
+          "x": 94.8684210512,
+          "y": 27.194285714000003,
+          "min": 11,
+          "minAdded": null,
+          "isBlocked": false,
+          "isOnTarget": true,
+          "blockedX": null,
+          "blockedY": null,
+          "goalCrossedY": 34.305,
+          "goalCrossedZ": 0.4879999976,
+          "expectedGoals": 0.3558122217655182,
+          "expectedGoalsOnTarget": 0.21534258127212524,
+          "shotType": "LeftFoot",
+          "situation": "RegularPlay",
+          "period": "FirstHalf",
+          "isOwnGoal": false,
+          "onGoalShot": {
+            "x": 0.9193121693121694,
+            "y": 0.12910052846560846,
+            "zoomRatio": 1
+          },
+          "isSavedOffLine": false,
+          "isFromInsideBox": true,
+          "keeperId": 193993,
+          "firstName": "Ricardo",
+          "lastName": "Marín",
+          "fullName": "Ricardo Marín",
+          "teamColor": "#CE142C"
+        },
+        "assistStr": null,
+        "assistProfileUrl": null
+      },
+      {
+        "reactKey": "1408442932Card401095undefinedtrue",
+        "timeStr": 32,
+        "type": "Card",
+        "time": 32,
+        "overloadTime": null,
+        "eventId": 14084429,
+        "player": {
+          "id": 401095,
+          "name": "Rodrigo Aguirre",
+          "profileUrl": "/players/401095/rodrigo-aguirre"
+        },
+        "homeScore": 0,
+        "awayScore": 1,
+        "profileUrl": "/players/401095/rodrigo-aguirre",
+        "overloadTimeStr": false,
+        "isHome": true,
+        "nameStr": "Rodrigo Aguirre",
+        "firstName": "Rodrigo",
+        "lastName": "Aguirre",
+        "fullName": "Rodrigo Aguirre",
+        "playerId": 401095,
+        "card": "Yellow",
+        "cardDescription": null
+      },
+      {
+        "reactKey": "1408443333Card610473undefinedfalse",
+        "timeStr": 33,
+        "type": "Card",
+        "time": 33,
+        "overloadTime": null,
+        "eventId": 14084433,
+        "player": {
+          "id": 610473,
+          "name": "Omar Govea",
+          "profileUrl": "/players/610473/omar-govea"
+        },
+        "homeScore": 0,
+        "awayScore": 1,
+        "profileUrl": "/players/610473/omar-govea",
+        "overloadTimeStr": false,
+        "isHome": false,
+        "nameStr": "Omar Govea",
+        "firstName": "Omar",
+        "lastName": "Govea",
+        "fullName": "Omar Govea",
+        "playerId": 610473,
+        "card": "Yellow",
+        "cardDescription": null
+      },
+      {
+        "reactKey": "1408447838Card495198undefinedtrue",
+        "timeStr": 38,
+        "type": "Card",
+        "time": 38,
+        "overloadTime": null,
+        "eventId": 14084478,
+        "player": {
+          "id": 495198,
+          "name": "Fernando Gorriarán",
+          "profileUrl": "/players/495198/fernando-gorriaran"
+        },
+        "homeScore": 0,
+        "awayScore": 1,
+        "profileUrl": "/players/495198/fernando-gorriaran",
+        "overloadTimeStr": false,
+        "isHome": true,
+        "nameStr": "Fernando Gorriarán",
+        "firstName": "Fernando",
+        "lastName": "Gorriarán",
+        "fullName": "Fernando Gorriarán",
+        "playerId": 495198,
+        "card": "Yellow",
+        "cardDescription": null
+      },
+      {
+        "reactKey": "1408445745Goal882469undefinedtrue",
+        "timeStr": "45 + 1",
+        "type": "Goal",
+        "time": 45,
+        "overloadTime": 1,
+        "eventId": 14084457,
+        "player": {
+          "id": 882469,
+          "name": "Jesús Angulo",
+          "profileUrl": "/players/882469/jesus-angulo"
+        },
+        "homeScore": 0,
+        "awayScore": 1,
+        "profileUrl": "/players/882469/jesus-angulo",
+        "overloadTimeStr": "+1",
+        "isHome": true,
+        "ownGoal": null,
+        "goalDescription": null,
+        "goalDescriptionKey": null,
+        "suffix": null,
+        "suffixKey": null,
+        "isPenaltyShootoutEvent": false,
+        "nameStr": "Jesús Angulo",
+        "firstName": "Jesús",
+        "lastName": "Angulo",
+        "fullName": "Jesús Angulo",
+        "playerId": 882469,
+        "newScore": [
+          1,
+          1
+        ],
+        "penShootoutScore": null,
+        "shotmapEvent": {
+          "id": 2932651713,
+          "eventType": "Goal",
+          "teamId": 8561,
+          "playerId": 882469,
+          "playerName": "Jesús Angulo",
+          "x": 101.3017241382,
+          "y": 36.2875,
+          "min": 45,
+          "minAdded": 0,
+          "isBlocked": false,
+          "isOnTarget": true,
+          "blockedX": null,
+          "blockedY": null,
+          "goalCrossedY": 36.21125,
+          "goalCrossedZ": 1.4254736772,
+          "expectedGoals": 0.2108658105134964,
+          "expectedGoalsOnTarget": 0.8940798044204712,
+          "shotType": "Header",
+          "situation": "FromCorner",
+          "period": "FirstHalf",
+          "isOwnGoal": false,
+          "onGoalShot": {
+            "x": 0.41501322751322767,
+            "y": 0.3771094384126984,
+            "zoomRatio": 1
+          },
+          "isSavedOffLine": false,
+          "isFromInsideBox": true,
+          "keeperId": 522580,
+          "firstName": "Jesús",
+          "lastName": "Angulo",
+          "fullName": "Jesús Angulo",
+          "teamColor": "#0053A2"
+        },
+        "assistStr": "assist by Juan Brunetta",
+        "assistProfileUrl": "/players/793586/juan-brunetta",
+        "assistPlayerId": 793586,
+        "assistKey": "assist_by",
+        "assistInput": "Juan Brunetta"
+      },
+      {
+        "reactKey": "undefined45HalfNaNundefinedundefined",
+        "timeStr": 45,
+        "type": "Half",
+        "time": 45,
+        "overloadTime": null,
+        "player": {
+          "id": null,
+          "profileUrl": ""
+        },
+        "homeScore": 1,
+        "awayScore": 1,
+        "halfStrShort": "HT",
+        "halfStrKey": "halftime_short"
+      },
+      {
+        "reactKey": "undefined46SubstitutionNaN1612708true",
+        "timeStr": 46,
+        "type": "Substitution",
+        "time": 46,
+        "overloadTime": 0,
+        "player": {
+          "id": null,
+          "profileUrl": ""
+        },
+        "homeScore": 1,
+        "awayScore": 1,
+        "profileUrl": "",
+        "overloadTimeStr": false,
+        "isHome": true,
+        "injuredPlayerOut": false,
+        "swap": [
+          {
+            "name": "Diego Sánchez",
+            "id": "1612708",
+            "profileUrl": "/players/1612708/diego-sanchez"
+          },
+          {
+            "name": "Francisco Reyes",
+            "id": "1382531",
+            "profileUrl": "/players/1382531/francisco-reyes"
+          }
+        ]
+      },
+      {
+        "reactKey": "1408454052Goal793586undefinedtrue",
+        "timeStr": 52,
+        "type": "Goal",
+        "time": 52,
+        "overloadTime": null,
+        "eventId": 14084540,
+        "player": {
+          "id": 793586,
+          "name": "Juan Brunetta",
+          "profileUrl": "/players/793586/juan-brunetta"
+        },
+        "homeScore": 1,
+        "awayScore": 1,
+        "profileUrl": "/players/793586/juan-brunetta",
+        "overloadTimeStr": false,
+        "isHome": true,
+        "ownGoal": null,
+        "goalDescription": null,
+        "goalDescriptionKey": null,
+        "suffix": null,
+        "suffixKey": null,
+        "isPenaltyShootoutEvent": false,
+        "nameStr": "Juan Brunetta",
+        "firstName": "Juan",
+        "lastName": "Brunetta",
+        "fullName": "Juan Brunetta",
+        "playerId": 793586,
+        "newScore": [
+          2,
+          1
+        ],
+        "penShootoutScore": null,
+        "shotmapEvent": {
+          "id": 2932662975,
+          "eventType": "Goal",
+          "teamId": 8561,
+          "playerId": 793586,
+          "playerName": "Juan Brunetta",
+          "x": 94.1929824545,
+          "y": 39.545000001,
+          "min": 52,
+          "minAdded": null,
+          "isBlocked": false,
+          "isOnTarget": true,
+          "blockedX": null,
+          "blockedY": null,
+          "goalCrossedY": 36.21125,
+          "goalCrossedZ": 1.3034736778000002,
+          "expectedGoals": 0.12093618512153625,
+          "expectedGoalsOnTarget": 0.5053063035011292,
+          "shotType": "RightFoot",
+          "situation": "RegularPlay",
+          "period": "SecondHalf",
+          "isOwnGoal": false,
+          "onGoalShot": {
+            "x": 0.41501322751322767,
+            "y": 0.34483430629629636,
+            "zoomRatio": 1
+          },
+          "isSavedOffLine": false,
+          "isFromInsideBox": true,
+          "keeperId": 522580,
+          "firstName": "Juan",
+          "lastName": "Brunetta",
+          "fullName": "Juan Brunetta",
+          "teamColor": "#0053A2"
+        },
+        "assistStr": "assist by Fernando Gorriarán",
+        "assistProfileUrl": "/players/495198/fernando-gorriaran",
+        "assistPlayerId": 495198,
+        "assistKey": "assist_by",
+        "assistInput": "Fernando Gorriarán"
+      },
+      {
+        "reactKey": "1408455855Goal1612708undefinedtrue",
+        "timeStr": 55,
+        "type": "Goal",
+        "time": 55,
+        "overloadTime": null,
+        "eventId": 14084558,
+        "player": {
+          "id": 1612708,
+          "name": "Diego Sánchez",
+          "profileUrl": "/players/1612708/diego-sanchez"
+        },
+        "homeScore": 2,
+        "awayScore": 1,
+        "profileUrl": "/players/1612708/diego-sanchez",
+        "overloadTimeStr": false,
+        "isHome": true,
+        "ownGoal": null,
+        "goalDescription": null,
+        "goalDescriptionKey": null,
+        "suffix": null,
+        "suffixKey": null,
+        "isPenaltyShootoutEvent": false,
+        "nameStr": "Diego Sánchez",
+        "firstName": "Diego",
+        "lastName": "Sánchez",
+        "fullName": "Diego Sánchez",
+        "playerId": 1612708,
+        "newScore": [
+          3,
+          1
+        ],
+        "penShootoutScore": null,
+        "shotmapEvent": {
+          "id": 2932663971,
+          "eventType": "Goal",
+          "teamId": 8561,
+          "playerId": 1612708,
+          "playerName": "Diego Sánchez",
+          "x": 87.31911764680001,
+          "y": 30.328,
+          "min": 55,
+          "minAdded": null,
+          "isBlocked": false,
+          "isOnTarget": true,
+          "blockedX": null,
+          "blockedY": null,
+          "goalCrossedY": 35.83,
+          "goalCrossedZ": 0.4879999976,
+          "expectedGoals": 0.3088451325893402,
+          "expectedGoalsOnTarget": 0.451171875,
+          "shotType": "RightFoot",
+          "situation": "FastBreak",
+          "period": "SecondHalf",
+          "isOwnGoal": false,
+          "onGoalShot": {
+            "x": 0.5158730158730164,
+            "y": 0.12910052846560846,
+            "zoomRatio": 1
+          },
+          "isSavedOffLine": false,
+          "isFromInsideBox": false,
+          "keeperId": 522580,
+          "firstName": "Diego",
+          "lastName": "Sánchez",
+          "fullName": "Diego Sánchez",
+          "teamColor": "#0053A2"
+        },
+        "assistStr": null,
+        "assistProfileUrl": null
+      },
+      {
+        "reactKey": "undefined61SubstitutionNaN215428false",
+        "timeStr": 61,
+        "type": "Substitution",
+        "time": 61,
+        "overloadTime": 0,
+        "player": {
+          "id": null,
+          "profileUrl": ""
+        },
+        "homeScore": 3,
+        "awayScore": 1,
+        "profileUrl": "",
+        "overloadTimeStr": false,
+        "isHome": false,
+        "injuredPlayerOut": false,
+        "swap": [
+          {
+            "name": "Ángel Sepúlveda",
+            "id": "215428",
+            "profileUrl": "/players/215428/angel-sepulveda"
+          },
+          {
+            "name": "Santiago Sandoval",
+            "id": "1786010",
+            "profileUrl": "/players/1786010/santiago-sandoval"
+          }
+        ]
+      },
+      {
+        "reactKey": "undefined65SubstitutionNaN350153true",
+        "timeStr": 65,
+        "type": "Substitution",
+        "time": 65,
+        "overloadTime": 0,
+        "player": {
+          "id": null,
+          "profileUrl": ""
+        },
+        "homeScore": 3,
+        "awayScore": 1,
+        "profileUrl": "",
+        "overloadTimeStr": false,
+        "isHome": true,
+        "injuredPlayerOut": false,
+        "swap": [
+          {
+            "name": "Juan Vigón",
+            "id": "350153",
+            "profileUrl": "/players/350153/juan-vigon"
+          },
+          {
+            "name": "Rodrigo Aguirre",
+            "id": "401095",
+            "profileUrl": "/players/401095/rodrigo-aguirre"
+          }
+        ]
+      },
+      {
+        "reactKey": "undefined68SubstitutionNaN1457724false",
+        "timeStr": 68,
+        "type": "Substitution",
+        "time": 68,
+        "overloadTime": 0,
+        "player": {
+          "id": null,
+          "profileUrl": ""
+        },
+        "homeScore": 3,
+        "awayScore": 1,
+        "profileUrl": "",
+        "overloadTimeStr": false,
+        "isHome": false,
+        "injuredPlayerOut": false,
+        "swap": [
+          {
+            "name": "Jonathan Padilla",
+            "id": "1457724",
+            "profileUrl": "/players/1457724/jonathan-padilla"
+          },
+          {
+            "name": "Efraín Álvarez",
+            "id": "927365",
+            "profileUrl": "/players/927365/efrain-alvarez"
+          }
+        ]
+      },
+      {
+        "reactKey": "undefined68SubstitutionNaN1333094false",
+        "timeStr": 68,
+        "type": "Substitution",
+        "time": 68,
+        "overloadTime": 0,
+        "player": {
+          "id": null,
+          "profileUrl": ""
+        },
+        "homeScore": 3,
+        "awayScore": 1,
+        "profileUrl": "",
+        "overloadTimeStr": false,
+        "isHome": false,
+        "injuredPlayerOut": false,
+        "swap": [
+          {
+            "name": "Miguel Gómez",
+            "id": "1333094",
+            "profileUrl": "/players/1333094/miguel-gomez"
+          },
+          {
+            "name": "Richard Ledezma",
+            "id": "942980",
+            "profileUrl": "/players/942980/richard-ledezma"
+          }
+        ]
+      },
+      {
+        "reactKey": "undefined80SubstitutionNaN1295538true",
+        "timeStr": 80,
+        "type": "Substitution",
+        "time": 80,
+        "overloadTime": 0,
+        "player": {
+          "id": null,
+          "profileUrl": ""
+        },
+        "homeScore": 3,
+        "awayScore": 1,
+        "profileUrl": "",
+        "overloadTimeStr": false,
+        "isHome": true,
+        "injuredPlayerOut": false,
+        "swap": [
+          {
+            "name": "Rafael Guerrero",
+            "id": "1295538",
+            "profileUrl": "/players/1295538/rafael-guerrero"
+          },
+          {
+            "name": "Jesús Angulo",
+            "id": "882469",
+            "profileUrl": "/players/882469/jesus-angulo"
+          }
+        ]
+      },
+      {
+        "reactKey": "undefined80SubstitutionNaN1603853false",
+        "timeStr": 80,
+        "type": "Substitution",
+        "time": 80,
+        "overloadTime": 0,
+        "player": {
+          "id": null,
+          "profileUrl": ""
+        },
+        "homeScore": 3,
+        "awayScore": 1,
+        "profileUrl": "",
+        "overloadTimeStr": false,
+        "isHome": false,
+        "injuredPlayerOut": false,
+        "swap": [
+          {
+            "name": "Sergio Aguayo",
+            "id": "1603853",
+            "profileUrl": "/players/1603853/sergio-aguayo"
+          },
+          {
+            "name": "Ricardo Marín",
+            "id": "693676",
+            "profileUrl": "/players/693676/ricardo-marin"
+          }
+        ]
+      },
+      {
+        "reactKey": "undefined86SubstitutionNaN950917true",
+        "timeStr": 86,
+        "type": "Substitution",
+        "time": 86,
+        "overloadTime": 0,
+        "player": {
+          "id": null,
+          "profileUrl": ""
+        },
+        "homeScore": 3,
+        "awayScore": 1,
+        "profileUrl": "",
+        "overloadTimeStr": false,
+        "isHome": true,
+        "injuredPlayerOut": false,
+        "swap": [
+          {
+            "name": "Vladimir Loroña",
+            "id": "950917",
+            "profileUrl": "/players/950917/vladimir-lorona"
+          },
+          {
+            "name": "Diego Lainez",
+            "id": "828972",
+            "profileUrl": "/players/828972/diego-lainez"
+          }
+        ]
+      },
+      {
+        "reactKey": "undefined86SubstitutionNaN38098true",
+        "timeStr": 86,
+        "type": "Substitution",
+        "time": 86,
+        "overloadTime": 0,
+        "player": {
+          "id": null,
+          "profileUrl": ""
+        },
+        "homeScore": 3,
+        "awayScore": 1,
+        "profileUrl": "",
+        "overloadTimeStr": false,
+        "isHome": true,
+        "injuredPlayerOut": false,
+        "swap": [
+          {
+            "name": "André-Pierre Gignac",
+            "id": "38098",
+            "profileUrl": "/players/38098/andre-pierre-gignac"
+          },
+          {
+            "name": "Juan Brunetta",
+            "id": "793586",
+            "profileUrl": "/players/793586/juan-brunetta"
+          }
+        ]
+      },
+      {
+        "reactKey": "1408467989Card432950undefinedtrue",
+        "timeStr": 89,
+        "type": "Card",
+        "time": 89,
+        "overloadTime": null,
+        "eventId": 14084679,
+        "player": {
+          "id": 432950,
+          "name": "Ángel Correa",
+          "profileUrl": "/players/432950/angel-correa"
+        },
+        "homeScore": 3,
+        "awayScore": 1,
+        "profileUrl": "/players/432950/angel-correa",
+        "overloadTimeStr": false,
+        "isHome": true,
+        "nameStr": "Ángel Correa",
+        "firstName": "Ángel",
+        "lastName": "Correa",
+        "fullName": "Ángel Correa",
+        "playerId": 432950,
+        "card": "Yellow",
+        "cardDescription": null
+      },
+      {
+        "reactKey": "1408468090Card1295538undefinedtrue",
+        "timeStr": "90 + 2",
+        "type": "Card",
+        "time": 90,
+        "overloadTime": 2,
+        "eventId": 14084680,
+        "player": {
+          "id": 1295538,
+          "name": "Rafael Guerrero",
+          "profileUrl": "/players/1295538/rafael-guerrero"
+        },
+        "homeScore": 3,
+        "awayScore": 1,
+        "profileUrl": "/players/1295538/rafael-guerrero",
+        "overloadTimeStr": "+2",
+        "isHome": true,
+        "nameStr": "Rafael Guerrero",
+        "firstName": "Rafael",
+        "lastName": "Guerrero",
+        "fullName": "Rafael Guerrero",
+        "playerId": 1295538,
+        "card": "Yellow",
+        "cardDescription": null
+      },
+      {
+        "reactKey": "undefined90HalfNaNundefinedundefined",
+        "timeStr": 90,
+        "type": "Half",
+        "time": 90,
+        "overloadTime": null,
+        "player": {
+          "id": null,
+          "profileUrl": ""
+        },
+        "homeScore": 3,
+        "awayScore": 1,
+        "halfStrShort": "FT",
+        "halfStrKey": "fulltime_short"
+      }
+    ],
+    "eventTypes": [
+      "Goal",
+      "Card",
+      "Assist",
+      "Half",
+      "Substitution",
+      "Yellow",
+      "Injuries"
+    ],
+    "penaltyShootoutEvents": null
+  },
+  "fetched_at": "2026-05-03T14:49:00.332400Z",
+  "source": "fotmob/__NEXT_DATA__/by_id"
+}

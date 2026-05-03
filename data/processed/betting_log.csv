@@ -515,18 +515,18 @@ fecha_prediccion,fecha_partido,partido,liga,jornada,equipo_local,equipo_visita,m
 2026-04-29,2026-05-02,Unión (Santa Fe) vs Talleres (Córdoba),Liga Profesional Argentina,0,Unión (Santa Fe),Talleres (Córdoba),btts_si,,0.5244,,,,,,,,
 2026-04-29,2026-05-02,Unión (Santa Fe) vs Talleres (Córdoba),Liga Profesional Argentina,0,Unión (Santa Fe),Talleres (Córdoba),goles_over_2.5,2.5,0.4816,,,,,,,,
 2026-04-29,2026-05-02,Unión (Santa Fe) vs Talleres (Córdoba),Liga Profesional Argentina,0,Unión (Santa Fe),Talleres (Córdoba),goles_over_1.5,1.5,0.7326,,,,,,,,
-2026-04-30,2026-05-02,Tigres vs Chivas,Clausura 2026,1/4,Tigres,Chivas,tarjetas_over_3.5,3.5,0.914,,,,,,,,
-2026-04-30,2026-05-02,Tigres vs Chivas,Clausura 2026,1/4,Tigres,Chivas,tarjetas_over_4.5,4.5,0.819,,,,,,,,
-2026-04-30,2026-05-02,Tigres vs Chivas,Clausura 2026,1/4,Tigres,Chivas,tarjetas_over_5.5,5.5,0.688,,,,,,,,
-2026-04-30,2026-05-02,Tigres vs Chivas,Clausura 2026,1/4,Tigres,Chivas,btts_si,,0.603,,,,,,,,
-2026-04-30,2026-05-02,Tigres vs Chivas,Clausura 2026,1/4,Tigres,Chivas,goles_over_2.5,2.5,0.544,1.95,0.0608,,,,,,
-2026-04-30,2026-05-02,Tigres vs Chivas,Clausura 2026,1/4,Tigres,Chivas,goles_over_1.5,1.5,0.804,,,,,,,,
-2026-04-30,2026-05-02,Atlas vs Cruz Azul,Clausura 2026,1/4,Atlas,Cruz Azul,tarjetas_over_3.5,3.5,0.75,,,,,,,,
-2026-04-30,2026-05-02,Atlas vs Cruz Azul,Clausura 2026,1/4,Atlas,Cruz Azul,tarjetas_over_4.5,4.5,0.578,,,,,,,,
-2026-04-30,2026-05-02,Atlas vs Cruz Azul,Clausura 2026,1/4,Atlas,Cruz Azul,tarjetas_over_5.5,5.5,0.403,,,,,,,,
-2026-04-30,2026-05-02,Atlas vs Cruz Azul,Clausura 2026,1/4,Atlas,Cruz Azul,btts_si,,0.6,,,,,,,,
-2026-04-30,2026-05-02,Atlas vs Cruz Azul,Clausura 2026,1/4,Atlas,Cruz Azul,goles_over_2.5,2.5,0.544,2.01,0.0934,,,,,,
-2026-04-30,2026-05-02,Atlas vs Cruz Azul,Clausura 2026,1/4,Atlas,Cruz Azul,goles_over_1.5,1.5,0.804,,,,,,,,
+2026-04-30,2026-05-02,Tigres vs Chivas,Clausura 2026,1/4,Tigres,Chivas,tarjetas_over_3.5,3.5,0.914,,,True,True,8.0,5.0,3.0,1.0
+2026-04-30,2026-05-02,Tigres vs Chivas,Clausura 2026,1/4,Tigres,Chivas,tarjetas_over_4.5,4.5,0.819,,,True,True,8.0,5.0,3.0,1.0
+2026-04-30,2026-05-02,Tigres vs Chivas,Clausura 2026,1/4,Tigres,Chivas,tarjetas_over_5.5,5.5,0.688,,,False,False,8.0,5.0,3.0,1.0
+2026-04-30,2026-05-02,Tigres vs Chivas,Clausura 2026,1/4,Tigres,Chivas,btts_si,,0.603,,,True,True,8.0,5.0,3.0,1.0
+2026-04-30,2026-05-02,Tigres vs Chivas,Clausura 2026,1/4,Tigres,Chivas,goles_over_2.5,2.5,0.544,1.95,0.0608,True,True,8.0,5.0,3.0,1.0
+2026-04-30,2026-05-02,Tigres vs Chivas,Clausura 2026,1/4,Tigres,Chivas,goles_over_1.5,1.5,0.804,,,True,True,8.0,5.0,3.0,1.0
+2026-04-30,2026-05-02,Atlas vs Cruz Azul,Clausura 2026,1/4,Atlas,Cruz Azul,tarjetas_over_3.5,3.5,0.75,,,True,True,7.0,5.0,2.0,3.0
+2026-04-30,2026-05-02,Atlas vs Cruz Azul,Clausura 2026,1/4,Atlas,Cruz Azul,tarjetas_over_4.5,4.5,0.578,,,True,True,7.0,5.0,2.0,3.0
+2026-04-30,2026-05-02,Atlas vs Cruz Azul,Clausura 2026,1/4,Atlas,Cruz Azul,tarjetas_over_5.5,5.5,0.403,,,False,True,7.0,5.0,2.0,3.0
+2026-04-30,2026-05-02,Atlas vs Cruz Azul,Clausura 2026,1/4,Atlas,Cruz Azul,btts_si,,0.6,,,True,True,7.0,5.0,2.0,3.0
+2026-04-30,2026-05-02,Atlas vs Cruz Azul,Clausura 2026,1/4,Atlas,Cruz Azul,goles_over_2.5,2.5,0.544,2.01,0.0934,True,True,7.0,5.0,2.0,3.0
+2026-04-30,2026-05-02,Atlas vs Cruz Azul,Clausura 2026,1/4,Atlas,Cruz Azul,goles_over_1.5,1.5,0.804,,,True,True,7.0,5.0,2.0,3.0
 2026-04-30,2026-05-08,Levante vs Osasuna,La Liga,0,Levante,Osasuna,btts_si,,0.5292,,,,,,,,
 2026-04-30,2026-05-08,Levante vs Osasuna,La Liga,0,Levante,Osasuna,goles_over_2.5,2.5,0.4816,,,,,,,,
 2026-04-30,2026-05-08,Levante vs Osasuna,La Liga,0,Levante,Osasuna,goles_over_1.5,1.5,0.7326,,,,,,,,
@@ -749,3 +749,12 @@ fecha_prediccion,fecha_partido,partido,liga,jornada,equipo_local,equipo_visita,m
 2026-05-02,2026-05-10,Toulouse vs Lyon,Ligue 1,0,Toulouse,Lyon,btts_si,,0.5251,,,,,,,,
 2026-05-02,2026-05-10,Toulouse vs Lyon,Ligue 1,0,Toulouse,Lyon,goles_over_2.5,2.5,0.4816,,,,,,,,
 2026-05-02,2026-05-10,Toulouse vs Lyon,Ligue 1,0,Toulouse,Lyon,goles_over_1.5,1.5,0.7326,,,,,,,,
+2026-05-03,2026-05-11,Tottenham Hotspur vs Leeds United,Premier League,0,Tottenham Hotspur,Leeds United,btts_si,,0.5244,,,,,,,,
+2026-05-03,2026-05-11,Tottenham Hotspur vs Leeds United,Premier League,0,Tottenham Hotspur,Leeds United,goles_over_2.5,2.5,0.4816,,,,,,,,
+2026-05-03,2026-05-11,Tottenham Hotspur vs Leeds United,Premier League,0,Tottenham Hotspur,Leeds United,goles_over_1.5,1.5,0.7326,,,,,,,,
+2026-05-03,2026-05-11,Rayo Vallecano vs Girona,La Liga,0,Rayo Vallecano,Girona,btts_si,,0.5286,,,,,,,,
+2026-05-03,2026-05-11,Rayo Vallecano vs Girona,La Liga,0,Rayo Vallecano,Girona,goles_over_2.5,2.5,0.4816,,,,,,,,
+2026-05-03,2026-05-11,Rayo Vallecano vs Girona,La Liga,0,Rayo Vallecano,Girona,goles_over_1.5,1.5,0.7326,,,,,,,,
+2026-05-03,2026-05-11,Napoli vs Bologna,Serie A,0,Napoli,Bologna,btts_si,,0.4845,,,,,,,,
+2026-05-03,2026-05-11,Napoli vs Bologna,Serie A,0,Napoli,Bologna,goles_over_2.5,2.5,0.4816,,,,,,,,
+2026-05-03,2026-05-11,Napoli vs Bologna,Serie A,0,Napoli,Bologna,goles_over_1.5,1.5,0.7326,,,,,,,,
