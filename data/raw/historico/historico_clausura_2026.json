@@ -2213,7 +2213,7 @@
     },
     {
       "id": "5407882",
-      "fecha": "2026-05-03T01:00:00.000Z",
+      "fecha": "2026-05-03T01:00:00Z",
       "jornada": "1/4",
       "local": "Tigres",
       "local_id": "8561",
@@ -2226,7 +2226,7 @@
     },
     {
       "id": "5407883",
-      "fecha": "2026-05-03T03:15:00.000Z",
+      "fecha": "2026-05-03T03:15:00Z",
       "jornada": "1/4",
       "local": "Atlas",
       "local_id": "6577",
@@ -2239,29 +2239,29 @@
     },
     {
       "id": "5407884",
-      "fecha": "2026-05-03T23:00:00.000Z",
+      "fecha": "2026-05-03T23:00:00Z",
       "jornada": "1/4",
       "local": "CF America",
       "local_id": "6576",
       "visitante": "Pumas",
       "visitante_id": "1946",
-      "goles_local": null,
-      "goles_visit": null,
-      "score": "",
-      "terminado": false
+      "goles_local": 3,
+      "goles_visit": 3,
+      "score": "3 - 3",
+      "terminado": true
     },
     {
       "id": "5407885",
-      "fecha": "2026-05-04T01:15:00Z",
+      "fecha": "2026-05-04T01:15:00.000Z",
       "jornada": "1/4",
       "local": "Toluca",
       "local_id": "6618",
       "visitante": "Pachuca",
       "visitante_id": "7848",
-      "goles_local": null,
-      "goles_visit": null,
-      "score": "",
-      "terminado": false
+      "goles_local": 0,
+      "goles_visit": 1,
+      "score": "0 - 1",
+      "terminado": true
     },
     {
       "id": "5407886",

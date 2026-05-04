@@ -539,18 +539,18 @@ fecha_prediccion,fecha_partido,partido,liga,jornada,equipo_local,equipo_visita,m
 2026-04-30,2026-05-08,Lens vs Nantes,Ligue 1,0,Lens,Nantes,btts_si,,0.416,,,,,,,,
 2026-04-30,2026-05-08,Lens vs Nantes,Ligue 1,0,Lens,Nantes,goles_over_2.5,2.5,0.4816,,,,,,,,
 2026-04-30,2026-05-08,Lens vs Nantes,Ligue 1,0,Lens,Nantes,goles_over_1.5,1.5,0.7326,,,,,,,,
-2026-05-01,2026-05-03,CF America vs Pumas,Clausura 2026,1/4,CF America,Pumas,tarjetas_over_3.5,3.5,0.742,,,,,,,,
-2026-05-01,2026-05-03,CF America vs Pumas,Clausura 2026,1/4,CF America,Pumas,tarjetas_over_4.5,4.5,0.569,,,,,,,,
-2026-05-01,2026-05-03,CF America vs Pumas,Clausura 2026,1/4,CF America,Pumas,tarjetas_over_5.5,5.5,0.393,,,,,,,,
-2026-05-01,2026-05-03,CF America vs Pumas,Clausura 2026,1/4,CF America,Pumas,btts_si,,0.603,,,,,,,,
-2026-05-01,2026-05-03,CF America vs Pumas,Clausura 2026,1/4,CF America,Pumas,goles_over_2.5,2.5,0.544,2.01,0.0934,,,,,,
-2026-05-01,2026-05-03,CF America vs Pumas,Clausura 2026,1/4,CF America,Pumas,goles_over_1.5,1.5,0.804,,,,,,,,
-2026-05-01,2026-05-03,Toluca vs Pachuca,Clausura 2026,1/4,Toluca,Pachuca,tarjetas_over_3.5,3.5,0.968,,,,,,,,
-2026-05-01,2026-05-03,Toluca vs Pachuca,Clausura 2026,1/4,Toluca,Pachuca,tarjetas_over_4.5,4.5,0.921,,,,,,,,
-2026-05-01,2026-05-03,Toluca vs Pachuca,Clausura 2026,1/4,Toluca,Pachuca,tarjetas_over_5.5,5.5,0.843,,,,,,,,
-2026-05-01,2026-05-03,Toluca vs Pachuca,Clausura 2026,1/4,Toluca,Pachuca,btts_si,,0.591,,,,,,,,
-2026-05-01,2026-05-03,Toluca vs Pachuca,Clausura 2026,1/4,Toluca,Pachuca,goles_over_2.5,2.5,0.544,1.68,-0.0861,,,,,,
-2026-05-01,2026-05-03,Toluca vs Pachuca,Clausura 2026,1/4,Toluca,Pachuca,goles_over_1.5,1.5,0.804,,,,,,,,
+2026-05-01,2026-05-03,CF America vs Pumas,Clausura 2026,1/4,CF America,Pumas,tarjetas_over_3.5,3.5,0.742,,,False,False,8.0,2.0,3.0,3.0
+2026-05-01,2026-05-03,CF America vs Pumas,Clausura 2026,1/4,CF America,Pumas,tarjetas_over_4.5,4.5,0.569,,,False,False,8.0,2.0,3.0,3.0
+2026-05-01,2026-05-03,CF America vs Pumas,Clausura 2026,1/4,CF America,Pumas,tarjetas_over_5.5,5.5,0.393,,,False,True,8.0,2.0,3.0,3.0
+2026-05-01,2026-05-03,CF America vs Pumas,Clausura 2026,1/4,CF America,Pumas,btts_si,,0.603,,,True,True,8.0,2.0,3.0,3.0
+2026-05-01,2026-05-03,CF America vs Pumas,Clausura 2026,1/4,CF America,Pumas,goles_over_2.5,2.5,0.544,2.01,0.0934,True,True,8.0,2.0,3.0,3.0
+2026-05-01,2026-05-03,CF America vs Pumas,Clausura 2026,1/4,CF America,Pumas,goles_over_1.5,1.5,0.804,,,True,True,8.0,2.0,3.0,3.0
+2026-05-01,2026-05-03,Toluca vs Pachuca,Clausura 2026,1/4,Toluca,Pachuca,tarjetas_over_3.5,3.5,0.968,,,False,False,14.0,3.0,0.0,1.0
+2026-05-01,2026-05-03,Toluca vs Pachuca,Clausura 2026,1/4,Toluca,Pachuca,tarjetas_over_4.5,4.5,0.921,,,False,False,14.0,3.0,0.0,1.0
+2026-05-01,2026-05-03,Toluca vs Pachuca,Clausura 2026,1/4,Toluca,Pachuca,tarjetas_over_5.5,5.5,0.843,,,False,False,14.0,3.0,0.0,1.0
+2026-05-01,2026-05-03,Toluca vs Pachuca,Clausura 2026,1/4,Toluca,Pachuca,btts_si,,0.591,,,False,False,14.0,3.0,0.0,1.0
+2026-05-01,2026-05-03,Toluca vs Pachuca,Clausura 2026,1/4,Toluca,Pachuca,goles_over_2.5,2.5,0.544,1.68,-0.0861,False,False,14.0,3.0,0.0,1.0
+2026-05-01,2026-05-03,Toluca vs Pachuca,Clausura 2026,1/4,Toluca,Pachuca,goles_over_1.5,1.5,0.804,,,False,False,14.0,3.0,0.0,1.0
 2026-05-01,2026-05-09,Toronto FC vs Inter Miami CF,MLS,0,Toronto FC,Inter Miami CF,btts_si,,0.5244,,,,,,,,
 2026-05-01,2026-05-09,Toronto FC vs Inter Miami CF,MLS,0,Toronto FC,Inter Miami CF,goles_over_2.5,2.5,0.4816,,,,,,,,
 2026-05-01,2026-05-09,Toronto FC vs Inter Miami CF,MLS,0,Toronto FC,Inter Miami CF,goles_over_1.5,1.5,0.7326,,,,,,,,
@@ -758,3 +758,21 @@ fecha_prediccion,fecha_partido,partido,liga,jornada,equipo_local,equipo_visita,m
 2026-05-03,2026-05-11,Napoli vs Bologna,Serie A,0,Napoli,Bologna,btts_si,,0.4845,,,,,,,,
 2026-05-03,2026-05-11,Napoli vs Bologna,Serie A,0,Napoli,Bologna,goles_over_2.5,2.5,0.4816,,,,,,,,
 2026-05-03,2026-05-11,Napoli vs Bologna,Serie A,0,Napoli,Bologna,goles_over_1.5,1.5,0.7326,,,,,,,,
+2026-05-04,2026-05-04,Gimnasia (Mendoza) vs Defensa y Justicia,Liga Profesional Argentina,0,Gimnasia (Mendoza),Defensa y Justicia,btts_si,,0.5244,,,,,,,,
+2026-05-04,2026-05-04,Gimnasia (Mendoza) vs Defensa y Justicia,Liga Profesional Argentina,0,Gimnasia (Mendoza),Defensa y Justicia,goles_over_2.5,2.5,0.4816,,,,,,,,
+2026-05-04,2026-05-04,Gimnasia (Mendoza) vs Defensa y Justicia,Liga Profesional Argentina,0,Gimnasia (Mendoza),Defensa y Justicia,goles_over_1.5,1.5,0.7326,,,,,,,,
+2026-05-04,2026-05-04,Vélez Sarsfield vs Newell's Old Boys,Liga Profesional Argentina,0,Vélez Sarsfield,Newell's Old Boys,btts_si,,0.5244,,,,,,,,
+2026-05-04,2026-05-04,Vélez Sarsfield vs Newell's Old Boys,Liga Profesional Argentina,0,Vélez Sarsfield,Newell's Old Boys,goles_over_2.5,2.5,0.4816,,,,,,,,
+2026-05-04,2026-05-04,Vélez Sarsfield vs Newell's Old Boys,Liga Profesional Argentina,0,Vélez Sarsfield,Newell's Old Boys,goles_over_1.5,1.5,0.7326,,,,,,,,
+2026-05-04,2026-05-05,Estudiantes de Río Cuarto vs Instituto (Córdoba),Liga Profesional Argentina,0,Estudiantes de Río Cuarto,Instituto (Córdoba),btts_si,,0.5244,,,,,,,,
+2026-05-04,2026-05-05,Estudiantes de Río Cuarto vs Instituto (Córdoba),Liga Profesional Argentina,0,Estudiantes de Río Cuarto,Instituto (Córdoba),goles_over_2.5,2.5,0.4816,,,,,,,,
+2026-05-04,2026-05-05,Estudiantes de Río Cuarto vs Instituto (Córdoba),Liga Profesional Argentina,0,Estudiantes de Río Cuarto,Instituto (Córdoba),goles_over_1.5,1.5,0.7326,,,,,,,,
+2026-05-04,2026-05-12,Celta Vigo vs Levante,La Liga,0,Celta Vigo,Levante,btts_si,,0.5185,,,,,,,,
+2026-05-04,2026-05-12,Celta Vigo vs Levante,La Liga,0,Celta Vigo,Levante,goles_over_2.5,2.5,0.4816,,,,,,,,
+2026-05-04,2026-05-12,Celta Vigo vs Levante,La Liga,0,Celta Vigo,Levante,goles_over_1.5,1.5,0.7326,,,,,,,,
+2026-05-04,2026-05-12,Real Betis vs Elche,La Liga,0,Real Betis,Elche,btts_si,,0.513,,,,,,,,
+2026-05-04,2026-05-12,Real Betis vs Elche,La Liga,0,Real Betis,Elche,goles_over_2.5,2.5,0.4816,,,,,,,,
+2026-05-04,2026-05-12,Real Betis vs Elche,La Liga,0,Real Betis,Elche,goles_over_1.5,1.5,0.7326,,,,,,,,
+2026-05-04,2026-05-12,Osasuna vs Atlético Madrid,La Liga,0,Osasuna,Atlético Madrid,btts_si,,0.518,,,,,,,,
+2026-05-04,2026-05-12,Osasuna vs Atlético Madrid,La Liga,0,Osasuna,Atlético Madrid,goles_over_2.5,2.5,0.4816,,,,,,,,
+2026-05-04,2026-05-12,Osasuna vs Atlético Madrid,La Liga,0,Osasuna,Atlético Madrid,goles_over_1.5,1.5,0.7326,,,,,,,,
