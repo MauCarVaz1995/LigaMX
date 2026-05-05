@@ -274,3 +274,11 @@ fecha_prediccion,partido,equipo_local,equipo_visitante,elo_local,elo_visitante,p
 2026-05-04 16:04:32,Getafe vs Mallorca,Getafe,Mallorca,1529.6,1491.6,43.8,30.7,25.5,local,1-1,1.4967,1.1033,ligas_internacionales,2026-05-13,,,,,,laliga
 2026-05-04 16:04:44,Brest vs Strasbourg,Brest,Strasbourg,1519.5,1571.0,36.5,31.4,32.1,local,1-1,1.3476,1.2524,ligas_internacionales,2026-05-13,,,,,,ligue1
 2026-05-04 16:04:44,Lens vs Paris Saint-Germain,Lens,Paris Saint-Germain,1664.7,1747.4,34.1,31.4,34.5,visitante,1-1,1.2955,1.3045,ligas_internacionales,2026-05-13,,,,,,ligue1
+2026-05-05 15:48:11,Talleres (Córdoba) vs Belgrano (Córdoba),Talleres (Córdoba),Belgrano (Córdoba),1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-09,,,,,,argentina
+2026-05-05 15:48:11,Boca Juniors vs Huracán,Boca Juniors,Huracán,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-09,,,,,,argentina
+2026-05-05 15:48:11,Independiente Rivadavia vs Unión (Santa Fe),Independiente Rivadavia,Unión (Santa Fe),1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-10,,,,,,argentina
+2026-05-05 15:48:11,River Plate vs San Lorenzo,River Plate,San Lorenzo,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-10,,,,,,argentina
+2026-05-05 15:48:11,Vélez Sarsfield vs Gimnasia La Plata,Vélez Sarsfield,Gimnasia La Plata,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-11,,,,,,argentina
+2026-05-05 15:48:25,Valencia vs Rayo Vallecano,Valencia,Rayo Vallecano,1485.0,1500.0,39.4,31.2,29.3,local,1-1,1.4083,1.1917,ligas_internacionales,2026-05-14,,,,,,laliga
+2026-05-05 15:48:25,Girona vs Real Sociedad,Girona,Real Sociedad,1551.1,1500.0,44.8,30.6,24.6,local,1-1,1.5184,1.0816,ligas_internacionales,2026-05-14,,,,,,laliga
+2026-05-05 15:48:25,Real Madrid vs Real Oviedo,Real Madrid,Real Oviedo,1722.4,1500.0,59.1,26.9,14.0,local,1-1,1.8039,0.7961,ligas_internacionales,2026-05-14,,,,,,laliga

@@ -1,0 +1,145 @@
+{
+  "generated_at": "2026-05-05T15:47:52.063637",
+  "ligas": {
+    "champions": {
+      "nombre": "UEFA Champions League",
+      "n_fixtures": 2,
+      "picks": []
+    },
+    "libertadores": {
+      "nombre": "Copa Libertadores",
+      "n_fixtures": 16,
+      "picks": []
+    },
+    "mls": {
+      "nombre": "MLS",
+      "n_fixtures": 29,
+      "picks": []
+    },
+    "argentina": {
+      "nombre": "Liga Profesional Argentina",
+      "n_fixtures": 8,
+      "picks": [
+        {
+          "partido": "Talleres (Córdoba) vs Belgrano (Córdoba)",
+          "fecha": "2026-05-09",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Boca Juniors vs Huracán",
+          "fecha": "2026-05-09",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Independiente Rivadavia vs Unión (Santa Fe)",
+          "fecha": "2026-05-10",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "River Plate vs San Lorenzo",
+          "fecha": "2026-05-10",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Vélez Sarsfield vs Gimnasia La Plata",
+          "fecha": "2026-05-11",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        }
+      ]
+    },
+    "brasileirao": {
+      "nombre": "Brasileirao Serie A",
+      "n_fixtures": 10,
+      "picks": []
+    },
+    "premier": {
+      "nombre": "Premier League",
+      "n_fixtures": 11,
+      "picks": []
+    },
+    "laliga": {
+      "nombre": "La Liga",
+      "n_fixtures": 20,
+      "picks": [
+        {
+          "partido": "Valencia vs Rayo Vallecano",
+          "fecha": "2026-05-14",
+          "ganador": "local",
+          "prob_local": 39.4,
+          "prob_empate": 31.2,
+          "prob_visitante": 29.3,
+          "marcador": "1-1",
+          "elo_local": 1485.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Girona vs Real Sociedad",
+          "fecha": "2026-05-14",
+          "ganador": "local",
+          "prob_local": 44.8,
+          "prob_empate": 30.6,
+          "prob_visitante": 24.6,
+          "marcador": "1-1",
+          "elo_local": 1551.1,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Real Madrid vs Real Oviedo",
+          "fecha": "2026-05-14",
+          "ganador": "local",
+          "prob_local": 59.1,
+          "prob_empate": 26.9,
+          "prob_visitante": 14.0,
+          "marcador": "1-1",
+          "elo_local": 1722.4,
+          "elo_visitante": 1500.0
+        }
+      ]
+    },
+    "bundesliga": {
+      "nombre": "Bundesliga",
+      "n_fixtures": 9,
+      "picks": []
+    },
+    "seriea": {
+      "nombre": "Serie A",
+      "n_fixtures": 10,
+      "picks": []
+    },
+    "ligue1": {
+      "nombre": "Ligue 1",
+      "n_fixtures": 11,
+      "picks": []
+    }
+  }
+}
