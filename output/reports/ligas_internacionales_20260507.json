@@ -1,0 +1,344 @@
+{
+  "generated_at": "2026-05-07T16:07:14.989049",
+  "ligas": {
+    "champions": {
+      "nombre": "UEFA Champions League",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "libertadores": {
+      "nombre": "Copa Libertadores",
+      "n_fixtures": 5,
+      "picks": []
+    },
+    "mls": {
+      "nombre": "MLS",
+      "n_fixtures": 42,
+      "picks": [
+        {
+          "partido": "CF Montréal vs Chicago Fire FC",
+          "fecha": "2026-05-16",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Charlotte FC vs Toronto FC",
+          "fecha": "2026-05-16",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "D.C. United vs St. Louis CITY SC",
+          "fecha": "2026-05-16",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "New England Revolution vs Minnesota United FC",
+          "fecha": "2026-05-16",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Orlando City SC vs Atlanta United",
+          "fecha": "2026-05-16",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Philadelphia Union vs Columbus Crew",
+          "fecha": "2026-05-16",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Red Bull New York vs New York City FC",
+          "fecha": "2026-05-16",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Austin FC vs Sporting Kansas City",
+          "fecha": "2026-05-17",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Houston Dynamo FC vs Vancouver Whitecaps",
+          "fecha": "2026-05-17",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Seattle Sounders FC vs LA Galaxy",
+          "fecha": "2026-05-17",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Real Salt Lake vs Colorado Rapids",
+          "fecha": "2026-05-17",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "San Diego FC vs FC Cincinnati",
+          "fecha": "2026-05-17",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "San Jose Earthquakes vs FC Dallas",
+          "fecha": "2026-05-17",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        }
+      ]
+    },
+    "argentina": {
+      "nombre": "Liga Profesional Argentina",
+      "n_fixtures": 8,
+      "picks": []
+    },
+    "brasileirao": {
+      "nombre": "Brasileirao Serie A",
+      "n_fixtures": 14,
+      "picks": [
+        {
+          "partido": "Atlético-MG vs Mirassol",
+          "fecha": "2026-05-16",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Internacional vs Vasco da Gama",
+          "fecha": "2026-05-16",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Fluminense vs São Paulo",
+          "fecha": "2026-05-16",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Palmeiras vs Cruzeiro",
+          "fecha": "2026-05-17",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        }
+      ]
+    },
+    "premier": {
+      "nombre": "Premier League",
+      "n_fixtures": 11,
+      "picks": []
+    },
+    "laliga": {
+      "nombre": "La Liga",
+      "n_fixtures": 20,
+      "picks": []
+    },
+    "bundesliga": {
+      "nombre": "Bundesliga",
+      "n_fixtures": 18,
+      "picks": [
+        {
+          "partido": "1. FC Heidenheim 1846 vs Mainz",
+          "fecha": "2026-05-16",
+          "ganador": "local",
+          "prob_local": 35.9,
+          "prob_empate": 31.4,
+          "prob_visitante": 32.6,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1558.8
+        },
+        {
+          "partido": "1. FC Union Berlin vs FC Augsburg",
+          "fecha": "2026-05-16",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Bayer Leverkusen vs Hamburg SV",
+          "fecha": "2026-05-16",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Bayern Munich vs FC Cologne",
+          "fecha": "2026-05-16",
+          "ganador": "local",
+          "prob_local": 70.9,
+          "prob_empate": 22.0,
+          "prob_visitante": 7.2,
+          "marcador": "2-0",
+          "elo_local": 1869.6,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Borussia Mönchengladbach vs TSG Hoffenheim",
+          "fecha": "2026-05-16",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Eintracht Frankfurt vs VfB Stuttgart",
+          "fecha": "2026-05-16",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "SC Freiburg vs RB Leipzig",
+          "fecha": "2026-05-16",
+          "ganador": "visitante",
+          "prob_local": 27.1,
+          "prob_empate": 31.0,
+          "prob_visitante": 41.9,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1675.2
+        },
+        {
+          "partido": "St. Pauli vs VfL Wolfsburg",
+          "fecha": "2026-05-16",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Werder Bremen vs Borussia Dortmund",
+          "fecha": "2026-05-16",
+          "ganador": "local",
+          "prob_local": 36.5,
+          "prob_empate": 31.4,
+          "prob_visitante": 32.1,
+          "marcador": "1-1",
+          "elo_local": 1448.6,
+          "elo_visitante": 1500.0
+        }
+      ]
+    },
+    "seriea": {
+      "nombre": "Serie A",
+      "n_fixtures": 10,
+      "picks": []
+    },
+    "ligue1": {
+      "nombre": "Ligue 1",
+      "n_fixtures": 11,
+      "picks": []
+    }
+  }
+}

@@ -282,3 +282,29 @@ fecha_prediccion,partido,equipo_local,equipo_visitante,elo_local,elo_visitante,p
 2026-05-05 15:48:25,Valencia vs Rayo Vallecano,Valencia,Rayo Vallecano,1485.0,1500.0,39.4,31.2,29.3,local,1-1,1.4083,1.1917,ligas_internacionales,2026-05-14,,,,,,laliga
 2026-05-05 15:48:25,Girona vs Real Sociedad,Girona,Real Sociedad,1551.1,1500.0,44.8,30.6,24.6,local,1-1,1.5184,1.0816,ligas_internacionales,2026-05-14,,,,,,laliga
 2026-05-05 15:48:25,Real Madrid vs Real Oviedo,Real Madrid,Real Oviedo,1722.4,1500.0,59.1,26.9,14.0,local,1-1,1.8039,0.7961,ligas_internacionales,2026-05-14,,,,,,laliga
+2026-05-07 16:07:57,CF Montréal vs Chicago Fire FC,CF Montréal,Chicago Fire FC,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-16,,,,,,mls
+2026-05-07 16:07:57,Charlotte FC vs Toronto FC,Charlotte FC,Toronto FC,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-16,,,,,,mls
+2026-05-07 16:07:57,D.C. United vs St. Louis CITY SC,D.C. United,St. Louis CITY SC,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-16,,,,,,mls
+2026-05-07 16:07:57,New England Revolution vs Minnesota United FC,New England Revolution,Minnesota United FC,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-16,,,,,,mls
+2026-05-07 16:07:57,Orlando City SC vs Atlanta United,Orlando City SC,Atlanta United,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-16,,,,,,mls
+2026-05-07 16:07:57,Philadelphia Union vs Columbus Crew,Philadelphia Union,Columbus Crew,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-16,,,,,,mls
+2026-05-07 16:07:57,Red Bull New York vs New York City FC,Red Bull New York,New York City FC,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-16,,,,,,mls
+2026-05-07 16:07:57,Austin FC vs Sporting Kansas City,Austin FC,Sporting Kansas City,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-17,,,,,,mls
+2026-05-07 16:07:57,Houston Dynamo FC vs Vancouver Whitecaps,Houston Dynamo FC,Vancouver Whitecaps,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-17,,,,,,mls
+2026-05-07 16:07:57,Seattle Sounders FC vs LA Galaxy,Seattle Sounders FC,LA Galaxy,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-17,,,,,,mls
+2026-05-07 16:07:57,Real Salt Lake vs Colorado Rapids,Real Salt Lake,Colorado Rapids,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-17,,,,,,mls
+2026-05-07 16:07:57,San Diego FC vs FC Cincinnati,San Diego FC,FC Cincinnati,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-17,,,,,,mls
+2026-05-07 16:07:57,San Jose Earthquakes vs FC Dallas,San Jose Earthquakes,FC Dallas,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-17,,,,,,mls
+2026-05-07 16:08:06,Atlético-MG vs Mirassol,Atlético-MG,Mirassol,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-16,,,,,,brasileirao
+2026-05-07 16:08:06,Internacional vs Vasco da Gama,Internacional,Vasco da Gama,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-16,,,,,,brasileirao
+2026-05-07 16:08:06,Fluminense vs São Paulo,Fluminense,São Paulo,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-16,,,,,,brasileirao
+2026-05-07 16:08:06,Palmeiras vs Cruzeiro,Palmeiras,Cruzeiro,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-17,,,,,,brasileirao
+2026-05-07 16:08:16,1. FC Heidenheim 1846 vs Mainz,1. FC Heidenheim 1846,Mainz,1500.0,1558.8,35.9,31.4,32.6,local,1-1,1.3354,1.2646,ligas_internacionales,2026-05-16,,,,,,bundesliga
+2026-05-07 16:08:16,1. FC Union Berlin vs FC Augsburg,1. FC Union Berlin,FC Augsburg,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-16,,,,,,bundesliga
+2026-05-07 16:08:16,Bayer Leverkusen vs Hamburg SV,Bayer Leverkusen,Hamburg SV,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-16,,,,,,bundesliga
+2026-05-07 16:08:16,Bayern Munich vs FC Cologne,Bayern Munich,FC Cologne,1869.6,1500.0,70.9,22.0,7.2,local,2-0,2.0494,0.5507,ligas_internacionales,2026-05-16,,,,,,bundesliga
+2026-05-07 16:08:16,Borussia Mönchengladbach vs TSG Hoffenheim,Borussia Mönchengladbach,TSG Hoffenheim,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-16,,,,,,bundesliga
+2026-05-07 16:08:16,Eintracht Frankfurt vs VfB Stuttgart,Eintracht Frankfurt,VfB Stuttgart,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-16,,,,,,bundesliga
+2026-05-07 16:08:16,SC Freiburg vs RB Leipzig,SC Freiburg,RB Leipzig,1500.0,1675.2,27.1,31.0,41.9,visitante,1-1,1.1413,1.4587,ligas_internacionales,2026-05-16,,,,,,bundesliga
+2026-05-07 16:08:16,St. Pauli vs VfL Wolfsburg,St. Pauli,VfL Wolfsburg,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-16,,,,,,bundesliga
+2026-05-07 16:08:16,Werder Bremen vs Borussia Dortmund,Werder Bremen,Borussia Dortmund,1448.6,1500.0,36.5,31.4,32.1,local,1-1,1.3476,1.2524,ligas_internacionales,2026-05-16,,,,,,bundesliga
