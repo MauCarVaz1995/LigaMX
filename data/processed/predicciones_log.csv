@@ -308,3 +308,47 @@ fecha_prediccion,partido,equipo_local,equipo_visitante,elo_local,elo_visitante,p
 2026-05-07 16:08:16,SC Freiburg vs RB Leipzig,SC Freiburg,RB Leipzig,1500.0,1675.2,27.1,31.0,41.9,visitante,1-1,1.1413,1.4587,ligas_internacionales,2026-05-16,,,,,,bundesliga
 2026-05-07 16:08:16,St. Pauli vs VfL Wolfsburg,St. Pauli,VfL Wolfsburg,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-16,,,,,,bundesliga
 2026-05-07 16:08:16,Werder Bremen vs Borussia Dortmund,Werder Bremen,Borussia Dortmund,1448.6,1500.0,36.5,31.4,32.1,local,1-1,1.3476,1.2524,ligas_internacionales,2026-05-16,,,,,,bundesliga
+2026-05-08 15:23:42,Inter Miami CF vs Portland Timbers,Inter Miami CF,Portland Timbers,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-17,,,,,,mls
+2026-05-08 15:23:42,Nashville SC vs LAFC,Nashville SC,LAFC,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-18,,,,,,mls
+2026-05-08 15:23:49,Santos vs Coritiba,Santos,Coritiba,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-17,,,,,,brasileirao
+2026-05-08 15:23:49,Bahia vs Grêmio,Bahia,Grêmio,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-17,,,,,,brasileirao
+2026-05-08 15:23:49,Botafogo vs Corinthians,Botafogo,Corinthians,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-17,,,,,,brasileirao
+2026-05-08 15:23:49,Chapecoense vs Remo,Chapecoense,Remo,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-17,,,,,,brasileirao
+2026-05-08 15:23:49,Red Bull Bragantino vs Vitória,Red Bull Bragantino,Vitória,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-17,,,,,,brasileirao
+2026-05-08 15:23:49,Athletico-PR vs Flamengo,Athletico-PR,Flamengo,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-17,,,,,,brasileirao
+2026-05-08 15:23:53,Aston Villa vs Liverpool,Aston Villa,Liverpool,1623.3,1633.4,39.8,31.2,29.0,local,1-1,1.4166,1.1834,ligas_internacionales,2026-05-15,,,,,,premier
+2026-05-08 15:23:53,Manchester United vs Nottingham Forest,Manchester United,Nottingham Forest,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-17,,,,,,premier
+2026-05-08 15:23:53,Brentford vs Crystal Palace,Brentford,Crystal Palace,1576.7,1540.4,43.6,30.7,25.6,local,1-1,1.4938,1.1062,ligas_internacionales,2026-05-17,,,,,,premier
+2026-05-08 15:23:53,Everton vs Sunderland,Everton,Sunderland,1572.8,1542.4,43.1,30.8,26.0,local,1-1,1.484,1.116,ligas_internacionales,2026-05-17,,,,,,premier
+2026-05-08 15:23:53,Leeds United vs Brighton & Hove Albion,Leeds United,Brighton & Hove Albion,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-17,,,,,,premier
+2026-05-08 15:23:53,Wolverhampton Wanderers vs Fulham,Wolverhampton Wanderers,Fulham,1500.0,1537.5,37.6,31.3,31.0,local,1-1,1.3708,1.2292,ligas_internacionales,2026-05-17,,,,,,premier
+2026-05-08 15:23:53,Newcastle United vs West Ham United,Newcastle United,West Ham United,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-17,,,,,,premier
+2026-05-08 15:23:57,Athletic Club vs Celta Vigo,Athletic Club,Celta Vigo,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-17,,,,,,laliga
+2026-05-08 15:23:57,Atlético Madrid vs Girona,Atlético Madrid,Girona,1500.0,1551.1,36.6,31.4,32.1,local,1-1,1.3482,1.2518,ligas_internacionales,2026-05-17,,,,,,laliga
+2026-05-08 15:23:57,Barcelona vs Real Betis,Barcelona,Real Betis,1848.0,1500.0,69.2,22.8,8.0,local,2-0,2.0134,0.5866,ligas_internacionales,2026-05-17,,,,,,laliga
+2026-05-08 15:23:57,Elche vs Getafe,Elche,Getafe,1434.0,1529.6,33.1,31.4,35.5,visitante,1-1,1.2739,1.3261,ligas_internacionales,2026-05-17,,,,,,laliga
+2026-05-08 15:23:57,Levante vs Mallorca,Levante,Mallorca,1461.0,1491.6,38.2,31.3,30.5,local,1-1,1.3824,1.2176,ligas_internacionales,2026-05-17,,,,,,laliga
+2026-05-08 15:23:57,Osasuna vs Espanyol,Osasuna,Espanyol,1541.3,1500.0,44.0,30.7,25.3,local,1-1,1.5021,1.0979,ligas_internacionales,2026-05-17,,,,,,laliga
+2026-05-08 15:23:57,Rayo Vallecano vs Villarreal,Rayo Vallecano,Villarreal,1500.0,1667.0,27.7,31.0,41.2,visitante,1-1,1.155,1.445,ligas_internacionales,2026-05-17,,,,,,laliga
+2026-05-08 15:23:57,Real Oviedo vs Alavés,Real Oviedo,Alavés,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-17,,,,,,laliga
+2026-05-08 15:23:57,Real Sociedad vs Valencia,Real Sociedad,Valencia,1500.0,1485.0,41.9,31.0,27.1,local,1-1,1.4584,1.1416,ligas_internacionales,2026-05-17,,,,,,laliga
+2026-05-08 15:23:57,Sevilla vs Real Madrid,Sevilla,Real Madrid,1449.9,1722.4,20.5,29.6,49.9,visitante,1-1,0.9793,1.6207,ligas_internacionales,2026-05-17,,,,,,laliga
+2026-05-08 15:24:04,AS Roma vs Lazio,AS Roma,Lazio,1500.0,1608.4,32.1,31.4,36.5,visitante,1-1,1.2527,1.3473,ligas_internacionales,2026-05-17,,,,,,seriea
+2026-05-08 15:24:04,Atalanta vs Bologna,Atalanta,Bologna,1652.2,1531.3,50.7,29.4,20.0,local,1-1,1.635,0.965,ligas_internacionales,2026-05-17,,,,,,seriea
+2026-05-08 15:24:04,Cagliari vs Torino,Cagliari,Torino,1428.0,1495.4,35.3,31.4,33.3,local,1-1,1.321,1.279,ligas_internacionales,2026-05-17,,,,,,seriea
+2026-05-08 15:24:04,Como vs Parma,Como,Parma,1637.6,1540.8,48.6,29.9,21.5,local,1-1,1.5948,1.0052,ligas_internacionales,2026-05-17,,,,,,seriea
+2026-05-08 15:24:04,Genoa vs AC Milan,Genoa,AC Milan,1532.7,1500.0,43.3,30.8,25.9,local,1-1,1.4879,1.1121,ligas_internacionales,2026-05-17,,,,,,seriea
+2026-05-08 15:24:04,Inter Milan vs Hellas Verona,Inter Milan,Hellas Verona,1820.0,1500.0,67.0,23.8,9.2,local,2-0,1.9667,0.6333,ligas_internacionales,2026-05-17,,,,,,seriea
+2026-05-08 15:24:04,Juventus vs Fiorentina,Juventus,Fiorentina,1713.5,1566.6,52.8,28.9,18.3,local,1-1,1.6782,0.9218,ligas_internacionales,2026-05-17,,,,,,seriea
+2026-05-08 15:24:04,Pisa vs Napoli,Pisa,Napoli,1335.0,1692.6,15.4,27.6,57.0,visitante,1-1,0.8374,1.7626,ligas_internacionales,2026-05-17,,,,,,seriea
+2026-05-08 15:24:04,Sassuolo vs Lecce,Sassuolo,Lecce,1534.5,1409.8,51.0,29.3,19.7,local,1-1,1.6412,0.9588,ligas_internacionales,2026-05-17,,,,,,seriea
+2026-05-08 15:24:04,Udinese vs Cremonese,Udinese,Cremonese,1524.5,1359.0,54.4,28.4,17.2,local,1-1,1.7092,0.8908,ligas_internacionales,2026-05-17,,,,,,seriea
+2026-05-08 15:24:07,Brest vs Angers,Brest,Angers,1519.5,1436.4,47.5,30.1,22.4,local,1-1,1.5719,1.0281,ligas_internacionales,2026-05-17,,,,,,ligue1
+2026-05-08 15:24:07,Lille vs AJ Auxerre,Lille,AJ Auxerre,1676.5,1500.0,55.3,28.2,16.6,local,1-1,1.7275,0.8725,ligas_internacionales,2026-05-17,,,,,,ligue1
+2026-05-08 15:24:07,Lorient vs Le Havre AC,Lorient,Le Havre AC,1555.2,1500.0,45.2,30.5,24.3,local,1-1,1.5253,1.0747,ligas_internacionales,2026-05-17,,,,,,ligue1
+2026-05-08 15:24:07,Lyon vs Lens,Lyon,Lens,1638.7,1664.7,38.6,31.3,30.2,local,1-1,1.3899,1.2101,ligas_internacionales,2026-05-17,,,,,,ligue1
+2026-05-08 15:24:07,Marseille vs Stade Rennais,Marseille,Stade Rennais,1597.7,1500.0,48.7,29.8,21.5,local,1-1,1.5962,1.0038,ligas_internacionales,2026-05-17,,,,,,ligue1
+2026-05-08 15:24:07,Nantes vs Toulouse,Nantes,Toulouse,1364.4,1485.3,31.1,31.4,37.5,visitante,1-1,1.2319,1.3681,ligas_internacionales,2026-05-17,,,,,,ligue1
+2026-05-08 15:24:07,Nice vs Metz,Nice,Metz,1470.5,1298.8,54.9,28.3,16.8,local,1-1,1.7195,0.8805,ligas_internacionales,2026-05-17,,,,,,ligue1
+2026-05-08 15:24:07,Paris FC vs Paris Saint-Germain,Paris FC,Paris Saint-Germain,1578.7,1747.4,27.6,31.0,41.4,visitante,1-1,1.1521,1.4479,ligas_internacionales,2026-05-17,,,,,,ligue1
+2026-05-08 15:24:07,Strasbourg vs AS Monaco,Strasbourg,AS Monaco,1571.0,1500.0,46.5,30.3,23.2,local,1-1,1.5516,1.0484,ligas_internacionales,2026-05-17,,,,,,ligue1

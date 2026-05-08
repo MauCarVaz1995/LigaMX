@@ -1,6 +1,6 @@
 {
-  "date": "2026-05-07",
-  "start": "2026-05-07T15:58:37.678007",
+  "date": "2026-05-08",
+  "start": "2026-05-08T15:13:39.611175",
   "pasos": {
     "paso1": {
       "nuevos": 0,
@@ -19,7 +19,7 @@
       "nuevos": 0,
       "fechas_procesadas": 0,
       "error": null,
-      "elapsed_s": 373.8
+      "elapsed_s": 393.6
     },
     "paso4": {
       "selecciones_afectadas": 0,
@@ -29,17 +29,17 @@
     },
     "paso5": {
       "actualizados": 0,
-      "pendientes": 252,
+      "pendientes": 278,
       "aciertos": 13,
       "total_evaluados": 31,
       "error": null,
-      "elapsed_s": 2.5
+      "elapsed_s": 1.8
     },
     "paso6": {
       "predicciones_generadas": 1,
       "saltado": false,
       "error": null,
-      "elapsed_s": 1.4
+      "elapsed_s": 1.2
     },
     "paso8": {
       "ok": true,
@@ -52,8 +52,8 @@
       "error": null
     }
   },
-  "end": "2026-05-07T16:05:58.286281",
-  "elapsed_s": 440.6,
+  "end": "2026-05-08T15:21:19.059765",
+  "elapsed_s": 459.4,
   "success": true,
   "critical_failed": false,
   "noncritical_errors": []
