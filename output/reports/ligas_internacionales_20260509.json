@@ -1,0 +1,67 @@
+{
+  "generated_at": "2026-05-09T14:51:48.440427",
+  "ligas": {
+    "champions": {
+      "nombre": "UEFA Champions League",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "libertadores": {
+      "nombre": "Copa Libertadores",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "mls": {
+      "nombre": "MLS",
+      "n_fixtures": 44,
+      "picks": []
+    },
+    "argentina": {
+      "nombre": "Liga Profesional Argentina",
+      "n_fixtures": 8,
+      "picks": []
+    },
+    "brasileirao": {
+      "nombre": "Brasileirao Serie A",
+      "n_fixtures": 20,
+      "picks": []
+    },
+    "premier": {
+      "nombre": "Premier League",
+      "n_fixtures": 18,
+      "picks": [
+        {
+          "partido": "Arsenal vs Burnley",
+          "fecha": "2026-05-18",
+          "ganador": "local",
+          "prob_local": 72.3,
+          "prob_empate": 21.2,
+          "prob_visitante": 6.5,
+          "marcador": "2-0",
+          "elo_local": 1727.6,
+          "elo_visitante": 1339.7
+        }
+      ]
+    },
+    "laliga": {
+      "nombre": "La Liga",
+      "n_fixtures": 28,
+      "picks": []
+    },
+    "bundesliga": {
+      "nombre": "Bundesliga",
+      "n_fixtures": 17,
+      "picks": []
+    },
+    "seriea": {
+      "nombre": "Serie A",
+      "n_fixtures": 19,
+      "picks": []
+    },
+    "ligue1": {
+      "nombre": "Ligue 1",
+      "n_fixtures": 19,
+      "picks": []
+    }
+  }
+}
