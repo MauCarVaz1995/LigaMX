@@ -887,18 +887,18 @@ fecha_prediccion,fecha_partido,partido,liga,jornada,equipo_local,equipo_visita,m
 2026-05-06,2026-05-14,Real Madrid vs Real Oviedo,La Liga,0,Real Madrid,Real Oviedo,btts_si,,0.4585,,,,,,,,
 2026-05-06,2026-05-14,Real Madrid vs Real Oviedo,La Liga,0,Real Madrid,Real Oviedo,goles_over_2.5,2.5,0.4816,,,,,,,,
 2026-05-06,2026-05-14,Real Madrid vs Real Oviedo,La Liga,0,Real Madrid,Real Oviedo,goles_over_1.5,1.5,0.7326,,,,,,,,
-2026-05-07,2026-05-09,Chivas vs Tigres,Clausura 2026,1/4,Chivas,Tigres,tarjetas_over_3.5,3.5,0.881,,,,,,,,
-2026-05-07,2026-05-09,Chivas vs Tigres,Clausura 2026,1/4,Chivas,Tigres,tarjetas_over_4.5,4.5,0.764,,,,,,,,
-2026-05-07,2026-05-09,Chivas vs Tigres,Clausura 2026,1/4,Chivas,Tigres,tarjetas_over_5.5,5.5,0.615,,,,,,,,
-2026-05-07,2026-05-09,Chivas vs Tigres,Clausura 2026,1/4,Chivas,Tigres,btts_si,,0.594,,,,,,,,
-2026-05-07,2026-05-09,Chivas vs Tigres,Clausura 2026,1/4,Chivas,Tigres,goles_over_2.5,2.5,0.544,,,,,,,,
-2026-05-07,2026-05-09,Chivas vs Tigres,Clausura 2026,1/4,Chivas,Tigres,goles_over_1.5,1.5,0.804,,,,,,,,
-2026-05-07,2026-05-09,Cruz Azul vs Atlas,Clausura 2026,1/4,Cruz Azul,Atlas,tarjetas_over_3.5,3.5,0.751,,,,,,,,
-2026-05-07,2026-05-09,Cruz Azul vs Atlas,Clausura 2026,1/4,Cruz Azul,Atlas,tarjetas_over_4.5,4.5,0.579,,,,,,,,
-2026-05-07,2026-05-09,Cruz Azul vs Atlas,Clausura 2026,1/4,Cruz Azul,Atlas,tarjetas_over_5.5,5.5,0.404,,,,,,,,
-2026-05-07,2026-05-09,Cruz Azul vs Atlas,Clausura 2026,1/4,Cruz Azul,Atlas,btts_si,,0.534,,,,,,,,
-2026-05-07,2026-05-09,Cruz Azul vs Atlas,Clausura 2026,1/4,Cruz Azul,Atlas,goles_over_2.5,2.5,0.544,,,,,,,,
-2026-05-07,2026-05-09,Cruz Azul vs Atlas,Clausura 2026,1/4,Cruz Azul,Atlas,goles_over_1.5,1.5,0.801,,,,,,,,
+2026-05-07,2026-05-09,Chivas vs Tigres,Clausura 2026,1/4,Chivas,Tigres,tarjetas_over_3.5,3.5,0.881,,,True,True,14.0,6.0,2.0,0.0
+2026-05-07,2026-05-09,Chivas vs Tigres,Clausura 2026,1/4,Chivas,Tigres,tarjetas_over_4.5,4.5,0.764,,,True,True,14.0,6.0,2.0,0.0
+2026-05-07,2026-05-09,Chivas vs Tigres,Clausura 2026,1/4,Chivas,Tigres,tarjetas_over_5.5,5.5,0.615,,,True,True,14.0,6.0,2.0,0.0
+2026-05-07,2026-05-09,Chivas vs Tigres,Clausura 2026,1/4,Chivas,Tigres,btts_si,,0.594,,,False,False,14.0,6.0,2.0,0.0
+2026-05-07,2026-05-09,Chivas vs Tigres,Clausura 2026,1/4,Chivas,Tigres,goles_over_2.5,2.5,0.544,,,False,False,14.0,6.0,2.0,0.0
+2026-05-07,2026-05-09,Chivas vs Tigres,Clausura 2026,1/4,Chivas,Tigres,goles_over_1.5,1.5,0.804,,,True,True,14.0,6.0,2.0,0.0
+2026-05-07,2026-05-09,Cruz Azul vs Atlas,Clausura 2026,1/4,Cruz Azul,Atlas,tarjetas_over_3.5,3.5,0.751,,,False,False,12.0,2.0,1.0,0.0
+2026-05-07,2026-05-09,Cruz Azul vs Atlas,Clausura 2026,1/4,Cruz Azul,Atlas,tarjetas_over_4.5,4.5,0.579,,,False,False,12.0,2.0,1.0,0.0
+2026-05-07,2026-05-09,Cruz Azul vs Atlas,Clausura 2026,1/4,Cruz Azul,Atlas,tarjetas_over_5.5,5.5,0.404,,,False,True,12.0,2.0,1.0,0.0
+2026-05-07,2026-05-09,Cruz Azul vs Atlas,Clausura 2026,1/4,Cruz Azul,Atlas,btts_si,,0.534,,,False,False,12.0,2.0,1.0,0.0
+2026-05-07,2026-05-09,Cruz Azul vs Atlas,Clausura 2026,1/4,Cruz Azul,Atlas,goles_over_2.5,2.5,0.544,,,False,False,12.0,2.0,1.0,0.0
+2026-05-07,2026-05-09,Cruz Azul vs Atlas,Clausura 2026,1/4,Cruz Azul,Atlas,goles_over_1.5,1.5,0.801,,,False,False,12.0,2.0,1.0,0.0
 2026-05-08,2026-05-10,Pachuca vs Toluca,Clausura 2026,1/4,Pachuca,Toluca,tarjetas_over_3.5,3.5,0.977,,,,,,,,
 2026-05-08,2026-05-10,Pachuca vs Toluca,Clausura 2026,1/4,Pachuca,Toluca,tarjetas_over_4.5,4.5,0.941,,,,,,,,
 2026-05-08,2026-05-10,Pachuca vs Toluca,Clausura 2026,1/4,Pachuca,Toluca,tarjetas_over_5.5,5.5,0.878,,,,,,,,
@@ -1121,3 +1121,6 @@ fecha_prediccion,fecha_partido,partido,liga,jornada,equipo_local,equipo_visita,m
 2026-05-09,2026-05-17,Strasbourg vs AS Monaco,Ligue 1,0,Strasbourg,AS Monaco,btts_si,,0.5119,,,,,,,,
 2026-05-09,2026-05-17,Strasbourg vs AS Monaco,Ligue 1,0,Strasbourg,AS Monaco,goles_over_2.5,2.5,0.4816,,,,,,,,
 2026-05-09,2026-05-17,Strasbourg vs AS Monaco,Ligue 1,0,Strasbourg,AS Monaco,goles_over_1.5,1.5,0.7326,,,,,,,,
+2026-05-10,2026-05-18,Arsenal vs Burnley,Premier League,0,Arsenal,Burnley,btts_si,,0.3549,,,,,,,,
+2026-05-10,2026-05-18,Arsenal vs Burnley,Premier League,0,Arsenal,Burnley,goles_over_2.5,2.5,0.4816,,,,,,,,
+2026-05-10,2026-05-18,Arsenal vs Burnley,Premier League,0,Arsenal,Burnley,goles_over_1.5,1.5,0.7326,,,,,,,,

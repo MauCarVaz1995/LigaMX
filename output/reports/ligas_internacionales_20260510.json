@@ -1,0 +1,156 @@
+{
+  "generated_at": "2026-05-10T14:52:41.523235",
+  "ligas": {
+    "champions": {
+      "nombre": "UEFA Champions League",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "libertadores": {
+      "nombre": "Copa Libertadores",
+      "n_fixtures": 7,
+      "picks": [
+        {
+          "partido": "Coquimbo Unido vs Deportes Tolima",
+          "fecha": "2026-05-19",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Fluminense vs Bolívar",
+          "fecha": "2026-05-19",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Rosario Central vs Universidad Central",
+          "fecha": "2026-05-19",
+          "ganador": "local",
+          "prob_local": 39.1,
+          "prob_empate": 31.2,
+          "prob_visitante": 29.6,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1518.7
+        },
+        {
+          "partido": "Always Ready vs Mirassol",
+          "fecha": "2026-05-20",
+          "ganador": "local",
+          "prob_local": 38.5,
+          "prob_empate": 31.3,
+          "prob_visitante": 30.2,
+          "marcador": "1-1",
+          "elo_local": 1486.7,
+          "elo_visitante": 1513.3
+        },
+        {
+          "partido": "Independiente Santa Fe vs Platense",
+          "fecha": "2026-05-20",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Boca Juniors vs Cruzeiro",
+          "fecha": "2026-05-20",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1513.3,
+          "elo_visitante": 1513.3
+        },
+        {
+          "partido": "Independiente del Valle vs Libertad",
+          "fecha": "2026-05-20",
+          "ganador": "local",
+          "prob_local": 42.2,
+          "prob_empate": 30.9,
+          "prob_visitante": 26.9,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1481.3
+        }
+      ]
+    },
+    "mls": {
+      "nombre": "MLS",
+      "n_fixtures": 32,
+      "picks": []
+    },
+    "argentina": {
+      "nombre": "Liga Profesional Argentina",
+      "n_fixtures": 4,
+      "picks": []
+    },
+    "brasileirao": {
+      "nombre": "Brasileirao Serie A",
+      "n_fixtures": 17,
+      "picks": []
+    },
+    "premier": {
+      "nombre": "Premier League",
+      "n_fixtures": 16,
+      "picks": [
+        {
+          "partido": "AFC Bournemouth vs Manchester City",
+          "fecha": "2026-05-19",
+          "ganador": "visitante",
+          "prob_local": 21.0,
+          "prob_empate": 29.7,
+          "prob_visitante": 49.3,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1764.2
+        },
+        {
+          "partido": "Chelsea vs Tottenham Hotspur",
+          "fecha": "2026-05-19",
+          "ganador": "local",
+          "prob_local": 44.4,
+          "prob_empate": 30.6,
+          "prob_visitante": 24.9,
+          "marcador": "1-1",
+          "elo_local": 1546.1,
+          "elo_visitante": 1500.0
+        }
+      ]
+    },
+    "laliga": {
+      "nombre": "La Liga",
+      "n_fixtures": 24,
+      "picks": []
+    },
+    "bundesliga": {
+      "nombre": "Bundesliga",
+      "n_fixtures": 12,
+      "picks": []
+    },
+    "seriea": {
+      "nombre": "Serie A",
+      "n_fixtures": 14,
+      "picks": []
+    },
+    "ligue1": {
+      "nombre": "Ligue 1",
+      "n_fixtures": 19,
+      "picks": []
+    }
+  }
+}

@@ -353,3 +353,12 @@ fecha_prediccion,partido,equipo_local,equipo_visitante,elo_local,elo_visitante,p
 2026-05-08 15:24:07,Paris FC vs Paris Saint-Germain,Paris FC,Paris Saint-Germain,1578.7,1747.4,27.6,31.0,41.4,visitante,1-1,1.1521,1.4479,ligas_internacionales,2026-05-17,,,,,,ligue1
 2026-05-08 15:24:07,Strasbourg vs AS Monaco,Strasbourg,AS Monaco,1571.0,1500.0,46.5,30.3,23.2,local,1-1,1.5516,1.0484,ligas_internacionales,2026-05-17,,,,,,ligue1
 2026-05-09 14:53:14,Arsenal vs Burnley,Arsenal,Burnley,1727.6,1339.7,72.3,21.2,6.5,local,2-0,2.0798,0.5202,ligas_internacionales,2026-05-18,,,,,,premier
+2026-05-10 14:53:21,Coquimbo Unido vs Deportes Tolima,Coquimbo Unido,Deportes Tolima,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-19,,,,,,libertadores
+2026-05-10 14:53:21,Fluminense vs Bolívar,Fluminense,Bolívar,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-19,,,,,,libertadores
+2026-05-10 14:53:21,Rosario Central vs Universidad Central,Rosario Central,Universidad Central,1500.0,1518.7,39.1,31.2,29.6,local,1-1,1.4022,1.1978,ligas_internacionales,2026-05-19,,,,,,libertadores
+2026-05-10 14:53:21,Always Ready vs Mirassol,Always Ready,Mirassol,1486.7,1513.3,38.5,31.3,30.2,local,1-1,1.3889,1.2111,ligas_internacionales,2026-05-20,,,,,,libertadores
+2026-05-10 14:53:21,Independiente Santa Fe vs Platense,Independiente Santa Fe,Platense,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-20,,,,,,libertadores
+2026-05-10 14:53:21,Boca Juniors vs Cruzeiro,Boca Juniors,Cruzeiro,1513.3,1513.3,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-20,,,,,,libertadores
+2026-05-10 14:53:21,Independiente del Valle vs Libertad,Independiente del Valle,Libertad,1500.0,1481.3,42.2,30.9,26.9,local,1-1,1.4645,1.1355,ligas_internacionales,2026-05-20,,,,,,libertadores
+2026-05-10 14:53:35,AFC Bournemouth vs Manchester City,AFC Bournemouth,Manchester City,1500.0,1764.2,21.0,29.7,49.3,visitante,1-1,0.993,1.607,ligas_internacionales,2026-05-19,,,,,,premier
+2026-05-10 14:53:35,Chelsea vs Tottenham Hotspur,Chelsea,Tottenham Hotspur,1546.1,1500.0,44.4,30.6,24.9,local,1-1,1.5101,1.0899,ligas_internacionales,2026-05-19,,,,,,premier
