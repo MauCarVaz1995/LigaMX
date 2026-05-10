@@ -10,16 +10,16 @@
     "elo_visita": 1591.53,
     "corners": {},
     "tarjetas": {
-      "over_3.5": 0.977,
+      "over_3.5": 0.975,
       "under_3.5": null,
-      "over_4.5": 0.941,
-      "under_4.5": 0.059,
-      "over_5.5": 0.878,
-      "under_5.5": 0.122,
-      "lambda_total": 8.89,
-      "cr_local": 3.12,
-      "cr_visita": 2.93,
-      "rival_bonus": 2.84
+      "over_4.5": 0.936,
+      "under_4.5": 0.064,
+      "over_5.5": 0.869,
+      "under_5.5": 0.131,
+      "lambda_total": 8.76,
+      "cr_local": 3.04,
+      "cr_visita": 2.81,
+      "rival_bonus": 2.91
     },
     "btts": {
       "btts_si": 0.593,
@@ -47,16 +47,16 @@
     "elo_visita": 1500.0,
     "corners": {},
     "tarjetas": {
-      "over_3.5": 0.715,
+      "over_3.5": 0.704,
       "under_3.5": null,
-      "over_4.5": 0.535,
-      "under_4.5": 0.465,
-      "over_5.5": 0.36,
-      "under_5.5": 0.64,
-      "lambda_total": 4.86,
-      "cr_local": 2.31,
-      "cr_visita": 1.71,
-      "rival_bonus": 0.84
+      "over_4.5": 0.521,
+      "under_4.5": 0.479,
+      "over_5.5": 0.346,
+      "under_5.5": 0.654,
+      "lambda_total": 4.79,
+      "cr_local": 2.21,
+      "cr_visita": 1.66,
+      "rival_bonus": 0.91
     },
     "btts": {
       "btts_si": 0.566,
