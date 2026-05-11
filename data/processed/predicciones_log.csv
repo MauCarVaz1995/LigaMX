@@ -362,3 +362,13 @@ fecha_prediccion,partido,equipo_local,equipo_visitante,elo_local,elo_visitante,p
 2026-05-10 14:53:21,Independiente del Valle vs Libertad,Independiente del Valle,Libertad,1500.0,1481.3,42.2,30.9,26.9,local,1-1,1.4645,1.1355,ligas_internacionales,2026-05-20,,,,,,libertadores
 2026-05-10 14:53:35,AFC Bournemouth vs Manchester City,AFC Bournemouth,Manchester City,1500.0,1764.2,21.0,29.7,49.3,visitante,1-1,0.993,1.607,ligas_internacionales,2026-05-19,,,,,,premier
 2026-05-10 14:53:35,Chelsea vs Tottenham Hotspur,Chelsea,Tottenham Hotspur,1546.1,1500.0,44.4,30.6,24.9,local,1-1,1.5101,1.0899,ligas_internacionales,2026-05-19,,,,,,premier
+2026-05-11 16:33:34,Nacional vs Universitario,Nacional,Universitario,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-20,,,,,,libertadores
+2026-05-11 16:33:34,Flamengo vs Estudiantes de La Plata,Flamengo,Estudiantes de La Plata,1518.7,1500.0,42.2,30.9,26.9,local,1-1,1.4645,1.1355,ligas_internacionales,2026-05-21,,,,,,libertadores
+2026-05-11 16:33:34,Liga de Quito vs Lanús,Liga de Quito,Lanús,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-21,,,,,,libertadores
+2026-05-11 16:33:34,Palmeiras vs Cerro Porteño,Palmeiras,Cerro Porteño,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-21,,,,,,libertadores
+2026-05-11 16:33:34,Atlético Junior vs Sporting Cristal,Atlético Junior,Sporting Cristal,1500.0,1518.7,39.1,31.2,29.6,local,1-1,1.4022,1.1978,ligas_internacionales,2026-05-21,,,,,,libertadores
+2026-05-11 16:33:34,Cusco FC vs Independiente Medellín,Cusco FC,Independiente Medellín,1481.3,1500.0,39.1,31.2,29.6,local,1-1,1.4022,1.1978,ligas_internacionales,2026-05-21,,,,,,libertadores
+2026-05-11 16:33:42,Belgrano (Córdoba) vs Unión (Santa Fe),Belgrano (Córdoba),Unión (Santa Fe),1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-12,,,,,,argentina
+2026-05-11 16:33:42,Argentinos Juniors vs Huracán,Argentinos Juniors,Huracán,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-13,,,,,,argentina
+2026-05-11 16:33:42,Rosario Central vs Racing Club,Rosario Central,Racing Club,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-13,,,,,,argentina
+2026-05-11 16:33:42,River Plate vs Gimnasia La Plata,River Plate,Gimnasia La Plata,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-14,,,,,,argentina

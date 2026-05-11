@@ -1,0 +1,167 @@
+{
+  "generated_at": "2026-05-11T16:32:55.635496",
+  "ligas": {
+    "champions": {
+      "nombre": "UEFA Champions League",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "libertadores": {
+      "nombre": "Copa Libertadores",
+      "n_fixtures": 13,
+      "picks": [
+        {
+          "partido": "Nacional vs Universitario",
+          "fecha": "2026-05-20",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Flamengo vs Estudiantes de La Plata",
+          "fecha": "2026-05-21",
+          "ganador": "local",
+          "prob_local": 42.2,
+          "prob_empate": 30.9,
+          "prob_visitante": 26.9,
+          "marcador": "1-1",
+          "elo_local": 1518.7,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Liga de Quito vs Lanús",
+          "fecha": "2026-05-21",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Palmeiras vs Cerro Porteño",
+          "fecha": "2026-05-21",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Atlético Junior vs Sporting Cristal",
+          "fecha": "2026-05-21",
+          "ganador": "local",
+          "prob_local": 39.1,
+          "prob_empate": 31.2,
+          "prob_visitante": 29.6,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1518.7
+        },
+        {
+          "partido": "Cusco FC vs Independiente Medellín",
+          "fecha": "2026-05-21",
+          "ganador": "local",
+          "prob_local": 39.1,
+          "prob_empate": 31.2,
+          "prob_visitante": 29.6,
+          "marcador": "1-1",
+          "elo_local": 1481.3,
+          "elo_visitante": 1500.0
+        }
+      ]
+    },
+    "mls": {
+      "nombre": "MLS",
+      "n_fixtures": 29,
+      "picks": []
+    },
+    "argentina": {
+      "nombre": "Liga Profesional Argentina",
+      "n_fixtures": 4,
+      "picks": [
+        {
+          "partido": "Belgrano (Córdoba) vs Unión (Santa Fe)",
+          "fecha": "2026-05-12",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Argentinos Juniors vs Huracán",
+          "fecha": "2026-05-13",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Rosario Central vs Racing Club",
+          "fecha": "2026-05-13",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "River Plate vs Gimnasia La Plata",
+          "fecha": "2026-05-14",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        }
+      ]
+    },
+    "brasileirao": {
+      "nombre": "Brasileirao Serie A",
+      "n_fixtures": 10,
+      "picks": []
+    },
+    "premier": {
+      "nombre": "Premier League",
+      "n_fixtures": 12,
+      "picks": []
+    },
+    "laliga": {
+      "nombre": "La Liga",
+      "n_fixtures": 21,
+      "picks": []
+    },
+    "bundesliga": {
+      "nombre": "Bundesliga",
+      "n_fixtures": 9,
+      "picks": []
+    },
+    "seriea": {
+      "nombre": "Serie A",
+      "n_fixtures": 11,
+      "picks": []
+    },
+    "ligue1": {
+      "nombre": "Ligue 1",
+      "n_fixtures": 11,
+      "picks": []
+    }
+  }
+}
