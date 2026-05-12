@@ -372,3 +372,6 @@ fecha_prediccion,partido,equipo_local,equipo_visitante,elo_local,elo_visitante,p
 2026-05-11 16:33:42,Argentinos Juniors vs Huracán,Argentinos Juniors,Huracán,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-13,,,,,,argentina
 2026-05-11 16:33:42,Rosario Central vs Racing Club,Rosario Central,Racing Club,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-13,,,,,,argentina
 2026-05-11 16:33:42,River Plate vs Gimnasia La Plata,River Plate,Gimnasia La Plata,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-14,,,,,,argentina
+2026-05-12 16:23:01,Deportivo La Guaira vs Independiente Rivadavia,Deportivo La Guaira,Independiente Rivadavia,1500.0,1508.0,40.0,31.2,28.8,local,1-1,1.42,1.18,ligas_internacionales,2026-05-21,,,,,,libertadores
+2026-05-12 16:23:01,Peñarol vs Corinthians,Peñarol,Corinthians,1500.0,1524.0,38.7,31.3,30.0,local,1-1,1.3933,1.2067,ligas_internacionales,2026-05-22,,,,,,libertadores
+2026-05-12 16:23:01,Universidad Católica vs Barcelona SC,Universidad Católica,Barcelona SC,1500.0,1486.7,41.7,31.0,27.3,local,1-1,1.4555,1.1445,ligas_internacionales,2026-05-22,,,,,,libertadores

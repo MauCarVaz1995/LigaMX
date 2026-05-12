@@ -1,0 +1,89 @@
+{
+  "generated_at": "2026-05-12T16:22:21.433447",
+  "ligas": {
+    "champions": {
+      "nombre": "UEFA Champions League",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "libertadores": {
+      "nombre": "Copa Libertadores",
+      "n_fixtures": 16,
+      "picks": [
+        {
+          "partido": "Deportivo La Guaira vs Independiente Rivadavia",
+          "fecha": "2026-05-21",
+          "ganador": "local",
+          "prob_local": 40.0,
+          "prob_empate": 31.2,
+          "prob_visitante": 28.8,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1508.0
+        },
+        {
+          "partido": "Peñarol vs Corinthians",
+          "fecha": "2026-05-22",
+          "ganador": "local",
+          "prob_local": 38.7,
+          "prob_empate": 31.3,
+          "prob_visitante": 30.0,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1524.0
+        },
+        {
+          "partido": "Universidad Católica vs Barcelona SC",
+          "fecha": "2026-05-22",
+          "ganador": "local",
+          "prob_local": 41.7,
+          "prob_empate": 31.0,
+          "prob_visitante": 27.3,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1486.7
+        }
+      ]
+    },
+    "mls": {
+      "nombre": "MLS",
+      "n_fixtures": 29,
+      "picks": []
+    },
+    "argentina": {
+      "nombre": "Liga Profesional Argentina",
+      "n_fixtures": 4,
+      "picks": []
+    },
+    "brasileirao": {
+      "nombre": "Brasileirao Serie A",
+      "n_fixtures": 10,
+      "picks": []
+    },
+    "premier": {
+      "nombre": "Premier League",
+      "n_fixtures": 11,
+      "picks": []
+    },
+    "laliga": {
+      "nombre": "La Liga",
+      "n_fixtures": 20,
+      "picks": []
+    },
+    "bundesliga": {
+      "nombre": "Bundesliga",
+      "n_fixtures": 9,
+      "picks": []
+    },
+    "seriea": {
+      "nombre": "Serie A",
+      "n_fixtures": 10,
+      "picks": []
+    },
+    "ligue1": {
+      "nombre": "Ligue 1",
+      "n_fixtures": 11,
+      "picks": []
+    }
+  }
+}
