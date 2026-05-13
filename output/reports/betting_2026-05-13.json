@@ -1,0 +1,39 @@
+[
+  {
+    "match_id": "5499495",
+    "fecha": "2026-05-13",
+    "jornada": "1/2",
+    "local": "Cruz Azul",
+    "visita": "Chivas",
+    "torneo": "Clausura 2026",
+    "elo_local": 1673.45,
+    "elo_visita": 1613.73,
+    "corners": {},
+    "tarjetas": {
+      "over_3.5": 0.987,
+      "under_3.5": null,
+      "over_4.5": 0.964,
+      "under_4.5": 0.036,
+      "over_5.5": 0.92,
+      "under_5.5": 0.08,
+      "lambda_total": 9.69,
+      "cr_local": 2.23,
+      "cr_visita": 2.55,
+      "rival_bonus": 4.91
+    },
+    "btts": {
+      "btts_si": 0.586,
+      "btts_no": 0.414,
+      "over_1.5": 0.803,
+      "over_2.5": 0.544,
+      "under_2.5": 0.456,
+      "btts_over_2.5": 0.448,
+      "lambda_local": 1.695,
+      "lambda_visita": 1.163
+    },
+    "value_bets": [],
+    "errors": [
+      "corners: '<=' not supported between instances of 'str' and 'int'"
+    ]
+  }
+]
