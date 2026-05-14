@@ -1,5 +1,5 @@
 {
-  "mu": 4.5598,
+  "mu": 4.5628,
   "n_partidos": 719,
   "card_rate": {
     "Necaxa": 3.0787471681744445,
@@ -120,5 +120,5 @@
     "Atletico de San Luis|Mazatlan FC": 0.91,
     "Santos Laguna|Queretaro FC": 10.91
   },
-  "_drift_corrected": "2026-05-13"
+  "_drift_corrected": "2026-05-14"
 }

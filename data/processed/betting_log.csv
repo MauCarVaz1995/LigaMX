@@ -1124,12 +1124,12 @@ fecha_prediccion,fecha_partido,partido,liga,jornada,equipo_local,equipo_visita,m
 2026-05-10,2026-05-18,Arsenal vs Burnley,Premier League,0,Arsenal,Burnley,btts_si,,0.3549,,,,,,,,
 2026-05-10,2026-05-18,Arsenal vs Burnley,Premier League,0,Arsenal,Burnley,goles_over_2.5,2.5,0.4816,,,,,,,,
 2026-05-10,2026-05-18,Arsenal vs Burnley,Premier League,0,Arsenal,Burnley,goles_over_1.5,1.5,0.7326,,,,,,,,
-2026-05-11,2026-05-13,Cruz Azul vs Chivas,Clausura 2026,1/2,Cruz Azul,Chivas,tarjetas_over_3.5,3.5,0.987,,,,,,,,
-2026-05-11,2026-05-13,Cruz Azul vs Chivas,Clausura 2026,1/2,Cruz Azul,Chivas,tarjetas_over_4.5,4.5,0.964,,,,,,,,
-2026-05-11,2026-05-13,Cruz Azul vs Chivas,Clausura 2026,1/2,Cruz Azul,Chivas,tarjetas_over_5.5,5.5,0.92,,,,,,,,
-2026-05-11,2026-05-13,Cruz Azul vs Chivas,Clausura 2026,1/2,Cruz Azul,Chivas,btts_si,,0.586,,,,,,,,
-2026-05-11,2026-05-13,Cruz Azul vs Chivas,Clausura 2026,1/2,Cruz Azul,Chivas,goles_over_2.5,2.5,0.544,,,,,,,,
-2026-05-11,2026-05-13,Cruz Azul vs Chivas,Clausura 2026,1/2,Cruz Azul,Chivas,goles_over_1.5,1.5,0.803,,,,,,,,
+2026-05-11,2026-05-13,Cruz Azul vs Chivas,Clausura 2026,1/2,Cruz Azul,Chivas,tarjetas_over_3.5,3.5,0.987,,,True,True,7.0,8.0,2.0,2.0
+2026-05-11,2026-05-13,Cruz Azul vs Chivas,Clausura 2026,1/2,Cruz Azul,Chivas,tarjetas_over_4.5,4.5,0.964,,,True,True,7.0,8.0,2.0,2.0
+2026-05-11,2026-05-13,Cruz Azul vs Chivas,Clausura 2026,1/2,Cruz Azul,Chivas,tarjetas_over_5.5,5.5,0.92,,,True,True,7.0,8.0,2.0,2.0
+2026-05-11,2026-05-13,Cruz Azul vs Chivas,Clausura 2026,1/2,Cruz Azul,Chivas,btts_si,,0.586,,,True,True,7.0,8.0,2.0,2.0
+2026-05-11,2026-05-13,Cruz Azul vs Chivas,Clausura 2026,1/2,Cruz Azul,Chivas,goles_over_2.5,2.5,0.544,,,True,True,7.0,8.0,2.0,2.0
+2026-05-11,2026-05-13,Cruz Azul vs Chivas,Clausura 2026,1/2,Cruz Azul,Chivas,goles_over_1.5,1.5,0.803,,,True,True,7.0,8.0,2.0,2.0
 2026-05-11,2026-05-13,Pachuca vs Pumas,Clausura 2026,1/2,Pachuca,Pumas,tarjetas_over_3.5,3.5,0.769,,,,,,,,
 2026-05-11,2026-05-13,Pachuca vs Pumas,Clausura 2026,1/2,Pachuca,Pumas,tarjetas_over_4.5,4.5,0.603,,,,,,,,
 2026-05-11,2026-05-13,Pachuca vs Pumas,Clausura 2026,1/2,Pachuca,Pumas,tarjetas_over_5.5,5.5,0.429,,,,,,,,
@@ -1208,3 +1208,9 @@ fecha_prediccion,fecha_partido,partido,liga,jornada,equipo_local,equipo_visita,m
 2026-05-13,2026-05-22,Universidad Católica vs Barcelona SC,Copa Libertadores,0,Universidad Católica,Barcelona SC,btts_si,,0.5226,,,,,,,,
 2026-05-13,2026-05-22,Universidad Católica vs Barcelona SC,Copa Libertadores,0,Universidad Católica,Barcelona SC,goles_over_2.5,2.5,0.4816,,,,,,,,
 2026-05-13,2026-05-22,Universidad Católica vs Barcelona SC,Copa Libertadores,0,Universidad Católica,Barcelona SC,goles_over_1.5,1.5,0.7326,,,,,,,,
+2026-05-14,2026-05-16,Chivas vs Cruz Azul,Clausura 2026,1/2,Chivas,Cruz Azul,tarjetas_over_3.5,3.5,0.987,,,,,,,,
+2026-05-14,2026-05-16,Chivas vs Cruz Azul,Clausura 2026,1/2,Chivas,Cruz Azul,tarjetas_over_4.5,4.5,0.964,,,,,,,,
+2026-05-14,2026-05-16,Chivas vs Cruz Azul,Clausura 2026,1/2,Chivas,Cruz Azul,tarjetas_over_5.5,5.5,0.92,,,,,,,,
+2026-05-14,2026-05-16,Chivas vs Cruz Azul,Clausura 2026,1/2,Chivas,Cruz Azul,btts_si,,0.602,,,,,,,,
+2026-05-14,2026-05-16,Chivas vs Cruz Azul,Clausura 2026,1/2,Chivas,Cruz Azul,goles_over_2.5,2.5,0.544,,,,,,,,
+2026-05-14,2026-05-16,Chivas vs Cruz Azul,Clausura 2026,1/2,Chivas,Cruz Azul,goles_over_1.5,1.5,0.804,,,,,,,,
