@@ -4911,6 +4911,16 @@ fecha,liga,nombre_liga,pais,temporada,local,visitante,goles_local,goles_visita,o
 2026-05-10,laliga,La Liga,Spain,2025/2026,Oviedo,Getafe,0,0,,,,2.5,1.53
 2026-05-10,laliga,La Liga,Spain,2025/2026,Barcelona,Real Madrid,2,0,,,,1.25,4.0
 2026-05-11,laliga,La Liga,Spain,2025/2026,Vallecano,Girona,1,1,,,,1.83,2.03
+2026-05-12,laliga,La Liga,Spain,2025/2026,Celta,Levante,2,3,,,,1.8,2.0
+2026-05-12,laliga,La Liga,Spain,2025/2026,Betis,Elche,2,1,,,,1.62,2.3
+2026-05-12,laliga,La Liga,Spain,2025/2026,Osasuna,Ath Madrid,1,2,,,,1.73,2.1
+2026-05-13,laliga,La Liga,Spain,2025/2026,Espanol,Ath Bilbao,2,0,,,,2.2,1.67
+2026-05-13,laliga,La Liga,Spain,2025/2026,Villarreal,Sevilla,2,3,,,,1.8,2.0
+2026-05-13,laliga,La Liga,Spain,2025/2026,Alaves,Barcelona,1,0,,,,1.5,2.63
+2026-05-13,laliga,La Liga,Spain,2025/2026,Getafe,Mallorca,3,1,,,,2.63,1.5
+2026-05-14,laliga,La Liga,Spain,2025/2026,Valencia,Vallecano,1,1,,,,1.93,1.93
+2026-05-14,laliga,La Liga,Spain,2025/2026,Girona,Sociedad,1,1,,,,1.73,2.1
+2026-05-14,laliga,La Liga,Spain,2025/2026,Real Madrid,Oviedo,2,0,,,,1.4,3.0
 2021-08-06,ligue1,Ligue 1,France,2021/2022,Monaco,Nantes,1,1,1.51,4.62,6.82,1.66,2.2
 2021-08-07,ligue1,Ligue 1,France,2021/2022,Lyon,Brest,1,1,1.35,5.95,8.71,1.36,3.2
 2021-08-07,ligue1,Ligue 1,France,2021/2022,Troyes,Paris SG,1,2,11.77,6.04,1.28,1.57,2.37
@@ -6578,6 +6588,8 @@ fecha,liga,nombre_liga,pais,temporada,local,visitante,goles_local,goles_visita,o
 2026-05-10,ligue1,Ligue 1,France,2025/2026,Paris SG,Brest,1,0,,,,1.36,3.2
 2026-05-10,ligue1,Ligue 1,France,2025/2026,Rennes,Paris FC,2,1,,,,1.5,2.63
 2026-05-10,ligue1,Ligue 1,France,2025/2026,Toulouse,Lyon,2,1,,,,1.8,2.0
+2026-05-13,ligue1,Ligue 1,France,2025/2026,Brest,Strasbourg,1,2,,,,1.73,2.1
+2026-05-13,ligue1,Ligue 1,France,2025/2026,Lens,Paris SG,0,2,,,,1.5,2.63
 2021-08-06,portuguesa,Primeira Liga,Portugal,2021/2022,Sp Lisbon,Vizela,3,0,1.27,6.14,12.01,1.72,2.07
 2021-08-07,portuguesa,Primeira Liga,Portugal,2021/2022,Arouca,Estoril,0,2,2.27,3.36,3.44,2.3,1.6
 2021-08-07,portuguesa,Primeira Liga,Portugal,2021/2022,Moreirense,Benfica,1,2,6.9,4.8,1.47,1.65,2.2
@@ -9978,6 +9990,7 @@ fecha,liga,nombre_liga,pais,temporada,local,visitante,goles_local,goles_visita,o
 2026-05-10,premier,Premier League,England,2025/2026,Nott'm Forest,Newcastle,1,1,,,,1.73,2.1
 2026-05-10,premier,Premier League,England,2025/2026,West Ham,Arsenal,0,1,,,,1.67,2.2
 2026-05-11,premier,Premier League,England,2025/2026,Tottenham,Leeds,1,1,,,,1.73,2.1
+2026-05-13,premier,Premier League,England,2025/2026,Man City,Crystal Palace,3,0,,,,1.4,3.0
 2021-08-21,seriea,Serie A,Italy,2021/2022,Inter,Genoa,4,0,1.36,5.37,9.65,1.66,2.2
 2021-08-21,seriea,Serie A,Italy,2021/2022,Verona,Sassuolo,2,3,2.66,3.55,2.75,1.9,2.03
 2021-08-21,seriea,Serie A,Italy,2021/2022,Empoli,Lazio,1,3,5.01,4.02,1.74,1.72,2.1
