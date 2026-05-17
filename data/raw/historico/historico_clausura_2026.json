@@ -2343,16 +2343,16 @@
     },
     {
       "id": "5499497",
-      "fecha": "2026-05-17T01:07:00Z",
+      "fecha": "2026-05-17T01:07:00.000Z",
       "jornada": "1/2",
       "local": "Chivas",
       "local_id": "7807",
       "visitante": "Cruz Azul",
       "visitante_id": "6578",
-      "goles_local": null,
-      "goles_visit": null,
-      "score": "",
-      "terminado": false
+      "goles_local": 1,
+      "goles_visit": 2,
+      "score": "1 - 2",
+      "terminado": true
     },
     {
       "id": "5499498",

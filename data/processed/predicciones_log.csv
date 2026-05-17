@@ -432,3 +432,9 @@ fecha_prediccion,partido,equipo_local,equipo_visitante,elo_local,elo_visitante,p
 2026-05-15 16:05:55,Parma vs Sassuolo,Parma,Sassuolo,1540.8,1534.5,41.2,31.1,27.8,local,1-1,1.4437,1.1563,ligas_internacionales,2026-05-24,,,,,,seriea
 2026-05-15 16:05:55,Torino vs Juventus,Torino,Juventus,1495.4,1713.5,24.1,30.5,45.4,visitante,1-1,1.0699,1.5301,ligas_internacionales,2026-05-24,,,,,,seriea
 2026-05-16 14:57:38,Coritiba vs Bahia,Coritiba,Bahia,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-25,,,,,,brasileirao
+2026-05-17 15:01:20,Lanús vs Mirassol,Lanús,Mirassol,1500.0,1513.3,39.6,31.2,29.2,local,1-1,1.4111,1.1889,ligas_internacionales,2026-05-26,,,,,,libertadores
+2026-05-17 15:01:20,Liga de Quito vs Always Ready,Liga de Quito,Always Ready,1500.0,1486.7,41.7,31.0,27.3,local,1-1,1.4555,1.1445,ligas_internacionales,2026-05-26,,,,,,libertadores
+2026-05-17 15:01:20,Estudiantes de La Plata vs Independiente Medellín,Estudiantes de La Plata,Independiente Medellín,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-27,,,,,,libertadores
+2026-05-17 15:01:20,Flamengo vs Cusco FC,Flamengo,Cusco FC,1518.7,1481.3,43.7,30.7,25.6,local,1-1,1.4956,1.1044,ligas_internacionales,2026-05-27,,,,,,libertadores
+2026-05-17 15:01:20,Nacional vs Coquimbo Unido,Nacional,Coquimbo Unido,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-27,,,,,,libertadores
+2026-05-17 15:01:20,Universitario vs Deportes Tolima,Universitario,Deportes Tolima,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-27,,,,,,libertadores

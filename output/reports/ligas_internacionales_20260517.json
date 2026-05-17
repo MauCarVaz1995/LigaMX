@@ -1,0 +1,122 @@
+{
+  "generated_at": "2026-05-17T14:59:25.697696",
+  "ligas": {
+    "champions": {
+      "nombre": "UEFA Champions League",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "libertadores": {
+      "nombre": "Copa Libertadores",
+      "n_fixtures": 22,
+      "picks": [
+        {
+          "partido": "Lanús vs Mirassol",
+          "fecha": "2026-05-26",
+          "ganador": "local",
+          "prob_local": 39.6,
+          "prob_empate": 31.2,
+          "prob_visitante": 29.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1513.3
+        },
+        {
+          "partido": "Liga de Quito vs Always Ready",
+          "fecha": "2026-05-26",
+          "ganador": "local",
+          "prob_local": 41.7,
+          "prob_empate": 31.0,
+          "prob_visitante": 27.3,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1486.7
+        },
+        {
+          "partido": "Estudiantes de La Plata vs Independiente Medellín",
+          "fecha": "2026-05-27",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Flamengo vs Cusco FC",
+          "fecha": "2026-05-27",
+          "ganador": "local",
+          "prob_local": 43.7,
+          "prob_empate": 30.7,
+          "prob_visitante": 25.6,
+          "marcador": "1-1",
+          "elo_local": 1518.7,
+          "elo_visitante": 1481.3
+        },
+        {
+          "partido": "Nacional vs Coquimbo Unido",
+          "fecha": "2026-05-27",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Universitario vs Deportes Tolima",
+          "fecha": "2026-05-27",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        }
+      ]
+    },
+    "mls": {
+      "nombre": "MLS",
+      "n_fixtures": 17,
+      "picks": []
+    },
+    "argentina": {
+      "nombre": "Liga Profesional Argentina",
+      "n_fixtures": 1,
+      "picks": []
+    },
+    "brasileirao": {
+      "nombre": "Brasileirao Serie A",
+      "n_fixtures": 16,
+      "picks": []
+    },
+    "premier": {
+      "nombre": "Premier League",
+      "n_fixtures": 18,
+      "picks": []
+    },
+    "laliga": {
+      "nombre": "La Liga",
+      "n_fixtures": 20,
+      "picks": []
+    },
+    "bundesliga": {
+      "nombre": "Bundesliga",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "seriea": {
+      "nombre": "Serie A",
+      "n_fixtures": 14,
+      "picks": []
+    },
+    "ligue1": {
+      "nombre": "Ligue 1",
+      "n_fixtures": 9,
+      "picks": []
+    }
+  }
+}
