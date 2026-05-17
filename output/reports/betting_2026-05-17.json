@@ -10,15 +10,15 @@
     "elo_visita": 1630.63,
     "corners": {},
     "tarjetas": {
-      "over_3.5": 0.769,
+      "over_3.5": 0.764,
       "under_3.5": null,
-      "over_4.5": 0.603,
-      "under_4.5": 0.397,
-      "over_5.5": 0.429,
-      "under_5.5": 0.571,
-      "lambda_total": 5.25,
-      "cr_local": 2.21,
-      "cr_visita": 3.04,
+      "over_4.5": 0.597,
+      "under_4.5": 0.403,
+      "over_5.5": 0.422,
+      "under_5.5": 0.578,
+      "lambda_total": 5.22,
+      "cr_local": 2.32,
+      "cr_visita": 2.9,
       "rival_bonus": 0.0
     },
     "btts": {
