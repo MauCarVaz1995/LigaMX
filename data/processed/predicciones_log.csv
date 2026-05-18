@@ -438,3 +438,13 @@ fecha_prediccion,partido,equipo_local,equipo_visitante,elo_local,elo_visitante,p
 2026-05-17 15:01:20,Flamengo vs Cusco FC,Flamengo,Cusco FC,1518.7,1481.3,43.7,30.7,25.6,local,1-1,1.4956,1.1044,ligas_internacionales,2026-05-27,,,,,,libertadores
 2026-05-17 15:01:20,Nacional vs Coquimbo Unido,Nacional,Coquimbo Unido,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-27,,,,,,libertadores
 2026-05-17 15:01:20,Universitario vs Deportes Tolima,Universitario,Deportes Tolima,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-27,,,,,,libertadores
+2026-05-18 16:53:25,Independiente del Valle vs Rosario Central,Independiente del Valle,Rosario Central,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-27,,,,,,libertadores
+2026-05-18 16:53:25,Libertad vs Universidad Central,Libertad,Universidad Central,1481.3,1518.7,37.6,31.3,31.0,local,1-1,1.3711,1.2289,ligas_internacionales,2026-05-27,,,,,,libertadores
+2026-05-18 16:53:25,Bolívar vs Independiente Rivadavia,Bolívar,Independiente Rivadavia,1500.0,1508.0,40.0,31.2,28.8,local,1-1,1.42,1.18,ligas_internacionales,2026-05-28,,,,,,libertadores
+2026-05-18 16:53:25,Corinthians vs Platense,Corinthians,Platense,1524.0,1500.0,42.6,30.9,26.5,local,1-1,1.4733,1.1267,ligas_internacionales,2026-05-28,,,,,,libertadores
+2026-05-18 16:53:25,Fluminense vs Deportivo La Guaira,Fluminense,Deportivo La Guaira,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-28,,,,,,libertadores
+2026-05-18 16:53:25,Peñarol vs Independiente Santa Fe,Peñarol,Independiente Santa Fe,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-28,,,,,,libertadores
+2026-05-18 16:53:32,River Plate vs Belgrano (Córdoba),River Plate,Belgrano (Córdoba),1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-24,,,,,,argentina
+2026-05-18 16:54:20,Fiorentina vs Atalanta,Fiorentina,Atalanta,1566.6,1652.2,33.8,31.4,34.7,visitante,1-1,1.2905,1.3095,ligas_internacionales,2026-05-22,,,,,,seriea
+2026-05-18 16:54:20,Bologna vs Inter Milan,Bologna,Inter Milan,1531.3,1820.0,19.5,29.2,51.3,visitante,1-1,0.9521,1.6479,ligas_internacionales,2026-05-23,,,,,,seriea
+2026-05-18 16:54:20,Lazio vs Pisa,Lazio,Pisa,1608.4,1335.0,63.3,25.4,11.4,local,2-0,1.8889,0.7111,ligas_internacionales,2026-05-23,,,,,,seriea

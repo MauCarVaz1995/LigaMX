@@ -1,0 +1,168 @@
+{
+  "generated_at": "2026-05-18T16:52:08.918748",
+  "ligas": {
+    "champions": {
+      "nombre": "UEFA Champions League",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "libertadores": {
+      "nombre": "Copa Libertadores",
+      "n_fixtures": 28,
+      "picks": [
+        {
+          "partido": "Independiente del Valle vs Rosario Central",
+          "fecha": "2026-05-27",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Libertad vs Universidad Central",
+          "fecha": "2026-05-27",
+          "ganador": "local",
+          "prob_local": 37.6,
+          "prob_empate": 31.3,
+          "prob_visitante": 31.0,
+          "marcador": "1-1",
+          "elo_local": 1481.3,
+          "elo_visitante": 1518.7
+        },
+        {
+          "partido": "Bolívar vs Independiente Rivadavia",
+          "fecha": "2026-05-28",
+          "ganador": "local",
+          "prob_local": 40.0,
+          "prob_empate": 31.2,
+          "prob_visitante": 28.8,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1508.0
+        },
+        {
+          "partido": "Corinthians vs Platense",
+          "fecha": "2026-05-28",
+          "ganador": "local",
+          "prob_local": 42.6,
+          "prob_empate": 30.9,
+          "prob_visitante": 26.5,
+          "marcador": "1-1",
+          "elo_local": 1524.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Fluminense vs Deportivo La Guaira",
+          "fecha": "2026-05-28",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Peñarol vs Independiente Santa Fe",
+          "fecha": "2026-05-28",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        }
+      ]
+    },
+    "mls": {
+      "nombre": "MLS",
+      "n_fixtures": 15,
+      "picks": []
+    },
+    "argentina": {
+      "nombre": "Liga Profesional Argentina",
+      "n_fixtures": 1,
+      "picks": [
+        {
+          "partido": "River Plate vs Belgrano (Córdoba)",
+          "fecha": "2026-05-24",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        }
+      ]
+    },
+    "brasileirao": {
+      "nombre": "Brasileirao Serie A",
+      "n_fixtures": 10,
+      "picks": []
+    },
+    "premier": {
+      "nombre": "Premier League",
+      "n_fixtures": 13,
+      "picks": []
+    },
+    "laliga": {
+      "nombre": "La Liga",
+      "n_fixtures": 10,
+      "picks": []
+    },
+    "bundesliga": {
+      "nombre": "Bundesliga",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "seriea": {
+      "nombre": "Serie A",
+      "n_fixtures": 10,
+      "picks": [
+        {
+          "partido": "Fiorentina vs Atalanta",
+          "fecha": "2026-05-22",
+          "ganador": "visitante",
+          "prob_local": 33.8,
+          "prob_empate": 31.4,
+          "prob_visitante": 34.7,
+          "marcador": "1-1",
+          "elo_local": 1566.6,
+          "elo_visitante": 1652.2
+        },
+        {
+          "partido": "Bologna vs Inter Milan",
+          "fecha": "2026-05-23",
+          "ganador": "visitante",
+          "prob_local": 19.5,
+          "prob_empate": 29.2,
+          "prob_visitante": 51.3,
+          "marcador": "1-1",
+          "elo_local": 1531.3,
+          "elo_visitante": 1820.0
+        },
+        {
+          "partido": "Lazio vs Pisa",
+          "fecha": "2026-05-23",
+          "ganador": "local",
+          "prob_local": 63.3,
+          "prob_empate": 25.4,
+          "prob_visitante": 11.4,
+          "marcador": "2-0",
+          "elo_local": 1608.4,
+          "elo_visitante": 1335.0
+        }
+      ]
+    },
+    "ligue1": {
+      "nombre": "Ligue 1",
+      "n_fixtures": 0,
+      "picks": []
+    }
+  }
+}
