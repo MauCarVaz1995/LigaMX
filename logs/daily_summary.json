@@ -1,13 +1,13 @@
 {
-  "date": "2026-05-20",
-  "start": "2026-05-20T16:43:42.121843",
+  "date": "2026-05-21",
+  "start": "2026-05-21T16:36:53.148042",
   "pasos": {
     "paso1": {
       "nuevos": 0,
       "terminados_antes": 165,
       "terminados_despues": 165,
       "error": null,
-      "elapsed_s": 65.0
+      "elapsed_s": 60.1
     },
     "paso2": {
       "equipos_afectados": 0,
@@ -19,7 +19,7 @@
       "nuevos": 0,
       "fechas_procesadas": 0,
       "error": null,
-      "elapsed_s": 374.2
+      "elapsed_s": 393.8
     },
     "paso4": {
       "selecciones_afectadas": 0,
@@ -33,18 +33,18 @@
       "aciertos": 13,
       "total_evaluados": 31,
       "error": null,
-      "elapsed_s": 2.2
+      "elapsed_s": 2.6
     },
     "paso6": {
       "predicciones_generadas": 1,
       "saltado": false,
       "error": null,
-      "elapsed_s": 1.2
+      "elapsed_s": 2.3
     },
     "paso8": {
-      "ok": false,
-      "elapsed_s": 2.4,
-      "error": "gen_postpartido.py falló"
+      "ok": true,
+      "elapsed_s": 0.6,
+      "error": null
     },
     "paso7": {
       "committed": false,
@@ -52,8 +52,8 @@
       "error": null
     }
   },
-  "end": "2026-05-20T16:51:07.214378",
-  "elapsed_s": 445.1,
+  "end": "2026-05-21T16:44:32.571139",
+  "elapsed_s": 459.4,
   "success": true,
   "critical_failed": false,
   "noncritical_errors": []
