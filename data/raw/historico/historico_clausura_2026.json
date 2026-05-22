@@ -2369,16 +2369,16 @@
     },
     {
       "id": "5647377",
-      "fecha": "2026-05-22T02:00:00Z",
+      "fecha": "2026-05-22T02:00:00.000Z",
       "jornada": "final",
       "local": "Cruz Azul",
       "local_id": "6578",
       "visitante": "Pumas",
       "visitante_id": "1946",
-      "goles_local": null,
-      "goles_visit": null,
-      "score": "",
-      "terminado": false
+      "goles_local": 0,
+      "goles_visit": 0,
+      "score": "0 - 0",
+      "terminado": true
     },
     {
       "id": "5636989",

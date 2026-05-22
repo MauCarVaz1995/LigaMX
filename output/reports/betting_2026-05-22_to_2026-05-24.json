@@ -1,0 +1,39 @@
+[
+  {
+    "match_id": "5636989",
+    "fecha": "2026-05-24",
+    "jornada": "final",
+    "local": "Pumas",
+    "visita": "Cruz Azul",
+    "torneo": "Clausura 2026",
+    "elo_local": 1632.16,
+    "elo_visita": 1684.31,
+    "corners": {},
+    "tarjetas": {
+      "over_3.5": 0.9,
+      "under_3.5": null,
+      "over_4.5": 0.796,
+      "under_4.5": 0.204,
+      "over_5.5": 0.656,
+      "under_5.5": 0.344,
+      "lambda_total": 6.68,
+      "cr_local": 2.32,
+      "cr_visita": 2.44,
+      "rival_bonus": 1.92
+    },
+    "btts": {
+      "btts_si": 0.602,
+      "btts_no": 0.398,
+      "over_1.5": 0.804,
+      "over_2.5": 0.544,
+      "under_2.5": 0.456,
+      "btts_over_2.5": 0.46,
+      "lambda_local": 1.509,
+      "lambda_visita": 1.349
+    },
+    "value_bets": [],
+    "errors": [
+      "corners: '<=' not supported between instances of 'str' and 'int'"
+    ]
+  }
+]
