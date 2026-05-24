@@ -10,16 +10,16 @@
     "elo_visita": 1684.31,
     "corners": {},
     "tarjetas": {
-      "over_3.5": 0.9,
+      "over_3.5": 0.897,
       "under_3.5": null,
-      "over_4.5": 0.796,
-      "under_4.5": 0.204,
-      "over_5.5": 0.656,
-      "under_5.5": 0.344,
-      "lambda_total": 6.68,
-      "cr_local": 2.32,
-      "cr_visita": 2.44,
-      "rival_bonus": 1.92
+      "over_4.5": 0.791,
+      "under_4.5": 0.209,
+      "over_5.5": 0.65,
+      "under_5.5": 0.35,
+      "lambda_total": 6.64,
+      "cr_local": 2.28,
+      "cr_visita": 2.42,
+      "rival_bonus": 1.94
     },
     "btts": {
       "btts_si": 0.602,
