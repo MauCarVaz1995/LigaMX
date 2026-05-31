@@ -1,6 +1,6 @@
 {
-  "last_train_date": "2026-05-24",
-  "n_partidos_at_train": 834,
+  "last_train_date": "2026-05-31",
+  "n_partidos_at_train": 835,
   "torneos": [
     "Liga MX Clausura 2026",
     "Liga MX Clausura 2024",
@@ -9,97 +9,97 @@
     "Liga MX Apertura 2025"
   ],
   "corners_metrics": {
-    "brier_over_8.5": 0.2667,
-    "brier_over_9.5": 0.273,
-    "brier_over_10.5": 0.2205,
-    "mae_total_corners": 2.65,
+    "brier_over_8.5": 0.251,
+    "brier_over_9.5": 0.2692,
+    "brier_over_10.5": 0.2292,
+    "mae_total_corners": 2.71,
     "baseline_brier": 0.25,
     "n_holdout": 20
   },
   "tarjetas_metrics": {
-    "brier_over_3.5": 0.2923,
-    "brier_over_4.5": 0.2887,
-    "brier_over_5.5": 0.254,
+    "brier_over_3.5": 0.3046,
+    "brier_over_4.5": 0.3059,
+    "brier_over_5.5": 0.2638,
     "baseline_brier": 0.25,
     "n_holdout": 20
   },
   "ml_metrics": {
     "corners_over_8.5": {
-      "brier": 0.2623,
-      "brier_naive": 0.2371,
-      "skill": -0.106,
-      "prevalence": 0.608,
-      "n_train": 581,
+      "brier": 0.2617,
+      "brier_naive": 0.2354,
+      "skill": -0.112,
+      "prevalence": 0.607,
+      "n_train": 582,
       "n_test": 145
     },
     "corners_over_9.5": {
-      "brier": 0.2761,
-      "brier_naive": 0.248,
-      "skill": -0.113,
-      "prevalence": 0.446,
-      "n_train": 581,
+      "brier": 0.2748,
+      "brier_naive": 0.2486,
+      "skill": -0.106,
+      "prevalence": 0.445,
+      "n_train": 582,
       "n_test": 145
     },
     "corners_over_10.5": {
-      "brier": 0.2291,
-      "brier_naive": 0.2259,
-      "skill": -0.014,
+      "brier": 0.2367,
+      "brier_naive": 0.228,
+      "skill": -0.038,
       "prevalence": 0.332,
-      "n_train": 581,
+      "n_train": 582,
       "n_test": 145
     },
     "cards_over_3.5": {
-      "brier": 0.1674,
+      "brier": 0.1735,
       "brier_naive": 0.1758,
-      "skill": 0.048,
+      "skill": 0.013,
       "prevalence": 0.773,
-      "n_train": 581,
+      "n_train": 582,
       "n_test": 145
     },
     "cards_over_4.5": {
-      "brier": 0.2299,
+      "brier": 0.2197,
       "brier_naive": 0.2448,
-      "skill": 0.061,
+      "skill": 0.103,
       "prevalence": 0.565,
-      "n_train": 581,
+      "n_train": 582,
       "n_test": 145
     },
     "cards_over_5.5": {
-      "brier": 0.2441,
-      "brier_naive": 0.2413,
-      "skill": -0.012,
-      "prevalence": 0.37,
-      "n_train": 581,
+      "brier": 0.2485,
+      "brier_naive": 0.24,
+      "skill": -0.035,
+      "prevalence": 0.371,
+      "n_train": 582,
       "n_test": 145
     },
     "btts": {
-      "brier": 0.2429,
-      "brier_naive": 0.24,
-      "skill": -0.012,
-      "prevalence": 0.558,
-      "n_train": 581,
+      "brier": 0.2546,
+      "brier_naive": 0.2386,
+      "skill": -0.067,
+      "prevalence": 0.557,
+      "n_train": 582,
       "n_test": 145
     },
     "resultado_1X2": {
-      "log_loss": 2.2138,
+      "log_loss": 1.7518,
       "log_loss_naive": 1.0986,
       "classes": [
         "A",
         "D",
         "H"
       ],
-      "n_train": 581,
+      "n_train": 582,
       "n_test": 145
     },
     "shap_corners_over_9.5": {
-      "v_corners_against": 0.2835,
-      "l_goals_allowed": 0.233,
-      "sum_cards_rate": 0.1943,
-      "altitude_diff": 0.1939,
-      "v_goals_allowed": 0.1928,
-      "elo_diff": 0.1829,
-      "elo_local": 0.1819,
-      "elo_visita": 0.1798
+      "v_corners_against": 0.2731,
+      "l_goals_allowed": 0.2314,
+      "sum_cards_rate": 0.2123,
+      "v_goals_allowed": 0.2,
+      "altitude_diff": 0.1872,
+      "elo_local": 0.169,
+      "elo_diff": 0.1523,
+      "elo_visita": 0.1472
     }
   }
 }
