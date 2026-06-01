@@ -451,8 +451,8 @@ fecha_prediccion,partido,equipo_local,equipo_visitante,elo_local,elo_visitante,p
 2026-05-19 16:53:33,Cerro Porteño vs Sporting Cristal,Cerro Porteño,Sporting Cristal,1500.0,1518.7,39.1,31.2,29.6,local,1-1,1.4022,1.1978,ligas_internacionales,2026-05-28,,,,,,libertadores
 2026-05-19 16:53:33,Palmeiras vs Atlético Junior,Palmeiras,Atlético Junior,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-28,,,,,,libertadores
 2026-05-19 16:53:33,Boca Juniors vs Universidad Católica,Boca Juniors,Universidad Católica,1513.3,1500.0,41.7,31.0,27.3,local,1-1,1.4555,1.1445,ligas_internacionales,2026-05-29,,,,,,libertadores
-2026-05-19 16:53:33,Cruzeiro vs Barcelona SC,Cruzeiro,Barcelona SC,1513.3,1486.7,42.8,30.9,26.3,local,1-1,1.4778,1.1222,ligas_internacionales,2026-05-29,,,,,,libertadores
-2026-05-21 16:46:10,Paris Saint-Germain vs Arsenal,Paris Saint-Germain,Arsenal,1518.2,1516.7,40.8,31.1,28.1,local,1-1,1.4358,1.1643,ligas_internacionales,2026-05-30,,,,,,champions
+2026-05-19 16:53:33,Cruzeiro vs Barcelona SC,Cruzeiro,Barcelona SC,1513.3,1486.7,42.8,30.9,26.3,local,1-1,1.4778,1.1222,ligas_internacionales,2026-05-29,local,4.0,0.0,True,,libertadores
+2026-05-21 16:46:10,Paris Saint-Germain vs Arsenal,Paris Saint-Germain,Arsenal,1518.2,1516.7,40.8,31.1,28.1,local,1-1,1.4358,1.1643,ligas_internacionales,2026-05-30,empate,1,1,False,,champions
 2026-05-21 16:46:25,Athletico-PR vs Mirassol,Athletico-PR,Mirassol,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-30,,,,,,brasileirao
 2026-05-21 16:46:25,Flamengo vs Coritiba,Flamengo,Coritiba,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-30,,,,,,brasileirao
 2026-05-21 16:46:25,Bahia vs Botafogo,Bahia,Botafogo,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-05-30,,,,,,brasileirao
