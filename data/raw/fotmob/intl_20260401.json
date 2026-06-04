@@ -278,61 +278,6 @@
       "simpleLeague": false
     },
     {
-      "isGroup": true,
-      "groupName": "4",
-      "ccode": "NOR",
-      "id": 919795,
-      "primaryId": 205,
-      "name": "3. Divisjon Avd. 4",
-      "matches": [
-        {
-          "id": 5144251,
-          "leagueId": 919795,
-          "time": "01.04.2026 19:00",
-          "home": {
-            "id": 4230,
-            "score": 2,
-            "name": "Varhaug",
-            "longName": "Varhaug"
-          },
-          "away": {
-            "id": 4232,
-            "score": 0,
-            "name": "Åkra",
-            "longName": "Åkra"
-          },
-          "eliminatedTeamId": null,
-          "statusId": 6,
-          "tournamentStage": "1",
-          "status": {
-            "utcTime": "2026-04-01T17:00:00.000Z",
-            "halfs": {
-              "firstHalfStarted": "01.04.2026 19:01:28",
-              "secondHalfStarted": "01.04.2026 19:59:55"
-            },
-            "periodLength": 45,
-            "finished": true,
-            "started": true,
-            "cancelled": false,
-            "awarded": false,
-            "scoreStr": "2 - 0",
-            "reason": {
-              "short": "FT",
-              "shortKey": "fulltime_short",
-              "long": "Full-Time",
-              "longKey": "finished"
-            }
-          },
-          "timeTS": 1775062800000
-        }
-      ],
-      "parentLeagueId": 205,
-      "parentLeagueName": "Norsk Tipping-ligaen",
-      "internalRank": 0,
-      "liveRank": 0,
-      "simpleLeague": false
-    },
-    {
       "ccode": "MAR",
       "id": 530,
       "primaryId": 530,
@@ -1180,6 +1125,61 @@
           "timeTS": 1775055600000
         }
       ],
+      "internalRank": 0,
+      "liveRank": 0,
+      "simpleLeague": false
+    },
+    {
+      "isGroup": true,
+      "groupName": "4",
+      "ccode": "NOR",
+      "id": 919795,
+      "primaryId": 205,
+      "name": "3. Divisjon Avd. 4",
+      "matches": [
+        {
+          "id": 5144251,
+          "leagueId": 919795,
+          "time": "01.04.2026 19:00",
+          "home": {
+            "id": 4230,
+            "score": 2,
+            "name": "Varhaug",
+            "longName": "Varhaug"
+          },
+          "away": {
+            "id": 4232,
+            "score": 0,
+            "name": "Åkra",
+            "longName": "Åkra"
+          },
+          "eliminatedTeamId": null,
+          "statusId": 6,
+          "tournamentStage": "1",
+          "status": {
+            "utcTime": "2026-04-01T17:00:00.000Z",
+            "halfs": {
+              "firstHalfStarted": "01.04.2026 19:01:28",
+              "secondHalfStarted": "01.04.2026 19:59:55"
+            },
+            "periodLength": 45,
+            "finished": true,
+            "started": true,
+            "cancelled": false,
+            "awarded": false,
+            "scoreStr": "2 - 0",
+            "reason": {
+              "short": "FT",
+              "shortKey": "fulltime_short",
+              "long": "Full-Time",
+              "longKey": "finished"
+            }
+          },
+          "timeTS": 1775062800000
+        }
+      ],
+      "parentLeagueId": 205,
+      "parentLeagueName": "Norsk Tipping-ligaen",
       "internalRank": 0,
       "liveRank": 0,
       "simpleLeague": false
