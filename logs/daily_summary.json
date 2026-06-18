@@ -1,13 +1,13 @@
 {
-  "date": "2026-06-17",
-  "start": "2026-06-17T16:50:16.966686",
+  "date": "2026-06-18",
+  "start": "2026-06-18T16:50:24.367370",
   "pasos": {
     "paso1": {
       "nuevos": 0,
       "terminados_antes": 167,
       "terminados_despues": 167,
       "error": null,
-      "elapsed_s": 62.3
+      "elapsed_s": 63.3
     },
     "paso2": {
       "equipos_afectados": 0,
@@ -16,14 +16,14 @@
       "elapsed_s": 0.0
     },
     "paso3": {
-      "nuevos": 4,
+      "nuevos": 5,
       "fechas_procesadas": 4,
       "error": null,
-      "elapsed_s": 5.7
+      "elapsed_s": 5.9
     },
     "paso4": {
       "selecciones_afectadas": 4,
-      "nuevo_archivo": "elos_selecciones_20260617.json",
+      "nuevo_archivo": "elos_selecciones_20260618.json",
       "error": null,
       "elapsed_s": 0.1
     },
@@ -39,7 +39,7 @@
       "predicciones_generadas": 1,
       "saltado": false,
       "error": null,
-      "elapsed_s": 1.4
+      "elapsed_s": 2.4
     },
     "paso8": {
       "ok": true,
@@ -49,11 +49,11 @@
     "paso7": {
       "committed": false,
       "pushed": false,
-      "error": "Author identity unknown\n\n*** Please tell me who you are.\n\nRun\n\n  git config --global user.email \"you@example.com\"\n  git config --global user.name \"Your Name\"\n\nto set your account's default identity.\nOmit --global to set the identity only in this repository.\n\nfatal: empty ident name (for <runner@runnervm7b5n9.myoezogi4usevlb54zfopxzvyg.bx.internal.cloudapp.net>) not allowed\n"
+      "error": "Author identity unknown\n\n*** Please tell me who you are.\n\nRun\n\n  git config --global user.email \"you@example.com\"\n  git config --global user.name \"Your Name\"\n\nto set your account's default identity.\nOmit --global to set the identity only in this repository.\n\nfatal: empty ident name (for <runner@runnervm7b5n9.ilqebtjoo3redgtn5bhhrwy0we.ex.internal.cloudapp.net>) not allowed\n"
     }
   },
-  "end": "2026-06-17T16:51:29.803114",
-  "elapsed_s": 72.8,
+  "end": "2026-06-18T16:51:39.649302",
+  "elapsed_s": 75.3,
   "success": true,
   "critical_failed": false,
   "noncritical_errors": [
