@@ -179,7 +179,6 @@
       ],
       "parentLeagueId": 10195,
       "internalRank": 0,
-      "liveRank": 1001,
       "simpleLeague": false
     },
     {
@@ -1316,7 +1315,6 @@
       ],
       "parentLeagueId": 114,
       "internalRank": 0,
-      "liveRank": 100,
       "simpleLeague": false,
       "localRank": 45
     },
@@ -1412,7 +1410,6 @@
       "parentLeagueId": 10609,
       "parentLeagueName": "Asian Cup  Qualification Playoff",
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -1504,7 +1501,6 @@
       "parentLeagueId": 10609,
       "parentLeagueName": "Asian Cup  Qualification Playoff",
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -1601,7 +1597,6 @@
       "parentLeagueId": 10609,
       "parentLeagueName": "Asian Cup  Qualification Playoff",
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -1696,7 +1691,6 @@
       "parentLeagueId": 10609,
       "parentLeagueName": "Asian Cup  Qualification Playoff",
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -1791,7 +1785,6 @@
       "parentLeagueId": 10609,
       "parentLeagueName": "Asian Cup  Qualification Playoff",
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -1886,7 +1879,6 @@
       "parentLeagueId": 10609,
       "parentLeagueName": "Asian Cup  Qualification Playoff",
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -2018,7 +2010,6 @@
       ],
       "parentLeagueId": 10437,
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -2152,7 +2143,6 @@
       ],
       "parentLeagueId": 10437,
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -2204,7 +2194,6 @@
       ],
       "parentLeagueId": 10437,
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -2296,7 +2285,6 @@
       ],
       "parentLeagueId": 10437,
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -2432,7 +2420,6 @@
       ],
       "parentLeagueId": 10437,
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -2566,7 +2553,6 @@
       ],
       "parentLeagueId": 10437,
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -2658,7 +2644,6 @@
       ],
       "parentLeagueId": 10437,
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -2752,7 +2737,6 @@
       ],
       "parentLeagueId": 10437,
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -2844,7 +2828,6 @@
       ],
       "parentLeagueId": 10437,
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -2895,7 +2878,6 @@
         }
       ],
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -3027,7 +3009,6 @@
       ],
       "parentLeagueId": 140,
       "internalRank": 9,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -3079,7 +3060,6 @@
       ],
       "parentLeagueId": 128,
       "internalRank": 9,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -3215,7 +3195,6 @@
       ],
       "parentLeagueId": 161,
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -3267,7 +3246,6 @@
       ],
       "parentLeagueId": 9906,
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -3319,7 +3297,6 @@
       ],
       "parentLeagueId": 112,
       "internalRank": 9,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -3370,7 +3347,6 @@
         }
       ],
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -3422,7 +3398,6 @@
       ],
       "parentLeagueId": 9039,
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -3556,7 +3531,6 @@
       ],
       "parentLeagueId": 117,
       "internalRank": 26,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -3728,7 +3702,6 @@
       ],
       "parentLeagueId": 8944,
       "internalRank": 25,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -3862,7 +3835,6 @@
       ],
       "parentLeagueId": 8944,
       "internalRank": 25,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -3913,7 +3885,6 @@
         }
       ],
       "internalRank": 11,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -3967,7 +3938,6 @@
       ],
       "parentLeagueId": 274,
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -4141,7 +4111,6 @@
       ],
       "parentLeagueId": 9125,
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -4193,7 +4162,6 @@
       ],
       "parentLeagueId": 9122,
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -4285,7 +4253,6 @@
       ],
       "parentLeagueId": 8947,
       "internalRank": 24,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -4499,7 +4466,6 @@
       ],
       "parentLeagueId": 524,
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -4595,7 +4561,6 @@
       ],
       "parentLeagueId": 10719,
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -4823,7 +4788,6 @@
       ],
       "parentLeagueId": 9441,
       "internalRank": 4,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -4876,7 +4840,6 @@
         }
       ],
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false,
       "localRank": 16
     },
@@ -4928,7 +4891,6 @@
         }
       ],
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -5021,7 +4983,6 @@
         }
       ],
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -5154,7 +5115,6 @@
         }
       ],
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -5249,7 +5209,6 @@
         }
       ],
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     }
   ],

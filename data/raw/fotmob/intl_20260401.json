@@ -129,7 +129,6 @@
       ],
       "parentLeagueId": 114,
       "internalRank": 0,
-      "liveRank": 100,
       "simpleLeague": false,
       "localRank": 45
     },
@@ -222,7 +221,6 @@
       ],
       "parentLeagueId": 239,
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -274,7 +272,6 @@
       ],
       "parentLeagueId": 240,
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -325,7 +322,6 @@
         }
       ],
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -377,7 +373,6 @@
       ],
       "parentLeagueId": 338,
       "internalRank": 7,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -468,7 +463,6 @@
         }
       ],
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -520,7 +514,6 @@
       ],
       "parentLeagueId": 223,
       "internalRank": 11,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -572,7 +565,6 @@
       ],
       "parentLeagueId": 223,
       "internalRank": 11,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -744,7 +736,6 @@
       ],
       "parentLeagueId": 140,
       "internalRank": 9,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -836,7 +827,6 @@
       ],
       "parentLeagueId": 9906,
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -892,7 +882,6 @@
       ],
       "parentLeagueId": 336,
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -944,7 +933,6 @@
       ],
       "parentLeagueId": 112,
       "internalRank": 9,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -995,7 +983,6 @@
         }
       ],
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -1126,7 +1113,6 @@
         }
       ],
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -1181,7 +1167,6 @@
       "parentLeagueId": 205,
       "parentLeagueName": "Norsk Tipping-ligaen",
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -1232,7 +1217,6 @@
         }
       ],
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -1283,7 +1267,6 @@
         }
       ],
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -1334,7 +1317,6 @@
         }
       ],
       "internalRank": 11,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -1470,7 +1452,6 @@
       ],
       "parentLeagueId": 274,
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -1602,7 +1583,6 @@
       ],
       "parentLeagueId": 9125,
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -1736,7 +1716,6 @@
       ],
       "parentLeagueId": 335,
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -1947,7 +1926,6 @@
       ],
       "parentLeagueId": 512,
       "internalRank": 17,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -1999,7 +1977,6 @@
       ],
       "parentLeagueId": 512,
       "internalRank": 17,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -2131,7 +2108,6 @@
       ],
       "parentLeagueId": 512,
       "internalRank": 17,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -2188,7 +2164,6 @@
       "parentLeagueId": 9138,
       "parentLeagueName": "Segunda Federación",
       "internalRank": 7,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -2440,7 +2415,6 @@
       ],
       "parentLeagueId": 331,
       "internalRank": 7,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -2736,7 +2710,6 @@
       ],
       "parentLeagueId": 9441,
       "internalRank": 4,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -2788,7 +2761,6 @@
       ],
       "parentLeagueId": 10699,
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -2882,7 +2854,6 @@
       ],
       "parentLeagueId": 9375,
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -2933,7 +2904,6 @@
         }
       ],
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false,
       "localRank": 16
     },
@@ -2983,7 +2953,6 @@
       ],
       "parentLeagueId": 251,
       "internalRank": 9,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -3034,7 +3003,6 @@
         }
       ],
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -3085,7 +3053,6 @@
         }
       ],
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -3178,7 +3145,6 @@
         }
       ],
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -3354,7 +3320,6 @@
       ],
       "parentLeagueId": 9545,
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -3526,7 +3491,6 @@
       ],
       "parentLeagueId": 9545,
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -3737,7 +3701,6 @@
         }
       ],
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -3914,7 +3877,6 @@
         }
       ],
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -4047,7 +4009,6 @@
         }
       ],
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -4098,7 +4059,6 @@
         }
       ],
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     }
   ],

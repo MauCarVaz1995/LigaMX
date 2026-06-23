@@ -535,7 +535,6 @@
       ],
       "parentLeagueId": 114,
       "internalRank": 0,
-      "liveRank": 100,
       "simpleLeague": false,
       "localRank": 45
     },
@@ -695,7 +694,6 @@
         }
       ],
       "internalRank": 8,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -949,7 +947,6 @@
       ],
       "parentLeagueId": 10844,
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -1001,7 +998,6 @@
       ],
       "parentLeagueId": 10437,
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -1053,7 +1049,6 @@
       ],
       "parentLeagueId": 9213,
       "internalRank": 7,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -1105,7 +1100,6 @@
       ],
       "parentLeagueId": 338,
       "internalRank": 7,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -1156,7 +1150,6 @@
         }
       ],
       "internalRank": 5,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -1250,7 +1243,6 @@
       ],
       "parentLeagueId": 10270,
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -1426,7 +1418,6 @@
       ],
       "parentLeagueId": 128,
       "internalRank": 9,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -1522,7 +1513,6 @@
       ],
       "parentLeagueId": 161,
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -1574,7 +1564,6 @@
       ],
       "parentLeagueId": 9906,
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -1626,7 +1615,6 @@
       ],
       "parentLeagueId": 336,
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -1680,7 +1668,6 @@
       ],
       "parentLeagueId": 8944,
       "internalRank": 25,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -1772,7 +1759,6 @@
       ],
       "parentLeagueId": 274,
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -1824,7 +1810,6 @@
       ],
       "parentLeagueId": 9125,
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -1880,7 +1865,6 @@
       ],
       "parentLeagueId": 8965,
       "internalRank": 8,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -1935,7 +1919,6 @@
       "parentLeagueId": 147,
       "parentLeagueName": "Serie C",
       "internalRank": 6,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -1990,7 +1973,6 @@
       "parentLeagueId": 147,
       "parentLeagueName": "Serie C",
       "internalRank": 6,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -2208,7 +2190,6 @@
       ],
       "parentLeagueId": 524,
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -2343,7 +2324,6 @@
         }
       ],
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -2394,7 +2374,6 @@
         }
       ],
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -2445,7 +2424,6 @@
         }
       ],
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -2496,7 +2474,6 @@
         }
       ],
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -2549,7 +2526,6 @@
         }
       ],
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     },
     {
@@ -2600,7 +2576,6 @@
         }
       ],
       "internalRank": 0,
-      "liveRank": 0,
       "simpleLeague": false
     }
   ],
