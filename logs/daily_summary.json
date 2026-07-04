@@ -1,13 +1,13 @@
 {
-  "date": "2026-07-03",
-  "start": "2026-07-03T15:48:01.750865",
+  "date": "2026-07-04",
+  "start": "2026-07-04T14:57:43.439798",
   "pasos": {
     "paso1": {
       "nuevos": 0,
       "terminados_antes": 167,
       "terminados_despues": 167,
       "error": null,
-      "elapsed_s": 61.1
+      "elapsed_s": 62.1
     },
     "paso2": {
       "equipos_afectados": 0,
@@ -16,14 +16,14 @@
       "elapsed_s": 0.0
     },
     "paso3": {
-      "nuevos": 10,
+      "nuevos": 24,
       "fechas_procesadas": 4,
       "error": null,
-      "elapsed_s": 5.6
+      "elapsed_s": 5.7
     },
     "paso4": {
-      "selecciones_afectadas": 10,
-      "nuevo_archivo": "elos_selecciones_20260703.json",
+      "selecciones_afectadas": 40,
+      "nuevo_archivo": "elos_selecciones_20260704.json",
       "error": null,
       "elapsed_s": 0.1
     },
@@ -33,7 +33,7 @@
       "aciertos": 14,
       "total_evaluados": 33,
       "error": null,
-      "elapsed_s": 2.6
+      "elapsed_s": 1.8
     },
     "paso6": {
       "predicciones_generadas": 1,
@@ -49,11 +49,11 @@
     "paso7": {
       "committed": false,
       "pushed": false,
-      "error": "Author identity unknown\n\n*** Please tell me who you are.\n\nRun\n\n  git config --global user.email \"you@example.com\"\n  git config --global user.name \"Your Name\"\n\nto set your account's default identity.\nOmit --global to set the identity only in this repository.\n\nfatal: empty ident name (for <runner@runnervmkkn4f.u1ap2i3zw00e3nek3vh4h3r4hd.bx.internal.cloudapp.net>) not allowed\n"
+      "error": "Author identity unknown\n\n*** Please tell me who you are.\n\nRun\n\n  git config --global user.email \"you@example.com\"\n  git config --global user.name \"Your Name\"\n\nto set your account's default identity.\nOmit --global to set the identity only in this repository.\n\nfatal: empty ident name (for <runner@runnervmkkn4f.j13nh154uwcunnvc2ptqax0c5a.ex.internal.cloudapp.net>) not allowed\n"
     }
   },
-  "end": "2026-07-03T15:49:13.410592",
-  "elapsed_s": 71.7,
+  "end": "2026-07-04T14:58:55.436573",
+  "elapsed_s": 72.0,
   "success": true,
   "critical_failed": false,
   "noncritical_errors": [
