@@ -1,29 +1,5 @@
 [
   {
-    "fecha": "2026-06-05",
-    "drift_detectado": {
-      "tarjetas": {
-        "mu_hist": 4.407,
-        "mu_recent": 4.741,
-        "drift": 0.334
-      },
-      "corners": {
-        "mu_hist": 9.343,
-        "mu_recent": 10.222,
-        "drift": 0.88
-      }
-    },
-    "fixes_aplicados": {
-      "corners_mu": {
-        "antes": 9.606,
-        "despues": 9.606,
-        "razon": "drift=+0.88 > 0.8"
-      }
-    },
-    "n_partidos_recientes": 27,
-    "n_partidos_hist": 835
-  },
-  {
     "fecha": "2026-06-06",
     "drift_detectado": {
       "tarjetas": {
@@ -697,6 +673,30 @@
   },
   {
     "fecha": "2026-07-04",
+    "drift_detectado": {
+      "tarjetas": {
+        "mu_hist": 4.407,
+        "mu_recent": 4.741,
+        "drift": 0.334
+      },
+      "corners": {
+        "mu_hist": 9.343,
+        "mu_recent": 10.222,
+        "drift": 0.88
+      }
+    },
+    "fixes_aplicados": {
+      "corners_mu": {
+        "antes": 9.606,
+        "despues": 9.606,
+        "razon": "drift=+0.88 > 0.8"
+      }
+    },
+    "n_partidos_recientes": 27,
+    "n_partidos_hist": 835
+  },
+  {
+    "fecha": "2026-07-05",
     "drift_detectado": {
       "tarjetas": {
         "mu_hist": 4.407,
