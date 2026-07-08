@@ -1,6 +1,6 @@
 {
-  "date": "2026-07-07",
-  "start": "2026-07-07T16:16:50.092895",
+  "date": "2026-07-08",
+  "start": "2026-07-08T15:56:38.087093",
   "pasos": {
     "paso1": {
       "nuevos": 0,
@@ -16,44 +16,44 @@
       "elapsed_s": 0.0
     },
     "paso3": {
-      "nuevos": 2,
+      "nuevos": 22,
       "fechas_procesadas": 4,
       "error": null,
-      "elapsed_s": 7.0
+      "elapsed_s": 5.6
     },
     "paso4": {
-      "selecciones_afectadas": 2,
-      "nuevo_archivo": "elos_selecciones_20260707.json",
+      "selecciones_afectadas": 10,
+      "nuevo_archivo": "elos_selecciones_20260708.json",
       "error": null,
       "elapsed_s": 0.1
     },
     "paso5": {
       "actualizados": 0,
-      "pendientes": 432,
+      "pendientes": 438,
       "aciertos": 14,
       "total_evaluados": 33,
       "error": null,
-      "elapsed_s": 1.4
+      "elapsed_s": 2.6
     },
     "paso6": {
       "predicciones_generadas": 1,
       "saltado": false,
       "error": null,
-      "elapsed_s": 4.2
+      "elapsed_s": 2.2
     },
     "paso8": {
       "ok": true,
-      "elapsed_s": 0.5,
+      "elapsed_s": 0.6,
       "error": null
     },
     "paso7": {
       "committed": false,
       "pushed": false,
-      "error": "Author identity unknown\n\n*** Please tell me who you are.\n\nRun\n\n  git config --global user.email \"you@example.com\"\n  git config --global user.name \"Your Name\"\n\nto set your account's default identity.\nOmit --global to set the identity only in this repository.\n\nfatal: empty ident name (for <runner@runnervmkkn4f.mwfy1h1i4mauxh5d5aut53bbia.dx.internal.cloudapp.net>) not allowed\n"
+      "error": "Author identity unknown\n\n*** Please tell me who you are.\n\nRun\n\n  git config --global user.email \"you@example.com\"\n  git config --global user.name \"Your Name\"\n\nto set your account's default identity.\nOmit --global to set the identity only in this repository.\n\nfatal: empty ident name (for <runner@runnervmkkn4f.iqcvtop1gtletd22nby4u5jplg.bx.internal.cloudapp.net>) not allowed\n"
     }
   },
-  "end": "2026-07-07T16:18:07.705186",
-  "elapsed_s": 77.6,
+  "end": "2026-07-08T15:57:53.860978",
+  "elapsed_s": 75.8,
   "success": true,
   "critical_failed": false,
   "noncritical_errors": [
