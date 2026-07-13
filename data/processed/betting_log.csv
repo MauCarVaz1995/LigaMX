@@ -1532,3 +1532,6 @@ fecha_prediccion,fecha_partido,partido,liga,jornada,equipo_local,equipo_visita,m
 2026-07-09,2026-07-17,Mirassol vs Grêmio,Brasileirao Serie A,0,Mirassol,Grêmio,btts_si,,0.5244,,,,,,,,
 2026-07-09,2026-07-17,Mirassol vs Grêmio,Brasileirao Serie A,0,Mirassol,Grêmio,goles_over_2.5,2.5,0.4816,,,,,,,,
 2026-07-09,2026-07-17,Mirassol vs Grêmio,Brasileirao Serie A,0,Mirassol,Grêmio,goles_over_1.5,1.5,0.7326,,,,,,,,
+2026-07-13,2026-07-21,Atlético-MG vs Bahia,Brasileirao Serie A,0,Atlético-MG,Bahia,btts_si,,0.5244,,,,,,,,
+2026-07-13,2026-07-21,Atlético-MG vs Bahia,Brasileirao Serie A,0,Atlético-MG,Bahia,goles_over_2.5,2.5,0.4816,,,,,,,,
+2026-07-13,2026-07-21,Atlético-MG vs Bahia,Brasileirao Serie A,0,Atlético-MG,Bahia,goles_over_1.5,1.5,0.7326,,,,,,,,
