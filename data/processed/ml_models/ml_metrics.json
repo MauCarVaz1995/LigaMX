@@ -1,5 +1,5 @@
 {
-  "trained_at": "2026-07-12T14:48:01.633008",
+  "trained_at": "2026-07-19T14:47:55.683775",
   "n_partidos": 727,
   "n_holdout": 145,
   "targets_saved": [
@@ -70,7 +70,7 @@
       "n_test": 145
     },
     "resultado_1X2": {
-      "log_loss": 1.7518,
+      "log_loss": 1.513,
       "log_loss_naive": 1.0986,
       "classes": [
         "A",

@@ -1,5 +1,5 @@
 {
-  "last_train_date": "2026-07-12",
+  "last_train_date": "2026-07-19",
   "n_partidos_at_train": 835,
   "torneos": [
     "Liga MX Clausura 2026",
@@ -11,7 +11,7 @@
   "corners_metrics": {
     "brier_over_8.5": 0.2509,
     "brier_over_9.5": 0.2694,
-    "brier_over_10.5": 0.2293,
+    "brier_over_10.5": 0.2292,
     "mae_total_corners": 2.71,
     "baseline_brier": 0.25,
     "n_holdout": 20
@@ -81,7 +81,7 @@
       "n_test": 145
     },
     "resultado_1X2": {
-      "log_loss": 1.7518,
+      "log_loss": 1.513,
       "log_loss_naive": 1.0986,
       "classes": [
         "A",
