@@ -1,13 +1,13 @@
 {
-  "date": "2026-07-20",
-  "start": "2026-07-20T15:43:48.954445",
+  "date": "2026-07-21",
+  "start": "2026-07-21T15:28:06.187497",
   "pasos": {
     "paso1": {
       "nuevos": 0,
       "terminados_antes": 167,
       "terminados_despues": 167,
       "error": null,
-      "elapsed_s": 62.2
+      "elapsed_s": 63.1
     },
     "paso2": {
       "equipos_afectados": 0,
@@ -16,20 +16,20 @@
       "elapsed_s": 0.0
     },
     "paso3": {
-      "nuevos": 8,
+      "nuevos": 3,
       "fechas_procesadas": 4,
       "error": null,
-      "elapsed_s": 5.7
+      "elapsed_s": 5.9
     },
     "paso4": {
-      "selecciones_afectadas": 0,
-      "nuevo_archivo": null,
+      "selecciones_afectadas": 4,
+      "nuevo_archivo": "elos_selecciones_20260721.json",
       "error": null,
       "elapsed_s": 0.1
     },
     "paso5": {
       "actualizados": 0,
-      "pendientes": 509,
+      "pendientes": 522,
       "aciertos": 14,
       "total_evaluados": 33,
       "error": null,
@@ -49,12 +49,14 @@
     "paso7": {
       "committed": false,
       "pushed": false,
-      "error": null
+      "error": "Author identity unknown\n\n*** Please tell me who you are.\n\nRun\n\n  git config --global user.email \"you@example.com\"\n  git config --global user.name \"Your Name\"\n\nto set your account's default identity.\nOmit --global to set the identity only in this repository.\n\nfatal: empty ident name (for <runner@runnervm3jd5f.t3oumd1fll4enhbzgildoccnla.ex.internal.cloudapp.net>) not allowed\n"
     }
   },
-  "end": "2026-07-20T15:45:00.686013",
-  "elapsed_s": 71.7,
+  "end": "2026-07-21T15:29:19.246339",
+  "elapsed_s": 73.1,
   "success": true,
   "critical_failed": false,
-  "noncritical_errors": []
+  "noncritical_errors": [
+    "paso7"
+  ]
 }
