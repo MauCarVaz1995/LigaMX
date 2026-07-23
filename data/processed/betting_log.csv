@@ -1787,3 +1787,6 @@ fecha_prediccion,fecha_partido,partido,liga,jornada,equipo_local,equipo_visita,m
 2026-07-22,2026-07-31,Coritiba vs Cruzeiro,Brasileirao Serie A,0,Coritiba,Cruzeiro,btts_si,,0.5244,,,,,,,,
 2026-07-22,2026-07-31,Coritiba vs Cruzeiro,Brasileirao Serie A,0,Coritiba,Cruzeiro,goles_over_2.5,2.5,0.4816,,,,,,,,
 2026-07-22,2026-07-31,Coritiba vs Cruzeiro,Brasileirao Serie A,0,Coritiba,Cruzeiro,goles_over_1.5,1.5,0.7326,,,,,,,,
+2026-07-23,2026-07-31,New York City FC vs Toronto FC,MLS,0,New York City FC,Toronto FC,btts_si,,0.5244,,,,,,,,
+2026-07-23,2026-07-31,New York City FC vs Toronto FC,MLS,0,New York City FC,Toronto FC,goles_over_2.5,2.5,0.4816,,,,,,,,
+2026-07-23,2026-07-31,New York City FC vs Toronto FC,MLS,0,New York City FC,Toronto FC,goles_over_1.5,1.5,0.7326,,,,,,,,
