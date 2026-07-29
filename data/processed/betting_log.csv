@@ -1883,3 +1883,6 @@ fecha_prediccion,fecha_partido,partido,liga,jornada,equipo_local,equipo_visita,m
 2026-07-28,2026-08-06,Tigre vs Belgrano (Córdoba),Liga Profesional Argentina,0,Tigre,Belgrano (Córdoba),btts_si,,0.5244,,,,,,,,
 2026-07-28,2026-08-06,Tigre vs Belgrano (Córdoba),Liga Profesional Argentina,0,Tigre,Belgrano (Córdoba),goles_over_2.5,2.5,0.4816,,,,,,,,
 2026-07-28,2026-08-06,Tigre vs Belgrano (Córdoba),Liga Profesional Argentina,0,Tigre,Belgrano (Córdoba),goles_over_1.5,1.5,0.7326,,,,,,,,
+2026-07-29,2026-08-06,Unión (Santa Fe) vs Lanús,Liga Profesional Argentina,0,Unión (Santa Fe),Lanús,btts_si,,0.5244,,,,,,,,
+2026-07-29,2026-08-06,Unión (Santa Fe) vs Lanús,Liga Profesional Argentina,0,Unión (Santa Fe),Lanús,goles_over_2.5,2.5,0.4816,,,,,,,,
+2026-07-29,2026-08-06,Unión (Santa Fe) vs Lanús,Liga Profesional Argentina,0,Unión (Santa Fe),Lanús,goles_over_1.5,1.5,0.7326,,,,,,,,
