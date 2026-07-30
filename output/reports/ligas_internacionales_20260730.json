@@ -1,0 +1,112 @@
+{
+  "generated_at": "2026-07-30T15:47:02.688661",
+  "ligas": {
+    "champions": {
+      "nombre": "UEFA Champions League",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "libertadores": {
+      "nombre": "Copa Libertadores",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "mls": {
+      "nombre": "MLS",
+      "n_fixtures": 16,
+      "picks": [
+        {
+          "partido": "New England Revolution vs Houston Dynamo FC",
+          "fecha": "2026-08-08",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        }
+      ]
+    },
+    "argentina": {
+      "nombre": "Liga Profesional Argentina",
+      "n_fixtures": 22,
+      "picks": []
+    },
+    "brasileirao": {
+      "nombre": "Brasileirao Serie A",
+      "n_fixtures": 6,
+      "picks": [
+        {
+          "partido": "Grêmio vs São Paulo",
+          "fecha": "2026-08-08",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Remo vs Atlético-MG",
+          "fecha": "2026-08-08",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Coritiba vs Chapecoense",
+          "fecha": "2026-08-08",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Botafogo vs Fluminense",
+          "fecha": "2026-08-09",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        }
+      ]
+    },
+    "premier": {
+      "nombre": "Premier League",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "laliga": {
+      "nombre": "La Liga",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "bundesliga": {
+      "nombre": "Bundesliga",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "seriea": {
+      "nombre": "Serie A",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "ligue1": {
+      "nombre": "Ligue 1",
+      "n_fixtures": 0,
+      "picks": []
+    }
+  }
+}
