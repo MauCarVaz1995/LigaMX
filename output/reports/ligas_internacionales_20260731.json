@@ -1,0 +1,288 @@
+{
+  "generated_at": "2026-07-31T15:55:14.543255",
+  "ligas": {
+    "champions": {
+      "nombre": "UEFA Champions League",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "libertadores": {
+      "nombre": "Copa Libertadores",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "mls": {
+      "nombre": "MLS",
+      "n_fixtures": 16,
+      "picks": []
+    },
+    "argentina": {
+      "nombre": "Liga Profesional Argentina",
+      "n_fixtures": 33,
+      "picks": [
+        {
+          "partido": "Argentinos Juniors vs Racing Club",
+          "fecha": "2026-08-09",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Atlético Tucumán vs Sarmiento (Junín)",
+          "fecha": "2026-08-09",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Banfield vs Belgrano (Córdoba)",
+          "fecha": "2026-08-09",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Boca Juniors vs Vélez Sarsfield",
+          "fecha": "2026-08-09",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Defensa y Justicia vs Newell's Old Boys",
+          "fecha": "2026-08-09",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Deportivo Riestra vs Estudiantes de La Plata",
+          "fecha": "2026-08-09",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Gimnasia La Plata vs Barracas Central",
+          "fecha": "2026-08-09",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Independiente vs Platense",
+          "fecha": "2026-08-09",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Independiente Rivadavia vs Estudiantes de Río Cuarto",
+          "fecha": "2026-08-09",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Instituto (Córdoba) vs Gimnasia (Mendoza)",
+          "fecha": "2026-08-09",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Rosario Central vs Aldosivi",
+          "fecha": "2026-08-09",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "San Lorenzo vs Huracán",
+          "fecha": "2026-08-09",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Talleres (Córdoba) vs Lanús",
+          "fecha": "2026-08-09",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Tigre vs River Plate",
+          "fecha": "2026-08-09",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Unión (Santa Fe) vs Central Córdoba (Santiago del Estero)",
+          "fecha": "2026-08-09",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        }
+      ]
+    },
+    "brasileirao": {
+      "nombre": "Brasileirao Serie A",
+      "n_fixtures": 10,
+      "picks": [
+        {
+          "partido": "Cruzeiro vs Mirassol",
+          "fecha": "2026-08-09",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Bahia vs Vasco da Gama",
+          "fecha": "2026-08-09",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Palmeiras vs Internacional",
+          "fecha": "2026-08-09",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Red Bull Bragantino vs Corinthians",
+          "fecha": "2026-08-09",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Santos vs Athletico-PR",
+          "fecha": "2026-08-09",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Flamengo vs Vitória",
+          "fecha": "2026-08-09",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        }
+      ]
+    },
+    "premier": {
+      "nombre": "Premier League",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "laliga": {
+      "nombre": "La Liga",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "bundesliga": {
+      "nombre": "Bundesliga",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "seriea": {
+      "nombre": "Serie A",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "ligue1": {
+      "nombre": "Ligue 1",
+      "n_fixtures": 0,
+      "picks": []
+    }
+  }
+}
