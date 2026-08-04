@@ -4959,6 +4959,11 @@ fecha,liga,nombre_liga,pais,temporada,local,visitante,goles_local,goles_visita,o
 2026-05-23,laliga,La Liga,Spain,2025/2026,Real Madrid,Ath Bilbao,4,2,,,,1.5,2.63
 2026-05-23,laliga,La Liga,Spain,2025/2026,Valencia,Barcelona,3,1,,,,1.44,2.75
 2026-05-24,laliga,La Liga,Spain,2025/2026,Villarreal,Ath Madrid,5,1,,,,1.5,2.63
+2026-08-01,laliga,La Liga,Spain,2026/2027,Ayr,Arbroath,2,0,2.4,3.0,2.7,2.35,1.57
+2026-08-01,laliga,La Liga,Spain,2026/2027,Inverness C,Dunfermline,0,0,2.25,3.25,2.75,2.05,1.75
+2026-08-01,laliga,La Liga,Spain,2026/2027,Livingston,Queens Park,2,0,1.42,3.9,6.25,1.9,1.9
+2026-08-01,laliga,La Liga,Spain,2026/2027,Morton,Partick,0,1,4.75,3.75,1.55,1.75,2.05
+2026-08-01,laliga,La Liga,Spain,2026/2027,Raith Rvs,Stenhousemuir,1,1,1.44,3.8,6.5,2.05,1.75
 2021-08-06,ligue1,Ligue 1,France,2021/2022,Monaco,Nantes,1,1,1.51,4.62,6.82,1.66,2.2
 2021-08-07,ligue1,Ligue 1,France,2021/2022,Lyon,Brest,1,1,1.35,5.95,8.71,1.36,3.2
 2021-08-07,ligue1,Ligue 1,France,2021/2022,Troyes,Paris SG,1,2,11.77,6.04,1.28,1.57,2.37
