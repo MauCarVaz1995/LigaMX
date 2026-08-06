@@ -1,0 +1,168 @@
+{
+  "generated_at": "2026-08-06T16:04:13.618391",
+  "ligas": {
+    "champions": {
+      "nombre": "UEFA Champions League",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "libertadores": {
+      "nombre": "Copa Libertadores",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "mls": {
+      "nombre": "MLS",
+      "n_fixtures": 6,
+      "picks": [
+        {
+          "partido": "Atlanta United vs NY Red Bulls",
+          "fecha": "2026-08-15",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Montreal vs DC United",
+          "fecha": "2026-08-15",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Charlotte FC vs Columbus",
+          "fecha": "2026-08-15",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Orlando vs Cincinnati",
+          "fecha": "2026-08-15",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Toronto vs New England",
+          "fecha": "2026-08-15",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        }
+      ]
+    },
+    "argentina": {
+      "nombre": "Liga Profesional Argentina",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "brasileirao": {
+      "nombre": "Brasileirao Serie A",
+      "n_fixtures": 13,
+      "picks": [
+        {
+          "partido": "Fluminense vs Palmeiras",
+          "fecha": "2026-08-15",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Atletico MG vs Gremio",
+          "fecha": "2026-08-15",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Athletico Paranaense vs Red Bull Bragantino",
+          "fecha": "2026-08-15",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        }
+      ]
+    },
+    "premier": {
+      "nombre": "Premier League",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "laliga": {
+      "nombre": "La Liga",
+      "n_fixtures": 2,
+      "picks": [
+        {
+          "partido": "Deportivo Alaves vs Getafe",
+          "fecha": "2026-08-15",
+          "ganador": "local",
+          "prob_local": 38.3,
+          "prob_empate": 31.3,
+          "prob_visitante": 30.4,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1529.6
+        },
+        {
+          "partido": "Sevilla vs Rayo Vallecano",
+          "fecha": "2026-08-15",
+          "ganador": "local",
+          "prob_local": 36.6,
+          "prob_empate": 31.4,
+          "prob_visitante": 32.0,
+          "marcador": "1-1",
+          "elo_local": 1449.9,
+          "elo_visitante": 1500.0
+        }
+      ]
+    },
+    "bundesliga": {
+      "nombre": "Bundesliga",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "seriea": {
+      "nombre": "Serie A",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "ligue1": {
+      "nombre": "Ligue 1",
+      "n_fixtures": 0,
+      "picks": []
+    }
+  }
+}
