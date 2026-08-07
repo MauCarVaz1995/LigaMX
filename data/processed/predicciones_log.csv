@@ -651,3 +651,21 @@ fecha_prediccion,partido,equipo_local,equipo_visitante,elo_local,elo_visitante,p
 2026-08-06 16:05:43,Athletico Paranaense vs Red Bull Bragantino,Athletico Paranaense,Red Bull Bragantino,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-08-15,,,,,,brasileirao
 2026-08-06 16:06:20,Deportivo Alaves vs Getafe,Deportivo Alaves,Getafe,1500.0,1529.6,38.3,31.3,30.4,local,1-1,1.384,1.216,ligas_internacionales,2026-08-15,,,,,,laliga
 2026-08-06 16:06:20,Sevilla vs Rayo Vallecano,Sevilla,Rayo Vallecano,1449.9,1500.0,36.6,31.4,32.0,local,1-1,1.3499,1.2501,ligas_internacionales,2026-08-15,,,,,,laliga
+2026-08-07 14:47:03,Houston vs LA Galaxy,Houston,LA Galaxy,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-08-16,,,,,,mls
+2026-08-07 14:47:03,Nashville SC vs Inter Miami CF,Nashville SC,Inter Miami CF,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-08-16,,,,,,mls
+2026-08-07 14:47:03,Colorado vs Sporting KC,Colorado,Sporting KC,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-08-16,,,,,,mls
+2026-08-07 14:47:03,Salt Lake vs Minnesota,Salt Lake,Minnesota,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-08-16,,,,,,mls
+2026-08-07 14:47:03,LAFC vs San Diego FC,LAFC,San Diego FC,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-08-16,,,,,,mls
+2026-08-07 14:47:03,San Jose vs St. Louis City,San Jose,St. Louis City,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-08-16,,,,,,mls
+2026-08-07 14:47:03,Chicago vs Portland,Chicago,Portland,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-08-16,,,,,,mls
+2026-08-07 14:47:03,NYCFC vs Philadelphia,NYCFC,Philadelphia,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-08-16,,,,,,mls
+2026-08-07 14:47:38,Sao Paulo vs Coritiba,Sao Paulo,Coritiba,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-08-16,,,,,,brasileirao
+2026-08-07 14:47:38,Chapecoense AF vs Bahia,Chapecoense AF,Bahia,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-08-16,,,,,,brasileirao
+2026-08-07 14:47:38,Vasco da Gama vs Santos FC,Vasco da Gama,Santos FC,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-08-16,,,,,,brasileirao
+2026-08-07 14:47:38,Atletico MG vs Gremio,Atletico MG,Gremio,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-08-16,,,,,,brasileirao
+2026-08-07 14:47:38,Mirassol vs Flamengo,Mirassol,Flamengo,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-08-16,,,,,,brasileirao
+2026-08-07 14:47:38,Vitoria vs Botafogo RJ,Vitoria,Botafogo RJ,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-08-16,,,,,,brasileirao
+2026-08-07 14:47:38,Corinthians vs Cruzeiro,Corinthians,Cruzeiro,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-08-16,,,,,,brasileirao
+2026-08-07 14:48:15,Racing Santander vs Villarreal,Racing Santander,Villarreal,1500.0,1667.0,27.7,31.0,41.2,visitante,1-1,1.155,1.445,ligas_internacionales,2026-08-16,,,,,,laliga
+2026-08-07 14:48:15,Espanyol vs Levante,Espanyol,Levante,1500.0,1461.0,43.8,30.7,25.4,local,1-1,1.4983,1.1017,ligas_internacionales,2026-08-16,,,,,,laliga
+2026-08-07 14:48:15,Celta Vigo vs Osasuna,Celta Vigo,Osasuna,1500.0,1541.3,37.3,31.4,31.3,local,1-1,1.3645,1.2355,ligas_internacionales,2026-08-16,,,,,,laliga
