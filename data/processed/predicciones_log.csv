@@ -669,3 +669,7 @@ fecha_prediccion,partido,equipo_local,equipo_visitante,elo_local,elo_visitante,p
 2026-08-07 14:48:15,Racing Santander vs Villarreal,Racing Santander,Villarreal,1500.0,1667.0,27.7,31.0,41.2,visitante,1-1,1.155,1.445,ligas_internacionales,2026-08-16,,,,,,laliga
 2026-08-07 14:48:15,Espanyol vs Levante,Espanyol,Levante,1500.0,1461.0,43.8,30.7,25.4,local,1-1,1.4983,1.1017,ligas_internacionales,2026-08-16,,,,,,laliga
 2026-08-07 14:48:15,Celta Vigo vs Osasuna,Celta Vigo,Osasuna,1500.0,1541.3,37.3,31.4,31.3,local,1-1,1.3645,1.2355,ligas_internacionales,2026-08-16,,,,,,laliga
+2026-08-08 14:25:04,Austin FC vs Dallas,Austin FC,Dallas,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-08-17,,,,,,mls
+2026-08-08 14:25:04,Seattle Sounders vs Vancouver,Seattle Sounders,Vancouver,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-08-17,,,,,,mls
+2026-08-08 14:25:39,Internacional vs Remo,Internacional,Remo,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-08-17,,,,,,brasileirao
+2026-08-08 14:26:14,Deportivo A Coruña vs Elche,Deportivo A Coruña,Elche,1500.0,1434.0,46.1,30.4,23.6,local,1-1,1.5434,1.0566,ligas_internacionales,2026-08-17,,,,,,laliga
