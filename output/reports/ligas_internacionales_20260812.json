@@ -1,0 +1,91 @@
+{
+  "generated_at": "2026-08-12T14:51:39.780001",
+  "ligas": {
+    "champions": {
+      "nombre": "UEFA Champions League",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "libertadores": {
+      "nombre": "Copa Libertadores",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "mls": {
+      "nombre": "MLS",
+      "n_fixtures": 30,
+      "picks": []
+    },
+    "argentina": {
+      "nombre": "Liga Profesional Argentina",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "brasileirao": {
+      "nombre": "Brasileirao Serie A",
+      "n_fixtures": 10,
+      "picks": []
+    },
+    "premier": {
+      "nombre": "Premier League",
+      "n_fixtures": 1,
+      "picks": [
+        {
+          "partido": "Arsenal vs Coventry",
+          "fecha": "2026-08-21",
+          "ganador": "local",
+          "prob_local": 59.5,
+          "prob_empate": 26.8,
+          "prob_visitante": 13.7,
+          "marcador": "1-1",
+          "elo_local": 1727.6,
+          "elo_visitante": 1500.0
+        }
+      ]
+    },
+    "laliga": {
+      "nombre": "La Liga",
+      "n_fixtures": 9,
+      "picks": [
+        {
+          "partido": "Real Betis vs Real Sociedad",
+          "fecha": "2026-08-21",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        }
+      ]
+    },
+    "bundesliga": {
+      "nombre": "Bundesliga",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "seriea": {
+      "nombre": "Serie A",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "ligue1": {
+      "nombre": "Ligue 1",
+      "n_fixtures": 1,
+      "picks": [
+        {
+          "partido": "Marseille vs Strasbourg",
+          "fecha": "2026-08-21",
+          "ganador": "local",
+          "prob_local": 42.8,
+          "prob_empate": 30.9,
+          "prob_visitante": 26.3,
+          "marcador": "1-1",
+          "elo_local": 1597.7,
+          "elo_visitante": 1571.0
+        }
+      ]
+    }
+  }
+}
