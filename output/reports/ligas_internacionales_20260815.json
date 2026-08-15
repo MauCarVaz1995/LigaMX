@@ -1,0 +1,125 @@
+{
+  "generated_at": "2026-08-15T14:13:40.622136",
+  "ligas": {
+    "champions": {
+      "nombre": "UEFA Champions League",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "libertadores": {
+      "nombre": "Copa Libertadores",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "mls": {
+      "nombre": "MLS",
+      "n_fixtures": 45,
+      "picks": []
+    },
+    "argentina": {
+      "nombre": "Liga Profesional Argentina",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "brasileirao": {
+      "nombre": "Brasileirao Serie A",
+      "n_fixtures": 20,
+      "picks": [
+        {
+          "partido": "Botafogo RJ vs Athletico Paranaense",
+          "fecha": "2026-08-24",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        }
+      ]
+    },
+    "premier": {
+      "nombre": "Premier League",
+      "n_fixtures": 10,
+      "picks": [
+        {
+          "partido": "Fulham vs Chelsea",
+          "fecha": "2026-08-24",
+          "ganador": "local",
+          "prob_local": 40.0,
+          "prob_empate": 31.2,
+          "prob_visitante": 28.9,
+          "marcador": "1-1",
+          "elo_local": 1537.5,
+          "elo_visitante": 1546.1
+        }
+      ]
+    },
+    "laliga": {
+      "nombre": "La Liga",
+      "n_fixtures": 16,
+      "picks": [
+        {
+          "partido": "Osasuna vs Levante",
+          "fecha": "2026-08-24",
+          "ganador": "local",
+          "prob_local": 47.3,
+          "prob_empate": 30.1,
+          "prob_visitante": 22.6,
+          "marcador": "1-1",
+          "elo_local": 1541.3,
+          "elo_visitante": 1461.0
+        },
+        {
+          "partido": "Malaga vs Deportivo A Coruña",
+          "fecha": "2026-08-24",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        }
+      ]
+    },
+    "bundesliga": {
+      "nombre": "Bundesliga",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "seriea": {
+      "nombre": "Serie A",
+      "n_fixtures": 10,
+      "picks": [
+        {
+          "partido": "Bologna vs Lazio",
+          "fecha": "2026-08-24",
+          "ganador": "local",
+          "prob_local": 34.5,
+          "prob_empate": 31.4,
+          "prob_visitante": 34.1,
+          "marcador": "1-1",
+          "elo_local": 1531.3,
+          "elo_visitante": 1608.4
+        },
+        {
+          "partido": "Roma vs Fiorentina",
+          "fecha": "2026-08-24",
+          "ganador": "local",
+          "prob_local": 45.3,
+          "prob_empate": 30.5,
+          "prob_visitante": 24.2,
+          "marcador": "1-1",
+          "elo_local": 1622.9,
+          "elo_visitante": 1566.6
+        }
+      ]
+    },
+    "ligue1": {
+      "nombre": "Ligue 1",
+      "n_fixtures": 9,
+      "picks": []
+    }
+  }
+}
