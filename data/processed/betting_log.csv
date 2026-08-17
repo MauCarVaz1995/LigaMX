@@ -2366,3 +2366,6 @@ fecha_prediccion,fecha_partido,partido,liga,jornada,equipo_local,equipo_visita,m
 2026-08-16,2026-08-24,Roma vs Fiorentina,Serie A,0,Roma,Fiorentina,btts_si,,0.5151,,,,,,,,
 2026-08-16,2026-08-24,Roma vs Fiorentina,Serie A,0,Roma,Fiorentina,goles_over_2.5,2.5,0.4816,,,,,,,,
 2026-08-16,2026-08-24,Roma vs Fiorentina,Serie A,0,Roma,Fiorentina,goles_over_1.5,1.5,0.7326,,,,,,,,
+2026-08-17,2026-08-25,Valencia vs Real Betis,La Liga,0,Valencia,Real Betis,btts_si,,0.526,,,,,,,,
+2026-08-17,2026-08-25,Valencia vs Real Betis,La Liga,0,Valencia,Real Betis,goles_over_2.5,2.5,0.4816,,,,,,,,
+2026-08-17,2026-08-25,Valencia vs Real Betis,La Liga,0,Valencia,Real Betis,goles_over_1.5,1.5,0.7326,,,,,,,,

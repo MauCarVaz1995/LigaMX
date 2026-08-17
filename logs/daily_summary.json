@@ -1,13 +1,13 @@
 {
-  "date": "2026-08-16",
-  "start": "2026-08-16T14:12:24.380696",
+  "date": "2026-08-17",
+  "start": "2026-08-17T14:17:11.504961",
   "pasos": {
     "paso1": {
       "nuevos": 0,
       "terminados_antes": 167,
       "terminados_despues": 167,
       "error": null,
-      "elapsed_s": 64.5
+      "elapsed_s": 66.9
     },
     "paso2": {
       "equipos_afectados": 0,
@@ -16,30 +16,30 @@
       "elapsed_s": 0.0
     },
     "paso3": {
-      "nuevos": 22,
+      "nuevos": 6,
       "fechas_procesadas": 4,
       "error": null,
-      "elapsed_s": 6.6
+      "elapsed_s": 7.8
     },
     "paso4": {
-      "selecciones_afectadas": 44,
-      "nuevo_archivo": "elos_selecciones_20260816.json",
+      "selecciones_afectadas": 0,
+      "nuevo_archivo": null,
       "error": null,
       "elapsed_s": 0.1
     },
     "paso5": {
       "actualizados": 0,
-      "pendientes": 718,
+      "pendientes": 719,
       "aciertos": 15,
       "total_evaluados": 36,
       "error": null,
-      "elapsed_s": 2.7
+      "elapsed_s": 2.8
     },
     "paso6": {
       "predicciones_generadas": 1,
       "saltado": false,
       "error": null,
-      "elapsed_s": 2.3
+      "elapsed_s": 1.5
     },
     "paso8": {
       "ok": true,
@@ -49,14 +49,12 @@
     "paso7": {
       "committed": false,
       "pushed": false,
-      "error": "Author identity unknown\n\n*** Please tell me who you are.\n\nRun\n\n  git config --global user.email \"you@example.com\"\n  git config --global user.name \"Your Name\"\n\nto set your account's default identity.\nOmit --global to set the identity only in this repository.\n\nfatal: empty ident name (for <runner@runnervmzvulz.fkzuwk3srtzuziqu02k1cpypyb.yx.internal.cloudapp.net>) not allowed\n"
+      "error": null
     }
   },
-  "end": "2026-08-16T14:13:41.537819",
-  "elapsed_s": 77.2,
+  "end": "2026-08-17T14:18:31.169503",
+  "elapsed_s": 79.7,
   "success": true,
   "critical_failed": false,
-  "noncritical_errors": [
-    "paso7"
-  ]
+  "noncritical_errors": []
 }
