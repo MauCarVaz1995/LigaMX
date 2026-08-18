@@ -1,13 +1,13 @@
 {
-  "date": "2026-08-17",
-  "start": "2026-08-17T14:17:11.504961",
+  "date": "2026-08-18",
+  "start": "2026-08-18T14:21:25.579433",
   "pasos": {
     "paso1": {
       "nuevos": 0,
       "terminados_antes": 167,
       "terminados_despues": 167,
       "error": null,
-      "elapsed_s": 66.9
+      "elapsed_s": 62.2
     },
     "paso2": {
       "equipos_afectados": 0,
@@ -16,10 +16,10 @@
       "elapsed_s": 0.0
     },
     "paso3": {
-      "nuevos": 6,
+      "nuevos": 0,
       "fechas_procesadas": 4,
       "error": null,
-      "elapsed_s": 7.8
+      "elapsed_s": 6.4
     },
     "paso4": {
       "selecciones_afectadas": 0,
@@ -29,17 +29,17 @@
     },
     "paso5": {
       "actualizados": 0,
-      "pendientes": 719,
+      "pendientes": 720,
       "aciertos": 15,
       "total_evaluados": 36,
       "error": null,
-      "elapsed_s": 2.8
+      "elapsed_s": 1.9
     },
     "paso6": {
       "predicciones_generadas": 1,
       "saltado": false,
       "error": null,
-      "elapsed_s": 1.5
+      "elapsed_s": 2.2
     },
     "paso8": {
       "ok": true,
@@ -52,8 +52,8 @@
       "error": null
     }
   },
-  "end": "2026-08-17T14:18:31.169503",
-  "elapsed_s": 79.7,
+  "end": "2026-08-18T14:22:38.841194",
+  "elapsed_s": 73.3,
   "success": true,
   "critical_failed": false,
   "noncritical_errors": []

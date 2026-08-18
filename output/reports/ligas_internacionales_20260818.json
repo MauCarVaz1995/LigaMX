@@ -1,0 +1,78 @@
+{
+  "generated_at": "2026-08-18T14:23:16.797676",
+  "ligas": {
+    "champions": {
+      "nombre": "UEFA Champions League",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "libertadores": {
+      "nombre": "Copa Libertadores",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "mls": {
+      "nombre": "MLS",
+      "n_fixtures": 30,
+      "picks": []
+    },
+    "argentina": {
+      "nombre": "Liga Profesional Argentina",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "brasileirao": {
+      "nombre": "Brasileirao Serie A",
+      "n_fixtures": 10,
+      "picks": []
+    },
+    "premier": {
+      "nombre": "Premier League",
+      "n_fixtures": 10,
+      "picks": []
+    },
+    "laliga": {
+      "nombre": "La Liga",
+      "n_fixtures": 15,
+      "picks": [
+        {
+          "partido": "Celta Vigo vs Osasuna",
+          "fecha": "2026-08-27",
+          "ganador": "local",
+          "prob_local": 37.3,
+          "prob_empate": 31.4,
+          "prob_visitante": 31.3,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1541.3
+        },
+        {
+          "partido": "Barcelona vs Athletic Club",
+          "fecha": "2026-08-27",
+          "ganador": "local",
+          "prob_local": 69.2,
+          "prob_empate": 22.8,
+          "prob_visitante": 8.0,
+          "marcador": "2-0",
+          "elo_local": 1848.0,
+          "elo_visitante": 1500.0
+        }
+      ]
+    },
+    "bundesliga": {
+      "nombre": "Bundesliga",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "seriea": {
+      "nombre": "Serie A",
+      "n_fixtures": 10,
+      "picks": []
+    },
+    "ligue1": {
+      "nombre": "Ligue 1",
+      "n_fixtures": 9,
+      "picks": []
+    }
+  }
+}
