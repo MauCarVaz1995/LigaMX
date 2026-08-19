@@ -1,0 +1,171 @@
+{
+  "generated_at": "2026-08-19T14:24:10.561359",
+  "ligas": {
+    "champions": {
+      "nombre": "UEFA Champions League",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "libertadores": {
+      "nombre": "Copa Libertadores",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "mls": {
+      "nombre": "MLS",
+      "n_fixtures": 30,
+      "picks": []
+    },
+    "argentina": {
+      "nombre": "Liga Profesional Argentina",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "brasileirao": {
+      "nombre": "Brasileirao Serie A",
+      "n_fixtures": 10,
+      "picks": [
+        {
+          "partido": "Internacional vs Atlético-MG",
+          "fecha": "2026-08-22",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Bragantino vs Grêmio",
+          "fecha": "2026-08-23",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Vitória vs Bahia",
+          "fecha": "2026-08-23",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Chapecoense AF vs São Paulo",
+          "fecha": "2026-08-23",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        }
+      ]
+    },
+    "premier": {
+      "nombre": "Premier League",
+      "n_fixtures": 11,
+      "picks": [
+        {
+          "partido": "Crystal Palace vs Manchester City",
+          "fecha": "2026-08-28",
+          "ganador": "visitante",
+          "prob_local": 23.7,
+          "prob_empate": 30.4,
+          "prob_visitante": 45.9,
+          "marcador": "1-1",
+          "elo_local": 1540.4,
+          "elo_visitante": 1764.2
+        }
+      ]
+    },
+    "laliga": {
+      "nombre": "La Liga",
+      "n_fixtures": 17,
+      "picks": [
+        {
+          "partido": "Racing Santander vs Elche",
+          "fecha": "2026-08-28",
+          "ganador": "local",
+          "prob_local": 46.1,
+          "prob_empate": 30.4,
+          "prob_visitante": 23.6,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1434.0
+        },
+        {
+          "partido": "Deportivo Alaves vs Villarreal",
+          "fecha": "2026-08-28",
+          "ganador": "visitante",
+          "prob_local": 27.7,
+          "prob_empate": 31.0,
+          "prob_visitante": 41.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1667.0
+        }
+      ]
+    },
+    "bundesliga": {
+      "nombre": "Bundesliga",
+      "n_fixtures": 1,
+      "picks": [
+        {
+          "partido": "Bayern München vs VfB Stuttgart",
+          "fecha": "2026-08-28",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        }
+      ]
+    },
+    "seriea": {
+      "nombre": "Serie A",
+      "n_fixtures": 11,
+      "picks": [
+        {
+          "partido": "Milan vs Venezia",
+          "fecha": "2026-08-28",
+          "ganador": "local",
+          "prob_local": 62.7,
+          "prob_empate": 25.6,
+          "prob_visitante": 11.7,
+          "marcador": "2-0",
+          "elo_local": 1669.8,
+          "elo_visitante": 1402.8
+        }
+      ]
+    },
+    "ligue1": {
+      "nombre": "Ligue 1",
+      "n_fixtures": 10,
+      "picks": [
+        {
+          "partido": "Lille vs Paris Saint-Germain",
+          "fecha": "2026-08-28",
+          "ganador": "local",
+          "prob_local": 35.0,
+          "prob_empate": 31.4,
+          "prob_visitante": 33.6,
+          "marcador": "1-1",
+          "elo_local": 1676.5,
+          "elo_visitante": 1747.4
+        }
+      ]
+    }
+  }
+}
