@@ -829,3 +829,9 @@ fecha_prediccion,partido,equipo_local,equipo_visitante,elo_local,elo_visitante,p
 2026-08-21 14:28:10,Paris FC vs Nice,Paris FC,Nice,1578.7,1470.5,49.6,29.6,20.8,local,1-1,1.6136,0.9864,ligas_internacionales,2026-08-30,,,,,,ligue1
 2026-08-21 14:28:10,Rennes vs Le Mans,Rennes,Le Mans,1650.6,1500.0,53.1,28.8,18.1,local,1-1,1.6843,0.9157,ligas_internacionales,2026-08-30,,,,,,ligue1
 2026-08-21 14:28:10,Monaco vs Marseille,Monaco,Marseille,1647.2,1597.7,44.7,30.6,24.7,local,1-1,1.5158,1.0842,ligas_internacionales,2026-08-30,,,,,,ligue1
+2026-08-22 14:14:13,Remo vs Coritiba,Remo,Coritiba,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-08-31,,,,,,brasileirao
+2026-08-22 14:14:32,Aston Villa vs Arsenal,Aston Villa,Arsenal,1623.3,1727.6,32.4,31.4,36.2,visitante,1-1,1.2595,1.3405,ligas_internacionales,2026-08-31,,,,,,premier
+2026-08-22 14:14:51,Osasuna vs Getafe,Osasuna,Getafe,1541.3,1529.6,41.6,31.0,27.4,local,1-1,1.4528,1.1472,ligas_internacionales,2026-08-31,,,,,,laliga
+2026-08-22 14:14:51,Barcelona vs Rayo Vallecano,Barcelona,Rayo Vallecano,1848.0,1500.0,69.2,22.8,8.0,local,2-0,2.0134,0.5866,ligas_internacionales,2026-08-31,,,,,,laliga
+2026-08-22 14:15:27,Lecce vs Roma,Lecce,Roma,1409.8,1622.9,24.5,30.5,45.0,visitante,1-1,1.0781,1.5219,ligas_internacionales,2026-08-31,,,,,,seriea
+2026-08-22 14:15:27,Atalanta vs Bologna,Atalanta,Bologna,1652.2,1531.3,50.7,29.4,20.0,local,1-1,1.635,0.965,ligas_internacionales,2026-08-31,,,,,,seriea

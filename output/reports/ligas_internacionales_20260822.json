@@ -1,0 +1,125 @@
+{
+  "generated_at": "2026-08-22T14:12:39.685763",
+  "ligas": {
+    "champions": {
+      "nombre": "UEFA Champions League",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "libertadores": {
+      "nombre": "Copa Libertadores",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "mls": {
+      "nombre": "MLS",
+      "n_fixtures": 30,
+      "picks": []
+    },
+    "argentina": {
+      "nombre": "Liga Profesional Argentina",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "brasileirao": {
+      "nombre": "Brasileirao Serie A",
+      "n_fixtures": 20,
+      "picks": [
+        {
+          "partido": "Remo vs Coritiba",
+          "fecha": "2026-08-31",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        }
+      ]
+    },
+    "premier": {
+      "nombre": "Premier League",
+      "n_fixtures": 18,
+      "picks": [
+        {
+          "partido": "Aston Villa vs Arsenal",
+          "fecha": "2026-08-31",
+          "ganador": "visitante",
+          "prob_local": 32.4,
+          "prob_empate": 31.4,
+          "prob_visitante": 36.2,
+          "marcador": "1-1",
+          "elo_local": 1623.3,
+          "elo_visitante": 1727.6
+        }
+      ]
+    },
+    "laliga": {
+      "nombre": "La Liga",
+      "n_fixtures": 22,
+      "picks": [
+        {
+          "partido": "Osasuna vs Getafe",
+          "fecha": "2026-08-31",
+          "ganador": "local",
+          "prob_local": 41.6,
+          "prob_empate": 31.0,
+          "prob_visitante": 27.4,
+          "marcador": "1-1",
+          "elo_local": 1541.3,
+          "elo_visitante": 1529.6
+        },
+        {
+          "partido": "Barcelona vs Rayo Vallecano",
+          "fecha": "2026-08-31",
+          "ganador": "local",
+          "prob_local": 69.2,
+          "prob_empate": 22.8,
+          "prob_visitante": 8.0,
+          "marcador": "2-0",
+          "elo_local": 1848.0,
+          "elo_visitante": 1500.0
+        }
+      ]
+    },
+    "bundesliga": {
+      "nombre": "Bundesliga",
+      "n_fixtures": 9,
+      "picks": []
+    },
+    "seriea": {
+      "nombre": "Serie A",
+      "n_fixtures": 20,
+      "picks": [
+        {
+          "partido": "Lecce vs Roma",
+          "fecha": "2026-08-31",
+          "ganador": "visitante",
+          "prob_local": 24.5,
+          "prob_empate": 30.5,
+          "prob_visitante": 45.0,
+          "marcador": "1-1",
+          "elo_local": 1409.8,
+          "elo_visitante": 1622.9
+        },
+        {
+          "partido": "Atalanta vs Bologna",
+          "fecha": "2026-08-31",
+          "ganador": "local",
+          "prob_local": 50.7,
+          "prob_empate": 29.4,
+          "prob_visitante": 20.0,
+          "marcador": "1-1",
+          "elo_local": 1652.2,
+          "elo_visitante": 1531.3
+        }
+      ]
+    },
+    "ligue1": {
+      "nombre": "Ligue 1",
+      "n_fixtures": 17,
+      "picks": []
+    }
+  }
+}
