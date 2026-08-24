@@ -1,0 +1,67 @@
+{
+  "generated_at": "2026-08-24T14:32:56.828555",
+  "ligas": {
+    "champions": {
+      "nombre": "UEFA Champions League",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "libertadores": {
+      "nombre": "Copa Libertadores",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "mls": {
+      "nombre": "MLS",
+      "n_fixtures": 15,
+      "picks": []
+    },
+    "argentina": {
+      "nombre": "Liga Profesional Argentina",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "brasileirao": {
+      "nombre": "Brasileirao Serie A",
+      "n_fixtures": 12,
+      "picks": [
+        {
+          "partido": "Flamengo vs Mirassol",
+          "fecha": "2026-09-02",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        }
+      ]
+    },
+    "premier": {
+      "nombre": "Premier League",
+      "n_fixtures": 11,
+      "picks": []
+    },
+    "laliga": {
+      "nombre": "La Liga",
+      "n_fixtures": 16,
+      "picks": []
+    },
+    "bundesliga": {
+      "nombre": "Bundesliga",
+      "n_fixtures": 9,
+      "picks": []
+    },
+    "seriea": {
+      "nombre": "Serie A",
+      "n_fixtures": 12,
+      "picks": []
+    },
+    "ligue1": {
+      "nombre": "Ligue 1",
+      "n_fixtures": 9,
+      "picks": []
+    }
+  }
+}

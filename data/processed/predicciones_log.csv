@@ -835,3 +835,4 @@ fecha_prediccion,partido,equipo_local,equipo_visitante,elo_local,elo_visitante,p
 2026-08-22 14:14:51,Barcelona vs Rayo Vallecano,Barcelona,Rayo Vallecano,1848.0,1500.0,69.2,22.8,8.0,local,2-0,2.0134,0.5866,ligas_internacionales,2026-08-31,,,,,,laliga
 2026-08-22 14:15:27,Lecce vs Roma,Lecce,Roma,1409.8,1622.9,24.5,30.5,45.0,visitante,1-1,1.0781,1.5219,ligas_internacionales,2026-08-31,,,,,,seriea
 2026-08-22 14:15:27,Atalanta vs Bologna,Atalanta,Bologna,1652.2,1531.3,50.7,29.4,20.0,local,1-1,1.635,0.965,ligas_internacionales,2026-08-31,,,,,,seriea
+2026-08-24 14:34:40,Flamengo vs Mirassol,Flamengo,Mirassol,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-09-02,,,,,,brasileirao
