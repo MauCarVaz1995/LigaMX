@@ -836,3 +836,8 @@ fecha_prediccion,partido,equipo_local,equipo_visitante,elo_local,elo_visitante,p
 2026-08-22 14:15:27,Lecce vs Roma,Lecce,Roma,1409.8,1622.9,24.5,30.5,45.0,visitante,1-1,1.0781,1.5219,ligas_internacionales,2026-08-31,,,,,,seriea
 2026-08-22 14:15:27,Atalanta vs Bologna,Atalanta,Bologna,1652.2,1531.3,50.7,29.4,20.0,local,1-1,1.635,0.965,ligas_internacionales,2026-08-31,,,,,,seriea
 2026-08-24 14:34:40,Flamengo vs Mirassol,Flamengo,Mirassol,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-09-02,,,,,,brasileirao
+2026-08-25 14:38:07,Deportivo Alavés vs Villarreal,Deportivo Alavés,Villarreal,1500.0,1667.0,27.7,31.0,41.2,visitante,1-1,1.155,1.445,ligas_internacionales,2026-08-28,,,,,,laliga
+2026-08-25 14:38:07,Sevilla vs Atlético Madrid,Sevilla,Atlético Madrid,1449.9,1500.0,36.6,31.4,32.0,local,1-1,1.3499,1.2501,ligas_internacionales,2026-08-29,,,,,,laliga
+2026-08-25 14:38:07,Real Madrid vs Málaga,Real Madrid,Málaga,1722.4,1500.0,59.1,26.9,14.0,local,1-1,1.8039,0.7961,ligas_internacionales,2026-08-30,,,,,,laliga
+2026-08-25 14:38:07,Real Sociedad vs Celta Vigo,Real Sociedad,Celta Vigo,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-09-03,,,,,,laliga
+2026-08-25 14:39:07,Toulouse vs Lille,Toulouse,Lille,1485.3,1676.5,26.0,30.8,43.2,visitante,1-1,1.1146,1.4854,ligas_internacionales,2026-09-03,,,,,,ligue1

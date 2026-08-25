@@ -2612,3 +2612,6 @@ fecha_prediccion,fecha_partido,partido,liga,jornada,equipo_local,equipo_visita,m
 2026-08-23,2026-08-31,Atalanta vs Bologna,Serie A,0,Atalanta,Bologna,btts_si,,0.4983,,,,,,,,
 2026-08-23,2026-08-31,Atalanta vs Bologna,Serie A,0,Atalanta,Bologna,goles_over_2.5,2.5,0.4816,,,,,,,,
 2026-08-23,2026-08-31,Atalanta vs Bologna,Serie A,0,Atalanta,Bologna,goles_over_1.5,1.5,0.7326,,,,,,,,
+2026-08-25,2026-09-02,Flamengo vs Mirassol,Brasileirao Serie A,0,Flamengo,Mirassol,btts_si,,0.5244,,,,,,,,
+2026-08-25,2026-09-02,Flamengo vs Mirassol,Brasileirao Serie A,0,Flamengo,Mirassol,goles_over_2.5,2.5,0.4816,,,,,,,,
+2026-08-25,2026-09-02,Flamengo vs Mirassol,Brasileirao Serie A,0,Flamengo,Mirassol,goles_over_1.5,1.5,0.7326,,,,,,,,
