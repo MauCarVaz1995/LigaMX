@@ -841,3 +841,10 @@ fecha_prediccion,partido,equipo_local,equipo_visitante,elo_local,elo_visitante,p
 2026-08-25 14:38:07,Real Madrid vs Málaga,Real Madrid,Málaga,1722.4,1500.0,59.1,26.9,14.0,local,1-1,1.8039,0.7961,ligas_internacionales,2026-08-30,,,,,,laliga
 2026-08-25 14:38:07,Real Sociedad vs Celta Vigo,Real Sociedad,Celta Vigo,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-09-03,,,,,,laliga
 2026-08-25 14:39:07,Toulouse vs Lille,Toulouse,Lille,1485.3,1676.5,26.0,30.8,43.2,visitante,1-1,1.1146,1.4854,ligas_internacionales,2026-09-03,,,,,,ligue1
+2026-08-26 14:36:35,NYCFC vs Nashville SC,NYCFC,Nashville SC,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-09-04,,,,,,mls
+2026-08-26 14:37:28,Ipswich vs Liverpool,Ipswich,Liverpool,1329.3,1633.4,18.5,28.9,52.6,visitante,1-1,0.9265,1.6735,ligas_internacionales,2026-09-04,,,,,,premier
+2026-08-26 14:37:46,Real Betis vs Real Madrid,Real Betis,Real Madrid,1500.0,1722.4,23.8,30.4,45.8,visitante,1-1,1.0627,1.5373,ligas_internacionales,2026-09-04,,,,,,laliga
+2026-08-26 14:38:04,VfB Stuttgart vs Köln,VfB Stuttgart,Köln,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-09-04,,,,,,bundesliga
+2026-08-26 14:38:22,Genoa vs Como,Genoa,Como,1532.7,1637.6,32.4,31.4,36.2,visitante,1-1,1.2584,1.3416,ligas_internacionales,2026-09-04,,,,,,seriea
+2026-08-26 14:38:40,Lyon vs Auxerre,Lyon,Auxerre,1638.7,1467.2,54.9,28.3,16.9,local,1-1,1.7191,0.8809,ligas_internacionales,2026-09-04,,,,,,ligue1
+2026-08-26 14:38:40,Paris Saint-Germain vs Monaco,Paris Saint-Germain,Monaco,1747.4,1647.2,48.9,29.8,21.3,local,1-1,1.6004,0.9996,ligas_internacionales,2026-09-04,,,,,,ligue1

@@ -1,0 +1,138 @@
+{
+  "generated_at": "2026-08-26T14:35:43.245325",
+  "ligas": {
+    "champions": {
+      "nombre": "UEFA Champions League",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "libertadores": {
+      "nombre": "Copa Libertadores",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "mls": {
+      "nombre": "MLS",
+      "n_fixtures": 16,
+      "picks": [
+        {
+          "partido": "NYCFC vs Nashville SC",
+          "fecha": "2026-09-04",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        }
+      ]
+    },
+    "argentina": {
+      "nombre": "Liga Profesional Argentina",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "brasileirao": {
+      "nombre": "Brasileirao Serie A",
+      "n_fixtures": 11,
+      "picks": []
+    },
+    "premier": {
+      "nombre": "Premier League",
+      "n_fixtures": 11,
+      "picks": [
+        {
+          "partido": "Ipswich vs Liverpool",
+          "fecha": "2026-09-04",
+          "ganador": "visitante",
+          "prob_local": 18.5,
+          "prob_empate": 28.9,
+          "prob_visitante": 52.6,
+          "marcador": "1-1",
+          "elo_local": 1329.3,
+          "elo_visitante": 1633.4
+        }
+      ]
+    },
+    "laliga": {
+      "nombre": "La Liga",
+      "n_fixtures": 15,
+      "picks": [
+        {
+          "partido": "Real Betis vs Real Madrid",
+          "fecha": "2026-09-04",
+          "ganador": "visitante",
+          "prob_local": 23.8,
+          "prob_empate": 30.4,
+          "prob_visitante": 45.8,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1722.4
+        }
+      ]
+    },
+    "bundesliga": {
+      "nombre": "Bundesliga",
+      "n_fixtures": 10,
+      "picks": [
+        {
+          "partido": "VfB Stuttgart vs Köln",
+          "fecha": "2026-09-04",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        }
+      ]
+    },
+    "seriea": {
+      "nombre": "Serie A",
+      "n_fixtures": 11,
+      "picks": [
+        {
+          "partido": "Genoa vs Como",
+          "fecha": "2026-09-04",
+          "ganador": "visitante",
+          "prob_local": 32.4,
+          "prob_empate": 31.4,
+          "prob_visitante": 36.2,
+          "marcador": "1-1",
+          "elo_local": 1532.7,
+          "elo_visitante": 1637.6
+        }
+      ]
+    },
+    "ligue1": {
+      "nombre": "Ligue 1",
+      "n_fixtures": 12,
+      "picks": [
+        {
+          "partido": "Lyon vs Auxerre",
+          "fecha": "2026-09-04",
+          "ganador": "local",
+          "prob_local": 54.9,
+          "prob_empate": 28.3,
+          "prob_visitante": 16.9,
+          "marcador": "1-1",
+          "elo_local": 1638.7,
+          "elo_visitante": 1467.2
+        },
+        {
+          "partido": "Paris Saint-Germain vs Monaco",
+          "fecha": "2026-09-04",
+          "ganador": "local",
+          "prob_local": 48.9,
+          "prob_empate": 29.8,
+          "prob_visitante": 21.3,
+          "marcador": "1-1",
+          "elo_local": 1747.4,
+          "elo_visitante": 1647.2
+        }
+      ]
+    }
+  }
+}
