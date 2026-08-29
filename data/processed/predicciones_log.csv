@@ -909,3 +909,8 @@ fecha_prediccion,partido,equipo_local,equipo_visitante,elo_local,elo_visitante,p
 2026-08-28 23:20:52,Troyes vs Strasbourg,Troyes,Strasbourg,1342.3,1571.0,23.4,30.3,46.3,visitante,1-1,1.0522,1.5478,ligas_internacionales,2026-09-06,,,,,,ligue1
 2026-08-28 23:20:52,Angers vs Rennes,Angers,Rennes,1436.4,1650.6,24.4,30.5,45.1,visitante,1-1,1.0764,1.5236,ligas_internacionales,2026-09-06,,,,,,ligue1
 2026-08-28 23:20:52,Marseille vs Paris FC,Marseille,Paris FC,1597.7,1578.7,42.2,30.9,26.9,local,1-1,1.465,1.135,ligas_internacionales,2026-09-06,,,,,,ligue1
+2026-08-29 17:29:53,Vitória vs Grêmio,Vitória,Grêmio,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-09-07,,,,,,brasileirao
+2026-08-29 17:30:28,Getafe vs Celta Vigo,Getafe,Celta Vigo,1529.6,1500.0,43.1,30.8,26.1,local,1-1,1.4827,1.1173,ligas_internacionales,2026-09-07,,,,,,laliga
+2026-08-29 17:30:28,Elche vs Real Sociedad,Elche,Real Sociedad,1434.0,1500.0,35.4,31.4,33.2,local,1-1,1.3233,1.2767,ligas_internacionales,2026-09-07,,,,,,laliga
+2026-08-29 17:31:03,Cagliari vs Lecce,Cagliari,Lecce,1428.0,1409.8,42.1,30.9,26.9,local,1-1,1.4637,1.1363,ligas_internacionales,2026-09-07,,,,,,seriea
+2026-08-29 17:31:03,Udinese vs Lazio,Udinese,Lazio,1524.5,1608.4,34.0,31.4,34.6,visitante,1-1,1.2936,1.3064,ligas_internacionales,2026-09-07,,,,,,seriea
