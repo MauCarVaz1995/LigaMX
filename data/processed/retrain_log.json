@@ -1,5 +1,5 @@
 {
-  "last_train_date": "2026-08-23",
+  "last_train_date": "2026-08-30",
   "n_partidos_at_train": 835,
   "torneos": [
     "Liga MX Clausura 2026",
@@ -9,9 +9,9 @@
     "Liga MX Apertura 2025"
   ],
   "corners_metrics": {
-    "brier_over_8.5": 0.2507,
+    "brier_over_8.5": 0.2508,
     "brier_over_9.5": 0.2695,
-    "brier_over_10.5": 0.2293,
+    "brier_over_10.5": 0.2292,
     "mae_total_corners": 2.71,
     "baseline_brier": 0.25,
     "n_holdout": 20
