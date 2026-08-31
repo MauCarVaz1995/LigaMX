@@ -914,3 +914,8 @@ fecha_prediccion,partido,equipo_local,equipo_visitante,elo_local,elo_visitante,p
 2026-08-29 17:30:28,Elche vs Real Sociedad,Elche,Real Sociedad,1434.0,1500.0,35.4,31.4,33.2,local,1-1,1.3233,1.2767,ligas_internacionales,2026-09-07,,,,,,laliga
 2026-08-29 17:31:03,Cagliari vs Lecce,Cagliari,Lecce,1428.0,1409.8,42.1,30.9,26.9,local,1-1,1.4637,1.1363,ligas_internacionales,2026-09-07,,,,,,seriea
 2026-08-29 17:31:03,Udinese vs Lazio,Udinese,Lazio,1524.5,1608.4,34.0,31.4,34.6,visitante,1-1,1.2936,1.3064,ligas_internacionales,2026-09-07,,,,,,seriea
+2026-08-31 19:47:42,Atlanta United vs Orlando,Atlanta United,Orlando,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-09-09,,,,,,mls
+2026-08-31 19:47:42,Montreal vs Charlotte FC,Montreal,Charlotte FC,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-09-09,,,,,,mls
+2026-08-31 19:47:42,DC United vs Columbus,DC United,Columbus,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-09-09,,,,,,mls
+2026-08-31 19:47:42,Philadelphia vs Cincinnati,Philadelphia,Cincinnati,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-09-09,,,,,,mls
+2026-08-31 19:47:42,Toronto vs Nashville SC,Toronto,Nashville SC,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-09-09,,,,,,mls
