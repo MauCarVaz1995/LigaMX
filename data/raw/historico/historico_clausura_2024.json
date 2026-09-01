@@ -6,7 +6,7 @@
   "tabla": [
     {
       "pos": 1,
-      "equipo": "CF America",
+      "equipo": "CF América",
       "equipo_id": 6576,
       "pj": 17,
       "g": 10,
@@ -114,7 +114,7 @@
     },
     {
       "pos": 10,
-      "equipo": "Queretaro FC",
+      "equipo": "Querétaro FC",
       "equipo_id": 1943,
       "pj": 17,
       "g": 6,
@@ -126,7 +126,7 @@
     },
     {
       "pos": 11,
-      "equipo": "Leon",
+      "equipo": "León",
       "equipo_id": 1841,
       "pj": 17,
       "g": 7,
@@ -138,7 +138,7 @@
     },
     {
       "pos": 12,
-      "equipo": "FC Juarez",
+      "equipo": "FC Juárez",
       "equipo_id": 649424,
       "pj": 17,
       "g": 4,
@@ -150,7 +150,7 @@
     },
     {
       "pos": 13,
-      "equipo": "Atletico de San Luis",
+      "equipo": "Atlético de San Luis",
       "equipo_id": 6358,
       "pj": 17,
       "g": 5,
@@ -162,7 +162,7 @@
     },
     {
       "pos": 14,
-      "equipo": "Mazatlan FC",
+      "equipo": "Mazatlán FC",
       "equipo_id": 1170234,
       "pj": 17,
       "g": 4,
