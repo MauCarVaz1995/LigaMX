@@ -932,3 +932,7 @@ fecha_prediccion,partido,equipo_local,equipo_visitante,elo_local,elo_visitante,p
 2026-09-01 17:33:14,Internacional vs Santos,Internacional,Santos,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-09-06,,,,,,brasileirao
 2026-09-01 17:33:14,Botafogo vs Palmeiras,Botafogo,Palmeiras,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-09-06,,,,,,brasileirao
 2026-09-01 17:33:14,Corinthians vs Chapecoense,Corinthians,Chapecoense,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-09-06,,,,,,brasileirao
+2026-09-02 17:34:03,Sevilla vs Valencia,Sevilla,Valencia,1449.9,1485.0,37.8,31.3,30.8,local,1-1,1.3749,1.2251,ligas_internacionales,2026-09-11,,,,,,laliga
+2026-09-02 17:34:23,Union Berlin vs Schalke 04,Union Berlin,Schalke 04,1412.3,1456.0,37.1,31.4,31.5,local,1-1,1.3604,1.2396,ligas_internacionales,2026-09-11,,,,,,bundesliga
+2026-09-02 17:34:42,Venezia vs Fiorentina,Venezia,Fiorentina,1402.8,1566.6,28.0,31.1,41.0,visitante,1-1,1.1604,1.4396,ligas_internacionales,2026-09-11,,,,,,seriea
+2026-09-02 17:35:02,Rennes vs Marseille,Rennes,Marseille,1650.6,1597.7,45.0,30.5,24.5,local,1-1,1.5214,1.0786,ligas_internacionales,2026-09-11,,,,,,ligue1

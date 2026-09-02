@@ -1,0 +1,103 @@
+{
+  "generated_at": "2026-09-02T17:31:45.135677",
+  "ligas": {
+    "champions": {
+      "nombre": "UEFA Champions League",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "libertadores": {
+      "nombre": "Copa Libertadores",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "mls": {
+      "nombre": "MLS",
+      "n_fixtures": 29,
+      "picks": []
+    },
+    "argentina": {
+      "nombre": "Liga Profesional Argentina",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "brasileirao": {
+      "nombre": "Brasileirao Serie A",
+      "n_fixtures": 11,
+      "picks": []
+    },
+    "premier": {
+      "nombre": "Premier League",
+      "n_fixtures": 10,
+      "picks": []
+    },
+    "laliga": {
+      "nombre": "La Liga",
+      "n_fixtures": 12,
+      "picks": [
+        {
+          "partido": "Sevilla vs Valencia",
+          "fecha": "2026-09-11",
+          "ganador": "local",
+          "prob_local": 37.8,
+          "prob_empate": 31.3,
+          "prob_visitante": 30.8,
+          "marcador": "1-1",
+          "elo_local": 1449.9,
+          "elo_visitante": 1485.0
+        }
+      ]
+    },
+    "bundesliga": {
+      "nombre": "Bundesliga",
+      "n_fixtures": 10,
+      "picks": [
+        {
+          "partido": "Union Berlin vs Schalke 04",
+          "fecha": "2026-09-11",
+          "ganador": "local",
+          "prob_local": 37.1,
+          "prob_empate": 31.4,
+          "prob_visitante": 31.5,
+          "marcador": "1-1",
+          "elo_local": 1412.3,
+          "elo_visitante": 1456.0
+        }
+      ]
+    },
+    "seriea": {
+      "nombre": "Serie A",
+      "n_fixtures": 11,
+      "picks": [
+        {
+          "partido": "Venezia vs Fiorentina",
+          "fecha": "2026-09-11",
+          "ganador": "visitante",
+          "prob_local": 28.0,
+          "prob_empate": 31.1,
+          "prob_visitante": 41.0,
+          "marcador": "1-1",
+          "elo_local": 1402.8,
+          "elo_visitante": 1566.6
+        }
+      ]
+    },
+    "ligue1": {
+      "nombre": "Ligue 1",
+      "n_fixtures": 10,
+      "picks": [
+        {
+          "partido": "Rennes vs Marseille",
+          "fecha": "2026-09-11",
+          "ganador": "local",
+          "prob_local": 45.0,
+          "prob_empate": 30.5,
+          "prob_visitante": 24.5,
+          "marcador": "1-1",
+          "elo_local": 1650.6,
+          "elo_visitante": 1597.7
+        }
+      ]
+    }
+  }
+}
