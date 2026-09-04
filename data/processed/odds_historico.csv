@@ -5036,6 +5036,7 @@ fecha,liga,nombre_liga,pais,temporada,local,visitante,goles_local,goles_visita,o
 2026-08-30,laliga,La Liga,Spain,2026/2027,Celta,Ath Bilbao,0,2,2.38,3.2,3.1,2.1,1.73
 2026-08-31,laliga,La Liga,Spain,2026/2027,Osasuna,Getafe,1,0,2.2,3.0,3.75,3.0,1.4
 2026-08-31,laliga,La Liga,Spain,2026/2027,Barcelona,Vallecano,5,2,1.17,8.0,13.0,1.36,3.2
+2026-09-03,laliga,La Liga,Spain,2026/2027,Sociedad,Celta,0,0,1.95,3.6,3.8,1.93,1.93
 2021-08-06,ligue1,Ligue 1,France,2021/2022,Monaco,Nantes,1,1,1.51,4.62,6.82,1.66,2.2
 2021-08-07,ligue1,Ligue 1,France,2021/2022,Lyon,Brest,1,1,1.35,5.95,8.71,1.36,3.2
 2021-08-07,ligue1,Ligue 1,France,2021/2022,Troyes,Paris SG,1,2,11.77,6.04,1.28,1.57,2.37
@@ -6732,6 +6733,7 @@ fecha,liga,nombre_liga,pais,temporada,local,visitante,goles_local,goles_visita,o
 2026-08-30,ligue1,Ligue 1,France,2026/2027,Paris FC,Nice,3,0,2.05,3.3,3.8,2.1,1.73
 2026-08-30,ligue1,Ligue 1,France,2026/2027,Rennes,Le Mans,3,2,1.44,5.0,6.5,1.57,2.38
 2026-08-30,ligue1,Ligue 1,France,2026/2027,Monaco,Marseille,2,0,2.4,3.7,2.75,1.57,2.38
+2026-09-03,ligue1,Ligue 1,France,2026/2027,Toulouse,Lille,0,1,3.25,3.25,2.15,2.0,1.8
 2021-08-06,portuguesa,Primeira Liga,Portugal,2021/2022,Sp Lisbon,Vizela,3,0,1.27,6.14,12.01,1.72,2.07
 2021-08-07,portuguesa,Primeira Liga,Portugal,2021/2022,Arouca,Estoril,0,2,2.27,3.36,3.44,2.3,1.6
 2021-08-07,portuguesa,Primeira Liga,Portugal,2021/2022,Moreirense,Benfica,1,2,6.9,4.8,1.47,1.65,2.2
