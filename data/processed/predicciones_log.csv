@@ -998,3 +998,10 @@ fecha_prediccion,partido,equipo_local,equipo_visitante,elo_local,elo_visitante,p
 2026-09-04 17:19:58,Lille vs Troyes,Lille,Troyes,1676.5,1342.3,68.1,23.3,8.6,local,2-0,1.9904,0.6096,ligas_internacionales,2026-09-13,,,,,,ligue1
 2026-09-04 17:19:58,Le Mans vs Lens,Le Mans,Lens,1500.0,1664.7,27.9,31.1,41.0,visitante,1-1,1.1588,1.4412,ligas_internacionales,2026-09-13,,,,,,ligue1
 2026-09-04 17:19:58,Brest vs Paris Saint-Germain,Brest,Paris Saint-Germain,1519.5,1747.4,23.4,30.3,46.2,visitante,1-1,1.0535,1.5465,ligas_internacionales,2026-09-13,,,,,,ligue1
+2026-09-05 16:24:55,San Diego FC vs Philadelphia,San Diego FC,Philadelphia,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-09-14,,,,,,mls
+2026-09-05 16:25:29,Bahia vs Remo,Bahia,Remo,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-09-14,,,,,,brasileirao
+2026-09-05 16:25:46,Leeds vs Newcastle,Leeds,Newcastle,1554.8,1503.3,44.9,30.6,24.6,local,1-1,1.5192,1.0808,ligas_internacionales,2026-09-14,,,,,,premier
+2026-09-05 16:26:03,Villarreal vs Real Betis,Villarreal,Real Betis,1667.0,1500.0,54.5,28.4,17.1,local,1-1,1.7117,0.8883,ligas_internacionales,2026-09-14,,,,,,laliga
+2026-09-05 16:26:38,Como vs Parma,Como,Parma,1637.6,1540.8,48.6,29.9,21.5,local,1-1,1.5948,1.0052,ligas_internacionales,2026-09-14,,,,,,seriea
+2026-09-05 16:26:38,Torino vs Roma,Torino,Roma,1495.4,1622.9,30.6,31.3,38.0,visitante,1-1,1.2208,1.3792,ligas_internacionales,2026-09-14,,,,,,seriea
+2026-09-05 16:26:38,Inter Milan vs Udinese,Inter Milan,Udinese,1820.0,1524.5,65.1,24.6,10.3,local,2-0,1.9259,0.6741,ligas_internacionales,2026-09-14,,,,,,seriea

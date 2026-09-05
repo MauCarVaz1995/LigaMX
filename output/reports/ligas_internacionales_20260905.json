@@ -1,0 +1,137 @@
+{
+  "generated_at": "2026-09-05T16:24:05.036304",
+  "ligas": {
+    "champions": {
+      "nombre": "UEFA Champions League",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "libertadores": {
+      "nombre": "Copa Libertadores",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "mls": {
+      "nombre": "MLS",
+      "n_fixtures": 43,
+      "picks": [
+        {
+          "partido": "San Diego FC vs Philadelphia",
+          "fecha": "2026-09-14",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        }
+      ]
+    },
+    "argentina": {
+      "nombre": "Liga Profesional Argentina",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "brasileirao": {
+      "nombre": "Brasileirao Serie A",
+      "n_fixtures": 20,
+      "picks": [
+        {
+          "partido": "Bahia vs Remo",
+          "fecha": "2026-09-14",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        }
+      ]
+    },
+    "premier": {
+      "nombre": "Premier League",
+      "n_fixtures": 13,
+      "picks": [
+        {
+          "partido": "Leeds vs Newcastle",
+          "fecha": "2026-09-14",
+          "ganador": "local",
+          "prob_local": 44.9,
+          "prob_empate": 30.6,
+          "prob_visitante": 24.6,
+          "marcador": "1-1",
+          "elo_local": 1554.8,
+          "elo_visitante": 1503.3
+        }
+      ]
+    },
+    "laliga": {
+      "nombre": "La Liga",
+      "n_fixtures": 18,
+      "picks": [
+        {
+          "partido": "Villarreal vs Real Betis",
+          "fecha": "2026-09-14",
+          "ganador": "local",
+          "prob_local": 54.5,
+          "prob_empate": 28.4,
+          "prob_visitante": 17.1,
+          "marcador": "1-1",
+          "elo_local": 1667.0,
+          "elo_visitante": 1500.0
+        }
+      ]
+    },
+    "bundesliga": {
+      "nombre": "Bundesliga",
+      "n_fixtures": 12,
+      "picks": []
+    },
+    "seriea": {
+      "nombre": "Serie A",
+      "n_fixtures": 18,
+      "picks": [
+        {
+          "partido": "Como vs Parma",
+          "fecha": "2026-09-14",
+          "ganador": "local",
+          "prob_local": 48.6,
+          "prob_empate": 29.9,
+          "prob_visitante": 21.5,
+          "marcador": "1-1",
+          "elo_local": 1637.6,
+          "elo_visitante": 1540.8
+        },
+        {
+          "partido": "Torino vs Roma",
+          "fecha": "2026-09-14",
+          "ganador": "visitante",
+          "prob_local": 30.6,
+          "prob_empate": 31.3,
+          "prob_visitante": 38.0,
+          "marcador": "1-1",
+          "elo_local": 1495.4,
+          "elo_visitante": 1622.9
+        },
+        {
+          "partido": "Inter Milan vs Udinese",
+          "fecha": "2026-09-14",
+          "ganador": "local",
+          "prob_local": 65.1,
+          "prob_empate": 24.6,
+          "prob_visitante": 10.3,
+          "marcador": "2-0",
+          "elo_local": 1820.0,
+          "elo_visitante": 1524.5
+        }
+      ]
+    },
+    "ligue1": {
+      "nombre": "Ligue 1",
+      "n_fixtures": 15,
+      "picks": []
+    }
+  }
+}
