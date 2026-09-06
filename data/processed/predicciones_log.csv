@@ -1005,3 +1005,7 @@ fecha_prediccion,partido,equipo_local,equipo_visitante,elo_local,elo_visitante,p
 2026-09-05 16:26:38,Como vs Parma,Como,Parma,1637.6,1540.8,48.6,29.9,21.5,local,1-1,1.5948,1.0052,ligas_internacionales,2026-09-14,,,,,,seriea
 2026-09-05 16:26:38,Torino vs Roma,Torino,Roma,1495.4,1622.9,30.6,31.3,38.0,visitante,1-1,1.2208,1.3792,ligas_internacionales,2026-09-14,,,,,,seriea
 2026-09-05 16:26:38,Inter Milan vs Udinese,Inter Milan,Udinese,1820.0,1524.5,65.1,24.6,10.3,local,2-0,1.9259,0.6741,ligas_internacionales,2026-09-14,,,,,,seriea
+2026-09-06 16:35:54,Cincinnati vs DC United,Cincinnati,DC United,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-09-06,,,,,,mls
+2026-09-06 16:37:05,Rayo Vallecano vs Espanyol,Rayo Vallecano,Espanyol,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-09-15,,,,,,laliga
+2026-09-06 16:37:05,Deportivo Alavés vs Valencia,Deportivo Alavés,Valencia,1500.0,1485.0,41.9,31.0,27.1,local,1-1,1.4584,1.1416,ligas_internacionales,2026-09-15,,,,,,laliga
+2026-09-06 16:37:05,Elche vs Real Madrid,Elche,Real Madrid,1434.0,1722.4,19.5,29.2,51.3,visitante,1-1,0.9527,1.6473,ligas_internacionales,2026-09-15,,,,,,laliga
