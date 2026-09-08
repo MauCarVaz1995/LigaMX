@@ -1014,3 +1014,5 @@ fecha_prediccion,partido,equipo_local,equipo_visitante,elo_local,elo_visitante,p
 2026-09-07 18:32:36,Deportivo A Coruña vs Sevilla,Deportivo A Coruña,Sevilla,1500.0,1449.9,44.8,30.6,24.7,local,1-1,1.5168,1.0832,ligas_internacionales,2026-09-16,,,,,,laliga
 2026-09-07 18:32:36,Barcelona vs Racing Santander,Barcelona,Racing Santander,1848.0,1500.0,69.2,22.8,8.0,local,2-0,2.0134,0.5866,ligas_internacionales,2026-09-16,,,,,,laliga
 2026-09-07 18:32:36,Levante vs Athletic Club,Levante,Athletic Club,1461.0,1500.0,37.5,31.4,31.1,local,1-1,1.3684,1.2316,ligas_internacionales,2026-09-16,,,,,,laliga
+2026-09-08 17:43:12,Real Betis vs Getafe,Real Betis,Getafe,1500.0,1529.6,38.3,31.3,30.4,local,1-1,1.384,1.216,ligas_internacionales,2026-09-17,,,,,,laliga
+2026-09-08 17:43:12,Málaga vs Villarreal,Málaga,Villarreal,1500.0,1667.0,27.7,31.0,41.2,visitante,1-1,1.155,1.445,ligas_internacionales,2026-09-17,,,,,,laliga

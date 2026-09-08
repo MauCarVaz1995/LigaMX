@@ -1,0 +1,78 @@
+{
+  "generated_at": "2026-09-08T17:41:07.615758",
+  "ligas": {
+    "champions": {
+      "nombre": "UEFA Champions League",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "libertadores": {
+      "nombre": "Copa Libertadores",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "mls": {
+      "nombre": "MLS",
+      "n_fixtures": 29,
+      "picks": []
+    },
+    "argentina": {
+      "nombre": "Liga Profesional Argentina",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "brasileirao": {
+      "nombre": "Brasileirao Serie A",
+      "n_fixtures": 11,
+      "picks": []
+    },
+    "premier": {
+      "nombre": "Premier League",
+      "n_fixtures": 10,
+      "picks": []
+    },
+    "laliga": {
+      "nombre": "La Liga",
+      "n_fixtures": 19,
+      "picks": [
+        {
+          "partido": "Real Betis vs Getafe",
+          "fecha": "2026-09-17",
+          "ganador": "local",
+          "prob_local": 38.3,
+          "prob_empate": 31.3,
+          "prob_visitante": 30.4,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1529.6
+        },
+        {
+          "partido": "Málaga vs Villarreal",
+          "fecha": "2026-09-17",
+          "ganador": "visitante",
+          "prob_local": 27.7,
+          "prob_empate": 31.0,
+          "prob_visitante": 41.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1667.0
+        }
+      ]
+    },
+    "bundesliga": {
+      "nombre": "Bundesliga",
+      "n_fixtures": 9,
+      "picks": []
+    },
+    "seriea": {
+      "nombre": "Serie A",
+      "n_fixtures": 10,
+      "picks": []
+    },
+    "ligue1": {
+      "nombre": "Ligue 1",
+      "n_fixtures": 9,
+      "picks": []
+    }
+  }
+}
