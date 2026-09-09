@@ -3119,7 +3119,8 @@
           "home": {
             "id": 1838,
             "score": 3,
-            "name": "Progreso",
+            "name": "Club Atlético Progreso",
+            "shortName": "Progreso",
             "longName": "Club Atlético Progreso"
           },
           "away": {
@@ -3413,13 +3414,15 @@
           "home": {
             "id": 8652,
             "score": 2,
-            "name": "Southend",
+            "name": "Southend United",
+            "shortName": "Southend",
             "longName": "Southend United"
           },
           "away": {
             "id": 10198,
             "score": 1,
-            "name": "Yeovil",
+            "name": "Yeovil Town",
+            "shortName": "Yeovil",
             "longName": "Yeovil Town"
           },
           "eliminatedTeamId": null,
@@ -3632,7 +3635,8 @@
           "away": {
             "id": 8599,
             "score": 2,
-            "name": "Macclesfield",
+            "name": "Macclesfield FC",
+            "shortName": "Macclesfield",
             "longName": "Macclesfield FC"
           },
           "eliminatedTeamId": null,
@@ -3856,7 +3860,8 @@
           "away": {
             "id": 1281661,
             "score": 5,
-            "name": "Nottm Forest U18",
+            "name": "Nottingham Forest U18",
+            "shortName": "Nottm Forest U18",
             "longName": "Nottingham Forest U18"
           },
           "eliminatedTeamId": null,

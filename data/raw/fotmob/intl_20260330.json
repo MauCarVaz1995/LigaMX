@@ -557,7 +557,8 @@
           "away": {
             "id": 101624,
             "score": 0,
-            "name": "Sanat-Naft",
+            "name": "Sanat Naft Abadan",
+            "shortName": "Sanat-Naft",
             "longName": "Sanat Naft Abadan"
           },
           "eliminatedTeamId": null,
@@ -588,7 +589,8 @@
           "home": {
             "id": 392200,
             "score": 0,
-            "name": "Nassaji",
+            "name": "Nassaji Mazandaran FC",
+            "shortName": "Nassaji",
             "longName": "Nassaji Mazandaran FC"
           },
           "away": {
@@ -625,7 +627,8 @@
           "home": {
             "id": 775750,
             "score": 0,
-            "name": "Pars Jonoubi",
+            "name": "Pars Jonoubi Jam",
+            "shortName": "Pars Jonoubi",
             "longName": "Pars Jonoubi Jam"
           },
           "away": {

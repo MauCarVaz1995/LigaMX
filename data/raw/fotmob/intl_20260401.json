@@ -1282,13 +1282,15 @@
           "home": {
             "id": 1113560,
             "score": 0,
-            "name": "Blackburn U18",
+            "name": "Blackburn Rovers U18",
+            "shortName": "Blackburn U18",
             "longName": "Blackburn Rovers U18"
           },
           "away": {
             "id": 1113554,
             "score": 1,
-            "name": "Wolves U18",
+            "name": "Wolverhampton Wanderers U18",
+            "shortName": "Wolves U18",
             "longName": "Wolverhampton Wanderers U18"
           },
           "eliminatedTeamId": null,
