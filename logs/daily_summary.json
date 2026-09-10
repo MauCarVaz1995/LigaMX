@@ -1,13 +1,13 @@
 {
-  "date": "2026-09-09",
-  "start": "2026-09-09T17:24:16.275632",
+  "date": "2026-09-10",
+  "start": "2026-09-10T17:22:57.302635",
   "pasos": {
     "paso1": {
       "nuevos": 0,
       "terminados_antes": 167,
       "terminados_despues": 167,
       "error": null,
-      "elapsed_s": 60.9
+      "elapsed_s": 62.9
     },
     "paso2": {
       "equipos_afectados": 0,
@@ -16,20 +16,20 @@
       "elapsed_s": 0.0
     },
     "paso3": {
-      "nuevos": 21,
+      "nuevos": 23,
       "fechas_procesadas": 4,
       "error": null,
-      "elapsed_s": 5.7
+      "elapsed_s": 5.8
     },
     "paso4": {
-      "selecciones_afectadas": 16,
-      "nuevo_archivo": "elos_selecciones_20260909.json",
+      "selecciones_afectadas": 26,
+      "nuevo_archivo": "elos_selecciones_20260910.json",
       "error": null,
       "elapsed_s": 0.1
     },
     "paso5": {
       "actualizados": 0,
-      "pendientes": 981,
+      "pendientes": 1027,
       "aciertos": 15,
       "total_evaluados": 36,
       "error": null,
@@ -39,7 +39,7 @@
       "predicciones_generadas": 1,
       "saltado": false,
       "error": null,
-      "elapsed_s": 4.3
+      "elapsed_s": 4.5
     },
     "paso8": {
       "ok": true,
@@ -49,11 +49,11 @@
     "paso7": {
       "committed": false,
       "pushed": false,
-      "error": "Author identity unknown\n\n*** Please tell me who you are.\n\nRun\n\n  git config --global user.email \"you@example.com\"\n  git config --global user.name \"Your Name\"\n\nto set your account's default identity.\nOmit --global to set the identity only in this repository.\n\nfatal: empty ident name (for <runner@runnervmlun5p.kkap2sbfrscefkbh5obevo2aze.bx.internal.cloudapp.net>) not allowed\n"
+      "error": "Author identity unknown\n\n*** Please tell me who you are.\n\nRun\n\n  git config --global user.email \"you@example.com\"\n  git config --global user.name \"Your Name\"\n\nto set your account's default identity.\nOmit --global to set the identity only in this repository.\n\nfatal: empty ident name (for <runner@runnervmlun5p.jz0nvyc5t42epg3nzsva2dkvre.gx.internal.cloudapp.net>) not allowed\n"
     }
   },
-  "end": "2026-09-09T17:25:30.822958",
-  "elapsed_s": 74.5,
+  "end": "2026-09-10T17:24:14.233715",
+  "elapsed_s": 76.9,
   "success": true,
   "critical_failed": false,
   "noncritical_errors": [
