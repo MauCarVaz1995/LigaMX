@@ -1,13 +1,13 @@
 {
-  "date": "2026-09-10",
-  "start": "2026-09-10T17:22:57.302635",
+  "date": "2026-09-11",
+  "start": "2026-09-11T17:24:30.315310",
   "pasos": {
     "paso1": {
       "nuevos": 0,
       "terminados_antes": 167,
       "terminados_despues": 167,
       "error": null,
-      "elapsed_s": 62.9
+      "elapsed_s": 65.9
     },
     "paso2": {
       "equipos_afectados": 0,
@@ -16,30 +16,30 @@
       "elapsed_s": 0.0
     },
     "paso3": {
-      "nuevos": 23,
+      "nuevos": 18,
       "fechas_procesadas": 4,
       "error": null,
-      "elapsed_s": 5.8
+      "elapsed_s": 6.9
     },
     "paso4": {
-      "selecciones_afectadas": 26,
-      "nuevo_archivo": "elos_selecciones_20260910.json",
+      "selecciones_afectadas": 18,
+      "nuevo_archivo": "elos_selecciones_20260911.json",
       "error": null,
       "elapsed_s": 0.1
     },
     "paso5": {
       "actualizados": 0,
-      "pendientes": 1027,
+      "pendientes": 1058,
       "aciertos": 15,
       "total_evaluados": 36,
       "error": null,
-      "elapsed_s": 2.7
+      "elapsed_s": 2.8
     },
     "paso6": {
       "predicciones_generadas": 1,
       "saltado": false,
       "error": null,
-      "elapsed_s": 4.5
+      "elapsed_s": 3.7
     },
     "paso8": {
       "ok": true,
@@ -49,11 +49,11 @@
     "paso7": {
       "committed": false,
       "pushed": false,
-      "error": "Author identity unknown\n\n*** Please tell me who you are.\n\nRun\n\n  git config --global user.email \"you@example.com\"\n  git config --global user.name \"Your Name\"\n\nto set your account's default identity.\nOmit --global to set the identity only in this repository.\n\nfatal: empty ident name (for <runner@runnervmlun5p.jz0nvyc5t42epg3nzsva2dkvre.gx.internal.cloudapp.net>) not allowed\n"
+      "error": "Author identity unknown\n\n*** Please tell me who you are.\n\nRun\n\n  git config --global user.email \"you@example.com\"\n  git config --global user.name \"Your Name\"\n\nto set your account's default identity.\nOmit --global to set the identity only in this repository.\n\nfatal: empty ident name (for <runner@runnervmlun5p.jl4g01mmrdtuphhvlp2yymejfg.dx.internal.cloudapp.net>) not allowed\n"
     }
   },
-  "end": "2026-09-10T17:24:14.233715",
-  "elapsed_s": 76.9,
+  "end": "2026-09-11T17:25:50.725075",
+  "elapsed_s": 80.4,
   "success": true,
   "critical_failed": false,
   "noncritical_errors": [
