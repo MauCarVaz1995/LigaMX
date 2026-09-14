@@ -1,13 +1,13 @@
 {
-  "date": "2026-09-13",
-  "start": "2026-09-13T17:07:41.786940",
+  "date": "2026-09-14",
+  "start": "2026-09-14T18:57:08.089603",
   "pasos": {
     "paso1": {
       "nuevos": 0,
       "terminados_antes": 167,
       "terminados_despues": 167,
       "error": null,
-      "elapsed_s": 61.4
+      "elapsed_s": 66.3
     },
     "paso2": {
       "equipos_afectados": 0,
@@ -16,14 +16,14 @@
       "elapsed_s": 0.0
     },
     "paso3": {
-      "nuevos": 26,
+      "nuevos": 20,
       "fechas_procesadas": 4,
       "error": null,
-      "elapsed_s": 6.0
+      "elapsed_s": 7.7
     },
     "paso4": {
-      "selecciones_afectadas": 16,
-      "nuevo_archivo": "elos_selecciones_20260913.json",
+      "selecciones_afectadas": 8,
+      "nuevo_archivo": "elos_selecciones_20260914.json",
       "error": null,
       "elapsed_s": 0.1
     },
@@ -39,7 +39,7 @@
       "predicciones_generadas": 1,
       "saltado": false,
       "error": null,
-      "elapsed_s": 8.8
+      "elapsed_s": 3.7
     },
     "paso8": {
       "ok": true,
@@ -49,11 +49,11 @@
     "paso7": {
       "committed": false,
       "pushed": false,
-      "error": "Author identity unknown\n\n*** Please tell me who you are.\n\nRun\n\n  git config --global user.email \"you@example.com\"\n  git config --global user.name \"Your Name\"\n\nto set your account's default identity.\nOmit --global to set the identity only in this repository.\n\nfatal: empty ident name (for <runner@runnervmlun5p.0xavb5yt4blube0y5vrnuhw5xc.ex.internal.cloudapp.net>) not allowed\n"
+      "error": "Author identity unknown\n\n*** Please tell me who you are.\n\nRun\n\n  git config --global user.email \"you@example.com\"\n  git config --global user.name \"Your Name\"\n\nto set your account's default identity.\nOmit --global to set the identity only in this repository.\n\nfatal: empty ident name (for <runner@runnervmlun5p.5kxni2s0neluvap53gqxf1q2mc.dx.internal.cloudapp.net>) not allowed\n"
     }
   },
-  "end": "2026-09-13T17:09:01.529569",
-  "elapsed_s": 79.7,
+  "end": "2026-09-14T18:58:29.606358",
+  "elapsed_s": 81.5,
   "success": true,
   "critical_failed": false,
   "noncritical_errors": [
