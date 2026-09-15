@@ -1129,3 +1129,4 @@ fecha_prediccion,partido,equipo_local,equipo_visitante,elo_local,elo_visitante,p
 2026-09-11 17:29:57,Auxerre vs Brest,Auxerre,Brest,1467.2,1519.5,36.5,31.4,32.1,local,1-1,1.3461,1.2539,ligas_internacionales,2026-09-20,,,,,,ligue1
 2026-09-11 17:29:57,Nice vs Lille,Nice,Lille,1470.5,1676.5,25.0,30.6,44.4,visitante,1-1,1.09,1.51,ligas_internacionales,2026-09-20,,,,,,ligue1
 2026-09-11 17:29:57,Marseille vs Paris Saint-Germain,Marseille,Paris Saint-Germain,1597.7,1747.4,29.0,31.2,39.8,visitante,1-1,1.1839,1.4162,ligas_internacionales,2026-09-20,,,,,,ligue1
+2026-09-15 17:52:05,Seattle Sounders FC vs Real Salt Lake,Seattle Sounders FC,Real Salt Lake,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-09-24,,,,,,mls
