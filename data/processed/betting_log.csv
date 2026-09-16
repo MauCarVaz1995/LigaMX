@@ -3494,3 +3494,6 @@ fecha_prediccion,fecha_partido,partido,liga,jornada,equipo_local,equipo_visita,m
 2026-09-12,2026-09-20,Marseille vs Paris Saint-Germain,Ligue 1,0,Marseille,Paris Saint-Germain,btts_si,,0.5255,,,,,,,,
 2026-09-12,2026-09-20,Marseille vs Paris Saint-Germain,Ligue 1,0,Marseille,Paris Saint-Germain,goles_over_2.5,2.5,0.4816,,,,,,,,
 2026-09-12,2026-09-20,Marseille vs Paris Saint-Germain,Ligue 1,0,Marseille,Paris Saint-Germain,goles_over_1.5,1.5,0.7326,,,,,,,,
+2026-09-16,2026-09-24,Seattle Sounders FC vs Real Salt Lake,MLS,0,Seattle Sounders FC,Real Salt Lake,btts_si,,0.5244,,,,,,,,
+2026-09-16,2026-09-24,Seattle Sounders FC vs Real Salt Lake,MLS,0,Seattle Sounders FC,Real Salt Lake,goles_over_2.5,2.5,0.4816,,,,,,,,
+2026-09-16,2026-09-24,Seattle Sounders FC vs Real Salt Lake,MLS,0,Seattle Sounders FC,Real Salt Lake,goles_over_1.5,1.5,0.7326,,,,,,,,
