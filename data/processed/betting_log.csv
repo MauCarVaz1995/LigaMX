@@ -3548,3 +3548,6 @@ fecha_prediccion,fecha_partido,partido,liga,jornada,equipo_local,equipo_visita,m
 2026-09-28,2026-09-30,Red Bull New York vs St. Louis City,MLS,0,Red Bull New York,St. Louis City,btts_si,,0.5244,,,,,,,,
 2026-09-28,2026-09-30,Red Bull New York vs St. Louis City,MLS,0,Red Bull New York,St. Louis City,goles_over_2.5,2.5,0.4816,,,,,,,,
 2026-09-28,2026-09-30,Red Bull New York vs St. Louis City,MLS,0,Red Bull New York,St. Louis City,goles_over_1.5,1.5,0.7326,,,,,,,,
+2026-09-29,2026-10-07,Chicago Fire FC vs Vancouver Whitecaps,MLS,0,Chicago Fire FC,Vancouver Whitecaps,btts_si,,0.5244,,,,,,,,
+2026-09-29,2026-10-07,Chicago Fire FC vs Vancouver Whitecaps,MLS,0,Chicago Fire FC,Vancouver Whitecaps,goles_over_2.5,2.5,0.4816,,,,,,,,
+2026-09-29,2026-10-07,Chicago Fire FC vs Vancouver Whitecaps,MLS,0,Chicago Fire FC,Vancouver Whitecaps,goles_over_1.5,1.5,0.7326,,,,,,,,
