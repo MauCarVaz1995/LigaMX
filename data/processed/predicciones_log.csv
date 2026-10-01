@@ -1151,3 +1151,36 @@ fecha_prediccion,partido,equipo_local,equipo_visitante,elo_local,elo_visitante,p
 2026-09-30 18:46:05,Málaga vs Espanyol,Málaga,Espanyol,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-10-09,,,,,,laliga
 2026-09-30 18:46:22,Borussia Dortmund vs Werder Bremen,Borussia Dortmund,Werder Bremen,1500.0,1448.6,44.9,30.6,24.6,local,1-1,1.5191,1.0809,ligas_internacionales,2026-10-09,,,,,,bundesliga
 2026-09-30 18:46:58,Lens vs Lyon,Lens,Lyon,1664.7,1638.7,42.8,30.9,26.4,local,1-1,1.4768,1.1233,ligas_internacionales,2026-10-09,,,,,,ligue1
+2026-10-01 19:10:11,Toronto FC vs CF Montréal,Toronto FC,CF Montréal,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-10-10,,,,,,mls
+2026-10-01 19:10:11,Chicago Fire FC vs New York City FC,Chicago Fire FC,New York City FC,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-10-10,,,,,,mls
+2026-10-01 19:10:11,Atlanta United vs FC Cincinnati,Atlanta United,FC Cincinnati,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-10-10,,,,,,mls
+2026-10-01 19:10:11,Charlotte FC vs FC Dallas,Charlotte FC,FC Dallas,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-10-10,,,,,,mls
+2026-10-01 19:10:11,Inter Miami CF vs DC United,Inter Miami CF,DC United,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-10-10,,,,,,mls
+2026-10-01 19:10:11,New England Revolution vs Seattle Sounders FC,New England Revolution,Seattle Sounders FC,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-10-10,,,,,,mls
+2026-10-01 19:10:11,Orlando City vs Columbus Crew,Orlando City,Columbus Crew,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-10-10,,,,,,mls
+2026-10-01 19:10:11,Philadelphia Union vs Real Salt Lake,Philadelphia Union,Real Salt Lake,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-10-10,,,,,,mls
+2026-10-01 19:10:11,Red Bull New York vs San Diego FC,Red Bull New York,San Diego FC,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-10-10,,,,,,mls
+2026-10-01 19:11:08,Arsenal vs Leeds United,Arsenal,Leeds United,1727.6,1500.0,59.5,26.8,13.7,local,1-1,1.8127,0.7873,ligas_internacionales,2026-10-10,,,,,,premier
+2026-10-01 19:11:08,Aston Villa vs Brentford,Aston Villa,Brentford,1623.3,1576.7,44.5,30.6,24.9,local,1-1,1.5111,1.0889,ligas_internacionales,2026-10-10,,,,,,premier
+2026-10-01 19:11:08,Chelsea vs AFC Bournemouth,Chelsea,AFC Bournemouth,1546.1,1500.0,44.4,30.6,24.9,local,1-1,1.5101,1.0899,ligas_internacionales,2026-10-10,,,,,,premier
+2026-10-01 19:11:08,Ipswich Town vs Fulham,Ipswich Town,Fulham,1500.0,1537.5,37.6,31.3,31.0,local,1-1,1.3708,1.2292,ligas_internacionales,2026-10-10,,,,,,premier
+2026-10-01 19:11:08,Sunderland vs Brighton & Hove Albion,Sunderland,Brighton & Hove Albion,1542.4,1500.0,44.1,30.7,25.2,local,1-1,1.504,1.096,ligas_internacionales,2026-10-10,,,,,,premier
+2026-10-01 19:11:08,Manchester United vs Tottenham Hotspur,Manchester United,Tottenham Hotspur,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-10-10,,,,,,premier
+2026-10-01 19:11:27,Rayo Vallecano vs Athletic Club,Rayo Vallecano,Athletic Club,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-10-10,,,,,,laliga
+2026-10-01 19:11:27,Deportivo Alavés vs Atlético Madrid,Deportivo Alavés,Atlético Madrid,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-10-10,,,,,,laliga
+2026-10-01 19:11:27,Barcelona vs Getafe,Barcelona,Getafe,1848.0,1529.6,66.9,23.8,9.3,local,2-0,1.964,0.636,ligas_internacionales,2026-10-10,,,,,,laliga
+2026-10-01 19:11:27,Real Madrid vs Villarreal,Real Madrid,Villarreal,1722.4,1667.0,45.2,30.5,24.3,local,1-1,1.5256,1.0744,ligas_internacionales,2026-10-10,,,,,,laliga
+2026-10-01 19:11:45,Augsburg vs Bayern München,Augsburg,Bayern München,1528.7,1500.0,43.0,30.8,26.2,local,1-1,1.4811,1.1189,ligas_internacionales,2026-10-10,,,,,,bundesliga
+2026-10-01 19:11:45,Hoffenheim vs Hamburger SV,Hoffenheim,Hamburger SV,1591.5,1500.0,48.2,29.9,21.9,local,1-1,1.5859,1.0141,ligas_internacionales,2026-10-10,,,,,,bundesliga
+2026-10-01 19:11:46,Mainz 05 vs Bayer Leverkusen,Mainz 05,Bayer Leverkusen,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-10-10,,,,,,bundesliga
+2026-10-01 19:11:46,Paderborn vs VfB Stuttgart,Paderborn,VfB Stuttgart,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-10-10,,,,,,bundesliga
+2026-10-01 19:11:46,Union Berlin vs Elversberg,Union Berlin,Elversberg,1412.3,1500.0,33.7,31.4,34.9,visitante,1-1,1.2871,1.3129,ligas_internacionales,2026-10-10,,,,,,bundesliga
+2026-10-01 19:11:46,RB Leipzig vs Eintracht Frankfurt,RB Leipzig,Eintracht Frankfurt,1675.2,1500.0,55.2,28.2,16.6,local,1-1,1.7253,0.8747,ligas_internacionales,2026-10-10,,,,,,bundesliga
+2026-10-01 19:12:05,Genoa vs Fiorentina,Genoa,Fiorentina,1532.7,1566.6,37.9,31.3,30.7,local,1-1,1.3769,1.2231,ligas_internacionales,2026-10-10,,,,,,seriea
+2026-10-01 19:12:05,Inter Milan vs Parma,Inter Milan,Parma,1820.0,1540.8,63.7,25.2,11.1,local,2-0,1.8988,0.7012,ligas_internacionales,2026-10-10,,,,,,seriea
+2026-10-01 19:12:05,Napoli vs Frosinone,Napoli,Frosinone,1692.6,1425.6,62.7,25.6,11.7,local,2-0,1.8783,0.7217,ligas_internacionales,2026-10-10,,,,,,seriea
+2026-10-01 19:12:24,Lille vs Le Havre,Lille,Le Havre,1676.5,1461.4,58.5,27.1,14.4,local,1-1,1.7918,0.8082,ligas_internacionales,2026-10-10,,,,,,ligue1
+2026-10-01 19:12:24,Brest vs Angers,Brest,Angers,1519.5,1436.4,47.5,30.1,22.4,local,1-1,1.5719,1.0281,ligas_internacionales,2026-10-10,,,,,,ligue1
+2026-10-01 19:12:24,Lorient vs Paris FC,Lorient,Paris FC,1555.2,1578.7,38.8,31.3,30.0,local,1-1,1.3942,1.2058,ligas_internacionales,2026-10-10,,,,,,ligue1
+2026-10-01 19:12:24,Monaco vs Toulouse,Monaco,Toulouse,1647.2,1485.3,54.1,28.5,17.4,local,1-1,1.7031,0.8969,ligas_internacionales,2026-10-10,,,,,,ligue1
+2026-10-01 19:12:24,Paris Saint-Germain vs Le Mans,Paris Saint-Germain,Le Mans,1747.4,1500.0,61.1,26.2,12.7,local,2-0,1.8457,0.7543,ligas_internacionales,2026-10-10,,,,,,ligue1
