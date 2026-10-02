@@ -1,0 +1,314 @@
+{
+  "generated_at": "2026-10-02T18:48:58.886477",
+  "ligas": {
+    "champions": {
+      "nombre": "UEFA Champions League",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "libertadores": {
+      "nombre": "Copa Libertadores",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "mls": {
+      "nombre": "MLS",
+      "n_fixtures": 16,
+      "picks": [
+        {
+          "partido": "Austin FC vs Nashville SC",
+          "fecha": "2026-10-11",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Minnesota United vs Houston Dynamo FC",
+          "fecha": "2026-10-11",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Sporting Kansas City vs Portland Timbers",
+          "fecha": "2026-10-11",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Colorado Rapids vs San Jose Earthquakes",
+          "fecha": "2026-10-11",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Los Angeles FC vs Vancouver Whitecaps",
+          "fecha": "2026-10-11",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "St. Louis City vs LA Galaxy",
+          "fecha": "2026-10-11",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        }
+      ]
+    },
+    "argentina": {
+      "nombre": "Liga Profesional Argentina",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "brasileirao": {
+      "nombre": "Brasileirao Serie A",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "premier": {
+      "nombre": "Premier League",
+      "n_fixtures": 9,
+      "picks": [
+        {
+          "partido": "Crystal Palace vs Nottingham Forest",
+          "fecha": "2026-10-11",
+          "ganador": "local",
+          "prob_local": 44.0,
+          "prob_empate": 30.7,
+          "prob_visitante": 25.3,
+          "marcador": "1-1",
+          "elo_local": 1540.4,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Hull City vs Everton",
+          "fecha": "2026-10-11",
+          "ganador": "local",
+          "prob_local": 34.8,
+          "prob_empate": 31.4,
+          "prob_visitante": 33.7,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1572.8
+        },
+        {
+          "partido": "Liverpool vs Manchester City",
+          "fecha": "2026-10-11",
+          "ganador": "visitante",
+          "prob_local": 30.4,
+          "prob_empate": 31.3,
+          "prob_visitante": 38.3,
+          "marcador": "1-1",
+          "elo_local": 1633.4,
+          "elo_visitante": 1764.2
+        }
+      ]
+    },
+    "laliga": {
+      "nombre": "La Liga",
+      "n_fixtures": 9,
+      "picks": [
+        {
+          "partido": "Elche vs Celta Vigo",
+          "fecha": "2026-10-11",
+          "ganador": "local",
+          "prob_local": 35.4,
+          "prob_empate": 31.4,
+          "prob_visitante": 33.2,
+          "marcador": "1-1",
+          "elo_local": 1434.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Real Sociedad vs Deportivo A Coruña",
+          "fecha": "2026-10-11",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Real Betis vs Osasuna",
+          "fecha": "2026-10-11",
+          "ganador": "local",
+          "prob_local": 37.3,
+          "prob_empate": 31.4,
+          "prob_visitante": 31.3,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1541.3
+        },
+        {
+          "partido": "Racing Santander vs Valencia",
+          "fecha": "2026-10-11",
+          "ganador": "local",
+          "prob_local": 41.9,
+          "prob_empate": 31.0,
+          "prob_visitante": 27.1,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1485.0
+        }
+      ]
+    },
+    "bundesliga": {
+      "nombre": "Bundesliga",
+      "n_fixtures": 9,
+      "picks": [
+        {
+          "partido": "1. FC Köln vs Borussia Mönchengladbach",
+          "fecha": "2026-10-11",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Freiburg vs Schalke 04",
+          "fecha": "2026-10-11",
+          "ganador": "local",
+          "prob_local": 50.1,
+          "prob_empate": 29.5,
+          "prob_visitante": 20.3,
+          "marcador": "1-1",
+          "elo_local": 1570.8,
+          "elo_visitante": 1456.0
+        }
+      ]
+    },
+    "seriea": {
+      "nombre": "Serie A",
+      "n_fixtures": 8,
+      "picks": [
+        {
+          "partido": "Como vs Roma",
+          "fecha": "2026-10-11",
+          "ganador": "local",
+          "prob_local": 41.9,
+          "prob_empate": 31.0,
+          "prob_visitante": 27.2,
+          "marcador": "1-1",
+          "elo_local": 1637.6,
+          "elo_visitante": 1622.9
+        },
+        {
+          "partido": "Lazio vs Monza",
+          "fecha": "2026-10-11",
+          "ganador": "local",
+          "prob_local": 67.4,
+          "prob_empate": 23.6,
+          "prob_visitante": 9.0,
+          "marcador": "2-0",
+          "elo_local": 1608.4,
+          "elo_visitante": 1282.9
+        },
+        {
+          "partido": "Lecce vs Bologna",
+          "fecha": "2026-10-11",
+          "ganador": "visitante",
+          "prob_local": 31.1,
+          "prob_empate": 31.3,
+          "prob_visitante": 37.6,
+          "marcador": "1-1",
+          "elo_local": 1409.8,
+          "elo_visitante": 1531.3
+        },
+        {
+          "partido": "Sassuolo vs Milan",
+          "fecha": "2026-10-11",
+          "ganador": "visitante",
+          "prob_local": 30.1,
+          "prob_empate": 31.3,
+          "prob_visitante": 38.7,
+          "marcador": "1-1",
+          "elo_local": 1534.5,
+          "elo_visitante": 1669.8
+        },
+        {
+          "partido": "Cagliari vs Juventus",
+          "fecha": "2026-10-11",
+          "ganador": "visitante",
+          "prob_local": 19.7,
+          "prob_empate": 29.3,
+          "prob_visitante": 51.0,
+          "marcador": "1-1",
+          "elo_local": 1428.0,
+          "elo_visitante": 1713.5
+        }
+      ]
+    },
+    "ligue1": {
+      "nombre": "Ligue 1",
+      "n_fixtures": 9,
+      "picks": [
+        {
+          "partido": "Nice vs Strasbourg",
+          "fecha": "2026-10-11",
+          "ganador": "visitante",
+          "prob_local": 32.7,
+          "prob_empate": 31.4,
+          "prob_visitante": 35.9,
+          "marcador": "1-1",
+          "elo_local": 1470.5,
+          "elo_visitante": 1571.0
+        },
+        {
+          "partido": "Rennes vs Auxerre",
+          "fecha": "2026-10-11",
+          "ganador": "local",
+          "prob_local": 55.9,
+          "prob_empate": 28.0,
+          "prob_visitante": 16.2,
+          "marcador": "1-1",
+          "elo_local": 1650.6,
+          "elo_visitante": 1467.2
+        },
+        {
+          "partido": "Troyes vs Marseille",
+          "fecha": "2026-10-11",
+          "ganador": "visitante",
+          "prob_local": 21.6,
+          "prob_empate": 29.9,
+          "prob_visitante": 48.5,
+          "marcador": "1-1",
+          "elo_local": 1342.3,
+          "elo_visitante": 1597.7
+        }
+      ]
+    }
+  }
+}
