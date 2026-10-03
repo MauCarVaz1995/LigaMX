@@ -1207,3 +1207,7 @@ fecha_prediccion,partido,equipo_local,equipo_visitante,elo_local,elo_visitante,p
 2026-10-02 18:52:02,Nice vs Strasbourg,Nice,Strasbourg,1470.5,1571.0,32.7,31.4,35.9,visitante,1-1,1.2659,1.3341,ligas_internacionales,2026-10-11,,,,,,ligue1
 2026-10-02 18:52:02,Rennes vs Auxerre,Rennes,Auxerre,1650.6,1467.2,55.9,28.0,16.2,local,1-1,1.739,0.861,ligas_internacionales,2026-10-11,,,,,,ligue1
 2026-10-02 18:52:02,Troyes vs Marseille,Troyes,Marseille,1342.3,1597.7,21.6,29.9,48.5,visitante,1-1,1.0076,1.5924,ligas_internacionales,2026-10-11,,,,,,ligue1
+2026-10-03 17:45:03,Coventry City vs Newcastle United,Coventry City,Newcastle United,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-10-12,,,,,,premier
+2026-10-03 17:45:22,Levante vs Sevilla,Levante,Sevilla,1461.0,1449.9,41.6,31.0,27.4,local,1-1,1.4519,1.1481,ligas_internacionales,2026-10-12,,,,,,laliga
+2026-10-03 17:45:58,Atalanta vs Venezia,Atalanta,Venezia,1652.2,1402.8,61.3,26.1,12.6,local,2-0,1.849,0.751,ligas_internacionales,2026-10-12,,,,,,seriea
+2026-10-03 17:45:58,Torino vs Udinese,Torino,Udinese,1495.4,1524.5,38.3,31.3,30.4,local,1-1,1.3849,1.2151,ligas_internacionales,2026-10-12,,,,,,seriea

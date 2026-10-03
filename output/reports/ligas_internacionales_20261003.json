@@ -1,0 +1,102 @@
+{
+  "generated_at": "2026-10-03T17:43:13.730717",
+  "ligas": {
+    "champions": {
+      "nombre": "UEFA Champions League",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "libertadores": {
+      "nombre": "Copa Libertadores",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "mls": {
+      "nombre": "MLS",
+      "n_fixtures": 16,
+      "picks": []
+    },
+    "argentina": {
+      "nombre": "Liga Profesional Argentina",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "brasileirao": {
+      "nombre": "Brasileirao Serie A",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "premier": {
+      "nombre": "Premier League",
+      "n_fixtures": 10,
+      "picks": [
+        {
+          "partido": "Coventry City vs Newcastle United",
+          "fecha": "2026-10-12",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        }
+      ]
+    },
+    "laliga": {
+      "nombre": "La Liga",
+      "n_fixtures": 10,
+      "picks": [
+        {
+          "partido": "Levante vs Sevilla",
+          "fecha": "2026-10-12",
+          "ganador": "local",
+          "prob_local": 41.6,
+          "prob_empate": 31.0,
+          "prob_visitante": 27.4,
+          "marcador": "1-1",
+          "elo_local": 1461.0,
+          "elo_visitante": 1449.9
+        }
+      ]
+    },
+    "bundesliga": {
+      "nombre": "Bundesliga",
+      "n_fixtures": 9,
+      "picks": []
+    },
+    "seriea": {
+      "nombre": "Serie A",
+      "n_fixtures": 10,
+      "picks": [
+        {
+          "partido": "Atalanta vs Venezia",
+          "fecha": "2026-10-12",
+          "ganador": "local",
+          "prob_local": 61.3,
+          "prob_empate": 26.1,
+          "prob_visitante": 12.6,
+          "marcador": "2-0",
+          "elo_local": 1652.2,
+          "elo_visitante": 1402.8
+        },
+        {
+          "partido": "Torino vs Udinese",
+          "fecha": "2026-10-12",
+          "ganador": "local",
+          "prob_local": 38.3,
+          "prob_empate": 31.3,
+          "prob_visitante": 30.4,
+          "marcador": "1-1",
+          "elo_local": 1495.4,
+          "elo_visitante": 1524.5
+        }
+      ]
+    },
+    "ligue1": {
+      "nombre": "Ligue 1",
+      "n_fixtures": 9,
+      "picks": []
+    }
+  }
+}
