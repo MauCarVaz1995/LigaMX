@@ -1,13 +1,13 @@
 {
-  "date": "2026-10-10",
-  "start": "2026-10-10T18:06:59.005543",
+  "date": "2026-10-11",
+  "start": "2026-10-11T18:31:13.233076",
   "pasos": {
     "paso1": {
       "nuevos": 0,
       "terminados_antes": 167,
       "terminados_despues": 167,
       "error": null,
-      "elapsed_s": 61.9
+      "elapsed_s": 62.5
     },
     "paso2": {
       "equipos_afectados": 0,
@@ -16,47 +16,45 @@
       "elapsed_s": 0.0
     },
     "paso3": {
-      "nuevos": 6,
+      "nuevos": 2,
       "fechas_procesadas": 4,
       "error": null,
-      "elapsed_s": 5.6
+      "elapsed_s": 6.0
     },
     "paso4": {
-      "selecciones_afectadas": 2,
-      "nuevo_archivo": "elos_selecciones_20261010.json",
+      "selecciones_afectadas": 0,
+      "nuevo_archivo": null,
       "error": null,
-      "elapsed_s": 0.0
+      "elapsed_s": 0.1
     },
     "paso5": {
       "actualizados": 0,
-      "pendientes": 1250,
+      "pendientes": 1254,
       "aciertos": 15,
       "total_evaluados": 36,
       "error": null,
-      "elapsed_s": 1.1
+      "elapsed_s": 1.9
     },
     "paso6": {
       "predicciones_generadas": 1,
       "saltado": false,
       "error": null,
-      "elapsed_s": 1.0
+      "elapsed_s": 1.3
     },
     "paso8": {
       "ok": true,
-      "elapsed_s": 0.4,
+      "elapsed_s": 0.5,
       "error": null
     },
     "paso7": {
       "committed": false,
       "pushed": false,
-      "error": "Author identity unknown\n\n*** Please tell me who you are.\n\nRun\n\n  git config --global user.email \"you@example.com\"\n  git config --global user.name \"Your Name\"\n\nto set your account's default identity.\nOmit --global to set the identity only in this repository.\n\nfatal: empty ident name (for <runner@runnervmmprz5.pte0ly2rqcme5du4yaf4funzkc.phxx.internal.cloudapp.net>) not allowed\n"
+      "error": null
     }
   },
-  "end": "2026-10-10T18:08:09.282848",
-  "elapsed_s": 70.3,
+  "end": "2026-10-11T18:32:25.526531",
+  "elapsed_s": 72.3,
   "success": true,
   "critical_failed": false,
-  "noncritical_errors": [
-    "paso7"
-  ]
+  "noncritical_errors": []
 }
