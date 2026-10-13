@@ -1565,6 +1565,15 @@ fecha,liga,nombre_liga,pais,temporada,local,visitante,goles_local,goles_visita,o
 2026-09-20,bundesliga,Bundesliga,Germany,2026/2027,Leverkusen,RB Leipzig,2,0,1.95,4.2,3.25,1.36,3.2
 2026-09-20,bundesliga,Bundesliga,Germany,2026/2027,Schalke 04,Elversberg,0,0,2.0,3.7,3.5,1.53,2.5
 2026-09-20,bundesliga,Bundesliga,Germany,2026/2027,Paderborn,Hoffenheim,3,1,4.33,4.5,1.67,1.44,2.75
+2026-10-09,bundesliga,Bundesliga,Germany,2026/2027,Dortmund,Werder Bremen,2,2,1.3,5.5,9.0,1.4,3.0
+2026-10-10,bundesliga,Bundesliga,Germany,2026/2027,Augsburg,Bayern Munich,2,2,11.0,8.5,1.18,1.14,5.5
+2026-10-10,bundesliga,Bundesliga,Germany,2026/2027,Hoffenheim,Hamburg,2,3,1.42,5.0,7.0,1.4,3.0
+2026-10-10,bundesliga,Bundesliga,Germany,2026/2027,Mainz,Leverkusen,3,4,3.0,3.8,2.2,1.44,2.75
+2026-10-10,bundesliga,Bundesliga,Germany,2026/2027,Paderborn,Stuttgart,0,2,4.75,4.75,1.6,1.36,3.2
+2026-10-10,bundesliga,Bundesliga,Germany,2026/2027,Union Berlin,Elversberg,1,0,2.3,3.6,2.9,1.53,2.5
+2026-10-10,bundesliga,Bundesliga,Germany,2026/2027,RB Leipzig,Ein Frankfurt,6,0,1.57,4.75,5.0,1.3,3.5
+2026-10-11,bundesliga,Bundesliga,Germany,2026/2027,FC Koln,M'gladbach,2,1,2.0,3.9,3.3,1.5,2.63
+2026-10-11,bundesliga,Bundesliga,Germany,2026/2027,Freiburg,Schalke 04,2,1,1.65,4.0,5.25,1.62,2.3
 2021-08-13,eredivisie,Eredivisie,Netherlands,2021/2022,Go Ahead Eagles,Heerenveen,0,1,2.81,3.39,2.65,2.05,1.8
 2021-08-14,eredivisie,Eredivisie,Netherlands,2021/2022,Waalwijk,AZ Alkmaar,1,0,6.49,4.94,1.47,1.44,2.7
 2021-08-14,eredivisie,Eredivisie,Netherlands,2021/2022,Heracles,PSV Eindhoven,0,2,6.37,4.72,1.5,1.5,2.5
@@ -3158,6 +3167,15 @@ fecha,liga,nombre_liga,pais,temporada,local,visitante,goles_local,goles_visita,o
 2026-09-20,eredivisie,Eredivisie,Netherlands,2026/2027,AZ Alkmaar,Telstar,1,0,1.25,6.0,10.0,1.29,3.6
 2026-09-20,eredivisie,Eredivisie,Netherlands,2026/2027,Twente,PSV Eindhoven,3,2,2.88,4.0,2.2,1.29,3.6
 2026-09-20,eredivisie,Eredivisie,Netherlands,2026/2027,Nijmegen,Go Ahead Eagles,1,1,1.95,4.0,3.5,1.36,3.1
+2026-10-09,eredivisie,Eredivisie,Netherlands,2026/2027,PSV Eindhoven,Heerenveen,2,0,1.27,6.0,8.5,1.18,4.5
+2026-10-10,eredivisie,Eredivisie,Netherlands,2026/2027,Go Ahead Eagles,Sparta Rotterdam,3,3,1.75,4.0,4.1,1.4,2.88
+2026-10-10,eredivisie,Eredivisie,Netherlands,2026/2027,Feyenoord,AZ Alkmaar,2,0,1.8,4.2,3.75,1.4,2.88
+2026-10-10,eredivisie,Eredivisie,Netherlands,2026/2027,For Sittard,Twente,1,1,6.0,5.0,1.44,1.36,3.1
+2026-10-10,eredivisie,Eredivisie,Netherlands,2026/2027,Ajax,Nijmegen,1,1,1.3,5.5,8.5,1.3,3.5
+2026-10-11,eredivisie,Eredivisie,Netherlands,2026/2027,Utrecht,Willem II,3,1,1.5,4.33,6.0,1.48,2.6
+2026-10-11,eredivisie,Eredivisie,Netherlands,2026/2027,Telstar,Den Haag,2,2,2.0,3.8,3.3,1.53,2.4
+2026-10-11,eredivisie,Eredivisie,Netherlands,2026/2027,Zwolle,Cambuur,0,1,1.95,3.75,3.5,1.53,2.4
+2026-10-11,eredivisie,Eredivisie,Netherlands,2026/2027,Excelsior,Groningen,1,5,2.55,3.6,2.55,1.53,2.4
 2021-08-13,laliga,La Liga,Spain,2021/2022,Valencia,Getafe,1,0,2.7,3.03,3.11,2.62,1.5
 2021-08-14,laliga,La Liga,Spain,2021/2022,Cadiz,Levante,1,1,2.86,3.28,2.73,2.1,1.72
 2021-08-14,laliga,La Liga,Spain,2021/2022,Mallorca,Betis,1,1,3.51,3.35,2.28,2.0,1.8
@@ -5132,6 +5150,15 @@ fecha,liga,nombre_liga,pais,temporada,local,visitante,goles_local,goles_visita,o
 2026-09-20,laliga,La Liga,Spain,2026/2027,La Coruna,Betis,1,1,3.4,3.75,2.05,1.8,2.0
 2026-09-20,laliga,La Liga,Spain,2026/2027,Villarreal,Levante,3,1,1.5,4.75,5.5,1.5,2.63
 2026-09-20,laliga,La Liga,Spain,2026/2027,Valencia,Sociedad,2,3,2.7,3.4,2.6,1.93,1.93
+2026-10-09,laliga,La Liga,Spain,2026/2027,Malaga,Espanol,1,1,2.9,3.2,2.55,2.0,1.8
+2026-10-10,laliga,La Liga,Spain,2026/2027,Alaves,Ath Madrid,1,2,4.1,3.8,1.8,1.91,1.91
+2026-10-10,laliga,La Liga,Spain,2026/2027,Barcelona,Getafe,3,0,1.08,12.0,23.0,1.25,4.0
+2026-10-10,laliga,La Liga,Spain,2026/2027,Real Madrid,Villarreal,1,0,1.38,6.0,6.25,1.29,3.75
+2026-10-11,laliga,La Liga,Spain,2026/2027,Elche,Celta,0,0,2.8,3.2,2.63,2.0,1.8
+2026-10-11,laliga,La Liga,Spain,2026/2027,Sociedad,La Coruna,3,2,1.62,3.9,5.5,1.73,2.1
+2026-10-11,laliga,La Liga,Spain,2026/2027,Betis,Osasuna,5,2,1.57,4.0,6.0,1.73,2.1
+2026-10-11,laliga,La Liga,Spain,2026/2027,Santander,Valencia,2,2,2.3,3.6,3.0,1.67,2.2
+2026-10-12,laliga,La Liga,Spain,2026/2027,Levante,Sevilla,3,3,2.75,3.25,2.63,2.0,1.8
 2021-08-06,ligue1,Ligue 1,France,2021/2022,Monaco,Nantes,1,1,1.51,4.62,6.82,1.66,2.2
 2021-08-07,ligue1,Ligue 1,France,2021/2022,Lyon,Brest,1,1,1.35,5.95,8.71,1.36,3.2
 2021-08-07,ligue1,Ligue 1,France,2021/2022,Troyes,Paris SG,1,2,11.77,6.04,1.28,1.57,2.37
@@ -6855,6 +6882,15 @@ fecha,liga,nombre_liga,pais,temporada,local,visitante,goles_local,goles_visita,o
 2026-09-20,ligue1,Ligue 1,France,2026/2027,Auxerre,Brest,2,1,2.88,3.5,2.45,1.8,2.0
 2026-09-20,ligue1,Ligue 1,France,2026/2027,Nice,Lille,2,1,3.6,3.5,2.05,1.93,1.93
 2026-09-20,ligue1,Ligue 1,France,2026/2027,Marseille,Paris SG,1,2,7.0,5.0,1.4,1.36,3.2
+2026-10-09,ligue1,Ligue 1,France,2026/2027,Lens,Lyon,2,1,2.5,3.6,2.63,1.53,2.5
+2026-10-10,ligue1,Ligue 1,France,2026/2027,Lille,Le Havre,1,0,1.44,4.5,7.5,1.62,2.3
+2026-10-10,ligue1,Ligue 1,France,2026/2027,Brest,Angers,5,1,2.0,3.6,3.75,1.73,2.1
+2026-10-10,ligue1,Ligue 1,France,2026/2027,Lorient,Paris FC,1,0,3.25,3.4,2.2,1.98,1.88
+2026-10-10,ligue1,Ligue 1,France,2026/2027,Monaco,Toulouse,2,2,1.6,4.1,5.5,1.57,2.38
+2026-10-10,ligue1,Ligue 1,France,2026/2027,Paris SG,Le Mans,3,1,1.09,12.0,21.0,1.22,4.33
+2026-10-11,ligue1,Ligue 1,France,2026/2027,Nice,Strasbourg,2,1,2.35,3.6,3.0,1.67,2.2
+2026-10-11,ligue1,Ligue 1,France,2026/2027,Rennes,Auxerre,4,1,1.44,4.75,7.0,1.5,2.63
+2026-10-11,ligue1,Ligue 1,France,2026/2027,Troyes,Marseille,0,2,3.75,3.75,1.91,1.57,2.38
 2021-08-06,portuguesa,Primeira Liga,Portugal,2021/2022,Sp Lisbon,Vizela,3,0,1.27,6.14,12.01,1.72,2.07
 2021-08-07,portuguesa,Primeira Liga,Portugal,2021/2022,Arouca,Estoril,0,2,2.27,3.36,3.44,2.3,1.6
 2021-08-07,portuguesa,Primeira Liga,Portugal,2021/2022,Moreirense,Benfica,1,2,6.9,4.8,1.47,1.65,2.2
@@ -8447,6 +8483,15 @@ fecha,liga,nombre_liga,pais,temporada,local,visitante,goles_local,goles_visita,o
 2026-09-20,portuguesa,Primeira Liga,Portugal,2026/2027,Estoril,Casa Pia,1,2,1.71,3.6,4.75,1.98,1.88
 2026-09-20,portuguesa,Primeira Liga,Portugal,2026/2027,Santa Clara,Sp Braga,0,0,3.5,3.3,2.05,2.4,1.53
 2026-09-20,portuguesa,Primeira Liga,Portugal,2026/2027,Porto,Benfica,3,1,2.65,3.3,2.5,1.88,1.98
+2026-10-09,portuguesa,Primeira Liga,Portugal,2026/2027,Moreirense,Gil Vicente,0,1,3.25,3.1,2.25,2.4,1.53
+2026-10-09,portuguesa,Primeira Liga,Portugal,2026/2027,Sp Braga,Sp Lisbon,1,3,3.1,3.2,2.25,2.08,1.73
+2026-10-10,portuguesa,Primeira Liga,Portugal,2026/2027,Maritimo,Porto,1,2,8.5,5.0,1.3,1.9,1.95
+2026-10-10,portuguesa,Primeira Liga,Portugal,2026/2027,Academico Viseu,Estoril,2,1,2.25,3.4,3.0,1.93,1.93
+2026-10-10,portuguesa,Primeira Liga,Portugal,2026/2027,Casa Pia,Santa Clara,0,1,4.5,3.25,1.81,2.3,1.6
+2026-10-11,portuguesa,Primeira Liga,Portugal,2026/2027,Rio Ave,Nacional,3,2,2.2,3.2,3.2,2.1,1.7
+2026-10-11,portuguesa,Primeira Liga,Portugal,2026/2027,Benfica,Guimaraes,2,0,1.19,6.0,12.0,1.48,2.6
+2026-10-11,portuguesa,Primeira Liga,Portugal,2026/2027,Arouca,Estrela,1,0,2.05,3.3,3.5,1.9,1.95
+2026-10-12,portuguesa,Primeira Liga,Portugal,2026/2027,Famalicao,Alverca,1,4,1.79,3.3,4.75,2.08,1.73
 2021-08-13,premier,Premier League,England,2021/2022,Brentford,Arsenal,2,0,4.05,3.46,2.05,2.1,1.72
 2021-08-14,premier,Premier League,England,2021/2022,Man United,Leeds,5,1,1.56,4.57,5.96,1.61,2.3
 2021-08-14,premier,Premier League,England,2021/2022,Burnley,Brighton,1,2,3.3,3.12,2.51,2.5,1.53
@@ -10397,6 +10442,16 @@ fecha,liga,nombre_liga,pais,temporada,local,visitante,goles_local,goles_visita,o
 2026-09-20,premier,Premier League,England,2026/2027,Leeds,Crystal Palace,0,0,1.73,3.9,4.75,1.73,2.1
 2026-09-20,premier,Premier League,England,2026/2027,Man City,Sunderland,5,3,1.3,5.5,9.0,1.57,2.38
 2026-09-20,premier,Premier League,England,2026/2027,Fulham,Man United,1,1,3.5,3.8,2.0,1.57,2.38
+2026-10-10,premier,Premier League,England,2026/2027,Arsenal,Leeds,2,1,1.4,5.0,7.5,1.85,2.0
+2026-10-10,premier,Premier League,England,2026/2027,Aston Villa,Brentford,2,2,2.63,3.5,2.6,1.73,2.1
+2026-10-10,premier,Premier League,England,2026/2027,Chelsea,Bournemouth,5,1,1.65,4.33,4.5,1.5,2.63
+2026-10-10,premier,Premier League,England,2026/2027,Ipswich,Fulham,2,1,2.8,3.4,2.5,1.73,2.1
+2026-10-10,premier,Premier League,England,2026/2027,Sunderland,Brighton,0,2,3.1,3.5,2.25,1.8,2.0
+2026-10-10,premier,Premier League,England,2026/2027,Man United,Tottenham,1,1,1.7,4.2,4.5,1.53,2.5
+2026-10-11,premier,Premier League,England,2026/2027,Crystal Palace,Nott'm Forest,3,1,2.7,3.2,2.7,1.91,1.91
+2026-10-11,premier,Premier League,England,2026/2027,Hull,Everton,2,2,3.7,3.4,2.05,2.0,1.85
+2026-10-11,premier,Premier League,England,2026/2027,Liverpool,Man City,0,3,2.7,3.6,2.45,1.57,2.38
+2026-10-12,premier,Premier League,England,2026/2027,Coventry,Newcastle,4,1,3.3,3.7,2.1,1.67,2.2
 2021-08-21,seriea,Serie A,Italy,2021/2022,Inter,Genoa,4,0,1.36,5.37,9.65,1.66,2.2
 2021-08-21,seriea,Serie A,Italy,2021/2022,Verona,Sassuolo,2,3,2.66,3.55,2.75,1.9,2.03
 2021-08-21,seriea,Serie A,Italy,2021/2022,Empoli,Lazio,1,3,5.01,4.02,1.74,1.72,2.1
@@ -12347,3 +12402,13 @@ fecha,liga,nombre_liga,pais,temporada,local,visitante,goles_local,goles_visita,o
 2026-09-20,seriea,Serie A,Italy,2026/2027,Parma,Genoa,2,1,3.1,3.1,2.45,2.5,1.53
 2026-09-20,seriea,Serie A,Italy,2026/2027,Juventus,Atalanta,2,0,1.7,3.9,4.75,1.91,1.91
 2026-09-20,seriea,Serie A,Italy,2026/2027,Milan,Lecce,3,0,1.27,5.75,11.0,1.67,2.2
+2026-10-10,seriea,Serie A,Italy,2026/2027,Genoa,Fiorentina,2,1,3.3,3.25,2.25,2.1,1.73
+2026-10-10,seriea,Serie A,Italy,2026/2027,Inter,Parma,3,0,1.14,8.0,19.0,1.36,3.2
+2026-10-10,seriea,Serie A,Italy,2026/2027,Napoli,Frosinone,3,0,1.44,4.75,7.0,1.5,2.63
+2026-10-11,seriea,Serie A,Italy,2026/2027,Como,Roma,0,0,2.6,3.5,2.6,1.67,2.2
+2026-10-11,seriea,Serie A,Italy,2026/2027,Lazio,Monza,3,1,1.57,4.0,6.0,1.85,2.0
+2026-10-11,seriea,Serie A,Italy,2026/2027,Lecce,Bologna,1,2,4.2,3.3,1.85,2.1,1.73
+2026-10-11,seriea,Serie A,Italy,2026/2027,Sassuolo,Milan,1,1,4.33,3.6,1.75,1.73,2.1
+2026-10-11,seriea,Serie A,Italy,2026/2027,Cagliari,Juventus,1,1,7.0,3.75,1.55,2.0,1.85
+2026-10-12,seriea,Serie A,Italy,2026/2027,Atalanta,Venezia,3,1,1.57,4.2,5.75,1.57,2.38
+2026-10-12,seriea,Serie A,Italy,2026/2027,Torino,Udinese,2,1,2.3,3.2,3.3,2.1,1.73
