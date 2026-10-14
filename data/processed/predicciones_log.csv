@@ -1291,3 +1291,8 @@ fecha_prediccion,partido,equipo_local,equipo_visitante,elo_local,elo_visitante,p
 2026-10-10 18:11:30,Parma vs Torino,Parma,Torino,1540.8,1495.4,44.4,30.6,25.0,local,1-1,1.5089,1.0911,ligas_internacionales,2026-10-19,,,,,,seriea
 2026-10-12 21:57:53,FC Cincinnati vs DC United,FC Cincinnati,DC United,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-10-21,,,,,,mls
 2026-10-12 21:59:08,Levante vs Athletic Club,Levante,Athletic Club,1461.0,1500.0,37.5,31.4,31.1,local,1-1,1.3684,1.2316,ligas_internacionales,2026-10-21,,,,,,laliga
+2026-10-14 18:17:27,Ipswich Town vs Nottingham Forest,Ipswich Town,Nottingham Forest,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-10-23,,,,,,premier
+2026-10-14 18:17:45,Deportivo Alavés vs Málaga,Deportivo Alavés,Málaga,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-10-23,,,,,,laliga
+2026-10-14 18:18:05,VfB Stuttgart vs Borussia Mönchengladbach,VfB Stuttgart,Borussia Mönchengladbach,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-10-23,,,,,,bundesliga
+2026-10-14 18:18:23,Torino vs Monza,Torino,Monza,1495.4,1282.9,58.3,27.2,14.5,local,1-1,1.7875,0.8125,ligas_internacionales,2026-10-23,,,,,,seriea
+2026-10-14 18:18:42,Brest vs Nice,Brest,Nice,1519.5,1470.5,44.7,30.6,24.7,local,1-1,1.515,1.085,ligas_internacionales,2026-10-23,,,,,,ligue1
