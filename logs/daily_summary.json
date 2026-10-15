@@ -1,13 +1,13 @@
 {
-  "date": "2026-10-14",
-  "start": "2026-10-14T18:13:26.960711",
+  "date": "2026-10-15",
+  "start": "2026-10-15T17:56:29.066491",
   "pasos": {
     "paso1": {
       "nuevos": 0,
       "terminados_antes": 167,
       "terminados_despues": 167,
       "error": null,
-      "elapsed_s": 66.4
+      "elapsed_s": 65.6
     },
     "paso2": {
       "equipos_afectados": 0,
@@ -16,20 +16,20 @@
       "elapsed_s": 0.0
     },
     "paso3": {
-      "nuevos": 41,
+      "nuevos": 20,
       "fechas_procesadas": 4,
       "error": null,
-      "elapsed_s": 6.0
+      "elapsed_s": 5.6
     },
     "paso4": {
-      "selecciones_afectadas": 52,
-      "nuevo_archivo": "elos_selecciones_20261014.json",
+      "selecciones_afectadas": 14,
+      "nuevo_archivo": "elos_selecciones_20261015.json",
       "error": null,
       "elapsed_s": 0.1
     },
     "paso5": {
       "actualizados": 0,
-      "pendientes": 1256,
+      "pendientes": 1261,
       "aciertos": 15,
       "total_evaluados": 36,
       "error": null,
@@ -39,7 +39,7 @@
       "predicciones_generadas": 1,
       "saltado": false,
       "error": null,
-      "elapsed_s": 4.7
+      "elapsed_s": 1.5
     },
     "paso8": {
       "ok": true,
@@ -49,11 +49,11 @@
     "paso7": {
       "committed": false,
       "pushed": false,
-      "error": "Author identity unknown\n\n*** Please tell me who you are.\n\nRun\n\n  git config --global user.email \"you@example.com\"\n  git config --global user.name \"Your Name\"\n\nto set your account's default identity.\nOmit --global to set the identity only in this repository.\n\nfatal: empty ident name (for <runner@runnervmmprz5.kgil3twzltkufo2gekkesmjjke.dx.internal.cloudapp.net>) not allowed\n"
+      "error": "Author identity unknown\n\n*** Please tell me who you are.\n\nRun\n\n  git config --global user.email \"you@example.com\"\n  git config --global user.name \"Your Name\"\n\nto set your account's default identity.\nOmit --global to set the identity only in this repository.\n\nfatal: empty ident name (for <runner@runnervm8k3b6.bt11mvw3wg3ehegaaaz51qhype.dx.internal.cloudapp.net>) not allowed\n"
     }
   },
-  "end": "2026-10-14T18:14:48.000124",
-  "elapsed_s": 81.0,
+  "end": "2026-10-15T17:57:45.680587",
+  "elapsed_s": 76.6,
   "success": true,
   "critical_failed": false,
   "noncritical_errors": [
