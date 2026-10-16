@@ -1323,3 +1323,32 @@ fecha_prediccion,partido,equipo_local,equipo_visitante,elo_local,elo_visitante,p
 2026-10-15 18:01:30,Lazio vs Parma,Lazio,Parma,1608.4,1540.8,46.2,30.3,23.5,local,1-1,1.546,1.054,ligas_internacionales,2026-10-24,,,,,,seriea
 2026-10-15 18:01:50,Toulouse vs Troyes,Toulouse,Troyes,1485.3,1342.3,52.5,28.9,18.6,local,1-1,1.6717,0.9283,ligas_internacionales,2026-10-24,,,,,,ligue1
 2026-10-15 18:01:50,Lens vs Paris FC,Lens,Paris FC,1664.7,1578.7,47.7,30.0,22.2,local,1-1,1.5767,1.0233,ligas_internacionales,2026-10-24,,,,,,ligue1
+2026-10-16 17:46:53,Colorado Rapids vs Vancouver Whitecaps,Colorado Rapids,Vancouver Whitecaps,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-10-25,,,,,,mls
+2026-10-16 17:46:53,FC Dallas vs San Jose Earthquakes,FC Dallas,San Jose Earthquakes,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-10-25,,,,,,mls
+2026-10-16 17:46:53,Houston Dynamo FC vs Minnesota United,Houston Dynamo FC,Minnesota United,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-10-25,,,,,,mls
+2026-10-16 17:46:53,Real Salt Lake vs St. Louis City,Real Salt Lake,St. Louis City,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-10-25,,,,,,mls
+2026-10-16 17:46:53,Sporting Kansas City vs Austin FC,Sporting Kansas City,Austin FC,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-10-25,,,,,,mls
+2026-10-16 17:46:53,Portland Timbers vs Charlotte FC,Portland Timbers,Charlotte FC,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-10-25,,,,,,mls
+2026-10-16 17:46:53,San Diego FC vs Seattle Sounders FC,San Diego FC,Seattle Sounders FC,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-10-25,,,,,,mls
+2026-10-16 17:47:50,Crystal Palace vs Newcastle United,Crystal Palace,Newcastle United,1540.4,1500.0,44.0,30.7,25.3,local,1-1,1.5007,1.0993,ligas_internacionales,2026-10-25,,,,,,premier
+2026-10-16 17:47:50,Hull City vs Brentford,Hull City,Brentford,1500.0,1576.7,34.5,31.4,34.0,local,1-1,1.3055,1.2945,ligas_internacionales,2026-10-25,,,,,,premier
+2026-10-16 17:47:50,Liverpool vs Brighton & Hove Albion,Liverpool,Brighton & Hove Albion,1633.4,1500.0,51.7,29.1,19.2,local,1-1,1.6556,0.9444,ligas_internacionales,2026-10-25,,,,,,premier
+2026-10-16 17:47:50,Manchester United vs AFC Bournemouth,Manchester United,AFC Bournemouth,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-10-25,,,,,,premier
+2026-10-16 17:47:50,Sunderland vs Leeds United,Sunderland,Leeds United,1542.4,1500.0,44.1,30.7,25.2,local,1-1,1.504,1.096,ligas_internacionales,2026-10-25,,,,,,premier
+2026-10-16 17:48:08,Athletic Club vs Getafe,Athletic Club,Getafe,1500.0,1529.6,38.3,31.3,30.4,local,1-1,1.384,1.216,ligas_internacionales,2026-10-25,,,,,,laliga
+2026-10-16 17:48:08,Celta Vigo vs Real Betis,Celta Vigo,Real Betis,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-10-25,,,,,,laliga
+2026-10-16 17:48:08,Real Sociedad vs Levante,Real Sociedad,Levante,1500.0,1461.0,43.8,30.7,25.4,local,1-1,1.4983,1.1017,ligas_internacionales,2026-10-25,,,,,,laliga
+2026-10-16 17:48:08,Barcelona vs Real Madrid,Barcelona,Real Madrid,1848.0,1722.4,51.0,29.3,19.7,local,1-1,1.6428,0.9572,ligas_internacionales,2026-10-25,,,,,,laliga
+2026-10-16 17:48:27,Hoffenheim vs Bayer Leverkusen,Hoffenheim,Bayer Leverkusen,1591.5,1500.0,48.2,29.9,21.9,local,1-1,1.5859,1.0141,ligas_internacionales,2026-10-25,,,,,,bundesliga
+2026-10-16 17:48:27,Freiburg vs Bayern München,Freiburg,Bayern München,1570.8,1500.0,46.5,30.3,23.2,local,1-1,1.5514,1.0486,ligas_internacionales,2026-10-25,,,,,,bundesliga
+2026-10-16 17:48:46,Inter Milan vs Fiorentina,Inter Milan,Fiorentina,1820.0,1566.6,61.6,26.0,12.4,local,2-0,1.8558,0.7442,ligas_internacionales,2026-10-25,,,,,,seriea
+2026-10-16 17:48:46,Atalanta vs Frosinone,Atalanta,Frosinone,1652.2,1425.6,59.4,26.8,13.8,local,1-1,1.8111,0.7889,ligas_internacionales,2026-10-25,,,,,,seriea
+2026-10-16 17:48:46,Genoa vs Venezia,Genoa,Venezia,1532.7,1402.8,51.4,29.2,19.4,local,1-1,1.6498,0.9502,ligas_internacionales,2026-10-25,,,,,,seriea
+2026-10-16 17:48:46,Lecce vs Juventus,Lecce,Juventus,1409.8,1713.5,18.5,28.9,52.5,visitante,1-1,0.9272,1.6728,ligas_internacionales,2026-10-25,,,,,,seriea
+2026-10-16 17:48:46,Udinese vs Milan,Udinese,Milan,1524.5,1669.8,29.3,31.2,39.5,visitante,1-1,1.1912,1.4088,ligas_internacionales,2026-10-25,,,,,,seriea
+2026-10-16 17:49:04,Monaco vs Lille,Monaco,Lille,1647.2,1676.5,38.3,31.3,30.4,local,1-1,1.3844,1.2156,ligas_internacionales,2026-10-25,,,,,,ligue1
+2026-10-16 17:49:04,Angers vs Lorient,Angers,Lorient,1436.4,1555.2,31.3,31.4,37.3,visitante,1-1,1.2353,1.3647,ligas_internacionales,2026-10-25,,,,,,ligue1
+2026-10-16 17:49:04,Auxerre vs Le Mans,Auxerre,Le Mans,1467.2,1500.0,38.0,31.3,30.7,local,1-1,1.3786,1.2214,ligas_internacionales,2026-10-25,,,,,,ligue1
+2026-10-16 17:49:04,Marseille vs Le Havre,Marseille,Le Havre,1597.7,1461.4,51.9,29.1,19.0,local,1-1,1.6605,0.9395,ligas_internacionales,2026-10-25,,,,,,ligue1
+2026-10-16 17:49:04,Rennes vs Strasbourg,Rennes,Strasbourg,1650.6,1571.0,47.2,30.1,22.7,local,1-1,1.566,1.034,ligas_internacionales,2026-10-25,,,,,,ligue1
+2026-10-16 17:49:04,Paris Saint-Germain vs Lyon,Paris Saint-Germain,Lyon,1747.4,1638.7,49.6,29.6,20.7,local,1-1,1.6146,0.9854,ligas_internacionales,2026-10-25,,,,,,ligue1
