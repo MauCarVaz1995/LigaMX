@@ -1,0 +1,79 @@
+{
+  "generated_at": "2026-10-17T16:46:29.264753",
+  "ligas": {
+    "champions": {
+      "nombre": "UEFA Champions League",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "libertadores": {
+      "nombre": "Copa Libertadores",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "mls": {
+      "nombre": "MLS",
+      "n_fixtures": 31,
+      "picks": [
+        {
+          "partido": "Los Angeles FC vs LA Galaxy",
+          "fecha": "2026-10-26",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        }
+      ]
+    },
+    "argentina": {
+      "nombre": "Liga Profesional Argentina",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "brasileirao": {
+      "nombre": "Brasileirao Serie A",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "premier": {
+      "nombre": "Premier League",
+      "n_fixtures": 16,
+      "picks": []
+    },
+    "laliga": {
+      "nombre": "La Liga",
+      "n_fixtures": 18,
+      "picks": [
+        {
+          "partido": "Sevilla vs Osasuna",
+          "fecha": "2026-10-26",
+          "ganador": "visitante",
+          "prob_local": 33.4,
+          "prob_empate": 31.4,
+          "prob_visitante": 35.2,
+          "marcador": "1-1",
+          "elo_local": 1449.9,
+          "elo_visitante": 1541.3
+        }
+      ]
+    },
+    "bundesliga": {
+      "nombre": "Bundesliga",
+      "n_fixtures": 12,
+      "picks": []
+    },
+    "seriea": {
+      "nombre": "Serie A",
+      "n_fixtures": 18,
+      "picks": []
+    },
+    "ligue1": {
+      "nombre": "Ligue 1",
+      "n_fixtures": 17,
+      "picks": []
+    }
+  }
+}
