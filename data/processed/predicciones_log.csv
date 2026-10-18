@@ -1354,3 +1354,6 @@ fecha_prediccion,partido,equipo_local,equipo_visitante,elo_local,elo_visitante,p
 2026-10-16 17:49:04,Paris Saint-Germain vs Lyon,Paris Saint-Germain,Lyon,1747.4,1638.7,49.6,29.6,20.7,local,1-1,1.6146,0.9854,ligas_internacionales,2026-10-25,,,,,,ligue1
 2026-10-17 16:47:21,Los Angeles FC vs LA Galaxy,Los Angeles FC,LA Galaxy,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-10-26,,,,,,mls
 2026-10-17 16:48:30,Sevilla vs Osasuna,Sevilla,Osasuna,1449.9,1541.3,33.4,31.4,35.2,visitante,1-1,1.2811,1.3189,ligas_internacionales,2026-10-26,,,,,,laliga
+2026-10-18 17:05:17,Sassuolo vs Lazio,Sassuolo,Lazio,1534.5,1608.4,34.8,31.4,33.8,local,1-1,1.3103,1.2897,ligas_internacionales,2026-10-27,,,,,,seriea
+2026-10-18 17:05:17,Roma vs Cagliari,Roma,Cagliari,1622.9,1428.0,56.8,27.7,15.5,local,1-1,1.7582,0.8418,ligas_internacionales,2026-10-27,,,,,,seriea
+2026-10-18 17:05:17,Torino vs Como,Torino,Como,1495.4,1637.6,29.5,31.2,39.2,visitante,1-1,1.1963,1.4037,ligas_internacionales,2026-10-27,,,,,,seriea
