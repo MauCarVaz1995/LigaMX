@@ -1357,3 +1357,13 @@ fecha_prediccion,partido,equipo_local,equipo_visitante,elo_local,elo_visitante,p
 2026-10-18 17:05:17,Sassuolo vs Lazio,Sassuolo,Lazio,1534.5,1608.4,34.8,31.4,33.8,local,1-1,1.3103,1.2897,ligas_internacionales,2026-10-27,,,,,,seriea
 2026-10-18 17:05:17,Roma vs Cagliari,Roma,Cagliari,1622.9,1428.0,56.8,27.7,15.5,local,1-1,1.7582,0.8418,ligas_internacionales,2026-10-27,,,,,,seriea
 2026-10-18 17:05:17,Torino vs Como,Torino,Como,1495.4,1637.6,29.5,31.2,39.2,visitante,1-1,1.1963,1.4037,ligas_internacionales,2026-10-27,,,,,,seriea
+2026-10-19 19:36:30,Charlotte FC vs CF Montréal,Charlotte FC,CF Montréal,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-10-28,,,,,,mls
+2026-10-19 19:36:30,Inter Miami CF vs FC Cincinnati,Inter Miami CF,FC Cincinnati,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-10-28,,,,,,mls
+2026-10-19 19:36:30,New England Revolution vs Red Bull New York,New England Revolution,Red Bull New York,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-10-28,,,,,,mls
+2026-10-19 19:36:30,New York City FC vs Atlanta United,New York City FC,Atlanta United,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-10-28,,,,,,mls
+2026-10-19 19:36:30,Toronto FC vs DC United,Toronto FC,DC United,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-10-28,,,,,,mls
+2026-10-19 19:38:29,Milan vs Bologna,Milan,Bologna,1669.8,1531.3,52.1,29.0,18.9,local,1-1,1.6641,0.9359,ligas_internacionales,2026-10-28,,,,,,seriea
+2026-10-19 19:38:29,Parma vs Udinese,Parma,Udinese,1540.8,1524.5,42.0,31.0,27.1,local,1-1,1.4605,1.1395,ligas_internacionales,2026-10-28,,,,,,seriea
+2026-10-19 19:38:29,Venezia vs Inter Milan,Venezia,Inter Milan,1402.8,1820.0,12.2,25.9,61.9,visitante,0-2,0.738,1.862,ligas_internacionales,2026-10-28,,,,,,seriea
+2026-10-19 19:38:29,Genoa vs Juventus,Genoa,Juventus,1532.7,1713.5,26.7,30.9,42.4,visitante,1-1,1.132,1.468,ligas_internacionales,2026-10-28,,,,,,seriea
+2026-10-19 19:38:29,Monza vs Napoli,Monza,Napoli,1282.9,1692.6,12.6,26.1,61.3,visitante,0-2,0.7506,1.8494,ligas_internacionales,2026-10-28,,,,,,seriea
