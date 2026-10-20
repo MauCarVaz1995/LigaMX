@@ -1,0 +1,178 @@
+{
+  "generated_at": "2026-10-20T18:13:15.455079",
+  "ligas": {
+    "champions": {
+      "nombre": "UEFA Champions League",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "libertadores": {
+      "nombre": "Copa Libertadores",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "mls": {
+      "nombre": "MLS",
+      "n_fixtures": 30,
+      "picks": [
+        {
+          "partido": "Austin FC vs Real Salt Lake",
+          "fecha": "2026-10-29",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Chicago Fire FC vs Orlando City",
+          "fecha": "2026-10-29",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "FC Dallas vs Columbus Crew",
+          "fecha": "2026-10-29",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Minnesota United vs Sporting Kansas City",
+          "fecha": "2026-10-29",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Nashville SC vs Philadelphia Union",
+          "fecha": "2026-10-29",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "St. Louis City vs Portland Timbers",
+          "fecha": "2026-10-29",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "San Jose Earthquakes vs Colorado Rapids",
+          "fecha": "2026-10-29",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Seattle Sounders FC vs Houston Dynamo FC",
+          "fecha": "2026-10-29",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Vancouver Whitecaps vs San Diego FC",
+          "fecha": "2026-10-29",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        }
+      ]
+    },
+    "argentina": {
+      "nombre": "Liga Profesional Argentina",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "brasileirao": {
+      "nombre": "Brasileirao Serie A",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "premier": {
+      "nombre": "Premier League",
+      "n_fixtures": 10,
+      "picks": []
+    },
+    "laliga": {
+      "nombre": "La Liga",
+      "n_fixtures": 11,
+      "picks": []
+    },
+    "bundesliga": {
+      "nombre": "Bundesliga",
+      "n_fixtures": 9,
+      "picks": []
+    },
+    "seriea": {
+      "nombre": "Serie A",
+      "n_fixtures": 20,
+      "picks": [
+        {
+          "partido": "Frosinone vs Lecce",
+          "fecha": "2026-10-29",
+          "ganador": "local",
+          "prob_local": 41.9,
+          "prob_empate": 31.0,
+          "prob_visitante": 27.1,
+          "marcador": "1-1",
+          "elo_local": 1425.6,
+          "elo_visitante": 1409.8
+        },
+        {
+          "partido": "Fiorentina vs Atalanta",
+          "fecha": "2026-10-29",
+          "ganador": "visitante",
+          "prob_local": 33.8,
+          "prob_empate": 31.4,
+          "prob_visitante": 34.7,
+          "marcador": "1-1",
+          "elo_local": 1566.6,
+          "elo_visitante": 1652.2
+        }
+      ]
+    },
+    "ligue1": {
+      "nombre": "Ligue 1",
+      "n_fixtures": 9,
+      "picks": []
+    }
+  }
+}
