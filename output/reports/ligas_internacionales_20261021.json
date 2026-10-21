@@ -1,0 +1,113 @@
+{
+  "generated_at": "2026-10-21T18:20:11.033273",
+  "ligas": {
+    "champions": {
+      "nombre": "UEFA Champions League",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "libertadores": {
+      "nombre": "Copa Libertadores",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "mls": {
+      "nombre": "MLS",
+      "n_fixtures": 30,
+      "picks": []
+    },
+    "argentina": {
+      "nombre": "Liga Profesional Argentina",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "brasileirao": {
+      "nombre": "Brasileirao Serie A",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "premier": {
+      "nombre": "Premier League",
+      "n_fixtures": 10,
+      "picks": []
+    },
+    "laliga": {
+      "nombre": "La Liga",
+      "n_fixtures": 12,
+      "picks": [
+        {
+          "partido": "Villarreal vs Espanyol",
+          "fecha": "2026-10-30",
+          "ganador": "local",
+          "prob_local": 54.5,
+          "prob_empate": 28.4,
+          "prob_visitante": 17.1,
+          "marcador": "1-1",
+          "elo_local": 1667.0,
+          "elo_visitante": 1500.0
+        }
+      ]
+    },
+    "bundesliga": {
+      "nombre": "Bundesliga",
+      "n_fixtures": 10,
+      "picks": [
+        {
+          "partido": "Elversberg vs Mainz 05",
+          "fecha": "2026-10-30",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        }
+      ]
+    },
+    "seriea": {
+      "nombre": "Serie A",
+      "n_fixtures": 20,
+      "picks": []
+    },
+    "ligue1": {
+      "nombre": "Ligue 1",
+      "n_fixtures": 11,
+      "picks": [
+        {
+          "partido": "Toulouse vs Troyes",
+          "fecha": "2026-10-25",
+          "ganador": "local",
+          "prob_local": 52.5,
+          "prob_empate": 28.9,
+          "prob_visitante": 18.6,
+          "marcador": "1-1",
+          "elo_local": 1485.3,
+          "elo_visitante": 1342.3
+        },
+        {
+          "partido": "Le Havre vs Paris Saint-Germain",
+          "fecha": "2026-10-30",
+          "ganador": "visitante",
+          "prob_local": 19.6,
+          "prob_empate": 29.3,
+          "prob_visitante": 51.1,
+          "marcador": "1-1",
+          "elo_local": 1461.4,
+          "elo_visitante": 1747.4
+        },
+        {
+          "partido": "Lille vs Lens",
+          "fecha": "2026-10-30",
+          "ganador": "local",
+          "prob_local": 41.6,
+          "prob_empate": 31.0,
+          "prob_visitante": 27.4,
+          "marcador": "1-1",
+          "elo_local": 1676.5,
+          "elo_visitante": 1664.7
+        }
+      ]
+    }
+  }
+}
