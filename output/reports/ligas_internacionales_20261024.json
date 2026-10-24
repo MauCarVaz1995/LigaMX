@@ -1,0 +1,136 @@
+{
+  "generated_at": "2026-10-24T17:07:06.502810",
+  "ligas": {
+    "champions": {
+      "nombre": "UEFA Champions League",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "libertadores": {
+      "nombre": "Copa Libertadores",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "mls": {
+      "nombre": "MLS",
+      "n_fixtures": 44,
+      "picks": [
+        {
+          "partido": "New England Revolution vs Inter Miami CF",
+          "fecha": "2026-11-02",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Los Angeles FC vs Minnesota United",
+          "fecha": "2026-11-02",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Portland Timbers vs Houston Dynamo FC",
+          "fecha": "2026-11-02",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        }
+      ]
+    },
+    "argentina": {
+      "nombre": "Liga Profesional Argentina",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "brasileirao": {
+      "nombre": "Brasileirao Serie A",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "premier": {
+      "nombre": "Premier League",
+      "n_fixtures": 16,
+      "picks": [
+        {
+          "partido": "Newcastle United vs Everton",
+          "fecha": "2026-11-02",
+          "ganador": "local",
+          "prob_local": 34.8,
+          "prob_empate": 31.4,
+          "prob_visitante": 33.7,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1572.8
+        }
+      ]
+    },
+    "laliga": {
+      "nombre": "La Liga",
+      "n_fixtures": 17,
+      "picks": [
+        {
+          "partido": "Deportivo A Coruña vs Osasuna",
+          "fecha": "2026-11-02",
+          "ganador": "local",
+          "prob_local": 37.3,
+          "prob_empate": 31.4,
+          "prob_visitante": 31.3,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1541.3
+        }
+      ]
+    },
+    "bundesliga": {
+      "nombre": "Bundesliga",
+      "n_fixtures": 12,
+      "picks": []
+    },
+    "seriea": {
+      "nombre": "Serie A",
+      "n_fixtures": 27,
+      "picks": [
+        {
+          "partido": "Sassuolo vs Fiorentina",
+          "fecha": "2026-11-02",
+          "ganador": "local",
+          "prob_local": 38.1,
+          "prob_empate": 31.3,
+          "prob_visitante": 30.6,
+          "marcador": "1-1",
+          "elo_local": 1534.5,
+          "elo_visitante": 1566.6
+        },
+        {
+          "partido": "Atalanta vs Parma",
+          "fecha": "2026-11-02",
+          "ganador": "local",
+          "prob_local": 49.9,
+          "prob_empate": 29.6,
+          "prob_visitante": 20.6,
+          "marcador": "1-1",
+          "elo_local": 1652.2,
+          "elo_visitante": 1540.8
+        }
+      ]
+    },
+    "ligue1": {
+      "nombre": "Ligue 1",
+      "n_fixtures": 17,
+      "picks": []
+    }
+  }
+}

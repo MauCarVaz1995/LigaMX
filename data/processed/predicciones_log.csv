@@ -1436,3 +1436,10 @@ fecha_prediccion,partido,equipo_local,equipo_visitante,elo_local,elo_visitante,p
 2026-10-23 18:06:31,Strasbourg vs Auxerre,Strasbourg,Auxerre,1571.0,1467.2,49.2,29.7,21.1,local,1-1,1.6063,0.9937,ligas_internacionales,2026-11-01,,,,,,ligue1
 2026-10-23 18:06:31,Paris FC vs Monaco,Paris FC,Monaco,1578.7,1647.2,35.2,31.4,33.4,local,1-1,1.3192,1.2808,ligas_internacionales,2026-11-01,,,,,,ligue1
 2026-10-23 18:06:31,Marseille vs Toulouse,Marseille,Toulouse,1597.7,1485.3,49.9,29.6,20.5,local,1-1,1.6207,0.9793,ligas_internacionales,2026-11-01,,,,,,ligue1
+2026-10-24 17:08:07,New England Revolution vs Inter Miami CF,New England Revolution,Inter Miami CF,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-11-02,,,,,,mls
+2026-10-24 17:08:07,Los Angeles FC vs Minnesota United,Los Angeles FC,Minnesota United,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-11-02,,,,,,mls
+2026-10-24 17:08:07,Portland Timbers vs Houston Dynamo FC,Portland Timbers,Houston Dynamo FC,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-11-02,,,,,,mls
+2026-10-24 17:09:08,Newcastle United vs Everton,Newcastle United,Everton,1500.0,1572.8,34.8,31.4,33.7,local,1-1,1.312,1.288,ligas_internacionales,2026-11-02,,,,,,premier
+2026-10-24 17:09:29,Deportivo A Coruña vs Osasuna,Deportivo A Coruña,Osasuna,1500.0,1541.3,37.3,31.4,31.3,local,1-1,1.3645,1.2355,ligas_internacionales,2026-11-02,,,,,,laliga
+2026-10-24 17:10:09,Sassuolo vs Fiorentina,Sassuolo,Fiorentina,1534.5,1566.6,38.1,31.3,30.6,local,1-1,1.38,1.2201,ligas_internacionales,2026-11-02,,,,,,seriea
+2026-10-24 17:10:09,Atalanta vs Parma,Atalanta,Parma,1652.2,1540.8,49.9,29.6,20.6,local,1-1,1.6191,0.9809,ligas_internacionales,2026-11-02,,,,,,seriea
