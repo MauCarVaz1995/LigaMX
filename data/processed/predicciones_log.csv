@@ -1444,3 +1444,5 @@ fecha_prediccion,partido,equipo_local,equipo_visitante,elo_local,elo_visitante,p
 2026-10-24 17:10:09,Sassuolo vs Fiorentina,Sassuolo,Fiorentina,1534.5,1566.6,38.1,31.3,30.6,local,1-1,1.38,1.2201,ligas_internacionales,2026-11-02,,,,,,seriea
 2026-10-24 17:10:09,Atalanta vs Parma,Atalanta,Parma,1652.2,1540.8,49.9,29.6,20.6,local,1-1,1.6191,0.9809,ligas_internacionales,2026-11-02,,,,,,seriea
 2026-10-26 19:43:26,Lorient vs Brest,Lorient,Brest,1555.2,1519.5,43.6,30.8,25.7,local,1-1,1.4928,1.1072,ligas_internacionales,2026-11-02,,,,,,ligue1
+2026-10-27 19:08:35,Nice vs Rennes,Nice,Rennes,1470.5,1650.6,26.8,30.9,42.3,visitante,1-1,1.1333,1.4667,ligas_internacionales,2026-10-30,,,,,,ligue1
+2026-10-27 19:08:35,Lyon vs Angers,Lyon,Angers,1638.7,1436.4,57.4,27.5,15.1,local,1-1,1.7704,0.8296,ligas_internacionales,2026-11-01,,,,,,ligue1

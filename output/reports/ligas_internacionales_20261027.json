@@ -1,0 +1,78 @@
+{
+  "generated_at": "2026-10-27T19:05:26.082012",
+  "ligas": {
+    "champions": {
+      "nombre": "UEFA Champions League",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "libertadores": {
+      "nombre": "Copa Libertadores",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "mls": {
+      "nombre": "MLS",
+      "n_fixtures": 29,
+      "picks": []
+    },
+    "argentina": {
+      "nombre": "Liga Profesional Argentina",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "brasileirao": {
+      "nombre": "Brasileirao Serie A",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "premier": {
+      "nombre": "Premier League",
+      "n_fixtures": 10,
+      "picks": []
+    },
+    "laliga": {
+      "nombre": "La Liga",
+      "n_fixtures": 10,
+      "picks": []
+    },
+    "bundesliga": {
+      "nombre": "Bundesliga",
+      "n_fixtures": 9,
+      "picks": []
+    },
+    "seriea": {
+      "nombre": "Serie A",
+      "n_fixtures": 20,
+      "picks": []
+    },
+    "ligue1": {
+      "nombre": "Ligue 1",
+      "n_fixtures": 9,
+      "picks": [
+        {
+          "partido": "Nice vs Rennes",
+          "fecha": "2026-10-30",
+          "ganador": "visitante",
+          "prob_local": 26.8,
+          "prob_empate": 30.9,
+          "prob_visitante": 42.3,
+          "marcador": "1-1",
+          "elo_local": 1470.5,
+          "elo_visitante": 1650.6
+        },
+        {
+          "partido": "Lyon vs Angers",
+          "fecha": "2026-11-01",
+          "ganador": "local",
+          "prob_local": 57.4,
+          "prob_empate": 27.5,
+          "prob_visitante": 15.1,
+          "marcador": "1-1",
+          "elo_local": 1638.7,
+          "elo_visitante": 1436.4
+        }
+      ]
+    }
+  }
+}
