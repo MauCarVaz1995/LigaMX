@@ -1,0 +1,115 @@
+{
+  "generated_at": "2026-10-28T19:14:27.842122",
+  "ligas": {
+    "champions": {
+      "nombre": "UEFA Champions League",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "libertadores": {
+      "nombre": "Copa Libertadores",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "mls": {
+      "nombre": "MLS",
+      "n_fixtures": 29,
+      "picks": []
+    },
+    "argentina": {
+      "nombre": "Liga Profesional Argentina",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "brasileirao": {
+      "nombre": "Brasileirao Serie A",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "premier": {
+      "nombre": "Premier League",
+      "n_fixtures": 11,
+      "picks": [
+        {
+          "partido": "Everton vs Coventry City",
+          "fecha": "2026-11-06",
+          "ganador": "local",
+          "prob_local": 46.6,
+          "prob_empate": 30.2,
+          "prob_visitante": 23.1,
+          "marcador": "1-1",
+          "elo_local": 1572.8,
+          "elo_visitante": 1500.0
+        }
+      ]
+    },
+    "laliga": {
+      "nombre": "La Liga",
+      "n_fixtures": 11,
+      "picks": [
+        {
+          "partido": "Sevilla vs Deportivo Alavés",
+          "fecha": "2026-11-06",
+          "ganador": "local",
+          "prob_local": 36.6,
+          "prob_empate": 31.4,
+          "prob_visitante": 32.0,
+          "marcador": "1-1",
+          "elo_local": 1449.9,
+          "elo_visitante": 1500.0
+        }
+      ]
+    },
+    "bundesliga": {
+      "nombre": "Bundesliga",
+      "n_fixtures": 10,
+      "picks": [
+        {
+          "partido": "Hamburger SV vs Borussia Mönchengladbach",
+          "fecha": "2026-11-06",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        }
+      ]
+    },
+    "seriea": {
+      "nombre": "Serie A",
+      "n_fixtures": 18,
+      "picks": [
+        {
+          "partido": "Venezia vs Udinese",
+          "fecha": "2026-11-06",
+          "ganador": "visitante",
+          "prob_local": 31.1,
+          "prob_empate": 31.3,
+          "prob_visitante": 37.6,
+          "marcador": "1-1",
+          "elo_local": 1402.8,
+          "elo_visitante": 1524.5
+        }
+      ]
+    },
+    "ligue1": {
+      "nombre": "Ligue 1",
+      "n_fixtures": 10,
+      "picks": [
+        {
+          "partido": "Toulouse vs Strasbourg",
+          "fecha": "2026-11-06",
+          "ganador": "visitante",
+          "prob_local": 33.8,
+          "prob_empate": 31.4,
+          "prob_visitante": 34.7,
+          "marcador": "1-1",
+          "elo_local": 1485.3,
+          "elo_visitante": 1571.0
+        }
+      ]
+    }
+  }
+}
