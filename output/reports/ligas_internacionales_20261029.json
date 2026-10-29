@@ -1,0 +1,358 @@
+{
+  "generated_at": "2026-10-29T19:21:49.351970",
+  "ligas": {
+    "champions": {
+      "nombre": "UEFA Champions League",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "libertadores": {
+      "nombre": "Copa Libertadores",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "mls": {
+      "nombre": "MLS",
+      "n_fixtures": 23,
+      "picks": [
+        {
+          "partido": "CF Montréal vs Vancouver Whitecaps",
+          "fecha": "2026-11-07",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Chicago Fire FC vs Columbus Crew",
+          "fecha": "2026-11-07",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "DC United vs New York City FC",
+          "fecha": "2026-11-07",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "FC Cincinnati vs Nashville SC",
+          "fecha": "2026-11-07",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Inter Miami CF vs Charlotte FC",
+          "fecha": "2026-11-07",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Orlando City vs New England Revolution",
+          "fecha": "2026-11-07",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Philadelphia Union vs Toronto FC",
+          "fecha": "2026-11-07",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Red Bull New York vs Atlanta United",
+          "fecha": "2026-11-07",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        }
+      ]
+    },
+    "argentina": {
+      "nombre": "Liga Profesional Argentina",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "brasileirao": {
+      "nombre": "Brasileirao Serie A",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "premier": {
+      "nombre": "Premier League",
+      "n_fixtures": 15,
+      "picks": [
+        {
+          "partido": "Leeds United vs Tottenham Hotspur",
+          "fecha": "2026-11-07",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Arsenal vs Hull City",
+          "fecha": "2026-11-07",
+          "ganador": "local",
+          "prob_local": 59.5,
+          "prob_empate": 26.8,
+          "prob_visitante": 13.7,
+          "marcador": "1-1",
+          "elo_local": 1727.6,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Fulham vs Newcastle United",
+          "fecha": "2026-11-07",
+          "ganador": "local",
+          "prob_local": 43.7,
+          "prob_empate": 30.7,
+          "prob_visitante": 25.5,
+          "marcador": "1-1",
+          "elo_local": 1537.5,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Nottingham Forest vs Manchester City",
+          "fecha": "2026-11-07",
+          "ganador": "visitante",
+          "prob_local": 21.0,
+          "prob_empate": 29.7,
+          "prob_visitante": 49.3,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1764.2
+        }
+      ]
+    },
+    "laliga": {
+      "nombre": "La Liga",
+      "n_fixtures": 15,
+      "picks": [
+        {
+          "partido": "Málaga vs Racing Santander",
+          "fecha": "2026-11-07",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Espanyol vs Deportivo A Coruña",
+          "fecha": "2026-11-07",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Osasuna vs Athletic Club",
+          "fecha": "2026-11-07",
+          "ganador": "local",
+          "prob_local": 44.0,
+          "prob_empate": 30.7,
+          "prob_visitante": 25.3,
+          "marcador": "1-1",
+          "elo_local": 1541.3,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Valencia vs Real Madrid",
+          "fecha": "2026-11-07",
+          "ganador": "visitante",
+          "prob_local": 22.8,
+          "prob_empate": 30.2,
+          "prob_visitante": 47.0,
+          "marcador": "1-1",
+          "elo_local": 1485.0,
+          "elo_visitante": 1722.4
+        }
+      ]
+    },
+    "bundesliga": {
+      "nombre": "Bundesliga",
+      "n_fixtures": 15,
+      "picks": [
+        {
+          "partido": "Borussia Dortmund vs Elversberg",
+          "fecha": "2026-11-07",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Mainz 05 vs Bayern München",
+          "fecha": "2026-11-07",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Paderborn vs Eintracht Frankfurt",
+          "fecha": "2026-11-07",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "RB Leipzig vs Augsburg",
+          "fecha": "2026-11-07",
+          "ganador": "local",
+          "prob_local": 52.8,
+          "prob_empate": 28.9,
+          "prob_visitante": 18.4,
+          "marcador": "1-1",
+          "elo_local": 1675.2,
+          "elo_visitante": 1528.7
+        },
+        {
+          "partido": "VfB Stuttgart vs Werder Bremen",
+          "fecha": "2026-11-07",
+          "ganador": "local",
+          "prob_local": 44.9,
+          "prob_empate": 30.6,
+          "prob_visitante": 24.6,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1448.6
+        }
+      ]
+    },
+    "seriea": {
+      "nombre": "Serie A",
+      "n_fixtures": 17,
+      "picks": [
+        {
+          "partido": "Cagliari vs Frosinone",
+          "fecha": "2026-11-07",
+          "ganador": "local",
+          "prob_local": 40.9,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.1,
+          "marcador": "1-1",
+          "elo_local": 1428.0,
+          "elo_visitante": 1425.6
+        },
+        {
+          "partido": "Torino vs Lecce",
+          "fecha": "2026-11-07",
+          "ganador": "local",
+          "prob_local": 47.7,
+          "prob_empate": 30.0,
+          "prob_visitante": 22.3,
+          "marcador": "1-1",
+          "elo_local": 1495.4,
+          "elo_visitante": 1409.8
+        },
+        {
+          "partido": "Parma vs Bologna",
+          "fecha": "2026-11-07",
+          "ganador": "local",
+          "prob_local": 41.4,
+          "prob_empate": 31.0,
+          "prob_visitante": 27.5,
+          "marcador": "1-1",
+          "elo_local": 1540.8,
+          "elo_visitante": 1531.3
+        },
+        {
+          "partido": "Roma vs Sassuolo",
+          "fecha": "2026-11-07",
+          "ganador": "local",
+          "prob_local": 47.9,
+          "prob_empate": 30.0,
+          "prob_visitante": 22.1,
+          "marcador": "1-1",
+          "elo_local": 1622.9,
+          "elo_visitante": 1534.5
+        }
+      ]
+    },
+    "ligue1": {
+      "nombre": "Ligue 1",
+      "n_fixtures": 12,
+      "picks": [
+        {
+          "partido": "Auxerre vs Paris FC",
+          "fecha": "2026-11-07",
+          "ganador": "visitante",
+          "prob_local": 31.9,
+          "prob_empate": 31.4,
+          "prob_visitante": 36.8,
+          "marcador": "1-1",
+          "elo_local": 1467.2,
+          "elo_visitante": 1578.7
+        },
+        {
+          "partido": "Paris Saint-Germain vs Troyes",
+          "fecha": "2026-11-07",
+          "ganador": "local",
+          "prob_local": 73.6,
+          "prob_empate": 20.6,
+          "prob_visitante": 5.9,
+          "marcador": "2-0",
+          "elo_local": 1747.4,
+          "elo_visitante": 1342.3
+        }
+      ]
+    }
+  }
+}
