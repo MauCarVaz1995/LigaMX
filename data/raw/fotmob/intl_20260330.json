@@ -14,15 +14,13 @@
             "id": 5888,
             "score": 1,
             "name": "Cape Verde",
-            "penScore": 4,
-            "longName": "Cape Verde"
+            "penScore": 4
           },
           "away": {
             "id": 7871,
             "score": 1,
             "name": "Finland",
-            "penScore": 2,
-            "longName": "Finland"
+            "penScore": 2
           },
           "eliminatedTeamId": 7871,
           "statusId": 13,
@@ -55,15 +53,13 @@
           "home": {
             "id": 5820,
             "score": 4,
-            "name": "New Zealand",
-            "longName": "New Zealand"
+            "name": "New Zealand"
           },
           "away": {
             "id": 9762,
             "score": 1,
             "name": "Chile",
-            "redCards": 1,
-            "longName": "Chile"
+            "redCards": 1
           },
           "eliminatedTeamId": null,
           "statusId": 6,
@@ -97,14 +93,12 @@
           "home": {
             "id": 5924,
             "score": 4,
-            "name": "St. Kitts and Nevis",
-            "longName": "St. Kitts and Nevis"
+            "name": "St. Kitts and Nevis"
           },
           "away": {
             "id": 6319,
             "score": 2,
-            "name": "Solomon Islands",
-            "longName": "Solomon Islands"
+            "name": "Solomon Islands"
           },
           "eliminatedTeamId": null,
           "statusId": 6,
@@ -139,15 +133,13 @@
             "score": 2,
             "name": "Gabon",
             "penScore": 3,
-            "redCards": 1,
-            "longName": "Gabon"
+            "redCards": 1
           },
           "away": {
             "id": 7724,
             "score": 2,
             "name": "Trinidad and Tobago",
-            "penScore": 2,
-            "longName": "Trinidad and Tobago"
+            "penScore": 2
           },
           "eliminatedTeamId": 7724,
           "statusId": 13,
@@ -181,14 +173,12 @@
           "home": {
             "id": 8570,
             "score": 0,
-            "name": "Germany",
-            "longName": "Germany"
+            "name": "Germany"
           },
           "away": {
             "id": 6709,
             "score": 0,
-            "name": "Ivory Coast",
-            "longName": "Ivory Coast"
+            "name": "Ivory Coast"
           },
           "eliminatedTeamId": null,
           "statusId": 106,
@@ -218,14 +208,12 @@
           "home": {
             "id": 5789,
             "score": 0,
-            "name": "UAE",
-            "longName": "UAE"
+            "name": "UAE"
           },
           "away": {
             "id": 8269,
             "score": 0,
-            "name": "Faroe Islands",
-            "longName": "Faroe Islands"
+            "name": "Faroe Islands"
           },
           "eliminatedTeamId": null,
           "statusId": 106,
@@ -255,14 +243,12 @@
           "home": {
             "id": 6324,
             "score": 0,
-            "name": "Indonesia",
-            "longName": "Indonesia"
+            "name": "Indonesia"
           },
           "away": {
             "id": 10150,
             "score": 1,
-            "name": "Bulgaria",
-            "longName": "Bulgaria"
+            "name": "Bulgaria"
           },
           "eliminatedTeamId": null,
           "statusId": 6,
@@ -295,14 +281,12 @@
           "home": {
             "id": 6548,
             "score": 0,
-            "name": "Grenada",
-            "longName": "Grenada"
+            "name": "Grenada"
           },
           "away": {
             "id": 5884,
             "score": 3,
-            "name": "Kenya",
-            "longName": "Kenya"
+            "name": "Kenya"
           },
           "eliminatedTeamId": null,
           "statusId": 6,
@@ -336,15 +320,13 @@
             "id": 8700,
             "score": 0,
             "name": "Uzbekistan",
-            "penScore": 5,
-            "longName": "Uzbekistan"
+            "penScore": 5
           },
           "away": {
             "id": 5800,
             "score": 0,
             "name": "Venezuela",
-            "penScore": 4,
-            "longName": "Venezuela"
+            "penScore": 4
           },
           "eliminatedTeamId": 5800,
           "statusId": 13,
@@ -378,15 +360,13 @@
             "id": 8566,
             "score": 1,
             "name": "Azerbaijan",
-            "penScore": 9,
-            "longName": "Azerbaijan"
+            "penScore": 9
           },
           "away": {
             "id": 5803,
             "score": 1,
             "name": "Sierra Leone",
-            "penScore": 8,
-            "longName": "Sierra Leone"
+            "penScore": 8
           },
           "eliminatedTeamId": 5803,
           "statusId": 13,
@@ -419,14 +399,12 @@
           "home": {
             "id": 5793,
             "score": 3,
-            "name": "Cyprus",
-            "longName": "Cyprus"
+            "name": "Cyprus"
           },
           "away": {
             "id": 5794,
             "score": 2,
-            "name": "Moldova",
-            "longName": "Moldova"
+            "name": "Moldova"
           },
           "eliminatedTeamId": null,
           "statusId": 6,
@@ -459,14 +437,12 @@
           "home": {
             "id": 5885,
             "score": 2,
-            "name": "Rwanda",
-            "longName": "Rwanda"
+            "name": "Rwanda"
           },
           "away": {
             "id": 8261,
             "score": 0,
-            "name": "Estonia",
-            "longName": "Estonia"
+            "name": "Estonia"
           },
           "eliminatedTeamId": null,
           "statusId": 6,
@@ -499,14 +475,12 @@
           "home": {
             "id": 8570,
             "score": 2,
-            "name": "Germany",
-            "longName": "Germany"
+            "name": "Germany"
           },
           "away": {
             "id": 6714,
             "score": 1,
-            "name": "Ghana",
-            "longName": "Ghana"
+            "name": "Ghana"
           },
           "eliminatedTeamId": null,
           "statusId": 6,
@@ -551,15 +525,13 @@
           "home": {
             "id": 961464,
             "score": 0,
-            "name": "Mes Shahr Babak",
-            "longName": "Mes Shahr Babak"
+            "name": "Mes Shahr Babak"
           },
           "away": {
             "id": 101624,
             "score": 0,
             "name": "Sanat Naft Abadan",
-            "shortName": "Sanat-Naft",
-            "longName": "Sanat Naft Abadan"
+            "shortName": "Sanat-Naft"
           },
           "eliminatedTeamId": null,
           "statusId": 5,
@@ -590,14 +562,12 @@
             "id": 392200,
             "score": 0,
             "name": "Nassaji Mazandaran FC",
-            "shortName": "Nassaji",
-            "longName": "Nassaji Mazandaran FC"
+            "shortName": "Nassaji"
           },
           "away": {
             "id": 101627,
             "score": 0,
-            "name": "Damash",
-            "longName": "Damash"
+            "name": "Damash"
           },
           "eliminatedTeamId": null,
           "statusId": 5,
@@ -628,14 +598,12 @@
             "id": 775750,
             "score": 0,
             "name": "Pars Jonoubi Jam",
-            "shortName": "Pars Jonoubi",
-            "longName": "Pars Jonoubi Jam"
+            "shortName": "Pars Jonoubi"
           },
           "away": {
             "id": 1675873,
             "score": 0,
-            "name": "Naft Bandar Abbas",
-            "longName": "Naft Bandar Abbas"
+            "name": "Naft Bandar Abbas"
           },
           "eliminatedTeamId": null,
           "statusId": 5,
@@ -665,14 +633,12 @@
           "home": {
             "id": 1602400,
             "score": 0,
-            "name": "Shenavarsazi Qeshm",
-            "longName": "Shenavarsazi Qeshm"
+            "name": "Shenavarsazi Qeshm"
           },
           "away": {
             "id": 101615,
             "score": 0,
-            "name": "Saipa",
-            "longName": "Saipa"
+            "name": "Saipa"
           },
           "eliminatedTeamId": null,
           "statusId": 5,
@@ -712,14 +678,12 @@
           "home": {
             "id": 1730347,
             "score": 3,
-            "name": "Wembley Rangers",
-            "longName": "Wembley Rangers"
+            "name": "Wembley Rangers"
           },
           "away": {
             "id": 1730346,
             "score": 3,
-            "name": "VZN FC",
-            "longName": "VZN FC"
+            "name": "VZN FC"
           },
           "eliminatedTeamId": null,
           "statusId": 6,
@@ -752,14 +716,12 @@
           "home": {
             "id": 1926481,
             "score": 6,
-            "name": "Prime FC",
-            "longName": "Prime FC"
+            "name": "Prime FC"
           },
           "away": {
             "id": 1823637,
             "score": 2,
-            "name": "Clutch FC",
-            "longName": "Clutch FC"
+            "name": "Clutch FC"
           },
           "eliminatedTeamId": null,
           "statusId": 6,
@@ -792,14 +754,12 @@
           "home": {
             "id": 1730336,
             "score": 3,
-            "name": "Deportrio",
-            "longName": "Deportrio"
+            "name": "Deportrio"
           },
           "away": {
             "id": 1730345,
             "score": 6,
-            "name": "NDL FC",
-            "longName": "NDL FC"
+            "name": "NDL FC"
           },
           "eliminatedTeamId": null,
           "statusId": 6,
@@ -832,15 +792,13 @@
           "home": {
             "id": 1730349,
             "score": 2,
-            "name": "Yanited",
-            "longName": "Yanited"
+            "name": "Yanited"
           },
           "away": {
             "id": 1823645,
             "score": 1,
             "name": "Rukkas FC",
-            "redCards": 1,
-            "longName": "Rukkas FC"
+            "redCards": 1
           },
           "eliminatedTeamId": null,
           "statusId": 6,
@@ -874,14 +832,12 @@
           "home": {
             "id": 1926480,
             "score": 3,
-            "name": "Gold Devils",
-            "longName": "Gold Devils"
+            "name": "Gold Devils"
           },
           "away": {
             "id": 1730342,
             "score": 5,
-            "name": "N5 FC",
-            "longName": "N5 FC"
+            "name": "N5 FC"
           },
           "eliminatedTeamId": null,
           "statusId": 6,
@@ -914,14 +870,12 @@
           "home": {
             "id": 1926508,
             "score": 3,
-            "name": "Community FC",
-            "longName": "Community FC"
+            "name": "Community FC"
           },
           "away": {
             "id": 1730344,
             "score": 7,
-            "name": "SDS FC",
-            "longName": "SDS FC"
+            "name": "SDS FC"
           },
           "eliminatedTeamId": null,
           "statusId": 6,
@@ -965,14 +919,12 @@
           "home": {
             "id": 6653,
             "score": 2,
-            "name": "France U21",
-            "longName": "France U21"
+            "name": "France U21"
           },
           "away": {
             "id": 5842,
             "score": 1,
-            "name": "Iceland U21",
-            "longName": "Iceland U21"
+            "name": "Iceland U21"
           },
           "eliminatedTeamId": null,
           "statusId": 6,
@@ -1016,14 +968,12 @@
           "home": {
             "id": 1925627,
             "score": 1,
-            "name": "Atletico Escobar",
-            "longName": "Atletico Escobar"
+            "name": "Atletico Escobar"
           },
           "away": {
             "id": 622756,
             "score": 1,
-            "name": "Sportivo Las Parejas",
-            "longName": "Sportivo Las Parejas"
+            "name": "Sportivo Las Parejas"
           },
           "eliminatedTeamId": null,
           "statusId": 6,
@@ -1067,14 +1017,12 @@
           "home": {
             "id": 8704,
             "score": 4,
-            "name": "Torpedo Moscow",
-            "longName": "Torpedo Moscow"
+            "name": "Torpedo Moscow"
           },
           "away": {
             "id": 49700,
             "score": 1,
-            "name": "SKA-Khabarovsk",
-            "longName": "SKA-Khabarovsk"
+            "name": "SKA-Khabarovsk"
           },
           "eliminatedTeamId": null,
           "statusId": 6,
@@ -1118,14 +1066,12 @@
           "home": {
             "id": 1638021,
             "score": 1,
-            "name": "Hamburger SV (W)",
-            "longName": "Hamburger SV (W)"
+            "name": "Hamburger SV (W)"
           },
           "away": {
             "id": 679913,
             "score": 3,
-            "name": "Bayer Leverkusen (W)",
-            "longName": "Bayer Leverkusen (W)"
+            "name": "Bayer Leverkusen (W)"
           },
           "eliminatedTeamId": null,
           "statusId": 6,
@@ -1168,14 +1114,12 @@
           "home": {
             "id": 101762,
             "score": 2,
-            "name": "Al Masry SC",
-            "longName": "Al Masry SC"
+            "name": "Al Masry SC"
           },
           "away": {
             "id": 178268,
             "score": 2,
-            "name": "El Gouna FC",
-            "longName": "El Gouna FC"
+            "name": "El Gouna FC"
           },
           "eliminatedTeamId": 178268,
           "statusId": 6,
@@ -1209,14 +1153,12 @@
           "home": {
             "id": 101757,
             "score": 1,
-            "name": "Al Mokawloon Al Arab",
-            "longName": "Al Mokawloon Al Arab"
+            "name": "Al Mokawloon Al Arab"
           },
           "away": {
             "id": 585662,
             "score": 1,
-            "name": "ZED FC",
-            "longName": "ZED FC"
+            "name": "ZED FC"
           },
           "eliminatedTeamId": 101757,
           "statusId": 6,
@@ -1261,14 +1203,12 @@
           "home": {
             "id": 1831,
             "score": 0,
-            "name": "Hapoel Rishon LeZion",
-            "longName": "Hapoel Rishon LeZion"
+            "name": "Hapoel Rishon LeZion"
           },
           "away": {
             "id": 752833,
             "score": 2,
-            "name": "SC Kafr Qasim",
-            "longName": "SC Kafr Qasim"
+            "name": "SC Kafr Qasim"
           },
           "eliminatedTeamId": null,
           "statusId": 6,
@@ -1302,14 +1242,12 @@
             "id": 1691612,
             "score": 1,
             "name": "Ironi Modiin",
-            "redCards": 1,
-            "longName": "Ironi Modiin"
+            "redCards": 1
           },
           "away": {
             "id": 6280,
             "score": 0,
-            "name": "Hapoel Kfar Saba",
-            "longName": "Hapoel Kfar Saba"
+            "name": "Hapoel Kfar Saba"
           },
           "eliminatedTeamId": null,
           "statusId": 6,
@@ -1344,14 +1282,12 @@
             "id": 1691614,
             "score": 0,
             "name": "Kiryat Yam",
-            "redCards": 1,
-            "longName": "Kiryat Yam"
+            "redCards": 1
           },
           "away": {
             "id": 2093,
             "score": 0,
-            "name": "Hapoel Ironi Akko",
-            "longName": "Hapoel Ironi Akko"
+            "name": "Hapoel Ironi Akko"
           },
           "eliminatedTeamId": null,
           "statusId": 6,
@@ -1385,14 +1321,12 @@
           "home": {
             "id": 2097,
             "score": 2,
-            "name": "Maccabi Herzliya",
-            "longName": "Maccabi Herzliya"
+            "name": "Maccabi Herzliya"
           },
           "away": {
             "id": 857444,
             "score": 1,
-            "name": "Hapoel Hadera",
-            "longName": "Hapoel Hadera"
+            "name": "Hapoel Hadera"
           },
           "eliminatedTeamId": null,
           "statusId": 6,
@@ -1437,14 +1371,12 @@
             "id": 9883,
             "score": 1,
             "name": "Juventud de las Piedras",
-            "redCards": 1,
-            "longName": "Juventud de las Piedras"
+            "redCards": 1
           },
           "away": {
             "id": 188313,
             "score": 2,
-            "name": "Boston River",
-            "longName": "Boston River"
+            "name": "Boston River"
           },
           "eliminatedTeamId": null,
           "statusId": 6,
@@ -1478,15 +1410,13 @@
           "home": {
             "id": 148967,
             "score": 2,
-            "name": "Cerro Largo",
-            "longName": "Cerro Largo"
+            "name": "Cerro Largo"
           },
           "away": {
             "id": 8562,
             "score": 0,
             "name": "Danubio",
-            "redCards": 1,
-            "longName": "Danubio"
+            "redCards": 1
           },
           "eliminatedTeamId": null,
           "statusId": 6,
@@ -1531,14 +1461,12 @@
           "home": {
             "id": 980699,
             "score": 1,
-            "name": "Club Tijuana (W)",
-            "longName": "Club Tijuana (W)"
+            "name": "Club Tijuana (W)"
           },
           "away": {
             "id": 980702,
             "score": 1,
-            "name": "Chivas (W)",
-            "longName": "Chivas (W)"
+            "name": "Chivas (W)"
           },
           "eliminatedTeamId": null,
           "statusId": 6,
@@ -1582,14 +1510,12 @@
           "home": {
             "id": 9934,
             "score": 1,
-            "name": "Deportivo Marquense",
-            "longName": "Deportivo Marquense"
+            "name": "Deportivo Marquense"
           },
           "away": {
             "id": 49761,
             "score": 0,
-            "name": "Comunicaciones FC",
-            "longName": "Comunicaciones FC"
+            "name": "Comunicaciones FC"
           },
           "eliminatedTeamId": null,
           "statusId": 6,
@@ -1634,14 +1560,12 @@
             "id": 45724,
             "score": 1,
             "name": "Chelmsford",
-            "redCards": 1,
-            "longName": "Chelmsford"
+            "redCards": 1
           },
           "away": {
             "id": 275027,
             "score": 1,
-            "name": "AFC Totton",
-            "longName": "AFC Totton"
+            "name": "AFC Totton"
           },
           "eliminatedTeamId": null,
           "statusId": 6,
@@ -1686,14 +1610,12 @@
           "home": {
             "id": 348397,
             "score": 1,
-            "name": "Llaneros FC",
-            "longName": "Llaneros FC"
+            "name": "Llaneros FC"
           },
           "away": {
             "id": 6024,
             "score": 1,
-            "name": "Once Caldas",
-            "longName": "Once Caldas"
+            "name": "Once Caldas"
           },
           "eliminatedTeamId": null,
           "statusId": 6,
@@ -1726,14 +1648,12 @@
           "home": {
             "id": 2528,
             "score": 2,
-            "name": "Independiente Medellin",
-            "longName": "Independiente Medellin"
+            "name": "Independiente Medellin"
           },
           "away": {
             "id": 10280,
             "score": 1,
-            "name": "America de Cali",
-            "longName": "America de Cali"
+            "name": "America de Cali"
           },
           "eliminatedTeamId": null,
           "statusId": 6,
@@ -1777,14 +1697,12 @@
           "home": {
             "id": 4400,
             "score": 0,
-            "name": "Independiente Yumbo",
-            "longName": "Independiente Yumbo"
+            "name": "Independiente Yumbo"
           },
           "away": {
             "id": 4408,
             "score": 2,
-            "name": "Union Magdalena",
-            "longName": "Union Magdalena"
+            "name": "Union Magdalena"
           },
           "eliminatedTeamId": null,
           "statusId": 6,
@@ -1829,15 +1747,13 @@
             "id": 213603,
             "score": 1,
             "name": "CA Defensores de Belgrano",
-            "redCards": 1,
-            "longName": "CA Defensores de Belgrano"
+            "redCards": 1
           },
           "away": {
             "id": 10085,
             "score": 1,
             "name": "Atletico Rafaela",
-            "redCards": 1,
-            "longName": "Atletico Rafaela"
+            "redCards": 1
           },
           "eliminatedTeamId": null,
           "statusId": 6,
@@ -1885,14 +1801,12 @@
           "home": {
             "id": 9849,
             "score": 1,
-            "name": "Arezzo",
-            "longName": "Arezzo"
+            "name": "Arezzo"
           },
           "away": {
             "id": 8522,
             "score": 2,
-            "name": "Ascoli",
-            "longName": "Ascoli"
+            "name": "Ascoli"
           },
           "eliminatedTeamId": null,
           "statusId": 6,
@@ -1939,14 +1853,12 @@
           "home": {
             "id": 277990,
             "score": 2,
-            "name": "Casertana",
-            "longName": "Casertana"
+            "name": "Casertana"
           },
           "away": {
             "id": 88998,
             "score": 0,
-            "name": "Sorrento",
-            "longName": "Sorrento"
+            "name": "Sorrento"
           },
           "eliminatedTeamId": null,
           "statusId": 6,
@@ -1991,14 +1903,12 @@
           "home": {
             "id": 101660,
             "score": 0,
-            "name": "Al Talaba",
-            "longName": "Al Talaba"
+            "name": "Al Talaba"
           },
           "away": {
             "id": 101661,
             "score": 0,
-            "name": "Al Naft",
-            "longName": "Al Naft"
+            "name": "Al Naft"
           },
           "eliminatedTeamId": null,
           "statusId": 6,
@@ -2031,14 +1941,12 @@
           "home": {
             "id": 191818,
             "score": 1,
-            "name": "Al Karkh",
-            "longName": "Al Karkh"
+            "name": "Al Karkh"
           },
           "away": {
             "id": 101644,
             "score": 0,
-            "name": "Al Minaa",
-            "longName": "Al Minaa"
+            "name": "Al Minaa"
           },
           "eliminatedTeamId": null,
           "statusId": 6,
@@ -2072,15 +1980,13 @@
             "id": 1811191,
             "score": 2,
             "name": "Al-Mosul",
-            "redCards": 1,
-            "longName": "Al-Mosul"
+            "redCards": 1
           },
           "away": {
             "id": 101662,
             "score": 1,
             "name": "Al Kahrabaa",
-            "redCards": 1,
-            "longName": "Al Kahrabaa"
+            "redCards": 1
           },
           "eliminatedTeamId": null,
           "statusId": 6,
@@ -2115,14 +2021,12 @@
           "home": {
             "id": 101650,
             "score": 0,
-            "name": "Duhok",
-            "longName": "Duhok"
+            "name": "Duhok"
           },
           "away": {
             "id": 191814,
             "score": 1,
-            "name": "Zakho",
-            "longName": "Zakho"
+            "name": "Zakho"
           },
           "eliminatedTeamId": null,
           "statusId": 6,
@@ -2156,14 +2060,12 @@
             "id": 165215,
             "score": 2,
             "name": "Amanat Baghdad",
-            "redCards": 1,
-            "longName": "Amanat Baghdad"
+            "redCards": 1
           },
           "away": {
             "id": 1680577,
             "score": 1,
-            "name": "Al-Karma",
-            "longName": "Al-Karma"
+            "name": "Al-Karma"
           },
           "eliminatedTeamId": null,
           "statusId": 6,
@@ -2209,14 +2111,12 @@
             "id": 4055,
             "score": 1,
             "name": "Cobresal",
-            "redCards": 1,
-            "longName": "Cobresal"
+            "redCards": 1
           },
           "away": {
             "id": 6458,
             "score": 3,
-            "name": "Universidad Catolica",
-            "longName": "Universidad Catolica"
+            "name": "Universidad Catolica"
           },
           "eliminatedTeamId": null,
           "statusId": 6,
@@ -2251,14 +2151,12 @@
             "id": 4054,
             "score": 0,
             "name": "Universidad de Concepcion",
-            "redCards": 1,
-            "longName": "Universidad de Concepcion"
+            "redCards": 1
           },
           "away": {
             "id": 49559,
             "score": 2,
-            "name": "Ñublense",
-            "longName": "Ñublense"
+            "name": "Ñublense"
           },
           "eliminatedTeamId": null,
           "statusId": 6,
@@ -2292,14 +2190,12 @@
           "home": {
             "id": 6455,
             "score": 1,
-            "name": "Palestino",
-            "longName": "Palestino"
+            "name": "Palestino"
           },
           "away": {
             "id": 6296,
             "score": 3,
-            "name": "O'Higgins",
-            "longName": "O'Higgins"
+            "name": "O'Higgins"
           },
           "eliminatedTeamId": null,
           "statusId": 6,
@@ -2342,14 +2238,12 @@
           "home": {
             "id": 410824,
             "score": 0,
-            "name": "EC Jacuipense",
-            "longName": "EC Jacuipense"
+            "name": "EC Jacuipense"
           },
           "away": {
             "id": 47387,
             "score": 0,
-            "name": "America RN",
-            "longName": "America RN"
+            "name": "America RN"
           },
           "eliminatedTeamId": null,
           "statusId": 6,
@@ -2392,14 +2286,12 @@
           "home": {
             "id": 6620,
             "score": 1,
-            "name": "Libertad",
-            "longName": "Libertad"
+            "name": "Libertad"
           },
           "away": {
             "id": 1427854,
             "score": 0,
-            "name": "Recoleta",
-            "longName": "Recoleta"
+            "name": "Recoleta"
           },
           "eliminatedTeamId": null,
           "statusId": 6,
@@ -2442,14 +2334,12 @@
           "home": {
             "id": 614327,
             "score": 0,
-            "name": "Tacoma Defiance",
-            "longName": "Tacoma Defiance"
+            "name": "Tacoma Defiance"
           },
           "away": {
             "id": 521005,
             "score": 1,
-            "name": "Ventura County FC",
-            "longName": "Ventura County FC"
+            "name": "Ventura County FC"
           },
           "eliminatedTeamId": null,
           "statusId": 6,
@@ -2493,14 +2383,12 @@
             "id": 773657,
             "score": 2,
             "name": "Sunderland U21",
-            "redCards": 1,
-            "longName": "Sunderland U21"
+            "redCards": 1
           },
           "away": {
             "id": 773686,
             "score": 2,
-            "name": "Reading U21",
-            "longName": "Reading U21"
+            "name": "Reading U21"
           },
           "eliminatedTeamId": null,
           "statusId": 6,
@@ -2544,14 +2432,12 @@
           "home": {
             "id": 246503,
             "score": 3,
-            "name": "Magallanes",
-            "longName": "Magallanes"
+            "name": "Magallanes"
           },
           "away": {
             "id": 4057,
             "score": 2,
-            "name": "Rangers",
-            "longName": "Rangers"
+            "name": "Rangers"
           },
           "eliminatedTeamId": null,
           "statusId": 6,
