@@ -1,13 +1,13 @@
 {
-  "date": "2026-11-03",
-  "start": "2026-11-03T20:19:58.206427",
+  "date": "2026-11-04",
+  "start": "2026-11-04T20:36:02.427390",
   "pasos": {
     "paso1": {
       "nuevos": 0,
       "terminados_antes": 167,
       "terminados_despues": 167,
       "error": null,
-      "elapsed_s": 58.9
+      "elapsed_s": 59.2
     },
     "paso2": {
       "equipos_afectados": 0,
@@ -16,14 +16,14 @@
       "elapsed_s": 0.0
     },
     "paso3": {
-      "nuevos": 24,
+      "nuevos": 46,
       "fechas_procesadas": 4,
       "error": null,
-      "elapsed_s": 6.4
+      "elapsed_s": 6.0
     },
     "paso4": {
-      "selecciones_afectadas": 48,
-      "nuevo_archivo": "elos_selecciones_20261103.json",
+      "selecciones_afectadas": 78,
+      "nuevo_archivo": "elos_selecciones_20261104.json",
       "error": null,
       "elapsed_s": 0.1
     },
@@ -33,13 +33,13 @@
       "aciertos": 15,
       "total_evaluados": 36,
       "error": null,
-      "elapsed_s": 2.0
+      "elapsed_s": 2.8
     },
     "paso6": {
       "predicciones_generadas": 1,
       "saltado": false,
       "error": null,
-      "elapsed_s": 6.4
+      "elapsed_s": 8.4
     },
     "paso8": {
       "ok": true,
@@ -49,11 +49,11 @@
     "paso7": {
       "committed": false,
       "pushed": false,
-      "error": "Author identity unknown\n\n*** Please tell me who you are.\n\nRun\n\n  git config --global user.email \"you@example.com\"\n  git config --global user.name \"Your Name\"\n\nto set your account's default identity.\nOmit --global to set the identity only in this repository.\n\nfatal: empty ident name (for <runner@runnervm48cm3.wpx3thj3tobuhgjrwdc2frxatd.yx.internal.cloudapp.net>) not allowed\n"
+      "error": "Author identity unknown\n\n*** Please tell me who you are.\n\nRun\n\n  git config --global user.email \"you@example.com\"\n  git config --global user.name \"Your Name\"\n\nto set your account's default identity.\nOmit --global to set the identity only in this repository.\n\nfatal: empty ident name (for <runner@runnervm48cm3.wcyrffb3jzlunhghmnfskl11nf.yx.internal.cloudapp.net>) not allowed\n"
     }
   },
-  "end": "2026-11-03T20:21:13.009396",
-  "elapsed_s": 74.8,
+  "end": "2026-11-04T20:37:19.880796",
+  "elapsed_s": 77.5,
   "success": true,
   "critical_failed": false,
   "noncritical_errors": [
