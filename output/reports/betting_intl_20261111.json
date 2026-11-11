@@ -1,0 +1,74 @@
+[
+  {
+    "match_id": null,
+    "fecha": "2026-11-20",
+    "jornada": 0,
+    "local": "Athletic Club",
+    "visita": "Espanyol",
+    "torneo": "La Liga",
+    "liga": "laliga",
+    "elo_local": 1500.0,
+    "elo_visita": 1500.0,
+    "corners": {},
+    "tarjetas": {},
+    "btts": {
+      "btts_si": 0.5244,
+      "btts_no": 0.4756,
+      "over_1.5": 0.7326,
+      "over_2.5": 0.4816,
+      "under_2.5": 0.5184,
+      "lambda_local": 1.433,
+      "lambda_visita": 1.167
+    },
+    "value_bets": [],
+    "errors": []
+  },
+  {
+    "match_id": null,
+    "fecha": "2026-11-20",
+    "jornada": 0,
+    "local": "Bayern München",
+    "visita": "1. FC Köln",
+    "torneo": "Bundesliga",
+    "liga": "bundesliga",
+    "elo_local": 1500.0,
+    "elo_visita": 1500.0,
+    "corners": {},
+    "tarjetas": {},
+    "btts": {
+      "btts_si": 0.5244,
+      "btts_no": 0.4756,
+      "over_1.5": 0.7326,
+      "over_2.5": 0.4816,
+      "under_2.5": 0.5184,
+      "lambda_local": 1.433,
+      "lambda_visita": 1.167
+    },
+    "value_bets": [],
+    "errors": []
+  },
+  {
+    "match_id": null,
+    "fecha": "2026-11-20",
+    "jornada": 0,
+    "local": "Troyes",
+    "visita": "Le Havre",
+    "torneo": "Ligue 1",
+    "liga": "ligue1",
+    "elo_local": 1342.3,
+    "elo_visita": 1461.4,
+    "corners": {},
+    "tarjetas": {},
+    "btts": {
+      "btts_si": 0.528,
+      "btts_no": 0.472,
+      "over_1.5": 0.7326,
+      "over_2.5": 0.4816,
+      "under_2.5": 0.5184,
+      "lambda_local": 1.235,
+      "lambda_visita": 1.365
+    },
+    "value_bets": [],
+    "errors": []
+  }
+]

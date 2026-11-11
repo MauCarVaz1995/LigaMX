@@ -1509,3 +1509,6 @@ fecha_prediccion,partido,equipo_local,equipo_visitante,elo_local,elo_visitante,p
 2026-10-30 19:00:58,Le Havre vs Lorient,Le Havre,Lorient,1461.4,1555.2,33.2,31.4,35.4,visitante,1-1,1.2771,1.3229,ligas_internacionales,2026-11-08,,,,,,ligue1
 2026-10-30 19:00:58,Le Mans vs Monaco,Le Mans,Monaco,1500.0,1647.2,29.2,31.2,39.6,visitante,1-1,1.188,1.412,ligas_internacionales,2026-11-08,,,,,,ligue1
 2026-10-30 19:00:58,Lens vs Marseille,Lens,Marseille,1664.7,1597.7,46.2,30.3,23.5,local,1-1,1.545,1.055,ligas_internacionales,2026-11-08,,,,,,ligue1
+2026-11-11 21:03:10,Athletic Club vs Espanyol,Athletic Club,Espanyol,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-11-20,,,,,,laliga
+2026-11-11 21:03:26,Bayern München vs 1. FC Köln,Bayern München,1. FC Köln,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-11-20,,,,,,bundesliga
+2026-11-11 21:04:00,Troyes vs Le Havre,Troyes,Le Havre,1342.3,1461.4,31.3,31.4,37.4,visitante,1-1,1.2347,1.3653,ligas_internacionales,2026-11-20,,,,,,ligue1
