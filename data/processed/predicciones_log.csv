@@ -1512,3 +1512,18 @@ fecha_prediccion,partido,equipo_local,equipo_visitante,elo_local,elo_visitante,p
 2026-11-11 21:03:10,Athletic Club vs Espanyol,Athletic Club,Espanyol,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-11-20,,,,,,laliga
 2026-11-11 21:03:26,Bayern München vs 1. FC Köln,Bayern München,1. FC Köln,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-11-20,,,,,,bundesliga
 2026-11-11 21:04:00,Troyes vs Le Havre,Troyes,Le Havre,1342.3,1461.4,31.3,31.4,37.4,visitante,1-1,1.2347,1.3653,ligas_internacionales,2026-11-20,,,,,,ligue1
+2026-11-12 21:16:49,Manchester City vs Fulham,Manchester City,Fulham,1764.2,1537.5,59.4,26.8,13.8,local,1-1,1.8111,0.7889,ligas_internacionales,2026-11-21,,,,,,premier
+2026-11-12 21:16:49,AFC Bournemouth vs Nottingham Forest,AFC Bournemouth,Nottingham Forest,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-11-21,,,,,,premier
+2026-11-12 21:16:49,Aston Villa vs Sunderland,Aston Villa,Sunderland,1623.3,1542.4,47.3,30.1,22.6,local,1-1,1.5682,1.0318,ligas_internacionales,2026-11-21,,,,,,premier
+2026-11-12 21:16:49,Chelsea vs Leeds United,Chelsea,Leeds United,1546.1,1500.0,44.4,30.6,24.9,local,1-1,1.5101,1.0899,ligas_internacionales,2026-11-21,,,,,,premier
+2026-11-12 21:16:49,Coventry City vs Crystal Palace,Coventry City,Crystal Palace,1500.0,1540.4,37.4,31.4,31.2,local,1-1,1.366,1.234,ligas_internacionales,2026-11-21,,,,,,premier
+2026-11-12 21:16:49,Tottenham Hotspur vs Ipswich Town,Tottenham Hotspur,Ipswich Town,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-11-21,,,,,,premier
+2026-11-12 21:16:49,Newcastle United vs Arsenal,Newcastle United,Arsenal,1500.0,1727.6,23.5,30.3,46.2,visitante,1-1,1.054,1.546,ligas_internacionales,2026-11-21,,,,,,premier
+2026-11-12 21:17:06,Deportivo Alavés vs Deportivo A Coruña,Deportivo Alavés,Deportivo A Coruña,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-11-21,,,,,,laliga
+2026-11-12 21:17:06,Rayo Vallecano vs Valencia,Rayo Vallecano,Valencia,1500.0,1485.0,41.9,31.0,27.1,local,1-1,1.4584,1.1416,ligas_internacionales,2026-11-21,,,,,,laliga
+2026-11-12 21:17:06,Sevilla vs Real Betis,Sevilla,Real Betis,1449.9,1500.0,36.6,31.4,32.0,local,1-1,1.3499,1.2501,ligas_internacionales,2026-11-21,,,,,,laliga
+2026-11-12 21:17:06,Real Madrid vs Celta Vigo,Real Madrid,Celta Vigo,1722.4,1500.0,59.1,26.9,14.0,local,1-1,1.8039,0.7961,ligas_internacionales,2026-11-21,,,,,,laliga
+2026-11-12 21:17:43,Como vs Cagliari,Como,Cagliari,1637.6,1428.0,58.0,27.3,14.7,local,1-1,1.7827,0.8173,ligas_internacionales,2026-11-21,,,,,,seriea
+2026-11-12 21:17:43,Lazio vs Lecce,Lazio,Lecce,1608.4,1409.8,57.1,27.6,15.3,local,1-1,1.7642,0.8358,ligas_internacionales,2026-11-21,,,,,,seriea
+2026-11-12 21:17:43,Parma vs Roma,Parma,Roma,1540.8,1622.9,34.1,31.4,34.5,visitante,1-1,1.2964,1.3036,ligas_internacionales,2026-11-21,,,,,,seriea
+2026-11-12 21:17:43,Napoli vs Torino,Napoli,Torino,1692.6,1495.4,57.0,27.6,15.4,local,1-1,1.7619,0.8381,ligas_internacionales,2026-11-21,,,,,,seriea
