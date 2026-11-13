@@ -1527,3 +1527,14 @@ fecha_prediccion,partido,equipo_local,equipo_visitante,elo_local,elo_visitante,p
 2026-11-12 21:17:43,Lazio vs Lecce,Lazio,Lecce,1608.4,1409.8,57.1,27.6,15.3,local,1-1,1.7642,0.8358,ligas_internacionales,2026-11-21,,,,,,seriea
 2026-11-12 21:17:43,Parma vs Roma,Parma,Roma,1540.8,1622.9,34.1,31.4,34.5,visitante,1-1,1.2964,1.3036,ligas_internacionales,2026-11-21,,,,,,seriea
 2026-11-12 21:17:43,Napoli vs Torino,Napoli,Torino,1692.6,1495.4,57.0,27.6,15.4,local,1-1,1.7619,0.8381,ligas_internacionales,2026-11-21,,,,,,seriea
+2026-11-13 20:46:08,Hull City vs Brighton & Hove Albion,Hull City,Brighton & Hove Albion,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-11-22,,,,,,premier
+2026-11-13 20:46:08,Liverpool vs Manchester United,Liverpool,Manchester United,1633.4,1500.0,51.7,29.1,19.2,local,1-1,1.6556,0.9444,ligas_internacionales,2026-11-22,,,,,,premier
+2026-11-13 20:46:26,Barcelona vs Villarreal,Barcelona,Villarreal,1848.0,1667.0,55.7,28.0,16.3,local,1-1,1.735,0.865,ligas_internacionales,2026-11-22,,,,,,laliga
+2026-11-13 20:46:26,Racing Santander vs Real Sociedad,Racing Santander,Real Sociedad,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-11-22,,,,,,laliga
+2026-11-13 20:46:26,Osasuna vs Málaga,Osasuna,Málaga,1541.3,1500.0,44.0,30.7,25.3,local,1-1,1.5021,1.0979,ligas_internacionales,2026-11-22,,,,,,laliga
+2026-11-13 20:46:26,Getafe vs Atlético Madrid,Getafe,Atlético Madrid,1529.6,1500.0,43.1,30.8,26.1,local,1-1,1.4827,1.1173,ligas_internacionales,2026-11-22,,,,,,laliga
+2026-11-13 20:47:03,Juventus vs Venezia,Juventus,Venezia,1713.5,1402.8,66.3,24.1,9.6,local,2-0,1.9511,0.6489,ligas_internacionales,2026-11-22,,,,,,seriea
+2026-11-13 20:47:03,Bologna vs Udinese,Bologna,Udinese,1531.3,1524.5,41.2,31.1,27.7,local,1-1,1.4446,1.1554,ligas_internacionales,2026-11-22,,,,,,seriea
+2026-11-13 20:47:03,Sassuolo vs Genoa,Sassuolo,Genoa,1534.5,1532.7,40.8,31.1,28.1,local,1-1,1.4364,1.1636,ligas_internacionales,2026-11-22,,,,,,seriea
+2026-11-13 20:47:03,Milan vs Frosinone,Milan,Frosinone,1669.8,1425.6,60.9,26.3,12.8,local,2-0,1.8402,0.7598,ligas_internacionales,2026-11-22,,,,,,seriea
+2026-11-13 20:47:03,Atalanta vs Inter Milan,Atalanta,Inter Milan,1652.2,1820.0,27.7,31.0,41.3,visitante,1-1,1.1537,1.4463,ligas_internacionales,2026-11-22,,,,,,seriea
