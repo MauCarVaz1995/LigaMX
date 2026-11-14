@@ -1538,3 +1538,6 @@ fecha_prediccion,partido,equipo_local,equipo_visitante,elo_local,elo_visitante,p
 2026-11-13 20:47:03,Sassuolo vs Genoa,Sassuolo,Genoa,1534.5,1532.7,40.8,31.1,28.1,local,1-1,1.4364,1.1636,ligas_internacionales,2026-11-22,,,,,,seriea
 2026-11-13 20:47:03,Milan vs Frosinone,Milan,Frosinone,1669.8,1425.6,60.9,26.3,12.8,local,2-0,1.8402,0.7598,ligas_internacionales,2026-11-22,,,,,,seriea
 2026-11-13 20:47:03,Atalanta vs Inter Milan,Atalanta,Inter Milan,1652.2,1820.0,27.7,31.0,41.3,visitante,1-1,1.1537,1.4463,ligas_internacionales,2026-11-22,,,,,,seriea
+2026-11-14 18:57:44,Brentford vs Everton,Brentford,Everton,1576.7,1572.8,41.0,31.1,28.0,local,1-1,1.4398,1.1602,ligas_internacionales,2026-11-23,,,,,,premier
+2026-11-14 18:58:02,Levante vs Elche,Levante,Elche,1461.0,1434.0,42.9,30.9,26.3,local,1-1,1.4784,1.1216,ligas_internacionales,2026-11-23,,,,,,laliga
+2026-11-14 18:58:39,Monza vs Fiorentina,Monza,Fiorentina,1282.9,1566.6,19.8,29.3,50.9,visitante,1-1,0.9606,1.6394,ligas_internacionales,2026-11-23,,,,,,seriea
