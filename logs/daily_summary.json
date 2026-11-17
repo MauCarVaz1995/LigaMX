@@ -1,13 +1,13 @@
 {
-  "date": "2026-11-16",
-  "start": "2026-11-16T23:05:48.692483",
+  "date": "2026-11-17",
+  "start": "2026-11-17T21:57:22.641165",
   "pasos": {
     "paso1": {
       "nuevos": 0,
       "terminados_antes": 167,
       "terminados_despues": 167,
       "error": null,
-      "elapsed_s": 60.2
+      "elapsed_s": 59.2
     },
     "paso2": {
       "equipos_afectados": 0,
@@ -16,16 +16,16 @@
       "elapsed_s": 0.0
     },
     "paso3": {
-      "nuevos": 30,
+      "nuevos": 55,
       "fechas_procesadas": 4,
       "error": null,
-      "elapsed_s": 6.6
+      "elapsed_s": 5.8
     },
     "paso4": {
-      "selecciones_afectadas": 50,
-      "nuevo_archivo": "elos_selecciones_20261116.json",
+      "selecciones_afectadas": 110,
+      "nuevo_archivo": "elos_selecciones_20261117.json",
       "error": null,
-      "elapsed_s": 0.0
+      "elapsed_s": 0.1
     },
     "paso5": {
       "actualizados": 0,
@@ -33,27 +33,27 @@
       "aciertos": 15,
       "total_evaluados": 36,
       "error": null,
-      "elapsed_s": 1.1
+      "elapsed_s": 1.5
     },
     "paso6": {
       "predicciones_generadas": 1,
       "saltado": false,
       "error": null,
-      "elapsed_s": 0.9
+      "elapsed_s": 1.0
     },
     "paso8": {
       "ok": true,
-      "elapsed_s": 0.4,
+      "elapsed_s": 0.5,
       "error": null
     },
     "paso7": {
       "committed": false,
       "pushed": false,
-      "error": "Author identity unknown\n\n*** Please tell me who you are.\n\nRun\n\n  git config --global user.email \"you@example.com\"\n  git config --global user.name \"Your Name\"\n\nto set your account's default identity.\nOmit --global to set the identity only in this repository.\n\nfatal: empty ident name (for <runner@runnervm8axu0.mpcewofonclehgqpagwpfo4vma.xx.internal.cloudapp.net>) not allowed\n"
+      "error": "Author identity unknown\n\n*** Please tell me who you are.\n\nRun\n\n  git config --global user.email \"you@example.com\"\n  git config --global user.name \"Your Name\"\n\nto set your account's default identity.\nOmit --global to set the identity only in this repository.\n\nfatal: empty ident name (for <runner@runnervmccnms.e132iq2vbuneramwodaux2tt2c.gx.internal.cloudapp.net>) not allowed\n"
     }
   },
-  "end": "2026-11-16T23:06:57.986212",
-  "elapsed_s": 69.3,
+  "end": "2026-11-17T21:58:30.842377",
+  "elapsed_s": 68.2,
   "success": true,
   "critical_failed": false,
   "noncritical_errors": [
