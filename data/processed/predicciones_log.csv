@@ -1541,3 +1541,6 @@ fecha_prediccion,partido,equipo_local,equipo_visitante,elo_local,elo_visitante,p
 2026-11-14 18:57:44,Brentford vs Everton,Brentford,Everton,1576.7,1572.8,41.0,31.1,28.0,local,1-1,1.4398,1.1602,ligas_internacionales,2026-11-23,,,,,,premier
 2026-11-14 18:58:02,Levante vs Elche,Levante,Elche,1461.0,1434.0,42.9,30.9,26.3,local,1-1,1.4784,1.1216,ligas_internacionales,2026-11-23,,,,,,laliga
 2026-11-14 18:58:39,Monza vs Fiorentina,Monza,Fiorentina,1282.9,1566.6,19.8,29.3,50.9,visitante,1-1,0.9606,1.6394,ligas_internacionales,2026-11-23,,,,,,seriea
+2026-11-18 21:43:18,Nottingham Forest vs Chelsea,Nottingham Forest,Chelsea,1500.0,1546.1,37.0,31.4,31.7,local,1-1,1.3565,1.2435,ligas_internacionales,2026-11-27,,,,,,premier
+2026-11-18 21:43:36,Levante vs Racing Santander,Levante,Racing Santander,1461.0,1500.0,37.5,31.4,31.1,local,1-1,1.3684,1.2316,ligas_internacionales,2026-11-27,,,,,,laliga
+2026-11-18 21:44:11,Venezia vs Bologna,Venezia,Bologna,1402.8,1531.3,30.6,31.3,38.1,visitante,1-1,1.2192,1.3808,ligas_internacionales,2026-11-27,,,,,,seriea

@@ -1,13 +1,13 @@
 {
-  "date": "2026-11-17",
-  "start": "2026-11-17T21:57:22.641165",
+  "date": "2026-11-18",
+  "start": "2026-11-18T21:39:40.707343",
   "pasos": {
     "paso1": {
       "nuevos": 0,
       "terminados_antes": 167,
       "terminados_despues": 167,
       "error": null,
-      "elapsed_s": 59.2
+      "elapsed_s": 57.9
     },
     "paso2": {
       "equipos_afectados": 0,
@@ -16,14 +16,14 @@
       "elapsed_s": 0.0
     },
     "paso3": {
-      "nuevos": 55,
+      "nuevos": 15,
       "fechas_procesadas": 4,
       "error": null,
-      "elapsed_s": 5.8
+      "elapsed_s": 5.7
     },
     "paso4": {
-      "selecciones_afectadas": 110,
-      "nuevo_archivo": "elos_selecciones_20261117.json",
+      "selecciones_afectadas": 20,
+      "nuevo_archivo": "elos_selecciones_20261118.json",
       "error": null,
       "elapsed_s": 0.1
     },
@@ -33,13 +33,13 @@
       "aciertos": 15,
       "total_evaluados": 36,
       "error": null,
-      "elapsed_s": 1.5
+      "elapsed_s": 1.7
     },
     "paso6": {
       "predicciones_generadas": 1,
       "saltado": false,
       "error": null,
-      "elapsed_s": 1.0
+      "elapsed_s": 2.3
     },
     "paso8": {
       "ok": true,
@@ -49,10 +49,10 @@
     "paso7": {
       "committed": false,
       "pushed": false,
-      "error": "Author identity unknown\n\n*** Please tell me who you are.\n\nRun\n\n  git config --global user.email \"you@example.com\"\n  git config --global user.name \"Your Name\"\n\nto set your account's default identity.\nOmit --global to set the identity only in this repository.\n\nfatal: empty ident name (for <runner@runnervmccnms.e132iq2vbuneramwodaux2tt2c.gx.internal.cloudapp.net>) not allowed\n"
+      "error": "Author identity unknown\n\n*** Please tell me who you are.\n\nRun\n\n  git config --global user.email \"you@example.com\"\n  git config --global user.name \"Your Name\"\n\nto set your account's default identity.\nOmit --global to set the identity only in this repository.\n\nfatal: empty ident name (for <runner@runnervmccnms.sfrdfzhjc1vebfpa22zwrezteh.gx.internal.cloudapp.net>) not allowed\n"
     }
   },
-  "end": "2026-11-17T21:58:30.842377",
+  "end": "2026-11-18T21:40:48.903095",
   "elapsed_s": 68.2,
   "success": true,
   "critical_failed": false,
