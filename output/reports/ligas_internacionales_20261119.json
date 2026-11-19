@@ -1,0 +1,168 @@
+{
+  "generated_at": "2026-11-19T21:56:56.569223",
+  "ligas": {
+    "champions": {
+      "nombre": "UEFA Champions League",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "libertadores": {
+      "nombre": "Copa Libertadores",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "mls": {
+      "nombre": "MLS",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "argentina": {
+      "nombre": "Liga Profesional Argentina",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "brasileirao": {
+      "nombre": "Brasileirao Serie A",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "premier": {
+      "nombre": "Premier League",
+      "n_fixtures": 14,
+      "picks": [
+        {
+          "partido": "Leeds United vs Coventry City",
+          "fecha": "2026-11-28",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Manchester United vs Brentford",
+          "fecha": "2026-11-28",
+          "ganador": "local",
+          "prob_local": 34.5,
+          "prob_empate": 31.4,
+          "prob_visitante": 34.0,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1576.7
+        },
+        {
+          "partido": "Ipswich Town vs Aston Villa",
+          "fecha": "2026-11-28",
+          "ganador": "visitante",
+          "prob_local": 31.0,
+          "prob_empate": 31.3,
+          "prob_visitante": 37.7,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1623.3
+        }
+      ]
+    },
+    "laliga": {
+      "nombre": "La Liga",
+      "n_fixtures": 15,
+      "picks": [
+        {
+          "partido": "Real Betis vs Rayo Vallecano",
+          "fecha": "2026-11-28",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Málaga vs Athletic Club",
+          "fecha": "2026-11-28",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Elche vs Atlético Madrid",
+          "fecha": "2026-11-28",
+          "ganador": "local",
+          "prob_local": 35.4,
+          "prob_empate": 31.4,
+          "prob_visitante": 33.2,
+          "marcador": "1-1",
+          "elo_local": 1434.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Real Madrid vs Deportivo Alavés",
+          "fecha": "2026-11-28",
+          "ganador": "local",
+          "prob_local": 59.1,
+          "prob_empate": 26.9,
+          "prob_visitante": 14.0,
+          "marcador": "1-1",
+          "elo_local": 1722.4,
+          "elo_visitante": 1500.0
+        }
+      ]
+    },
+    "bundesliga": {
+      "nombre": "Bundesliga",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "seriea": {
+      "nombre": "Serie A",
+      "n_fixtures": 14,
+      "picks": [
+        {
+          "partido": "Frosinone vs Parma",
+          "fecha": "2026-11-28",
+          "ganador": "visitante",
+          "prob_local": 31.6,
+          "prob_empate": 31.4,
+          "prob_visitante": 37.0,
+          "marcador": "1-1",
+          "elo_local": 1425.6,
+          "elo_visitante": 1540.8
+        },
+        {
+          "partido": "Torino vs Lazio",
+          "fecha": "2026-11-28",
+          "ganador": "visitante",
+          "prob_local": 31.7,
+          "prob_empate": 31.4,
+          "prob_visitante": 36.9,
+          "marcador": "1-1",
+          "elo_local": 1495.4,
+          "elo_visitante": 1608.4
+        },
+        {
+          "partido": "Inter Milan vs Genoa",
+          "fecha": "2026-11-28",
+          "ganador": "local",
+          "prob_local": 64.4,
+          "prob_empate": 24.9,
+          "prob_visitante": 10.7,
+          "marcador": "2-0",
+          "elo_local": 1820.0,
+          "elo_visitante": 1532.7
+        }
+      ]
+    },
+    "ligue1": {
+      "nombre": "Ligue 1",
+      "n_fixtures": 0,
+      "picks": []
+    }
+  }
+}

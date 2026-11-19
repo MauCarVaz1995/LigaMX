@@ -1544,3 +1544,13 @@ fecha_prediccion,partido,equipo_local,equipo_visitante,elo_local,elo_visitante,p
 2026-11-18 21:43:18,Nottingham Forest vs Chelsea,Nottingham Forest,Chelsea,1500.0,1546.1,37.0,31.4,31.7,local,1-1,1.3565,1.2435,ligas_internacionales,2026-11-27,,,,,,premier
 2026-11-18 21:43:36,Levante vs Racing Santander,Levante,Racing Santander,1461.0,1500.0,37.5,31.4,31.1,local,1-1,1.3684,1.2316,ligas_internacionales,2026-11-27,,,,,,laliga
 2026-11-18 21:44:11,Venezia vs Bologna,Venezia,Bologna,1402.8,1531.3,30.6,31.3,38.1,visitante,1-1,1.2192,1.3808,ligas_internacionales,2026-11-27,,,,,,seriea
+2026-11-19 21:58:52,Leeds United vs Coventry City,Leeds United,Coventry City,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-11-28,,,,,,premier
+2026-11-19 21:58:52,Manchester United vs Brentford,Manchester United,Brentford,1500.0,1576.7,34.5,31.4,34.0,local,1-1,1.3055,1.2945,ligas_internacionales,2026-11-28,,,,,,premier
+2026-11-19 21:58:52,Ipswich Town vs Aston Villa,Ipswich Town,Aston Villa,1500.0,1623.3,31.0,31.3,37.7,visitante,1-1,1.2278,1.3722,ligas_internacionales,2026-11-28,,,,,,premier
+2026-11-19 21:59:12,Real Betis vs Rayo Vallecano,Real Betis,Rayo Vallecano,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-11-28,,,,,,laliga
+2026-11-19 21:59:12,Málaga vs Athletic Club,Málaga,Athletic Club,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-11-28,,,,,,laliga
+2026-11-19 21:59:12,Elche vs Atlético Madrid,Elche,Atlético Madrid,1434.0,1500.0,35.4,31.4,33.2,local,1-1,1.3233,1.2767,ligas_internacionales,2026-11-28,,,,,,laliga
+2026-11-19 21:59:12,Real Madrid vs Deportivo Alavés,Real Madrid,Deportivo Alavés,1722.4,1500.0,59.1,26.9,14.0,local,1-1,1.8039,0.7961,ligas_internacionales,2026-11-28,,,,,,laliga
+2026-11-19 21:59:52,Frosinone vs Parma,Frosinone,Parma,1425.6,1540.8,31.6,31.4,37.0,visitante,1-1,1.2414,1.3586,ligas_internacionales,2026-11-28,,,,,,seriea
+2026-11-19 21:59:52,Torino vs Lazio,Torino,Lazio,1495.4,1608.4,31.7,31.4,36.9,visitante,1-1,1.2451,1.3549,ligas_internacionales,2026-11-28,,,,,,seriea
+2026-11-19 21:59:52,Inter Milan vs Genoa,Inter Milan,Genoa,1820.0,1532.7,64.4,24.9,10.7,local,2-0,1.9122,0.6878,ligas_internacionales,2026-11-28,,,,,,seriea
