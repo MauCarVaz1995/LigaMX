@@ -1554,3 +1554,17 @@ fecha_prediccion,partido,equipo_local,equipo_visitante,elo_local,elo_visitante,p
 2026-11-19 21:59:52,Frosinone vs Parma,Frosinone,Parma,1425.6,1540.8,31.6,31.4,37.0,visitante,1-1,1.2414,1.3586,ligas_internacionales,2026-11-28,,,,,,seriea
 2026-11-19 21:59:52,Torino vs Lazio,Torino,Lazio,1495.4,1608.4,31.7,31.4,36.9,visitante,1-1,1.2451,1.3549,ligas_internacionales,2026-11-28,,,,,,seriea
 2026-11-19 21:59:52,Inter Milan vs Genoa,Inter Milan,Genoa,1820.0,1532.7,64.4,24.9,10.7,local,2-0,1.9122,0.6878,ligas_internacionales,2026-11-28,,,,,,seriea
+2026-11-20 21:41:13,Everton vs Liverpool,Everton,Liverpool,1572.8,1633.4,35.8,31.4,32.8,local,1-1,1.3324,1.2676,ligas_internacionales,2026-11-29,,,,,,premier
+2026-11-20 21:41:13,Brighton & Hove Albion vs Newcastle United,Brighton & Hove Albion,Newcastle United,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-11-29,,,,,,premier
+2026-11-20 21:41:13,Crystal Palace vs Hull City,Crystal Palace,Hull City,1540.4,1500.0,44.0,30.7,25.3,local,1-1,1.5007,1.0993,ligas_internacionales,2026-11-29,,,,,,premier
+2026-11-20 21:41:13,Fulham vs AFC Bournemouth,Fulham,AFC Bournemouth,1537.5,1500.0,43.7,30.7,25.5,local,1-1,1.4959,1.1041,ligas_internacionales,2026-11-29,,,,,,premier
+2026-11-20 21:41:13,Sunderland vs Tottenham Hotspur,Sunderland,Tottenham Hotspur,1542.4,1500.0,44.1,30.7,25.2,local,1-1,1.504,1.096,ligas_internacionales,2026-11-29,,,,,,premier
+2026-11-20 21:41:13,Arsenal vs Manchester City,Arsenal,Manchester City,1727.6,1764.2,37.7,31.3,31.0,local,1-1,1.3723,1.2277,ligas_internacionales,2026-11-29,,,,,,premier
+2026-11-20 21:41:32,Valencia vs Osasuna,Valencia,Osasuna,1485.0,1541.3,36.1,31.4,32.5,local,1-1,1.3395,1.2605,ligas_internacionales,2026-11-29,,,,,,laliga
+2026-11-20 21:41:32,Deportivo A Coruña vs Barcelona,Deportivo A Coruña,Barcelona,1500.0,1848.0,15.9,27.9,56.2,visitante,1-1,0.8533,1.7467,ligas_internacionales,2026-11-29,,,,,,laliga
+2026-11-20 21:41:32,Celta Vigo vs Villarreal,Celta Vigo,Villarreal,1500.0,1667.0,27.7,31.0,41.2,visitante,1-1,1.155,1.445,ligas_internacionales,2026-11-29,,,,,,laliga
+2026-11-20 21:41:32,Real Sociedad vs Sevilla,Real Sociedad,Sevilla,1500.0,1449.9,44.8,30.6,24.7,local,1-1,1.5168,1.0832,ligas_internacionales,2026-11-29,,,,,,laliga
+2026-11-20 21:42:12,Udinese vs Fiorentina,Udinese,Fiorentina,1524.5,1566.6,37.3,31.4,31.4,local,1-1,1.3632,1.2368,ligas_internacionales,2026-11-29,,,,,,seriea
+2026-11-20 21:42:12,Sassuolo vs Napoli,Sassuolo,Napoli,1534.5,1692.6,28.4,31.1,40.5,visitante,1-1,1.1699,1.4301,ligas_internacionales,2026-11-29,,,,,,seriea
+2026-11-20 21:42:12,Roma vs Monza,Roma,Monza,1622.9,1282.9,68.6,23.1,8.4,local,2-0,2.0,0.6,ligas_internacionales,2026-11-29,,,,,,seriea
+2026-11-20 21:42:12,Como vs Juventus,Como,Juventus,1637.6,1713.5,34.6,31.4,34.0,local,1-1,1.3069,1.2931,ligas_internacionales,2026-11-29,,,,,,seriea
