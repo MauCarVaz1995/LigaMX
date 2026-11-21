@@ -1,0 +1,90 @@
+{
+  "generated_at": "2026-11-21T20:19:55.346212",
+  "ligas": {
+    "champions": {
+      "nombre": "UEFA Champions League",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "libertadores": {
+      "nombre": "Copa Libertadores",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "mls": {
+      "nombre": "MLS",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "argentina": {
+      "nombre": "Liga Profesional Argentina",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "brasileirao": {
+      "nombre": "Brasileirao Serie A",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "premier": {
+      "nombre": "Premier League",
+      "n_fixtures": 13,
+      "picks": []
+    },
+    "laliga": {
+      "nombre": "La Liga",
+      "n_fixtures": 16,
+      "picks": [
+        {
+          "partido": "Espanyol vs Getafe",
+          "fecha": "2026-11-30",
+          "ganador": "local",
+          "prob_local": 38.3,
+          "prob_empate": 31.3,
+          "prob_visitante": 30.4,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1529.6
+        }
+      ]
+    },
+    "bundesliga": {
+      "nombre": "Bundesliga",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "seriea": {
+      "nombre": "Serie A",
+      "n_fixtures": 17,
+      "picks": [
+        {
+          "partido": "Lecce vs Atalanta",
+          "fecha": "2026-11-30",
+          "ganador": "visitante",
+          "prob_local": 22.5,
+          "prob_empate": 30.1,
+          "prob_visitante": 47.4,
+          "marcador": "1-1",
+          "elo_local": 1409.8,
+          "elo_visitante": 1652.2
+        },
+        {
+          "partido": "Cagliari vs Milan",
+          "fecha": "2026-11-30",
+          "ganador": "visitante",
+          "prob_local": 22.5,
+          "prob_empate": 30.1,
+          "prob_visitante": 47.4,
+          "marcador": "1-1",
+          "elo_local": 1428.0,
+          "elo_visitante": 1669.8
+        }
+      ]
+    },
+    "ligue1": {
+      "nombre": "Ligue 1",
+      "n_fixtures": 0,
+      "picks": []
+    }
+  }
+}
