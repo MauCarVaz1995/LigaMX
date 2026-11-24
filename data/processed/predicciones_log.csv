@@ -1572,3 +1572,14 @@ fecha_prediccion,partido,equipo_local,equipo_visitante,elo_local,elo_visitante,p
 2026-11-21 20:22:44,Lecce vs Atalanta,Lecce,Atalanta,1409.8,1652.2,22.5,30.1,47.4,visitante,1-1,1.0293,1.5707,ligas_internacionales,2026-11-30,,,,,,seriea
 2026-11-21 20:22:44,Cagliari vs Milan,Cagliari,Milan,1428.0,1669.8,22.5,30.1,47.4,visitante,1-1,1.0305,1.5695,ligas_internacionales,2026-11-30,,,,,,seriea
 2026-11-22 20:34:58,Coventry City vs Ipswich Town,Coventry City,Ipswich Town,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-12-01,,,,,,premier
+2026-11-24 01:23:37,Chelsea vs Crystal Palace,Chelsea,Crystal Palace,1546.1,1540.4,41.1,31.1,27.8,local,1-1,1.4428,1.1572,ligas_internacionales,2026-12-02,,,,,,premier
+2026-11-24 01:23:38,Hull City vs Nottingham Forest,Hull City,Nottingham Forest,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-12-02,,,,,,premier
+2026-11-24 01:23:38,Liverpool vs Sunderland,Liverpool,Sunderland,1633.4,1542.4,48.2,30.0,21.9,local,1-1,1.585,1.0151,ligas_internacionales,2026-12-02,,,,,,premier
+2026-11-24 01:23:38,Manchester City vs Leeds United,Manchester City,Leeds United,1764.2,1500.0,62.5,25.7,11.8,local,2-0,1.8737,0.7263,ligas_internacionales,2026-12-02,,,,,,premier
+2026-11-24 01:23:38,AFC Bournemouth vs Brighton & Hove Albion,AFC Bournemouth,Brighton & Hove Albion,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-12-02,,,,,,premier
+2026-11-24 01:23:38,Aston Villa vs Everton,Aston Villa,Everton,1623.3,1572.8,44.8,30.6,24.6,local,1-1,1.5175,1.0825,ligas_internacionales,2026-12-02,,,,,,premier
+2026-11-24 01:23:38,Brentford vs Arsenal,Brentford,Arsenal,1576.7,1727.6,28.9,31.2,39.9,visitante,1-1,1.1818,1.4182,ligas_internacionales,2026-12-02,,,,,,premier
+2026-11-24 01:23:38,Newcastle United vs Manchester United,Newcastle United,Manchester United,1500.0,1500.0,40.7,31.1,28.2,local,1-1,1.4333,1.1667,ligas_internacionales,2026-12-02,,,,,,premier
+2026-11-24 01:23:38,Tottenham Hotspur vs Fulham,Tottenham Hotspur,Fulham,1500.0,1537.5,37.6,31.3,31.0,local,1-1,1.3708,1.2292,ligas_internacionales,2026-12-03,,,,,,premier
+2026-11-24 01:23:55,Real Sociedad vs Real Madrid,Real Sociedad,Real Madrid,1500.0,1722.4,23.8,30.4,45.8,visitante,1-1,1.0627,1.5373,ligas_internacionales,2026-12-02,,,,,,laliga
+2026-11-24 01:23:55,Barcelona vs Atlético Madrid,Barcelona,Atlético Madrid,1848.0,1500.0,69.2,22.8,8.0,local,2-0,2.0134,0.5866,ligas_internacionales,2026-12-02,,,,,,laliga

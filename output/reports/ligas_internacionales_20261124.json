@@ -1,0 +1,178 @@
+{
+  "generated_at": "2026-11-24T01:21:49.598272",
+  "ligas": {
+    "champions": {
+      "nombre": "UEFA Champions League",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "libertadores": {
+      "nombre": "Copa Libertadores",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "mls": {
+      "nombre": "MLS",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "argentina": {
+      "nombre": "Liga Profesional Argentina",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "brasileirao": {
+      "nombre": "Brasileirao Serie A",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "premier": {
+      "nombre": "Premier League",
+      "n_fixtures": 20,
+      "picks": [
+        {
+          "partido": "Chelsea vs Crystal Palace",
+          "fecha": "2026-12-02",
+          "ganador": "local",
+          "prob_local": 41.1,
+          "prob_empate": 31.1,
+          "prob_visitante": 27.8,
+          "marcador": "1-1",
+          "elo_local": 1546.1,
+          "elo_visitante": 1540.4
+        },
+        {
+          "partido": "Hull City vs Nottingham Forest",
+          "fecha": "2026-12-02",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Liverpool vs Sunderland",
+          "fecha": "2026-12-02",
+          "ganador": "local",
+          "prob_local": 48.2,
+          "prob_empate": 30.0,
+          "prob_visitante": 21.9,
+          "marcador": "1-1",
+          "elo_local": 1633.4,
+          "elo_visitante": 1542.4
+        },
+        {
+          "partido": "Manchester City vs Leeds United",
+          "fecha": "2026-12-02",
+          "ganador": "local",
+          "prob_local": 62.5,
+          "prob_empate": 25.7,
+          "prob_visitante": 11.8,
+          "marcador": "2-0",
+          "elo_local": 1764.2,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "AFC Bournemouth vs Brighton & Hove Albion",
+          "fecha": "2026-12-02",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Aston Villa vs Everton",
+          "fecha": "2026-12-02",
+          "ganador": "local",
+          "prob_local": 44.8,
+          "prob_empate": 30.6,
+          "prob_visitante": 24.6,
+          "marcador": "1-1",
+          "elo_local": 1623.3,
+          "elo_visitante": 1572.8
+        },
+        {
+          "partido": "Brentford vs Arsenal",
+          "fecha": "2026-12-02",
+          "ganador": "visitante",
+          "prob_local": 28.9,
+          "prob_empate": 31.2,
+          "prob_visitante": 39.9,
+          "marcador": "1-1",
+          "elo_local": 1576.7,
+          "elo_visitante": 1727.6
+        },
+        {
+          "partido": "Newcastle United vs Manchester United",
+          "fecha": "2026-12-02",
+          "ganador": "local",
+          "prob_local": 40.7,
+          "prob_empate": 31.1,
+          "prob_visitante": 28.2,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1500.0
+        },
+        {
+          "partido": "Tottenham Hotspur vs Fulham",
+          "fecha": "2026-12-03",
+          "ganador": "local",
+          "prob_local": 37.6,
+          "prob_empate": 31.3,
+          "prob_visitante": 31.0,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1537.5
+        }
+      ]
+    },
+    "laliga": {
+      "nombre": "La Liga",
+      "n_fixtures": 12,
+      "picks": [
+        {
+          "partido": "Real Sociedad vs Real Madrid",
+          "fecha": "2026-12-02",
+          "ganador": "visitante",
+          "prob_local": 23.8,
+          "prob_empate": 30.4,
+          "prob_visitante": 45.8,
+          "marcador": "1-1",
+          "elo_local": 1500.0,
+          "elo_visitante": 1722.4
+        },
+        {
+          "partido": "Barcelona vs Atlético Madrid",
+          "fecha": "2026-12-02",
+          "ganador": "local",
+          "prob_local": 69.2,
+          "prob_empate": 22.8,
+          "prob_visitante": 8.0,
+          "marcador": "2-0",
+          "elo_local": 1848.0,
+          "elo_visitante": 1500.0
+        }
+      ]
+    },
+    "bundesliga": {
+      "nombre": "Bundesliga",
+      "n_fixtures": 0,
+      "picks": []
+    },
+    "seriea": {
+      "nombre": "Serie A",
+      "n_fixtures": 10,
+      "picks": []
+    },
+    "ligue1": {
+      "nombre": "Ligue 1",
+      "n_fixtures": 0,
+      "picks": []
+    }
+  }
+}
